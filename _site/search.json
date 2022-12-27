@@ -4,13 +4,111 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "About this site\n\n\n[1] 2"
+  },
+  {
+    "objectID": "calendar.html",
+    "href": "calendar.html",
+    "title": "Class Calendar",
+    "section": "",
+    "text": "💡 Subscribe to this calendar by clicking the plus button in the bottom right corner!"
+  },
+  {
+    "objectID": "hw/hw00-setup.html",
+    "href": "hw/hw00-setup.html",
+    "title": "HW 00: Getting setup",
+    "section": "",
+    "text": "1. Discord\nClick this link to join the Math & Stats Discord server https://discord.gg/xCQTAgu8bE. This is a student led support platform where student office hours will be held and personalized channels can be made.\n\n\n\n\n\n\nThis is the defacto method of communication for this class\n\n\n\nI get way too many emails that it’s easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.\n\n\n\nDownload the Desktop app. You should not rely on remembering to log in using the web version. Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider.\nYou are welcome to have any username you choose as long as it’s suitable for school.\nOnce you join the server and accept the code of conduct, go to the #class-selection channel (left side bar) and click the icon that’ll add you to our class folder.\nPost an introduction in the #615-class-chat channel. Include the following:\n\nmajor\nAny pets (include pics!)\nwhat fictional family would you like to belong to?\nyour biggest concern about the class\n\n\n\n  \n\n\n2. HackMD\nGo to the What is HackMD collaborative notes, read the introduction and add your name and major to the list.\n\n\n3. Analysis Software\nInstall your Software Program of Choice (SPC). Here are some choices and thoughts.\n\nR\n\nFree. Installation Instructions available in from the Math 130 webpage\nHarder up front, more powerful in the end.\nSeamless integration with a multitude of other scientific analysis and reproducible reporting mechanisms.\nBecoming much more popular in all scientific fields of study. One of the primary languages for Data Science.\nGoogle at diagram of the tidyverse (a suite of functions in R). Compare it to the images of the data analysis life cycle. What sense do you get?\nNeed some motivation?\n\nhttps://www.psychologicalscience.org/observer/why-you-should-become-a-user-a-brief-introduction-to-r\nhttps://osf.io/j28w7/\nhttps://www.youtube.com/watch?v=jn_3N_o2d6Q\n\nOn campus resources\n\nIntroduction to R (MATH 130) 1 unit CR/NC\nData Science Initiative workshops, talks, open drop in analysis time.\n\nOff Campus resources (a few)\n\nChico R Users Meetup Group\nHelp outside of class\nR Examples Repository (This site was also built using R Markdown, is open source and a fabulous example of reproducible research!)\n\n\n\n\nSPSS\n\nPurchase v26 from http://www-03.ibm.com/software/products/en/spss-stats-gradpack for $50 for 6mo rental (2019 prices)\nPoint and click, but can save code and write scripts.\nStand alone program. No integration. Licenses are not cheap.\nWildcat computing support for SPSS\nOff Campus resources\n\nKent State University Tutorials: https://libguides.library.kent.edu/SPSS/home\nUCLA Institute for Digital Research and Education: https://stats.idre.ucla.edu/spss/\nRecommended selection of YouTube videos https://www.youtube.com/results?search_query=andy+field+spss+tutorials\n\n\n\n\nSAS? STATA? Python?\nYes, yes and yes. You can use any software program you want.\n\nSAS has only now working on literate and integrated programming by using Jupyter notebooks and SAS University Edition (free)\nStata has a few user written packages that allow for the integration of LaTeX or markdown into your code document.\nPython is the other primary language for Data Science.\n\n\n\n\n4. Get Organized\nUsing a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for scripts, data, and reports.\nYou need to choose a naming convention for your folders and try to stick with it. Recommended options are:\n\nALL CAPS (MATH615)\nno caps (math615)\nsnake_case (math_615)\nCamelCase (Math615)\n\nCreate this class folder along with the following three subfolders:\n\ndata - your data set and codebook go in here\nscripts - all assignment script files\nreports- assignments to be submitted\n\nYour working directory should now look similar to this:\n\n\n\n\n\n\n\n\n\nDo not let everything live in your downloads folder.\n\n\n\nThis means when you download a file, right click and “Save as” or “Save target as” and actively choose where to download this file.\n\n\n\n\n5. Poll Everywhere\n\nThe link will always be https://pollev.com/drd\nI have already registered you for Poll Everywhere by connecting it to Blackboard.\nUse your student email to log in and use the password reset link to create a new password. Let me know if you can’t get registered.\nYou do not need to create more than one PollEverywhere account\nTest out your connection by going to [this link] and answering a question.\n\nNeed additional support? Wildcat Computing Support link: https://www.csuchico.edu/wcs/polleverywhere.shtml\n\n\n6. Textbook\nPurchase the textbook. There has been substantial changes from the 5th edition, so it is not recommended. Format does not matter.\nPractical Multivariate Analysis, 6th ed by Afifi, May, Donatello, Clark.\nThere are at least 3 in the library, and I have a few I can loan out also.\n\n\n7. Student hours\nHelp me find the best time to hold student hours. This will be my time to dedicate to help you you all. These are your hours to get time with me 1:1, to ask additional questions, to get extra help, to just shoot the breeze and hang out.\nFill out this google form to share with me your availability:\n\n\n8. Quick access\n\nBookmark this class website. Going through Blackboard learn every time just is a waste of your time.\nLog into your campus Google Drive and search for “Math 615 F22” and open this folder.\n\nClick the down arrow between the folder name and the two people icon. Add this folder to your “Starred” ⭐ folder. This will let you find this folder easier"
+  },
+  {
+    "objectID": "hw.html",
+    "href": "hw.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Assignment\n\n\nLearning Objective\n\n\n\n\n\n\nHW 00: Getting setup\n\n\nGetting all the materials and tools for the class\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "MATH458",
+    "title": "Sampling Methods",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.\n\n\n\n   MWF\n   4:00 - 4:50 PM\n   Holt Hall 291\n   In Person\n\n\n\n\nMATH 314, MATH 315, or MATH 351 (may be taken concurrently)\n\n\n\nMWF 2-3pm, Holt 202,  and during Community Coding\n\n\n\n\n   Dr. Robin Donatello\n   Holt Hall 202\n   rdonatello@csuchico.edu\n  Schedule an appointment\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can toggle between light and dark mode by clicking the button in the top right navigation bar."
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Weekly Overview",
+    "section": "",
+    "text": "While the class is generally organized by calendar week, sometimes we will cover two topics in a week or one topic will span multiple weeks.\nDue dates are displayed on the calendar only. Consider subscribing to this Google calendar and stay up to date!\n\n\n\n\n\n\n\n\nDate\n\n\nTopic\n\n\nDetails\n\n\nReading\n\n\nHW\n\n\n\n\n\n\nWeek 1\n\n\n\n\n08/22\n\n\nWelcome\n\n\nIntroduction to the Class and your materials\n\n\nSyllabus\nHelp page\nPMA6 Ch 2\n\n\nHW00 Getting Setup\n\n\n\n\n08/22\n\n\nData architecture\n\n\nData entry, spreadsheets, metadata, codebooks\n\n\nTidy data principles (Optional)\n\n\nHW01 Data Entry\n\n\n\n\n08/24\n\n\nProject Stage 1: Choosing your topic\n\n\nChoosing project research data\n\n\n\n\n\n\n\n\nWeek 2\n\n\n\n\n08/29\n\n\nFormulating research questions\n\n\nAsking questions is easy. Asking answerable questions is more difficult.\n\n\nHow to Write an Effective Research Question\n\n\nHW02 RQ Formulation\n\n\n\n\n08/31\n\n\nPreparing data for analysis\n\n\nWhere an inordinate amount of time is spent\n\n\nPMA6 Ch 3\nASCN Ch 1\nProject Structure by Danielle Navarro\n\n\nHW03 Data Management\n\n\n\n\nWeek 3\n\n\n\n\n09/05\n\n\nLabor Day. No Class\n\n\n\n\n\n\n\n\n\n\n09/07\n\n\nData wrangling\n\n\nKeep coding, coding, coding, keep them fingers flowing, keep them data scrolling, Compile!\n\n\n\n\n\n\n\n\nWeek 4\n\n\n\n\n09/12\n\n\nDescribing distributions of data\n\n\nVisualizing your data is the first line of defense against bad data\n\n\nPMA6 Ch 4\nASCN Ch 2.3\n\n\nHW04 Univariate Graphing\n\n\n\n\n09/14\n\n\nProject Stage 2: Introduce your research question and variables of interest\n\n\n\n\n\n\nPoster prep Stage 2\n\n\n\n\nWeek 5\n\n\n\n\n09/19\n\n\nDescribing relationships between two variables\n\n\nFirst step in investigating a question about an association\n\n\nPMA6 Ch 4\nASCN Ch 2.4\n\n\nHW05 Graphing Relationships\n\n\n\n\nWeek 6\n\n\n\n\n09/26\n\n\nBest practices in Data Visualization\n\n\nJust because you can add it to a graph, doesn’t mean you should.\n\n\nPMA6 Ch 4.6\nSlides\n\n\n\n\n\n\n09/28\n\n\nProject Stage 3: Exploratory Data Analysis\n\n\n\n\n\n\nPoster prep Stage 3\n\n\n\n\nWeek 7\n\n\n\n\n10/03\n\n\nStudy Design\n\n\nHow did the data come to be?\n\n\nIMS - Chapter 2\n\n\n\n\n\n\n10/05\n\n\nFoundations for Inference\n\n\nIf all else fails, use “significant at p>.05 level” and hope no one notices.\n\n\nIMS - Chapter 13.1-13.3 and IMS Chapter 11-11.1\n\n\nQuiz: Quantifying Uncertainty\nQuiz: Foundations for Inference\n\n\n\n\nWeek 8\n\n\n\n\n10/10\n\n\nFoundations for Inference cont.\n\n\nInference with Mathematical Models\n\n\n\n\n\n\n\n\n10/12\n\n\nModeling Bivariate relationships\n\n\nChoosing appropriate analysis, T-tests for difference in means\n\n\nASCN Ch 5 IMS - Chapter 20](https://openintro-ims.netlify.app/inference-two-means.html)\n\n\nHW06 Bivariate Modeling\n\n\n\n\nWeek 9\n\n\n\n\n10/17\n\n\n\n\nANOVA & Kruskill Wallas\n\n\nIMS - Chapter 22\n\n\nQuiz: T-test & ANOVA\n\n\n\n\n10/19\n\n\n\n\nChi-Square & Fishers Exact Test\n\n\n\n\nQuiz: Chi-Square\n\n\n\n\nWeek 10\n\n\n\n\n10/24\n\n\n\n\nCorrelation\n\n\n\n\n\n\n\n\n10/24\n\n\nLinear Modeling\n\n\nEverything is a linear model.\n\n\nPMA6 Ch 7\nASCN Ch 7\nIMS Ch 24\n\n\nQuiz: Regression Modeling\n\n\n\n\n10/26\n\n\nProject Stage 4: Bivariate Inference\n\n\n\n\n\n\nPoster prep Stage 4\n\n\n\n\nWeek 11\n\n\n\n\n10/31\n\n\nModeration and Stratification\n\n\nIdentifing different trends within subgroups\n\n\nASCN Ch 8\n\n\nHW 07 Moderation Quiz: Moderation\n\n\n\n\nWeek 12\n\n\n\n\n11/07\n\n\nMultiple Regression, Confounding\n\n\nBecause life isn’t bivariate\n\n\nPMA6 Ch 8 ASCN Ch 9\n\n\nHW08 Multiple Regression\n\n\n\n\n11/09\n\n\nCategorical Predictors\n\n\n\n\nPMA6 Ch 10.3 ASCN 10.1, 10.2\n\n\n\n\n\n\nWeek 13\n\n\n\n\n11/14\n\n\nGeneralized Linear Models\n\n\nModeling binary and log transformed outcomes.\n\n\nPMA6 Ch 12 ASCN 11\n\n\nQuiz: Multiple Regression\n\n\n\n\nWeek 14\n\n\n\n\n11/28\n\n\nModel Building\n\n\nPart science, part art\n\n\nPMA6 8.11, 9 ASCN Ch 10\n\n\n\n\n\n\n11/28\n\n\nProject Stage 5: Multivariable Analysis & Conclusions\n\n\n\n\n\n\nPoster prep Stage 5\n\n\n\n\n11/30\n\n\nAssessing Model Fit\n\n\n\n\n\n\n\n\n\n\nWeek 15\n\n\n\n\n12/05\n\n\nDevelop Research Poster\n\n\n\n\n\n\nPoster Guidelines\n\n\n\n\n12/07\n\n\nOther types of models\n\n\n\n\n\n\n\n\n\n\nFinals\n\n\n\n\n12/12\n\n\nPoster Presentation\n\n\n\n\n\n\nMonday 6pm-8pm.\n\n\n\n\n12/16\n\n\nFinal Exam\n\n\n\n\n\n\nDue Friday 12/16 EOD"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors. \n\n\n\nName & pronouns: Dr. Robin Donatello (Dr. D, she/her)\nWebsite: https://www.norcalbiostat.com/\nOffice Location: Holt 202\nE-mail: rdonatello@csuchico.edu\nBest Contact Method: Discord\nStudent Office Hours: Holt 202: MW 3-4pm and during community coding\n\n\n\n\n\nMeeting Pattern: MW 4-4:50, Holt 291\nPrerequisites: MATH 314, MATH 315, or MATH 351 (may be taken concurrently)\n\nMode of Instruction: In Person. All students are expected to attend class in person each session. At this time there is no specific plan for habitual synchronous hybrid zoom session."
+  },
+  {
+    "objectID": "syllabus.html#everyone-is-welcome-here",
+    "href": "syllabus.html#everyone-is-welcome-here",
+    "title": "Syllabus",
+    "section": "Everyone is welcome here",
+    "text": "Everyone is welcome here\nIt is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit. It is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture. Your suggestions are encouraged and appreciated. Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.\nI would like to create a learning environment that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.) To help accomplish this:\n\nLet me know if you have a name and/or set of pronouns that differ from those that appear in your official Chico records. I make it a point to call on people by name, so please make sure that I know what you want to be called. - I also want to try to pronounce your name as accurately as possible. The more you help and correct me the better I can do to honor your name.\nIf you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. I want to be a resource for you. Remember that you can also submit anonymous feedback using the feedback button on the schedule and help pages of the website (which will lead to me making a general announcement to the class, if necessary to address your concerns).\nIf you prefer to speak with someone outside of the course, the Office of Diversity and Inclusion is here to assist. Their number is 530-898-4764, and email diversityoffice@csuchico.edu\nI (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it. (Again, anonymous feedback is always an option).\n\nAdapted from Monica Linden at Brown University.\nFurthermore, I would like to acknowledge that Chico State stands on lands that were originally occupied by the first people of this area, the Mechoopda. I recognize their distinctive spiritual relationship with this land and the waters that run through campus. I am humbled that our campus resides upon sacred lands that once sustained the Mechoopda people for centuries."
+  },
+  {
+    "objectID": "syllabus.html#attendance",
+    "href": "syllabus.html#attendance",
+    "title": "Syllabus",
+    "section": "Attendance",
+    "text": "Attendance\nClass attendance is expected. Talk to me ahead of time if you need to miss a class for a planned reason. In the event of an unplanned reason, PM me in Discord when you can so that I know you are still alive.\n\nIf you are not feeling well or are experiencing Covid symptoms DO NOT COME TO CLASS. DM me in Discord we’ll make a backup plan."
+  },
+  {
+    "objectID": "syllabus.html#late-work",
+    "href": "syllabus.html#late-work",
+    "title": "Syllabus",
+    "section": "Late work",
+    "text": "Late work\n\nYou should strive to submit on time for all draft items the sake of your peers. Do you want your reviews back in a timely manner? You should show them the same courtesy and professionalism.\nI don’t penalize for late work, but I prioritize on time submissions. If you submit an assignment after i’m done grading everyone elses, and we’re moving on to the next topic then your assignment may have to wait a week before I can get back to it."
+  },
+  {
+    "objectID": "syllabus.html#collaboration",
+    "href": "syllabus.html#collaboration",
+    "title": "Syllabus",
+    "section": "Collaboration",
+    "text": "Collaboration\nCollaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts with.\n\n\n\n\n\n\nWarning\n\n\n\nCollaboration on exams is not allowed."
+  },
+  {
+    "objectID": "syllabus.html#americans-with-disabilities-act",
+    "href": "syllabus.html#americans-with-disabilities-act",
+    "title": "Syllabus",
+    "section": "Americans with Disabilities Act",
+    "text": "Americans with Disabilities Act\nIf you need course adaptations or accommodations because of a disability or chronic illness, or if you need to make special arrangements in case the building must be evacuated, please make an appointment with me as soon as possible, or see me during office hours. Please also contact Accessibility Resource Center (ARC) as they are the designated department responsible for approving and coordinating reasonable accommodations and services for students with disabilities. ARC will help you understand your rights and responsibilities under the Americans with Disabilities Act and provide you further assistance with requesting and arranging accommodations. We try our best to ensure equal access to materials in accessible formats. Reach out to your me if there is some aspect of the course materials that are inaccessible to you.\nAccessibility Resource Center 530-898-5959 Student Services Center 170 arcdept@csuchico.edu http://www.csuchico.edu/arc"
+  },
+  {
+    "objectID": "syllabus.html#covid-19",
+    "href": "syllabus.html#covid-19",
+    "title": "Syllabus",
+    "section": "COVID-19",
+    "text": "COVID-19\nThe CSU requires students to be fully vaccinated and boosted against COVID-19 by February 28th, 2022, unless you have an approved exemption. While Chico State has relaxed its stance on mask mandates, for your and my health and safety I request that everyone wear an appropriate face mask covering the nose and mouth while in class.\nPlease note that dishonesty relating to the vaccination policy and/or your failure to comply with any other COVID-19 related safety policy or mandate may result in disciplinary action against you through the office of Student Conduct, Rights and Responsibilities, which can include suspension or expulsion from the California State University system."
+  },
+  {
+    "objectID": "syllabus.html#adding-and-dropping-the-course",
+    "href": "syllabus.html#adding-and-dropping-the-course",
+    "title": "Syllabus",
+    "section": "Adding and Dropping the course",
+    "text": "Adding and Dropping the course\nYou are responsible for understanding the policies and procedures about add/drops, academic renewal, etc., found in the CSU Chico University Catalog. You should be aware of the new deadlines and penalties for adding and dropping classes."
+  },
+  {
+    "objectID": "syllabus.html#confidentiality-and-mandatory-reoprting",
+    "href": "syllabus.html#confidentiality-and-mandatory-reoprting",
+    "title": "Syllabus",
+    "section": "Confidentiality and Mandatory Reoprting",
+    "text": "Confidentiality and Mandatory Reoprting\nAs an instructor, one of my responsibilities is to help create a safe learning environment on our campus. I also have a mandatory reporting responsibility related to my role as a your instructor. I am required to share information regarding sexual misconduct with the University. Students may speak to someone confidentially by contacting the Counseling and Wellness Center (898-6345) or Safe Place (898-3030). Information on campus reporting obligations and other Title IX related resources are available here: www.csuchico.edu/title-ix."
+  },
+  {
+    "objectID": "syllabus.html#academic-integrity",
+    "href": "syllabus.html#academic-integrity",
+    "title": "Syllabus",
+    "section": "Academic Integrity",
+    "text": "Academic Integrity\nAcademic integrity is defined as “a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility”. From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity."
   }
 ]

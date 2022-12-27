@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Sampling Methods - Weekly Overview</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Sampling Methods</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./calendar.html">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./syllabus.html">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Weekly Overview</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>While the class is generally organized by calendar week, sometimes we will cover two topics in a week or one topic will span multiple weeks.</p>
+<p><em>Due dates are displayed on the <a href="calendar">calendar</a> only. Consider subscribing to this Google calendar and stay up to date!</em></p>
+<div class="cell">
+
+</div>
+
+<table class="table table-hover" style="font-size: 14px; font-family: Ariel; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Date
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Topic
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Details
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Reading
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+HW
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="3">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 1</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+08/22
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t00-welcome.html">Welcome</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Introduction to the Class and your materials
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+<a href="../syllabus.html">Syllabus</a><br>
+<a href="../help.html">Help page</a><br>
+PMA6 Ch 2
+</td>
+<td style="text-align:center;">
+<a href="hw/hw00-setup.html">HW00 Getting Setup</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+08/22
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t01-data_arch.html">Data architecture</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Data entry, spreadsheets, metadata, codebooks
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+<a href="https://tidyr.tidyverse.org/articles/tidy-data.html#tidying">Tidy data principles</a> (Optional)
+</td>
+<td style="text-align:center;">
+<a href="hw/hw01-data_entry.html">HW01 Data Entry</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+08/24
+</td>
+<td style="text-align:center;width: 20%; ">
+<strong>Project Stage 1:</strong> Choosing your topic
+</td>
+<td style="text-align:center;width: 30%; ">
+Choosing project research data
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 2</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+08/29
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t02-asking_q.html">Formulating research questions</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Asking questions is easy. Asking <em>answerable</em> questions is more difficult.
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+<a href="https://library.csuchico.edu/library-curricula">How to Write an Effective Research Question</a>
+</td>
+<td style="text-align:center;">
+<a href="hw/hw02-rq_formulation.html">HW02 RQ Formulation</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+08/31
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t03-data_prep.html">Preparing data for analysis</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Where an inordinate amount of time is spent
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+PMA6 Ch 3<br>
+ASCN Ch 1<br>
+<a href="https://slides.djnavarro.net/">Project Structure by Danielle Navarro</a>
+</td>
+<td style="text-align:center;">
+<a href="hw/hw03-dm.html">HW03 Data Management</a>
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 3</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+09/05
+</td>
+<td style="text-align:center;width: 20%; ">
+Labor Day. No Class
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+09/07
+</td>
+<td style="text-align:center;width: 20%; ">
+Data wrangling
+</td>
+<td style="text-align:center;width: 30%; ">
+Keep coding, coding, coding, keep them fingers flowing, keep them data scrolling, Compile!
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 4</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+09/12
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t04-describing_distributions.html">Describing distributions of data</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Visualizing your data is the first line of defense against bad data
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+PMA6 Ch 4<br>
+ASCN Ch 2.3
+</td>
+<td style="text-align:center;">
+<a href="hw/hw04-univ_graphing.html">HW04 Univariate Graphing</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+09/14
+</td>
+<td style="text-align:center;width: 20%; ">
+<strong>Project Stage 2:</strong> Introduce your research question and variables of interest
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+<a href="project.html">Poster prep Stage 2</a>
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 5</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+09/19
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t05-describing_relationships.html">Describing relationships between two variables</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+First step in investigating a question about an association
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+PMA6 Ch 4<br>
+ASCN Ch 2.4
+</td>
+<td style="text-align:center;">
+<a href="hw/hw05-biv_graphing.html">HW05 Graphing Relationships</a>
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 6</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+09/26
+</td>
+<td style="text-align:center;width: 20%; ">
+Best practices in Data Visualization
+</td>
+<td style="text-align:center;width: 30%; ">
+Just because you can add it to a graph, doesn’t mean you should.
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+PMA6 Ch 4.6<br>
+<a href="https://math615.netlify.app/slides/lec06-data_viz_bestpractice.html">Slides</a>
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+09/28
+</td>
+<td style="text-align:center;width: 20%; ">
+<strong>Project Stage 3:</strong> Exploratory Data Analysis
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+<a href="project.html">Poster prep Stage 3</a>
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 7</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/03
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t06-study_design.html">Study Design</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+How did the data come to be?
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+<a href="https://openintro-ims.netlify.app/data-design.html">IMS - Chapter 2</a>
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/05
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t07-intro_inference.html">Foundations for Inference</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+<a href="https://xkcd.com/1478/">If all else fails, use “significant at p&gt;.05 level” and hope no one notices.</a>
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+<a href="https://openintro-ims.netlify.app/foundations-mathematical.html">IMS - Chapter 13.1-13.3</a> and <a href="https://openintro-ims.netlify.app/foundations-randomization.html">IMS Chapter 11-11.1</a>
+</td>
+<td style="text-align:center;">
+<a href="https://forms.gle/PQGYizu45bCSoQAM9">Quiz: Quantifying Uncertainty</a><br>
+<a href="https://forms.gle/a4tEWsRf1nxkoz3P6">Quiz: Foundations for Inference</a>
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 8</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/10
+</td>
+<td style="text-align:center;width: 20%; ">
+Foundations for Inference cont.
+</td>
+<td style="text-align:center;width: 30%; ">
+Inference with Mathematical Models
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/12
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t08-bivariate_modeling.html">Modeling Bivariate relationships</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Choosing appropriate analysis, T-tests for difference in means
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+<a href="https://norcalbiostat.github.io/AppliedStatistics_notes/bivariate-analysis.html">ASCN Ch 5</a> IMS - Chapter 20](https://openintro-ims.netlify.app/inference-two-means.html)
+</td>
+<td style="text-align:center;">
+<a href="hw/hw06-biv_modeling.html">HW06 Bivariate Modeling</a>
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 9</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/17
+</td>
+<td style="text-align:center;width: 20%; ">
+</td>
+<td style="text-align:center;width: 30%; ">
+ANOVA &amp; Kruskill Wallas
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+<a href="https://openintro-ims.netlify.app/inference-many-means.html">IMS - Chapter 22</a>
+</td>
+<td style="text-align:center;">
+<a href="https://forms.gle/HH3J5VicCCkCWyWm6">Quiz: T-test &amp; ANOVA</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/19
+</td>
+<td style="text-align:center;width: 20%; ">
+</td>
+<td style="text-align:center;width: 30%; ">
+Chi-Square &amp; Fishers Exact Test
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+<a href="https://forms.gle/NZ9UdQKEr2Kyn4y5A">Quiz: Chi-Square</a>
+</td>
+</tr>
+<tr grouplength="3">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 10</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/24
+</td>
+<td style="text-align:center;width: 20%; ">
+</td>
+<td style="text-align:center;width: 30%; ">
+Correlation
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/24
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t09-regression.html">Linear Modeling</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Everything is a linear model.
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+PMA6 Ch 7<br>
+<a href="https://norcalbiostat.github.io/AppliedStatistics_notes/slr.html">ASCN Ch 7</a><br>
+<a href="https://openintro-ims.netlify.app/inf-model-slr.html">IMS Ch 24</a>
+</td>
+<td style="text-align:center;">
+<a href="https://forms.gle/mVqvGqoj1aAqd5NE9">Quiz: Regression Modeling</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/26
+</td>
+<td style="text-align:center;width: 20%; ">
+<strong>Project Stage 4: </strong>Bivariate Inference
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+<a href="project.html">Poster prep Stage 4</a>
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 11</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+10/31
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t10-mod_strat.html">Moderation and Stratification</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Identifing different trends within subgroups
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+<a href="https://norcalbiostat.github.io/AppliedStatistics_notes/mod-strat.html">ASCN Ch 8</a>
+</td>
+<td style="text-align:center;">
+<a href="hw/hw07-moderation.html">HW 07 Moderation</a> <a href="https://forms.gle/btij35hDTb1bHgMWA">Quiz: Moderation</a>
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 12</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+11/07
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t11-multiple_regression.html">Multiple Regression, Confounding</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Because life isn’t bivariate
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+PMA6 Ch 8 <a href="https://norcalbiostat.github.io/AppliedStatistics_notes/mlr.html">ASCN Ch 9</a>
+</td>
+<td style="text-align:center;">
+<a href="hw/hw08-multiple_regression.html">HW08 Multiple Regression</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+11/09
+</td>
+<td style="text-align:center;width: 20%; ">
+Categorical Predictors
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+PMA6 Ch 10.3 <a href="https://norcalbiostat.github.io/AppliedStatistics_notes/model-building.html">ASCN 10.1, 10.2</a>
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 13</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+11/14
+</td>
+<td style="text-align:center;width: 20%; ">
+Generalized Linear Models
+</td>
+<td style="text-align:center;width: 30%; ">
+Modeling binary and log transformed outcomes.
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+PMA6 Ch 12 <a href="https://norcalbiostat.github.io/AppliedStatistics_notes/glm.html">ASCN 11</a>
+</td>
+<td style="text-align:center;">
+<a href="https://forms.gle/cG2uJTfpoRjdSzRm8">Quiz: Multiple Regression</a>
+</td>
+</tr>
+<tr grouplength="3">
+<td colspan="5" style="background-color: #50a18d; color: #fff;">
+<strong>Week 14</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+11/28
+</td>
+<td style="text-align:center;width: 20%; ">
+<a href="topics/t12-model_building.html">Model Building</a>
+</td>
+<td style="text-align:center;width: 30%; ">
+Part science, part art
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+PMA6 8.11, 9 ASCN Ch 10
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+11/28
+</td>
+<td style="text-align:center;width: 20%; ">
+<strong>Project Stage 5:</strong> Multivariable Analysis &amp; Conclusions
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+<a href="project.html">Poster prep Stage 5</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+11/30
+</td>
+<td style="text-align:center;width: 20%; ">
+Assessing Model Fit
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Week 15</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+12/05
+</td>
+<td style="text-align:center;width: 20%; ">
+Develop Research Poster
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+<a href="https://math615.netlify.app/project.html#stage-6-posters-presentations">Poster Guidelines</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+12/07
+</td>
+<td style="text-align:center;width: 20%; ">
+Other types of models
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="5" style="background-color: #654378; color: #fff;">
+<strong>Finals</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+12/12
+</td>
+<td style="text-align:center;width: 20%; ">
+Poster Presentation
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+Monday 6pm-8pm.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10%; padding-left: 2em;" indentlevel="1">
+12/16
+</td>
+<td style="text-align:center;width: 20%; ">
+Final Exam
+</td>
+<td style="text-align:center;width: 30%; ">
+</td>
+<td style="text-align:center;width: 20%; width: 20%; ">
+</td>
+<td style="text-align:center;">
+Due Friday 12/16 EOD
+</td>
+</tr>
+</tbody>
+
+</table>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a>.</div>   
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,19 +1,43 @@
 project:
   type: website
-
+  output-dir: _site
+  preview:
+    port: 4200
+    browser: true
+    
 website:
-  title: "MATH458"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  page-navigation: true
+  title: "Sampling Methods"
+  description: "Homepage for MATH 458 Spring 23"
+  site-url: "https://sampling-458.netlify.app/"
+ 
+  page-footer:
+    #background: light
+    left: "This site is built with :heart:, {{< fa brands r-project >}} and [Quarto](https://quarto.org/) by [Robin Donatello](www.norcalbiostat.com)."
+      
+  navbar: 
+    pinned: true
+    #background: "#654378"
+    right: 
+      - text: "Schedule"
+        file: calendar.qmd
+      - text: "Syllabus"
+        file: syllabus.qmd
 
+from: markdown+emoji
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    highlight-style: a11y
+    theme: 
+      light: sandstone
+      dark: solar
+    highlight: pygments
     toc: true
+    code-copy: true
+    code-overflow: scroll
 
 
-
+execute:
+  freeze: auto # re-render only when source changes
+  echo: false
+  warning: false

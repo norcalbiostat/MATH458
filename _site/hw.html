@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sampling Methods</title>
+<title>Sampling Methods - Assignments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,6 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -59,7 +61,37 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -79,10 +111,23 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./calendar.html">
- <span class="menu-text">Schedule</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-schedule" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Schedule</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-schedule">    
+        <li>
+    <a class="dropdown-item" href="./schedule.html">
+ <span class="dropdown-text">Weekly Overview</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./calendar.html">
+ <span class="dropdown-text">Calendar (Due dates)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="dropdown-header">
+ <span class="menu-text">Materials</span></li>
   <li class="nav-item">
     <a class="nav-link" href="./syllabus.html">
  <span class="menu-text">Syllabus</span></a>
@@ -97,17 +142,18 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sampling Methods</h1>
-<p class="subtitle lead"></p><p>MATH 458 • Spring 2023 <br> California State University, Chico</p><p></p>
+<h1 class="title">Assignments</h1>
 </div>
 
 
@@ -122,53 +168,39 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="course-information" class="level2">
-<h2 class="anchored" data-anchor-id="course-information">Course Information</h2>
-<p>The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.</p>
-<div class="grid course-details">
-<section id="course-details" class="level3 g-col-4">
-<h3 class="anchored" data-anchor-id="course-details">Course details</h3>
-<p> &nbsp; MWF</p>
-<p> &nbsp; 4:00 - 4:50 PM</p>
-<p> &nbsp; Holt Hall 291</p>
-<p> &nbsp; In Person</p>
-</section>
-<div class="g-col-4">
-<section id="pre-reqs" class="level4">
-<h4 class="anchored" data-anchor-id="pre-reqs">Pre-reqs</h4>
-<p>MATH 314, MATH 315, or MATH 351 (may be taken concurrently)</p>
-</section>
-<section id="student-drop-in-hours" class="level4">
-<h4 class="anchored" data-anchor-id="student-drop-in-hours">Student Drop in Hours</h4>
-<p>MWF 2-3pm, Holt 202, <br> and during <a href="https://www.csuchico.edu/datascience/community-coding.shtml">Community Coding</a></p>
-</section>
-</div>
-<section id="instructor" class="level3 g-col-4">
-<h3 class="anchored" data-anchor-id="instructor">Instructor</h3>
-<p> &nbsp; <a href="https://www.norcalbiostat.com">Dr.&nbsp;Robin Donatello</a></p>
-<p> &nbsp; Holt Hall 202</p>
-<p> &nbsp; <a href="mailto:rdonatello@csuchico.edu">rdonatello@csuchico.edu</a><br>
-&nbsp; <a href="https://dr-donatello.youcanbook.me/">Schedule an appointment</a></p>
-</section>
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can toggle between light and dark mode by clicking the button in the top right navigation bar.</p>
-</div>
-</div>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Assignment
+</th>
+<th>
+Learning Objective
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1659419239622" data-listing-reading-time-sort="5.245" data-listing-title-sort="HW 00: Getting setup" data-listing-filename-sort="hw00-setup.qmd">
+<td class="listing-title">
+<a href="./hw/hw00-setup.html" class="title">HW 00: Getting setup</a>
+</td>
+<td class="listing-subtitle">
+Getting all the materials and tools for the class
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

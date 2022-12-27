@@ -1,11 +1,53 @@
 ---
-title: "MATH458"
+title: "Sampling Methods"
+subtitle: |
+  MATH 458 • Spring 2023 <br> California State University, Chico
+toc: false
+sidebar: false
+page-layout: full
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Course Information
 
-```{r}
-1 + 1
-```
+The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors. 
+
+::: {.grid .course-details}
+
+
+::: {.g-col-4}
+### Course details
+
+{{< fa calendar >}} &nbsp; {{< var course.days >}}
+{{< fa clock >}} &nbsp; {{< var course.time >}}
+{{< fa location-dot >}} &nbsp; {{< var course.location >}}
+{{< fa people-roof >}} &nbsp; {{< var course.moi >}}
+:::
+
+
+::: {.g-col-4}
+#### Pre-reqs
+{{< var course.pre_req >}}
+
+#### Student Drop in Hours
+{{< var course.oh >}}
+
+:::
+
+
+
+::: {.g-col-4}
+### Instructor
+
+{{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
+{{< fa university >}} &nbsp; {{< var instructor.office >}}
+{{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>  
+{{< fa calendar-check >}} &nbsp; [Schedule an appointment]({{< var instructor.appointment_url >}})
+:::
+
+:::
+
+
+:::{.callout-tip}
+You can toggle between light and dark mode by clicking the {{< fa toggle-off >}} button in the top right navigation bar.
+:::

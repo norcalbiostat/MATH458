@@ -1,0 +1,70 @@
+---
+title: "Weekly Overview"
+---
+
+While the class is generally organized by calendar week, sometimes we will cover two topics in a week or one topic will span multiple weeks.
+
+_Due dates are displayed on the [calendar](calendar) only. Consider subscribing to this Google calendar and stay up to date!_
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr);library(readxl); library(kableExtra)
+library(janitor)
+options(knitr.table.format = "html", knitr.kable.NA = '') 
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE) 
+
+# Read in schedule
+sched <- read_excel("schedule_458.xlsx", sheet="weekly_schedule") %>% 
+  clean_names() %>%
+  mutate(Date = format(date, "%m/%d"), 
+         topic_link = paste0("topics/", topic, ".html"), 
+         HW = gsub("hw", "hw/hw", hw), 
+         Topic = ifelse(!is.na(topic), 
+                        sprintf("[%s](%s)", topic_name,topic_link), 
+                        topic_name)) %>% 
+  select(Week = week, Date, order, Topic, Details = topic_subtitle,
+         Reading = reading, HW) %>%
+  filter(!is.na(order))
+
+# set colors for schedule
+tn <- sched %>% filter(!is.na(Week)) %>% 
+  select(Week) %>% 
+  mutate(start=0, end=0)
+
+for(t in 1:16){
+  tn$start[t] <- min(which(floor(sched$order)==t))
+  tn$end[t]   <- max(which(floor(sched$order)==t))
+}
+
+wk.col <-  "background-color: #654378; color: #fff;"
+hlt.col <-  "background-color: #50a18d; color: #fff;"
+
+```
+
+```{r, results = 'asis'}
+sched %>% select(-order, -Week) %>%
+  kbl(align="lcccc", escape=FALSE) %>%
+  kable_styling("hover", full_width=F, html_font = "Ariel",
+              position='center', font_size=14, fixed_thead = T) %>%
+  column_spec(1, width="10%") %>% 
+  column_spec(2, width="20%") %>% 
+  column_spec(3, width="30%") %>% 
+  column_spec(4, width="20%") %>% 
+  column_spec(4, width="20%") %>% 
+  pack_rows("Week 1", tn$start[1],   tn$end[1],  label_row_css = wk.col) %>%
+  pack_rows("Week 2", tn$start[2],   tn$end[2],  label_row_css = wk.col) %>%
+  pack_rows("Week 3", tn$start[3],   tn$end[3],  label_row_css = wk.col) %>%
+  pack_rows("Week 4", tn$start[4],   tn$end[4],  label_row_css = wk.col) %>%
+  pack_rows("Week 5", tn$start[5],   tn$end[5],  label_row_css = wk.col) %>%
+  pack_rows("Week 6", tn$start[6],   tn$end[6],  label_row_css = wk.col) %>%
+  pack_rows("Week 7", tn$start[7],   tn$end[7],  label_row_css = wk.col) %>%
+  pack_rows("Week 8", tn$start[8],   tn$end[8],  label_row_css = wk.col) %>%
+  pack_rows("Week 9", tn$start[9],   tn$end[9],  label_row_css = wk.col) %>%
+  pack_rows("Week 10", tn$start[10],   tn$end[10],  label_row_css = wk.col) %>%
+  pack_rows("Week 11", tn$start[11],   tn$end[11],  label_row_css = wk.col) %>%
+  pack_rows("Week 12", tn$start[12],   tn$end[12],  label_row_css = wk.col) %>%
+  pack_rows("Week 13", tn$start[13],   tn$end[13],  label_row_css = wk.col) %>%
+  pack_rows("Week 14", tn$start[14],   tn$end[14],  label_row_css = hlt.col) %>%
+  pack_rows("Week 15", tn$start[15],   tn$end[15],  label_row_css = wk.col) %>%
+  pack_rows("Finals",  tn$start[16],   tn$end[16],  label_row_css = wk.col) |>
+  unclass() |> cat()
+```

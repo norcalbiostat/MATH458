@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Sampling Methods - Syllabus</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Sampling Methods</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-schedule" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Schedule</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-schedule">    
+        <li>
+    <a class="dropdown-item" href="./schedule.html">
+ <span class="dropdown-text">Weekly Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./calendar.html">
+ <span class="dropdown-text">Calendar (Due dates)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="./syllabus.html" aria-current="page">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-information" id="toc-course-information" class="nav-link active" data-scroll-target="#course-information">Course Information</a>
+  <ul class="collapse">
+  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
+  <li><a href="#logistics" id="toc-logistics" class="nav-link" data-scroll-target="#logistics">Logistics</a></li>
+  </ul></li>
+  <li><a href="#what-are-we-going-to-learn-course-learning-outcomes" id="toc-what-are-we-going-to-learn-course-learning-outcomes" class="nav-link" data-scroll-target="#what-are-we-going-to-learn-course-learning-outcomes">What are we going to learn? (Course Learning Outcomes)</a></li>
+  <li><a href="#required-materials-and-accounts" id="toc-required-materials-and-accounts" class="nav-link" data-scroll-target="#required-materials-and-accounts">Required materials and accounts</a></li>
+  <li><a href="#grading-breakdown" id="toc-grading-breakdown" class="nav-link" data-scroll-target="#grading-breakdown">Grading Breakdown</a></li>
+  <li><a href="#schedule-of-topics" id="toc-schedule-of-topics" class="nav-link" data-scroll-target="#schedule-of-topics">Schedule of Topics</a></li>
+  <li><a href="#how-do-you-get-help" id="toc-how-do-you-get-help" class="nav-link" data-scroll-target="#how-do-you-get-help">How do you get help?</a></li>
+  <li><a href="#class-policies-and-statements" id="toc-class-policies-and-statements" class="nav-link" data-scroll-target="#class-policies-and-statements">Class Policies and statements</a>
+  <ul class="collapse">
+  <li><a href="#everyone-is-welcome-here" id="toc-everyone-is-welcome-here" class="nav-link" data-scroll-target="#everyone-is-welcome-here">Everyone is welcome here</a></li>
+  <li><a href="#attendance" id="toc-attendance" class="nav-link" data-scroll-target="#attendance">Attendance</a></li>
+  <li><a href="#late-work" id="toc-late-work" class="nav-link" data-scroll-target="#late-work">Late work</a></li>
+  <li><a href="#collaboration" id="toc-collaboration" class="nav-link" data-scroll-target="#collaboration">Collaboration</a></li>
+  </ul></li>
+  <li><a href="#campus-resources" id="toc-campus-resources" class="nav-link" data-scroll-target="#campus-resources">Campus Resources</a>
+  <ul class="collapse">
+  <li><a href="#americans-with-disabilities-act" id="toc-americans-with-disabilities-act" class="nav-link" data-scroll-target="#americans-with-disabilities-act">Americans with Disabilities Act</a></li>
+  </ul></li>
+  <li><a href="#university-policies" id="toc-university-policies" class="nav-link" data-scroll-target="#university-policies">University Policies</a>
+  <ul class="collapse">
+  <li><a href="#covid-19" id="toc-covid-19" class="nav-link" data-scroll-target="#covid-19">COVID-19</a></li>
+  <li><a href="#adding-and-dropping-the-course" id="toc-adding-and-dropping-the-course" class="nav-link" data-scroll-target="#adding-and-dropping-the-course">Adding and Dropping the course</a></li>
+  <li><a href="#confidentiality-and-mandatory-reoprting" id="toc-confidentiality-and-mandatory-reoprting" class="nav-link" data-scroll-target="#confidentiality-and-mandatory-reoprting">Confidentiality and Mandatory Reoprting</a></li>
+  <li><a href="#academic-integrity" id="toc-academic-integrity" class="nav-link" data-scroll-target="#academic-integrity">Academic Integrity</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Syllabus</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="course-information" class="level1">
+<h1>Course Information</h1>
+<p><em>The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors. </em></p>
+<section id="instructor" class="level2">
+<h2 class="anchored" data-anchor-id="instructor">Instructor</h2>
+<ul>
+<li><strong>Name &amp; pronouns:</strong> Dr.&nbsp;Robin Donatello (Dr.&nbsp;D, she/her)</li>
+<li><strong>Website:</strong> <a href="https://www.norcalbiostat.com/">https://www.norcalbiostat.com/</a></li>
+<li><strong>Office Location:</strong> Holt 202</li>
+<li><strong>E-mail:</strong> rdonatello@csuchico.edu</li>
+<li><strong>Best Contact Method:</strong> Discord</li>
+<li><strong>Student Office Hours:</strong> Holt 202: MW 3-4pm and during community coding</li>
+</ul>
+</section>
+<section id="logistics" class="level2">
+<h2 class="anchored" data-anchor-id="logistics">Logistics</h2>
+<ul>
+<li><strong>Meeting Pattern:</strong> MW 4-4:50, Holt 291</li>
+<li><strong>Prerequisites:</strong> MATH 314, MATH 315, or MATH 351 (may be taken concurrently)<br>
+</li>
+<li><strong>Mode of Instruction:</strong> In Person. All students are expected to attend class in person each session. At this time there is no specific plan for habitual synchronous hybrid zoom session.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="what-are-we-going-to-learn-course-learning-outcomes" class="level1">
+<h1>What are we going to learn? (Course Learning Outcomes)</h1>
+<hr>
+</section>
+<section id="required-materials-and-accounts" class="level1">
+<h1>Required materials and accounts</h1>
+<p>Homework 0 provides a checklist for you to make sure you have everything.</p>
+<ul>
+<li><strong>Class website</strong>: https://norcalbiostat.github.io/MATH615/</li>
+<li><strong>Textbook (Required)</strong>: <em>Practical Multivariate Analysis (PMA6), 6th ed</em> by Afifi, May, Donatello, Clark. <a href="https://www.routledge.com/Practical-Multivariate-Analysis/Afifi-May-Donatello-Clark/p/book/9781032088471">[Link]</a></li>
+<li><strong>Textbook (Required)</strong>: Introduction to Modern Statistics (IMS). Free e-book/pdf at <a href="https://openintro-ims.netlify.app">https://openintro-ims.netlify.app</a></li>
+<li><strong>Laptop &amp; Internet</strong>: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Refer to ITSS for help with internet.</li>
+<li><strong>Data Analysis software</strong>: R recommended but not required. Common statistical programs include SAS, STATA, Python and SPSS.</li>
+<li><strong>Blackboard Learn (BBL)</strong>: Used for recording grades via grading rubric only.</li>
+<li><strong>Google Drive</strong>: Through your campus email.</li>
+<li><strong>Discord</strong>: A free discussion platform with a lot of collaborative functionality. The defacto method of communication for the class. Download either the phone app or the desktop app (I use both). This is mandatory. Do not rely on remembering to log in via the web browser. You will miss important notifications.</li>
+<li><strong>Hack MD</strong>: https://hackmd.io/. Interactive collaborative notes. No account needed to view, but account needed for editing (which you will be doing). I recommend you sign up with your campus email (<span class="citation" data-cites="csuchico.edu">@csuchico.edu</span>)</li>
+<li><strong>Poll Everywhere</strong>: I will add you to my class using your campus email.</li>
+</ul>
+<hr>
+</section>
+<section id="grading-breakdown" class="level1">
+<h1>Grading Breakdown</h1>
+</section>
+<section id="schedule-of-topics" class="level1">
+<h1>Schedule of Topics</h1>
+<hr>
+</section>
+<section id="how-do-you-get-help" class="level1">
+<h1>How do you get help?</h1>
+<hr>
+</section>
+<section id="class-policies-and-statements" class="level1">
+<h1>Class Policies and statements</h1>
+<section id="everyone-is-welcome-here" class="level2">
+<h2 class="anchored" data-anchor-id="everyone-is-welcome-here">Everyone is welcome here</h2>
+<p>It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit. It is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture. Your suggestions are encouraged and appreciated. Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.</p>
+<p>I would like to create a learning environment that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.) To help accomplish this:</p>
+<ul>
+<li>Let me know if you have a name and/or set of pronouns that differ from those that appear in your official Chico records. I make it a point to call on people by name, so please make sure that I know what you want to be called. - I also want to try to pronounce your name as accurately as possible. The more you help and correct me the better I can do to honor your name.</li>
+<li>If you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. I want to be a resource for you. Remember that you can also submit anonymous feedback using the feedback button on the schedule and help pages of the website (which will lead to me making a general announcement to the class, if necessary to address your concerns).</li>
+<li>If you prefer to speak with someone outside of the course, the Office of Diversity and Inclusion is here to assist. Their number is 530-898-4764, and email <a href="mailto:diversityoffice@csuchico.edu" class="email">diversityoffice@csuchico.edu</a></li>
+<li>I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it. (Again, anonymous feedback is always an option).</li>
+</ul>
+<p><em>Adapted from <a href="https://www.brown.edu/sheridan/teaching-learning-resources/inclusive-teaching/statements">Monica Linden at Brown University</a></em>.</p>
+<p>Furthermore, I would like to acknowledge that Chico State stands on lands that were originally occupied by the first people of this area, the Mechoopda. I recognize their distinctive spiritual relationship with this land and the waters that run through campus. I am humbled that our campus resides upon sacred lands that once sustained the Mechoopda people for centuries.</p>
+</section>
+<section id="attendance" class="level2">
+<h2 class="anchored" data-anchor-id="attendance">Attendance</h2>
+<p>Class attendance is expected. Talk to me ahead of time if you need to miss a class for a planned reason. In the event of an unplanned reason, PM me in Discord when you can so that I know you are still alive.</p>
+<ul>
+<li>If you are not feeling well or are experiencing Covid symptoms <strong>DO NOT COME TO CLASS</strong>. DM me in Discord we’ll make a backup plan.</li>
+</ul>
+</section>
+<section id="late-work" class="level2">
+<h2 class="anchored" data-anchor-id="late-work">Late work</h2>
+<ul>
+<li>You should strive to submit on time for all draft items the sake of your peers. Do you want your reviews back in a timely manner? You should show them the same courtesy and professionalism.</li>
+<li>I don’t penalize for late work, but I prioritize on time submissions. If you submit an assignment after i’m done grading everyone elses, and we’re moving on to the next topic then your assignment may have to wait a week before I can get back to it.</li>
+</ul>
+</section>
+<section id="collaboration" class="level2">
+<h2 class="anchored" data-anchor-id="collaboration">Collaboration</h2>
+<p>Collaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts with.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Collaboration on exams is not allowed.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="campus-resources" class="level1">
+<h1>Campus Resources</h1>
+<p>This <a href="https://www.csuchico.edu/coronavirus/students.shtml">campus website</a> contains a lot of information and resources specific to our COVID-19 situation. Specifically this page contains links to resources to help you keep <a href="https://www.csuchico.edu/keep-learning/index.shtml">learning</a>, and <a href="https://www.csuchico.edu/keep-engaging/index.shtml">engaging</a>, and lots of links to student support services such as emergency grants, basic need such as healthy food and housing, tutoring, health center, financial aid and a lot more.</p>
+<p>You can also check out the resources on the <a href="help.html">Help</a> page.</p>
+<section id="americans-with-disabilities-act" class="level2">
+<h2 class="anchored" data-anchor-id="americans-with-disabilities-act">Americans with Disabilities Act</h2>
+<p>If you need course adaptations or accommodations because of a disability or chronic illness, or if you need to make special arrangements in case the building must be evacuated, please make an appointment with me as soon as possible, or see me during office hours. Please also contact Accessibility Resource Center (ARC) as they are the designated department responsible for approving and coordinating reasonable accommodations and services for students with disabilities. ARC will help you understand your rights and responsibilities under the Americans with Disabilities Act and provide you further assistance with requesting and arranging accommodations. We try our best to ensure equal access to materials in accessible formats. Reach out to your me if there is some aspect of the course materials that are inaccessible to you.</p>
+<p>Accessibility Resource Center 530-898-5959 Student Services Center 170 <a href="mailto:arcdept@csuchico.edu" class="email">arcdept@csuchico.edu</a> <a href="https://www.csuchico.edu/arc/">http://www.csuchico.edu/arc</a></p>
+<hr>
+</section>
+</section>
+<section id="university-policies" class="level1">
+<h1>University Policies</h1>
+<section id="covid-19" class="level2">
+<h2 class="anchored" data-anchor-id="covid-19">COVID-19</h2>
+<p>The CSU requires students to be fully vaccinated and boosted against COVID-19 by February 28th, 2022, unless you have an approved exemption. While Chico State has relaxed its stance on mask mandates, for your and my health and safety I <em>request</em> that everyone wear an appropriate face mask covering the nose and mouth while in class.</p>
+<p>Please note that dishonesty relating to the vaccination policy and/or your failure to comply with any other COVID-19 related safety policy or mandate may result in disciplinary action against you through the office of Student Conduct, Rights and Responsibilities, which can include suspension or expulsion from the California State University system.</p>
+</section>
+<section id="adding-and-dropping-the-course" class="level2">
+<h2 class="anchored" data-anchor-id="adding-and-dropping-the-course">Adding and Dropping the course</h2>
+<p>You are responsible for understanding the policies and procedures about add/drops, academic renewal, etc., found in the <a href="http://www.csuchico.edu/catalog/">CSU Chico University Catalog</a>. You should be aware of the new deadlines and penalties for adding and dropping classes.</p>
+</section>
+<section id="confidentiality-and-mandatory-reoprting" class="level2">
+<h2 class="anchored" data-anchor-id="confidentiality-and-mandatory-reoprting">Confidentiality and Mandatory Reoprting</h2>
+<p>As an instructor, one of my responsibilities is to help create a safe learning environment on our campus. I also have a mandatory reporting responsibility related to my role as a your instructor. I am required to share information regarding sexual misconduct with the University. Students may speak to someone confidentially by contacting the Counseling and Wellness Center (898-6345) or Safe Place (898-3030). Information on campus reporting obligations and other Title IX related resources are available here: www.csuchico.edu/title-ix.</p>
+</section>
+<section id="academic-integrity" class="level2">
+<h2 class="anchored" data-anchor-id="academic-integrity">Academic Integrity</h2>
+<p>Academic integrity is defined as “a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility”. From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a>.</div>   
+  </div>
+</footer>
+
+
+
+</body></html>

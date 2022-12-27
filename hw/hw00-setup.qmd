@@ -1,0 +1,138 @@
+---
+format: html
+title: "HW 00: Getting setup"
+subtitle: "Getting all the materials and tools for the class"
+---
+
+# 1. Discord
+
+Click this link to join the Math & Stats Discord server [https://discord.gg/xCQTAgu8bE](https://discord.gg/xCQTAgu8bE). This is a student led support platform where student office hours will be held and personalized channels can be made. 
+
+:::{.callout-important}
+## This is the defacto method of communication for this class
+I get way too many emails that it's easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.
+:::
+
+a. [Download the Desktop app](https://discord.com/download). <span style="color:red">**You should not rely on remembering to log in using the web version.**</span> Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider. 
+b. You are welcome to have any username you choose as long as it's suitable for school. 
+c. Once you join the server and accept the code of conduct, go to the `#class-selection` channel (left side bar) and click the icon that'll add you to our class folder. 
+d. Post an introduction in the `#615-class-chat` channel. Include the following:
+    * major
+    * Any pets (include pics!)
+    * what fictional family would you like to belong to? 
+    * your biggest concern about the class
+
+<br>
+
+<a href = "https://twitter.com/kara_woo/status/1374132865370234881">
+<img class="circle" src="images/hw00_slack_pets.png"
+width="500px" 
+alt="Tweet from Kara Woo saying Onboarding step 1: Find the slack channels where people post pet pictures" 
+title = "Onboarding step 1: Find the slack channels where people post pet pictures"/>
+</a>
+
+
+# 2. HackMD
+
+Go to the [What is HackMD collaborative notes](https://hackmd.io/@norcalbiostat/intro_hackmd#/), read the introduction and add your name and major to the list.
+
+# 3. Analysis Software 
+
+Install your Software Program of Choice (SPC). Here are some choices and thoughts. 
+
+### R 
+* Free. Installation Instructions available in [from the Math 130 webpage](https://norcalbiostat.github.io/MATH130/)
+* Harder up front, more powerful in the end. 
+* Seamless integration with a multitude of other scientific analysis and reproducible reporting mechanisms. 
+* Becoming much more popular in all scientific fields of study. One of the primary languages for Data Science. 
+* Google at [diagram](https://osf.io/69gub/wiki/home/) of the `tidyverse` (a suite of functions in R). Compare it to the images of the data analysis life cycle. What sense do you get? 
+* Need some motivation? 
+    - https://www.psychologicalscience.org/observer/why-you-should-become-a-user-a-brief-introduction-to-r 
+    - https://osf.io/j28w7/
+    - https://www.youtube.com/watch?v=jn_3N_o2d6Q
+* On campus resources
+    - Introduction to R (MATH 130) 1 unit CR/NC
+    - Data Science Initiative workshops, talks, open drop in analysis time. 
+* Off Campus resources (a few)
+    - [Chico R Users Meetup Group](https://www.meetup.com/Chico-R-Users-Group/)
+    - [Help outside of class](https://norcalbiostat.github.io/MATH130/faq.html#Where_can_I_get_help_using_R_outside_of_class_time)
+    - [R Examples Repository](http://dwoll.de/rexrepos/) (This site was also built using R Markdown, is open source and a fabulous example of reproducible research!)
+
+### SPSS
+* Purchase v26 from http://www-03.ibm.com/software/products/en/spss-stats-gradpack for $50 for 6mo rental (2019 prices)
+* Point and click, but can save code and write scripts. 
+* Stand alone program. No integration. Licenses are not cheap. 
+* [Wildcat computing support for SPSS](https://www.csuchico.edu/wcs/spss.shtml)
+* Off Campus resources
+    - Kent State University Tutorials: https://libguides.library.kent.edu/SPSS/home 
+    - UCLA Institute for Digital Research and Education: https://stats.idre.ucla.edu/spss/ 
+    - Recommended selection of YouTube videos https://www.youtube.com/results?search_query=andy+field+spss+tutorials
+
+   
+### SAS? STATA? Python? 
+Yes, yes and yes. You can use any software program you want. 
+
+* SAS has only now working on literate and integrated programming by using Jupyter notebooks and SAS University Edition (free)
+* Stata has a few user written packages that allow for the integration of LaTeX or markdown into your code document. 
+* Python is the other primary language for Data Science. 
+
+
+# 4. Get Organized
+
+Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for **scripts**, **data**, and **reports**.
+
+You need to choose a naming convention for your folders and try to stick with it. Recommended options are: 
+
+* ALL CAPS (MATH615)
+* no caps (math615)
+* snake_case (math_615) 
+* CamelCase (Math615) 
+
+Create this class folder along with the following three subfolders: 
+
+* `data` - your data set and codebook go in here
+* `scripts` - all assignment script files
+* `reports`- assignments to be submitted
+
+Your working directory should now look similar to this:
+
+<center><img src="images/hw00_folder_org.png" width="350px"></center>
+
+:::{.callout-important}
+## Do not let everything live in your downloads folder.
+This means when you download a file, right click and "Save as" or "Save target as" and **actively choose** where to download this file. 
+:::
+
+
+
+# 5. Poll Everywhere 
+
+* The link will always be [https://pollev.com/drd](https://pollev.com/drd)
+* I have already registered you for Poll Everywhere by connecting it to Blackboard. 
+* Use your student email to log in and use the password reset link to create a new password. Let me know if you can't get registered. 
+* **You do not need to create more than one PollEverywhere account**
+* Test out your connection by going to [[this link]](https://PollEv.com/clickable_images/uQV3H2U9AhCBDBP07gX2E/respond) and answering a question. 
+
+Need additional support? Wildcat Computing Support link: [https://www.csuchico.edu/wcs/polleverywhere.shtml](https://www.csuchico.edu/wcs/polleverywhere.shtml)
+
+
+# 6. Textbook
+
+Purchase the textbook. There has been substantial changes from the 5th edition, so it is not recommended. Format does not matter. 
+
+[_Practical Multivariate Analysis, 6th ed_ by Afifi, May, Donatello, Clark.](https://www.routledge.com/Practical-Multivariate-Analysis/Afifi-May-Donatello-Clark/p/book/9781032088471)
+
+There are at least 3 in the library, and I have a few I can loan out also. 
+
+
+# 7. Student hours
+
+Help me find the best time to hold student hours. This will be my time to dedicate to help you you all. These are **your** hours to get time with me 1:1, to ask additional questions, to get extra help, to just shoot the breeze and hang out. 
+
+Fill out [this google form](https://forms.gle/v4anqiJLwB2WEBqX8) to share with me your availability: 
+
+# 8. Quick access
+
+1. Bookmark this class website. Going through Blackboard learn every time just is a waste of your time. 
+2. Log into your campus Google Drive and search for "Math 615 F22" and open this folder. 
+    - Click the down arrow between the folder name and the two people icon. Add this folder to your "Starred" :star: folder.  This will let you find this folder easier

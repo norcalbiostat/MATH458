@@ -1,0 +1,137 @@
+---
+format: html
+title: "Syllabus"
+---
+
+
+# Course Information
+
+_The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors. _
+
+
+## Instructor
+* **Name & pronouns:** Dr. Robin Donatello  (Dr. D, she/her)
+* **Website:** [https://www.norcalbiostat.com/](https://www.norcalbiostat.com/)
+* **Office Location:** Holt 202
+* **E-mail:** rdonatello@csuchico.edu
+* **Best Contact Method:** Discord
+* **Student Office Hours:** Holt 202: MW 3-4pm and during community coding
+
+## Logistics
+* **Meeting Pattern:** MW 4-4:50, Holt 291
+* **Prerequisites:** MATH 314, MATH 315, or MATH 351 (may be taken concurrently)  
+* **Mode of Instruction:** In Person. All students are expected to attend class in person each session. At this time there is no specific plan for habitual synchronous hybrid zoom session.
+
+----
+
+# What are we going to learn? (Course Learning Outcomes)
+
+
+----
+
+# Required materials and accounts
+
+Homework 0 provides a checklist for you to make sure you have everything. 
+
+* **Class website**: https://norcalbiostat.github.io/MATH615/
+* **Textbook (Required)**: _Practical Multivariate Analysis (PMA6), 6th ed_ by Afifi, May, Donatello, Clark. [[Link]](https://www.routledge.com/Practical-Multivariate-Analysis/Afifi-May-Donatello-Clark/p/book/9781032088471)
+* **Textbook (Required)**: Introduction to Modern Statistics (IMS). Free e-book/pdf at [https://openintro-ims.netlify.app](https://openintro-ims.netlify.app)
+* **Laptop & Internet**: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Refer to ITSS for help with internet. 
+* **Data Analysis software**: R recommended but not required. Common statistical programs include SAS, STATA, Python and SPSS. 
+* **Blackboard Learn (BBL)**: Used for recording grades via grading rubric only.
+* **Google Drive**: Through your campus email.
+* **Discord**: A free discussion platform with a lot of collaborative functionality. The defacto method of communication for the class. Download either the phone app or the desktop app (I use both). This is mandatory. Do not rely on remembering to log in via the web browser. You will miss important notifications. 
+* **Hack MD**: https://hackmd.io/. Interactive collaborative notes. No account needed to view, but account needed for editing (which you will be doing). I recommend you sign up with your campus email (@csuchico.edu)
+* **Poll Everywhere**: I will add you to my class using your campus email. 
+
+----
+
+# Grading Breakdown
+
+
+
+# Schedule of Topics
+
+
+----
+
+# How do you get help?
+
+----
+
+# Class Policies and statements
+
+## Everyone is welcome here
+
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit. It is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture. Your suggestions are encouraged and appreciated. Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.
+
+I would like to create a learning environment that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.) To help accomplish this:
+
+-  Let me know if you have a name and/or set of pronouns that differ from those that appear in your official Chico records. I make it a point to call on people by name, so please make sure that I know what you want to be called. 
+        - I also want to try to pronounce your name as accurately as possible. The more you help and correct me the better I can do to honor your name. 
+-   If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. I want to be a resource for you. Remember that you can also submit anonymous feedback using the feedback button on the schedule and help pages of the website (which will lead to me making a general announcement to the class, if necessary to address your concerns).
+-   If you prefer to speak with someone outside of the course, the Office of Diversity and Inclusion is here to assist. Their number is 530-898-4764, and email [diversityoffice\@csuchico.edu](mailto:diversityoffice@csuchico.edu){.email}
+-   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it. (Again, anonymous feedback is always an option).
+
+*Adapted from [Monica Linden at Brown University](https://www.brown.edu/sheridan/teaching-learning-resources/inclusive-teaching/statements)*.
+
+Furthermore, I would like to acknowledge that Chico State stands on lands that were originally occupied by the first people of this area, the Mechoopda. I recognize their distinctive spiritual relationship with this land and the waters that run through campus. I am humbled that our campus resides upon sacred lands that once sustained the Mechoopda people for centuries.
+
+
+## Attendance
+
+Class attendance is expected. Talk to me ahead of time if you need to miss a class for a planned reason. In the event of an unplanned reason, PM me in Discord when you can so that I know you are still alive. 
+
+* If you are not feeling well or are experiencing Covid symptoms **DO NOT COME TO CLASS**. DM me in Discord we'll make a backup plan. 
+
+
+## Late work
+* You should strive to submit on time for all draft items the sake of your peers. Do you want your reviews back in a timely manner? You should show them the same courtesy and professionalism. 
+* I don't penalize for late work, but I prioritize on time submissions. If you submit an assignment after i'm done grading everyone elses, and we're moving on to the next topic then your assignment may have to wait a week before I can get back to it. 
+
+## Collaboration
+
+Collaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts with. 
+
+:::{.callout-warning}
+Collaboration on exams is not allowed.
+:::
+
+----
+
+# Campus Resources
+
+This [campus website](https://www.csuchico.edu/coronavirus/students.shtml) contains a lot of information and resources specific to our COVID-19 situation. Specifically this page contains links to resources to help you keep [learning](https://www.csuchico.edu/keep-learning/index.shtml), and [engaging](https://www.csuchico.edu/keep-engaging/index.shtml), and lots of links to student support services such as emergency grants, basic need such as healthy food and housing, tutoring, health center, financial aid and a lot more.
+
+You can also check out the resources on the [Help](help.html) page. 
+
+## Americans with Disabilities Act
+
+If you need course adaptations or accommodations because of a disability or chronic illness, or if you need to make special arrangements in case the building must be evacuated, please make an appointment with me as soon as possible, or see me during office hours. Please also contact Accessibility Resource Center (ARC) as they are the designated department responsible for approving and coordinating reasonable accommodations and services for students with disabilities. ARC will help you understand your rights and responsibilities under the Americans with Disabilities Act and provide you further assistance with requesting and arranging accommodations. We try our best to ensure equal access to materials in accessible formats. Reach out to your me if there is some aspect of the course materials that are inaccessible to you.
+
+Accessibility Resource Center 530-898-5959 Student Services Center 170 [arcdept\@csuchico.edu](mailto:arcdept@csuchico.edu){.email} [http://www.csuchico.edu/arc](https://www.csuchico.edu/arc/)
+
+----
+
+# University Policies
+
+## COVID-19 
+
+The CSU requires students to be fully vaccinated and boosted against COVID-19 by February 28th, 2022, unless you have an approved exemption. While Chico State has relaxed its stance on mask mandates, for your and my health and safety I _request_ that everyone wear an appropriate face mask covering the nose and mouth while in class. 
+
+Please note that dishonesty relating to the vaccination policy and/or your failure to comply with any other COVID-19 related safety policy or mandate may result in disciplinary action against you through the office of Student Conduct, Rights and Responsibilities, which can include suspension or expulsion from the California State University system. 
+
+
+## Adding and Dropping the course
+
+You are responsible for understanding the policies and procedures about add/drops, academic renewal, etc., found in the [CSU Chico University Catalog](http://www.csuchico.edu/catalog/). You should be aware of the new deadlines and penalties for adding and dropping classes.
+
+## Confidentiality and Mandatory Reoprting
+
+As an instructor, one of my responsibilities is to help create a safe learning environment on our campus. I also have a mandatory reporting responsibility related to my role as a your instructor. I am required to share information regarding sexual misconduct with the University. Students may speak to someone confidentially by contacting the Counseling and Wellness Center (898-6345) or Safe Place (898-3030). Information on campus reporting obligations and other Title IX related resources are available here: www.csuchico.edu/title-ix.
+
+
+## Academic Integrity
+
+Academic integrity is defined as “a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility”. From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity.
+

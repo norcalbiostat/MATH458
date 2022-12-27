@@ -1,0 +1,16 @@
+---
+title: "Assignments"
+listing:
+  contents:
+    - hw
+  type: table
+  fields: [title, subtitle]
+  field-display-names:
+    title: "Assignment"
+    subtitle: "Learning Objective"
+  sort: [date]
+  sort-ui: false
+  filter-ui: false
+tbl-colwidths: [50,50]
+---
+
