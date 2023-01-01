@@ -15,7 +15,7 @@ _The theory and application of survey sampling techniques. Topics include simple
 * **Office Location:** Holt 202
 * **E-mail:** rdonatello@csuchico.edu
 * **Best Contact Method:** Discord
-* **Student Office Hours:** Holt 202: MW 3-4pm and during community coding
+* **Student Office Hours:** Holt 202: Times TBD
 
 ## Logistics
 * **Meeting Pattern:** MW 4-4:50, Holt 291
@@ -31,18 +31,14 @@ _The theory and application of survey sampling techniques. Topics include simple
 
 # Required materials and accounts
 
-Homework 0 provides a checklist for you to make sure you have everything. 
-
-* **Class website**: https://norcalbiostat.github.io/MATH615/
-* **Textbook (Required)**: _Practical Multivariate Analysis (PMA6), 6th ed_ by Afifi, May, Donatello, Clark. [[Link]](https://www.routledge.com/Practical-Multivariate-Analysis/Afifi-May-Donatello-Clark/p/book/9781032088471)
-* **Textbook (Required)**: Introduction to Modern Statistics (IMS). Free e-book/pdf at [https://openintro-ims.netlify.app](https://openintro-ims.netlify.app)
+* **Class website**: 
+* **Textbook (Required)**: 
 * **Laptop & Internet**: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Refer to ITSS for help with internet. 
-* **Data Analysis software**: R recommended but not required. Common statistical programs include SAS, STATA, Python and SPSS. 
-* **Blackboard Learn (BBL)**: Used for recording grades via grading rubric only.
+* **Data Analysis software**: R & R Studio
+* **Canvas**: Used for recording grades via grading rubric only.
 * **Google Drive**: Through your campus email.
 * **Discord**: A free discussion platform with a lot of collaborative functionality. The defacto method of communication for the class. Download either the phone app or the desktop app (I use both). This is mandatory. Do not rely on remembering to log in via the web browser. You will miss important notifications. 
-* **Hack MD**: https://hackmd.io/. Interactive collaborative notes. No account needed to view, but account needed for editing (which you will be doing). I recommend you sign up with your campus email (@csuchico.edu)
-* **Poll Everywhere**: I will add you to my class using your campus email. 
+
 
 ----
 
@@ -51,6 +47,18 @@ Homework 0 provides a checklist for you to make sure you have everything.
 
 
 # Schedule of Topics
+
+We will tentatively cover the following sections and topics:
+
+* Introduction: Writing functions in R; Simulation; Sampling Distributions
+* Introduction to Sampling (Textbook Ch 1)
+* Concepts of Statistics
+* Simple Random Sampling (Textbook Ch 2)
+* Stratified Random Sampling (Textbook Ch 3)
+* Ratio, Regression, and Difference Estimation
+* Cluster Sampling (Textbook Ch 5)
+* Estimating Population Size (Textbook Ch 13)
+
 
 
 ----
@@ -80,7 +88,7 @@ Furthermore, I would like to acknowledge that Chico State stands on lands that w
 
 ## Attendance
 
-Class attendance is expected. Talk to me ahead of time if you need to miss a class for a planned reason. In the event of an unplanned reason, PM me in Discord when you can so that I know you are still alive. 
+Class attendance is expected. Talk to me ahead of time if you need to miss a class for a planned reason. In the event of an unplanned reason, DM me in Discord when you can so that I know you are still alive. 
 
 * If you are not feeling well or are experiencing Covid symptoms **DO NOT COME TO CLASS**. DM me in Discord we'll make a backup plan. 
 

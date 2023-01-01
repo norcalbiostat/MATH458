@@ -1,0 +1,15 @@
+---
+title: "Course Notes"
+listing:
+  contents:
+    - notes
+  type: grid
+  fields: [title, description]
+  field-display-names:
+    title: "Topic"
+  sort: [filename]
+  sort-ui: false
+  filter-ui: true
+  table-hover: true
+---
+

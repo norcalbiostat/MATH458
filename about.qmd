@@ -1,9 +1,41 @@
 ---
-title: "About"
+title: "Schedule"
 ---
 
-About this site
+# Welcome
 
-```{r}
-1 + 1
-```
+## Class logistics
+* **Date**: 1/23
+* **Description**: Introduction to the class and your materials
+* **Objectives**: Get connected to all the class materials & tools
+* **Read**: Syllabus
+* **Worksheet**: 
+* **Homework**: [HW 0](hw/hw00-setup.html)
+* **Solutions**: _n/a_
+
+
+## Introduction to Simulation
+* **Date**: 1/28 - 1/30
+* **Description**: Writing your own custom functions in R, and using them to generate simulations and sampling distributions. 
+* **Objectives**: 
+    - Write custom functions in R
+    - Conduct a simulation experiment 
+    - Construct a CI for a population parameter from a simulation experiment
+* **Read**: [cn01-introduction](notes/cn01-introduction.html)
+* **Worksheet**: Worksheet 1 handout
+* **Homework**: HW 1 handed out
+* **Solutions**: 
+
+
+<!---
+## Topic: 
+* **Date**: 
+* **Description**: 
+* **Objectives**: 
+* **Read**: 
+* **Worksheet**: 
+* **Homework**: 
+* **Solutions**: 
+
+--->
+

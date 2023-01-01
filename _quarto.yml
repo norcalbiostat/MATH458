@@ -4,7 +4,8 @@ project:
   preview:
     port: 4200
     browser: true
-    
+
+  
 website:
   page-navigation: true
   title: "Sampling Methods"
@@ -18,9 +19,12 @@ website:
   navbar: 
     pinned: true
     #background: "#654378"
-    right: 
-      - text: "Schedule"
+    left: 
+      - text: "Notes"
+        file: notes.qmd
+      - text: "Calendar"
         file: calendar.qmd
+    right: 
       - text: "Syllabus"
         file: syllabus.qmd
 
@@ -35,9 +39,9 @@ format:
     toc: true
     code-copy: true
     code-overflow: scroll
-
+    callout-icon: false
 
 execute:
   freeze: auto # re-render only when source changes
-  echo: false
+  echo: true
   warning: false

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Writing your own custom functions in R, and using them to generate simulations and sampling distributions.">
+
+<title>Sampling Methods - Introduction to Simulation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Sampling Methods</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../notes.html">
+ <span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../calendar.html">
+ <span class="menu-text">Calendar</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#writing-your-own-r-functions" id="toc-writing-your-own-r-functions" class="nav-link active" data-scroll-target="#writing-your-own-r-functions">Writing your own R functions</a>
+  <ul class="collapse">
+  <li><a href="#defining-the-function." id="toc-defining-the-function." class="nav-link" data-scroll-target="#defining-the-function.">Defining the function.</a></li>
+  </ul></li>
+  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation">Simulation</a>
+  <ul class="collapse">
+  <li><a href="#what-is-simulation" id="toc-what-is-simulation" class="nav-link" data-scroll-target="#what-is-simulation">What is Simulation?</a></li>
+  <li><a href="#why-is-simulation-useful" id="toc-why-is-simulation-useful" class="nav-link" data-scroll-target="#why-is-simulation-useful">Why is simulation useful?</a></li>
+  <li><a href="#assessing-uncertainty-about-simulation-results" id="toc-assessing-uncertainty-about-simulation-results" class="nav-link" data-scroll-target="#assessing-uncertainty-about-simulation-results">Assessing Uncertainty about Simulation Results</a></li>
+  </ul></li>
+  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link" data-scroll-target="#statistical-inference">Statistical Inference</a></li>
+  <li><a href="#sampling-distribution" id="toc-sampling-distribution" class="nav-link" data-scroll-target="#sampling-distribution">Sampling Distribution</a></li>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a>
+  <ul class="collapse">
+  <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error">Standard Error</a></li>
+  </ul></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap up</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Introduction to Simulation</h1>
+</div>
+
+<div>
+  <div class="description">
+    Writing your own custom functions in R, and using them to generate simulations and sampling distributions.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="writing-your-own-r-functions" class="level1">
+<h1>Writing your own R functions</h1>
+<p>Abstracting your code into many small functions is key for writing nice R code. Many people are initially reluctant to create their own functions. R has many built in functions and you can access many more by installing new packages. So there is no doubt that you are already using functions. This section will show you how to write your own functions.</p>
+<p>Writing a custom function is similar to writing down a mathematical formula with variables. Here is an example function called <code>sum.of.squares</code> which requires two arguments and returns the sum of the squares of these arguments.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sum.of.squares <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once you run this code chunk the function is now available, like any of the built in functions within R. Try running <code>sum.of.squares(3,4)</code> in your console.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum.of.squares</span>(<span class="dv">3</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25</code></pre>
+</div>
+</div>
+<p>The procedure for writing any other functions is similar and involves three key steps:</p>
+<section id="defining-the-function." class="level2">
+<h2 class="anchored" data-anchor-id="defining-the-function.">Defining the function.</h2>
+<p>Functions are defined by code with a specific format:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>function.name <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, <span class="at">arg3=</span><span class="dv">2</span>, ...){</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  newVar <span class="ot">&lt;-</span> <span class="fu">sin</span>(arg1) <span class="sc">+</span> <span class="fu">sin</span>(arg2) <span class="co"># do some useful stuff</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  newVar<span class="sc">/</span> arg3   <span class="co"># the result of the last line is the returned value</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Terminology:</p>
+<ul>
+<li><code>function.name</code> is the function’s name. This can be any valid variable name but you should avoid using names that are used elsewhere in R.</li>
+<li><code>arg1,arg2,arg3</code> are the arguments of the function. You can write a function with any number of arguments. - Arguments are the needed in order to make the function run. For instance, for the <code>sum.of.squares</code> function, x and y are the two arguments because R needs two numbers in order to make the function work.</li>
+<li><strong>Function body</strong>: The function code between the <code>{}</code> brackets is run every time the function is called. This code might be very long or very short.</li>
+<li><strong>Return value</strong>: The last line of code is the value that will be <em>returned</em> by the function.</li>
+<li><strong>Load the function</strong>: For R to be able to execute your function, it needs first to be read into memory. Similar to loading a library, until you do it functions contained within it cannot be called.
+<ul>
+<li>To run a function you highlight the function and run it. Once you run it you don’t need to run it again.</li>
+</ul></li>
+<li><strong>Using your function</strong>: You can now use your function. You just need to give the proper arguments and the function will return the desired value(s). This may also be called “calling” your function.</li>
+</ul>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Write a function that converts degrees Fahrenheit (F) to degrees Celsius (C). The formula for the conversion is <span class="math inline">\(C=(F-32)*5/9\)</span>, but recall that <code>F</code> and <code>c</code> are special characters in <strong>R</strong> and should not be used as variable names.</p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The population standard deviation can be computed as follows: <span class="math display">\[
+\sigma=\sqrt{\frac{\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}}{n}}.
+\]</span></p>
+<p>Write a function in R to compute the population standard deviation and use it to compute the standard deviation of <span class="math inline">\(x=c(320,50,88,98,215,128)\)</span>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="simulation" class="level1 page-columns page-full">
+<h1>Simulation</h1>
+<section id="what-is-simulation" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-is-simulation">What is Simulation?</h2>
+<p>Simulation is a way to use high-speed computer power to substitute for analytical calculation. The law of large numbers tells us that if we observe a large sample of i.i.d. random variables with finite mean, then the average of these random variables should be close to their true mean. If we can get a computer to produce such a large i.i.d. sample, then we can average the random variables instead of trying to calculate their mean analytically. Simulations can be useful to check assumptions, examine a sampling distribution, or check the validity of the CLT in certain scenarios.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Notes on the Uniform Distribution https://math350.netlify.app/notes/cn4_5_unif_exp</span></div></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Finding the mean of a distribution.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The mean of the Uniform distribution on the interval [0,1] is known to be 1/2. How could we have found that out if we did not know the functional form of the uniform distribution?</p>
+</div>
+</div>
+<ol type="1">
+<li>Create a large random sample from a Uniform distribution on the interval [0,1]</li>
+<li>Calculate the observed mean of that sample.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>samp.unif <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10000</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp.unif)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5005262</code></pre>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use simulation to approximate the mean of the exponential distribution with parameter 1.</p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose that we have available as many standard normal random variables as we desire (<span class="math inline">\(Z \sim N(0,1)\)</span>. Let <span class="math inline">\(X\)</span> stand for a random variable having the normal distribution with mean 2 and variance 49 (<span class="math inline">\(X\sim N(2, 49)\)</span>. Estimate the mean of <span class="math inline">\(log|X| +1\)</span> using simulation.</p>
+<p><em>Note/Hint: Notice that I didn’t say you had as many <span class="math inline">\(X\)</span>’s as you wanted. You can only draw <span class="math inline">\(Z\)</span>’s here. So start by defining a vector <code>Z &lt;- rnorm(10000)</code>.</em></p>
+</div>
+</div>
+</section>
+<section id="why-is-simulation-useful" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-simulation-useful">Why is simulation useful?</h2>
+<p>Statistical simulations are used to estimate features of distributions such as means of functions, quantiles, and other features that we cannot compute in closed form. When using a simulation estimator, it is good to compute a measure of how precise the estimator is, in addition to the estimate itself.</p>
+<p>Simulation is a technique that can be used to help shed light on how a complicated system works even if detailed analysis is unavailable. For example, engineers can simulate traffic patterns in the vicinity of a construction project to see what effects various proposed restrictions might have. Statistical simulations are used to estimate probabilistic features of our models that we cannot compute analytically.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Server wait time
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Two servers A and B in a fast food restaurant start serving customers at the same time. They agree to meet for a break after each of them has served 10 customers. Presumably, one of them will finish before the other and have to wait. How long, on average, will one of the servers have to wait for the other?</p>
+<p>Suppose that we model all service times, regardless of the server as a random variable with an exponential distribution with parameter 0.3 customers per minute (<span class="math inline">\(Exp(.3)\)</span>). The time it takes one server to serve 10 customers would follow a gamma distribution with parameters 10 and 0.3 (<span class="math inline">\(Gamma(10, .3)\)</span>).</p>
+<p>Let <span class="math inline">\(X\)</span> be the time it takes <span class="math inline">\(A\)</span> to serve 10 customers, and let <span class="math inline">\(Y\)</span> be the time it takes server <span class="math inline">\(B\)</span> to serve 10 customers. We are asked to compute</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Missing info here</p>
+</blockquote>
+<p>The most straightforward way of finding this mean analytically would require a two-dimensional integral over the union of two non-rectangular regions.</p>
+<p>On the other hand, suppose that a computer can provide us with as many independent gamma random variables as we desire. We can then obtain a pair <span class="math inline">\((X,Y)\)</span> and compute <span class="math inline">\(Z=|X-Y|\)</span>. We can repeat this process many times and get an average of all the observed <span class="math inline">\(Z\)</span> values.</p>
+<blockquote class="blockquote">
+<p>missing solution here</p>
+</blockquote>
+</section>
+<section id="assessing-uncertainty-about-simulation-results" class="level2">
+<h2 class="anchored" data-anchor-id="assessing-uncertainty-about-simulation-results">Assessing Uncertainty about Simulation Results</h2>
+<p>An important part of simulation is to assess the uncertainty in simulations. Even if we did a large number of simulations, if we repeated the simulation process we would get slightly different results. This is because a simulator estimator is a random variable. The smaller the simulation variance is the more certain we can be that our estimator is close to the parameter. A measure that is commonly used to judge the uncertainty of simulation is called the <em>simulation standard error</em>.</p>
+<blockquote class="blockquote">
+<p>missing example or info here? is the simulation SE the SE of the simulated sample?? why should we care and how is it used?</p>
+</blockquote>
+</section>
+</section>
+<section id="statistical-inference" class="level1 page-columns page-full">
+<h1>Statistical Inference</h1>
+<p>Statistical inference centers around using information from a sample to understand what might be true about the entire population of interest. If all we see are the data in the sample, what conclusions can we draw about the population? How sure are we about the accuracy of those conclusions?</p>
+<p>On April 29, 2011, Prince William married Kate Middleton in London. The Pew Research Center reports that 34% of US adults watched some or all of the royal wedding. How do we know that 34% of all US adults watched? Did anyone ask <strong>you</strong> if you watched it? In order to know for sure what proportion of US adults watched the wedding, we would need to ask <strong>all</strong> US adults whether or not they watched. This would be very difficult to do. As we will see, however, we can estimate the <em>population</em> proportion <em>parameter</em> quite accurately with a <em>sample statistic</em>, as long as we use a random sample. In the case of the royal wedding, the estimate is based on a poll using a random sample of 1006 US adults.</p>
+<ul>
+<li><em>Statistical inference</em>: The process of drawing conclusions about the entire population based on the information in the sample.</li>
+<li><em>Parameter</em>:</li>
+<li><em>Statistic</em>:</li>
+</ul>
+<p>Generally our goal is to know the value of the population parameter exactly but this usually isn’t possible since we usually cannot collect information from the entire population.</p>
+<p>Instead we can select a sample from the population, calculate the quantity of interest for the sample, and use this sample statistic to estimate the value for the whole population.</p>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The US Census states that 27.5% of US adults who are at least 25 years old have a college bachelor’s degree or higher. Suppose that in a random sample of <span class="math inline">\(n\)</span>=200 US residents who are 25 or older, 58 of them have a college bachelor’s degree or higher.</p>
+<p>What is the population parameter? What is the sample statistic? Use correct notation for your answer.</p>
+</div>
+</div>
+<p>The value of a statistic for a particular sample gives a <em>point estimate</em> of the population parameter. If we only have the one sample and don’t know the value of the population parameter,</p>
+<blockquote class="blockquote">
+<p>this point estimate is our best estimate of the true value of the population parameter.</p>
+</blockquote>
+<p><strong>Variability of Sample Statistics</strong>: We usually think of a parameter as a fixed value while the sample statistic is considered a random variable.</p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Turn and talk
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Why is a sample statistic such as a sample mean <span class="math inline">\(\bar{x}\)</span> considered a random variable?</p>
+</div>
+</div>
+<p>Along with the point estimate we also want to know how accurate we can expect the point estimate to be. In other words, if we took another random sample of the same size from the population, is the point estimate from this new sample likely to be similar to the first point estimate or are they likely to be far apart.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Enrollment in Graduate Programs in Statistics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Graduate programs in statistics often pay their graduate students, which means that many graduate students in statistics are able to attend graduate school tuition free with an assistantship or fellowship. There are 82 US statistics doctoral programs for which enrollment data were available. The data set <code>StatisticsPhD</code> lists all these schools together with the total enrollment of full-time graduate students in each program in 2009.</p>
+<p><span class="emoji" data-emoji="question">❓</span> What is the average full-time graduate student enrollment in US statistics doctoral programs in 2009?</p>
+</div>
+</div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">I don’t feel like loading packages in this page so I’m using the <code>::</code> shortcut method to access the <code>here</code> and <code>read_csv</code> functions to load in the data.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>stat.phd <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"StatisticsPhD.csv"</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(stat.phd) <span class="co">#always look at your imported data to check for import errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  University                      Department    FTGradEnrollment
+  &lt;chr&gt;                           &lt;chr&gt;                    &lt;dbl&gt;
+1 Baylor University               Statistics                  26
+2 Boston University               Biostatistics               39
+3 Brown University                Biostatistics               21
+4 Carnegie Mellon University      Statistics                  39
+5 Case Western Reserve University Statistics                  11
+6 Colorado State University       Statistics                  14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(stat.phd<span class="sc">$</span>FTGradEnrollment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 53.53659</code></pre>
+</div>
+</div>
+<p>Based on the data set, the mean enrollment in 2009 is 53.54 full-time graduate students. Because this is the mean for the entire population of all US statistics doctoral programs for which data were available that year, we have that <span class="math inline">\(\mu=53.54\)</span> students.</p>
+<p><span class="emoji" data-emoji="star">⭐</span> Take a random sample of 10 programs from the data file and calculate the mean.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">10</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my.sample.programs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 52.3</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Turn to your neighbor and discuss the following questions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Did everyone get the same sample mean?</li>
+<li>Does your sample mean exactly equal the population mean?</li>
+<li>If you took another sample of 10, would you get the same sample mean? Why?</li>
+<li>If we created a histogram of all our sample means, what would it look like? Where would it be centered at? What is the spread of the histogram?</li>
+</ul>
+</div>
+</div>
+<p>Knowing the behavior of of repeated sample statistics (like the mean in the prior example) is critically important. Let’s dig into this a little more.</p>
+<p>Using R we can treat the data set as our population and take repeated samples of size 10 from the population, each time calculating the sample mean. We can accomplish this by using the <code>replicate</code> function in the following manner:</p>
+<ol type="1">
+<li>define the number of repeated samples we want to take (<code>n=100</code>)</li>
+<li>Copy the code we used above to take a sample of size 10, and calculate the mean, and put it inside braces <code>{}</code></li>
+<li>Save this result by assigning the results of <code>replicate</code> to an object.</li>
+</ol>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><span class="emoji" data-emoji="cry">😢</span> Getting an error? Take a step back and first use a n=5, and DONT assign it to an object. Visually see with your eyes what the result of the <code>replicate</code> function gives you. Then once that is working, you can increase the number of replications, assign it as an object and explore the object.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>many.means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">10</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s visualize the behavior of the many sample means.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="cn01-introduction_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  28.20   49.50   55.80   56.19   64.08   84.90 </code></pre>
+</div>
+</div>
+<p>Characteristics of this distribution:</p>
+<ul>
+<li><em>Shape</em>: The distribution of average enrollment isn’t quite normal, there seems to perhaps be two peaks?</li>
+<li><em>Center</em>: The average enrollment is 56.19</li>
+<li><em>Spread</em>: Average enrollment ranges from 28.2, 84.9.</li>
+</ul>
+<p><span class="emoji" data-emoji="tada">🎉</span> We have just examined a <em>sampling distribution</em> of the sample mean.</p>
+</section>
+<section id="sampling-distribution" class="level1">
+<h1>Sampling Distribution</h1>
+<p>A <em>sampling distribution</em> is the distribution of sample statistics computed for different samples of the same size from the same population. A sampling distribution shows us how the sample statistic varies from sample to sample.</p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Turn to your neighbor and discuss the following questions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>What information might be important to get from a sampling distribution?</li>
+<li>What would happen if we increased our sample size (<em>not the number of replicates</em>) to <span class="math inline">\(n=20\)</span> rather than <span class="math inline">\(n=10\)</span>. What about the sampling distribution would change?</li>
+<li>What would happen if we increased the number of replications (holding <span class="math inline">\(n\)</span> constant) to 1000 instead of 100? What about the sampling distribution would change?</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="confidence-intervals" class="level1 page-columns page-full">
+<h1>Confidence Intervals</h1>
+<p>In general, it is usually not enough to just give a point estimate when estimating a population parameter. Why?</p>
+<section id="standard-error" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="standard-error">Standard Error</h2>
+<p>The <em>standard error</em> of a statistic is the standard deviation of the sample statistic. It tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine simulated values of the sample statistic we can estimate the standard error by taking the sample standard deviation of the simulated sample statistics. In other situations we can use mathematical formulas to calculate the standard error.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example Grad program example cont.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20.</p>
+</div>
+</div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">I used the base pipe <code>|&gt;</code> here to pass the results of the replicate function into the <code>sd()</code> function</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many.means) <span class="co">#because the example above already had n=10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.27937</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">20</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.186622</code></pre>
+</div>
+</div>
+<p>When the distributions are relatively symmetric and bell-shaped, the 95% rule tells us that approximately 95% of the data values fall within two standard deviations of the mean. Applying the 95% rule to sampling distributions, we see that about 95% of the sample statistics will fall within two standard errors of the mean. We use this rule many times to form what we call a 95% confidence interval which gives us a range for which which we are quite confident that captures the true parameter we are trying to estimate.</p>
+<p>When using a formula to calculate an approximate 95% confidence interval, use <span class="math inline">\(2*SE\)</span> as the margin of error.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+CI for PhD program enrollment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Based on our example, what would be a 95% confidence interval for <span class="math inline">\(\mu\)</span> the true mean total enrollment for PhD programs in statistics. Interpret this confidence interval in context of the problem.</p>
+</div>
+</div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Wrapping the entire line of code in <code>()</code> will execute that code AND print out the results. This lets me see the results in the rendered document AND use the results in the answer sentence using inline code. See the RStudio <em>Help –&gt; Markdown Quick Reference</em> for more information.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(LCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 35.62625</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(UCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 76.74375</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (35.6 , 76.7).</p>
+</blockquote>
+</section>
+</section>
+<section id="wrap-up" class="level1">
+<h1>Wrap up</h1>
+<p>Much of the rest of the course will be using derived formulas for different sampling scenarios to create confidence intervals for parameters.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a>.</div>   
+  </div>
+</footer>
+
+
+
+</body></html>

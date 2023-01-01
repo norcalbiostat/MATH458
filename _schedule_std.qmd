@@ -1,0 +1,64 @@
+---
+title: "Weekly Overview"
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse);library(readxl); library(kableExtra);library(stringr);
+options(knitr.table.format = "html", knitr.kable.NA = '') 
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE) 
+```
+
+_Due dates are displayed on the [calendar](calendar) only. Consider subscribing to this Google calendar and stay up to date!_
+
+```{r}
+# Read in schedule
+rawdat <- read_xlsx("schedule_458.xlsx", sheet='weekly_schedule') 
+
+# content rows
+content  <- rawdat %>% filter(is.na(tnum))
+
+# which rows have topic numbers 
+tn <- rawdat %>% filter(!is.na(tnum)) %>% 
+        select(tnum, Topic) %>%
+        mutate(start=0, end=0)
+
+for(t in 1:max(tn$tnum)){
+  tn$start[t] <- min(which(floor(content$Order)==t))
+  tn$end[t]   <- max(which(floor(content$Order)==t))
+}
+
+out <- content %>%
+  mutate(Date = format(Date,"%m/%d"),
+         Notes = ifelse(!is.na(Notes),Notes, NA)) %>%
+  select(Date, Topic, Notes, Read, Practice = prac, Assess=hw, Solutions=sol) 
+
+
+# highlight rows FIX THESE
+wk.labs <-  "background-color: #bb9457; color: #fff;"
+hlt.wks <-  "background-color: #6f1d1b; color: #fff;"
+```
+
+```{r, results='asis'}
+out %>% 
+  kable(align="clllccc", escape=FALSE) %>% 
+  kable_styling(bootstrap_options = c("hover", "striped", "responsive", "bordered")) %>% 
+  pack_rows(tn$Topic[1], tn$start[1],   tn$end[1], label_row_css =wk.labs) %>% 
+  pack_rows(tn$Topic[2], tn$start[2],   tn$end[2], label_row_css =wk.labs) %>%
+  pack_rows(tn$Topic[3], tn$start[3],   tn$end[3], label_row_css =wk.labs) %>%
+  pack_rows(tn$Topic[4], tn$start[4],   tn$end[4], label_row_css =wk.labs) %>%
+  pack_rows(tn$Topic[5], tn$start[5],   tn$end[5], label_row_css =hlt.wks) %>%
+  pack_rows(tn$Topic[6], tn$start[6],   tn$end[6], label_row_css =wk.labs) %>%
+  pack_rows(tn$Topic[7], tn$start[7],   tn$end[7], label_row_css =wk.labs) %>%
+  pack_rows(tn$Topic[8], tn$start[8],   tn$end[8], label_row_css =wk.labs) %>%
+  pack_rows(tn$Topic[9], tn$start[9],   tn$end[9], label_row_css =wk.labs) %>%
+  pack_rows(tn$Topic[10], tn$start[10], tn$end[10],label_row_css =hlt.wks) %>%
+  column_spec(1, width = "5%") %>% 
+  column_spec(2, width = "22%") %>%
+  column_spec(3, width = "15%") %>%
+  column_spec(4, width = "3%") %>% 
+  column_spec(5, width = "15%") %>%
+  column_spec(6, width = "15%") %>%
+  column_spec(7, width = "15%")
+```
+
+
