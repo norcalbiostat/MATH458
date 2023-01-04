@@ -20,11 +20,15 @@ website:
     pinned: true
     #background: "#654378"
     left: 
-      - text: "Notes"
-        file: notes.qmd
+      - text: "Content"
+        file: weekly_details.qmd
       - text: "Calendar"
         file: calendar.qmd
     right: 
+      - text: "Notes"
+        file: notes.qmd
+      - text: "Homework"
+        file: hw.qmd
       - text: "Syllabus"
         file: syllabus.qmd
 

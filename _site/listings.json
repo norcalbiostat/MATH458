@@ -10,5 +10,11 @@
     "items": [
       "/notes/cn01-introduction.html"
     ]
+  },
+  {
+    "listing": "/weekly_details.html",
+    "items": [
+      "/weekly_details/wk01-welcome.html"
+    ]
   }
 ]

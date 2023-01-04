@@ -1,0 +1,16 @@
+---
+title: "Weekly Details"
+listing:
+  contents:
+    - weekly_details
+  type: table
+  fields: [subtitle, title, prepare]
+  field-display-names:
+    subtitle: "Week"
+    prepare: "How to prepare"
+  sort: [subtitle]
+  sort-ui: false
+  filter-ui: false
+tbl-colwidths: [50,50]
+---
+
