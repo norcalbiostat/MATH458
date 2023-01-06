@@ -1,0 +1,44 @@
+\documentstyle[here,11pt]{article}
+\setlength{\textwidth}{7.5in}
+\setlength{\oddsidemargin}{-.5in}
+\setlength{\textheight}{9.5in}
+\setlength{\topmargin}{-0.75in}
+\renewcommand{\baselinestretch}{1.2}
+\pagestyle{plain}
+\setcounter{page}{1}
+
+\begin{document}
+\noindent {\large{\bf MATH 458 - Worksheet \#1 \hspace{0.15in} Names: \underline{\hspace{1.8in}} \hspace{0.1in}
+\begin{enumerate}
+\item Often we are interested in estimating the center of a distribution. The sample mean ($\bar{x}=\sum{x}/n)$ is sensitive to outliers and therefore we sometimes use other measures of center to estimate the center of a distribution. The trimmed mean calculates the sample mean, however, deletes some of the largest or smallest outliers. The median is also a measure we use when there are outliers. Another measure of center is the \textbf{midhinge} which is the average of $Q_{1}$ and $Q_{3}$. The quartiles break up the data into four equal quarters. $Q_{1}$ is the 25th percentile and $Q_{3}$ is the 75th percentile.
+\begin{enumerate}
+\item Create a function that computes the \textbf{midhinge}. A useful function to use is \textit{quantile}. To learn more about the quantile function you can type \textit{?quantile} and information will appear on the right bottom window.
+\item Use your function to compute the midhinge of the numbers\\
+ 3,100,40,7,29,2,230,44,100,1200,8,15,900.\\\\
+
+\item The function \textbf{rpois(500,2)} will create a variable that follows the Poisson distribution of length 500 with $\lambda=2$. Suppose I wanted to use the midhinge to estimate $\lambda$. Create the variable using the function $x<-rpois(500,2)$ and try estimating $\lambda$ (we know the true value of $\lambda=2$). Is the midhinge a good estimate of $\lambda$? Why or why not? \\\\\\
+\item To really address the question \textit{Is the midhinge a good estimate of $\lambda$?} we would need to repeat the random sample from the Poisson distribution with $\lambda=2$ numerous times. Do this at least 10 times and estimate $\lambda$ each time with the midhinge and also the sample mean. Comment on your simulations. Is the sample mean or the midhinge a better estimator when $\lambda=2$. Explain.\\\\\\\\\\
+\item Let's try a different value for the sample size. Rather than 500, let's use 25. Repeat d) but use a sample size of 25 (rpois(25,2)). Comment on the results.
+
+\end{enumerate}\newpage
+\item The unknown parameters in simple linear regression are the slope, $\beta_{1}$, and the intercept, $\beta_{0}$. The common formula for these estimates are
+\[
+\hat{\beta}_{1}=\frac{\sum^{n}_{i=1}\left(x_{i}-\bar{x}\right)y_{i}}{\sum^{n}_{i=1}\left(x_{i}-\bar{x}\right)^{2}}
+\]
+\[
+\hat{\beta}_{0}=\bar{y}-\hat{\beta}_{1}\bar{x}
+\]
+\begin{enumerate}
+\item Write a function in R that computes both the intercept and the slope estimate. Your function will need to return two values. There are a few ways to do this but using the \textbf{list} command will do this (i.e. your last line would look something like list($\hat{\beta}_{0},\hat{\beta}_{1}$))\\\\
+\item In Denali National Park, Alaska, the wolf population is dependent on a large, strong caribou population.  In this wild setting, caribou are found in very large herds.  It is thought that wolves keep caribou herds strong by helping prevent over-population.  Let x represent the number of fall caribou herds and y represent the late winter wolf population in the park.  A random sample of recent years gives the following results:
+\begin{table}[H]\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+x&31&34&27&25&17&23&20\\
+\hline
+y&75&85&75&60&48&60&60\\
+\hline
+\end{tabular}\end{table}
+\noindent Use your function to estimate the slope and the intercept. Then use the \textit{lm} function in R to check your code. You can run the following code to get the model \textit{lm(y$\sim$x)}. Report the model below.
+\end{enumerate}
+\end{enumerate}
+\end{document}

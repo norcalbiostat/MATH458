@@ -56,13 +56,19 @@ Create this class folder along with the following subfolders to organize your da
 This means when you download a file, right click and "Save as" or "Save target as" and **actively choose** where to download this file. 
 :::
 
-
-# 4. Textbook
-
-Acquire the textbook. [Sampling: Design and Analysis. Third Edition. Sharon L. Lohr](https://www.sharonlohr.com/sampling-design-and-analysis-3e)
-
-
-# 5. Quick access
+# 4. Quick access
 
 Bookmark this class website. Going through Canvas learn every time just is a waste of your time. 
 
+
+# 5. Student office hours 
+
+Help me decide when to hold student office hours. Remember, these are open drop in times where I dedicate my time to YOU as students. My time outside these hours is limited, so be sure to fill this out so I can best choose times that you are free. [[Link]](https://forms.gle/aZgtaBbt2tH21ZAr6)   
+
+:stop: If you are doing this for my Math 456 class, do not submit a second entry. You only need to do this once.
+
+# 6. Programming Assessment 
+
+This is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions are found in Canvas. 
+
+:stop: If you are doing this for my Math 456 class, do not submit a second entry. You only need to do this once.

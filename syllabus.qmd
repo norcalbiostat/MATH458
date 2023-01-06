@@ -22,35 +22,12 @@ _The theory and application of survey sampling techniques. Topics include simple
 * **Prerequisites:** MATH 314, MATH 315, or MATH 351 (may be taken concurrently)  
 * **Mode of Instruction:** In Person. All students are expected to attend class in person each session. At this time there is no specific plan for habitual synchronous hybrid zoom session.
 
-----
-
-# What are we going to learn? (Course Learning Outcomes)
-
-
-----
-
-# Required materials and accounts
-
-* **Class website**: 
-* **Textbook (Required)**: 
-* **Laptop & Internet**: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Refer to ITSS for help with internet. 
-* **Data Analysis software**: R & R Studio
-* **Canvas**: Used for recording grades via grading rubric only.
-* **Google Drive**: Through your campus email.
-* **Discord**: A free discussion platform with a lot of collaborative functionality. The defacto method of communication for the class. Download either the phone app or the desktop app (I use both). This is mandatory. Do not rely on remembering to log in via the web browser. You will miss important notifications. 
-
-
-----
-
-# Grading Breakdown
-
-
 
 # Schedule of Topics
 
 We will tentatively cover the following sections and topics:
 
-* Introduction: Writing functions in R; Simulation; Sampling Distributions
+* Writing functions in R; Simulation; Sampling Distributions
 * Introduction to Sampling (Textbook Ch 1)
 * Concepts of Statistics
 * Simple Random Sampling (Textbook Ch 2)
@@ -60,10 +37,42 @@ We will tentatively cover the following sections and topics:
 * Estimating Population Size (Textbook Ch 13)
 
 
+----
+
+# Required materials and accounts
+
+* **Class website**: https://sampling-458.netlify.app/
+* **Textbook (Required)**: [Sampling, 3rd Edition. Sharon Lohr](https://www.sharonlohr.com/sampling-design-and-analysis-3e)
+* **Laptop & Internet**: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Contact ITSS for help with internet. 
+* **Data Analysis software**: R & R Studio
+* **Canvas**: Gradebook. Calendar?
+* **Google Drive**: Through your campus email.
+* **Discord**: A free discussion platform with a lot of collaborative functionality. Sign up instructions in HW 0
+
 
 ----
 
-# How do you get help?
+# Grading Breakdown
+
+
+# Assignments / graded items 
+Your final grade will be a straight sum of points earned and will be displayed as a running total in Canvas. 
+I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F  
+
+
+#### Exams (XX%)
+* 2 Exams (midterm/final, not cumulative). [Error Assessment Form](notes/Analyzing exam errors.pdf) available for midterm. 
+
+#### Homework Assignments (XX%)
+* Standard homework assignments on the topics listed above. 
+
+#### Worksheets (XX%)
+* In class worksheets. The intent is to work together and finish them that day, but you'll have until the beginning of the next class period to turn it in. 
+* Lowest score dropped. 
+
+#### Notes (XX%)
+* You will be compiling your own set of notes for this class. This will come in the form of reflective writing, and "fill in the blank" & :star: "You Try It" exercises that are based on the course notes. 
+* I will provide you with the blank Quarto (`.qmd`) files that you will fill out in class, compile to PDF and submit for review on a regular basis.
 
 ----
 
@@ -94,8 +103,8 @@ Class attendance is expected. Talk to me ahead of time if you need to miss a cla
 
 
 ## Late work
-* You should strive to submit on time for all draft items the sake of your peers. Do you want your reviews back in a timely manner? You should show them the same courtesy and professionalism. 
-* I don't penalize for late work, but I prioritize on time submissions. If you submit an assignment after i'm done grading everyone elses, and we're moving on to the next topic then your assignment may have to wait a week before I can get back to it. 
+
+I don't penalize for late work, but I prioritize on time submissions. If you submit an assignment after i'm done grading everyone elses, and we're moving on to the next topic then your assignment may have to wait a while before I get to it. 
 
 ## Collaboration
 
@@ -107,11 +116,22 @@ Collaboration on exams is not allowed.
 
 ----
 
-# Campus Resources
+# Student Resources
 
-This [campus website](https://www.csuchico.edu/coronavirus/students.shtml) contains a lot of information and resources specific to our COVID-19 situation. Specifically this page contains links to resources to help you keep [learning](https://www.csuchico.edu/keep-learning/index.shtml), and [engaging](https://www.csuchico.edu/keep-engaging/index.shtml), and lots of links to student support services such as emergency grants, basic need such as healthy food and housing, tutoring, health center, financial aid and a lot more.
+## Chico State Basic Needs Project
 
-You can also check out the resources on the [Help](help.html) page. 
+The **Hungry Wildcat Food Pantry** provides supplemental food, fresh produce, CalFresh application assistance and basic needs referral services for students experiencing food and housing insecurity.
+
+All students are welcomed to visit the Pantry located in the Student Service Center 196, open Monday-Friday
+
+Please visit the Chico State Basic Needs website [http://www.csuchico.edu/basic-needs](http://www.csuchico.edu/basic-needs) for more information.
+
+## Wildcat Computing Support
+
+Everyone's journey through education is different and varied. Part of your journey is learning to engage and leverage academic technology. It is extremely important to your success, and at the same time requires patience to learn how it can benefit you. While learning various technologies, they change and adapt quickly. Wildcat Computing Support is curated by students to better support you and enhance your experiences with technology. We provide information to support your success in using academic technology in and out of the classroom.
+
+[https://www.csuchico.edu/wcs/](https://www.csuchico.edu/wcs/)
+
 
 ## Americans with Disabilities Act
 
@@ -127,9 +147,6 @@ Accessibility Resource Center 530-898-5959 Student Services Center 170 [arcdept\
 
 The CSU requires students to be fully vaccinated and boosted against COVID-19 by February 28th, 2022, unless you have an approved exemption. While Chico State has relaxed its stance on mask mandates, for your and my health and safety I _request_ that everyone wear an appropriate face mask covering the nose and mouth while in class. 
 
-Please note that dishonesty relating to the vaccination policy and/or your failure to comply with any other COVID-19 related safety policy or mandate may result in disciplinary action against you through the office of Student Conduct, Rights and Responsibilities, which can include suspension or expulsion from the California State University system. 
-
-
 ## Adding and Dropping the course
 
 You are responsible for understanding the policies and procedures about add/drops, academic renewal, etc., found in the [CSU Chico University Catalog](http://www.csuchico.edu/catalog/). You should be aware of the new deadlines and penalties for adding and dropping classes.
@@ -143,3 +160,8 @@ As an instructor, one of my responsibilities is to help create a safe learning e
 
 Academic integrity is defined as “a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility”. From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity.
 
+-----
+
+_Last updated: `r format(Sys.time(), "%a %b %d %Y %X")`_
+
+    

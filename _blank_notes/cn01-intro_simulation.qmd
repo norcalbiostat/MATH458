@@ -1,5 +1,6 @@
 ---
 title: "Introduction to Simulation"
+author: Your name here
 description: Writing your own custom functions in R, and using them to generate simulations and sampling distributions. 
 ---
 
@@ -19,7 +20,7 @@ sum.of.squares <- function(x,y){
 Once you run this code chunk the function is now available, like any of the built in functions within R. Try running `sum.of.squares(3,4)` in your console. 
 
 ```{r}
-sum.of.squares(3,4)
+# delete this line and put your code chunk here
 ```
 
 The procedure for writing any other functions is similar and involves three key steps:
@@ -51,6 +52,9 @@ Terminology:
 Write a function that converts degrees Fahrenheit (F) to degrees Celsius (C). The formula for the conversion is $C=(F-32)*5/9$, but recall that `F` and `c` are special characters in **R** and should not be used as variable names. 
 :::
 
+> delete this line and put your code chunk here
+
+
 :::{.callout-warning icon=false}
 ### :star: You try it
 The population standard deviation can be computed as follows:
@@ -61,7 +65,7 @@ $$
 Write a function in R to compute the population standard deviation and use it to compute the standard deviation of $x=c(320,50,88,98,215,128)$.
 :::
 
-
+> delete this line and put your code chunk here
 
 
 # Simulation
@@ -82,8 +86,7 @@ The mean of the Uniform distribution on the interval [0,1] is known to be 1/2. H
 2. Calculate the observed mean of that sample. 
 
 ```{r}
-samp.unif <- runif(10000, 0, 1)
-mean(samp.unif)
+# delete this line and put your code chunk here
 ```
 
 
@@ -92,12 +95,16 @@ mean(samp.unif)
 Use simulation to approximate the mean of the exponential distribution with parameter 1.
 :::
 
+> delete this line and put your code chunk here
+
 :::{.callout-warning icon=false}
 ### :star: You try it
 Suppose that we have available as many standard normal random variables as we desire ($Z \sim N(0,1)$. Let $X$ stand for a random variable having the normal distribution with mean 2 and variance 49 ($X\sim N(2, 49)$. Estimate the mean of $log|X| +1$ using simulation. 
 
 _Note/Hint: Notice that I didn't say you had as many $X$'s as you wanted. You can only draw $Z$'s here. So start by defining a vector `Z <- rnorm(10000)`._
 :::
+
+> delete this line and put your code chunk here
 
 ## Why is simulation useful?
 
