@@ -1,0 +1,74 @@
+---
+title: "The Sampling Problem"
+subtitle: "Week 2"
+prepare: ""
+execute: 
+  echo: false
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr);library(readxl); library(kableExtra);library(stringr); library(pander)
+options(knitr.table.format = "html", knitr.kable.NA = '') 
+
+# Read in schedule
+raw_detail <- read_excel(here::here("schedule_458.xlsx"), sheet="weekly_detail") 
+
+# Function to extract week and display data
+details <- function(w){
+  wd <- filter(raw_detail, wk==w)
+  # strip data columns into separate lists
+  Topic <- gsub("\r\n", "", wd$Topics)
+  SLO  <- as.list(str_split(wd$SLO, "\r\n", simplify=TRUE))
+  prep <- as.list(str_split(wd$Prepare, "\r\n", simplify=TRUE))
+  mon  <- as.list(str_split(wd$Monday, "\r\n", simplify=TRUE))
+  wed  <- as.list(str_split(wd$Wednesday, "\r\n", simplify=TRUE))
+  fri  <- as.list(str_split(wd$Friday, "\r\n", simplify=TRUE))
+  do   <- as.list(str_split(wd$Do, "\r\n", simplify=TRUE))
+  note <- as.list(str_split(wd$Notes, "\r\n", simplify=TRUE))
+ 
+  return(list(Topic=Topic, SLO=SLO, prep=prep, mon=mon, wed=wed, fri=fri, do=do, 
+              Notes = note))
+}
+```
+
+```{r}
+this.week <- details(2)
+```
+
+# Learning Objectives
+By the end of the week, learners will be able to: 
+```{r}
+pander(this.week$SLO)
+```
+
+# How to prepare
+```{r}
+pander(this.week$prep)
+```
+
+# Content Notes & Readings
+```{r}
+pander(this.week$Notes)
+```
+
+
+# Monday overview
+```{r}
+pander(this.week$mon)
+```
+
+# Wednesday overview
+```{r}
+pander(this.week$wed)
+```
+
+# Friday overview
+```{r}
+pander(this.week$fri)
+```
+
+# To Do
+```{r}
+pander(this.week$do)
+```
+

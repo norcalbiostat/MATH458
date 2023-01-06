@@ -28,7 +28,7 @@ d. Post an introduction in the `#458-class-chat` channel. Include the following:
 
 * All homework is to be done in a literate programming/reproducible manner. This means either `.Rmd` or `.qmd` files compiled to PDF. 
     - If you don't know what this means, review lecture 02 & 03 from [Math 130 week 1](https://norcalbiostat.github.io/MATH130/wk1.html)
-    - While Rmarkdown is great and still fine to use, you may want to consider learning about the next generation of literate programming tools: [Quarto](https://quarto.org/docs/get-started/hello/rstudio.html)
+    - Also check out the next generation of literate programming tools: [Quarto](https://quarto.org/docs/get-started/hello/rstudio.html). I will be giving you `.qmd` files to work in. They work essentially the same as Rmarkdown files with subtle differences. You must have the newest version of Rstudio to work with these files. 
 * Make sure you can knit to PDF. If you cannot, then install the `tinytex` package and then run `tinytex::install_tinytex()` in the console to install a lightweight version of LaTeX.
     
 
@@ -65,10 +65,10 @@ Bookmark this class website. Going through Canvas learn every time just is a was
 
 Help me decide when to hold student office hours. Remember, these are open drop in times where I dedicate my time to YOU as students. My time outside these hours is limited, so be sure to fill this out so I can best choose times that you are free. [[Link]](https://forms.gle/aZgtaBbt2tH21ZAr6)   
 
-:stop: If you are doing this for my Math 456 class, do not submit a second entry. You only need to do this once.
+:stop_sign: If you are doing this for my Math 456 class, do not submit a second entry. You only need to do this once.
 
 # 6. Programming Assessment 
 
 This is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions are found in Canvas. 
 
-:stop: If you are doing this for my Math 456 class, do not submit a second entry. You only need to do this once.
+:stop_sign: If you are doing this for my Math 456 class, do not submit a second entry. You only need to do this once.
