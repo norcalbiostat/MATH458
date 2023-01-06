@@ -60,17 +60,17 @@ Your final grade will be a straight sum of points earned and will be displayed a
 I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F  
 
 
-#### Exams (XX%)
+#### Exams (30%)
 * 2 Exams (midterm/final, not cumulative). [Error Assessment Form](notes/Analyzing exam errors.pdf) available for midterm. 
 
-#### Homework Assignments (XX%)
+#### Homework Assignments (20%)
 * Standard homework assignments on the topics listed above. 
 
-#### Worksheets (XX%)
+#### Worksheets (25%)
 * In class worksheets. The intent is to work together and finish them that day, but you'll have until the beginning of the next class period to turn it in. 
 * Lowest score dropped. 
 
-#### Notes (XX%)
+#### Notes (20%)
 * You will be compiling your own set of notes for this class. This will come in the form of reflective writing, and "fill in the blank" & :star: "You Try It" exercises that are based on the course notes. 
 * I will provide you with the blank Quarto (`.qmd`) files that you will fill out in class, compile to PDF and submit for review on a regular basis.
 
