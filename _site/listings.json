@@ -8,13 +8,16 @@
   {
     "listing": "/notes.html",
     "items": [
-      "/notes/cn01-intro_simulation.html"
+      "/notes/cn01-intro_simulation.html",
+      "/notes/cn02-intro_sampling.html",
+      "/notes/cn03-probability_sampling.html"
     ]
   },
   {
     "listing": "/weekly_details.html",
     "items": [
-      "/weekly_details/wk01-welcome.html"
+      "/weekly_details/wk01.html",
+      "/weekly_details/wk02.html"
     ]
   }
 ]

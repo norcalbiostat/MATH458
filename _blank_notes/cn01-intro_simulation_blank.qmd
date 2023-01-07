@@ -1,6 +1,11 @@
 ---
 title: "Introduction to Simulation"
+author: "Put your name here"
+date: today
 description: Writing your own custom functions in R, and using them to generate simulations and sampling distributions. 
+execute: 
+  error: true
+  freeze: true
 ---
 
 # Writing your own R functions
@@ -19,14 +24,14 @@ sum.of.squares <- function(x,y){
 Once you run this code chunk the function is now available, like any of the built in functions within R. Try running `sum.of.squares(3,4)` in your console. 
 
 ```{r}
-sum.of.squares(3,4)
+# delete this line and write your own code
 ```
 
 The procedure for writing any other functions is similar and involves three key steps:
 
-1. Define the function
-2. Load the function into the R session
-3. Use the function
+1. 
+2. 
+3. 
 
 ## Defining functions
 
@@ -56,6 +61,10 @@ Terminology:
 Write a function that converts degrees Fahrenheit (F) to degrees Celsius (C). The formula for the conversion is $C=(F-32)*5/9$, but recall that `F` and `c` are special characters in **R** and should not be used as variable names. 
 :::
 
+
+> delete this line and write your own code
+
+
 :::{.callout-warning icon=false}
 ### :star: You try it
 The population standard deviation can be computed as follows:
@@ -66,6 +75,7 @@ $$
 Write a function in R to compute the population standard deviation and use it to compute the standard deviation of $x=c(320,50,88,98,215,128)$.
 :::
 
+> delete this line and write your own code
 
 
 
@@ -75,7 +85,6 @@ Write a function in R to compute the population standard deviation and use it to
 
 Simulation is a way to use high-speed computer power to substitute for analytical calculation. The law of large numbers tells us that if we observe a large sample of i.i.d. random variables with finite mean, then the average of these random variables should be close to their true mean.  If we can get a computer to produce such a large i.i.d. sample, then we can average the random variables instead of trying to calculate their mean analytically. Simulations can be useful to check assumptions, examine a sampling distribution, or check the validity of the CLT in certain scenarios.
 
-[Notes on the Uniform Distribution https://math350.netlify.app/notes/cn4_5_unif_exp]{.aside}
 
 
 :::{.callout-tip icon=true}
@@ -87,7 +96,7 @@ The mean of the Uniform distribution on the interval [0,1] is known to be 1/2. H
 2. Calculate the observed mean of that sample. 
 
 ```{r}
-samp.unif <- runif(10000, 0, 1) # runif(n, min, max)
+samp.unif <- runif(___, __, __) # runif(n, min, max)
 mean(samp.unif)
 ```
 
@@ -97,11 +106,15 @@ mean(samp.unif)
 Use simulation to approximate the mean of the exponential distribution with parameter 1.
 :::
 
+> delete this line and write your own code
+
 :::{.callout-warning icon=false}
 ### :star: You try it
 Let $X$ stand for a random variable having the normal distribution with mean 2 and variance 49, $X\sim N(2, 49)$. Estimate the mean of $log|X| +1$ using simulation. 
 _Hint: Check out `?rnorm` on how to simulate X_
 :::
+
+> delete this line and write your own code
 
 ## Why is simulation useful?
 
@@ -118,9 +131,7 @@ Suppose that we model all service times, regardless of the server as a random va
 Let $X$ be the time it takes $A$ to serve 10 customers, and let $Y$ be the time it takes server $B$ to serve 10 customers.  We are asked to compute the average difference in times, which is written as
 :::
 
-$$
-E(|X-Y|)
-$$
+> write the equation here. 
 
 The most straightforward way of finding this mean analytically would require a two-dimensional integral over the union of two non-rectangular regions.
 
@@ -150,9 +161,9 @@ Statistical inference centers around using information from a sample to understa
 On April 29, 2011, Prince William married Kate Middleton in London. The Pew Research Center reports that 34% of US adults watched some or all of the royal wedding. How do we know that 34% of all US adults watched? Did anyone ask **you** if you watched it? In order to know for sure what proportion of US adults watched the wedding, we would need to ask **all** US adults whether or not they watched. This would be very difficult to do. As we will see, however, we can estimate the _population_ proportion _parameter_ quite accurately with a _sample statistic_, as long as we use a random sample. In the case of the royal wedding, the estimate is based on a poll using a random sample of 1006 US adults.
 
 
-* _Statistical inference_: The process of drawing conclusions about the entire population based on the information in the sample.
-* _Parameter_: A number that describes the entire population. $\mu$, $p$, $\tau$
-* _Statistic_: A number calculated from a sample. $\bar{x}$, $\hat{p}$, $\hat{\tau}$. 
+* _Statistical inference_: 
+* _Parameter_: 
+* _Statistic_: 
 
 Generally our goal is to know the value of the population parameter exactly but this usually isn't possible since we usually cannot collect information from the entire population. 
 
@@ -167,6 +178,9 @@ What is the population parameter? What is the sample statistic? Use correct nota
 :::
 
 
+> delete this line and write your own code
+
+
 The value of a statistic for a particular sample gives a _point estimate_ of the population parameter. If we only have the one sample and don't know the value of the population parameter, 
 
 > this point estimate is our best estimate of the true value of the population parameter.
@@ -179,6 +193,7 @@ The value of a statistic for a particular sample gives a _point estimate_ of the
 Why is a sample statistic such as a sample mean $\bar{x}$ considered a random variable?
 :::
 
+> delete this line and write your answer here
 
 
 
@@ -192,21 +207,21 @@ Graduate programs in statistics often pay their graduate students, which means t
 :::   
 
 
-[I don't feel like loading packages in this page so I'm using the `::` shortcut method to access the `here` and `read_csv` functions to load in the data.]{.aside}
-
 ```{r}
 stat.phd <- readr::read_csv(here::here("data", "StatisticsPhD.csv"))
-head(stat.phd) #always look at your imported data to check for import errors
-mean(stat.phd$FTGradEnrollment)
+head(____) 
+mean(____)
 ```
+
+> if this doesn't work for you, then make sure you have the correct data set downloaded into your correct `data` folder. 
 
 Based on the data set, the mean enrollment in 2009 is 53.54 full-time graduate students. Because this is the mean for the entire population of all US statistics doctoral programs for which data were available that year, we have that $\mu=53.54$ students.
 
 :star: Take a random sample of 10 programs from the data file and calculate the mean.
 
 ```{r}
-my.sample.programs <- sample(stat.phd$FTGradEnrollment, size=10)
-mean(my.sample.programs)
+my.sample.programs <- sample(stat.phd$FTGradEnrollment, size=__)
+mean(____)
 ```
 
 :::{.callout-note appearance=minimal}
@@ -217,6 +232,8 @@ mean(my.sample.programs)
 * If you took another sample of 10, would you get the same sample mean? Why?
 * If we created a histogram of all our sample means, what would it look like? Where would it be centered at? What is the spread of the histogram?
 :::
+
+> delete this line and write your answer here
 
 Knowing the behavior of of repeated sample statistics (like the mean in the prior example) is critically important. Let's dig into this a little more. 
 
@@ -229,7 +246,7 @@ Using R we can treat the data set as our population and take repeated samples of
 [:cry: Getting an error? Take a step back and first use a n=5, and DONT assign it to an object. Visually see with your eyes what the result of the `replicate` function gives you. Then once that is working, you can increase the number of replications, assign it as an object and explore the object.]{.aside}
 
 ```{r}
-many.means <- replicate(n=100, {
+many.means <- ____(n=____, {
   my.sample.programs <- sample(stat.phd$FTGradEnrollment, size=10)
   mean(my.sample.programs)
 })
@@ -238,15 +255,15 @@ many.means <- replicate(n=100, {
 Let's visualize the behavior of the many sample means. 
 
 ```{r}
-hist(many.means)
-summary(many.means)
+hist(____)
+summary(____)
 ```
 
 Characteristics of this distribution:  
 
-* _Shape_: The distribution of average enrollment isn't quite normal, there seems to perhaps be two peaks? 
-* _Center_: The average enrollment is `r round(mean(many.means),2)`
-* _Spread_: Average enrollment ranges from `r range(many.means)`. 
+* _Shape_: 
+* _Center_: 
+* _Spread_: 
 
 
 :tada: We have just examined a _sampling distribution_ of the sample mean. 
@@ -263,6 +280,9 @@ A _sampling distribution_ is the distribution of sample statistics computed for 
 * What would happen if we increased the number of replications (holding $n$ constant) to 1000 instead of 100? What about the sampling distribution would change?
 :::
 
+> delete this line and write your answer here
+
+
 # Confidence Intervals
 
 In general, it is usually not enough to just give a point estimate when estimating a population parameter. Why?
@@ -277,16 +297,17 @@ The _standard error_ of a statistic is the standard deviation of the sample stat
 Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20. 
 :::
 
-[I used the base pipe `|>` here to pass the results of the replicate function into the `sd()` function]{.aside}
 
 ```{r}
-sd(many.means) #because the example above already had n=10
+sd(____) #because the example above already had n=10
 
-replicate(n=100, {
+____(n=____, {
   my.sample.programs <- sample(stat.phd$FTGradEnrollment, size=20)
   mean(my.sample.programs)
-}) |> sd()
+}) |> ____
 ```
+
+> If the base pipe |> doesn't work for you, it may be because you don't have the newest version of R. An alternative is to assign the results of `replicate` to an object, then call `sd()` on that object. Delete this line after you successfully run the code above. 
 
 
 When the distributions are relatively symmetric and bell-shaped, the 95% rule tells us that approximately 95% of the data values fall within two standard deviations of the mean. Applying the 95% rule to sampling distributions, we see that about 95% of the sample statistics will fall within two standard errors of the mean. We use this rule many times to form what we call a 95% confidence interval which gives us a range for which which we are quite confident that captures the true parameter we are trying to estimate.
@@ -299,14 +320,14 @@ Based on our example, what would be a 95% confidence interval for $\mu$ the true
 Interpret this confidence interval in context of the problem.
 :::
 
-[Wrapping the entire line of code in `()` will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below. ]{.aside}
-
 ```{r}
-(LCL <- mean(many.means) - 2*sd(many.means))
-(UCL <- mean(many.means) + 2*sd(many.means))
+(LCL <- ____(many.means) - 2*____(many.means))
+(UCL <- ____(many.means) + 2*____(many.means))
 ```
 
-[Every time I compile these notes, I draw a different sample and will get a different numbers. To avoid conflicts in my written response, and what the code shows, I use _inline R code_ here. See the RStudio _Help --> Markdown Quick Reference_ for more information.]{.aside}
+```{r}
+LCL <- UCL <-1  # this code chunk is only done so these notes will compile. Delete it once you fill in the blanks above. 
+```
 
 > We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (`r paste0(round(LCL,1), " , ", round(UCL,1))`). 
 

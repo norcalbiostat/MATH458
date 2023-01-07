@@ -1,0 +1,196 @@
+---
+title: "The Sampling Problem"
+---
+
+# Introduction
+
+The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean.
+
+# Populations and Representative Samples (1.2)
+
+A sample is representative if it can be used to "reconstruct" what the population looks like and if we can provide an accurate assessment of how good that reconstruction is.
+
+Some definitions are needed to make the notions of a "population" and a "representative sample" more precise.
+
+::: {.callout-note appearance="minimal"}
+### :question: :busts_in_silhouette: Key Terms
+
+Turn to your neighbor and come up with an example of something phenomenon or characteristic that you want to estimate. Write down in your notes examples for each of the definitions listed below.
+:::
+
+-   **Observational Unit**: The singular object that is being measured. A :cat2:. 
+-   **Target Population**: The complete collection of all observational units that we want to study. All :cat2: in Chico.
+-   **Sample**: A subset of the population. The :cat2: at Butte Humane Society
+-   **Sampled population**: The collection of all possible observational units that _might_ have been chosen in a sample. Adoptable :cat2::cat2: in Chico. 
+-   **Sampling unit**: A observational unit that can be selected for study. A :cat2: available for adoption at BHS.
+-   **Sampling frame**: A list, map, or other specification that describes how sampling units from the sample may be selected. The roster of :cat2::cat2: listed for adoption at BHS. 
+
+In an *ideal* survey, the sampled population will be identical to the target population. 🦄
+
+
+![Textbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.](../figs/fig1_1.png)
+
+:::{.callout-warning icon=false}
+### :star: You try it
+An online bookseller summarizes readers' reviews of the books it sells. Persons who want to rate a book can submit a review online; the bookseller reports the average rating from all reviews on its website.
+
+Describe the target population, sampling frame, sampling unit, and observation unit. Discuss any possible sources of selection bias or inaccuracy of responses.
+:::
+
+* Target population: All individuals who have read a particular book
+* Sampling Frame: The list of individuals who wrote a review for that book
+* Sampling Unit: All individuals who bought, read, and reviewed the book
+* Observation Unit: An individual who bought, read, and reviewed the book
+* Sources of selection bias: Only individuals who feel very strongly (positively or negatively) about a book will post a review. 
+
+----
+
+# Selection Bias (1.3)
+
+**Selection bias** occurs when the target population does not coincide with the sampled population because some population units are sampled at a different rate than intended by the investigator. 
+
+:question: If a survey designed to study household income has fewer poor households than would be obtained in a representative sample, would the survey estimates of the average or median household income be too high? or to low? 
+
+::: {.callout-note appearance="minimal"}
+### :question: :busts_in_silhouette: Some types of selection bias
+
+In [this google doc](https://docs.google.com/document/d/1WS6bxqddXvMj_KhX6Q3k3I_WQDnZMnBKDdEQINiGtwY), summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class. 
+
+:::
+
+> After class add all examples provided to your notes. Clean them up (e.g. remove the names and headers)
+
+
+## Bias everywhere!
+
+Can Bias ever be good? Yes! 
+
+
+:::{.callout-tip icon=true}
+### Example: Early indicators of lung injury associated with vaping (2019)
+
+By Oct '19, over 1,600 cases of lung injuries and 34 deaths were found to be associated with vaping, but the actual cause of injuries were not known. In 2019 a group of researchers (see text for citation) conducted a study that ultimately led to the recommendation that the public stop using these products until more research on the causal association could be conducted. 
+
+This impact survey had the following types of selection bias: 
+
+* Researchers attempted to interview 83 patients who were reported to have lung injuries but only 53 responded (non-response bias). 
+* The sampling frame of 83 only came from physician-reported cases, which means there may be bias if the physicians only reported the more serious cases (undercoverage)
+* THC is illegal in that state, so patients may have under-reported their use (undercoverage)
+* Individuals who vape, incurred a lung injury but didn't seek care were excluded from the study (undercoverage)
+:::
+
+Just because your sample may likely contain bias, being up front about it in your reporting (this is what the limitations section is all about) is a very important aspect of open science. 
+
+----
+
+# Measurement Error (1.4)
+
+* **Measurement error**: When the response differs from the true value
+* **Measurement bias**: When the error tends to only occur in one direction
+
+:::{.callout-tip icon=true}
+### Example: Ecology surveys
+
+Often in ecological surveys, areas are divided into plots or grids of smaller size. A sample of plots/grids are selected and the number of plants in those selected grids are counted. 
+
+Field researchers have to make a decision about whether or not to count plants directly on the border. If one researcher always counts plants on the boarder as being inside the grid, and another one does not, their estimate will always be higher than the other person. 
+:::
+
+
+## Surveying people 
+
+Obtaining accurate responses is challenging in all types of surveys. Especially when dealing with humans. 
+
+[Bonus credz to anyone who can name this bat. Double credz if you can quote a line from his intro rap.]{.aside}
+![Sourced from Tenor.com](../figs/batty.gif)
+
+:::{.callout-note appearance=minimal}
+### :question: :busts_in_silhouette: Think-pair-share
+Write down _all_ reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a "good" response or not.  
+:::
+
+* People lie, forget, don't understand the question. 
+* They are afraid of incriminating themselves (citizenship, underage alcohol or illicit drug use)
+* They respond differently depending on the mode of survey (in person, phone, text, online)
+* They respond in a "socially desirable" way that portrays them in a positive manner to the interviewer
+* They respond in the way they thing the interviewer wants to hear. 
+* Not paying attention to the question - especially in a long list of "do you agree or disagree..."
+* confusing question wording
+
+
+Clear sampling protocols and thoughtful & validated survey design can minimize measurement error. 
+
+----
+
+# Sampling and Nonsampling errors (1.6)
+
+* Most surveys report a "margin of error", often something like "3 percentage points"
+* The **margin of error** describes the **sampling error** - that is the error that occurs from taking one random sample instead of measuring the entire population. 
+* **Nonsampling errors** cannot be attributed to the sampling variability, but due to selection bias and measurement error. 
+
+
+:::{.callout-warning icon=false}
+### :star: You try it
+Go find a poll on a subject that interests you. Share the URL in the #458-class-chat discord channel. 
+Report the population of interest, the statistic being estimated, and the margin of error.
+Also put this in your notes. 
+:::
+
+
+----
+
+# The Design of the Sample Survey
+
+Since the objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How do we determine which sampling procedure to use and how many sampling units to sample?
+
+
+> It depends on the magnitude of the error that we find acceptable.
+
+
+Suppose that we are trying to estimate some parameter $\theta$ from our sample. $\hat{\theta}$ is what we will call the statistic that is used to estimate $\theta$. Thus, we will use $\hat{\theta}$ as an estimate of $\theta$. Therefore, we will want the value of $\theta-\hat{\theta}$ to be **small**. 
+
+We call the value of $\theta-\hat{\theta}$ the **error** because it is the difference between the estimated value and the true value. 
+
+:::{.callout-tip}
+A major objective in Statistis is to minimize error.
+:::
+
+We might want to specify that the absolute value of the error is less than some number, say $B$. Thus,
+
+$$
+\mbox{Error of Estimation}=|\theta-\hat{\theta}|<B
+$$
+
+We should also state a probability ($1-\alpha$) that our error is less than $B$ if we were to take repeated samples. This is stated as
+
+$$
+P(\mbox{Error of Estimation}=|\theta-\hat{\theta}| < B) = 1-\alpha
+$$
+
+We will often select $B$ to be approximately 2 times the standard deviation of $\hat{\theta}$, $B=2\hat{\sigma}_{\hat{\theta}}$. Many of the statistics that we will discuss exhibit a normal sampling distribution even when the population distribution is skewed.
+
+## Types of sampling methods
+We will go into the different types of sampling methods throughout the class, but here are a few. 
+
+### Probability Sampling
+
+The classical formulation of a statistical estimation problem requires that randomness be brought into the sampling plan. With proper randomness in the sampling scheme we can be sure that we have an unbiased estimate and that our statements that involve our confidence in the estimate are accurate. Sampling designs based on planned randomness are called **probability samples**.
+
+### Simple random sample
+There are two types of simple random sampling. One is simple random sampling _with_ replacement, whereby a member of the population can be selected more than once; the other is simple random sampling _without_ replacement,whereby a member of the population can be selected at most once. 
+
+> Unless otherwise specified, we assume that sampling is done without replacement. 
+
+### Stratified sampling
+
+Often deployed when we want to guarantee representation from different groups (strata) in the population. In stratified sampling the population is first divided into subpopulations, called _strata_, and then sampling is done from each stratum. Ideally the members of the subpopulations should be homogeneous relative to the characteristic under consideration. 
+
+:::{.callout-tip icon=true}
+### Example: Would taxpayors support a neighborhood pool?
+
+For instance, suppose that a city planner is interested in finding out how his town would feel about a new public pool being built funded by tax payer dollars. He might divide the population up into different income groups such as high, middle, and low incomes. He would then  take a simple random sample of individuals within each strata (income group). This would guarantee that his sample had representation from all income groups.
+
+Note that this type of sampling plan makes use of an auxiliary variable, in this case income. By stratifying we should be increasing the accuracy of our estimate. 
+:::
+
+

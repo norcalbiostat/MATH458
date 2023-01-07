@@ -56,23 +56,26 @@ We will tentatively cover the following sections and topics:
 
 
 # Assignments / graded items 
-Your final grade will be a straight sum of points earned and will be displayed as a running total in Canvas. 
-I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F  
+Your final grade will be a straight sum of points earned and will be displayed as a running total in Canvas.  I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F  
 
 
-#### Exams (30%)
-* 2 Exams (midterm/final, not cumulative). [Error Assessment Form](notes/Analyzing exam errors.pdf) available for midterm. 
+#### Exams (40%)
+* 2 Exams (midterm/final, not cumulative). [Error Assessment Form](notes/Analyzing exam errors.pdf) available for the midterm. 
 
 #### Homework Assignments (20%)
-* Standard homework assignments on the topics listed above. 
+* Written homework assignments on the topics listed above. 
 
-#### Worksheets (25%)
+#### Worksheets (20%)
 * In class worksheets. The intent is to work together and finish them that day, but you'll have until the beginning of the next class period to turn it in. 
 * Lowest score dropped. 
 
-#### Notes (20%)
-* You will be compiling your own set of notes for this class. This will come in the form of reflective writing, and "fill in the blank" & :star: "You Try It" exercises that are based on the course notes. 
-* I will provide you with the blank Quarto (`.qmd`) files that you will fill out in class, compile to PDF and submit for review on a regular basis.
+#### Notes (10%)
+* The course notes are available on the class website (not Canvas). What is presented in class will be incomplete, and we will work through them during class. 
+* I will provide you with a copy of the Quarto `.qmd` script file that created those notes, that have selected omissions that you are responsible for filling out in, and after class.
+* You will compile these notes to PDF and submit for review on a regular basis, typically a few days after the module is complete. 
+* After the note submission date I will update the online posted notes with the completed versions.
+* If you miss a day, or miss something in a lecture, or don't get to finish all the "you try it" questions it is up to you to check with a classmate and/or the online course notes to complete all entries before submission.
+* These are graded on completion status. 
 
 ----
 

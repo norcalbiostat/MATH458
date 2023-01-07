@@ -329,7 +329,7 @@ Example: Finding the mean of a distribution.
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>samp.unif <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10000</span>, <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># runif(n, min, max)</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp.unif)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5053326</code></pre>
+<pre><code>[1] 0.4962023</code></pre>
 </div>
 </div>
 <div class="callout-warning callout callout-style-default no-icon callout-captioned">
@@ -389,7 +389,7 @@ E(|X-Y|)
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">abs</span>(X<span class="sc">-</span>Y)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 11.73667</code></pre>
+<pre><code>[1] 11.62222</code></pre>
 </div>
 </div>
 </section>
@@ -399,7 +399,7 @@ E(|X-Y|)
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Z)<span class="sc">/</span><span class="fu">length</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0009136887</code></pre>
+<pre><code>[1] 0.0009051385</code></pre>
 </div>
 </div>
 </section>
@@ -488,7 +488,7 @@ Example: Enrollment in Graduate Programs in Statistics
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">10</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my.sample.programs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 56.3</code></pre>
+<pre><code>[1] 77.7</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -527,19 +527,19 @@ Example: Enrollment in Graduate Programs in Statistics
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cn01-intro_simulation_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="cn03-probability_sampling_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  28.30   48.20   54.05   54.03   60.40   81.70 </code></pre>
+  35.20   46.67   52.75   53.21   60.02   76.80 </code></pre>
 </div>
 </div>
 <p>Characteristics of this distribution:</p>
 <ul>
 <li><em>Shape</em>: The distribution of average enrollment isn’t quite normal, there seems to perhaps be two peaks?</li>
-<li><em>Center</em>: The average enrollment is 54.03</li>
-<li><em>Spread</em>: Average enrollment ranges from 28.3, 81.7.</li>
+<li><em>Center</em>: The average enrollment is 53.21</li>
+<li><em>Spread</em>: Average enrollment ranges from 35.2, 76.8.</li>
 </ul>
 <p><span class="emoji" data-emoji="tada">🎉</span> We have just examined a <em>sampling distribution</em> of the sample mean.</p>
 </section>
@@ -587,14 +587,14 @@ Example Grad program example cont.
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many.means) <span class="co">#because the example above already had n=10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.58272</code></pre>
+<pre><code>[1] 9.546362</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">20</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.179473</code></pre>
+<pre><code>[1] 6.681535</code></pre>
 </div>
 </div>
 <p>When the distributions are relatively symmetric and bell-shaped, the 95% rule tells us that approximately 95% of the data values fall within two standard deviations of the mean. Applying the 95% rule to sampling distributions, we see that about 95% of the sample statistics will fall within two standard errors of the mean. We use this rule many times to form what we call a 95% confidence interval which gives us a range for which which we are quite confident that captures the true parameter we are trying to estimate.</p>
@@ -616,16 +616,16 @@ CI for PhD program enrollment
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(LCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 32.86256</code></pre>
+<pre><code>[1] 34.11728</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(UCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 75.19344</code></pre>
+<pre><code>[1] 72.30272</code></pre>
 </div>
 </div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Every time I compile these notes, I draw a different sample and will get a different numbers. To avoid conflicts in my written response, and what the code shows, I use <em>inline R code</em> here. See the RStudio <em>Help –&gt; Markdown Quick Reference</em> for more information.</span></div></div>
 <blockquote class="blockquote">
-<p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (32.9 , 75.2).</p>
+<p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (34.1 , 72.3).</p>
 </blockquote>
 </section>
 </section>

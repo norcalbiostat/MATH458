@@ -1,0 +1,14 @@
+{
+  "hash": "fdd216057a077bef3a391b946d5ad603",
+  "result": {
+    "markdown": "---\ntitle: \"Welcome to Math 458: Sampling Methods\"\nsubtitle: \"Week 1\"\nprepare: \"Look over this course website, the syllabus, and Canvas\"\nexecute: \n  echo: false\n---\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n\n# Learning Objectives\nBy the end of the week, learners will be able to: \n\n::: {.cell}\n::: {.cell-output-display}\n* Get connected to all the class materials & tools\n  * Write custom functions in R\n  * Conduct a simulation experiment\n  * Construct a CI for a population parameter from a simulation experiment\n\n<!-- end of list -->\n:::\n:::\n\n\n# How to prepare\n\n::: {.cell}\n::: {.cell-output-display}\n* Look over this course website, the syllabus, and Canvas\n\n<!-- end of list -->\n:::\n:::\n\n\n# Content Notes & Readings\n\n::: {.cell}\n::: {.cell-output-display}\n* [Intro to Simulation](notes/cn01-introduction.html)\n  * Ch 1.1\n\n<!-- end of list -->\n:::\n:::\n\n\n\n# Monday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Introduction to the class. How is this all gonna work?\n  * Motivating Example (Ch 1.1). Write a few sentence summary of the example and  include your take away message.\n\n<!-- end of list -->\n:::\n:::\n\n\n# Wednesday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Writing your own custom functions in R, and using them to generate simulations and sampling distributions.\n\n<!-- end of list -->\n:::\n:::\n\n\n# Friday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Finishing introduction to simulation notes\n\n<!-- end of list -->\n:::\n:::\n\n\n# To Do\n\n::: {.cell}\n::: {.cell-output-display}\n* [HW0](hw/hw00-setup.html)\n\n<!-- end of list -->\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
