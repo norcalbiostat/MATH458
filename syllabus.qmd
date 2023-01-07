@@ -62,10 +62,10 @@ Your final grade will be a straight sum of points earned and will be displayed a
 #### Exams (40%)
 * 2 Exams (midterm/final, not cumulative). [Error Assessment Form](notes/Analyzing exam errors.pdf) available for the midterm. 
 
-#### Homework Assignments (20%)
+#### Homework Assignments (25%)
 * Written homework assignments on the topics listed above. 
 
-#### Worksheets (20%)
+#### Worksheets (25%)
 * In class worksheets. The intent is to work together and finish them that day, but you'll have until the beginning of the next class period to turn it in. 
 * Lowest score dropped. 
 
