@@ -15,12 +15,12 @@ _The theory and application of survey sampling techniques. Topics include simple
 * **Office Location:** Holt 202
 * **E-mail:** rdonatello@csuchico.edu
 * **Best Contact Method:** Discord
-* **Student Office Hours:** Holt 202: Times TBD
+* **Student Office Hours:** WF 1-2pm + 2 hours Times TBD
 
 ## Logistics
 * **Meeting Pattern:** MW 4-4:50, Holt 291
 * **Prerequisites:** MATH 314, MATH 315, or MATH 351 (may be taken concurrently)  
-* **Mode of Instruction:** In Person. All students are expected to attend class in person each session. At this time there is no specific plan for habitual synchronous hybrid zoom session.
+* **Mode of Instruction:** In Person.   
 
 
 # Schedule of Topics
@@ -46,9 +46,8 @@ We will tentatively cover the following sections and topics:
 * **Laptop & Internet**: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Contact ITSS for help with internet. 
 * **Data Analysis software**: R & R Studio
 * **Canvas**: Gradebook. Calendar?
-* **Google Drive**: Through your campus email.
 * **Discord**: A free discussion platform with a lot of collaborative functionality. Sign up instructions in HW 0
-
+* **Hack MD**: A markdown based method for real time collaborative notes
 
 ----
 
@@ -100,9 +99,12 @@ Furthermore, I would like to acknowledge that Chico State stands on lands that w
 
 ## Attendance
 
-Class attendance is expected. Talk to me ahead of time if you need to miss a class for a planned reason. In the event of an unplanned reason, DM me in Discord when you can so that I know you are still alive. 
+All students are expected to attend class in person each session. There is no specific plan for habitual synchronous hybrid zoom session, but I recognize things come up. 
 
-* If you are not feeling well or are experiencing Covid symptoms **DO NOT COME TO CLASS**. DM me in Discord we'll make a backup plan. 
+Talk to me ahead of time if you need to miss a class for a planned reason. In the event of an unplanned reason, DM me in Discord and let's see if we can zoom you in for that day. 
+
+* If you are not feeling well or are experiencing COVID symptoms **DO NOT COME TO CLASS**. DM me in Discord we'll make a backup plan. 
+
 
 
 ## Late work

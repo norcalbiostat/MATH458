@@ -1,6 +1,11 @@
 ---
 title: "The Sampling Problem"
+description: "The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population."
+date: 1/30/23
 ---
+
+_[HackMD notes](https://hackmd.io/@norcalbiostat/cn02-intro_sampling)_
+
 
 # Introduction
 
@@ -37,6 +42,7 @@ An online bookseller summarizes readers' reviews of the books it sells. Persons 
 Describe the target population, sampling frame, sampling unit, and observation unit. Discuss any possible sources of selection bias or inaccuracy of responses.
 :::
 
+
 ----
 
 # Selection Bias (1.3)
@@ -48,11 +54,11 @@ Describe the target population, sampling frame, sampling unit, and observation u
 ::: {.callout-note appearance="minimal"}
 ### :question: :busts_in_silhouette: Some types of selection bias
 
-In [this google doc](https://docs.google.com/document/d/1WS6bxqddXvMj_KhX6Q3k3I_WQDnZMnBKDdEQINiGtwY), summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class. 
+In [the HackMD notes](https://hackmd.io/@norcalbiostat/cn02-intro_sampling), summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class. 
 
 :::
 
-> After class add all examples provided to your notes. Clean them up (e.g. remove the names and headers)
+> After class be sure to add all examples from your classmates to your notes. Clean them up as needed. 
 
 
 ## Bias everywhere!
@@ -116,10 +122,18 @@ Clear sampling protocols and thoughtful & validated survey design can minimize m
 
 :::{.callout-warning icon=false}
 ### :star: You try it
-Go find a poll on a subject that interests you. Share the URL in the #458-class-chat discord channel. 
-Report the population of interest, the statistic being estimated, and the margin of error.
-Also put this in your notes. 
+Go find a poll on a subject that interests you. Share the following information in the HackMD notes: 
+
+The URL, population of interest, the statistic being estimated, and the margin of error. 
 :::
+
+Example: 
+
+* **Title w/ URL**: [National survey shows majority of Americans polled support freedom to choose dogs, regardless of breed](
+https://www.prweb.com/releases/2014/01/prweb11519175.htm)  
+* **Stated Population**: All Americans  
+* **Statistic being estimated** 84 percent of those polled believe that local, state or federal governments should not infringe on a person’s right to own whatever breed of dog they choose.   
+* **Margin of Error**: The results of the survey have a margin of error of +/- 3.4 percent.
 
 
 
@@ -138,7 +152,7 @@ Suppose that we are trying to estimate some parameter $\theta$ from our sample. 
 We call the value of $\theta-\hat{\theta}$ the **error** because it is the difference between the estimated value and the true value. 
 
 :::{.callout-tip}
-A major objective in Statistis is to minimize error.
+A major objective in Statistics is to minimize error.
 :::
 
 We might want to specify that the absolute value of the error is less than some number, say $B$. Thus,

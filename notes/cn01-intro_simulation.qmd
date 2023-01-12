@@ -1,6 +1,7 @@
 ---
 title: "Introduction to Simulation"
 description: Writing your own custom functions in R, and using them to generate simulations and sampling distributions. 
+date: 1/25/23
 ---
 
 # Writing your own R functions

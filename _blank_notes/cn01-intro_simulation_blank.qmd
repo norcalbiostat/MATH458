@@ -56,17 +56,14 @@ Terminology:
 * **Using your function**: You can now use your function. You just need to give the proper arguments and the function will return the desired value(s). This may also be called "calling" your function. 
 
 
-:::{.callout-warning icon=false}
-### :star: You try it
+### You try it
 Write a function that converts degrees Fahrenheit (F) to degrees Celsius (C). The formula for the conversion is $C=(F-32)*5/9$, but recall that `F` and `c` are special characters in **R** and should not be used as variable names. 
-:::
 
 
 > delete this line and write your own code
 
 
-:::{.callout-warning icon=false}
-### :star: You try it
+### You try it
 The population standard deviation can be computed as follows:
 $$
 \sigma=\sqrt{\frac{\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}}{n}}.
@@ -86,11 +83,9 @@ Write a function in R to compute the population standard deviation and use it to
 Simulation is a way to use high-speed computer power to substitute for analytical calculation. The law of large numbers tells us that if we observe a large sample of i.i.d. random variables with finite mean, then the average of these random variables should be close to their true mean.  If we can get a computer to produce such a large i.i.d. sample, then we can average the random variables instead of trying to calculate their mean analytically. Simulations can be useful to check assumptions, examine a sampling distribution, or check the validity of the CLT in certain scenarios.
 
 
-
-:::{.callout-tip icon=true}
 ### Example: Finding the mean of a distribution. 
 The mean of the Uniform distribution on the interval [0,1] is known to be 1/2. How could we have found that out if we did not know the functional form of the uniform distribution? 
-:::
+
 
 1. Create a large random sample from a Uniform distribution on the interval [0,1]
 2. Calculate the observed mean of that sample. 
@@ -101,18 +96,16 @@ mean(samp.unif)
 ```
 
 
-:::{.callout-warning icon=false}
-### :star: You try it
+### You try it
 Use simulation to approximate the mean of the exponential distribution with parameter 1.
-:::
+
 
 > delete this line and write your own code
 
-:::{.callout-warning icon=false}
-### :star: You try it
+
+### You try it
 Let $X$ stand for a random variable having the normal distribution with mean 2 and variance 49, $X\sim N(2, 49)$. Estimate the mean of $log|X| +1$ using simulation. 
 _Hint: Check out `?rnorm` on how to simulate X_
-:::
 
 > delete this line and write your own code
 
@@ -122,14 +115,14 @@ Statistical simulations are used to estimate features of distributions such as m
 
 Simulation is a technique that can be used to help shed light on how a complicated system works even if detailed analysis is unavailable. For example, engineers can simulate traffic patterns in the vicinity of a construction project to see what effects various proposed restrictions might have.  Statistical simulations are used to estimate probabilistic features of our models that we cannot compute analytically.
 
-:::{.callout-tip icon=true}
+
 ### Example: Server wait time
 Two servers A and B in a fast food restaurant start serving customers at the same time.  They agree to meet for a break after each of them has served 10 customers.  Presumably, one of them will finish before the other and have to wait.  How long, on average, will one of the servers have to wait for the other?
 
 Suppose that we model all service times, regardless of the server as a random variable with an exponential distribution with parameter 0.3 customers per minute ($Exp(.3)$). The time it takes one server to serve 10 customers would follow a gamma distribution with parameters 10 and 0.3 ($Gamma(10, .3)$). 
 
 Let $X$ be the time it takes $A$ to serve 10 customers, and let $Y$ be the time it takes server $B$ to serve 10 customers.  We are asked to compute the average difference in times, which is written as
-:::
+
 
 > write the equation here. 
 
@@ -170,12 +163,12 @@ Generally our goal is to know the value of the population parameter exactly but 
 Instead we can select a sample from the population, calculate the quantity of interest for the sample, and use this sample statistic to estimate the value for the whole population.
 
 
-:::{.callout-warning}
-### :star: You try it
+
+### You try it
 The US Census states that 27.5% of US adults who are at least 25 years old have a college bachelor's degree or higher. Suppose that in a random sample  of $n$=200 US residents who are 25 or older, 58 of them have a college bachelor's degree or higher. 
 
 What is the population parameter? What is the sample statistic? Use correct notation for your answer.
-:::
+
 
 
 > delete this line and write your own code
@@ -188,10 +181,8 @@ The value of a statistic for a particular sample gives a _point estimate_ of the
 
 **Variability of Sample Statistics**: We usually think of a parameter as a fixed value while the sample statistic is considered a random variable. 
 
-:::{.callout-note appearance=minimal}
-### :question: :busts_in_silhouette: Turn and talk
+### Turn and talk
 Why is a sample statistic such as a sample mean $\bar{x}$ considered a random variable?
-:::
 
 > delete this line and write your answer here
 
@@ -199,12 +190,12 @@ Why is a sample statistic such as a sample mean $\bar{x}$ considered a random va
 
 Along with the point estimate we also want to know how accurate we can expect the point estimate to be. In other words, if we took another random sample of the same size from the population, is the point estimate from this new sample likely to be similar to the first point estimate or are they likely to be far apart.
 
-:::{.callout-tip icon=true}
+
 ### Example: Enrollment in Graduate Programs in Statistics
 Graduate programs in statistics often pay their graduate students, which means that many graduate students in statistics are able to attend graduate school tuition free with an assistantship or fellowship. There are 82 US statistics doctoral programs for which enrollment data were available. The data set `StatisticsPhD` lists all these schools together with the total enrollment of full-time graduate students in each program in 2009.
 
-:question: What is the average full-time graduate student enrollment in US statistics doctoral programs in 2009? 
-:::   
+What is the average full-time graduate student enrollment in US statistics doctoral programs in 2009? 
+
 
 
 ```{r}
@@ -224,14 +215,13 @@ my.sample.programs <- sample(stat.phd$FTGradEnrollment, size=__)
 mean(____)
 ```
 
-:::{.callout-note appearance=minimal}
-### :question: :busts_in_silhouette: Turn to your neighbor and discuss the following questions
+### Turn to your neighbor and discuss the following questions
 
 * Did everyone get the same sample mean?
 * Does your sample mean exactly equal the population mean?
 * If you took another sample of 10, would you get the same sample mean? Why?
 * If we created a histogram of all our sample means, what would it look like? Where would it be centered at? What is the spread of the histogram?
-:::
+
 
 > delete this line and write your answer here
 
@@ -266,19 +256,19 @@ Characteristics of this distribution:
 * _Spread_: 
 
 
-:tada: We have just examined a _sampling distribution_ of the sample mean. 
+Hooray! We have just examined a _sampling distribution_ of the sample mean. 
 
 # Sampling Distribution
 
 A _sampling distribution_ is the distribution of sample statistics computed for different samples of the same size from the same population. A sampling distribution shows us how the sample statistic varies from sample to sample.
 
-:::{.callout-note appearance=minimal}
-### :question: :busts_in_silhouette: Turn to your neighbor and discuss the following questions
+
+### Turn to your neighbor and discuss the following questions
 
 * What information might be important to get from a sampling distribution?
 * What would happen if we increased our sample size (_not the number of replicates_) to $n=20$ rather than $n=10$. What about the sampling distribution would change?
 * What would happen if we increased the number of replications (holding $n$ constant) to 1000 instead of 100? What about the sampling distribution would change?
-:::
+
 
 > delete this line and write your answer here
 
@@ -292,10 +282,9 @@ In general, it is usually not enough to just give a point estimate when estimati
 
 The _standard error_ of a statistic is the standard deviation of the sample statistic. It tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine simulated values of the sample statistic we can estimate the standard error by taking the sample standard deviation of the simulated sample statistics. In other situations we can use mathematical formulas to calculate the standard error.
 
-:::{.callout-tip icon=true}
+
 ### Example Grad program example cont. 
 Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20. 
-:::
 
 
 ```{r}
@@ -314,11 +303,10 @@ When the distributions are relatively symmetric and bell-shaped, the 95% rule te
 
 When using a formula to calculate an approximate 95% confidence interval, use $2*SE$ as the margin of error. 
 
-:::{.callout-tip icon=true}
+
 ### CI for PhD program enrollment
 Based on our example, what would be a 95% confidence interval for $\mu$ the true mean total enrollment for PhD programs in statistics.
 Interpret this confidence interval in context of the problem.
-:::
 
 ```{r}
 (LCL <- ____(many.means) - 2*____(many.means))
