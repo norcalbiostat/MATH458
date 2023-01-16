@@ -58,17 +58,25 @@ This means when you download a file, right click and "Save as" or "Save target a
 
 # 4. Quick access
 
-Bookmark this class website. Going through Canvas learn every time just is a waste of your time. 
+Bookmark this class website. Going through Canvas every time just is a waste of your time. 
 
 
-# 5. Student office hours 
+# 5. HackMD
+
+Go to the [What is HackMD collaborative notes](https://hackmd.io/@norcalbiostat/458_intro_hackmd/), read the introduction and add your name and major to the list.
+
+
+
+# 6. Student office hours 
 
 Help me decide when to hold student office hours. Remember, these are open drop in times where I dedicate my time to YOU as students. My time outside these hours is limited, so be sure to fill this out so I can best choose times that you are free. [[Link]](https://forms.gle/aZgtaBbt2tH21ZAr6)   
 
-:stop_sign: If you are doing this for my Math 456 class, do not submit a second entry. You only need to do this once.
+:stop_sign: If you are doing this for Math 456, do not submit a second entry. You only need to do this once.
 
-# 6. Programming Assessment 
+# 7. Programming Assessment 
 
 This is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions are found in Canvas. 
 
-:stop_sign: If you are doing this for my Math 456 class, do not submit a second entry. You only need to do this once.
+:stop_sign: If you are doing this for Math 456, do not submit a second entry. You only need to do this once.
+
+

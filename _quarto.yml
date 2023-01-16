@@ -27,6 +27,8 @@ website:
       - text: "Homework"
         file: hw.qmd
     right: 
+      - text: "HackMD"
+        url: https://hackmd.io
       - text: "Syllabus"
         file: syllabus.qmd
 

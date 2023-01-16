@@ -8,9 +8,9 @@
   {
     "listing": "/notes.html",
     "items": [
+      "/notes/cn00-welcome.html",
       "/notes/cn01-intro_simulation.html",
-      "/notes/cn02-intro_sampling.html",
-      "/notes/cn03-probability_sampling.html"
+      "/notes/cn02-intro_sampling.html"
     ]
   },
   {
