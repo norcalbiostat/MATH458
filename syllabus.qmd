@@ -46,9 +46,10 @@ We will tentatively cover the following sections and topics:
 * **Laptop & Internet**: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Contact ITSS for help with internet. 
 * **Data Analysis software**: R & R Studio
 * **Canvas**: Gradebook. Calendar?
-* **Discord**: A free discussion platform with a lot of collaborative functionality. Sign up instructions in HW 0
+* **Discord**: A free discussion platform with a lot of collaborative functionality. 
 * **Hack MD**: A markdown based method for real time collaborative notes
 
+Instructions for signing up & obtaining materials are in HW 0
 ----
 
 # Grading Breakdown
@@ -59,7 +60,8 @@ Your final grade will be a straight sum of points earned and will be displayed a
 
 
 #### Exams (40%)
-* 2 Exams (midterm/final, not cumulative). [Error Assessment Form](notes/Analyzing exam errors.pdf) available for the midterm. 
+* 2 Exams (midterm/final, not cumulative). 
+* Error Assessment available for the midterm. (Details TBD)
 
 #### Homework Assignments (20%)
 * Written homework assignments on the topics listed above. 
@@ -69,8 +71,8 @@ Your final grade will be a straight sum of points earned and will be displayed a
 * Lowest score dropped. 
 
 #### Notes (10%)
-* The course notes are available on the class website (not Canvas). What is presented in class will be incomplete, and we will work through them during class. 
-* I will provide you with a copy of the Quarto `.qmd` script file that created those notes, that have selected omissions that you are responsible for filling out in, and after class.
+* The course notes are available on the class website. What is presented in class will be incomplete, and we will work through them during class. 
+* Either directly, or through HackMD I will provide you the code that created those notes, with selected omissions that you are responsible for filling out during and after class.
 * You will compile these notes to PDF and submit for review on a regular basis, typically a few days after the module is complete. 
 * After the note submission date I will update the online posted notes with the completed versions.
 * If you miss a day, or miss something in a lecture, or don't get to finish all the "you try it" questions it is up to you to check with a classmate and/or the online course notes to complete all entries before submission.
