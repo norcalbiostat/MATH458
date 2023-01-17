@@ -26,7 +26,8 @@
     "listing": "/weekly_details.html",
     "items": [
       "/weekly_details/wk01.html",
-      "/weekly_details/wk02.html"
+      "/weekly_details/wk02.html",
+      "/weekly_details/wk03.html"
     ]
   }
 ]

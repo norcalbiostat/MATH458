@@ -1,0 +1,14 @@
+{
+  "hash": "f05b619ba6fe07a5022d151bc73221ea",
+  "result": {
+    "markdown": "---\ntitle: \"Foundations of Statistical Estimation\"\ndate: \"2/06/23\"\nprepare: \"Prepare notes file. Download data\"\nexecute: \n  echo: false\n---\n\n::: {.cell}\n\n:::\n\n\n\n# Learning Objectives\nBy the end of the week, learners will be able to: \n\n::: {.cell}\n::: {.cell-output-display}\n* stuff\n\n<!-- end of list -->\n:::\n:::\n\n\n# How to prepare\n\n::: {.cell}\n::: {.cell-output-display}\n* Download the StatisticsPhD data file into your **data** folder.\n\n<!-- end of list -->\n:::\n:::\n\n\n# Content Notes & Readings\n\n::: {.cell}\n::: {.cell-output-display}\n* [Statistical Foundations](notes/cn03-statistical_foundations.html)\n  * [HackMD notes](https://hackmd.io/@norcalbiostat/cn03-statistical_foundations)\n\n<!-- end of list -->\n:::\n:::\n\n\n\n# Monday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Numerical Summaries\n  * Variability of Estimates\n\n<!-- end of list -->\n:::\n:::\n\n\n# Wednesday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Properties of Estimation\n\n<!-- end of list -->\n:::\n:::\n\n\n# Friday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Worksheet 2\n\n<!-- end of list -->\n:::\n:::\n\n\n# To Do\n\n::: {.cell}\n::: {.cell-output-display}\n* Worksheet 2\n  * Course notes: cn03\n\n<!-- end of list -->\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
