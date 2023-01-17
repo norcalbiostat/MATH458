@@ -4,13 +4,14 @@ listing:
   contents:
     - weekly_details
   type: table
-  fields: [subtitle, title, prepare]
+  fields: [date, title, prepare]
   field-display-names:
-    subtitle: "Week"
+    date: "Date"
+    title: "Topic"
     prepare: "How to prepare"
-  sort: [subtitle]
+  date-format: "MM-DD"
+  sort: [date]
   sort-ui: false
   filter-ui: false
-tbl-colwidths: [50,50]
 ---
 

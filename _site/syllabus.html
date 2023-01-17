@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -64,30 +69,37 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Sampling Methods</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./weekly_details.html">Weekly Overview</a>
+    <a class="nav-link" href="./weekly_details.html">
+ <span class="menu-text">Weekly Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html">Notes</a>
+    <a class="nav-link" href="./notes.html">
+ <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./hw.html">Homework</a>
+    <a class="nav-link" href="./hw.html">
+ <span class="menu-text">Homework</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://hackmd.io">HackMD</a>
+    <a class="nav-link" href="https://hackmd.io">
+ <span class="menu-text">HackMD</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./syllabus.html" aria-current="page">Syllabus</a>
+    <a class="nav-link active" href="./syllabus.html" aria-current="page">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
               <div class="quarto-toggle-container">
@@ -103,7 +115,7 @@ ul.task-list{list-style: none;}
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -152,6 +164,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -204,10 +217,11 @@ ul.task-list{list-style: none;}
 <li><strong>Textbook (Required)</strong>: <a href="https://www.sharonlohr.com/sampling-design-and-analysis-3e">Sampling, 3rd Edition. Sharon Lohr</a></li>
 <li><strong>Laptop &amp; Internet</strong>: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Contact ITSS for help with internet.</li>
 <li><strong>Data Analysis software</strong>: R &amp; R Studio</li>
-<li><strong>Canvas</strong>: Gradebook. Calendar?</li>
-<li><strong>Discord</strong>: A free discussion platform with a lot of collaborative functionality. Sign up instructions in HW 0</li>
+<li><strong>Canvas</strong>: Module overview, assignments, gradebook, calendar.</li>
+<li><strong>Discord</strong>: A free discussion platform with a lot of collaborative functionality.</li>
 <li><strong>Hack MD</strong>: A markdown based method for real time collaborative notes</li>
 </ul>
+<p>Instructions for signing up &amp; obtaining materials are in HW 0</p>
 <hr>
 </section>
 <section id="grading-breakdown" class="level1">
@@ -219,17 +233,18 @@ ul.task-list{list-style: none;}
 <section id="exams-40" class="level4">
 <h4 class="anchored" data-anchor-id="exams-40">Exams (40%)</h4>
 <ul>
-<li>2 Exams (midterm/final, not cumulative). <a href="notes/Analyzing%20exam%20errors.pdf">Error Assessment Form</a> available for the midterm.</li>
+<li>2 Exams (midterm/final, not cumulative).</li>
+<li>Error Assessment available for the midterm. (Details TBD)</li>
 </ul>
 </section>
-<section id="homework-assignments-20" class="level4">
-<h4 class="anchored" data-anchor-id="homework-assignments-20">Homework Assignments (20%)</h4>
+<section id="homework-assignments-25" class="level4">
+<h4 class="anchored" data-anchor-id="homework-assignments-25">Homework Assignments (25%)</h4>
 <ul>
 <li>Written homework assignments on the topics listed above.</li>
 </ul>
 </section>
-<section id="worksheets-20" class="level4">
-<h4 class="anchored" data-anchor-id="worksheets-20">Worksheets (20%)</h4>
+<section id="worksheets-25" class="level4">
+<h4 class="anchored" data-anchor-id="worksheets-25">Worksheets (25%)</h4>
 <ul>
 <li>In class worksheets. The intent is to work together and finish them that day, but you’ll have until the beginning of the next class period to turn it in.</li>
 <li>Lowest score dropped.</li>
@@ -238,8 +253,8 @@ ul.task-list{list-style: none;}
 <section id="notes-10" class="level4">
 <h4 class="anchored" data-anchor-id="notes-10">Notes (10%)</h4>
 <ul>
-<li>The course notes are available on the class website (not Canvas). What is presented in class will be incomplete, and we will work through them during class.</li>
-<li>I will provide you with a copy of the Quarto <code>.qmd</code> script file that created those notes, that have selected omissions that you are responsible for filling out in, and after class.</li>
+<li>The course notes are available on the class website. What is presented in class will be incomplete, and we will work through them during class.</li>
+<li>Either directly, or through HackMD I will provide you the code that created those notes, with selected omissions that you are responsible for filling out during and after class.</li>
 <li>You will compile these notes to PDF and submit for review on a regular basis, typically a few days after the module is complete.</li>
 <li>After the note submission date I will update the online posted notes with the completed versions.</li>
 <li>If you miss a day, or miss something in a lecture, or don’t get to finish all the “you try it” questions it is up to you to check with a classmate and/or the online course notes to complete all entries before submission.</li>
@@ -332,7 +347,7 @@ Warning
 <h2 class="anchored" data-anchor-id="academic-integrity">Academic Integrity</h2>
 <p>Academic integrity is defined as “a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility”. From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity.</p>
 <hr>
-<p><em>Last updated: Wed Jan 11 2023 5:09:21 PM</em></p>
+<p><em>Last updated: Mon Jan 16 2023 10:29:10 AM</em></p>
 
 
 </section>
@@ -410,6 +425,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         }
       }
     }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
   }
   const isFileUrl = () => { 
     return window.location.protocol === 'file:';
@@ -461,7 +486,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -483,7 +510,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -511,31 +555,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

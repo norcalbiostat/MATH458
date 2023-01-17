@@ -1,5 +1,5 @@
 ---
-title: "The Sampling Problem"
+title: "The Sampling Framework"
 description: "The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population."
 date: 1/30/23
 ---

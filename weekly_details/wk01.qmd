@@ -1,74 +1,63 @@
 ---
 title: "Welcome to Math 458: Sampling Methods"
-subtitle: "Week 1"
+date: "1/23/23"
 prepare: "Look over this course website, the syllabus, and Canvas"
 execute: 
   echo: false
 ---
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(dplyr);library(readxl); library(kableExtra);library(stringr); library(pander)
-options(knitr.table.format = "html", knitr.kable.NA = '') 
+library(dplyr);library(readxl); library(stringr); library(pander)
 
-# Read in schedule
-raw_detail <- read_excel(here::here("schedule_458.xlsx"), sheet="weekly_detail") 
+# Read in schedule, extract week
+wd <- read_excel(here::here("schedule_458.xlsx"), sheet="weekly_detail") %>%
+  filter(wk==1)
 
-# Function to extract week and display data
-details <- function(w){
-  wd <- filter(raw_detail, wk==w)
-  # strip data columns into separate lists
-  Topic <- gsub("\r\n", "", wd$Topics)
-  SLO  <- as.list(str_split(wd$SLO, "\r\n", simplify=TRUE))
-  prep <- as.list(str_split(wd$Prepare, "\r\n", simplify=TRUE))
-  mon  <- as.list(str_split(wd$Monday, "\r\n", simplify=TRUE))
-  wed  <- as.list(str_split(wd$Wednesday, "\r\n", simplify=TRUE))
-  fri  <- as.list(str_split(wd$Friday, "\r\n", simplify=TRUE))
-  do   <- as.list(str_split(wd$Do, "\r\n", simplify=TRUE))
-  note <- as.list(str_split(wd$Notes, "\r\n", simplify=TRUE))
- 
-  return(list(Topic=Topic, SLO=SLO, prep=prep, mon=mon, wed=wed, fri=fri, do=do, 
-              Notes = note))
-}
+# strip data columns into separate lists
+SLO  <- as.list(str_split(wd$SLO, "\r\n", simplify=TRUE))
+prep <- as.list(str_split(wd$Prepare, "\r\n", simplify=TRUE))
+note <- as.list(str_split(wd$Notes, "\r\n", simplify=TRUE))
+mon  <- as.list(str_split(wd$Monday, "\r\n", simplify=TRUE))
+wed  <- as.list(str_split(wd$Wednesday, "\r\n", simplify=TRUE))
+fri  <- as.list(str_split(wd$Friday, "\r\n", simplify=TRUE))
+do   <- as.list(str_split(wd$Do, "\r\n", simplify=TRUE))
 ```
 
-```{r}
-this.week <- details(1)
-```
 
 # Learning Objectives
 By the end of the week, learners will be able to: 
 ```{r}
-pander(this.week$SLO)
+pander(SLO)
 ```
 
 # How to prepare
 ```{r}
-pander(this.week$prep)
+pander(prep)
 ```
 
 # Content Notes & Readings
 ```{r}
-pander(this.week$Notes)
+pander(note)
 ```
 
 
 # Monday overview
 ```{r}
-pander(this.week$mon)
+pander(mon)
 ```
 
 # Wednesday overview
 ```{r}
-pander(this.week$wed)
+pander(wed)
 ```
 
 # Friday overview
 ```{r}
-pander(this.week$fri)
+pander(fri)
 ```
 
 # To Do
 ```{r}
-pander(this.week$do)
+pander(do)
 ```
 

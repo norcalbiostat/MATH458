@@ -1,51 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sampling-458.netlify.app/calendar.html</loc>
-    <lastmod>2023-01-12T15:22:13.689Z</lastmod>
-  </url>
-  <url>
     <loc>https://sampling-458.netlify.app/hw/hw00-setup.html</loc>
-    <lastmod>2023-01-12T15:22:14.693Z</lastmod>
+    <lastmod>2023-01-17T00:18:49.134Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/hw.html</loc>
-    <lastmod>2023-01-12T15:22:15.558Z</lastmod>
+    <lastmod>2023-01-17T00:21:22.025Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/index.html</loc>
-    <lastmod>2023-01-12T15:22:16.362Z</lastmod>
+    <lastmod>2023-01-17T00:18:50.980Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn00-welcome.html</loc>
-    <lastmod>2023-01-12T15:22:17.037Z</lastmod>
+    <lastmod>2023-01-17T00:18:52.045Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn01-intro_simulation.html</loc>
-    <lastmod>2023-01-12T15:22:18.796Z</lastmod>
+    <lastmod>2023-01-17T00:18:54.451Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn02-intro_sampling.html</loc>
-    <lastmod>2023-01-12T15:22:19.760Z</lastmod>
+    <lastmod>2023-01-17T00:18:55.488Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes.html</loc>
-    <lastmod>2023-01-12T15:22:20.666Z</lastmod>
+    <lastmod>2023-01-17T00:20:58.736Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/syllabus.html</loc>
-    <lastmod>2023-01-12T15:22:21.685Z</lastmod>
+    <lastmod>2023-01-17T00:18:57.432Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk01.html</loc>
-    <lastmod>2023-01-12T15:22:22.524Z</lastmod>
+    <lastmod>2023-01-17T00:18:58.250Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk02.html</loc>
-    <lastmod>2023-01-12T15:22:23.340Z</lastmod>
+    <lastmod>2023-01-17T00:19:48.464Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details.html</loc>
-    <lastmod>2023-01-12T15:22:24.180Z</lastmod>
+    <lastmod>2023-01-17T00:21:13.322Z</lastmod>
   </url>
 </urlset>

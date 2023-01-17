@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Simulation"
-description: Foundations of writing your own custom functions, drawing samples and conducting a simulation. 
+description: Foundations of writing your own custom functions, drawing samples and conducting a simulation.
 date: 1/25/23
 ---
 
@@ -51,6 +51,7 @@ Terminology:
     - To run a function you highlight the function and run it. Once you run it you don't need to run it again.
 * **Using your function**: You can now use your function. You just need to give the proper arguments and the function will return the desired value(s). This may also be called "calling" your function. 
 
+
 :::{.callout-warning icon=false}
 ### :star: You try it. Write functions for the following. 
 
@@ -59,11 +60,38 @@ Terminology:
 2. Compute the population standard deviation of `c(320,50,88,98,215,128)` using the following formula: $\frac{1}{n}\sqrt{\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}}$
 :::
 
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+1. 
+
+```{r}
+F.to.C <- function(fahr){
+  (fahr - 32)*5/9
+}
+
+F.to.C(85) # mmm warm.
+```
+
+
+2. 
+```{r}
+calc.pop.sd <- function(x){
+  n <- length(x)
+  mean.x <- sum(x)/n
+  squared.diff <- (x-mean.x)^2
+  (1/n)*sqrt(sum(squared.diff))
+}
+
+calc.pop.sd(x=c(320,50,88,98,215,128))
+```
+:::
+
 # Simulation
 
 ## What is Simulation? 
 
 Simulation is a way to use high-speed computer power to substitute for analytical calculation. The law of large numbers tells us that if we observe a large sample of i.i.d. random variables with finite mean, then the average of these random variables should be close to their true mean.  If we can get a computer to produce such a large i.i.d. sample, then we can average the random variables instead of trying to calculate their mean analytically. Simulations can be useful to check assumptions, examine a sampling distribution, or check the validity of the CLT in certain scenarios.
+
 
 [Notes on the Uniform Distribution https://math350.netlify.app/notes/cn4_5_unif_exp]{.aside}
 
@@ -81,12 +109,28 @@ samp.unif <- runif(10000, 0, 1) # runif(n, min, max)
 mean(samp.unif)
 ```
 
+
 :::{.callout-warning icon=false}
 ### :star: You try it
 
 1. Use simulation to approximate the mean of the exponential distribution with parameter 1. Code starter: `rexp(n=____, 1)`
 2. Let $X$ stand for a random variable having the normal distribution with mean 2 and variance 49, $X\sim N(2, 49)$. Estimate the mean of $Z = log|X| +1$ using simulation. Code starter: `rnorm(n=____, mean=___, sd=___)`, and you'll need the absolute value function: `abs()`
 :::
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+1. 
+```{r}
+samp.exp <- rexp(10000, 1)
+mean(samp.exp)
+```
+2. 
+```{r}
+samp.norm <- rnorm(10000, 2, 49)
+Z = log(abs(samp.norm))+1
+mean(Z)
+```
+::: 
 
 
 ## Why is simulation useful?
@@ -141,6 +185,17 @@ We will come back to this idea of repeating simulations multiple times to explor
 Use replicate to compute the average difference in server wait times for five different simulations. 
 :::
 
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+```{r}
+replicate(n=5, {
+  X <- rgamma(10000, 10, .3)
+  Y <- rgamma(10000, 10, .3)
+  Z <- abs(X-Y)
+  mean(Z)  
+})
+```
+:::
 
 # Basic Sampling
 
@@ -158,7 +213,6 @@ sample(1:6, size=5, replace=TRUE) # with replacement
 # Wrap up
 
 The functions demonstrated in this section are to provide examples of functions and tactics we will be using throughout the semester. 
-
 
 
 

@@ -45,11 +45,12 @@ We will tentatively cover the following sections and topics:
 * **Textbook (Required)**: [Sampling, 3rd Edition. Sharon Lohr](https://www.sharonlohr.com/sampling-design-and-analysis-3e)
 * **Laptop & Internet**: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Contact ITSS for help with internet. 
 * **Data Analysis software**: R & R Studio
-* **Canvas**: Gradebook. Calendar?
+* **Canvas**: Module overview, assignments, gradebook, calendar. 
 * **Discord**: A free discussion platform with a lot of collaborative functionality. 
 * **Hack MD**: A markdown based method for real time collaborative notes
 
 Instructions for signing up & obtaining materials are in HW 0
+
 ----
 
 # Grading Breakdown

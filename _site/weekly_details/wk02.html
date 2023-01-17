@@ -2,19 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-01-30">
 
-<title>Sampling Methods - The Sampling Problem</title>
+<title>Sampling Methods - Introduction to the Sampling Framework</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -64,30 +70,37 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../weekly_details.html">Weekly Overview</a>
+    <a class="nav-link" href="../weekly_details.html">
+ <span class="menu-text">Weekly Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html">Notes</a>
+    <a class="nav-link" href="../notes.html">
+ <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../hw.html">Homework</a>
+    <a class="nav-link" href="../hw.html">
+ <span class="menu-text">Homework</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://hackmd.io">HackMD</a>
+    <a class="nav-link" href="https://hackmd.io">
+ <span class="menu-text">HackMD</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html">Syllabus</a>
+    <a class="nav-link" href="../syllabus.html">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
               <div class="quarto-toggle-container">
@@ -103,7 +116,7 @@ ul.task-list{list-style: none;}
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -122,8 +135,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Sampling Problem</h1>
-<p class="subtitle lead">Week 2</p>
+<h1 class="title">Introduction to the Sampling Framework</h1>
 </div>
 
 
@@ -131,15 +143,19 @@ ul.task-list{list-style: none;}
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 30, 2023</p>
+    </div>
+  </div>
+  
     
   </div>
   
 
 </header>
 
-<div class="cell">
-
-</div>
 <div class="cell">
 
 </div>
@@ -163,7 +179,10 @@ ul.task-list{list-style: none;}
 <div class="cell">
 <div class="cell-output-display">
 <ul>
-<li>Read Ch 1.2-1.4, 1.6 before Wednesday</li>
+<li>Create a blank <code>cn02_username.qmd</code> or <code>cn02_username.rmd</code> notes file in your <strong>notes</strong> folder on your computer.
+<ul>
+<li>Read Ch 1.2-1.4, 1.6</li>
+</ul></li>
 </ul>
 <!-- end of list -->
 </div>
@@ -176,6 +195,7 @@ ul.task-list{list-style: none;}
 <ul>
 <li><a href="notes/cn02-intro_sampling.html">Introduction to Sampling</a>
 <ul>
+<li><a href="https://hackmd.io/@norcalbiostat/cn02-intro_sampling">HackMD notes</a></li>
 <li>Ch 1.1</li>
 </ul></li>
 </ul>
@@ -188,7 +208,12 @@ ul.task-list{list-style: none;}
 <div class="cell">
 <div class="cell-output-display">
 <ul>
-<li>Worksheet</li>
+<li>Using HackMD for collaborative notes
+<ul>
+<li>Population and Representative Samples (Ch 1.2)</li>
+<li>Sampling Bias (Ch 1.3)</li>
+<li>Measurement Error (1.4)</li>
+</ul></li>
 </ul>
 <!-- end of list -->
 </div>
@@ -199,10 +224,9 @@ ul.task-list{list-style: none;}
 <div class="cell">
 <div class="cell-output-display">
 <ul>
-<li>Population and Representative Samples (Ch 1.2)
+<li>Sampling and Nonsampling Errors (1.6)
 <ul>
-<li>Sampling Bias (Ch 1.3)</li>
-<li></li>
+<li>Survey Design</li>
 </ul></li>
 </ul>
 <!-- end of list -->
@@ -214,10 +238,7 @@ ul.task-list{list-style: none;}
 <div class="cell">
 <div class="cell-output-display">
 <ul>
-<li>Measurement Error (1.4)
-<ul>
-<li>Sampling and Nonsampling Errors (1.6)</li>
-</ul></li>
+<li><em>NA</em></li>
 </ul>
 <!-- end of list -->
 </div>
@@ -228,7 +249,7 @@ ul.task-list{list-style: none;}
 <div class="cell">
 <div class="cell-output-display">
 <ul>
-<li>Worksheet 1</li>
+<li>Course notes: cn02</li>
 </ul>
 <!-- end of list -->
 </div>
@@ -309,6 +330,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         }
       }
     }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
   }
   const isFileUrl = () => { 
     return window.location.protocol === 'file:';
@@ -360,7 +391,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -382,7 +415,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -410,31 +460,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
