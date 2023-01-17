@@ -1,0 +1,12 @@
+---
+title: "Foundations of Statistical Estimation"
+description: "We review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course."
+date: 2/3/23
+---
+
+
+Starter notes found in Hack MD https://hackmd.io/@norcalbiostat/cn03-statistical_foundations 
+
+Completed notes will be posted here after the section is complete. 
+
+

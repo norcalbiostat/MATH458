@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2023-01-25">
-<meta name="description" content="Writing your own custom functions in R, and using them to generate simulations and sampling distributions.">
+<meta name="description" content="Foundations of writing your own custom functions, drawing samples and conducting a simulation.">
 
-<title>Introduction to Simulation</title>
+<title>Sampling Methods - Introduction to Simulation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,26 +88,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<script src="cn01-intro_simulation_complete_files/libs/clipboard/clipboard.min.js"></script>
-<script src="cn01-intro_simulation_complete_files/libs/quarto-html/quarto.js"></script>
-<script src="cn01-intro_simulation_complete_files/libs/quarto-html/popper.min.js"></script>
-<script src="cn01-intro_simulation_complete_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="cn01-intro_simulation_complete_files/libs/quarto-html/anchor.min.js"></script>
-<link href="cn01-intro_simulation_complete_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="cn01-intro_simulation_complete_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="cn01-intro_simulation_complete_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="cn01-intro_simulation_complete_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="cn01-intro_simulation_complete_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body>
+<body class="nav-fixed">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-</div>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Sampling Methods</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../weekly_details.html">
+ <span class="menu-text">Weekly Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../notes.html">
+ <span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../hw.html">
+ <span class="menu-text">Homework</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://hackmd.io">
+ <span class="menu-text">HackMD</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#writing-your-own-r-functions" id="toc-writing-your-own-r-functions" class="nav-link active" data-scroll-target="#writing-your-own-r-functions">Writing your own R functions</a>
+  <ul class="collapse">
+  <li><a href="#defining-functions" id="toc-defining-functions" class="nav-link" data-scroll-target="#defining-functions">Defining functions</a></li>
+  </ul></li>
+  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation">Simulation</a>
+  <ul class="collapse">
+  <li><a href="#what-is-simulation" id="toc-what-is-simulation" class="nav-link" data-scroll-target="#what-is-simulation">What is Simulation?</a></li>
+  <li><a href="#why-is-simulation-useful" id="toc-why-is-simulation-useful" class="nav-link" data-scroll-target="#why-is-simulation-useful">Why is simulation useful?</a></li>
+  </ul></li>
+  <li><a href="#variability-in-simulation-results" id="toc-variability-in-simulation-results" class="nav-link" data-scroll-target="#variability-in-simulation-results">Variability in simulation results</a>
+  <ul class="collapse">
+  <li><a href="#using-replicate-to-repeat-simulations" id="toc-using-replicate-to-repeat-simulations" class="nav-link" data-scroll-target="#using-replicate-to-repeat-simulations">Using <code>replicate</code> to repeat simulations</a></li>
+  </ul></li>
+  <li><a href="#basic-sampling" id="toc-basic-sampling" class="nav-link" data-scroll-target="#basic-sampling">Basic Sampling</a></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap up</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -117,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div>
   <div class="description">
-    Writing your own custom functions in R, and using them to generate simulations and sampling distributions.
+    Foundations of writing your own custom functions, drawing samples and conducting a simulation.
   </div>
 </div>
 
@@ -190,12 +286,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-:star: You try it. Write functions for the following.
+<span class="emoji" data-emoji="star">⭐</span> You try it. Write functions for the following.
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>Converts degrees Fahrenheit (F) to degrees Celsius (C). The formula for the conversion is <span class="math inline">\(C=(F-32)*5/9\)</span>, but recall that <code>F</code> and <code>c</code> are special characters in <strong>R</strong> and should not be used as variable names.</p></li>
+<li><p>Converts degrees Fahrenheit to degrees Celsius. The formula for the conversion is <span class="math inline">\(C=(F-32)*5/9\)</span>. <em>Note that <code>F</code> and <code>c</code> are special characters in <strong>R</strong> and should not be used as variable names.</em></p></li>
 <li><p>Compute the population standard deviation of <code>c(320,50,88,98,215,128)</code> using the following formula: <span class="math inline">\(\frac{1}{n}\sqrt{\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}}\)</span></p></li>
 </ol>
 </div>
@@ -273,7 +369,7 @@ Example: Finding the mean of a distribution.
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>samp.unif <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10000</span>, <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># runif(n, min, max)</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp.unif)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5015956</code></pre>
+<pre><code>[1] 0.5028609</code></pre>
 </div>
 </div>
 <div class="callout-warning callout callout-style-default no-icon callout-captioned">
@@ -282,7 +378,7 @@ Example: Finding the mean of a distribution.
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-:star: You try it
+<span class="emoji" data-emoji="star">⭐</span> You try it
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -311,7 +407,7 @@ Solution
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>samp.exp <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">10000</span>, <span class="dv">1</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.010688</code></pre>
+<pre><code>[1] 0.9984692</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -322,7 +418,7 @@ Solution
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> <span class="fu">log</span>(<span class="fu">abs</span>(samp.norm))<span class="sc">+</span><span class="dv">1</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.251775</code></pre>
+<pre><code>[1] 4.233581</code></pre>
 </div>
 </div>
 </div>
@@ -359,7 +455,7 @@ E(|X-Y|)
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">abs</span>(X<span class="sc">-</span>Y)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 11.71447</code></pre>
+<pre><code>[1] 11.81173</code></pre>
 </div>
 </div>
 </section>
@@ -376,7 +472,7 @@ E(|X-Y|)
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(samp.unif)</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5014654 0.4982421 0.5026764 0.5005913 0.4993063</code></pre>
+<pre><code>[1] 0.5012393 0.5038757 0.4958267 0.5056887 0.4989023</code></pre>
 </div>
 </div>
 <p>We will come back to this idea of repeating simulations multiple times to explore the variability in simulation results in a few sections.</p>
@@ -386,7 +482,7 @@ E(|X-Y|)
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-:star: You try it:
+<span class="emoji" data-emoji="star">⭐</span> You try it:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -413,7 +509,7 @@ Solution
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(Z)  </span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 11.88241 11.53112 11.67175 11.83517 11.71687</code></pre>
+<pre><code>[1] 11.65394 11.64867 11.67550 11.67233 11.65359</code></pre>
 </div>
 </div>
 </div>
@@ -437,23 +533,24 @@ Example:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">5</span>) <span class="co"># without replacement</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6 5 3 1 2</code></pre>
+<pre><code>[1] 5 2 4 3 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">replace=</span><span class="cn">TRUE</span>) <span class="co"># with replacement</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 6 2 4 6</code></pre>
+<pre><code>[1] 5 6 4 2 3</code></pre>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="in-closing" class="level1">
-<h1>In Closing</h1>
+<section id="wrap-up" class="level1">
+<h1>Wrap up</h1>
 <p>The functions demonstrated in this section are to provide examples of functions and tactics we will be using throughout the semester.</p>
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -474,6 +571,121 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -588,6 +800,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a>.</div>   
+  </div>
+</footer>
 
 
 

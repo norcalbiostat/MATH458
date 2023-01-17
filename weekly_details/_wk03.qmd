@@ -1,7 +1,7 @@
 ---
-title: "Introduction to the Sampling Framework"
-date: "1/30/23"
-prepare: "Create blank notes file. Read textbook"
+title: "Foundations of Statistical Estimation"
+date: "2/06/23"
+prepare: "Prepare notes file. Download data"
 execute: 
   echo: false
 ---
@@ -11,7 +11,7 @@ library(dplyr);library(readxl); library(stringr); library(pander)
 
 # Read in schedule, extract week
 wd <- read_excel(here::here("schedule_458.xlsx"), sheet="weekly_detail") %>%
-  filter(wk==2)
+  filter(wk==3)
 
 # strip data columns into separate lists
 SLO  <- as.list(str_split(wd$SLO, "\r\n", simplify=TRUE))

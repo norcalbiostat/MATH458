@@ -1,5 +1,13 @@
 [
   {
+    "listing": "/complete_notes.html",
+    "items": [
+      "/complete_notes/cn01-intro_simulation_complete.html",
+      "/complete_notes/cn02-intro_sampling_complete.html",
+      "/complete_notes/cn03-statistical_foundations_complete.html"
+    ]
+  },
+  {
     "listing": "/hw.html",
     "items": [
       "/hw/hw00-setup.html"
@@ -10,7 +18,8 @@
     "items": [
       "/notes/cn00-welcome.html",
       "/notes/cn01-intro_simulation.html",
-      "/notes/cn02-intro_sampling.html"
+      "/notes/cn02-intro_sampling.html",
+      "/notes/cn03-statistical_foundations.html"
     ]
   },
   {

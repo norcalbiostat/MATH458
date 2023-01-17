@@ -1,0 +1,13 @@
+---
+title: "Complete Notes"
+listing:
+  contents:
+    - complete_notes
+  type: table
+  fields: [date, title]
+  date-format: "MM-DD"
+  sort: [date]
+  sort-ui: false
+  filter-ui: false
+---
+
