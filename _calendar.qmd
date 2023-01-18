@@ -1,7 +1,0 @@
----
-title: "Class Calendar"
----
-
-> `r emo::ji("idea")` Subscribe to this calendar by clicking the plus button in the bottom right corner!
-
-<iframe src="https://calendar.google.com/calendar/embed?height=800&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&showTz=0&showCalendars=0&showTabs=0&showPrint=0&src=Y180Y2ZmNDkzMGQ5MGE1ODY4NzQ4NWVhNjdjOTc1YmNlMDdmNTAzNjg0MzQzNjZmZTY2MTZmYTg1Yzg1M2IwZmY0QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23F09300" style="border-width:0" width="1000" height="800" frameborder="0" scrolling="no"></iframe>

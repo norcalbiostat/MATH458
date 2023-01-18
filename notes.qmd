@@ -3,7 +3,7 @@ title: "Course Notes"
 listing:
   contents:
     - notes
-  type: grid
+  type: table
   fields: [date, title, description]
   field-display-names:
     title: "Topic"

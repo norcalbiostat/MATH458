@@ -71,9 +71,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -173,91 +173,80 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
 <div class="listing-actions-group">
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1674460800000" data-listing-file-modified-sort="1673892768418" data-listing-reading-time-sort="6.36">
-<a href="./notes/cn00-welcome.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Welcome to MATH 458
-</h5>
-<div class="card-text listing-description">
-Course Overview slides
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
+
+<table class="quarto-listing-table table table-hover">
+<thead>
+<tr>
+<th>
+Date
+</th>
+<th>
+Topic
+</th>
+<th>
+Description
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1674460800000" data-listing-file-modified-sort="1673892768418" data-listing-reading-time-sort="6.36" data-listing-title-sort="Welcome to MATH 458" data-listing-filename-sort="cn00-welcome.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td class="listing-date">
 Jan 23, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1674633600000" data-listing-file-modified-sort="1673912733931" data-listing-reading-time-sort="6.64">
-<a href="./notes/cn01-intro_simulation.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Introduction to Simulation
-</h5>
-<div class="card-text listing-description">
-Foundations of writing your own custom functions, drawing samples and conducting a simulation.
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
+</td>
+<td class="listing-title">
+<a href="./notes/cn00-welcome.html" class="title">Welcome to MATH 458</a>
+</td>
+<td class="listing-description">
+Course Overview slides
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1674633600000" data-listing-file-modified-sort="1673912733931" data-listing-reading-time-sort="6.64" data-listing-title-sort="Introduction to Simulation" data-listing-filename-sort="cn01-intro_simulation.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td class="listing-date">
 Jan 25, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1675065600000" data-listing-file-modified-sort="1673929604672" data-listing-reading-time-sort="0.09">
-<a href="./notes/cn02-intro_sampling.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-The Sampling Framework
-</h5>
-<div class="card-text listing-description">
-The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
+</td>
+<td class="listing-title">
+<a href="./notes/cn01-intro_simulation.html" class="title">Introduction to Simulation</a>
+</td>
+<td class="listing-description">
+Foundations of writing your own custom functions, drawing samples and conducting a simulation.
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1675065600000" data-listing-file-modified-sort="1673929604672" data-listing-reading-time-sort="0.09" data-listing-title-sort="The Sampling Framework" data-listing-filename-sort="cn02-intro_sampling.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td class="listing-date">
 Jan 30, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1675411200000" data-listing-file-modified-sort="1673929746893" data-listing-reading-time-sort="0.09">
-<a href="./notes/cn03-statistical_foundations.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Foundations of Statistical Estimation
-</h5>
-<div class="card-text listing-description">
-We review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
+</td>
+<td class="listing-title">
+<a href="./notes/cn02-intro_sampling.html" class="title">The Sampling Framework</a>
+</td>
+<td class="listing-description">
+The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1675411200000" data-listing-file-modified-sort="1673929746893" data-listing-reading-time-sort="0.09" data-listing-title-sort="Foundations of Statistical Estimation" data-listing-filename-sort="cn03-statistical_foundations.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td class="listing-date">
 Feb 3, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
+</td>
+<td class="listing-title">
+<a href="./notes/cn03-statistical_foundations.html" class="title">Foundations of Statistical Estimation</a>
+</td>
+<td class="listing-description">
+We review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.
+</td>
+</tr>
+</tbody>
+
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

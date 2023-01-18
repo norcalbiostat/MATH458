@@ -22,7 +22,9 @@ You should observe a histogram of the generated data to get a feel for the data,
 
 For each simulated sampling distribution, calculate the mean, standard deviation and bias of the simulated statistic. 
 
-Copy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph that summarizes your results. Which statistic would you recommend if estimating $\lambda$? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.
+Copy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating $\lambda$? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.
+
+Submit your compiled PDF to Canvas by the due date. 
 
 ```md
 ## Mean
