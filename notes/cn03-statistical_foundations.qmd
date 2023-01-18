@@ -1,7 +1,7 @@
 ---
 title: "Foundations of Statistical Estimation"
 description: "We review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course."
-date: 2/3/23
+date: 2/03/23
 ---
 
 

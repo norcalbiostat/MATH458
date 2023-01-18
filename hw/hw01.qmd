@@ -1,0 +1,63 @@
+---
+format: html
+title: "HW 01: Simulation and estimation"
+subtitle: "Examining the accuracy (bias) and precision (spread) of a few measures of center."
+---
+
+# Overview
+
+Suppose we want to examine the accuracy (bias) and precision (spread) of a few measures of center. Some measures of center are the mean, the midhinge, the trimmed mean and the median.
+
+-   The midhinge is the average of $Q_{1}$ and $Q_{3}$.
+-   The trimmed mean is the sample mean with a certain percent of the extreme values removed. We will look at a 3% trimmed mean which you can calculate in R with the function `mean(x,0.3)`.
+-   The median is the number that divides the sorted data into two equal halves.
+
+
+# Instructions
+
+[The function $rpois(n,\lambda)$ will generate $n$ values from a Poison distribution with parameter $\lambda$.]{.aside}
+Let's examine the precision and accuracy for the Poisson distribution with parameter $\lambda$, using 2 different sample sizes (15, 50) and two different values of $\lambda$ (0.5, 2).
+
+You should observe a histogram of the generated data to get a feel for the data, but do not need to include copious amounts of plots in your submission. 
+
+For each simulated sampling distribution, calculate the mean, standard deviation and bias of the simulated statistic. 
+
+Copy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph that summarizes your results. Which statistic would you recommend if estimating $\lambda$? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.
+
+```md
+## Mean
+
+| Parameters            | Exp Value | Std Dev | Bias |
+|-----------------------|-----------|---------|------|
+| $n=15, \lambda = 0.5$ |           |         |      |
+| $n=15, \lambda = 2$   |           |         |      |
+| $n=50, \lambda = 0.5$ |           |         |      |
+| $n=50, \lambda = 2$   |           |         |      |
+
+## Trimmed Mean
+
+| Parameters            | Exp Value | Std Dev | Bias |
+|-----------------------|-----------|---------|------|
+| $n=15, \lambda = 0.5$ |           |         |      |
+| $n=15, \lambda = 2$   |           |         |      |
+| $n=50, \lambda = 0.5$ |           |         |      |
+| $n=50, \lambda = 2$   |           |         |      |
+
+## Midhinge
+
+| Parameters            | Exp Value | Std Dev | Bias |
+|-----------------------|-----------|---------|------|
+| $n=15, \lambda = 0.5$ |           |         |      |
+| $n=15, \lambda = 2$   |           |         |      |
+| $n=50, \lambda = 0.5$ |           |         |      |
+| $n=50, \lambda = 2$   |           |         |      |
+
+## Median
+
+| Parameters            | Exp Value | Std Dev | Bias |
+|-----------------------|-----------|---------|------|
+| $n=15, \lambda = 0.5$ |           |         |      |
+| $n=15, \lambda = 2$   |           |         |      |
+| $n=50, \lambda = 0.5$ |           |         |      |
+| $n=50, \lambda = 2$   |           |         |      |
+```
