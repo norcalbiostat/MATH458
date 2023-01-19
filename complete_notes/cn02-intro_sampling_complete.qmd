@@ -6,7 +6,7 @@ date: 1/30/23
 
 # Introduction
 
-The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean.
+The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean, proportion or total.
 
 # Populations and Representative Samples (1.2)
 

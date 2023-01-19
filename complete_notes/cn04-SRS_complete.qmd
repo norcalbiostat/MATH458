@@ -1,0 +1,49 @@
+---
+title: "Simple Random Sampling"
+description: "Description"
+date: Date
+---
+
+Lohr, Ch 2.3
+
+# Introduction
+
+What is a SRS
+* english
+* math
+* How to draw a SRS
+    - generalizability
+* Sampling Weights (Lohr Ch 2.4)
+
+# Estimating population parameters
+
+## mean
+* Expected value, variance, SE, CV, Bounds on error of estimation
+* FPC
+* Coefficient of variation
+
+## total: 
+* Expected value, variance, SE, CV 
+
+## Proportion
+Expected value, variance
+
+
+# Using the `survey` package. 
+
+
+# Determining sample size 
+
+# Model based theory vs Randomization based theory (Lohr 2.10, 2.11)
+
+# Closing: When should SRS be used
+* comparison to systemic sampling? 
+
+
+# Analysis under SRS???
+
+
+
+
+
+
