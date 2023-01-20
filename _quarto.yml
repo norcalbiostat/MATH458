@@ -26,12 +26,13 @@ website:
         file: notes.qmd
       - text: "Assignments"
         file: assignments.qmd
-      - text: "R resources"
-        url: https://hackmd.io/@norcalbiostat/sampling_r_resources
+
         
     right: 
       - text: "HackMD"
         url: https://hackmd.io
+      - text: "R resources"
+        url: https://hackmd.io/@norcalbiostat/sampling_r_resources
       - text: "Syllabus"
         file: syllabus.qmd
 

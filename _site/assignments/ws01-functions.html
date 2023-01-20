@@ -93,15 +93,15 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../assignments.html">
  <span class="menu-text">Assignments</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://hackmd.io/@norcalbiostat/sampling_r_resources">
- <span class="menu-text">R resources</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="https://hackmd.io">
  <span class="menu-text">HackMD</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://hackmd.io/@norcalbiostat/sampling_r_resources">
+ <span class="menu-text">R resources</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../syllabus.html">
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -158,10 +158,10 @@ ul.task-list li input[type="checkbox"] {
 <li>Create a function that computes the midhinge. You will need to use the function <code>quantile()</code> to do this.</li>
 <li>Use your function to compute the midhinge of the numbers: 3,100,40,7,29,2,230,44,100,1200,8,15,900.</li>
 </ol></li>
-<li><p>Suppose I wanted to use the midhinge to estimate the mean of a Poisson distribution, denoted as <span class="math inline">\(\lambda\)</span>. The function <code>rpois(500,2)</code> will create a vector of 500 values that follows the Poisson distribution with <span class="math inline">\(\lambda=2\)</span>. Use your function to calculate the midhinge of a sample of 500 values. Is the midhinge a good estimate of <span class="math inline">\(\lambda\)</span>? Explain your reasoning.</p></li>
+<li><p>Suppose I wanted to use the midhinge to estimate the mean of a Poisson distribution, denoted as <span class="math inline">\(\lambda\)</span>. Use your function to calculate the midhinge of a sample of 500 values. Is the midhinge a good estimate of <span class="math inline">\(\lambda\)</span>? Explain your reasoning. </p></li>
 <li><p>The unknown parameters in simple linear regression are the slope, <span class="math inline">\(\beta_{1}\)</span>, and the intercept, <span class="math inline">\(\beta_{0}\)</span>. The common formula for these estimates are</p></li>
 </ol>
-<p><span class="math display">\[
+<div class="no-row-height column-margin column-container"><span class="">The function <span class="math inline">\(rpois(n,\lambda)\)</span> will generate <span class="math inline">\(n\)</span> values from a Poison distribution with parameter <span class="math inline">\(\lambda\)</span>.</span></div><p><span class="math display">\[
 \hat{\beta}_{1}=\frac{\sum^{n}_{i=1}\left(x_{i}-\bar{x}\right)y_{i}}{\sum^{n}_{i=1}\left(x_{i}-\bar{x}\right)^{2}}
 \]</span></p>
 <p><span class="math display">\[

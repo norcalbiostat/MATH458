@@ -9,7 +9,8 @@ date: 1/27/23
     b. Use your function to compute the midhinge of the numbers: 3,100,40,7,29,2,230,44,100,1200,8,15,900.
 
 
-2. Suppose I wanted to use the midhinge to estimate the mean of a Poisson distribution, denoted as $\lambda$. The function `rpois(500,2)` will create a vector of 500 values that follows the Poisson distribution with $\lambda=2$. Use your function to calculate the midhinge of a sample of 500 values. Is the midhinge a good estimate of $\lambda$? Explain your reasoning.
+2. Suppose I wanted to use the midhinge to estimate the mean of a Poisson distribution, denoted as $\lambda$. Use your function to calculate the midhinge of a sample of 500 values. Is the midhinge a good estimate of $\lambda$? Explain your reasoning.
+[The function $rpois(n,\lambda)$ will generate $n$ values from a Poison distribution with parameter $\lambda$.]{.aside}
 
 3. The unknown parameters in simple linear regression are the slope, $\beta_{1}$, and the intercept, $\beta_{0}$. The common formula for these estimates are
 

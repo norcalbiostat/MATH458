@@ -1,8 +1,9 @@
 ---
 format: html
-title: "Homework 01: Simulation and estimation"
-date: 02/06/23
+title: "Homework 01: Simulation and Estimation"
 subtitle: "Examining the accuracy (bias) and precision (spread) of a few measures of center."
+date: 02/06/23
+categories: Homework
 ---
 
 # Overview
@@ -16,7 +17,6 @@ Suppose we want to examine the accuracy (bias) and precision (spread) of a few m
 
 # Instructions
 
-[The function $rpois(n,\lambda)$ will generate $n$ values from a Poison distribution with parameter $\lambda$.]{.aside}
 Let's examine the precision and accuracy for the Poisson distribution with parameter $\lambda$, using 2 different sample sizes (15, 50) and two different values of $\lambda$ (0.5, 2).
 
 You should observe a histogram of the generated data to get a feel for the data, but do not need to include copious amounts of plots in your submission. 
@@ -24,8 +24,6 @@ You should observe a histogram of the generated data to get a feel for the data,
 For each simulated sampling distribution, calculate the mean, standard deviation and bias of the simulated statistic. 
 
 Copy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating $\lambda$? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.
-
-Submit your compiled PDF to Canvas by the due date. 
 
 ```md
 ## Mean
