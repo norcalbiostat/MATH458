@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sampling Methods - Complete Notes</title>
+<title>Sampling Methods - HW 00: Getting setup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,37 +59,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -102,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
@@ -112,15 +80,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./weekly_details.html">
+    <a class="nav-link" href="../weekly_details.html">
  <span class="menu-text">Weekly Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html">
+    <a class="nav-link" href="../notes.html">
  <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./assignments.html">
+    <a class="nav-link" href="../assignments.html">
  <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
@@ -134,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">HackMD</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html">
+    <a class="nav-link" href="../syllabus.html">
  <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
@@ -151,15 +119,31 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#discord" id="toc-discord" class="nav-link active" data-scroll-target="#discord">1. Discord</a></li>
+  <li><a href="#update-your-r-4.2-and-r-studio-latest." id="toc-update-your-r-4.2-and-r-studio-latest." class="nav-link" data-scroll-target="#update-your-r-4.2-and-r-studio-latest.">2. Update your R (4.2+) and R Studio (latest).</a></li>
+  <li><a href="#get-organized" id="toc-get-organized" class="nav-link" data-scroll-target="#get-organized">3. Get Organized</a></li>
+  <li><a href="#quick-access" id="toc-quick-access" class="nav-link" data-scroll-target="#quick-access">4. Quick access</a></li>
+  <li><a href="#hackmd" id="toc-hackmd" class="nav-link" data-scroll-target="#hackmd">5. HackMD</a></li>
+  <li><a href="#student-office-hours" id="toc-student-office-hours" class="nav-link" data-scroll-target="#student-office-hours">6. Student office hours</a></li>
+  <li><a href="#programming-assessment" id="toc-programming-assessment" class="nav-link" data-scroll-target="#programming-assessment">7. Programming Assessment</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Complete Notes</h1>
-</div>
+<h1 class="title">HW 00: Getting setup</h1>
+<p class="subtitle lead">Getting all the materials and tools for the class</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Homework</div>
+  </div>
+  </div>
 
 
 
@@ -173,63 +157,101 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1674633600000" data-listing-file-modified-sort="1673912733899" data-listing-reading-time-sort="7" data-listing-title-sort="Introduction to Simulation" data-listing-filename-sort="cn01-intro_simulation_complete.qmd">
-<td class="listing-date">
-01-25
-</td>
-<td class="listing-title">
-<a href="./complete_notes/cn01-intro_simulation_complete.html" class="title">Introduction to Simulation</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1675065600000" data-listing-file-modified-sort="1674178525268" data-listing-reading-time-sort="8.49" data-listing-title-sort="The Sampling Framework" data-listing-filename-sort="cn02-intro_sampling_complete.qmd">
-<td class="listing-date">
-01-30
-</td>
-<td class="listing-title">
-<a href="./complete_notes/cn02-intro_sampling_complete.html" class="title">The Sampling Framework</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1675411200000" data-listing-file-modified-sort="1673927279036" data-listing-reading-time-sort="14.575" data-listing-title-sort="Foundations of Statistical Estimation" data-listing-filename-sort="cn03-statistical_foundations_complete.qmd">
-<td class="listing-date">
-02-03
-</td>
-<td class="listing-title">
-<a href="./complete_notes/cn03-statistical_foundations_complete.html" class="title">Foundations of Statistical Estimation</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="NaN" data-listing-file-modified-sort="1674090893912" data-listing-reading-time-sort="0.425" data-listing-title-sort="Simple Random Sampling" data-listing-filename-sort="cn04-SRS_complete.qmd">
-<td class="listing-date">
-Invalid Date
-</td>
-<td class="listing-title">
-<a href="./complete_notes/cn04-SRS_complete.html" class="title">Simple Random Sampling</a>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<section id="discord" class="level1">
+<h1>1. Discord</h1>
+<p>Click this link to join the Math &amp; Stats Discord server <a href="https://discord.gg/xCQTAgu8bE">https://discord.gg/xCQTAgu8bE</a>. This is a support platform where student office hours will be held and personalized channels can be made.</p>
+<div class="callout-important callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-</div></main> <!-- /main -->
+<div class="callout-caption-container flex-fill">
+This is the defacto method of communication for this class
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I get way too many emails that it’s easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.</p>
+</div>
+</div>
+<ol type="a">
+<li><a href="https://discord.com/download">Download the Desktop app</a>. <span style="color:red"><strong>You should not rely on remembering to log in using the web version.</strong></span> Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider.</li>
+<li>You are welcome to have any username you choose as long as it’s suitable for school.</li>
+<li>Once you join the server and accept the code of conduct, go to the <code>#class-selection</code> channel (left side bar) and click the icon that’ll add you to our class folder.</li>
+<li>Post an introduction in the <code>#458-class-chat</code> channel. Include the following:
+<ul>
+<li>major</li>
+<li>Any pets (include pics!)</li>
+<li>what fictional family would you like to belong to?</li>
+<li>your biggest concern about the class</li>
+</ul></li>
+</ol>
+<p><br></p>
+</section>
+<section id="update-your-r-4.2-and-r-studio-latest." class="level1">
+<h1>2. Update your R (4.2+) and R Studio (latest).</h1>
+<ul>
+<li>All homework is to be done in a literate programming/reproducible manner. This means either <code>.Rmd</code> or <code>.qmd</code> files compiled to PDF.
+<ul>
+<li>If you don’t know what this means, review lecture 02 &amp; 03 from <a href="https://norcalbiostat.github.io/MATH130/wk1.html">Math 130 week 1</a></li>
+<li>Also check out the next generation of literate programming tools: <a href="https://quarto.org/docs/get-started/hello/rstudio.html">Quarto</a>. I will be giving you <code>.qmd</code> files to work in. They work essentially the same as Rmarkdown files with subtle differences. You must have the newest version of Rstudio to work with these files.</li>
+</ul></li>
+<li>Make sure you can knit to PDF. If you cannot, then install the <code>tinytex</code> package and then run <code>tinytex::install_tinytex()</code> in the console to install a lightweight version of LaTeX.</li>
+</ul>
+</section>
+<section id="get-organized" class="level1">
+<h1>3. Get Organized</h1>
+<p>Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for <strong>scripts</strong>, <strong>data</strong>, and <strong>reports</strong>.</p>
+<p>You need to choose a naming convention for your folders and try to stick with it. Recommended options are:</p>
+<ul>
+<li>ALL CAPS (MATH458)</li>
+<li>no caps (math458)</li>
+<li>snake_case (math_458)</li>
+<li>CamelCase (Math458)</li>
+</ul>
+<p>Create this class folder along with the following subfolders to organize your data and script files.</p>
+<ul>
+<li><code>data</code> - any data that’s handed out goes in here</li>
+<li><code>worksheets</code> - scripts used for completing worksheets</li>
+<li><code>homework</code>- assignments to be submitted</li>
+<li><code>notes</code> - you will be writing and contributing notes to the class</li>
+<li><code>exams</code> - because they’re likely to be computer based.</li>
+</ul>
+<div class="callout-important callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Do not let everything live in your downloads folder.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This means when you download a file, right click and “Save as” or “Save target as” and <strong>actively choose</strong> where to download this file.</p>
+</div>
+</div>
+</section>
+<section id="quick-access" class="level1">
+<h1>4. Quick access</h1>
+<p>Bookmark this class website. Going through Canvas every time just is a waste of your time.</p>
+</section>
+<section id="hackmd" class="level1">
+<h1>5. HackMD</h1>
+<p>Go to the <a href="https://hackmd.io/@norcalbiostat/458_intro_hackmd/">What is HackMD collaborative notes</a>, read the introduction and add your name and major to the list.</p>
+</section>
+<section id="student-office-hours" class="level1">
+<h1>6. Student office hours</h1>
+<p>Help me decide when to hold student office hours. Remember, these are open drop in times where I dedicate my time to YOU as students. My time outside these hours is limited, so be sure to fill this out so I can best choose times that you are free. <a href="https://forms.gle/aZgtaBbt2tH21ZAr6">[Link]</a></p>
+<p><span class="emoji" data-emoji="stop_sign">🛑</span> If you are doing this for Math 456, do not submit a second entry. You only need to do this once.</p>
+</section>
+<section id="programming-assessment" class="level1">
+<h1>7. Programming Assessment</h1>
+<p>This is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions are found in Canvas.</p>
+<p><span class="emoji" data-emoji="stop_sign">🛑</span> If you are doing this for Math 456, do not submit a second entry. You only need to do this once.</p>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

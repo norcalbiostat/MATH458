@@ -195,4 +195,7 @@ For instance, suppose that a city planner is interested in finding out how his t
 Note that this type of sampling plan makes use of an auxiliary variable, in this case income. By stratifying we should be increasing the accuracy of our estimate. 
 :::
 
+## Questionnaire Design / Data collection tools
+
+We will return to this topic of how to design appropriate and useful data collections in a few weeks. 
 

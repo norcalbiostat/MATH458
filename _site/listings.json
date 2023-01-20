@@ -4,7 +4,8 @@
     "items": [
       "/complete_notes/cn01-intro_simulation_complete.html",
       "/complete_notes/cn02-intro_sampling_complete.html",
-      "/complete_notes/cn03-statistical_foundations_complete.html"
+      "/complete_notes/cn03-statistical_foundations_complete.html",
+      "/complete_notes/cn04-SRS_complete.html"
     ]
   },
   {
@@ -29,6 +30,15 @@
       "/weekly_details/wk01.html",
       "/weekly_details/wk02.html",
       "/weekly_details/wk03.html"
+    ]
+  },
+  {
+    "listing": "/assignments.html",
+    "items": [
+      "/assignments/hw00-setup.html",
+      "/assignments/ws01-functions.html",
+      "/assignments/ws02.html",
+      "/assignments/hw01.html"
     ]
   }
 ]

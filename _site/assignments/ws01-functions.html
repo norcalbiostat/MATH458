@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sampling Methods - Complete Notes</title>
+<title>Sampling Methods - WS 01: Writing Functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,35 +59,6 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -102,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
@@ -112,15 +81,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./weekly_details.html">
+    <a class="nav-link" href="../weekly_details.html">
  <span class="menu-text">Weekly Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html">
+    <a class="nav-link" href="../notes.html">
  <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./assignments.html">
+    <a class="nav-link" href="../assignments.html">
  <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
@@ -134,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">HackMD</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html">
+    <a class="nav-link" href="../syllabus.html">
  <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
@@ -158,8 +127,11 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Complete Notes</h1>
-</div>
+<h1 class="title">WS 01: Writing Functions</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Worksheet</div>
+  </div>
+  </div>
 
 
 
@@ -173,63 +145,34 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<ol type="1">
+<li><p>Often we are interested in estimating the center of a distribution. The sample mean (<span class="math inline">\(\bar{x}=\sum{x}/n)\)</span> is sensitive to outliers and therefore we sometimes use other measures of center to estimate the center of a distribution. One such measure is the <strong>midhinge</strong> which is the average of <span class="math inline">\(Q_{1}\)</span> and <span class="math inline">\(Q_{3}\)</span>. The quartiles break up the data into four equal quarters. <span class="math inline">\(Q_{1}\)</span> is the 25th percentile and <span class="math inline">\(Q_{3}\)</span> is the 75th percentile.</p>
+<ol type="a">
+<li>Create a function that computes the midhinge. You will need to use the function <code>quantile()</code> to do this.</li>
+<li>Use your function to compute the midhinge of the numbers: 3,100,40,7,29,2,230,44,100,1200,8,15,900.</li>
+</ol></li>
+<li><p>Suppose I wanted to use the midhinge to estimate the mean of a Poisson distribution, denoted as <span class="math inline">\(\lambda\)</span>. The function <code>rpois(500,2)</code> will create a vector of 500 values that follows the Poisson distribution with <span class="math inline">\(\lambda=2\)</span>. Use your function to calculate the midhinge of a sample of 500 values. Is the midhinge a good estimate of <span class="math inline">\(\lambda\)</span>? Explain your reasoning.</p></li>
+<li><p>The unknown parameters in simple linear regression are the slope, <span class="math inline">\(\beta_{1}\)</span>, and the intercept, <span class="math inline">\(\beta_{0}\)</span>. The common formula for these estimates are</p></li>
+</ol>
+<p><span class="math display">\[
+\hat{\beta}_{1}=\frac{\sum^{n}_{i=1}\left(x_{i}-\bar{x}\right)y_{i}}{\sum^{n}_{i=1}\left(x_{i}-\bar{x}\right)^{2}}
+\]</span></p>
+<p><span class="math display">\[
+\hat{\beta}_{0}=\bar{y}-\hat{\beta}_{1}\bar{x}
+\]</span></p>
+<p>Write a function in R that computes both the intercept and the slope estimate. Your function will need to return two values. There are a few ways to do this but using the <code>list()</code> command will do this (i.e.&nbsp;your last line would look something like <code>list(b_0, b_1))</code></p>
+<ol start="4" type="1">
+<li>In Denali National Park, Alaska, the wolf population is dependent on a large, strong caribou population. In this wild setting, caribou are found in very large herds. It is thought that wolves keep caribou herds strong by helping prevent over-population. Let x represent the number of fall caribou herds and y represent the late winter wolf population in the park. A random sample of recent years gives the following results:</li>
+</ol>
+<ul>
+<li><code>x = 31, 34, 27, 25, 17, 23, 20</code></li>
+<li><code>y = 75, 85, 75, 60, 48, 60, 60</code></li>
+</ul>
+<p>Use your function to estimate the slope and the intercept. Then use the <code>lm()</code> function in R to check your code.</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1674633600000" data-listing-file-modified-sort="1673912733899" data-listing-reading-time-sort="7" data-listing-title-sort="Introduction to Simulation" data-listing-filename-sort="cn01-intro_simulation_complete.qmd">
-<td class="listing-date">
-01-25
-</td>
-<td class="listing-title">
-<a href="./complete_notes/cn01-intro_simulation_complete.html" class="title">Introduction to Simulation</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1675065600000" data-listing-file-modified-sort="1674178525268" data-listing-reading-time-sort="8.49" data-listing-title-sort="The Sampling Framework" data-listing-filename-sort="cn02-intro_sampling_complete.qmd">
-<td class="listing-date">
-01-30
-</td>
-<td class="listing-title">
-<a href="./complete_notes/cn02-intro_sampling_complete.html" class="title">The Sampling Framework</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1675411200000" data-listing-file-modified-sort="1673927279036" data-listing-reading-time-sort="14.575" data-listing-title-sort="Foundations of Statistical Estimation" data-listing-filename-sort="cn03-statistical_foundations_complete.qmd">
-<td class="listing-date">
-02-03
-</td>
-<td class="listing-title">
-<a href="./complete_notes/cn03-statistical_foundations_complete.html" class="title">Foundations of Statistical Estimation</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="NaN" data-listing-file-modified-sort="1674090893912" data-listing-reading-time-sort="0.425" data-listing-title-sort="Simple Random Sampling" data-listing-filename-sort="cn04-SRS_complete.qmd">
-<td class="listing-date">
-Invalid Date
-</td>
-<td class="listing-title">
-<a href="./complete_notes/cn04-SRS_complete.html" class="title">Simple Random Sampling</a>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,12 +1,7 @@
 ---
 title: "Worksheet 2"
-name: Name
-format: pdf
-geometry: 
-  - top= .5in
-  - bottom= .5in
-  - right= .75in
-  - left= .75in
+categories: Worksheet
+date: 2/10/23
 ---
 
 Sometimes we may need to choose between two sampling plans by comparing measures such as variance, bias and accuracy. Here we are interested in estimating $\mu$, the population mean.

@@ -24,8 +24,10 @@ website:
         file: weekly_details.qmd
       - text: "Notes"
         file: notes.qmd
-      - text: "Homework"
-        file: hw.qmd
+      - text: "Assignments"
+        file: assignments.qmd
+      - text: "R resources"
+        url: https://hackmd.io/@norcalbiostat/sampling_r_resources
     right: 
       - text: "HackMD"
         url: https://hackmd.io

@@ -1,0 +1,10 @@
+---
+title: "Collecting good data"
+description: "Description"
+date: Date
+---
+
+Lohr, Ch 1.5
+
+
+

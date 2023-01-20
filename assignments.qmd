@@ -1,15 +1,15 @@
 ---
-title: "Homework"
+title: "Assignments"
 listing:
   contents:
-    - hw
+    - assignments
+  categories: true
   type: table
-  fields: [title, subtitle]
+  fields: [date, title]
   field-display-names:
+    date: "Date Assigned"
     title: "Title"
-    subtitle: "Learning Objective"
   sort: [date]
   sort-ui: false
   filter-ui: false
-tbl-colwidths: [50,50]
 ---
