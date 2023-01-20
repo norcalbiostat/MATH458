@@ -1,6 +1,7 @@
 ---
 format: html
-title: "HW 01: Simulation and estimation"
+title: "Homework 01: Simulation and estimation"
+date: 02/06/23
 subtitle: "Examining the accuracy (bias) and precision (spread) of a few measures of center."
 ---
 

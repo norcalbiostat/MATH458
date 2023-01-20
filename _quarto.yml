@@ -28,6 +28,7 @@ website:
         file: assignments.qmd
       - text: "R resources"
         url: https://hackmd.io/@norcalbiostat/sampling_r_resources
+        
     right: 
       - text: "HackMD"
         url: https://hackmd.io

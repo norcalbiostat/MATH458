@@ -1,5 +1,6 @@
 ---
-title: "Worksheet 2"
+title: "Worksheet 02: Comparing sampling plans"
+subtitle: "Estimating parameters under different sampling plans"
 categories: Worksheet
 date: 2/10/23
 ---

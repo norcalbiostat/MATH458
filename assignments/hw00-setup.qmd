@@ -1,6 +1,6 @@
 ---
 format: html
-title: "HW 00: Getting setup"
+title: "Homework 00: Getting setup"
 date: "01/23/23"
 categories: Homework
 subtitle: "Getting all the materials and tools for the class"

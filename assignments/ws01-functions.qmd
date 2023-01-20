@@ -1,5 +1,5 @@
 ---
-title: "WS 01: Writing Functions"
+title: "Worksheet 01: Writing Functions"
 categories: Worksheet
 date: 1/27/23
 ---

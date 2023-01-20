@@ -1,5 +1,40 @@
 [
   {
+    "objectID": "assignments/hw00-setup.html",
+    "href": "assignments/hw00-setup.html",
+    "title": "Homework 00: Getting setup",
+    "section": "",
+    "text": "1. Discord\nClick this link to join the Math & Stats Discord server https://discord.gg/xCQTAgu8bE. This is a support platform where student office hours will be held and personalized channels can be made.\n\n\n\n\n\n\nThis is the defacto method of communication for this class\n\n\n\nI get way too many emails that it’s easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.\n\n\n\nDownload the Desktop app. You should not rely on remembering to log in using the web version. Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider.\nYou are welcome to have any username you choose as long as it’s suitable for school.\nOnce you join the server and accept the code of conduct, go to the #class-selection channel (left side bar) and click the icon that’ll add you to our class folder.\nPost an introduction in the #458-class-chat channel. Include the following:\n\nmajor\nAny pets (include pics!)\nwhat fictional family would you like to belong to?\nyour biggest concern about the class\n\n\n\n\n\n2. Update your R (4.2+) and R Studio (latest).\n\nAll homework is to be done in a literate programming/reproducible manner. This means either .Rmd or .qmd files compiled to PDF.\n\nIf you don’t know what this means, review lecture 02 & 03 from Math 130 week 1\nAlso check out the next generation of literate programming tools: Quarto. I will be giving you .qmd files to work in. They work essentially the same as Rmarkdown files with subtle differences. You must have the newest version of Rstudio to work with these files.\n\nMake sure you can knit to PDF. If you cannot, then install the tinytex package and then run tinytex::install_tinytex() in the console to install a lightweight version of LaTeX.\n\n\n\n3. Get Organized\nUsing a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for scripts, data, and reports.\nYou need to choose a naming convention for your folders and try to stick with it. Recommended options are:\n\nALL CAPS (MATH458)\nno caps (math458)\nsnake_case (math_458)\nCamelCase (Math458)\n\nCreate this class folder along with the following subfolders to organize your data and script files.\n\ndata - any data that’s handed out goes in here\nworksheets - scripts used for completing worksheets\nhomework- assignments to be submitted\nnotes - you will be writing and contributing notes to the class\nexams - because they’re likely to be computer based.\n\n\n\n\n\n\n\nDo not let everything live in your downloads folder.\n\n\n\nThis means when you download a file, right click and “Save as” or “Save target as” and actively choose where to download this file.\n\n\n\n\n4. Quick access\nBookmark this class website. Going through Canvas every time just is a waste of your time.\n\n\n5. HackMD\nGo to the What is HackMD collaborative notes, read the introduction and add your name and major to the list.\n\n\n6. Student office hours\nHelp me decide when to hold student office hours. Remember, these are open drop in times where I dedicate my time to YOU as students. My time outside these hours is limited, so be sure to fill this out so I can best choose times that you are free. [Link]\n🛑 If you are doing this for Math 456, do not submit a second entry. You only need to do this once.\n\n\n7. Programming Assessment\nThis is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions are found in Canvas.\n🛑 If you are doing this for Math 456, do not submit a second entry. You only need to do this once."
+  },
+  {
+    "objectID": "assignments/hw01.html",
+    "href": "assignments/hw01.html",
+    "title": "Homework 01: Simulation and estimation",
+    "section": "",
+    "text": "Overview\nSuppose we want to examine the accuracy (bias) and precision (spread) of a few measures of center. Some measures of center are the mean, the midhinge, the trimmed mean and the median.\n\nThe midhinge is the average of \\(Q_{1}\\) and \\(Q_{3}\\).\nThe trimmed mean is the sample mean with a certain percent of the extreme values removed. We will look at a 3% trimmed mean which you can calculate in R with the function mean(x,0.3).\nThe median is the number that divides the sorted data into two equal halves.\n\n\n\nInstructions\n Let’s examine the precision and accuracy for the Poisson distribution with parameter \\(\\lambda\\), using 2 different sample sizes (15, 50) and two different values of \\(\\lambda\\) (0.5, 2).The function \\(rpois(n,\\lambda)\\) will generate \\(n\\) values from a Poison distribution with parameter \\(\\lambda\\).\nYou should observe a histogram of the generated data to get a feel for the data, but do not need to include copious amounts of plots in your submission.\nFor each simulated sampling distribution, calculate the mean, standard deviation and bias of the simulated statistic.\nCopy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating \\(\\lambda\\)? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.\nSubmit your compiled PDF to Canvas by the due date.\n## Mean\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |\n\n## Trimmed Mean\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |\n\n## Midhinge\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |\n\n## Median\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |"
+  },
+  {
+    "objectID": "assignments/ws01-functions.html",
+    "href": "assignments/ws01-functions.html",
+    "title": "Worksheet 01: Writing Functions",
+    "section": "",
+    "text": "Often we are interested in estimating the center of a distribution. The sample mean (\\(\\bar{x}=\\sum{x}/n)\\) is sensitive to outliers and therefore we sometimes use other measures of center to estimate the center of a distribution. One such measure is the midhinge which is the average of \\(Q_{1}\\) and \\(Q_{3}\\). The quartiles break up the data into four equal quarters. \\(Q_{1}\\) is the 25th percentile and \\(Q_{3}\\) is the 75th percentile.\n\nCreate a function that computes the midhinge. You will need to use the function quantile() to do this.\nUse your function to compute the midhinge of the numbers: 3,100,40,7,29,2,230,44,100,1200,8,15,900.\n\nSuppose I wanted to use the midhinge to estimate the mean of a Poisson distribution, denoted as \\(\\lambda\\). The function rpois(500,2) will create a vector of 500 values that follows the Poisson distribution with \\(\\lambda=2\\). Use your function to calculate the midhinge of a sample of 500 values. Is the midhinge a good estimate of \\(\\lambda\\)? Explain your reasoning.\nThe unknown parameters in simple linear regression are the slope, \\(\\beta_{1}\\), and the intercept, \\(\\beta_{0}\\). The common formula for these estimates are\n\n\\[\n\\hat{\\beta}_{1}=\\frac{\\sum^{n}_{i=1}\\left(x_{i}-\\bar{x}\\right)y_{i}}{\\sum^{n}_{i=1}\\left(x_{i}-\\bar{x}\\right)^{2}}\n\\]\n\\[\n\\hat{\\beta}_{0}=\\bar{y}-\\hat{\\beta}_{1}\\bar{x}\n\\]\nWrite a function in R that computes both the intercept and the slope estimate. Your function will need to return two values. There are a few ways to do this but using the list() command will do this (i.e. your last line would look something like list(b_0, b_1))\n\nIn Denali National Park, Alaska, the wolf population is dependent on a large, strong caribou population. In this wild setting, caribou are found in very large herds. It is thought that wolves keep caribou herds strong by helping prevent over-population. Let x represent the number of fall caribou herds and y represent the late winter wolf population in the park. A random sample of recent years gives the following results:\n\n\nx = 31, 34, 27, 25, 17, 23, 20\ny = 75, 85, 75, 60, 48, 60, 60\n\nUse your function to estimate the slope and the intercept. Then use the lm() function in R to check your code."
+  },
+  {
+    "objectID": "assignments/ws02.html",
+    "href": "assignments/ws02.html",
+    "title": "Worksheet 2: Estimating parameters under different sampling plans",
+    "section": "",
+    "text": "Sometimes we may need to choose between two sampling plans by comparing measures such as variance, bias and accuracy. Here we are interested in estimating \\(\\mu\\), the population mean.\nFor purposes of studying sampling distributions, assume that all population values are known: \\(y_1 = 98, y_2 = 109, y_3 = 154, y_4=133, y_5 = 190, y_6 = 175\\). Out of the \\(N=6\\) total possible values to sample from, we will choose \\(n=3\\).\nPlan 1: The following eight possible samples may be chosen with equal probability: {1,3,5}, {1,3,6}, {1,4,5}, {1,4,6}, {2,3,5}, {2,3,6}, {2,4,5}, {2,4,6}\nPlan 2: The following three samples may be chosen: {1,4,6}, {2,3,6}, {1,3,5} with respective probabilities \\(\\delta\\) = (.25, .5, .25).\nAnswer the following questions:\na) What is the value of \\(\\mu\\)? \nb) For each sampling plan, find: i)\\(E[\\bar{y}]\\), ii) \\(V[\\bar{y}]\\), iii)\\(\\mbox{Bias}(\\bar{y})\\), iv) \\(MSE(\\bar{y})\\), where \\(\\bar{y}\\) is the mean of sample values.\nc) Which sampling plan do you think is better, and why?"
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Date Assigned\n\n\nTitle\n\n\n\n\n\n\nJan 23, 2023\n\n\nHomework 00: Getting setup\n\n\n\n\nJan 27, 2023\n\n\nWorksheet 01: Writing Functions\n\n\n\n\nFeb 6, 2023\n\n\nHomework 01: Simulation and estimation\n\n\n\n\nFeb 10, 2023\n\n\nWorksheet 2: Comparing sampling plans\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "complete_notes/cn01-intro_simulation_complete.html",
     "href": "complete_notes/cn01-intro_simulation_complete.html",
     "title": "Introduction to Simulation",
@@ -56,6 +91,13 @@
     "text": "Types of sampling methods\nWe will go into the different types of sampling methods throughout the class, but here are a few.\n\nProbability Sampling\nThe classical formulation of a statistical estimation problem requires that randomness be brought into the sampling plan. With proper randomness in the sampling scheme we can be sure that we have an unbiased estimate and that our statements that involve our confidence in the estimate are accurate. Sampling designs based on planned randomness are called probability samples.\n\n\nSimple random sample\nThere are two types of simple random sampling. One is simple random sampling with replacement, whereby a member of the population can be selected more than once; the other is simple random sampling without replacement,whereby a member of the population can be selected at most once.\n\nUnless otherwise specified, we assume that sampling is done without replacement.\n\n\n\nStratified sampling\nOften deployed when we want to guarantee representation from different groups (strata) in the population. In stratified sampling the population is first divided into subpopulations, called strata, and then sampling is done from each stratum. Ideally the members of the subpopulations should be homogeneous relative to the characteristic under consideration.\n\n\n\n\n\n\nExample: Would taxpayors support a neighborhood pool?\n\n\n\nFor instance, suppose that a city planner is interested in finding out how his town would feel about a new public pool being built funded by tax payer dollars. He might divide the population up into different income groups such as high, middle, and low incomes. He would then take a simple random sample of individuals within each strata (income group). This would guarantee that his sample had representation from all income groups.\nNote that this type of sampling plan makes use of an auxiliary variable, in this case income. By stratifying we should be increasing the accuracy of our estimate."
   },
   {
+    "objectID": "complete_notes/cn02-intro_sampling_complete.html#questionnaire-design-data-collection-tools",
+    "href": "complete_notes/cn02-intro_sampling_complete.html#questionnaire-design-data-collection-tools",
+    "title": "The Sampling Framework",
+    "section": "Questionnaire Design / Data collection tools",
+    "text": "Questionnaire Design / Data collection tools\nWe will return to this topic of how to design appropriate and useful data collections in a few weeks."
+  },
+  {
     "objectID": "complete_notes/cn03-statistical_foundations_complete.html",
     "href": "complete_notes/cn03-statistical_foundations_complete.html",
     "title": "Foundations of Statistical Estimation",
@@ -77,6 +119,34 @@
     "text": "Sampling Distribution\nA sampling distribution is the distribution of sample statistics computed for different samples of the same size from the same population.\n\n\n\n\n\n\n❓ 👥 Turn to your neighbor and discuss the following questions\n\n\n\n\nWhat information might be important to get from a sampling distribution?\nWhat would happen if we increased our sample size (not the number of replicates) to \\(n=20\\) rather than \\(n=10\\). What about the sampling distribution would change?\nWhat would happen if we increased the number of replications (holding \\(n\\) constant) to 1000 instead of 100? What about the sampling distribution would change?\n\n\n\nFrom elementary statistics we know that the sampling distribution of \\(\\bar{y}\\) should be centered at \\(\\mu\\) with a standard deviation of \\(\\sigma/n\\). We also know that the shape of the distribution should be approximately Normal for a large \\(n\\)."
   },
   {
+    "objectID": "complete_notes/cn04-SRS_complete.html",
+    "href": "complete_notes/cn04-SRS_complete.html",
+    "title": "Simple Random Sampling",
+    "section": "",
+    "text": "Lohr, Ch 2.3"
+  },
+  {
+    "objectID": "complete_notes/cn04-SRS_complete.html#mean",
+    "href": "complete_notes/cn04-SRS_complete.html#mean",
+    "title": "Simple Random Sampling",
+    "section": "mean",
+    "text": "mean\n\nExpected value, variance, SE, CV, Bounds on error of estimation\nFPC\nCoefficient of variation"
+  },
+  {
+    "objectID": "complete_notes/cn04-SRS_complete.html#total",
+    "href": "complete_notes/cn04-SRS_complete.html#total",
+    "title": "Simple Random Sampling",
+    "section": "total:",
+    "text": "total:\n\nExpected value, variance, SE, CV"
+  },
+  {
+    "objectID": "complete_notes/cn04-SRS_complete.html#proportion",
+    "href": "complete_notes/cn04-SRS_complete.html#proportion",
+    "title": "Simple Random Sampling",
+    "section": "Proportion",
+    "text": "Proportion\nExpected value, variance"
+  },
+  {
     "objectID": "complete_notes.html",
     "href": "complete_notes.html",
     "title": "Complete Notes",
@@ -84,25 +154,11 @@
     "text": "Date\n\n\nTitle\n\n\n\n\n\n\n01-25\n\n\nIntroduction to Simulation\n\n\n\n\n01-30\n\n\nThe Sampling Framework\n\n\n\n\n02-03\n\n\nFoundations of Statistical Estimation\n\n\n\n\nInvalid Date\n\n\nSimple Random Sampling\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "hw/hw00-setup.html",
-    "href": "hw/hw00-setup.html",
-    "title": "HW 00: Getting setup",
+    "objectID": "ideas.html",
+    "href": "ideas.html",
+    "title": "Sampling Methods",
     "section": "",
-    "text": "1. Discord\nClick this link to join the Math & Stats Discord server https://discord.gg/xCQTAgu8bE. This is a support platform where student office hours will be held and personalized channels can be made.\n\n\n\n\n\n\nThis is the defacto method of communication for this class\n\n\n\nI get way too many emails that it’s easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.\n\n\n\nDownload the Desktop app. You should not rely on remembering to log in using the web version. Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider.\nYou are welcome to have any username you choose as long as it’s suitable for school.\nOnce you join the server and accept the code of conduct, go to the #class-selection channel (left side bar) and click the icon that’ll add you to our class folder.\nPost an introduction in the #458-class-chat channel. Include the following:\n\nmajor\nAny pets (include pics!)\nwhat fictional family would you like to belong to?\nyour biggest concern about the class\n\n\n\n\n\n2. Update your R (4.2+) and R Studio (latest).\n\nAll homework is to be done in a literate programming/reproducible manner. This means either .Rmd or .qmd files compiled to PDF.\n\nIf you don’t know what this means, review lecture 02 & 03 from Math 130 week 1\nAlso check out the next generation of literate programming tools: Quarto. I will be giving you .qmd files to work in. They work essentially the same as Rmarkdown files with subtle differences. You must have the newest version of Rstudio to work with these files.\n\nMake sure you can knit to PDF. If you cannot, then install the tinytex package and then run tinytex::install_tinytex() in the console to install a lightweight version of LaTeX.\n\n\n\n3. Get Organized\nUsing a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for scripts, data, and reports.\nYou need to choose a naming convention for your folders and try to stick with it. Recommended options are:\n\nALL CAPS (MATH458)\nno caps (math458)\nsnake_case (math_458)\nCamelCase (Math458)\n\nCreate this class folder along with the following subfolders to organize your data and script files.\n\ndata - any data that’s handed out goes in here\nworksheets - scripts used for completing worksheets\nhomework- assignments to be submitted\nnotes - you will be writing and contributing notes to the class\nexams - because they’re likely to be computer based.\n\n\n\n\n\n\n\nDo not let everything live in your downloads folder.\n\n\n\nThis means when you download a file, right click and “Save as” or “Save target as” and actively choose where to download this file.\n\n\n\n\n4. Quick access\nBookmark this class website. Going through Canvas every time just is a waste of your time.\n\n\n5. HackMD\nGo to the What is HackMD collaborative notes, read the introduction and add your name and major to the list.\n\n\n6. Student office hours\nHelp me decide when to hold student office hours. Remember, these are open drop in times where I dedicate my time to YOU as students. My time outside these hours is limited, so be sure to fill this out so I can best choose times that you are free. [Link]\n🛑 If you are doing this for Math 456, do not submit a second entry. You only need to do this once.\n\n\n7. Programming Assessment\nThis is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions are found in Canvas.\n🛑 If you are doing this for Math 456, do not submit a second entry. You only need to do this once."
-  },
-  {
-    "objectID": "hw/hw01.html",
-    "href": "hw/hw01.html",
-    "title": "HW 01: Simulation and estimation",
-    "section": "",
-    "text": "Overview\nSuppose we want to examine the accuracy (bias) and precision (spread) of a few measures of center. Some measures of center are the mean, the midhinge, the trimmed mean and the median.\n\nThe midhinge is the average of \\(Q_{1}\\) and \\(Q_{3}\\).\nThe trimmed mean is the sample mean with a certain percent of the extreme values removed. We will look at a 3% trimmed mean which you can calculate in R with the function mean(x,0.3).\nThe median is the number that divides the sorted data into two equal halves.\n\n\n\nInstructions\n Let’s examine the precision and accuracy for the Poisson distribution with parameter \\(\\lambda\\), using 2 different sample sizes (15, 50) and two different values of \\(\\lambda\\) (0.5, 2).The function \\(rpois(n,\\lambda)\\) will generate \\(n\\) values from a Poison distribution with parameter \\(\\lambda\\).\nYou should observe a histogram of the generated data to get a feel for the data, but do not need to include copious amounts of plots in your submission.\nFor each simulated sampling distribution, calculate the mean, standard deviation and bias of the simulated statistic.\nCopy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating \\(\\lambda\\)? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.\nSubmit your compiled PDF to Canvas by the due date.\n## Mean\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |\n\n## Trimmed Mean\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |\n\n## Midhinge\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |\n\n## Median\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |"
-  },
-  {
-    "objectID": "hw.html",
-    "href": "hw.html",
-    "title": "Homework",
-    "section": "",
-    "text": "Title\n\n\nLearning Objective\n\n\n\n\n\n\nHW 00: Getting setup\n\n\nGetting all the materials and tools for the class\n\n\n\n\nHW 01: Simulation and estimation\n\n\nExamining the accuracy (bias) and precision (spread) of a few measures of center.\n\n\n\n\n\n\nNo matching items"
+    "text": "Have students self-generate homework assignments.\n\nIn pairs, they pick a question to work on. They write up the solutions together, then give it to the rest of the class."
   },
   {
     "objectID": "index.html",
@@ -390,82 +446,5 @@
     "title": "Weekly Details",
     "section": "",
     "text": "Date\n\n\nTopic\n\n\nHow to prepare\n\n\n\n\n\n\n01-23\n\n\nWelcome to Math 458: Sampling Methods\n\n\nLook over this course website, the syllabus, and Canvas\n\n\n\n\n01-30\n\n\nIntroduction to the Sampling Framework\n\n\nCreate blank notes file. Read textbook\n\n\n\n\n02-06\n\n\nFoundations of Statistical Estimation\n\n\nPrepare notes file. Download data\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "Date Assigned\n\n\nTitle\n\n\n\n\n\n\nJan 23, 2023\n\n\nHW 00: Getting setup\n\n\n\n\nJan 27, 2023\n\n\nWS 01: Writing Functions\n\n\n\n\nFeb 10, 2023\n\n\nWorksheet 2\n\n\n\n\n\n\nHW 01: Simulation and estimation\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "assignments/hw00-setup.html",
-    "href": "assignments/hw00-setup.html",
-    "title": "HW 00: Getting setup",
-    "section": "",
-    "text": "1. Discord\nClick this link to join the Math & Stats Discord server https://discord.gg/xCQTAgu8bE. This is a support platform where student office hours will be held and personalized channels can be made.\n\n\n\n\n\n\nThis is the defacto method of communication for this class\n\n\n\nI get way too many emails that it’s easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.\n\n\n\nDownload the Desktop app. You should not rely on remembering to log in using the web version. Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider.\nYou are welcome to have any username you choose as long as it’s suitable for school.\nOnce you join the server and accept the code of conduct, go to the #class-selection channel (left side bar) and click the icon that’ll add you to our class folder.\nPost an introduction in the #458-class-chat channel. Include the following:\n\nmajor\nAny pets (include pics!)\nwhat fictional family would you like to belong to?\nyour biggest concern about the class\n\n\n\n\n\n2. Update your R (4.2+) and R Studio (latest).\n\nAll homework is to be done in a literate programming/reproducible manner. This means either .Rmd or .qmd files compiled to PDF.\n\nIf you don’t know what this means, review lecture 02 & 03 from Math 130 week 1\nAlso check out the next generation of literate programming tools: Quarto. I will be giving you .qmd files to work in. They work essentially the same as Rmarkdown files with subtle differences. You must have the newest version of Rstudio to work with these files.\n\nMake sure you can knit to PDF. If you cannot, then install the tinytex package and then run tinytex::install_tinytex() in the console to install a lightweight version of LaTeX.\n\n\n\n3. Get Organized\nUsing a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for scripts, data, and reports.\nYou need to choose a naming convention for your folders and try to stick with it. Recommended options are:\n\nALL CAPS (MATH458)\nno caps (math458)\nsnake_case (math_458)\nCamelCase (Math458)\n\nCreate this class folder along with the following subfolders to organize your data and script files.\n\ndata - any data that’s handed out goes in here\nworksheets - scripts used for completing worksheets\nhomework- assignments to be submitted\nnotes - you will be writing and contributing notes to the class\nexams - because they’re likely to be computer based.\n\n\n\n\n\n\n\nDo not let everything live in your downloads folder.\n\n\n\nThis means when you download a file, right click and “Save as” or “Save target as” and actively choose where to download this file.\n\n\n\n\n4. Quick access\nBookmark this class website. Going through Canvas every time just is a waste of your time.\n\n\n5. HackMD\nGo to the What is HackMD collaborative notes, read the introduction and add your name and major to the list.\n\n\n6. Student office hours\nHelp me decide when to hold student office hours. Remember, these are open drop in times where I dedicate my time to YOU as students. My time outside these hours is limited, so be sure to fill this out so I can best choose times that you are free. [Link]\n🛑 If you are doing this for Math 456, do not submit a second entry. You only need to do this once.\n\n\n7. Programming Assessment\nThis is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions are found in Canvas.\n🛑 If you are doing this for Math 456, do not submit a second entry. You only need to do this once."
-  },
-  {
-    "objectID": "assignments/hw01.html",
-    "href": "assignments/hw01.html",
-    "title": "HW 01: Simulation and estimation",
-    "section": "",
-    "text": "Overview\nSuppose we want to examine the accuracy (bias) and precision (spread) of a few measures of center. Some measures of center are the mean, the midhinge, the trimmed mean and the median.\n\nThe midhinge is the average of \\(Q_{1}\\) and \\(Q_{3}\\).\nThe trimmed mean is the sample mean with a certain percent of the extreme values removed. We will look at a 3% trimmed mean which you can calculate in R with the function mean(x,0.3).\nThe median is the number that divides the sorted data into two equal halves.\n\n\n\nInstructions\n Let’s examine the precision and accuracy for the Poisson distribution with parameter \\(\\lambda\\), using 2 different sample sizes (15, 50) and two different values of \\(\\lambda\\) (0.5, 2).The function \\(rpois(n,\\lambda)\\) will generate \\(n\\) values from a Poison distribution with parameter \\(\\lambda\\).\nYou should observe a histogram of the generated data to get a feel for the data, but do not need to include copious amounts of plots in your submission.\nFor each simulated sampling distribution, calculate the mean, standard deviation and bias of the simulated statistic.\nCopy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating \\(\\lambda\\)? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.\nSubmit your compiled PDF to Canvas by the due date.\n## Mean\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |\n\n## Trimmed Mean\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |\n\n## Midhinge\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |\n\n## Median\n\n| Parameters            | Exp Value | Std Dev | Bias |\n|-----------------------|-----------|---------|------|\n| $n=15, \\lambda = 0.5$ |           |         |      |\n| $n=15, \\lambda = 2$   |           |         |      |\n| $n=50, \\lambda = 0.5$ |           |         |      |\n| $n=50, \\lambda = 2$   |           |         |      |"
-  },
-  {
-    "objectID": "assignments/ws01-functions.html",
-    "href": "assignments/ws01-functions.html",
-    "title": "WS 01: Writing Functions",
-    "section": "",
-    "text": "Often we are interested in estimating the center of a distribution. The sample mean (\\(\\bar{x}=\\sum{x}/n)\\) is sensitive to outliers and therefore we sometimes use other measures of center to estimate the center of a distribution. One such measure is the midhinge which is the average of \\(Q_{1}\\) and \\(Q_{3}\\). The quartiles break up the data into four equal quarters. \\(Q_{1}\\) is the 25th percentile and \\(Q_{3}\\) is the 75th percentile.\n\nCreate a function that computes the midhinge. You will need to use the function quantile() to do this.\nUse your function to compute the midhinge of the numbers: 3,100,40,7,29,2,230,44,100,1200,8,15,900.\n\nSuppose I wanted to use the midhinge to estimate the mean of a Poisson distribution, denoted as \\(\\lambda\\). The function rpois(500,2) will create a vector of 500 values that follows the Poisson distribution with \\(\\lambda=2\\). Use your function to calculate the midhinge of a sample of 500 values. Is the midhinge a good estimate of \\(\\lambda\\)? Explain your reasoning.\nThe unknown parameters in simple linear regression are the slope, \\(\\beta_{1}\\), and the intercept, \\(\\beta_{0}\\). The common formula for these estimates are\n\n\\[\n\\hat{\\beta}_{1}=\\frac{\\sum^{n}_{i=1}\\left(x_{i}-\\bar{x}\\right)y_{i}}{\\sum^{n}_{i=1}\\left(x_{i}-\\bar{x}\\right)^{2}}\n\\]\n\\[\n\\hat{\\beta}_{0}=\\bar{y}-\\hat{\\beta}_{1}\\bar{x}\n\\]\nWrite a function in R that computes both the intercept and the slope estimate. Your function will need to return two values. There are a few ways to do this but using the list() command will do this (i.e. your last line would look something like list(b_0, b_1))\n\nIn Denali National Park, Alaska, the wolf population is dependent on a large, strong caribou population. In this wild setting, caribou are found in very large herds. It is thought that wolves keep caribou herds strong by helping prevent over-population. Let x represent the number of fall caribou herds and y represent the late winter wolf population in the park. A random sample of recent years gives the following results:\n\n\nx = 31, 34, 27, 25, 17, 23, 20\ny = 75, 85, 75, 60, 48, 60, 60\n\nUse your function to estimate the slope and the intercept. Then use the lm() function in R to check your code."
-  },
-  {
-    "objectID": "assignments/ws02.html",
-    "href": "assignments/ws02.html",
-    "title": "Worksheet 2",
-    "section": "",
-    "text": "Sometimes we may need to choose between two sampling plans by comparing measures such as variance, bias and accuracy. Here we are interested in estimating \\(\\mu\\), the population mean.\nFor purposes of studying sampling distributions, assume that all population values are known: \\(y_1 = 98, y_2 = 109, y_3 = 154, y_4=133, y_5 = 190, y_6 = 175\\). Out of the \\(N=6\\) total possible values to sample from, we will choose \\(n=3\\).\nPlan 1: The following eight possible samples may be chosen with equal probability: {1,3,5}, {1,3,6}, {1,4,5}, {1,4,6}, {2,3,5}, {2,3,6}, {2,4,5}, {2,4,6}\nPlan 2: The following three samples may be chosen: {1,4,6}, {2,3,6}, {1,3,5} with respective probabilities \\(\\delta\\) = (.25, .5, .25).\nAnswer the following questions:\na) What is the value of \\(\\mu\\)? \nb) For each sampling plan, find: i)\\(E[\\bar{y}]\\), ii) \\(V[\\bar{y}]\\), iii)\\(\\mbox{Bias}(\\bar{y})\\), iv) \\(MSE(\\bar{y})\\), where \\(\\bar{y}\\) is the mean of sample values.\nc) Which sampling plan do you think is better, and why?"
-  },
-  {
-    "objectID": "complete_notes/cn02-intro_sampling_complete.html#questionnaire-design-data-collection-tools",
-    "href": "complete_notes/cn02-intro_sampling_complete.html#questionnaire-design-data-collection-tools",
-    "title": "The Sampling Framework",
-    "section": "Questionnaire Design / Data collection tools",
-    "text": "Questionnaire Design / Data collection tools\nWe will return to this topic of how to design appropriate and useful data collections in a few weeks."
-  },
-  {
-    "objectID": "complete_notes/cn04-SRS_complete.html",
-    "href": "complete_notes/cn04-SRS_complete.html",
-    "title": "Simple Random Sampling",
-    "section": "",
-    "text": "Lohr, Ch 2.3"
-  },
-  {
-    "objectID": "complete_notes/cn04-SRS_complete.html#mean",
-    "href": "complete_notes/cn04-SRS_complete.html#mean",
-    "title": "Simple Random Sampling",
-    "section": "mean",
-    "text": "mean\n\nExpected value, variance, SE, CV, Bounds on error of estimation\nFPC\nCoefficient of variation"
-  },
-  {
-    "objectID": "complete_notes/cn04-SRS_complete.html#total",
-    "href": "complete_notes/cn04-SRS_complete.html#total",
-    "title": "Simple Random Sampling",
-    "section": "total:",
-    "text": "total:\n\nExpected value, variance, SE, CV"
-  },
-  {
-    "objectID": "complete_notes/cn04-SRS_complete.html#proportion",
-    "href": "complete_notes/cn04-SRS_complete.html#proportion",
-    "title": "Simple Random Sampling",
-    "section": "Proportion",
-    "text": "Proportion\nExpected value, variance"
-  },
-  {
-    "objectID": "ideas.html",
-    "href": "ideas.html",
-    "title": "Sampling Methods",
-    "section": "",
-    "text": "Have students self-generate homework assignments.\n\nIn pairs, they pick a question to work on. They write up the solutions together, then give it to the rest of the class."
   }
 ]
