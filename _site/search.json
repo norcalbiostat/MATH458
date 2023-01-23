@@ -228,7 +228,7 @@
     "href": "notes/cn00-welcome.html#learning-goals",
     "title": "Welcome to MATH 458",
     "section": "Learning goals",
-    "text": "Learning goals\n\nDefine principal concepts, advantages and disadvantages of sampling.\nCategorize, define, compare between, and implement various sampling methods such as Simple Random Sampling, Stratified Sampling, and Cluster Sampling.\nFormulate and calculate appropriate estimators and confidence intervals for population parameters under various sampling frameworks.\nEstimate the convenient or optimal sample size for various sampling methods.\nBonus: You’ll get really good at writing R functions."
+    "text": "Learning goals\n\nDefine principal concepts, advantages and disadvantages of sampling.\nCategorize, define, compare between, and implement various sampling methods such as Simple Random Sampling, Stratified Sampling, and Cluster Sampling.\nFormulate and calculate appropriate estimators and confidence intervals for population parameters under various sampling frameworks.\nEstimate the convenient or optimal sample size for various sampling methods.\nDesign, conduct, and analyze your own data collection mini-study\nBonus: You’ll get really good at writing R functions."
   },
   {
     "objectID": "notes/cn00-welcome.html#a-variety-of-learning-and-working-tools",
@@ -256,7 +256,7 @@
     "href": "notes/cn00-welcome.html#canvas",
     "title": "Welcome to MATH 458",
     "section": "Canvas",
-    "text": "Canvas\n\nCanvas is new to me, and it seems reasonable for organizing due dates & submissions so we’ll try that out\nIt’ll be your gradebook as well."
+    "text": "Canvas\n\nCanvas is new to me, and it seems reasonable for organizing due dates & submissions so we’ll try that out\nIt’ll be your gradebook as well.\nContent is organized into Modules, with flow and due dates\nI will also put links to files that you need to download here.\n\n\nI reserve the right to adjust where links and content are contained throughout the semseter if I find Canvas not to be the right tool at this time for me (or perhaps it will work better?)"
   },
   {
     "objectID": "notes/cn00-welcome.html#discord",
@@ -270,7 +270,7 @@
     "href": "notes/cn00-welcome.html#learning-content",
     "title": "Welcome to MATH 458",
     "section": "Learning Content",
-    "text": "Learning Content\n\nHTML based notes that to start out with are semi-complete. Example\nDuring class we will work together through examples, you will work together on “you try it” practice problems, and answer questions\nYou will have a version of these notes that have blank spots for you to fill in, or answer questions\n\nYou will compile these notes to PDF and submit them through Canvas a few days after we complete a section\n\nI will update the online posted notes with our collaborative solutions to the “you try it”\nAs the term progresses, you will be creating sections of these notes (that will be posted) and “teaching” the rest of the class your topic."
+    "text": "Learning Content\n\nHTML based notes that to start out with are semi-complete. Example\nDuring class we will work together through examples, you will work together on “you try it” practice problems, and answer questions\nYou will have a version of these notes that have blank spots for you to fill in, or answer questions\n\nYou will compile these notes to PDF and submit them through Canvas a few days after we complete a section\n\nI will update the online posted notes with our collaborative solutions to the “you try it” problems.\nAs the term progresses, you will be creating sections of these notes (that will be posted) and “teaching” the rest of the class your topic."
   },
   {
     "objectID": "notes/cn00-welcome.html#hack-md",
@@ -431,7 +431,7 @@
     "href": "weekly_details/wk01.html",
     "title": "Welcome to Math 458: Sampling Methods",
     "section": "",
-    "text": "Learning Objectives\nBy the end of the week, learners will be able to:\n\n\n\nGet connected to all the class materials & tools\n\nWrite custom functions in R\nConduct a simulation experiment\n\n\n\n\n\n\n\n\nHow to prepare\n\n\n\nLook over this course website, the syllabus, and Canvas\n\n\n\n\n\n\nContent Notes & Readings\n\n\n\nWelcome & Course Overview\n\nIntro to Simulation\nCh 1.1\n\n\n\n\n\n\n\nMonday overview\n\n\n\nIntroduction to the class. How is this all gonna work?\n\nMotivating Example (Ch 1.1 + Canvas)\n\n\n\n\n\n\n\nWednesday overview\n\n\n\nWriting your own custom functions in R, drawing samples and running repeated simulations.\n\n\n\n\n\n\nFriday overview\n\n\n\nWorksheet 1\n\n\n\n\n\n\nTo Do\n\n\n\nHW0\n\nCourse notes: cn01\nWorksheet 1"
+    "text": "Learning Objectives\nBy the end of the week, learners will be able to:\n\n\n\nGet connected to all the class materials & tools\n\nWrite custom functions in R\nConduct a simulation in R\n\n\n\n\n\n\n\nHow to prepare\n\n\n\nLook over this course website, the syllabus, and Canvas\n\nComplete the Programming Assessment\nDownload the cn01-intro_simulation_blank starter notes from Canvas before Wednesday\n\n\n\n\n\n\n\nContent Notes & Readings\n\n\n\nWelcome & Course Overview\n\nIntro to Simulation\nCh 1.1\n\n\n\n\n\n\n\nMonday overview\n\n\n\nIntroduction to the class. How is this all gonna work?\n\nMotivating Example (Ch 1.1 + Canvas)\n\n\n\n\n\n\n\nWednesday overview\n\n\n\nWriting your own custom functions in R, drawing samples and running repeated simulations.\n\n\n\n\n\n\nFriday overview\n\n\n\nWorksheet 1\n\n\n\n\n\n\nTo Do\n\n\n\nProgramming Assessment\n\nHW0\nCourse notes: cn01\nWorksheet 1"
   },
   {
     "objectID": "weekly_details/wk02.html",
@@ -453,5 +453,12 @@
     "title": "Weekly Details",
     "section": "",
     "text": "Date\n\n\nTopic\n\n\nHow to prepare\n\n\n\n\n\n\n01-23\n\n\nWelcome to Math 458: Sampling Methods\n\n\nLook over this course website, the syllabus, and Canvas\n\n\n\n\n01-30\n\n\nIntroduction to the Sampling Framework\n\n\nCreate blank notes file. Read textbook\n\n\n\n\n02-06\n\n\nFoundations of Statistical Estimation\n\n\nPrepare notes file. Download data\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "notes/cn00-welcome.html",
+    "href": "notes/cn00-welcome.html",
+    "title": "Welcome to MATH 458",
+    "section": "",
+    "text": "You can address me as “Robin”, “Dr. D”, or some other respectful title that you feel comfortable with.\nI have a Doctorate in Public Health (DrPH) Biostatistics from UCLA, but I’m a Chico alum. I double majored in Statistics & Biology, with minor in Chemistry, and a first generation college student who started at Butte College.\nMy campus life consists of training the next generation of Scientists how to harness the power of Statistics and Data in a responsible and ethical manner, leading the Data Science Initiative (DSI) provide training and experiences for students and faculty, and providing analytical support and statistical consulting for many projects on and off campus.\nWhen I’m not on campus, typically I’m growing food for my family, out adventuring with my dogs, or getting some game time in. You can learn more about the projects i’m involved in on my website.\n\n\n\n\nTurn to your neighbor and introduce yourself.\nYou’ll post an introduction in Discord this week so everyone will get to know everyone else."
   }
 ]

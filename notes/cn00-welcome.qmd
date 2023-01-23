@@ -87,7 +87,8 @@ Read through all posts later this week to see how similar, or different their me
 2. Categorize, define, compare between, and implement various sampling methods such as Simple Random Sampling, Stratified Sampling, and Cluster Sampling. 
 3. Formulate and calculate appropriate estimators and confidence intervals for population parameters under various sampling frameworks. 
 4. Estimate the convenient or optimal sample size for various sampling methods.
-5. Bonus: You'll get *really* good at writing R functions. 
+5. Design, conduct, and analyze your own data collection mini-study 
+6. Bonus: You'll get *really* good at writing R functions. 
 
 # How are we going to work together? 
 
@@ -114,6 +115,11 @@ Read through all posts later this week to see how similar, or different their me
 
 * Canvas is new to me, and it seems reasonable for organizing due dates & submissions so we'll try that out
 * It'll be your gradebook as well. 
+* Content is organized into Modules, with flow and due dates
+* I will also put links to files that you need to download here. 
+
+> I reserve the right to adjust where links and content are contained throughout the semseter if I find Canvas not to be the right tool at this time for me (or perhaps it will work better?)
+
 
 ## Discord
 
@@ -128,7 +134,7 @@ Read through all posts later this week to see how similar, or different their me
 * During class we will work together through examples, you will work together on "you try it" practice problems, and answer questions
 * You will have a version of these notes that have blank spots for you to fill in, or answer questions
     - You will compile these notes to PDF and submit them through Canvas a few days after we complete a section 
-* I will update the online posted notes with our collaborative solutions to the "you try it"
+* I will update the online posted notes with our collaborative solutions to the "you try it" problems.
 * As the term progresses, you will be creating sections of these notes (that will be posted) and "teaching" the rest of the class your topic. 
 
 ## Hack MD
