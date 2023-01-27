@@ -7,6 +7,6 @@ date: 2/03/23
 
 Starter notes found in Hack MD [https://hackmd.io/@norcalbiostat/cn03-statistical_foundations](https://hackmd.io/@norcalbiostat/cn03-statistical_foundations)
 
+Copy these notes into a blank quarto file, save this file into your `notes` folder. 
+
 Completed notes will be posted here after the section is complete. 
-
-

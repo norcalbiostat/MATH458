@@ -202,6 +202,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#sampling-distribution" id="toc-sampling-distribution" class="nav-link" data-scroll-target="#sampling-distribution">Sampling Distribution</a></li>
   </ul></li>
   <li><a href="#properties-of-estimators" id="toc-properties-of-estimators" class="nav-link" data-scroll-target="#properties-of-estimators">Properties of Estimators</a></li>
+  <li><a href="#interval-estimation" id="toc-interval-estimation" class="nav-link" data-scroll-target="#interval-estimation">Interval Estimation</a>
+  <ul class="collapse">
+  <li><a href="#bounds-on-estimators" id="toc-bounds-on-estimators" class="nav-link" data-scroll-target="#bounds-on-estimators">Bounds on Estimators</a></li>
+  <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error">Standard Error</a></li>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -620,7 +626,7 @@ Example: Enrollment in Graduate Programs in Statistics
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">10</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my.sample.programs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 44.4</code></pre>
+<pre><code>[1] 35.3</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -658,17 +664,17 @@ Example: Enrollment in Graduate Programs in Statistics
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  20.50   45.92   53.45   54.20   60.95   86.90 </code></pre>
+  31.80   46.25   52.75   54.13   63.45   85.60 </code></pre>
 </div>
 </div>
 <p>Characteristics of this distribution:</p>
 <ul>
 <li><em>Shape</em>: The distribution of average enrollment isn’t quite normal, there seems to perhaps be two peaks?</li>
-<li><em>Center</em>: The average enrollment is 54.2</li>
-<li><em>Spread</em>: Average enrollment ranges from 20.5, 86.9.</li>
+<li><em>Center</em>: The average enrollment is 54.13</li>
+<li><em>Spread</em>: Average enrollment ranges from 31.8, 85.6.</li>
 </ul>
 <p><span class="emoji" data-emoji="tada">🎉</span> We have just examined a <em>sampling distribution</em> of the sample mean.</p>
-<section id="sampling-distribution" class="level2">
+<section id="sampling-distribution" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="sampling-distribution">Sampling Distribution</h2>
 <p>A <em>sampling distribution</em> is the distribution of sample statistics computed for different samples of the same size from the same population.</p>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -688,7 +694,7 @@ Example: Enrollment in Graduate Programs in Statistics
 </ul>
 </div>
 </div>
-<p>From elementary statistics we know that the sampling distribution of <span class="math inline">\(\bar{y}\)</span> should be centered at <span class="math inline">\(\mu\)</span> with a standard deviation of <span class="math inline">\(\sigma/n\)</span>. We also know that the shape of the distribution should be approximately Normal for a large <span class="math inline">\(n\)</span>.</p>
+<div class="page-columns page-full"><p> In elementary statistics you were introduced to the “Central Limit Theorem” (CLT). The CLT states that the sampling distribution of <span class="math inline">\(\bar{y}\)</span> should be centered at <span class="math inline">\(\mu\)</span> with a standard deviation of <span class="math inline">\(\sigma/n\)</span>. It also states that the shape of the distribution should be approximately Normal for a large <span class="math inline">\(n\)</span>.</p><div class="no-row-height column-margin column-container"><span class="">The proof of the CLT is generally seen in a first graduate Statistics class that uses convergence in distribution concepts from MATH 420.</span></div></div>
 </section>
 </section>
 <section id="properties-of-estimators" class="level1 page-columns page-full">
@@ -838,8 +844,134 @@ Example
 <p>Lohr Ch 2 exercises, #1.</p>
 </div>
 </div>
+</section>
+<section id="interval-estimation" class="level1 page-columns page-full">
+<h1>Interval Estimation</h1>
+<p>In general, it is usually not enough to just give a point estimate when estimating a population parameter. Why?</p>
+<section id="bounds-on-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="bounds-on-estimators">Bounds on Estimators</h2>
+<p>The objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How do we determine which sampling procedure to use and how many sampling units to sample?</p>
+<blockquote class="blockquote">
+<p>It depends on the magnitude of the error that we find acceptable.</p>
+</blockquote>
+<p>Suppose that we are trying to estimate some parameter <span class="math inline">\(\theta\)</span> using the sample estimator <span class="math inline">\(\hat{\theta}\)</span>. We want the value of <span class="math inline">\(\theta-\hat{\theta}\)</span> to be small. We refer to the value of <span class="math inline">\(\theta-\hat{\theta}\)</span> as the error because it is the difference between the estimated value and the true value.</p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Turn &amp; talk
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the difference between the <em>error</em> and <em>bias</em>?</p>
+</div>
+</div>
+<p>We might want to specify that the absolute value of the error is less than some number, say <span class="math inline">\(B\)</span>. Thus, <span class="math display">\[
+\mbox{Error of Estimation}=|\theta-\hat{\theta}|&lt;B
+\]</span></p>
+<p>We should also state a probability (<span class="math inline">\(1-\alpha\)</span>) that our error is less than <span class="math inline">\(B\)</span> if we were to take repeated samples. This is stated as <span class="math display">\[
+P\left(|\theta-\hat{\theta}|&lt;B\right)=1-\alpha
+\]</span></p>
+<p>We will often select <span class="math inline">\(B\)</span> to be approximately 2 times the standard deviation of <span class="math inline">\(\hat{\theta}\)</span>, <span class="math inline">\(B=2\hat{\sigma}_{\hat{\theta}}\)</span>. As we saw earlier in <span class="citation" data-cites="ref">@ref</span>(#sampling-distribution), many of the statistics that we will discuss exhibit a normal sampling distribution even when the population distribution is skewed.</p>
+</section>
+<section id="standard-error" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="standard-error">Standard Error</h2>
+<div class="callout-important callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition: Standard Error
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <em>standard error</em> of a statistic is the standard deviation of the sample statistic. In other words, the standard deviation of the sampling distribution.</p>
+</div>
+</div>
+<p>The standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use clsoed form mathematical formulas to calculate the standard error.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example Grad program example cont.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20.</p>
+</div>
+</div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">I used the base pipe <code>|&gt;</code> here to pass the results of the replicate function into the <code>sd()</code> function</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many.means) <span class="co">#because the example above already had n=10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.26253</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, {</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">20</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.826295</code></pre>
+</div>
+</div>
+</section>
+<section id="confidence-intervals" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h2>
+<p>When the distributions are relatively symmetric and bell-shaped, the 95% rule tells us that approximately 95% of the data values fall within two standard deviations of the mean. Applying the 95% rule to sampling distributions, we see that about 95% of the sample statistics will fall within two standard errors of the mean. We use this rule many times to form what we call an approximate 95% confidence interval which gives us a range for which which we are quite confident that captures the true parameter we are trying to estimate.</p>
+<p>When using a formula to calculate an approximate 95% confidence interval, use <span class="math inline">\(2*SE\)</span> as the margin of error.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+CI for PhD program enrollment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Based on our example, what would be a 95% confidence interval for <span class="math inline">\(\mu\)</span> the true mean total enrollment for PhD programs in statistics. Interpret this confidence interval in context of the problem.</p>
+</div>
+</div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Wrapping the entire line of code in <code>()</code> will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(LCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31.60995</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(UCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 76.66005</code></pre>
+</div>
+</div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Every time I compile these notes, I draw a different sample and will get a different numbers. To avoid conflicts in my written response, and what the code shows, I use <em>inline R code</em> here. See the RStudio <em>Help –&gt; Markdown Quick Reference</em> for more information.</span></div></div>
+<blockquote class="blockquote">
+<p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (31.6 , 76.7).</p>
+</blockquote>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Turn &amp; talk
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the following interpretation of the above confidence interval.</p>
+<blockquote class="blockquote">
+<p>We can be 95% confident that PhD programs in Statistics have a total enrollment of between 31.6 and 76.7 students.</p>
+</blockquote>
+<p>Why is this an incorrect interpretation?</p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

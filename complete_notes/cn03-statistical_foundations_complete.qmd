@@ -267,7 +267,7 @@ Characteristics of this distribution:
 
 :tada: We have just examined a _sampling distribution_ of the sample mean. 
 
-## Sampling Distribution
+## Sampling Distribution 
 
 A _sampling distribution_ is the distribution of sample statistics computed for different samples of the same size from the same population. 
 
@@ -279,7 +279,8 @@ A _sampling distribution_ is the distribution of sample statistics computed for 
 * What would happen if we increased the number of replications (holding $n$ constant) to 1000 instead of 100? What about the sampling distribution would change?
 :::
 
-From elementary statistics we know that the sampling distribution of $\bar{y}$ should be centered at $\mu$ with a standard deviation of $\sigma/n$. We also know that the shape of the distribution should be approximately Normal for a large $n$.
+[The proof of the CLT is generally seen in a first graduate Statistics class that uses convergence in distribution concepts from MATH 420.]{.aside}
+In elementary statistics you were introduced to the "Central Limit Theorem" (CLT). The CLT states that the sampling distribution of $\bar{y}$ should be centered at $\mu$ with a standard deviation of $\sigma/n$. It also states that the shape of the distribution should be approximately Normal for a large $n$.
 
 # Properties of Estimators
 
@@ -373,6 +374,95 @@ Lohr Ch 2 exercises, #1.
 :::
 
 
+# Interval Estimation 
+
+In general, it is usually not enough to just give a point estimate when estimating a population parameter. Why?
+
+## Bounds on Estimators
+
+The objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How do we determine which sampling procedure to use and how many sampling units to sample?
+
+> It depends on the magnitude of the error that we find acceptable.
+
+Suppose that we are trying to estimate some parameter $\theta$ using the sample estimator $\hat{\theta}$. We want the value of $\theta-\hat{\theta}$ to be small. We refer to the value of $\theta-\hat{\theta}$ as the error because it is the difference between the estimated value and the true value. 
+
+:::{.callout-note appearance=minimal}
+### :question: :busts_in_silhouette: Turn & talk
+
+What is the difference between the _error_ and _bias_?
+:::
+
+We might want to specify that the absolute value of the error is less than some number, say $B$. Thus,
+$$
+\mbox{Error of Estimation}=|\theta-\hat{\theta}|<B
+$$
+
+We should also state a probability ($1-\alpha$) that our error is less than $B$ if we were to take repeated samples. This is stated as
+$$
+P\left(|\theta-\hat{\theta}|<B\right)=1-\alpha
+$$
+
+We will often select $B$ to be approximately 2 times the standard deviation of $\hat{\theta}$, $B=2\hat{\sigma}_{\hat{\theta}}$. As we saw earlier in @ref(#sampling-distribution), many of the statistics that we will discuss exhibit a normal sampling distribution even when the population distribution is skewed.
 
 
+## Standard Error
+
+
+:::{.callout-important}
+### Definition: Standard Error
+The _standard error_ of a statistic is the standard deviation of the sample statistic. In other words, the standard deviation of the sampling distribution.  
+:::
+
+The standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use clsoed form mathematical formulas to calculate the standard error.
+
+:::{.callout-tip icon=true}
+### Example Grad program example cont. 
+Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20. 
+:::
+
+[I used the base pipe `|>` here to pass the results of the replicate function into the `sd()` function]{.aside}
+
+```{r}
+sd(many.means) #because the example above already had n=10
+
+replicate(n=100, {
+  my.sample.programs <- sample(stat.phd$FTGradEnrollment, size=20)
+  mean(my.sample.programs)
+}) |> sd()
+```
+
+## Confidence Intervals
+
+When the distributions are relatively symmetric and bell-shaped, the 95% rule tells us that approximately 95% of the data values fall within two standard deviations of the mean. Applying the 95% rule to sampling distributions, we see that about 95% of the sample statistics will fall within two standard errors of the mean. We use this rule many times to form what we call an approximate 95% confidence interval which gives us a range for which which we are quite confident that captures the true parameter we are trying to estimate.
+
+When using a formula to calculate an approximate 95% confidence interval, use $2*SE$ as the margin of error.
+
+:::{.callout-tip icon=true}
+### CI for PhD program enrollment
+Based on our example, what would be a 95% confidence interval for $\mu$ the true mean total enrollment for PhD programs in statistics.
+Interpret this confidence interval in context of the problem.
+:::
+
+[Wrapping the entire line of code in `()` will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below. ]{.aside}
+
+```{r}
+(LCL <- mean(many.means) - 2*sd(many.means))
+(UCL <- mean(many.means) + 2*sd(many.means))
+```
+
+[Every time I compile these notes, I draw a different sample and will get a different numbers. To avoid conflicts in my written response, and what the code shows, I use _inline R code_ here. See the RStudio _Help --> Markdown Quick Reference_ for more information.]{.aside}
+
+> We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (`r paste0(round(LCL,1), " , ", round(UCL,1))`). 
+
+
+:::{.callout-note appearance=minimal}
+### :question: :busts_in_silhouette: Turn & talk
+
+Consider the following interpretation of the above confidence interval. 
+
+> We can be 95% confident that PhD programs in Statistics have a total enrollment of between `r round(LCL,1)` and `r round(UCL,1)` students. 
+
+Why is this an incorrect interpretation? 
+
+:::
 
