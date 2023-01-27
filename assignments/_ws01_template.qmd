@@ -1,0 +1,22 @@
+---
+title: "Worksheet 1"
+author: "Robin D"
+date: today
+---
+
+## 1a. My function to compute the midhinge
+
+## 1b. Using my function on provided numbers. 
+    
+
+
+## 2. Using my midhinge function to estimate the mean of a Poisson distribution. 
+
+## 3a. My functions to calculate the intercept and slope of a linear regression. 
+## 3b. Testing my function on wolf population data. 
+
+### my function
+
+
+### using the `lm` function 
+

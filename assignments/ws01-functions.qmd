@@ -4,6 +4,10 @@ categories: Worksheet
 date: 1/27/23
 ---
 
+### Instructions: 
+In a new `.rmd` or `.qmd` file, answer the questions below. Please use markdown headers (`##`) to clearly denote questions. See [this template file](_ws01_template.qmd) as an example of formatting. Compile (knit/render) this file to PDF, **visually confirm all your output and code can be seen and is readable**, then submit to Canvas by the due date. 
+
+
 1. Often we are interested in estimating the center of a distribution. The sample mean is sensitive to outliers and therefore we sometimes use other measures of center to estimate the center of a distribution. One such measure is the **midhinge** which is the average of $Q_{1}$ and $Q_{3}$. The quartiles break up the data into four equal quarters. $Q_{1}$ is the 25th percentile and $Q_{3}$ is the 75th percentile.
 [The function $quantile(x, probs=.25)$ will return the 25th percentile. See `?quantile` for more details.]{.aside}
 
