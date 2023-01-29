@@ -1,0 +1,78 @@
+---
+title: "Worksheet 01: Writing Functions"
+author: Dr. D's Solutions
+format:
+  pdf:
+    highlight-style: oblivion
+    geometry:
+      - top = .75in
+      - left = .75in
+      - bottom = .75in
+      - right = .75in
+date: 1/27/23
+---
+
+> Note: There are many ways to write functions. My approach and solutions may look different than yours, and thats OK as long as you got a similar numerical answer. 
+
+## 1a. My function to compute the midhinge
+
+```{r}
+midhinge <- function(x){
+  mh <- quantile(x, c(.25, .75)) |> mean()
+  return(mh)
+}
+```
+
+
+## 1b. Using my function on provided numbers. 
+
+```{r}
+midhinge(x = c(3,100,40,7,29,2,230,44,100,1200,8,15,900))
+```
+    
+\newpage
+
+## 2. Using my midhinge function to estimate the mean of a Poisson distribution. 
+```{r}
+rand.pois.data <- rpois(100, .4)
+table(rand.pois.data) # just wanted to see what it looked like
+midhinge(rand.pois.data)
+```
+
+\newpage
+
+## 3a. My functions to calculate the intercept and slope of a linear regression. 
+```{r}
+least.squares.estimate <- function(x,y){
+  n <- length(x)
+  mean.x <- sum(x)/n
+  diff.x <- x- mean.x
+  
+  num <- sum(diff.x*y)
+  den <- sum(diff.x^2)
+  
+  b1 <- num/den
+  b0 <- sum(y)/n - b1*mean.x
+  
+  return(list(intercept = b0, slope = b1))
+}
+```
+
+
+## 3b. Testing my function on wolf population data. 
+```{r}
+x <- c(31, 34, 27, 25, 17, 23, 20)
+y <- c(75, 85, 75, 60, 48, 60, 60)
+```
+
+### my function
+```{r}
+least.squares.estimate(x,y)
+```
+
+### using the `lm` function 
+```{r}
+lm(y~x)
+```
+
+

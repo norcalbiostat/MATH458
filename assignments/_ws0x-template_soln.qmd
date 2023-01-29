@@ -1,0 +1,14 @@
+---
+title: "Worksheet 0X: "
+author: Dr. D's Solutions
+format:
+  pdf:
+    highlight-style: oblivion
+    geometry:
+      - top = .75in
+      - left = .75in
+      - bottom = .75in
+      - right = .75in
+date: 1/27/23
+---
+
