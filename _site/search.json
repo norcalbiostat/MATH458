@@ -121,28 +121,28 @@
   {
     "objectID": "complete_notes/cn04-SRS_complete.html",
     "href": "complete_notes/cn04-SRS_complete.html",
-    "title": "Simple Random Sampling",
+    "title": "Simple Random Sampling (Lohr Ch 2.3)",
     "section": "",
-    "text": "Lohr, Ch 2.3"
+    "text": "There are two ways to draw simple random samples, with and without replacement.\n\n\n\nThe same unit is “put back” into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again.\nDrawing a subset of \\(n\\) units from the population can be thought of as drawing \\(n\\) independent samples of size 1. We use this feature when drawing random numbers from named distributions using the size argument. \n\nIf you want to reproduce your exact numeric answer later, call set.seed immediately before any random draw. See the R companion for the text 2.1 for more info.This code\n\nset.seed(12356)\nrnorm(10, 0,1)\n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\nis equivalent to\n\nset.seed(12356)\nreplicate(10, {\n  rnorm(1, 0,1)\n})\n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\n\n\n\nThe selected unit is not returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information.\nEvery possible subset of \\(n\\) distinct units has the same probability of getting sampled: \\(\\pi_{i} = \\frac{n}{N}\\)."
   },
   {
     "objectID": "complete_notes/cn04-SRS_complete.html#mean",
     "href": "complete_notes/cn04-SRS_complete.html#mean",
-    "title": "Simple Random Sampling",
+    "title": "Simple Random Sampling (Lohr Ch 2.3)",
     "section": "mean",
     "text": "mean\n\nExpected value, variance, SE, CV, Bounds on error of estimation\nFPC\nCoefficient of variation"
   },
   {
     "objectID": "complete_notes/cn04-SRS_complete.html#total",
     "href": "complete_notes/cn04-SRS_complete.html#total",
-    "title": "Simple Random Sampling",
+    "title": "Simple Random Sampling (Lohr Ch 2.3)",
     "section": "total:",
     "text": "total:\n\nExpected value, variance, SE, CV"
   },
   {
     "objectID": "complete_notes/cn04-SRS_complete.html#proportion",
     "href": "complete_notes/cn04-SRS_complete.html#proportion",
-    "title": "Simple Random Sampling",
+    "title": "Simple Random Sampling (Lohr Ch 2.3)",
     "section": "Proportion",
     "text": "Proportion\nExpected value, variance"
   },
@@ -151,7 +151,7 @@
     "href": "complete_notes.html",
     "title": "Complete Notes",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\n01-25\n\n\nIntroduction to Simulation\n\n\n\n\n01-25\n\n\nIntroduction to Simulation\n\n\n\n\n01-30\n\n\nThe Sampling Framework\n\n\n\n\n02-03\n\n\nFoundations of Statistical Estimation\n\n\n\n\nInvalid Date\n\n\nSimple Random Sampling\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\n01-25\n\n\nIntroduction to Simulation\n\n\n\n\n01-25\n\n\nIntroduction to Simulation\n\n\n\n\n01-30\n\n\nThe Sampling Framework\n\n\n\n\n02-03\n\n\nFoundations of Statistical Estimation\n\n\n\n\n02-13\n\n\nSimple Random Sampling (Lohr Ch 2.3)\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "ideas.html",

@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Description">
+<meta name="dcterms.date" content="2023-02-13">
+<meta name="description" content="SRS is the basic form of probability sampling, and serves as the basis for more complicated forms.">
 
-<title>Sampling Methods - Simple Random Sampling</title>
+<title>Sampling Methods - Simple Random Sampling (Lohr Ch 2.3)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -61,6 +125,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -124,7 +189,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#with-replacement" id="toc-with-replacement" class="nav-link" data-scroll-target="#with-replacement">With replacement</a></li>
+  <li><a href="#without-replacement" id="toc-without-replacement" class="nav-link" data-scroll-target="#without-replacement">Without replacement</a></li>
+  </ul></li>
+  <li><a href="#drawing-an-srs" id="toc-drawing-an-srs" class="nav-link" data-scroll-target="#drawing-an-srs">Drawing an SRS</a></li>
   <li><a href="#estimating-population-parameters" id="toc-estimating-population-parameters" class="nav-link" data-scroll-target="#estimating-population-parameters">Estimating population parameters</a>
   <ul class="collapse">
   <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean">mean</a></li>
@@ -135,21 +205,21 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#determining-sample-size" id="toc-determining-sample-size" class="nav-link" data-scroll-target="#determining-sample-size">Determining sample size</a></li>
   <li><a href="#model-based-theory-vs-randomization-based-theory-lohr-2.10-2.11" id="toc-model-based-theory-vs-randomization-based-theory-lohr-2.10-2.11" class="nav-link" data-scroll-target="#model-based-theory-vs-randomization-based-theory-lohr-2.10-2.11">Model based theory vs Randomization based theory (Lohr 2.10, 2.11)</a></li>
   <li><a href="#closing-when-should-srs-be-used" id="toc-closing-when-should-srs-be-used" class="nav-link" data-scroll-target="#closing-when-should-srs-be-used">Closing: When should SRS be used</a></li>
-  <li><a href="#analysis-under-srs" id="toc-analysis-under-srs" class="nav-link" data-scroll-target="#analysis-under-srs">Analysis under SRS???</a></li>
+  <li><a href="#analysis-under-sr" id="toc-analysis-under-sr" class="nav-link" data-scroll-target="#analysis-under-sr">Analysis under SR</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Simple Random Sampling</h1>
+<h1 class="title">Simple Random Sampling (Lohr Ch 2.3)</h1>
 </div>
 
 <div>
   <div class="description">
-    Description
+    SRS is the basic form of probability sampling, and serves as the basis for more complicated forms.
   </div>
 </div>
 
@@ -160,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
+      <p class="date">February 13, 2023</p>
     </div>
   </div>
   
@@ -170,10 +240,129 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Lohr, Ch 2.3</p>
-<section id="introduction" class="level1">
+<section id="introduction" class="level1 page-columns page-full">
 <h1>Introduction</h1>
-<p>What is a SRS * english * math * How to draw a SRS - generalizability * Sampling Weights (Lohr Ch 2.4)</p>
+<p>There are two ways to draw simple random samples, with and without replacement.</p>
+<section id="with-replacement" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="with-replacement">With replacement</h2>
+<ul>
+<li>The same unit is “put back” into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again.</li>
+<li>Drawing a subset of <span class="math inline">\(n\)</span> units from the population can be thought of as drawing <span class="math inline">\(n\)</span> independent samples of size 1. We use this feature when drawing random numbers from named distributions using the <code>size</code> argument. </li>
+</ul>
+<div class="no-row-height column-margin column-container"><span class="">If you want to reproduce your exact numeric answer later, call <code>set.seed</code> immediately before any random draw. See the R companion for the text 2.1 for more info.</span></div><p>This code</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12356</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698
+ [7]  1.0962468  2.3340728  1.0193901  1.1962093</code></pre>
+</div>
+</div>
+<p>is equivalent to</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12356</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">10</span>, {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698
+ [7]  1.0962468  2.3340728  1.0193901  1.1962093</code></pre>
+</div>
+</div>
+</section>
+<section id="without-replacement" class="level2">
+<h2 class="anchored" data-anchor-id="without-replacement">Without replacement</h2>
+<p>The selected unit is <em>not</em> returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information.</p>
+<p>Every possible subset of <span class="math inline">\(n\)</span> distinct units has the same probability of getting sampled: <span class="math inline">\(\pi_{i} = \frac{n}{N}\)</span>.</p>
+</section>
+</section>
+<section id="drawing-an-srs" class="level1 page-columns page-full">
+<h1>Drawing an SRS</h1>
+<p>Random does not mean haphazard, contrary it’s actually quite intentional. Avoid selecting a sample that you “feel” is random or representative of the population. These practices can lead to bias and lack of generalizability.</p>
+<p>Instead we use techniques that leverage pseudo-random number generating algorithms such as the <code>sample</code> function.</p>
+<div class="callout-important callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+How to draw a SRS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Generate a list of all observational units in the population (sampling frame).</li>
+<li>Assign each observational unit a unique number, from 1 to the size of the sampling frame <span class="math inline">\(N\)</span>.</li>
+<li>Use a computer to draw <span class="math inline">\(n\)</span> numbers from 1 to <span class="math inline">\(N\)</span> without replacement.<br>
+</li>
+<li>Subset the data to keep only the selected rows.</li>
+</ol>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Enrollment in Graduate Programs in Statistics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <a href="https://sampling-458.netlify.app/complete_notes/cn03-statistical_foundations_complete.html#variability-of-estimates">last time we saw this example</a>, we used the <code>sample()</code> function to draw 10 values from the single variable <code>FTGradEnrollment</code>. Let’s revisit this data and take a sample of the entire dataset.</p>
+</div>
+</div>
+<p>Read in the data and see how many record/rows there are.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stat.phd <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"StatisticsPhD.csv"</span>)) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">NROW</span>(stat.phd) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 82</code></pre>
+</div>
+</div>
+<div class="page-columns page-full"><p> Generate list of numbers for each observational unit, then draw 10 numbers without replacement.</p><div class="no-row-height column-margin column-container"><span class="">Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sampling.frame <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stat.phd) <span class="co">#1, 2</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(get.these <span class="ot">&lt;-</span> <span class="fu">sample</span>(sampling.frame, <span class="dv">10</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)) <span class="co">#3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 69 39 70 52 21 76  4 82 18 68</code></pre>
+</div>
+</div>
+<p>Create a subset data frame with only the rows that were chosen and stored in the vector <code>get.these</code>. Confirm there are only 10 rows in this subset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sample.stat.phd <span class="ot">&lt;-</span> stat.phd[get.these, ] </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">NROW</span>(sample.stat.phd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>For fun, calculate the average enrollment and compare it to the estimate from the last set of notes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample.stat.phd<span class="sc">$</span>FTGradEnrollment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50.3</code></pre>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it (Lohr Ex 2.6)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The U.S. government conducts a Census of Agriculture every five years, collecting data on all farms (defined as any place from which $1000 or more of agricultural products were produced and sold). The file <code>agpop.csv</code> (textbook data) contains historical information from 1982, 1987, and 1992 on the number of farms, total acreage devoted to farms, number of farms with fewer than 9 acres, and number of farms with more than 1000 acres for the population consisting of the <span class="math inline">\(N=3078\)</span> counties and county-equivalents in the United States.</p>
+<p>Take a random sample of <span class="math inline">\(n=300\)</span> from this data set, then generate a histogram of the variable <code>acres92</code>. Compare your results to your neighbor, and to Figure 2.4 in the text. <em>Set a seed for this example to ensure you get the same result each time you compile!</em></p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Write a sentence here about how similar, or different your chart is from the class or the text.</p>
+</blockquote>
+<ul>
+<li>Sampling Weights (Lohr Ch 2.4)</li>
+</ul>
 </section>
 <section id="estimating-population-parameters" class="level1">
 <h1>Estimating population parameters</h1>
@@ -211,8 +400,8 @@ ul.task-list li input[type="checkbox"] {
 <li>comparison to systemic sampling?</li>
 </ul>
 </section>
-<section id="analysis-under-srs" class="level1">
-<h1>Analysis under SRS???</h1>
+<section id="analysis-under-sr" class="level1">
+<h1>Analysis under SR</h1>
 
 
 </section>
