@@ -32,7 +32,7 @@
     "href": "assignments.html",
     "title": "Assignments",
     "section": "",
-    "text": "Date Assigned\n\n\nTitle\n\n\n\n\n\n\nJan 23, 2023\n\n\nHomework 00: Getting setup\n\n\n\n\nJan 27, 2023\n\n\nWorksheet 01: Writing Functions\n\n\n\n\nFeb 6, 2023\n\n\nHomework 01: Simulation and Estimation\n\n\n\n\nFeb 10, 2023\n\n\nWorksheet 02: Comparing sampling plans\n\n\n\n\n\n\nNo matching items"
+    "text": "Title\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nWorksheet 01: Writing Functions\n\n\n\n\nHomework 01: Simulation and Estimation\n\n\n\n\nWorksheet 02: Comparing sampling plans\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "complete_notes/cn01-intro_simulation_complete.html",
@@ -123,7 +123,7 @@
     "href": "complete_notes/cn04-SRS_complete.html",
     "title": "Simple Random Sampling (Lohr Ch 2.3)",
     "section": "",
-    "text": "There are two ways to draw simple random samples, with and without replacement.\n\n\n\nThe same unit is “put back” into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again.\nDrawing a subset of \\(n\\) units from the population can be thought of as drawing \\(n\\) independent samples of size 1. We use this feature when drawing random numbers from named distributions using the size argument. \n\nIf you want to reproduce your exact numeric answer later, call set.seed immediately before any random draw. See the R companion for the text 2.1 for more info.This code\n\nset.seed(12356)\nrnorm(10, 0,1)\n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\nis equivalent to\n\nset.seed(12356)\nreplicate(10, {\n  rnorm(1, 0,1)\n})\n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\n\n\n\nThe selected unit is not returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information.\nEvery possible subset of \\(n\\) distinct units has the same probability of getting sampled: \\(\\pi_{i} = \\frac{n}{N}\\)."
+    "text": "There are two ways to draw simple random samples, with and without replacement.\n\n\n\nThe same unit is “put back” into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again.\nDrawing a subset of \\(n\\) units from the population can be thought of as drawing \\(n\\) independent samples of size 1. We use this feature when drawing random numbers from named distributions using the size argument. \n\nIf you want to reproduce your exact numeric answer later, call set.seed immediately before any random draw. See the R companion for the text 2.1 for more info.This code\n\nset.seed(12356)\nrnorm(10, 0,1) # draw 10 \n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\nis equivalent to\n\nset.seed(12356)\nreplicate(10, { # repeat 10 times\n  rnorm(1, 0,1) # draw 1\n})\n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\n\n\n\nThe selected unit is not returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information.\nEvery possible subset of \\(n\\) distinct units has the same probability of getting sampled."
   },
   {
     "objectID": "complete_notes/cn04-SRS_complete.html#mean",

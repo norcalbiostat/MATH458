@@ -5,9 +5,8 @@ listing:
     - assignments
   categories: true
   type: table
-  fields: [date, title]
+  fields: [title]
   field-display-names:
-    date: "Date Assigned"
     title: "Title"
   sort: [date]
   sort-ui: false

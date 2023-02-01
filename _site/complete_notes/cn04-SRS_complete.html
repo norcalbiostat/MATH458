@@ -252,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="no-row-height column-margin column-container"><span class="">If you want to reproduce your exact numeric answer later, call <code>set.seed</code> immediately before any random draw. See the R companion for the text 2.1 for more info.</span></div><p>This code</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12356</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># draw 10 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698
  [7]  1.0962468  2.3340728  1.0193901  1.1962093</code></pre>
@@ -261,8 +261,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>is equivalent to</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12356</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">10</span>, {</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">10</span>, { <span class="co"># repeat 10 times</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># draw 1</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698
@@ -273,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="without-replacement" class="level2">
 <h2 class="anchored" data-anchor-id="without-replacement">Without replacement</h2>
 <p>The selected unit is <em>not</em> returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information.</p>
-<p>Every possible subset of <span class="math inline">\(n\)</span> distinct units has the same probability of getting sampled: <span class="math inline">\(\pi_{i} = \frac{n}{N}\)</span>.</p>
+<p>Every possible subset of <span class="math inline">\(n\)</span> distinct units has the same probability of getting sampled.</p>
 </section>
 </section>
 <section id="drawing-an-srs" class="level1 page-columns page-full">
@@ -309,7 +309,7 @@ Example: Enrollment in Graduate Programs in Statistics
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <a href="https://sampling-458.netlify.app/complete_notes/cn03-statistical_foundations_complete.html#variability-of-estimates">last time we saw this example</a>, we used the <code>sample()</code> function to draw 10 values from the single variable <code>FTGradEnrollment</code>. Let’s revisit this data and take a sample of the entire dataset.</p>
+<p>The <a href="https://sampling-458.netlify.app/complete_notes/cn03-statistical_foundations_complete.html#variability-of-estimates">last time we saw this example</a>, we used the <code>sample()</code> function to draw 10 values from the single variable <code>FTGradEnrollment</code>. Let’s revisit this data and take an SRS of the entire dataset.</p>
 </div>
 </div>
 <p>Read in the data and see how many record/rows there are.</p>
@@ -330,7 +330,7 @@ Example: Enrollment in Graduate Programs in Statistics
 </div>
 <p>Create a subset data frame with only the rows that were chosen and stored in the vector <code>get.these</code>. Confirm there are only 10 rows in this subset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sample.stat.phd <span class="ot">&lt;-</span> stat.phd[get.these, ] </span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sample.stat.phd <span class="ot">&lt;-</span> stat.phd[get.these, ]  <span class="co">#4</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">NROW</span>(sample.stat.phd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
