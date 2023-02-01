@@ -108,6 +108,9 @@ In statistical studies, the population of interest consists of _unknown_ measure
 $$\bar{y} = \frac{1}{n}\sum_{i=1}^{n}y_{i}$$
 $$s^{2} = \frac{1}{n-1}\sum^{n}_{i=1}\left(y_{i}-\bar{y}\right)^{2}$$
 
+:question: Why do we have $n-1$ in the denominator for $s^2$, but only $n$ in the denominator for $\bar{y}$?
+
+
 :::{.callout-warning icon=false}
 ### :star: You try it
 When a few data points are repeated in a data set, the results are often arrayed in a frequency table. For example, a quiz given to each of 25 students was graded on a four-point scale (0,1,2,3), 3 being a perfect score. 

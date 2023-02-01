@@ -626,7 +626,7 @@ Example: Enrollment in Graduate Programs in Statistics
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">10</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my.sample.programs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 35.3</code></pre>
+<pre><code>[1] 40.1</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -664,14 +664,14 @@ Example: Enrollment in Graduate Programs in Statistics
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  31.80   46.25   52.75   54.13   63.45   85.60 </code></pre>
+  35.10   47.23   52.75   53.96   60.02   79.40 </code></pre>
 </div>
 </div>
 <p>Characteristics of this distribution:</p>
 <ul>
 <li><em>Shape</em>: The distribution of average enrollment isn’t quite normal, there seems to perhaps be two peaks?</li>
-<li><em>Center</em>: The average enrollment is 54.13</li>
-<li><em>Spread</em>: Average enrollment ranges from 31.8, 85.6.</li>
+<li><em>Center</em>: The average enrollment is 53.96</li>
+<li><em>Spread</em>: Average enrollment ranges from 35.1, 79.4.</li>
 </ul>
 <p><span class="emoji" data-emoji="tada">🎉</span> We have just examined a <em>sampling distribution</em> of the sample mean.</p>
 <section id="sampling-distribution" class="level2 page-columns page-full">
@@ -909,14 +909,14 @@ Example Grad program example cont.
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many.means) <span class="co">#because the example above already had n=10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 11.26253</code></pre>
+<pre><code>[1] 9.255122</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, {</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">20</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.826295</code></pre>
+<pre><code>[1] 6.593256</code></pre>
 </div>
 </div>
 </section>
@@ -941,16 +941,16 @@ CI for PhD program enrollment
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(LCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 31.60995</code></pre>
+<pre><code>[1] 35.45376</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(UCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 76.66005</code></pre>
+<pre><code>[1] 72.47424</code></pre>
 </div>
 </div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Every time I compile these notes, I draw a different sample and will get a different numbers. To avoid conflicts in my written response, and what the code shows, I use <em>inline R code</em> here. See the RStudio <em>Help –&gt; Markdown Quick Reference</em> for more information.</span></div></div>
 <blockquote class="blockquote">
-<p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (31.6 , 76.7).</p>
+<p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (35.5 , 72.5).</p>
 </blockquote>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -964,7 +964,7 @@ CI for PhD program enrollment
 <div class="callout-body-container callout-body">
 <p>Consider the following interpretation of the above confidence interval.</p>
 <blockquote class="blockquote">
-<p>We can be 95% confident that PhD programs in Statistics have a total enrollment of between 31.6 and 76.7 students.</p>
+<p>We can be 95% confident that PhD programs in Statistics have a total enrollment of between 35.5 and 72.5 students.</p>
 </blockquote>
 <p>Why is this an incorrect interpretation?</p>
 </div>
