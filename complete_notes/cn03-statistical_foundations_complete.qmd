@@ -1,7 +1,7 @@
 ---
 title: "Foundations of Statistical Estimation"
 description: "We review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course."
-date: 2/3/23
+date: 2/06/23
 ---
 
 # Introduction
@@ -41,9 +41,7 @@ What is the population parameter? What is the sample statistic? Use correct nota
 **Sample Statistic**: $\hat{p} = 58/200 = .29$
 :::
 
-The value of a statistic for a particular sample gives a _point estimate_ of the population parameter. If we only have the one sample and don't know the value of the population parameter, 
-
-> this point estimate is our best estimate of the true value of the population parameter.
+The value of a statistic for a particular sample gives a _point estimate_ of the population parameter. If we only have the one sample and don't know the value of the population parameter, this point estimate is our best estimate of the true value of the population parameter.
 
 After we have a little more mathematical terminology and foundation, we'll come back to what we mean by "best estimate", and examine how we can determine if something is a "good" estimate. 
 
@@ -91,7 +89,7 @@ where $y$ is a value of a single measurement chosen at random from the populatio
 
 $$\sigma^{2} = V(y)=E(y-\mu)^{2}=\sum_{y}\left(y-\mu\right)^{2}*p(y)$$
 
-The variability of measurements in a population can be measured by the **variance** which is defined as the average squared deviation from the mean between a randomly selected measurement $y$ and its mean value:
+The variability of measurements in a population can be measured by the **variance** which is defined as the average squared deviation from the mean between a randomly selected measurement $y$ and its mean value $\mu$. 
 
 The standard deviation is defined as the square root of the variance, and is denoted $\sigma$.
 
@@ -115,27 +113,35 @@ $$s^{2} = \frac{1}{n-1}\sum^{n}_{i=1}\left(y_{i}-\bar{y}\right)^{2}$$
 ### :star: You try it
 When a few data points are repeated in a data set, the results are often arrayed in a frequency table. For example, a quiz given to each of 25 students was graded on a four-point scale (0,1,2,3), 3 being a perfect score. 
 
-Results: 16 students scored a 3, 4 students scored a 2, 2 students scored a 1, and 3 scored a 0.
+Consider the following results: 16 students scored a 3, 4 students scored a 2, 2 students scored a 1, and 3 scored a 0. Assume this distribution of scores is representative of the population distribution. 
 
-Show how the average score can be calculated using both frequencies and proportions, and calculate the standard deviation of $X$. 
+Calculate both the sample and population values of the average and standard deviation. 
 :::
 
 
 :::{.callout-warning icon=false collapse="true" appearance=minimal}
 ### Solution
-| Score (X) | Frequency | Proportion |
+| Score (Y) | Frequency | Proportion |
 |-----------|-----------|------------|
 | 3         | 16        | .64        |
 | 2         | 4         | .16        |
 | 1         | 2         | .08        |
 | 0         | 3         | .12        |
 
-$\bar{x}$ = 2.32, s = 1.07
-
 ```{r}
-(x <- rep(3:0, c(16, 4, 2, 3)))
-mean(x)
-sd(x)
+y <- 3:0
+f <- c(16, 4, 2, 3)
+p <- c(.64, .16, .08, .12)
+
+# Sample
+(dta <- rep(y, f)) # expand out the data
+n <- length(dta)
+(y.bar <- sum(dta)/n)
+sqrt(sum((dta-y.bar)^2)/(n-1)) 
+
+# Population
+(y.bar.p <- sum(y*p))
+sqrt(sum(p*(y-y.bar.p)^2)) #
 ```
 :::
 
@@ -200,6 +206,7 @@ $$
 
 :question: Was this a good estimate of $\tau$? Why or why not? 
 
+> No! The population total $\tau$ is nearly double that of the estimate. However, the weighted mean is much closer to the true value than the unweighted mean is. 
 
 # Variability of Estimates
 
@@ -207,6 +214,9 @@ $$
 ### :question: :busts_in_silhouette: Turn and talk
 Why do we usually think of a parameter $\mu$ or $p$ as a fixed value, while the sample statistic $\bar{x}$ or $\hat{p}$ as a random variable?
 :::
+
+> write your answer in HackMD. 
+
 
 Along with the point estimate we also want to know how accurate we can expect the point estimate to be. In other words, if we took another random sample of the same size from the population, is the point estimate from this new sample likely to be similar to the first point estimate or are they likely to be far apart.
 
@@ -268,7 +278,7 @@ Characteristics of this distribution:
 * _Spread_: Average enrollment ranges from `r range(many.means)`. 
 
 
-:tada: We have just examined a _sampling distribution_ of the sample mean. 
+:tada: We have just created a _sampling distribution_ of the sample mean. 
 
 ## Sampling Distribution 
 
@@ -294,9 +304,11 @@ In general, suppose that $\hat{\theta}$ is an estimator of the parameter $\theta
 
 To clarify: 
 
-* **Measurement bias** means that the $y$'s are measured inaccurately. That means an estimator of a total $t$ calculated as $\hat{t} = \sum_{i \in U} y_{i}$ where $U$ is the entire universe, then $\hat{t}$ itself would not be the true total of interest. 
+* **Measurement bias** means that the $y$'s are measured inaccurately. 
+    - That means an estimator of a total $t$ calculated as $\hat{t} = \sum_{i \in U} y_{i}$ where $U$ is the entire universe, then $\hat{t}$ itself would not be the true total of interest. 
     - Trying to estimate heights of students, but your ruler is always off 3 cm
-* **Estimation bias** means that the estimator chosen resulted in a bias. If we calculated the total as $t' = \sum_{i \in L} y_{i}$ from a random sample of $L$ units in the universe, $\hat{t'}$ would be biased. 
+* **Estimation bias** means that the estimator chosen resulted in a bias. 
+    - If we calculated the total as $t' = \sum_{i \in L} y_{i}$ from a random sample of $L$ units in the universe, $\hat{t'}$ would be biased. 
     - Trying to estimate heights of students by taking a sample of the shorter students only.
 
 If two unbiased estimators are available for $\theta$ we generally prefer the one with the smaller variance.
@@ -337,38 +349,35 @@ Create all possible samples of size $n=2$, and add the probability of selection 
 ```{r}
 # Create all possible samples of size 2
 universe <- expand.grid(x, x)
+names(universe)[1:2] <- c("x1", "x2") # rename first two columns for ease of reference
 
-# Calculate selection probability as a third column
-universe$selection.prob <- rep(deltas,4)*rep(deltas, each=4)
+# Add the selection probabilities 
+universe$d1 <- rep(deltas,4)
+universe$d2 <- rep(deltas, each=4)
 universe
 ```
+[An alternative method of creating the universe is to create separate vectors `x1 <- rep(x,4); x2 <- rep(x, each=4).]{.aside}
+Note the resulting object is a table/matrix with 16 rows and 4 columns, where each row is a possible sample of $n=2$ from the universe. 
 
-Note the resulting object is a table/matrix with 16 rows and 3 columns (currently named `Var1` and `Var2` and `selection.prob`), where each row is a possible sample of $n=2$ from the universe. 
-
-Create a function to calculate $\hat{\tau} = \frac{1}{2}\Big[\frac{x_1}{\delta_1} + \frac{x_2}{\delta_2}\Big]$. 
+Now calculate $\hat{\tau} = \frac{1}{2}\Big[\frac{x_1}{\delta_1} + \frac{x_2}{\delta_2}\Big]$. 
 
 ```{r}
-get.taus <- function(x1, x2){
-  .5*(x1/deltas[x1] + x2/deltas[x2])
-}
+universe$tau.hat <- .5*(universe$x1/universe$d1 + universe$x2/universe$d2)
+head(universe)
+```
 
-# Test it out on the first row
-get.taus(1, 1)
-# manually confirm the answer is correct
+_manually verify calculation_
+```{r}
 .5*(1/.4 + 1/.4)
 ```
 
-Apply that function across all rows to calculate $\hat{\tau}$ for each possible sample. 
-```{r}
-all.tau.hat <- get.taus(universe$Var1, universe$Var2)
-head(all.tau.hat) # always check your code at each step
-```
-
-Now calculate $E[\hat{\tau}] = \sum \hat{\tau}*p(\hat{\tau})$ and $V[\hat{\tau}] = E[\hat{\tau}] - E[\hat{\tau}]^2]. 
+Now calculate $E[\hat{\tau}] = \sum \hat{\tau}*p(\hat{\tau})$ and $V[\hat{\tau}] = E[\hat{\tau}] - E[\hat{\tau}]^2]$, where $p(\hat{\tau}) = \delta_1*\delta_2$ is the probability that sample is chosen. 
 
 ```{r}
-(E.tau.hat <- sum(all.tau.hat * universe$selection.prob))
-(Var.tau.hat <- sum(all.tau.hat^2 * universe$selection.prob) - E.tau.hat^2)
+# Calculate selection probability 
+universe$p.hat.tau <- universe$d1*universe$d2
+(E.tau.hat <- sum(universe$tau.hat * universe$p.hat.tau))
+(Var.tau.hat <- sum(universe$tau.hat^2 * universe$p.hat.tau) - E.tau.hat^2)
 ```
 
 :::{.callout-warning icon=false}
@@ -383,7 +392,7 @@ In general, it is usually not enough to just give a point estimate when estimati
 
 ## Bounds on Estimators
 
-The objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How do we determine which sampling procedure to use and how many sampling units to sample?
+The objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How can we determine how many sampling units to select? 
 
 > It depends on the magnitude of the error that we find acceptable.
 
@@ -395,12 +404,16 @@ Suppose that we are trying to estimate some parameter $\theta$ using the sample 
 What is the difference between the _error_ and _bias_?
 :::
 
+> * The _error_ is the difference between the estimated value and the true value.
+> *The _bias_ is the difference in _expected value_ of the estimator and the true value
+
+
 We might want to specify that the absolute value of the error is less than some number, say $B$. Thus,
 $$
 \mbox{Error of Estimation}=|\theta-\hat{\theta}|<B
 $$
 
-We should also state a probability ($1-\alpha$) that our error is less than $B$ if we were to take repeated samples. This is stated as
+We should also define a probability ($1-\alpha$) such that our error is less than $B$ if we were to take repeated samples. 
 $$
 P\left(|\theta-\hat{\theta}|<B\right)=1-\alpha
 $$
@@ -416,7 +429,7 @@ We will often select $B$ to be approximately 2 times the standard deviation of $
 The _standard error_ of a statistic is the standard deviation of the sample statistic. In other words, the standard deviation of the sampling distribution.  
 :::
 
-The standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use clsoed form mathematical formulas to calculate the standard error.
+The standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use closed form mathematical formulas to calculate the standard error.
 
 :::{.callout-tip icon=true}
 ### Example Grad program example cont. 

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-02-03">
+<meta name="dcterms.date" content="2023-02-06">
 <meta name="description" content="We review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.">
 
 <title>Sampling Methods - Foundations of Statistical Estimation</title>
@@ -232,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 3, 2023</p>
+      <p class="date">February 6, 2023</p>
     </div>
   </div>
   
@@ -297,10 +297,7 @@ Solution
 </div>
 </div>
 </div>
-<p>The value of a statistic for a particular sample gives a <em>point estimate</em> of the population parameter. If we only have the one sample and don’t know the value of the population parameter,</p>
-<blockquote class="blockquote">
-<p>this point estimate is our best estimate of the true value of the population parameter.</p>
-</blockquote>
+<p>The value of a statistic for a particular sample gives a <em>point estimate</em> of the population parameter. If we only have the one sample and don’t know the value of the population parameter, this point estimate is our best estimate of the true value of the population parameter.</p>
 <p>After we have a little more mathematical terminology and foundation, we’ll come back to what we mean by “best estimate”, and examine how we can determine if something is a “good” estimate.</p>
 <hr>
 </section>
@@ -388,7 +385,7 @@ Definition: Population Variance &amp; Standard Deviation
 </div>
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[\sigma^{2} = V(y)=E(y-\mu)^{2}=\sum_{y}\left(y-\mu\right)^{2}*p(y)\]</span></p>
-<p>The variability of measurements in a population can be measured by the <strong>variance</strong> which is defined as the average squared deviation from the mean between a randomly selected measurement <span class="math inline">\(y\)</span> and its mean value:</p>
+<p>The variability of measurements in a population can be measured by the <strong>variance</strong> which is defined as the average squared deviation from the mean between a randomly selected measurement <span class="math inline">\(y\)</span> and its mean value <span class="math inline">\(\mu\)</span>.</p>
 <p>The standard deviation is defined as the square root of the variance, and is denoted <span class="math inline">\(\sigma\)</span>.</p>
 <p>Sometimes it’s may be convenient to calculate the variance using this formulation:</p>
 <p><span class="math display">\[V(y)=E(y^2) - E(y)^{2}\]</span></p>
@@ -397,6 +394,7 @@ Definition: Population Variance &amp; Standard Deviation
 <p>We can also calculate these measurements directly from the sample measurements.</p>
 <p>In statistical studies, the population of interest consists of <em>unknown</em> measurements; hence, we can only speculate on the relative frequencies (<span class="math inline">\(p(y)\)</span>). In order to gain information about a population we take a sample of <span class="math inline">\(n\)</span>, <span class="math inline">\(y_{1},y_{2},...,y_{n}\)</span>. We can then infer characteristics about the population. Given our sample data, <span class="math inline">\(y_{1},y_{2},...,y_{n}\)</span>, we can calculate the mean and variance:</p>
 <p><span class="math display">\[\bar{y} = \frac{1}{n}\sum_{i=1}^{n}y_{i}\]</span> <span class="math display">\[s^{2} = \frac{1}{n-1}\sum^{n}_{i=1}\left(y_{i}-\bar{y}\right)^{2}\]</span></p>
+<p><span class="emoji" data-emoji="question">❓</span> Why do we have <span class="math inline">\(n-1\)</span> in the denominator for <span class="math inline">\(s^2\)</span>, but only <span class="math inline">\(n\)</span> in the denominator for <span class="math inline">\(\bar{y}\)</span>?</p>
 <div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -408,8 +406,8 @@ Definition: Population Variance &amp; Standard Deviation
 </div>
 <div class="callout-body-container callout-body">
 <p>When a few data points are repeated in a data set, the results are often arrayed in a frequency table. For example, a quiz given to each of 25 students was graded on a four-point scale (0,1,2,3), 3 being a perfect score.</p>
-<p>Results: 16 students scored a 3, 4 students scored a 2, 2 students scored a 1, and 3 scored a 0.</p>
-<p>Show how the average score can be calculated using both frequencies and proportions, and calculate the standard deviation of <span class="math inline">\(X\)</span>.</p>
+<p>Consider the following results: 16 students scored a 3, 4 students scored a 2, 2 students scored a 1, and 3 scored a 0. Assume this distribution of scores is representative of the population distribution.</p>
+<p>Calculate both the sample and population values of the average and standard deviation.</p>
 </div>
 </div>
 <div class="callout-warning callout callout-style-simple no-icon callout-captioned">
@@ -427,7 +425,7 @@ Solution
 <table class="table">
 <thead>
 <tr class="header">
-<th>Score (X)</th>
+<th>Score (Y)</th>
 <th>Frequency</th>
 <th>Proportion</th>
 </tr>
@@ -455,19 +453,33 @@ Solution
 </tr>
 </tbody>
 </table>
-<p><span class="math inline">\(\bar{x}\)</span> = 2.32, s = 1.07</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">0</span>, <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">0</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">64</span>, .<span class="dv">16</span>, .<span class="dv">08</span>, .<span class="dv">12</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>(dta <span class="ot">&lt;-</span> <span class="fu">rep</span>(y, f)) <span class="co"># expand out the data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 2 1 1 0 0 0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(dta)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(y.bar <span class="ot">&lt;-</span> <span class="fu">sum</span>(dta)<span class="sc">/</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.32</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>((dta<span class="sc">-</span>y.bar)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n<span class="dv">-1</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.069268</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Population</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(y.bar.p <span class="ot">&lt;-</span> <span class="fu">sum</span>(y<span class="sc">*</span>p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.32</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(p<span class="sc">*</span>(y<span class="sc">-</span>y.bar.p)<span class="sc">^</span><span class="dv">2</span>)) <span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.047664</code></pre>
 </div>
 </div>
 </div>
@@ -568,6 +580,9 @@ Example: Job openings cont.
 \hat{\tau} = \frac{1}{2}\Big[\frac{3}{70/580} + \frac{10}{90/580}\Big]  = 44.7
 \]</span></p>
 <p><span class="emoji" data-emoji="question">❓</span> Was this a good estimate of <span class="math inline">\(\tau\)</span>? Why or why not?</p>
+<blockquote class="blockquote">
+<p>No! The population total <span class="math inline">\(\tau\)</span> is nearly double that of the estimate. However, the weighted mean is much closer to the true value than the unweighted mean is.</p>
+</blockquote>
 </section>
 </section>
 <section id="variability-of-estimates" class="level1 page-columns page-full">
@@ -585,6 +600,9 @@ Example: Job openings cont.
 <p>Why do we usually think of a parameter <span class="math inline">\(\mu\)</span> or <span class="math inline">\(p\)</span> as a fixed value, while the sample statistic <span class="math inline">\(\bar{x}\)</span> or <span class="math inline">\(\hat{p}\)</span> as a random variable?</p>
 </div>
 </div>
+<blockquote class="blockquote">
+<p>write your answer in HackMD.</p>
+</blockquote>
 <p>Along with the point estimate we also want to know how accurate we can expect the point estimate to be. In other words, if we took another random sample of the same size from the population, is the point estimate from this new sample likely to be similar to the first point estimate or are they likely to be far apart.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -602,8 +620,8 @@ Example: Enrollment in Graduate Programs in Statistics
 </div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">I don’t feel like loading packages in this file so I’m using the <code>::</code> shortcut method to access the <code>here</code> and <code>read_csv</code> functions to load in the data.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>stat.phd <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"StatisticsPhD.csv"</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(stat.phd) <span class="co">#always look at your imported data to check for import errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>stat.phd <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"StatisticsPhD.csv"</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(stat.phd) <span class="co">#always look at your imported data to check for import errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   University                      Department    FTGradEnrollment
@@ -615,7 +633,7 @@ Example: Enrollment in Graduate Programs in Statistics
 5 Case Western Reserve University Statistics                  11
 6 Colorado State University       Statistics                  14</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(stat.phd<span class="sc">$</span>FTGradEnrollment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(stat.phd<span class="sc">$</span>FTGradEnrollment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 53.53659</code></pre>
 </div>
@@ -623,10 +641,10 @@ Example: Enrollment in Graduate Programs in Statistics
 <p>Based on the data set, the mean enrollment in 2009 is 53.54 full-time graduate students. Because this is the mean for the entire population of all US statistics doctoral programs for which data were available that year, we have that <span class="math inline">\(\mu=53.54\)</span> students.</p>
 <p><span class="emoji" data-emoji="star">⭐</span> Use the code below take a random sample of 10 programs from the data file and calculate the mean.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">10</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my.sample.programs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">10</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my.sample.programs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 40.1</code></pre>
+<pre><code>[1] 67.8</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
@@ -649,31 +667,31 @@ Example: Enrollment in Graduate Programs in Statistics
 </div>
 <p>Knowing the behavior of of repeated sample statistics (like the mean in the prior example) is critically important. Let’s dig into this a little more by repeating this sampling experiment many times.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>many.means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, {</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">10</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>many.means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">10</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><span class="emoji" data-emoji="cry">😢</span> Getting an error with replicate? Take a step back and first make sure the internal code is working. Then add replicate with n=5, and DONT assign it to an object. Visually see with your eyes what the result of the <code>replicate</code> function gives you. Then once that is working, you can increase the number of replications, assign it as an object and explore the object.</span></div></div>
 <p>Let’s visualize the distribution of all those sample means.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="cn03-statistical_foundations_complete_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(many.means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  35.10   47.23   52.75   53.96   60.02   79.40 </code></pre>
+  31.60   45.25   54.05   54.29   60.50   79.90 </code></pre>
 </div>
 </div>
 <p>Characteristics of this distribution:</p>
 <ul>
 <li><em>Shape</em>: The distribution of average enrollment isn’t quite normal, there seems to perhaps be two peaks?</li>
-<li><em>Center</em>: The average enrollment is 53.96</li>
-<li><em>Spread</em>: Average enrollment ranges from 35.1, 79.4.</li>
+<li><em>Center</em>: The average enrollment is 54.29</li>
+<li><em>Spread</em>: Average enrollment ranges from 31.6, 79.9.</li>
 </ul>
-<p><span class="emoji" data-emoji="tada">🎉</span> We have just examined a <em>sampling distribution</em> of the sample mean.</p>
+<p><span class="emoji" data-emoji="tada">🎉</span> We have just created a <em>sampling distribution</em> of the sample mean.</p>
 <section id="sampling-distribution" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="sampling-distribution">Sampling Distribution</h2>
 <p>A <em>sampling distribution</em> is the distribution of sample statistics computed for different samples of the same size from the same population.</p>
@@ -706,12 +724,14 @@ Example: Enrollment in Graduate Programs in Statistics
 </ol>
 <p>To clarify:</p>
 <ul>
-<li><strong>Measurement bias</strong> means that the <span class="math inline">\(y\)</span>’s are measured inaccurately. That means an estimator of a total <span class="math inline">\(t\)</span> calculated as <span class="math inline">\(\hat{t} = \sum_{i \in U} y_{i}\)</span> where <span class="math inline">\(U\)</span> is the entire universe, then <span class="math inline">\(\hat{t}\)</span> itself would not be the true total of interest.
+<li><strong>Measurement bias</strong> means that the <span class="math inline">\(y\)</span>’s are measured inaccurately.
 <ul>
+<li>That means an estimator of a total <span class="math inline">\(t\)</span> calculated as <span class="math inline">\(\hat{t} = \sum_{i \in U} y_{i}\)</span> where <span class="math inline">\(U\)</span> is the entire universe, then <span class="math inline">\(\hat{t}\)</span> itself would not be the true total of interest.</li>
 <li>Trying to estimate heights of students, but your ruler is always off 3 cm</li>
 </ul></li>
-<li><strong>Estimation bias</strong> means that the estimator chosen resulted in a bias. If we calculated the total as <span class="math inline">\(t' = \sum_{i \in L} y_{i}\)</span> from a random sample of <span class="math inline">\(L\)</span> units in the universe, <span class="math inline">\(\hat{t'}\)</span> would be biased.
+<li><strong>Estimation bias</strong> means that the estimator chosen resulted in a bias.
 <ul>
+<li>If we calculated the total as <span class="math inline">\(t' = \sum_{i \in L} y_{i}\)</span> from a random sample of <span class="math inline">\(L\)</span> units in the universe, <span class="math inline">\(\hat{t'}\)</span> would be biased.</li>
 <li>Trying to estimate heights of students by taking a sample of the shorter students only.</li>
 </ul></li>
 </ul>
@@ -759,74 +779,74 @@ Example
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">If you are not familiar with working with vectors and matrices in R, check out this <a href="https://www.youtube.com/watch?v=2TcPAZOyV0U">YouTube tutorial by MarinStats</a></span></div></div>
 <p>Initial problem setup: Define data/sample/known values as objects in R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>deltas <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">4</span>,.<span class="dv">4</span>,.<span class="dv">1</span>,.<span class="dv">1</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>(tau <span class="ot">&lt;-</span> <span class="fu">sum</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>deltas <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">4</span>,.<span class="dv">4</span>,.<span class="dv">1</span>,.<span class="dv">1</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>(tau <span class="ot">&lt;-</span> <span class="fu">sum</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
 <p>Create all possible samples of size <span class="math inline">\(n=2\)</span>, and add the probability of selection for that sample.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create all possible samples of size 2</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>universe <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(x, x)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate selection probability as a third column</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>universe<span class="sc">$</span>selection.prob <span class="ot">&lt;-</span> <span class="fu">rep</span>(deltas,<span class="dv">4</span>)<span class="sc">*</span><span class="fu">rep</span>(deltas, <span class="at">each=</span><span class="dv">4</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>universe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create all possible samples of size 2</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>universe <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(x, x)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(universe)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>) <span class="co"># rename first two columns for ease of reference</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the selection probabilities </span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>universe<span class="sc">$</span>d1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(deltas,<span class="dv">4</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>universe<span class="sc">$</span>d2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(deltas, <span class="at">each=</span><span class="dv">4</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>universe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   Var1 Var2 selection.prob
-1     1    1           0.16
-2     2    1           0.16
-3     3    1           0.04
-4     4    1           0.04
-5     1    2           0.16
-6     2    2           0.16
-7     3    2           0.04
-8     4    2           0.04
-9     1    3           0.04
-10    2    3           0.04
-11    3    3           0.01
-12    4    3           0.01
-13    1    4           0.04
-14    2    4           0.04
-15    3    4           0.01
-16    4    4           0.01</code></pre>
+<pre><code>   x1 x2  d1  d2
+1   1  1 0.4 0.4
+2   2  1 0.4 0.4
+3   3  1 0.1 0.4
+4   4  1 0.1 0.4
+5   1  2 0.4 0.4
+6   2  2 0.4 0.4
+7   3  2 0.1 0.4
+8   4  2 0.1 0.4
+9   1  3 0.4 0.1
+10  2  3 0.4 0.1
+11  3  3 0.1 0.1
+12  4  3 0.1 0.1
+13  1  4 0.4 0.1
+14  2  4 0.4 0.1
+15  3  4 0.1 0.1
+16  4  4 0.1 0.1</code></pre>
 </div>
 </div>
-<p>Note the resulting object is a table/matrix with 16 rows and 3 columns (currently named <code>Var1</code> and <code>Var2</code> and <code>selection.prob</code>), where each row is a possible sample of <span class="math inline">\(n=2\)</span> from the universe.</p>
-<p>Create a function to calculate <span class="math inline">\(\hat{\tau} = \frac{1}{2}\Big[\frac{x_1}{\delta_1} + \frac{x_2}{\delta_2}\Big]\)</span>.</p>
+<div class="page-columns page-full"><p> Note the resulting object is a table/matrix with 16 rows and 4 columns, where each row is a possible sample of <span class="math inline">\(n=2\)</span> from the universe.</p><div class="no-row-height column-margin column-container"><span class="">An alternative method of creating the universe is to create separate vectors `x1 &lt;- rep(x,4); x2 &lt;- rep(x, each=4).</span></div></div>
+<p>Now calculate <span class="math inline">\(\hat{\tau} = \frac{1}{2}\Big[\frac{x_1}{\delta_1} + \frac{x_2}{\delta_2}\Big]\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>get.taus <span class="ot">&lt;-</span> <span class="cf">function</span>(x1, x2){</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  .<span class="dv">5</span><span class="sc">*</span>(x1<span class="sc">/</span>deltas[x1] <span class="sc">+</span> x2<span class="sc">/</span>deltas[x2])</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Test it out on the first row</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">get.taus</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>universe<span class="sc">$</span>tau.hat <span class="ot">&lt;-</span> .<span class="dv">5</span><span class="sc">*</span>(universe<span class="sc">$</span>x1<span class="sc">/</span>universe<span class="sc">$</span>d1 <span class="sc">+</span> universe<span class="sc">$</span>x2<span class="sc">/</span>universe<span class="sc">$</span>d2)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(universe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x1 x2  d1  d2 tau.hat
+1  1  1 0.4 0.4    2.50
+2  2  1 0.4 0.4    3.75
+3  3  1 0.1 0.4   16.25
+4  4  1 0.1 0.4   21.25
+5  1  2 0.4 0.4    3.75
+6  2  2 0.4 0.4    5.00</code></pre>
+</div>
+</div>
+<p><em>manually verify calculation</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>.<span class="dv">5</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>.<span class="dv">4</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>.<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manually confirm the answer is correct</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>.<span class="dv">5</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>.<span class="dv">4</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>.<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.5</code></pre>
 </div>
-</div>
-<p>Apply that function across all rows to calculate <span class="math inline">\(\hat{\tau}\)</span> for each possible sample.</p>
+<p>Now calculate <span class="math inline">\(E[\hat{\tau}] = \sum \hat{\tau}*p(\hat{\tau})\)</span> and <span class="math inline">\(V[\hat{\tau}] = E[\hat{\tau}] - E[\hat{\tau}]^2]\)</span>, where <span class="math inline">\(p(\hat{\tau}) = \delta_1*\delta_2\)</span> is the probability that sample is chosen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>all.tau.hat <span class="ot">&lt;-</span> <span class="fu">get.taus</span>(universe<span class="sc">$</span>Var1, universe<span class="sc">$</span>Var2)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all.tau.hat) <span class="co"># always check your code at each step</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  2.50  3.75 16.25 21.25  3.75  5.00</code></pre>
-</div>
-</div>
-<p>Now calculate <span class="math inline">\(E[\hat{\tau}] = \sum \hat{\tau}*p(\hat{\tau})\)</span> and $V[] = E[] - E[]^2].</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(E.tau.hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(all.tau.hat <span class="sc">*</span> universe<span class="sc">$</span>selection.prob))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate selection probability </span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>universe<span class="sc">$</span>p.hat.tau <span class="ot">&lt;-</span> universe<span class="sc">$</span>d1<span class="sc">*</span>universe<span class="sc">$</span>d2</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>(E.tau.hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(universe<span class="sc">$</span>tau.hat <span class="sc">*</span> universe<span class="sc">$</span>p.hat.tau))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(Var.tau.hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(all.tau.hat<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> universe<span class="sc">$</span>selection.prob) <span class="sc">-</span> E.tau.hat<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(Var.tau.hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(universe<span class="sc">$</span>tau.hat<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> universe<span class="sc">$</span>p.hat.tau) <span class="sc">-</span> E.tau.hat<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 81.25</code></pre>
 </div>
@@ -850,7 +870,7 @@ Example
 <p>In general, it is usually not enough to just give a point estimate when estimating a population parameter. Why?</p>
 <section id="bounds-on-estimators" class="level2">
 <h2 class="anchored" data-anchor-id="bounds-on-estimators">Bounds on Estimators</h2>
-<p>The objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How do we determine which sampling procedure to use and how many sampling units to sample?</p>
+<p>The objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How can we determine how many sampling units to select?</p>
 <blockquote class="blockquote">
 <p>It depends on the magnitude of the error that we find acceptable.</p>
 </blockquote>
@@ -868,10 +888,15 @@ Example
 <p>What is the difference between the <em>error</em> and <em>bias</em>?</p>
 </div>
 </div>
+<blockquote class="blockquote">
+<ul>
+<li>The <em>error</em> is the difference between the estimated value and the true value. *The <em>bias</em> is the difference in <em>expected value</em> of the estimator and the true value</li>
+</ul>
+</blockquote>
 <p>We might want to specify that the absolute value of the error is less than some number, say <span class="math inline">\(B\)</span>. Thus, <span class="math display">\[
 \mbox{Error of Estimation}=|\theta-\hat{\theta}|&lt;B
 \]</span></p>
-<p>We should also state a probability (<span class="math inline">\(1-\alpha\)</span>) that our error is less than <span class="math inline">\(B\)</span> if we were to take repeated samples. This is stated as <span class="math display">\[
+<p>We should also define a probability (<span class="math inline">\(1-\alpha\)</span>) such that our error is less than <span class="math inline">\(B\)</span> if we were to take repeated samples. <span class="math display">\[
 P\left(|\theta-\hat{\theta}|&lt;B\right)=1-\alpha
 \]</span></p>
 <p>We will often select <span class="math inline">\(B\)</span> to be approximately 2 times the standard deviation of <span class="math inline">\(\hat{\theta}\)</span>, <span class="math inline">\(B=2\hat{\sigma}_{\hat{\theta}}\)</span>. As we saw earlier in <span class="citation" data-cites="ref">@ref</span>(#sampling-distribution), many of the statistics that we will discuss exhibit a normal sampling distribution even when the population distribution is skewed.</p>
@@ -891,7 +916,7 @@ Definition: Standard Error
 <p>The <em>standard error</em> of a statistic is the standard deviation of the sample statistic. In other words, the standard deviation of the sampling distribution.</p>
 </div>
 </div>
-<p>The standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use clsoed form mathematical formulas to calculate the standard error.</p>
+<p>The standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use closed form mathematical formulas to calculate the standard error.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -907,16 +932,16 @@ Example Grad program example cont.
 </div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">I used the base pipe <code>|&gt;</code> here to pass the results of the replicate function into the <code>sd()</code> function</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many.means) <span class="co">#because the example above already had n=10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many.means) <span class="co">#because the example above already had n=10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 9.255122</code></pre>
+<pre><code>[1] 11.03902</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, {</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">20</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, {</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span><span class="dv">20</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.593256</code></pre>
+<pre><code>[1] 6.177176</code></pre>
 </div>
 </div>
 </section>
@@ -939,18 +964,18 @@ CI for PhD program enrollment
 </div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Wrapping the entire line of code in <code>()</code> will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(LCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(LCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 35.45376</code></pre>
+<pre><code>[1] 32.20796</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(UCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(UCL <span class="ot">&lt;-</span> <span class="fu">mean</span>(many.means) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(many.means))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 72.47424</code></pre>
+<pre><code>[1] 76.36404</code></pre>
 </div>
 </div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Every time I compile these notes, I draw a different sample and will get a different numbers. To avoid conflicts in my written response, and what the code shows, I use <em>inline R code</em> here. See the RStudio <em>Help –&gt; Markdown Quick Reference</em> for more information.</span></div></div>
 <blockquote class="blockquote">
-<p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (35.5 , 72.5).</p>
+<p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (32.2 , 76.4).</p>
 </blockquote>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -964,7 +989,7 @@ CI for PhD program enrollment
 <div class="callout-body-container callout-body">
 <p>Consider the following interpretation of the above confidence interval.</p>
 <blockquote class="blockquote">
-<p>We can be 95% confident that PhD programs in Statistics have a total enrollment of between 35.5 and 72.5 students.</p>
+<p>We can be 95% confident that PhD programs in Statistics have a total enrollment of between 32.2 and 76.4 students.</p>
 </blockquote>
 <p>Why is this an incorrect interpretation?</p>
 </div>
