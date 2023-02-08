@@ -373,7 +373,7 @@ Example: Finding the mean of a distribution.
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>samp.unif <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10000</span>, <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># runif(n, min, max)</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp.unif)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4978702</code></pre>
+<pre><code>[1] 0.4982724</code></pre>
 </div>
 </div>
 <div class="callout-warning callout callout-style-default no-icon callout-captioned">
@@ -411,7 +411,7 @@ Solution
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>samp.exp <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">10000</span>, <span class="dv">1</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(samp.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.004617</code></pre>
+<pre><code>[1] 1.00807</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -422,7 +422,7 @@ Solution
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> <span class="fu">log</span>(<span class="fu">abs</span>(samp.norm))<span class="sc">+</span><span class="dv">1</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.271626</code></pre>
+<pre><code>[1] 4.238634</code></pre>
 </div>
 </div>
 </div>
@@ -459,7 +459,7 @@ E(|X-Y|)
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">abs</span>(X<span class="sc">-</span>Y)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 11.64599</code></pre>
+<pre><code>[1] 11.86637</code></pre>
 </div>
 </div>
 </section>
@@ -476,7 +476,7 @@ E(|X-Y|)
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(samp.unif)</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5038361 0.5007229 0.4999666 0.4993818 0.4982124</code></pre>
+<pre><code>[1] 0.4957403 0.4985300 0.5019441 0.4996963 0.4995930</code></pre>
 </div>
 </div>
 <p>We will come back to this idea of repeating simulations multiple times to explore the variability in simulation results in a few sections.</p>
@@ -513,7 +513,7 @@ Solution
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(Z)  </span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 11.80859 11.85066 11.77546 12.03164 11.77559</code></pre>
+<pre><code>[1] 11.81059 11.76007 11.81112 11.70301 11.83991</code></pre>
 </div>
 </div>
 </div>
@@ -537,11 +537,11 @@ Example:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">5</span>) <span class="co"># without replacement</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6 1 4 2 5</code></pre>
+<pre><code>[1] 3 6 1 5 2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">replace=</span><span class="cn">TRUE</span>) <span class="co"># with replacement</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 5 6 2 2</code></pre>
+<pre><code>[1] 6 6 2 6 5</code></pre>
 </div>
 </div>
 </div>

@@ -10,13 +10,7 @@
   },
   {
     "listing": "/complete_notes.html",
-    "items": [
-      "/complete_notes/cn01-intro_simulation_complete_posted.html",
-      "/complete_notes/cn01-intro_simulation_starter.html",
-      "/complete_notes/cn02-intro_sampling_complete.html",
-      "/complete_notes/cn03-statistical_foundations_complete.html",
-      "/complete_notes/cn04-SRS_complete.html"
-    ]
+    "items": []
   },
   {
     "listing": "/notes.html",
@@ -33,6 +27,29 @@
       "/weekly_details/wk01.html",
       "/weekly_details/wk02.html",
       "/weekly_details/wk03.html"
+    ]
+  },
+  {
+    "listing": "/prep.html",
+    "items": [
+      "/prep/cn01-intro_simulation_complete_posted.html",
+      "/prep/cn01-intro_simulation_starter.html",
+      "/prep/cn02-intro_sampling_complete_posted.html",
+      "/prep/cn02-intro_sampling_starter.html",
+      "/prep/cn03-statistical_foundations_complete.html",
+      "/prep/cn01-intro_simulation_blank.html",
+      "/prep/cn02-intro_sampling_blank.html",
+      "/prep/cn03-statistical_foundations_blank.pdf",
+      "/prep/cn04-SRS_complete.html"
+    ]
+  },
+  {
+    "listing": "/complete.html",
+    "items": [
+      "/complete/cn01-intro_simulation_complete_posted.html",
+      "/complete/cn02-intro_sampling_complete_posted.html",
+      "/complete/cn03-statistical_foundations_complete.html",
+      "/complete/cn04-SRS_complete.html"
     ]
   }
 ]

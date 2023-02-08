@@ -53,14 +53,12 @@ Describe the target population, sampling frame, sampling unit, and observation u
 
 :question: If a survey designed to study household income has fewer poor households than would be obtained in a representative sample, would the survey estimates of the average or median household income be too high? or to low? 
 
+> Too high. 
+
 ::: {.callout-note appearance="minimal"}
 ### :question: :busts_in_silhouette: Some types of selection bias
-
-In [this google doc](https://docs.google.com/document/d/1WS6bxqddXvMj_KhX6Q3k3I_WQDnZMnBKDdEQINiGtwY), summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class. 
-
+Summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class. 
 :::
-
-> After class add all examples provided to your notes. Clean them up (e.g. remove the names and headers)
 
 
 ## Bias everywhere!

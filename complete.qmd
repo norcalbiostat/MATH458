@@ -1,8 +1,8 @@
 ---
-title: "Complete Notes"
+title: "Complete notes"
 listing:
   contents:
-    - complete_notes
+    - complete
   type: table
   fields: [date, title]
   date-format: "MM-DD"

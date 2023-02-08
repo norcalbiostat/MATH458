@@ -62,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -121,10 +122,36 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#populations-and-representative-samples-1.2" id="toc-populations-and-representative-samples-1.2" class="nav-link" data-scroll-target="#populations-and-representative-samples-1.2">Populations and Representative Samples (1.2)</a></li>
+  <li><a href="#selection-bias-1.3" id="toc-selection-bias-1.3" class="nav-link" data-scroll-target="#selection-bias-1.3">Selection Bias (1.3)</a>
+  <ul class="collapse">
+  <li><a href="#bias-everywhere" id="toc-bias-everywhere" class="nav-link" data-scroll-target="#bias-everywhere">Bias everywhere!</a></li>
+  </ul></li>
+  <li><a href="#measurement-error-1.4" id="toc-measurement-error-1.4" class="nav-link" data-scroll-target="#measurement-error-1.4">Measurement Error (1.4)</a>
+  <ul class="collapse">
+  <li><a href="#surveying-people" id="toc-surveying-people" class="nav-link" data-scroll-target="#surveying-people">Surveying people</a></li>
+  </ul></li>
+  <li><a href="#sampling-and-nonsampling-errors-1.6" id="toc-sampling-and-nonsampling-errors-1.6" class="nav-link" data-scroll-target="#sampling-and-nonsampling-errors-1.6">Sampling and Nonsampling errors (1.6)</a></li>
+  <li><a href="#the-design-of-the-sample-survey" id="toc-the-design-of-the-sample-survey" class="nav-link" data-scroll-target="#the-design-of-the-sample-survey">The Design of the Sample Survey</a>
+  <ul class="collapse">
+  <li><a href="#types-of-sampling-methods" id="toc-types-of-sampling-methods" class="nav-link" data-scroll-target="#types-of-sampling-methods">Types of sampling methods</a>
+  <ul class="collapse">
+  <li><a href="#probability-sampling" id="toc-probability-sampling" class="nav-link" data-scroll-target="#probability-sampling">Probability Sampling</a></li>
+  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple random sample</a></li>
+  <li><a href="#stratified-sampling" id="toc-stratified-sampling" class="nav-link" data-scroll-target="#stratified-sampling">Stratified sampling</a></li>
+  </ul></li>
+  <li><a href="#questionnaire-design-data-collection-tools" id="toc-questionnaire-design-data-collection-tools" class="nav-link" data-scroll-target="#questionnaire-design-data-collection-tools">Questionnaire Design / Data collection tools</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -154,10 +181,254 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Starter notes found in Hack MD <a href="https://hackmd.io/@norcalbiostat/cn02-intro_sampling">https://hackmd.io/<span class="citation" data-cites="norcalbiostat/cn02-intro_sampling">@norcalbiostat/cn02-intro_sampling</span></a></p>
-<p>Completed notes will be posted here after the section is complete.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean, proportion or total.</p>
+</section>
+<section id="populations-and-representative-samples-1.2" class="level1">
+<h1>Populations and Representative Samples (1.2)</h1>
+<p>A sample is representative if it can be used to “reconstruct” what the population looks like and if we can provide an accurate assessment of how good that reconstruction is.</p>
+<p>Some definitions are needed to make the notions of a “population” and a “representative sample” more precise.</p>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Key Terms
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Turn to your neighbor and come up with an example of something phenomenon or characteristic that you want to estimate. Write down in your notes examples for each of the definitions listed below.</p>
+</div>
+</div>
+<ul>
+<li><strong>Observational Unit</strong>: The singular object that is being measured. A <span class="emoji" data-emoji="cat2">🐈</span>.</li>
+<li><strong>Target Population</strong>: The complete collection of all observational units that we want to study. All <span class="emoji" data-emoji="cat2">🐈</span> in Chico.</li>
+<li><strong>Sample</strong>: A subset of the population. The <span class="emoji" data-emoji="cat2">🐈</span> at Butte Humane Society</li>
+<li><strong>Sampled population</strong>: The collection of all possible observational units that <em>might</em> have been chosen in a sample. Adoptable <span class="emoji" data-emoji="cat2">🐈</span><span class="emoji" data-emoji="cat2">🐈</span> in Chico.</li>
+<li><strong>Sampling unit</strong>: A observational unit that can be selected for study. A <span class="emoji" data-emoji="cat2">🐈</span> available for adoption at BHS.</li>
+<li><strong>Sampling frame</strong>: A list, map, or other specification that describes how sampling units from the sample may be selected. The roster of <span class="emoji" data-emoji="cat2">🐈</span><span class="emoji" data-emoji="cat2">🐈</span> listed for adoption at BHS.</li>
+</ul>
+<p>In an <em>ideal</em> survey, the sampled population will be identical to the target population. 🦄</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/fig1_1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Textbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An online bookseller summarizes readers’ reviews of the books it sells. Persons who want to rate a book can submit a review online; the bookseller reports the average rating from all reviews on its website.</p>
+<p>Describe the target population, sampling frame, sampling unit, and observation unit. Discuss any possible sources of selection bias or inaccuracy of responses.</p>
+</div>
+</div>
+<ul>
+<li>Target population: All individuals who have read a particular book</li>
+<li>Sampling Frame: The list of individuals who wrote a review for that book</li>
+<li>Sampling Unit: All individuals who bought, read, and reviewed the book</li>
+<li>Observation Unit: An individual who bought, read, and reviewed the book</li>
+<li>Sources of selection bias: Only individuals who feel very strongly (positively or negatively) about a book will post a review.</li>
+</ul>
+<hr>
+</section>
+<section id="selection-bias-1.3" class="level1">
+<h1>Selection Bias (1.3)</h1>
+<p><strong>Selection bias</strong> occurs when the target population does not coincide with the sampled population because some population units are sampled at a different rate than intended by the investigator.</p>
+<p><span class="emoji" data-emoji="question">❓</span> If a survey designed to study household income has fewer poor households than would be obtained in a representative sample, would the survey estimates of the average or median household income be too high? or to low?</p>
+<blockquote class="blockquote">
+<p>Too high.</p>
+</blockquote>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Some types of selection bias
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class.</p>
+</div>
+</div>
+<section id="bias-everywhere" class="level2">
+<h2 class="anchored" data-anchor-id="bias-everywhere">Bias everywhere!</h2>
+<p>Can Bias ever be good? Yes!</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Early indicators of lung injury associated with vaping (2019)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By Oct ’19, over 1,600 cases of lung injuries and 34 deaths were found to be associated with vaping, but the actual cause of injuries were not known. In 2019 a group of researchers (see text for citation) conducted a study that ultimately led to the recommendation that the public stop using these products until more research on the causal association could be conducted.</p>
+<p>This impact survey had the following types of selection bias:</p>
+<ul>
+<li>Researchers attempted to interview 83 patients who were reported to have lung injuries but only 53 responded (non-response bias).</li>
+<li>The sampling frame of 83 only came from physician-reported cases, which means there may be bias if the physicians only reported the more serious cases (undercoverage)</li>
+<li>THC is illegal in that state, so patients may have under-reported their use (undercoverage)</li>
+<li>Individuals who vape, incurred a lung injury but didn’t seek care were excluded from the study (undercoverage)</li>
+</ul>
+</div>
+</div>
+<p>Just because your sample may likely contain bias, being up front about it in your reporting (this is what the limitations section is all about) is a very important aspect of open science.</p>
+<hr>
+</section>
+</section>
+<section id="measurement-error-1.4" class="level1 page-columns page-full">
+<h1>Measurement Error (1.4)</h1>
+<ul>
+<li><strong>Measurement error</strong>: When the response differs from the true value</li>
+<li><strong>Measurement bias</strong>: When the error tends to only occur in one direction</li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Ecology surveys
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Often in ecological surveys, areas are divided into plots or grids of smaller size. A sample of plots/grids are selected and the number of plants in those selected grids are counted.</p>
+<p>Field researchers have to make a decision about whether or not to count plants directly on the border. If one researcher always counts plants on the boarder as being inside the grid, and another one does not, their estimate will always be higher than the other person.</p>
+</div>
+</div>
+<section id="surveying-people" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="surveying-people">Surveying people</h2>
+<p>Obtaining accurate responses is challenging in all types of surveys. Especially when dealing with humans.</p>
+<div class="page-columns page-full"><p> <img src="../figs/batty.gif" class="img-fluid" alt="Sourced from Tenor.com"></p><div class="no-row-height column-margin column-container"><span class="">Bonus credz to anyone who can name this bat. Double credz if you can quote a line from his intro rap.</span></div></div>
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Think-pair-share
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Write down <em>all</em> reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a “good” response or not.</p>
+</div>
+</div>
+<ul>
+<li>People lie, forget, don’t understand the question.</li>
+<li>They are afraid of incriminating themselves (citizenship, underage alcohol or illicit drug use)</li>
+<li>They respond differently depending on the mode of survey (in person, phone, text, online)</li>
+<li>They respond in a “socially desirable” way that portrays them in a positive manner to the interviewer</li>
+<li>They respond in the way they thing the interviewer wants to hear.</li>
+<li>Not paying attention to the question - especially in a long list of “do you agree or disagree…”</li>
+<li>confusing question wording</li>
+</ul>
+<p>Clear sampling protocols and thoughtful &amp; validated survey design can minimize measurement error.</p>
+<hr>
+</section>
+</section>
+<section id="sampling-and-nonsampling-errors-1.6" class="level1">
+<h1>Sampling and Nonsampling errors (1.6)</h1>
+<ul>
+<li>Most surveys report a “margin of error”, often something like “3 percentage points”</li>
+<li>The <strong>margin of error</strong> describes the <strong>sampling error</strong> - that is the error that occurs from taking one random sample instead of measuring the entire population.</li>
+<li><strong>Nonsampling errors</strong> cannot be attributed to the sampling variability, but due to selection bias and measurement error.</li>
+</ul>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go find a poll on a subject that interests you. Share the URL in the #458-class-chat discord channel. Report the population of interest, the statistic being estimated, and the margin of error. Also put this in your notes.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="the-design-of-the-sample-survey" class="level1">
+<h1>The Design of the Sample Survey</h1>
+<p>Since the objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How do we determine which sampling procedure to use and how many sampling units to sample?</p>
+<blockquote class="blockquote">
+<p>It depends on the magnitude of the error that we find acceptable.</p>
+</blockquote>
+<p>Suppose that we are trying to estimate some parameter <span class="math inline">\(\theta\)</span> from our sample. <span class="math inline">\(\hat{\theta}\)</span> is what we will call the statistic that is used to estimate <span class="math inline">\(\theta\)</span>. Thus, we will use <span class="math inline">\(\hat{\theta}\)</span> as an estimate of <span class="math inline">\(\theta\)</span>. Therefore, we will want the value of <span class="math inline">\(\theta-\hat{\theta}\)</span> to be <strong>small</strong>.</p>
+<p>We call the value of <span class="math inline">\(\theta-\hat{\theta}\)</span> the <strong>error</strong> because it is the difference between the estimated value and the true value.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A major objective in Statistis is to minimize error.</p>
+</div>
+</div>
+<p>We might want to specify that the absolute value of the error is less than some number, say <span class="math inline">\(B\)</span>. Thus,</p>
+<p><span class="math display">\[
+\mbox{Error of Estimation}=|\theta-\hat{\theta}|&lt;B
+\]</span></p>
+<p>We should also state a probability (<span class="math inline">\(1-\alpha\)</span>) that our error is less than <span class="math inline">\(B\)</span> if we were to take repeated samples. This is stated as</p>
+<p><span class="math display">\[
+P(\mbox{Error of Estimation}=|\theta-\hat{\theta}| &lt; B) = 1-\alpha
+\]</span></p>
+<p>We will often select <span class="math inline">\(B\)</span> to be approximately 2 times the standard deviation of <span class="math inline">\(\hat{\theta}\)</span>, <span class="math inline">\(B=2\hat{\sigma}_{\hat{\theta}}\)</span>. Many of the statistics that we will discuss exhibit a normal sampling distribution even when the population distribution is skewed.</p>
+<section id="types-of-sampling-methods" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-sampling-methods">Types of sampling methods</h2>
+<p>We will go into the different types of sampling methods throughout the class, but here are a few.</p>
+<section id="probability-sampling" class="level3">
+<h3 class="anchored" data-anchor-id="probability-sampling">Probability Sampling</h3>
+<p>The classical formulation of a statistical estimation problem requires that randomness be brought into the sampling plan. With proper randomness in the sampling scheme we can be sure that we have an unbiased estimate and that our statements that involve our confidence in the estimate are accurate. Sampling designs based on planned randomness are called <strong>probability samples</strong>.</p>
+</section>
+<section id="simple-random-sample" class="level3">
+<h3 class="anchored" data-anchor-id="simple-random-sample">Simple random sample</h3>
+<p>There are two types of simple random sampling. One is simple random sampling <em>with</em> replacement, whereby a member of the population can be selected more than once; the other is simple random sampling <em>without</em> replacement,whereby a member of the population can be selected at most once.</p>
+<blockquote class="blockquote">
+<p>Unless otherwise specified, we assume that sampling is done without replacement.</p>
+</blockquote>
+</section>
+<section id="stratified-sampling" class="level3">
+<h3 class="anchored" data-anchor-id="stratified-sampling">Stratified sampling</h3>
+<p>Often deployed when we want to guarantee representation from different groups (strata) in the population. In stratified sampling the population is first divided into subpopulations, called <em>strata</em>, and then sampling is done from each stratum. Ideally the members of the subpopulations should be homogeneous relative to the characteristic under consideration.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Would taxpayors support a neighborhood pool?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For instance, suppose that a city planner is interested in finding out how his town would feel about a new public pool being built funded by tax payer dollars. He might divide the population up into different income groups such as high, middle, and low incomes. He would then take a simple random sample of individuals within each strata (income group). This would guarantee that his sample had representation from all income groups.</p>
+<p>Note that this type of sampling plan makes use of an auxiliary variable, in this case income. By stratifying we should be increasing the accuracy of our estimate.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="questionnaire-design-data-collection-tools" class="level2">
+<h2 class="anchored" data-anchor-id="questionnaire-design-data-collection-tools">Questionnaire Design / Data collection tools</h2>
+<p>We will return to this topic of how to design appropriate and useful data collections in a few weeks.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
