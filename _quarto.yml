@@ -30,9 +30,15 @@ website:
         
     right: 
       - text: "HackMD"
-        url: https://hackmd.io
-      - text: "R resources"
-        url: https://hackmd.io/@norcalbiostat/sampling_r_resources
+        menu: 
+          - text: "R resources"
+            url: https://hackmd.io/@norcalbiostat/sampling_r_resources
+          - text: "What is HackMD"
+            url: https://hackmd.io/@norcalbiostat/458_intro_hackmd
+          - text: "Sampling Framework notes"
+            url: https://hackmd.io/@norcalbiostat/cn02-intro_sampling
+          - text: "Foundations of Estimation"
+            url: https://hackmd.io/@norcalbiostat/cn03-statistical_foundations
       - text: "Syllabus"
         file: syllabus.qmd
 
