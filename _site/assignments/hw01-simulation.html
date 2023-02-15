@@ -203,7 +203,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#bonus-credit" id="toc-bonus-credit" class="nav-link" data-scroll-target="#bonus-credit">Bonus credit</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -271,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[1] -0.00106</code></pre>
 </div>
 </div>
-<p>Copy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating <span class="math inline">\(\lambda\)</span>? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.</p>
+<p>Copy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating <span class="math inline">\(\lambda\)</span>? Does your answer differ depending on sample size <span class="math inline">\(n\)</span> or the value of <span class="math inline">\(\lambda\)</span>? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mean</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>| Parameters            | Exp Value | Std Dev |  Bias  |</span>
@@ -307,8 +310,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 2$   |           |         |        |</span>
 <span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 0.5$ |           |         |        |</span>
 <span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 2$   |           |         |        |</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="bonus-credit" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-credit">Bonus credit</h2>
+<p>Create a plot of the bias as a function of n, lambda, and the type of statistic.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

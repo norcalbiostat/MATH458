@@ -36,7 +36,7 @@ n <- length(samp.dist)
 ```
 
 
-Copy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating $\lambda$? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.
+Copy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating $\lambda$? Does your answer differ depending on sample size $n$ or the value of $\lambda$? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.
 
 ```md
 ## Mean
@@ -75,3 +75,6 @@ Copy the markdown table code below into your assignment file to help you summari
 | $n=50, \lambda = 0.5$ |           |         |        |
 | $n=50, \lambda = 2$   |           |         |        |
 ```
+
+## Bonus credit
+Create a plot of the bias as a function of n, lambda, and the type of statistic. 
