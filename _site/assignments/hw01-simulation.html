@@ -204,7 +204,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a></li>
   </ul>
 </nav>
     </div>
@@ -240,54 +239,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="overview" class="level1">
 <h1>Overview</h1>
-<p>Suppose we want to examine the accuracy (bias) and precision (spread) of a few measures of center. Some measures of center are the mean, the midhinge, the trimmed mean and the median.</p>
+<p>Suppose we want to examine the accuracy (bias) and precision (spread) of a few estimates for the center or middle of a distribution. The four statistics we are going to compare are: the mean, the midhinge, the trimmed mean and the median.</p>
 <ul>
-<li>The midhinge is the average of <span class="math inline">\(Q_{1}\)</span> and <span class="math inline">\(Q_{3}\)</span>.</li>
+<li>The mean. You can use the <code>mean()</code> function here.<br>
+</li>
+<li>The midhinge, the average of <span class="math inline">\(Q_{1}\)</span> and <span class="math inline">\(Q_{3}\)</span>. Use the function you created in worksheet 1.</li>
 <li>The trimmed mean is the sample mean with a certain percent of the extreme values removed. We will look at a 3% trimmed mean which you can calculate in R with the function <code>mean(x,0.3)</code>.</li>
-<li>The median is the number that divides the sorted data into two equal halves.</li>
+<li>The median is the number that divides the sorted data into two equal halves. Use the <code>median()</code> function.</li>
 </ul>
-</section>
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<p>Let’s examine the precision and accuracy for the Poisson distribution with parameter <span class="math inline">\(\lambda\)</span>, using 2 different sample sizes (15, 50) and two different values of <span class="math inline">\(\lambda\)</span> (0.5, 2).</p>
+<p>We will compare the behavior of these statistics by creating sampling distributions of these statistics calculated on samples drawn from a Poisson distribution with known parameter <span class="math inline">\(\lambda\)</span>, using 2 different sample sizes (15, 50) and two different values of <span class="math inline">\(\lambda\)</span> (0.5, 2). Use 10,000 replications to create your sampling distribution.</p>
 <p>You should observe a histogram of the generated data to get a feel for the data, but do not need to include copious amounts of plots in your submission.</p>
-<p>For each simulated sampling distribution, calculate the mean, standard deviation and bias of the simulated statistic.</p>
+<p>For each simulated sampling distribution, calculate the mean, standard deviation and bias for each of the three statistics under consideration. The first one is done for you as an example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># you must choose a different seed. </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>samp.dist <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10000</span>, {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">15</span>, .<span class="dv">5</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(samp.dist)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>(E.x <span class="ot">&lt;-</span> <span class="fu">sum</span>(samp.dist)<span class="sc">/</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.49894</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(sd.x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>((samp.dist<span class="sc">-</span>E.x)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n<span class="dv">-1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1822391</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(bias <span class="ot">&lt;-</span> E.x <span class="sc">-</span> .<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.00106</code></pre>
+</div>
+</div>
 <p>Copy the markdown table code below into your assignment file to help you summarize your findings. Then write a paragraph or two that summarizes your results. Which statistic would you recommend if estimating <span class="math inline">\(\lambda\)</span>? Compare the different measures of center with respect to the accuracy and bias. Use complete sentences.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mean</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>| Parameters            | Exp Value | Std Dev | Bias |</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>|-----------------------|-----------|---------|------|</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 0.5$ |           |         |      |</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 2$   |           |         |      |</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 0.5$ |           |         |      |</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 2$   |           |         |      |</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Trimmed Mean</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>| Parameters            | Exp Value | Std Dev | Bias |</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>|-----------------------|-----------|---------|------|</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 0.5$ |           |         |      |</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 2$   |           |         |      |</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 0.5$ |           |         |      |</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 2$   |           |         |      |</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Midhinge</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>| Parameters            | Exp Value | Std Dev | Bias |</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>|-----------------------|-----------|---------|------|</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 0.5$ |           |         |      |</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 2$   |           |         |      |</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 0.5$ |           |         |      |</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 2$   |           |         |      |</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Median</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>| Parameters            | Exp Value | Std Dev | Bias |</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>|-----------------------|-----------|---------|------|</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 0.5$ |           |         |      |</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 2$   |           |         |      |</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 0.5$ |           |         |      |</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 2$   |           |         |      |</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mean</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>| Parameters            | Exp Value | Std Dev |  Bias  |</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>|-----------------------|-----------|---------|--------|</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 0.5$ |  0.4989   | 0.1822  | -0.001 |</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 2$   |           |         |        |</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 0.5$ |           |         |        |</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 2$   |           |         |        |</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Trimmed Mean</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>| Parameters            | Exp Value | Std Dev |  Bias  |</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>|-----------------------|-----------|---------|--------|</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 0.5$ |           |         |        |</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 2$   |           |         |        |</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 0.5$ |           |         |        |</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 2$   |           |         |        |</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Midhinge</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>| Parameters            | Exp Value | Std Dev |  Bias  |</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>|-----------------------|-----------|---------|--------|</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 0.5$ |           |         |        |</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 2$   |           |         |        |</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 0.5$ |           |         |        |</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 2$   |           |         |        |</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Median</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>| Parameters            | Exp Value | Std Dev |  Bias  |</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>|-----------------------|-----------|---------|--------|</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 0.5$ |           |         |        |</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>| $n=15, \lambda = 2$   |           |         |        |</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 0.5$ |           |         |        |</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>| $n=50, \lambda = 2$   |           |         |        |</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
