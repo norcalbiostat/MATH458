@@ -4,6 +4,8 @@ description: "SRS is the basic form of probability sampling, and serves as the b
 date: 2/13/23
 ---
 
+> This code file uses the `agpop.csv` data that can be downloaded from the textbook resources
+
 # Introduction
 
 There are two ways to draw simple random samples, with and without replacement. 
