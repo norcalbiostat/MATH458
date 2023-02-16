@@ -4,15 +4,27 @@ description: "SRS is the basic form of probability sampling, and serves as the b
 date: 2/13/23
 ---
 
-> This code file uses the `agpop.csv` data that can be downloaded from the textbook resources
+:::{.callout-note appearance=minimal}
+These notes use functions from the `sampling` package, and the `agpop.csv` data.
+:::
+
+```{r}
+library(sampling)
+```
 
 # Introduction
 
-There are two ways to draw simple random samples, with and without replacement. 
+Recall there are two ways to draw simple random samples, with and without replacement. Previously we saw how to use the `sample` function to accomplish this. An alternative is to use the functions `srswor` or `srswr` from the `sampling` package. We'll first look at how these functions differ. 
 
-## With replacement
+## Using `sample()`
 
-* The same unit is "put back" into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again.
+### With replacement
+
+* The same unit is "put back" into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again. Notice with this method you can draw a larger sample than you have unique objects to draw from. 
+```{r}
+sample(c("cat", "dog", "fish"), size=5, replace=TRUE)
+```
+
 * Drawing a subset of $n$ units from the population can be thought of as drawing $n$ independent samples of size 1. We use this feature when drawing random numbers from named distributions using the `size` argument. 
 [If you want to reproduce your exact numeric answer later, call `set.seed` immediately before any random draw. See the R companion for the text 2.1 for more info.]{.aside}
 
@@ -29,22 +41,73 @@ replicate(10, { # repeat 10 times
 })
 ```
 
-## Without replacement
+### Without replacement
 
 The selected unit is _not_ returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information. 
 
-Every possible subset of $n$ distinct units has the same probability of getting sampled. 
+Every possible subset of $n$ distinct units has the same probability of getting sampled.
 
+```{r}
+sample(1:5, size=5, replace=FALSE)
+```
 
-# Drawing an SRS
+## Using the `sampling` package. 
+
+When using `sample()` the vector of data that you want to sample from is provided as the first argument, and what is returned is the values in that vector. 
+
+```{r}
+animals <- c("Riley", "Meka", "Toki", "TJ", "DC", "Dodger")
+sample(animals, 3)
+```
+
+The functions `srswr` and `srswor` take two arguments: $n$ the sample size, and $N$ the population size, and what is returned is a vector of length $N$ that indicates how many times that position in the vector is selected.  
+
+### With replacement
+
+```{r}
+set.seed(4134)
+(choose.these.wr <- srswr(3,6))
+```
+
+### Without replacement
+```{r}
+(choose.these.wor <- srswor(3,6))
+```
+
+Then the `getdata()` function is used to extract the values from the population the indicated number of times. 
+```{r}
+getdata(animals, choose.these.wr)
+getdata(animals, choose.these.wor)
+```
+
+This method can be advantageous when drawing with replacement from a large dataset. 
+
+# Intentionality
 
 Random does not mean haphazard, contrary it's actually quite intentional. Avoid selecting a sample that you "feel" is random or representative of the population. These practices can lead to bias and lack of generalizability. 
 
-Instead we use techniques that leverage pseudo-random number generating algorithms such as the `sample` function. 
-  
+:::{.callout-note appearance=minimal}
+### :question: :busts_in_silhouette: Turn and talk
+Suppose you want to estimate the number of weed clusters of a certain type in a field. 
+
+* What is the population and what would you use for sampling units? 
+* How would you select a simple random sample? 
+* If a sampling unit is an area such as a square yard, does the size chosen for a sampling unit affect the accuracy of results? 
+* What considerations go into our choice of sampling unit? 
+:::
+
+:::{.callout-note icon=false collapse="true" appearance=minimal}
+* Population: All plots of that type of field
+* Sampling unit: The plots of land
+* Yes. Larger plots of land will have more weed clusters
+* Feasibility, size of land, terrain type
+:::
+
+
+To avoid the haphazard nature of "blindly choosing", or worse looking at what was sampled and changing it because "it doesn't look random enough", we use techniques that leverage pseudo-random number generating algorithms such as the functions discussed above. 
   
 :::{.callout-important}
-### How to draw a SRS 
+**How to draw a SRS**
 1. Generate a list of all observational units in the population (sampling frame). 
 2. Assign each observational unit a unique number, from 1 to the size of the sampling frame $N$. 
 3. Use a computer to draw $n$ numbers from 1 to $N$ without replacement.   
@@ -62,6 +125,9 @@ Read in the data and see how many record/rows there are.
 stat.phd <- readr::read_csv(here::here("data", "StatisticsPhD.csv")) 
 NROW(stat.phd) 
 ```
+
+**Using the `sample()` function**
+
 [Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.]{.aside}
 Generate list of numbers for each observational unit, then draw 10 numbers without replacement. 
 ```{r}
@@ -71,20 +137,14 @@ sampling.frame <- 1:NROW(stat.phd) #1, 2
 
 Create a subset data frame with only the rows that were chosen and stored in the vector `get.these`. Confirm there are only 10 rows in this subset. 
 ```{r}
-sample.stat.phd <- stat.phd[get.these, ]  #4
-NROW(sample.stat.phd)
+(sample.stat.phd <- stat.phd[get.these, ])  #4
 ```
 
-For fun, calculate the average enrollment and compare it to the estimate from the last set of notes
+**Using the `srswor()` function**
 ```{r}
-mean(sample.stat.phd$FTGradEnrollment)
+select.these <- srswor(10, NROW(stat.phd))
+getdata(stat.phd, select.these)
 ```
-
-
-
-
-
-
 
 
 :::{.callout-warning icon=false}
@@ -92,20 +152,29 @@ mean(sample.stat.phd$FTGradEnrollment)
 
 The U.S. government conducts a Census of Agriculture every five years, collecting data on all farms (defined as any place from which \$1000 or more of agricultural products were produced and sold). The file `agpop.csv` (textbook data) contains historical information from 1982, 1987, and 1992 on the number of farms, total acreage devoted to farms, number of farms with fewer than 9 acres, and number of farms with more than 1000 acres for the population consisting of the $N=3078$ counties and county-equivalents in the United States. 
 
-Take a random sample of $n=300$ from this data set, then generate a histogram of the variable `acres92`. Compare your results to your neighbor, and to Figure 2.4 in the text. _Set a seed for this example to ensure you get the same result each time you compile!_
+1. Generate a random sample without replacement of $n=300$ this data set, using both `sample` and `srswor`.  _Set a seed for this example to ensure you get the same result each time you compile!_
+
+2. Create a histogram of the variable acres92. Compare your results to your neighbor, and to Figure 2.4 in the text. 
 :::
 
-> Write a sentence here about how similar, or different your chart is from the class or the text. 
+> Write a sentence here about how similar, or different your chart is from the class or the text.
 
-
-
-
-
-* Sampling Weights (Lohr Ch 2.4)
 
 # Estimating population parameters
 
-## mean
+## Mean
+To estimate the population mean $\mu$ we can use the sample mean $\bar{y} = \frac{1}{n}\sum_{i\in S} y_{i}$, since it is an unbiased estimate. 
+
+The variance of $\bar{y}$ (variability in the mean across samples) is
+
+$$
+\frac{\sigma^{2}}{n}(1-\frac{n}{N})
+$$
+
+where $(1-\frac{n}{N})$ is called the **finite population correction** or **fpc**. 
+
+### Finite Population Correction
+
 * Expected value, variance, SE, CV, Bounds on error of estimation
 * FPC
 * Coefficient of variation

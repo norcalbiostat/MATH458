@@ -144,14 +144,14 @@
     "href": "complete/cn04-SRS_complete.html",
     "title": "Simple Random Sampling (Lohr Ch 2.3)",
     "section": "",
-    "text": "There are two ways to draw simple random samples, with and without replacement.\n\n\n\nThe same unit is “put back” into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again.\nDrawing a subset of \\(n\\) units from the population can be thought of as drawing \\(n\\) independent samples of size 1. We use this feature when drawing random numbers from named distributions using the size argument. \n\nIf you want to reproduce your exact numeric answer later, call set.seed immediately before any random draw. See the R companion for the text 2.1 for more info.This code\n\nset.seed(12356)\nrnorm(10, 0,1) # draw 10 \n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\nis equivalent to\n\nset.seed(12356)\nreplicate(10, { # repeat 10 times\n  rnorm(1, 0,1) # draw 1\n})\n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\n\n\n\nThe selected unit is not returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information.\nEvery possible subset of \\(n\\) distinct units has the same probability of getting sampled."
+    "text": "These notes use functions from the sampling package, and the agpop.csv data."
   },
   {
     "objectID": "complete/cn04-SRS_complete.html#mean",
     "href": "complete/cn04-SRS_complete.html#mean",
     "title": "Simple Random Sampling (Lohr Ch 2.3)",
-    "section": "mean",
-    "text": "mean\n\nExpected value, variance, SE, CV, Bounds on error of estimation\nFPC\nCoefficient of variation"
+    "section": "Mean",
+    "text": "Mean\nTo estimate the population mean \\(\\mu\\) we can use the sample mean \\(\\bar{y} = \\frac{1}{n}\\sum_{i\\in S} y_{i}\\), since it is an unbiased estimate.\nThe variance of \\(\\bar{y}\\) (variability in the mean across samples) is\n\\[\n\\frac{\\sigma^{2}}{n}(1-\\frac{n}{N})\n\\]\nwhere \\((1-\\frac{n}{N})\\) is called the finite population correction or fpc.\n\nFinite Population Correction\n\nExpected value, variance, SE, CV, Bounds on error of estimation\nFPC\nCoefficient of variation"
   },
   {
     "objectID": "complete/cn04-SRS_complete.html#total",
@@ -172,7 +172,7 @@
     "href": "complete.html",
     "title": "Complete notes",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\n01-25\n\n\nIntroduction to Simulation\n\n\n\n\n01-30\n\n\nThe Sampling Framework\n\n\n\n\n02-06\n\n\nFoundations of Statistical Estimation\n\n\n\n\n02-13\n\n\nSimple Random Sampling (Lohr Ch 2.3)\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\n01-25\n\n\nIntroduction to Simulation\n\n\n\n\n01-30\n\n\nThe Sampling Framework\n\n\n\n\n02-06\n\n\nFoundations of Statistical Estimation\n\n\n\n\n02-13\n\n\nSimple Random Sampling (Lohr Ch 2.3)\n\n\n\n\n\n\nFormulas and Definitions\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "ideas.html",
@@ -537,5 +537,40 @@
     "title": "Weekly Details",
     "section": "",
     "text": "Date\n\n\nTopic\n\n\nHow to prepare\n\n\n\n\n\n\n01-23\n\n\nWelcome to Math 458: Sampling Methods\n\n\nLook over this course website, the syllabus, and Canvas\n\n\n\n\n01-30\n\n\nIntroduction to the Sampling Framework\n\n\nCreate blank notes file. Read textbook\n\n\n\n\n02-06\n\n\nFoundations of Statistical Estimation\n\n\nPrepare notes file. Download data\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "complete/cn04-SRS_complete.html#with-replacement",
+    "href": "complete/cn04-SRS_complete.html#with-replacement",
+    "title": "Simple Random Sampling (Lohr Ch 2.3)",
+    "section": "With replacement",
+    "text": "With replacement\n\nThe same unit is “put back” into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again. Notice with this method you can draw a larger sample than you have unique objects to draw from.\n\n\nsample(c(\"cat\", \"dog\", \"fish\"), size=5, replace=TRUE)\n\n[1] \"dog\"  \"fish\" \"fish\" \"fish\" \"dog\" \n\n\n\nDrawing a subset of \\(n\\) units from the population can be thought of as drawing \\(n\\) independent samples of size 1. We use this feature when drawing random numbers from named distributions using the size argument. \n\nIf you want to reproduce your exact numeric answer later, call set.seed immediately before any random draw. See the R companion for the text 2.1 for more info.This code\n\nset.seed(12356)\nrnorm(10, 0,1) # draw 10 \n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\nis equivalent to\n\nset.seed(12356)\nreplicate(10, { # repeat 10 times\n  rnorm(1, 0,1) # draw 1\n})\n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093"
+  },
+  {
+    "objectID": "complete/cn04-SRS_complete.html#without-replacement",
+    "href": "complete/cn04-SRS_complete.html#without-replacement",
+    "title": "Simple Random Sampling (Lohr Ch 2.3)",
+    "section": "Without replacement",
+    "text": "Without replacement\nThe selected unit is not returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information.\nEvery possible subset of \\(n\\) distinct units has the same probability of getting sampled.\n\nsample(1:5, size=5, replace=FALSE)\n\n[1] 5 2 1 3 4"
+  },
+  {
+    "objectID": "complete/cn04-SRS_complete.html#using-the-sampling-package.",
+    "href": "complete/cn04-SRS_complete.html#using-the-sampling-package.",
+    "title": "Simple Random Sampling (Lohr Ch 2.3)",
+    "section": "Using the sampling package.",
+    "text": "Using the sampling package.\nWhen using sample() the vector of data that you want to sample from is provided as the first argument, and what is returned is the values in that vector.\n\nanimals <- c(\"Riley\", \"Meka\", \"Toki\", \"TJ\", \"DC\", \"Dodger\")\nsample(animals, 3)\n\n[1] \"TJ\"   \"Meka\" \"Toki\"\n\n\nThe functions srswr and srswor take two arguments: \\(n\\) the sample size, and \\(N\\) the population size, and what is returned is a vector of length \\(N\\) that indicates how many times that position in the vector is selected.\n\nWith replacement\n\nset.seed(4134)\n(choose.these.wr <- srswr(3,6))\n\n[1] 0 2 0 1 0 0\n\n\n\n\nWithout replacement\n\n(choose.these.wor <- srswor(3,6))\n\n[1] 1 0 0 1 0 1\n\n\nThen the getdata() function is used to extract the values from the population the indicated number of times.\n\ngetdata(animals, choose.these.wr)\n\n[1] \"Meka\" \"Meka\" \"TJ\"  \n\ngetdata(animals, choose.these.wor)\n\n  ID_unit   data\n1       1  Riley\n2       4     TJ\n3       6 Dodger\n\n\nThis method can be advantageous when drawing with replacement from a large dataset."
+  },
+  {
+    "objectID": "complete/formulas.html",
+    "href": "complete/formulas.html",
+    "title": "Formulas and Definitions",
+    "section": "",
+    "text": "Expected Value and Variance\n\\[E(\\hat{\\theta}) = \\sum\\hat{\\theta}*p(\\hat{\\theta}) \\qquad \\qquad V(\\hat{\\theta}) = \\sum [\\hat{\\theta} - E(\\hat{\\theta})]^2*p(\\hat{\\theta})\\]\n\nEstimates \\(\\theta\\) are calculated on the sampling distribution\nThe sums are over all possible values of \\(\\theta\\) in the sampling design.\n\n\n\nParameters and Statistics\n\n\n\n\n\n\n\n\nMeasure\nPopulation\nSample\n\n\n\n\nTotal\n\\(\\tau = \\sum_{i=1}^N y_{i}\\)\n\\(\\hat{\\tau} = \\sum_{i=1}^n y_{i}\\)\n\n\nMean\n\\(\\mu = \\frac{1}{N}\\sum_{i=1}^N y_{i}\\)\n\\(\\bar{y} = \\frac{1}{n}\\sum_{i=1}^n y_{i}\\)\n\n\nVariance\n\\(\\sigma^2 = \\frac{1}{N}\\sum_{i=1}^{N}(y_i-\\mu)^2\\)\n\\(s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(y_i-\\bar{y})^2\\)\n\n\nProportion\\(^*\\)\n\\(p = \\mu\\)\n\\(\\hat{p} = \\bar{y}\\)\n\n\n\n\n\\(N\\) = total population size\n\\(y_{i}\\) = Value of measurement \\(y\\) on unit \\(i\\)\n\\(p(y)\\) probability of observing value \\(y\\)\nFor all proportion calculations it is assumed that \\(y_{i}\\) is a binary indicator of success. \\(y \\in {[0,1]}\\)\n\n\n\nSimple Random Sample\n\n\n\n\n\n\n\n\nMeasure\nUnbiased Estimate \\((\\hat{\\theta})\\)\nEstimated variance of \\((\\hat{\\theta})\\)\n\n\n\n\nMean\n\\(\\bar{y} = \\frac{1}{n}\\sum_{i\\in S} y_{i}\\)\n\\(\\hat{V}(\\bar{y}) = (1-\\frac{n}{N})\\frac{s^{2}}{n}\\)\n\n\nTotal\n\\(\\hat{\\tau} = N\\bar{y}\\)\n\\(\\hat{V}(\\hat{\\tau}) = N^{2}\\hat{V}(\\bar{y})\\)\n\n\nProportion\n\\(\\hat{p} = \\bar{y}\\)\n\\(\\hat{V}(\\hat{p}) = (1-\\frac{n}{N})\\frac{\\hat{p}(1-\\hat{p})}{n-1}\\)\n\n\n\n\n\\(i \\in S\\) : Unit \\(i\\) is an element in the sample \\(S\\)\n\\((1-\\frac{n}{N})\\): Finite population correction (fpc)"
+  },
+  {
+    "objectID": "complete/cn04-SRS_complete.html#using-sample",
+    "href": "complete/cn04-SRS_complete.html#using-sample",
+    "title": "Simple Random Sampling (Lohr Ch 2.3)",
+    "section": "Using sample()",
+    "text": "Using sample()\n\nWith replacement\n\nThe same unit is “put back” into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again. Notice with this method you can draw a larger sample than you have unique objects to draw from.\n\n\nsample(c(\"cat\", \"dog\", \"fish\"), size=5, replace=TRUE)\n\n[1] \"cat\"  \"dog\"  \"dog\"  \"fish\" \"dog\" \n\n\n\nDrawing a subset of \\(n\\) units from the population can be thought of as drawing \\(n\\) independent samples of size 1. We use this feature when drawing random numbers from named distributions using the size argument. \n\nIf you want to reproduce your exact numeric answer later, call set.seed immediately before any random draw. See the R companion for the text 2.1 for more info.This code\n\nset.seed(12356)\nrnorm(10, 0,1) # draw 10 \n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\nis equivalent to\n\nset.seed(12356)\nreplicate(10, { # repeat 10 times\n  rnorm(1, 0,1) # draw 1\n})\n\n [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698\n [7]  1.0962468  2.3340728  1.0193901  1.1962093\n\n\n\n\nWithout replacement\nThe selected unit is not returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information.\nEvery possible subset of \\(n\\) distinct units has the same probability of getting sampled.\n\nsample(1:5, size=5, replace=FALSE)\n\n[1] 5 2 1 3 4"
   }
 ]
