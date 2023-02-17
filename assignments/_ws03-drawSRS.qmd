@@ -1,0 +1,21 @@
+---
+title: "Worksheet 03: Simple Random Sampling"
+subtitle: "Drawing and working with a SRS "
+categories: Worksheet
+date: 2/24/23
+---
+
+The U.S. government conducts a Census of Agriculture every five years, collecting data on all farms (defined as any place from which \$1000 or more of agricultural products were produced and sold). The file `agpop.csv` (textbook data) contains historical information from 1982, 1987, and 1992 on the number of farms, total acreage devoted to farms, number of farms with fewer than 9 acres, and number of farms with more than 1000 acres for the population consisting of the $N=3078$ counties and county-equivalents in the United States.
+
+The variable of interest is `acres92`: the number of acres devoted to farms in 1992. 
+
+
+1.  Generate a random sample without replacement of $n=300$ this data set, using both `sample` and `srswor`. *Set a seed for this example to ensure you get the same result each time you compile!*
+
+2.  Create a histogram of the variable `acres92`. Compare your results to your neighbor, and to Figure 2.4 in the text. Write a sentence here about how similar, or different your chart is from the class or the text.
+
+
+3. Use the appropriate formulas to construct approximate 95% confidence intervals for a) the population total, b) the population mean, and c) the population proportion of farms with fewer than 200,000 acres. 
+
+
+4. Repeat #3 using the functions in the `survey` package. 

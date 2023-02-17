@@ -356,7 +356,7 @@ universe$d1 <- rep(deltas,4)
 universe$d2 <- rep(deltas, each=4)
 universe
 ```
-[An alternative method of creating the universe is to create separate vectors `x1 <- rep(x,4); x2 <- rep(x, each=4).]{.aside}
+[An alternative method of creating the universe is to create separate vectors `x1 <- rep(x,4); x2 <- rep(x, each=4)`.]{.aside}
 Note the resulting object is a table/matrix with 16 rows and 4 columns, where each row is a possible sample of $n=2$ from the universe. 
 
 Now calculate $\hat{\tau} = \frac{1}{2}\Big[\frac{x_1}{\delta_1} + \frac{x_2}{\delta_2}\Big]$. 

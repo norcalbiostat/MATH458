@@ -14,8 +14,7 @@
       "/complete/cn01-intro_simulation_complete_posted.html",
       "/complete/cn02-intro_sampling_complete_posted.html",
       "/complete/cn03-statistical_foundations_complete.html",
-      "/complete/cn04-SRS_complete.html",
-      "/complete/formulas.html"
+      "/complete/cn04-SRS_complete.html"
     ]
   },
   {
@@ -24,7 +23,8 @@
       "/notes/cn00-welcome.html",
       "/notes/cn01-intro_simulation.html",
       "/notes/cn02-intro_sampling.html",
-      "/notes/cn03-statistical_foundations.html"
+      "/notes/cn03-statistical_foundations.html",
+      "/notes/formulas.html"
     ]
   },
   {

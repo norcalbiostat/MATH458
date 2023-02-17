@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-02-13">
+<meta name="dcterms.date" content="2023-02-20">
 <meta name="description" content="SRS is the basic form of probability sampling, and serves as the basis for more complicated forms.">
 
 <title>Sampling Methods - Simple Random Sampling (Lohr Ch 2.3)</title>
@@ -204,29 +204,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#intentionality-in-sampling" id="toc-intentionality-in-sampling" class="nav-link" data-scroll-target="#intentionality-in-sampling">Intentionality in sampling</a></li>
+  <li><a href="#drawing-a-srs-using-a-computer" id="toc-drawing-a-srs-using-a-computer" class="nav-link" data-scroll-target="#drawing-a-srs-using-a-computer">Drawing a SRS using a computer</a>
   <ul class="collapse">
-  <li><a href="#using-sample" id="toc-using-sample" class="nav-link" data-scroll-target="#using-sample">Using <code>sample()</code></a>
-  <ul class="collapse">
-  <li><a href="#with-replacement" id="toc-with-replacement" class="nav-link" data-scroll-target="#with-replacement">With replacement</a></li>
-  <li><a href="#without-replacement" id="toc-without-replacement" class="nav-link" data-scroll-target="#without-replacement">Without replacement</a></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
   </ul></li>
-  <li><a href="#using-the-sampling-package." id="toc-using-the-sampling-package." class="nav-link" data-scroll-target="#using-the-sampling-package.">Using the <code>sampling</code> package.</a>
-  <ul class="collapse">
-  <li><a href="#with-replacement-1" id="toc-with-replacement-1" class="nav-link" data-scroll-target="#with-replacement-1">With replacement</a></li>
-  <li><a href="#without-replacement-1" id="toc-without-replacement-1" class="nav-link" data-scroll-target="#without-replacement-1">Without replacement</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#intentionality" id="toc-intentionality" class="nav-link" data-scroll-target="#intentionality">Intentionality</a></li>
-  <li><a href="#estimating-population-parameters" id="toc-estimating-population-parameters" class="nav-link" data-scroll-target="#estimating-population-parameters">Estimating population parameters</a>
-  <ul class="collapse">
-  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean">Mean</a>
-  <ul class="collapse">
-  <li><a href="#finite-population-correction" id="toc-finite-population-correction" class="nav-link" data-scroll-target="#finite-population-correction">Finite Population Correction</a></li>
-  </ul></li>
-  <li><a href="#total" id="toc-total" class="nav-link" data-scroll-target="#total">total:</a></li>
-  <li><a href="#proportion" id="toc-proportion" class="nav-link" data-scroll-target="#proportion">Proportion</a></li>
-  </ul></li>
+  <li><a href="#estimation-under-srs-framework" id="toc-estimation-under-srs-framework" class="nav-link" data-scroll-target="#estimation-under-srs-framework">Estimation under SRS framework</a></li>
   <li><a href="#using-the-survey-package." id="toc-using-the-survey-package." class="nav-link" data-scroll-target="#using-the-survey-package.">Using the <code>survey</code> package.</a></li>
   <li><a href="#determining-sample-size" id="toc-determining-sample-size" class="nav-link" data-scroll-target="#determining-sample-size">Determining sample size</a></li>
   <li><a href="#model-based-theory-vs-randomization-based-theory-lohr-2.10-2.11" id="toc-model-based-theory-vs-randomization-based-theory-lohr-2.10-2.11" class="nav-link" data-scroll-target="#model-based-theory-vs-randomization-based-theory-lohr-2.10-2.11">Model based theory vs Randomization based theory (Lohr 2.10, 2.11)</a></li>
@@ -256,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 13, 2023</p>
+      <p class="date">February 20, 2023</p>
     </div>
   </div>
   
@@ -272,114 +256,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>These notes use functions from the <code>sampling</code> package, and the <code>agpop.csv</code> data.</p>
+<p>These notes use functions from the <code>sampling</code> package.</p>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampling)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="cn04-SRS_complete_cache/html/unnamed-chunk-1_a3e0c168ca1a423a9ade1dce9becfee4">
+
 </div>
-<section id="introduction" class="level1 page-columns page-full">
+<section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Recall there are two ways to draw simple random samples, with and without replacement. Previously we saw how to use the <code>sample</code> function to accomplish this. An alternative is to use the functions <code>srswor</code> or <code>srswr</code> from the <code>sampling</code> package. We’ll first look at how these functions differ.</p>
-<section id="using-sample" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="using-sample">Using <code>sample()</code></h2>
-<section id="with-replacement" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="with-replacement">With replacement</h3>
-<ul>
-<li>The same unit is “put back” into the pool of eligible units to sample from, and thus has a non-zero probability of being selected again. Notice with this method you can draw a larger sample than you have unique objects to draw from.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"fish"</span>), <span class="at">size=</span><span class="dv">5</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "cat"  "dog"  "dog"  "fish" "dog" </code></pre>
+<p>Recall there are two ways to draw simple random samples, with and without replacement.</p>
+<div class="callout-important callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition: Simple random sample (SRSWR) with replacement:
 </div>
 </div>
-<ul>
-<li>Drawing a subset of <span class="math inline">\(n\)</span> units from the population can be thought of as drawing <span class="math inline">\(n\)</span> independent samples of size 1. We use this feature when drawing random numbers from named distributions using the <code>size</code> argument. </li>
-</ul>
-<div class="no-row-height column-margin column-container"><span class="">If you want to reproduce your exact numeric answer later, call <code>set.seed</code> immediately before any random draw. See the R companion for the text 2.1 for more info.</span></div><p>This code</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12356</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># draw 10 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698
- [7]  1.0962468  2.3340728  1.0193901  1.1962093</code></pre>
+<div class="callout-body-container callout-body">
+<p>A SRSWR of size <span class="math inline">\(n\)</span> from a population of size <span class="math inline">\(N\)</span> can be thought of as drawing <span class="math inline">\(n\)</span> independent samples of size 1. Each unit has the same probability of selection: <span class="math inline">\(\delta_{i} = \frac{1}{N}\)</span></p>
+<p>The procedure is repeated until the sample has <span class="math inline">\(n\)</span> units, which may include duplicates.</p>
 </div>
 </div>
-<p>is equivalent to</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12356</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">10</span>, { <span class="co"># repeat 10 times</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># draw 1</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] -0.4145277 -0.9731377  1.0433987 -0.3372572  1.2079743 -1.8673698
- [7]  1.0962468  2.3340728  1.0193901  1.1962093</code></pre>
+<div class="callout-important callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition: Simple random sample (SRS) without replacement:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A SRS of size <span class="math inline">\(n\)</span> is selected so that every possible subset of <span class="math inline">\(n\)</span> distinct units in the population has the same probability of being selected as the sample. There are <span class="math inline">\(\binom{N}{n}\)</span> possible samples, resulting in a selection probability for an individual unit <span class="math inline">\(\delta_{i} = \frac{n}{N}\)</span>. (See Lohr 2.10 and Appendix A for derivation)</p>
 </div>
 </div>
 </section>
-<section id="without-replacement" class="level3">
-<h3 class="anchored" data-anchor-id="without-replacement">Without replacement</h3>
-<p>The selected unit is <em>not</em> returned, and thus cannot be chosen a second time. This tends to be the preferred method, sampling the same unit multiple times does not provide more information.</p>
-<p>Every possible subset of <span class="math inline">\(n\)</span> distinct units has the same probability of getting sampled.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 2 1 3 4</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="using-the-sampling-package." class="level2">
-<h2 class="anchored" data-anchor-id="using-the-sampling-package.">Using the <code>sampling</code> package.</h2>
-<p>When using <code>sample()</code> the vector of data that you want to sample from is provided as the first argument, and what is returned is the values in that vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Riley"</span>, <span class="st">"Meka"</span>, <span class="st">"Toki"</span>, <span class="st">"TJ"</span>, <span class="st">"DC"</span>, <span class="st">"Dodger"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(animals, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "TJ"   "Meka" "Toki"</code></pre>
-</div>
-</div>
-<p>The functions <code>srswr</code> and <code>srswor</code> take two arguments: <span class="math inline">\(n\)</span> the sample size, and <span class="math inline">\(N\)</span> the population size, and what is returned is a vector of length <span class="math inline">\(N\)</span> that indicates how many times that position in the vector is selected.</p>
-<section id="with-replacement-1" class="level3">
-<h3 class="anchored" data-anchor-id="with-replacement-1">With replacement</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4134</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>(choose.these.wr <span class="ot">&lt;-</span> <span class="fu">srswr</span>(<span class="dv">3</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0 2 0 1 0 0</code></pre>
-</div>
-</div>
-</section>
-<section id="without-replacement-1" class="level3">
-<h3 class="anchored" data-anchor-id="without-replacement-1">Without replacement</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(choose.these.wor <span class="ot">&lt;-</span> <span class="fu">srswor</span>(<span class="dv">3</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 0 0 1 0 1</code></pre>
-</div>
-</div>
-<p>Then the <code>getdata()</code> function is used to extract the values from the population the indicated number of times.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(animals, choose.these.wr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Meka" "Meka" "TJ"  </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(animals, choose.these.wor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID_unit   data
-1       1  Riley
-2       4     TJ
-3       6 Dodger</code></pre>
-</div>
-</div>
-<p>This method can be advantageous when drawing with replacement from a large dataset.</p>
-</section>
-</section>
-</section>
-<section id="intentionality" class="level1 page-columns page-full">
-<h1>Intentionality</h1>
+<section id="intentionality-in-sampling" class="level1">
+<h1>Intentionality in sampling</h1>
 <p>Random does not mean haphazard, contrary it’s actually quite intentional. Avoid selecting a sample that you “feel” is random or representative of the population. These practices can lead to bias and lack of generalizability.</p>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -400,12 +316,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div class="callout-note callout callout-style-simple no-icon">
-<div class="callout-body d-flex">
+<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-caption-container flex-fill">
+Class responses
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
 <li>Population: All plots of that type of field</li>
 <li>Sampling unit: The plots of land</li>
@@ -415,7 +337,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>To avoid the haphazard nature of “blindly choosing”, or worse looking at what was sampled and changing it because “it doesn’t look random enough”, we use techniques that leverage pseudo-random number generating algorithms such as the functions discussed above.</p>
+<p>To avoid the haphazard nature of “blindly choosing”, or worse looking at what was sampled and changing it because “it doesn’t look random enough”, we use techniques that leverage pseudo-random number generating algorithms such as the functions discussed next</p>
+</section>
+<section id="drawing-a-srs-using-a-computer" class="level1 page-columns page-full">
+<h1>Drawing a SRS using a computer</h1>
+<p>Previously we saw how to use the <code>sample</code> function to accomplish this. An alternative is to use the functions <code>srswor</code> or <code>srswr</code> from the <code>sampling</code> package. We’ll first look at how these functions differ.</p>
+<p>When using <code>sample()</code> the vector of data that you want to sample from is provided as the first argument, and what is returned is the values in that vector.</p>
+<div class="cell" data-hash="cn04-SRS_complete_cache/html/unnamed-chunk-2_d514d148e61e7f6dc2912646554613a4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my.animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Riley"</span>, <span class="st">"Meka"</span>, <span class="st">"Toki"</span>, <span class="st">"TJ"</span>, <span class="st">"DC"</span>, <span class="st">"Dodger"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(my.animals, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Dodger" "DC"     "Toki"  </code></pre>
+</div>
+</div>
+<p>The functions <code>srswr</code> and <code>srswor</code> take two arguments: <span class="math inline">\(n\)</span> the sample size, and <span class="math inline">\(N\)</span> the population size, and what is returned is a vector of length <span class="math inline">\(N\)</span> that indicates how many times that position in the vector is selected.</p>
+<div class="cell" data-hash="cn04-SRS_complete_cache/html/unnamed-chunk-3_b521da831447b7d343c1e5b3f1d06f67">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4134</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(choose.these.wr <span class="ot">&lt;-</span> <span class="fu">srswr</span>(<span class="dv">3</span>,<span class="dv">6</span>)) <span class="co"># with replacement</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0 2 0 1 0 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(choose.these.wor <span class="ot">&lt;-</span> <span class="fu">srswor</span>(<span class="dv">3</span>,<span class="dv">6</span>)) <span class="co"># without replacement</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 0 0 1 0 1</code></pre>
+</div>
+</div>
+<p>Then the <code>getdata()</code> function is used to extract the values from the population the indicated number of times.</p>
+<div class="cell" data-hash="cn04-SRS_complete_cache/html/unnamed-chunk-4_ce83f877cb72ee01a27f991ccd9de36d">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(my.animals, choose.these.wr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Meka" "Meka" "TJ"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(my.animals, choose.these.wor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID_unit   data
+1       1  Riley
+2       4     TJ
+3       6 Dodger</code></pre>
+</div>
+</div>
+<p>This method can be advantageous when drawing with replacement from a large dataset.</p>
+<section id="implementation" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
 <div class="callout-important callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -426,8 +389,14 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>How to draw a SRS</strong> 1. Generate a list of all observational units in the population (sampling frame). 2. Assign each observational unit a unique number, from 1 to the size of the sampling frame <span class="math inline">\(N\)</span>. 3. Use a computer to draw <span class="math inline">\(n\)</span> numbers from 1 to <span class="math inline">\(N\)</span> without replacement.<br>
-4. Subset the data to keep only the selected rows.</p>
+<p><strong>How to draw a SRS</strong></p>
+<ol type="1">
+<li>Generate a list of all observational units in the population (sampling frame).</li>
+<li>Assign each observational unit a unique number, from 1 to the size of the sampling frame <span class="math inline">\(N\)</span>.</li>
+<li>Use a computer to draw <span class="math inline">\(n\)</span> numbers from 1 to <span class="math inline">\(N\)</span> without replacement.<br>
+</li>
+<li>Subset the data to keep only the selected rows.</li>
+</ol>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -440,29 +409,24 @@ Example: Enrollment in Graduate Programs in Statistics
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <a href="https://sampling-458.netlify.app/complete_notes/cn03-statistical_foundations_complete.html#variability-of-estimates">last time we saw this example</a>, we used the <code>sample()</code> function to draw 10 values from the single variable <code>FTGradEnrollment</code>. Let’s revisit this data and take an SRS of the entire dataset.</p>
+<p>The <a href="https://sampling-458.netlify.app/complete_notes/cn03-statistical_foundations_complete.html#variability-of-estimates">last time we saw this example</a>, we used the <code>sample()</code> function to draw 10 values from the single variable/column <code>FTGradEnrollment</code>. Let’s revisit this data and take an SRS of the entire dataset.</p>
+<div class="cell" data-hash="cn04-SRS_complete_cache/html/unnamed-chunk-5_d8aeefd1cc7612585d3e086c7d78c41b">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>stat.phd <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"StatisticsPhD.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>Read in the data and see how many record/rows there are.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>stat.phd <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"StatisticsPhD.csv"</span>)) </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">NROW</span>(stat.phd) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 82</code></pre>
 </div>
 </div>
 <p><strong>Using the <code>sample()</code> function</strong></p>
 <div class="page-columns page-full"><p> Generate list of numbers for each observational unit, then draw 10 numbers without replacement.</p><div class="no-row-height column-margin column-container"><span class="">Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.</span></div></div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sampling.frame <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stat.phd) <span class="co">#1, 2</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>(get.these <span class="ot">&lt;-</span> <span class="fu">sample</span>(sampling.frame, <span class="dv">10</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)) <span class="co">#3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="cn04-SRS_complete_cache/html/unnamed-chunk-6_99716522e6493383b01737bb4665533d">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sampling.frame <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stat.phd) <span class="co">#1, 2</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>(get.these <span class="ot">&lt;-</span> <span class="fu">sample</span>(sampling.frame, <span class="dv">10</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)) <span class="co">#3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 73 82 28 38 66 31 32  7 15 41</code></pre>
 </div>
 </div>
-<p>Create a subset data frame with only the rows that were chosen and stored in the vector <code>get.these</code>. Confirm there are only 10 rows in this subset.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(sample.stat.phd <span class="ot">&lt;-</span> stat.phd[get.these, ])  <span class="co">#4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Create a subset data frame with only the rows that were chosen and stored in the vector <code>get.these</code>.</p>
+<div class="cell" data-hash="cn04-SRS_complete_cache/html/unnamed-chunk-7_e7a8d13ff61f24334b435007145a3bf3">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(sample.stat.phd <span class="ot">&lt;-</span> stat.phd[get.these, ])  <span class="co">#4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
    University                    Department    FTGradEnrollment
@@ -480,9 +444,9 @@ Example: Enrollment in Graduate Programs in Statistics
 </div>
 </div>
 <p><strong>Using the <code>srswor()</code> function</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>select.these <span class="ot">&lt;-</span> <span class="fu">srswor</span>(<span class="dv">10</span>, <span class="fu">NROW</span>(stat.phd))</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(stat.phd, select.these)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="cn04-SRS_complete_cache/html/unnamed-chunk-8_3057e3ef8f87aeacb176f243c8c12c0e">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>select.these <span class="ot">&lt;-</span> <span class="fu">srswor</span>(<span class="dv">10</span>, <span class="fu">NROW</span>(stat.phd))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(stat.phd, select.these)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   ID_unit                          University    Department FTGradEnrollment
 1       10                     Duke University    Statistics               31
@@ -497,56 +461,66 @@ Example: Enrollment in Graduate Programs in Statistics
 10      72       University of Texas - Houston Biostatistics               62</code></pre>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+</section>
+</section>
+<section id="estimation-under-srs-framework" class="level1 page-columns page-full">
+<h1>Estimation under SRS framework</h1>
+<p>Below is a table of common statistics and how they are estimated under the SRS framework.</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Unbiased Estimate <span class="math inline">\((\hat{\theta})\)</span></th>
+<th>Estimated variance of <span class="math inline">\((\hat{\theta})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td><span class="math inline">\(\bar{y} = \frac{1}{n}\sum_{i\in S} y_{i}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\bar{y}) = (1-\frac{n}{N})\frac{s^{2}}{n}\)</span></td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td><span class="math inline">\(\hat{\tau} = N\bar{y}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})\)</span></td>
+</tr>
+<tr class="odd">
+<td>Proportion</td>
+<td><span class="math inline">\(\hat{p} = \bar{y}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\hat{p}) = (1-\frac{n}{N})\frac{\hat{p}(1-\hat{p})}{n-1}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">This table can also be found on the [formulas](https://sampling-458.netlify.app/notes/formulas.html) page.</span></div></div>
+<ul>
+<li><span class="math inline">\(i \in S\)</span> : Unit <span class="math inline">\(i\)</span> is an element in the sample <span class="math inline">\(S\)</span></li>
+</ul>
+<div class="callout-important callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-<span class="emoji" data-emoji="star">⭐</span> You try it (Lohr Ex 2.6)
+Finite Population Correction
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The U.S. government conducts a Census of Agriculture every five years, collecting data on all farms (defined as any place from which $1000 or more of agricultural products were produced and sold). The file <code>agpop.csv</code> (textbook data) contains historical information from 1982, 1987, and 1992 on the number of farms, total acreage devoted to farms, number of farms with fewer than 9 acres, and number of farms with more than 1000 acres for the population consisting of the <span class="math inline">\(N=3078\)</span> counties and county-equivalents in the United States.</p>
-<ol type="1">
-<li><p>Generate a random sample without replacement of <span class="math inline">\(n=300\)</span> this data set, using both <code>sample</code> and <code>srswor</code>. <em>Set a seed for this example to ensure you get the same result each time you compile!</em></p></li>
-<li><p>Create a histogram of the variable acres92. Compare your results to your neighbor, and to Figure 2.4 in the text.</p></li>
-</ol>
+<p><span class="math display">\[(1-\frac{n}{N})\]</span></p>
+<p>The larger % of the population that you include in your sample (sampling fraction = <span class="math inline">\(\frac{n}{N}\)</span>), the closer you are to a census, the smaller the variability your estimate will have.</p>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>Write a sentence here about how similar, or different your chart is from the class or the text.</p>
-</blockquote>
-</section>
-<section id="estimating-population-parameters" class="level1">
-<h1>Estimating population parameters</h1>
-<section id="mean" class="level2">
-<h2 class="anchored" data-anchor-id="mean">Mean</h2>
-<p>To estimate the population mean <span class="math inline">\(\mu\)</span> we can use the sample mean <span class="math inline">\(\bar{y} = \frac{1}{n}\sum_{i\in S} y_{i}\)</span>, since it is an unbiased estimate.</p>
-<p>The variance of <span class="math inline">\(\bar{y}\)</span> (variability in the mean across samples) is</p>
-<p><span class="math display">\[
-\frac{\sigma^{2}}{n}(1-\frac{n}{N})
-\]</span></p>
-<p>where <span class="math inline">\((1-\frac{n}{N})\)</span> is called the <strong>finite population correction</strong> or <strong>fpc</strong>.</p>
-<section id="finite-population-correction" class="level3">
-<h3 class="anchored" data-anchor-id="finite-population-correction">Finite Population Correction</h3>
 <ul>
-<li>Expected value, variance, SE, CV, Bounds on error of estimation</li>
-<li>FPC</li>
-<li>Coefficient of variation</li>
-</ul>
-</section>
-</section>
-<section id="total" class="level2">
-<h2 class="anchored" data-anchor-id="total">total:</h2>
+<li>Most samples that are taken from a very large population, the fpc is close to 1.
 <ul>
-<li>Expected value, variance, SE, CV</li>
+<li>So the variance is more determined by the size of the sample, not the % of the population sampled.</li>
+</ul></li>
 </ul>
-</section>
-<section id="proportion" class="level2">
-<h2 class="anchored" data-anchor-id="proportion">Proportion</h2>
-<p>Expected value, variance</p>
-</section>
 </section>
 <section id="using-the-survey-package." class="level1">
 <h1>Using the <code>survey</code> package.</h1>

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-01-20">
 
-<title>Sampling Methods - Complete notes</title>
+<title>Sampling Methods - Formulas and Definitions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,35 +60,6 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -102,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
@@ -112,15 +82,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./weekly_details.html">
+    <a class="nav-link" href="../weekly_details.html">
  <span class="menu-text">Weekly Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html">
+    <a class="nav-link" href="../notes.html">
  <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./assignments.html">
+    <a class="nav-link" href="../assignments.html">
  <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
@@ -149,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html">
+    <a class="nav-link" href="../syllabus.html">
  <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
@@ -166,14 +136,22 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link active" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a></li>
+  <li><a href="#expected-value-and-variance-of-estimates" id="toc-expected-value-and-variance-of-estimates" class="nav-link" data-scroll-target="#expected-value-and-variance-of-estimates">Expected Value and Variance of estimates</a></li>
+  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple Random Sample</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Complete notes</h1>
+<h1 class="title">Formulas and Definitions</h1>
 </div>
 
 
@@ -181,6 +159,12 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 20, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -188,63 +172,100 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table">
+<section id="parameters-and-statistics" class="level1">
+<h1>Parameters and Statistics</h1>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
 <thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
+<tr class="header">
+<th>Measure</th>
+<th>Population <span class="math inline">\((\theta)\)</span></th>
+<th>Sample <span class="math inline">\((\hat{\theta})\)</span></th>
 </tr>
 </thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1674633600000" data-listing-file-modified-sort="1676500034771" data-listing-reading-time-sort="7" data-listing-title-sort="Introduction to Simulation" data-listing-filename-sort="cn01-intro_simulation_complete_posted.qmd">
-<td class="listing-date">
-01-25
-</td>
-<td class="listing-title">
-<a href="./complete/cn01-intro_simulation_complete_posted.html" class="title">Introduction to Simulation</a>
-</td>
+<tbody>
+<tr class="odd">
+<td>Total</td>
+<td><span class="math inline">\(\tau = \sum_{i=1}^N y_{i}\)</span></td>
+<td><span class="math inline">\(\hat{\tau} = \sum_{i=1}^n y_{i}\)</span></td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1675065600000" data-listing-file-modified-sort="1676500034771" data-listing-reading-time-sort="8.395" data-listing-title-sort="The Sampling Framework" data-listing-filename-sort="cn02-intro_sampling_complete_posted.qmd">
-<td class="listing-date">
-01-30
-</td>
-<td class="listing-title">
-<a href="./complete/cn02-intro_sampling_complete_posted.html" class="title">The Sampling Framework</a>
-</td>
+<tr class="even">
+<td>Mean</td>
+<td><span class="math inline">\(\mu = \frac{1}{N}\sum_{i=1}^N y_{i}\)</span></td>
+<td><span class="math inline">\(\bar{y} = \frac{1}{n}\sum_{i=1}^n y_{i}\)</span></td>
 </tr>
-<tr data-index="2" data-listing-date-sort="1675670400000" data-listing-file-modified-sort="1676500034772" data-listing-reading-time-sort="18.855" data-listing-title-sort="Foundations of Statistical Estimation" data-listing-filename-sort="cn03-statistical_foundations_complete.qmd">
-<td class="listing-date">
-02-06
-</td>
-<td class="listing-title">
-<a href="./complete/cn03-statistical_foundations_complete.html" class="title">Foundations of Statistical Estimation</a>
-</td>
+<tr class="odd">
+<td>Variance</td>
+<td><span class="math inline">\(\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(y_i-\mu)^2\)</span></td>
+<td><span class="math inline">\(s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(y_i-\bar{y})^2\)</span></td>
 </tr>
-<tr data-index="3" data-listing-date-sort="1676880000000" data-listing-file-modified-sort="1676658354222" data-listing-reading-time-sort="5.045" data-listing-title-sort="Simple Random Sampling (Lohr Ch 2.3)" data-listing-filename-sort="cn04-SRS_complete.qmd">
-<td class="listing-date">
-02-20
-</td>
-<td class="listing-title">
-<a href="./complete/cn04-SRS_complete.html" class="title">Simple Random Sampling (Lohr Ch 2.3)</a>
-</td>
+<tr class="even">
+<td>Proportion<span class="math inline">\(^*\)</span></td>
+<td><span class="math inline">\(p = \mu\)</span></td>
+<td><span class="math inline">\(\hat{p} = \bar{y}\)</span></td>
 </tr>
 </tbody>
-
 </table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<ul>
+<li><p><span class="math inline">\(N\)</span> = total population size</p></li>
+<li><p><span class="math inline">\(y_{i}\)</span> = Value of measurement <span class="math inline">\(y\)</span> on unit <span class="math inline">\(i\)</span></p></li>
+<li><p><span class="math inline">\(^*\)</span>For proportions <span class="math inline">\(y_{i}\)</span> is a binary indicator of success. <span class="math inline">\(y \in {[0,1]}\)</span>. I.e. <span class="math inline">\(I(y_{i}=1)\)</span>.</p></li>
+</ul>
+</section>
+<section id="expected-value-and-variance-of-estimates" class="level1">
+<h1>Expected Value and Variance of estimates</h1>
+<p><span class="math display">\[E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta}) = \sum [\hat{\theta} - E(\hat{\theta})]^2*p(\hat{\theta})\]</span></p>
+<ul>
+<li>Sums are over all possible values of <span class="math inline">\(\theta\)</span> in the sampling design.</li>
+<li><span class="math inline">\(p(\hat{\theta})\)</span> probability of observing value <span class="math inline">\(\hat{\theta}\)</span></li>
+</ul>
+</section>
+<section id="simple-random-sample" class="level1">
+<h1>Simple Random Sample</h1>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 36%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Unbiased Estimate <span class="math inline">\((\hat{\theta})\)</span></th>
+<th>Estimated variance of <span class="math inline">\((\hat{\theta})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td><span class="math inline">\(\bar{y} = \frac{1}{n}\sum_{i\in S} y_{i}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\bar{y}) = (1-\frac{n}{N})\frac{s^{2}}{n}\)</span></td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td><span class="math inline">\(\hat{\tau} = N\bar{y}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})\)</span></td>
+</tr>
+<tr class="odd">
+<td>Proportion</td>
+<td><span class="math inline">\(\hat{p} = \bar{y}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\hat{p}) = (1-\frac{n}{N})\frac{\hat{p}(1-\hat{p})}{n-1}\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">\(i \in S\)</span> : Unit <span class="math inline">\(i\)</span> is an element in the sample <span class="math inline">\(S\)</span></li>
+<li><span class="math inline">\((1-\frac{n}{N})\)</span>: Finite population correction (fpc)</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
