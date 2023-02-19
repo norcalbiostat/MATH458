@@ -20,11 +20,11 @@
   {
     "listing": "/notes.html",
     "items": [
+      "/notes/formulas.html",
       "/notes/cn00-welcome.html",
       "/notes/cn01-intro_simulation.html",
       "/notes/cn02-intro_sampling.html",
-      "/notes/cn03-statistical_foundations.html",
-      "/notes/formulas.html"
+      "/notes/cn03-statistical_foundations.html"
     ]
   },
   {

@@ -44,3 +44,36 @@ These weighted estimators are used in all probability sampling designs.
 |         Population size         |                   Total                    |                   Mean                    |
 |:---------------------:|:-----------------:|:-----------------------:|
 | $\hat{N} = \sum_{i \in S}w_{i}$ | $\hat{\tau} = \sum_{i \in S}w_{i}y_{i}$ | $\bar{y} = \frac{\hat{\tau}}{\hat{N}}$ |
+
+# Packages & References
+
+* [`survey` package vignette](http://r-survey.r-forge.r-project.org/survey/) 
+* [The Epidemiologist R handbook](https://epirhandbook.com/en/survey-analysis.html)
+
+
+# Analysis
+
+
+> Class to add examples here. 
+
+
+## Specify survey design
+http://r-survey.r-forge.r-project.org/survey/example-design.html
+
+## Summary statistics
+http://r-survey.r-forge.r-project.org/survey/example-summary.html
+http://r-survey.r-forge.r-project.org/survey/example-table.html
+
+## Linear Regression
+[Because everything is just a linear model.](https://twitter.com/WomenInStat/status/1286420597505892352)
+:::
+
+http://r-survey.r-forge.r-project.org/survey/example-regression.html
+
+**T-Test**
+
+**ANOVA**
+
+## Contingency tables
+http://r-survey.r-forge.r-project.org/survey/example-chisq.html
+
