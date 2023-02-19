@@ -1,21 +1,48 @@
 ---
-title: "Worksheet 03: Simple Random Sampling"
-subtitle: "Drawing and working with a SRS "
+title: "Worksheet 02: Simple Random Sampling"
+subtitle: "Drawing and working with a SRS"
 categories: Worksheet
 date: 2/24/23
+execute: 
+  cache: true
 ---
+
+```{r}
+#| echo: false
+library(knitr) #for printing a nice table
+```
 
 The U.S. government conducts a Census of Agriculture every five years, collecting data on all farms (defined as any place from which \$1000 or more of agricultural products were produced and sold). The file `agpop.csv` (textbook data) contains historical information from 1982, 1987, and 1992 on the number of farms, total acreage devoted to farms, number of farms with fewer than 9 acres, and number of farms with more than 1000 acres for the population consisting of the $N=3078$ counties and county-equivalents in the United States.
 
-The variable of interest is `acres92`: the number of acres devoted to farms in 1992. 
+The variables of interest are `acres92`: the number of acres devoted to farms in 1992, and 
+```{r}
+# read in the data here
+```
 
+> Figure out another variable to test acres against. 
 
 1.  Generate a random sample without replacement of $n=300$ this data set, using both `sample` and `srswor`. *Set a seed for this example to ensure you get the same result each time you compile!*
 
-2.  Create a histogram of the variable `acres92`. Compare your results to your neighbor, and to Figure 2.4 in the text. Write a sentence here about how similar, or different your chart is from the class or the text.
+2.  Create a histogram of the variable `acres92`. Compare your results to your neighbor, and to Figure 2.4 in the text. Write a sentence or two here about how similar, or different your chart is from the class or the text. Discuss specific features that are the same/different and suggest reasons for why that is the case. 
+
+3.  Use the appropriate formulas to construct approximate 95% confidence intervals for a) the population total, b) the population mean, and c) the population proportion of farms with fewer than 200,000 acres.
+
+4.  Repeat #3 using the `t.test()` function in R. 
+
+5.  Repeat #3 using the functions in the `survey` package.
+
+6.  Pack your results into a data.table so it can print nicely. Replace the holding numbers in the code below with your numbers. 
+```{r}
+#| echo: false
+data.frame(
+  Measure = c("Total", "Mean", "Proportion"), 
+  parameter = c(1,2,3),
+  CI.Formula = c("(1,2)", "(3,4)", "(5,6)"), 
+  CI.T.test = c("(1,2)", "(3,4)", "(5,6)"), 
+  CI.survey = c("(1,2)", "(3,4)", "(5,6)")
+  ) |> kable(align = 'lcccc', 
+             caption = "95% confidence intervals under 3 construction methods")
+```
 
 
-3. Use the appropriate formulas to construct approximate 95% confidence intervals for a) the population total, b) the population mean, and c) the population proportion of farms with fewer than 200,000 acres. 
-
-
-4. Repeat #3 using the functions in the `survey` package. 
+7.  Review the summary table. What did you learn from this experiment? 

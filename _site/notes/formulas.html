@@ -143,6 +143,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link active" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a></li>
   <li><a href="#expected-value-and-variance-of-estimates" id="toc-expected-value-and-variance-of-estimates" class="nav-link" data-scroll-target="#expected-value-and-variance-of-estimates">Expected Value and Variance of estimates</a></li>
   <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple Random Sample</a></li>
+  <li><a href="#weighted-estimators" id="toc-weighted-estimators" class="nav-link" data-scroll-target="#weighted-estimators">Weighted Estimators</a></li>
   </ul>
 </nav>
     </div>
@@ -176,9 +177,9 @@ ul.task-list li input[type="checkbox"] {
 <h1>Parameters and Statistics</h1>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 37%">
-<col style="width: 37%">
+<col style="width: 24%">
+<col style="width: 36%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -220,17 +221,20 @@ ul.task-list li input[type="checkbox"] {
 <h1>Expected Value and Variance of estimates</h1>
 <p><span class="math display">\[E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta}) = \sum [\hat{\theta} - E(\hat{\theta})]^2*p(\hat{\theta})\]</span></p>
 <ul>
-<li>Sums are over all possible values of <span class="math inline">\(\theta\)</span> in the sampling design.</li>
-<li><span class="math inline">\(p(\hat{\theta})\)</span> probability of observing value <span class="math inline">\(\hat{\theta}\)</span></li>
+<li>Sums are over all possible values of <span class="math inline">\(\hat{\theta}\)</span>.</li>
+<li><span class="math inline">\(p(\hat{\theta})\)</span> is the probability of <span class="math inline">\(\hat{\theta}\)</span> occurring.
+<ul>
+<li>This is similar to what we’re calling <span class="math inline">\(\delta_{i}\)</span>, the probability that population unit <span class="math inline">\(i\)</span> appears in the sample. The book uses the symbol <span class="math inline">\(\pi_{i}\)</span>/</li>
+</ul></li>
 </ul>
 </section>
 <section id="simple-random-sample" class="level1">
 <h1>Simple Random Sample</h1>
 <table class="table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 36%">
-<col style="width: 42%">
+<col style="width: 24%">
+<col style="width: 28%">
+<col style="width: 46%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -261,6 +265,31 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(i \in S\)</span> : Unit <span class="math inline">\(i\)</span> is an element in the sample <span class="math inline">\(S\)</span></li>
 <li><span class="math inline">\((1-\frac{n}{N})\)</span>: Finite population correction (fpc)</li>
 </ul>
+</section>
+<section id="weighted-estimators" class="level1">
+<h1>Weighted Estimators</h1>
+<p>These weighted estimators are used in all probability sampling designs.</p>
+<table class="table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 28%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Population size</th>
+<th style="text-align: center;">Total</th>
+<th style="text-align: center;">Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\hat{N} = \sum_{i \in S}w_{i}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\hat{\tau} = \sum_{i \in S}w_{i}y_{i}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{y} = \frac{\hat{\tau}}{\hat{N}}\)</span></td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

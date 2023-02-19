@@ -1,5 +1,5 @@
 ---
-title: "Simple Random Sampling (Lohr Ch 2.3)"
+title: "Simple Random Sampling"
 description: "SRS is the basic form of probability sampling, and serves as the basis for more complicated forms."
 date: 2/20/23
 execute: 
@@ -15,6 +15,16 @@ library(sampling)
 ```
 
 # Introduction
+
+This section will aim to answer the following questions: 
+
+* How can we draw a simple random sample of observations from a data set both with, and without replacement: 
+* What is the finite population correction (fpc) and why do we need it? 
+* What are sampling weights, why do we need them, and how are they created? 
+* How do we calculate parameter estimates from an SRS that account for both the fpc and sampling weights? 
+* How do we choose a sample size s
+
+# Drawing a Simple Random Sample (Lohr Ch 2.3)
 
 Recall there are two ways to draw simple random samples, with and without replacement.
 
@@ -32,106 +42,104 @@ The procedure is repeated until the sample has $n$ units, which may include dupl
 A SRS of size $n$ is selected so that every possible subset of $n$ distinct units in the population has the same probability of being selected as the sample. There are $\binom{N}{n}$ possible samples, resulting in a selection probability for an individual unit $\delta_{i} = \frac{n}{N}$. (See Lohr 2.10 and Appendix A for derivation)
 :::
 
-# Intentionality in sampling
+## Intentionality in sampling
 
 Random does not mean haphazard, contrary it's actually quite intentional. Avoid selecting a sample that you "feel" is random or representative of the population. These practices can lead to bias and lack of generalizability.
 
-::: {.callout-note appearance="minimal"}
-### :question: :busts_in_silhouette: Turn and talk
+To avoid the haphazard nature of "blindly choosing", or worse looking at what was sampled and changing it because "it doesn't look random enough", we use techniques that leverage pseudo-random number generating algorithms.
 
-Suppose you want to estimate the number of weed clusters of a certain type in a field.
+::: callout-important
+### Process 
 
--   What is the population and what would you use for sampling units?
--   How would you select a simple random sample?
--   If a sampling unit is an area such as a square yard, does the size chosen for a sampling unit affect the accuracy of results?
--   What considerations go into our choice of sampling unit?
+1.  Generate a list of all observational units in the population (sampling frame).
+2.  Assign each observational unit a unique number, from 1 to the size of the sampling frame $N$.
+3.  Use a computer to draw $n$ numbers from 1 to $N$ without replacement.
+4.  Subset the data to keep only the selected rows.
 :::
 
-::: {.callout-note icon="false" collapse="true" appearance="minimal"}
-### Class responses
+## Drawing a SRS using a computer
 
--   Population: All plots of that type of field
--   Sampling unit: The plots of land
--   Yes. Larger plots of land will have more weed clusters
--   Feasibility, size of land, terrain type
+Previously we saw how to use the `sample` function to accomplish this. An alternative is to use the functions `srswor` or `srswr` from the `sampling` package. Each have their pros and cons, so we explore both. 
+
+:::{.callout-tip icon=true}
+### Example: Sampling from Dr. D's animal names. 
+```{r}
+set.seed(4134)
+my.animals <- c("Toki", "Meka", "Riley", "TJ", "Dodger", "DC", "Sid", "Spike")
+```
 :::
-
-To avoid the haphazard nature of "blindly choosing", or worse looking at what was sampled and changing it because "it doesn't look random enough", we use techniques that leverage pseudo-random number generating algorithms such as the functions discussed next
-
-# Drawing a SRS using a computer
-
-Previously we saw how to use the `sample` function to accomplish this. An alternative is to use the functions `srswor` or `srswr` from the `sampling` package. We'll first look at how these functions differ.
 
 When using `sample()` the vector of data that you want to sample from is provided as the first argument, and what is returned is the values in that vector.
 
 ```{r}
-my.animals <- c("Riley", "Meka", "Toki", "TJ", "DC", "Dodger")
 sample(my.animals, 3)
+sample(my.animals, 3, replace = TRUE)
 ```
 
-The functions `srswr` and `srswor` take two arguments: $n$ the sample size, and $N$ the population size, and what is returned is a vector of length $N$ that indicates how many times that position in the vector is selected.
+The functions `srswr` and `srswor` draw SRS with, and without replacement respectively. Each take two arguments: $n$ the sample size, and $N$ the population size, and what is returned is a vector of length $N$ that indicates how many times that position in the vector is selected.
 
 ```{r}
 set.seed(4134)
-(choose.these.wr <- srswr(3,6)) # with replacement
-(choose.these.wor <- srswor(3,6)) # without replacement
+(choose.these.wor <- srswor(3,8)) 
+(choose.these.wr <- srswr(3,8)) 
 ```
 
 Then the `getdata()` function is used to extract the values from the population the indicated number of times.
 
 ```{r}
-getdata(my.animals, choose.these.wr)
 getdata(my.animals, choose.these.wor)
+getdata(my.animals, choose.these.wr)
 ```
 
 This method can be advantageous when drawing with replacement from a large dataset.
 
-## Implementation
+:::{.callout-warning icon=false}
+### :star: You try it 
 
-::: callout-important
-**How to draw a SRS**
+The U.S. government conducts a Census of Agriculture every five years, collecting data on all farms (defined as any place from which \$1000 or more of agricultural products were produced and sold). The file `agpop.csv` (textbook data) contains historical information from 1982, 1987, and 1992 on the number of farms, total acreage devoted to farms, number of farms with fewer than 9 acres, and number of farms with more than 1000 acres for the population consisting of the $N=3078$ counties and county-equivalents in the United States.
 
-1.  Generate a list of all observational units in the population (sampling frame).
-2.  Assign each observational unit a unique number, from 1 to the size of the sampling frame $N$.
-3.  Use a computer to draw $n$ numbers from 1 to $N$ without replacement.\
-4.  Subset the data to keep only the selected rows.
-:::
-
-::: {.callout-tip icon="true"}
-### Example: Enrollment in Graduate Programs in Statistics
-
-The [last time we saw this example](https://sampling-458.netlify.app/complete_notes/cn03-statistical_foundations_complete.html#variability-of-estimates), we used the `sample()` function to draw 10 values from the single variable/column `FTGradEnrollment`. Let's revisit this data and take an SRS of the entire dataset.
+Draw a sample of 300 farms without replacement using both `sample` and `srswor`. 
 
 ```{r}
-stat.phd <- readr::read_csv(here::here("data", "StatisticsPhD.csv")) 
+ag <- readr::read_csv(here::here("data", "agpop.csv")) 
+N <- NROW(ag)
+n <- 300
 ```
 :::
 
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+
 **Using the `sample()` function**
 
-[Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.]{.aside} Generate list of numbers for each observational unit, then draw 10 numbers without replacement.
+[Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.]{.aside} Generate list of numbers for each observational unit, then draw 5 numbers without replacement.
 
 ```{r}
-sampling.frame <- 1:NROW(stat.phd) #1, 2
-(get.these <- sample(sampling.frame, 10, replace=FALSE)) #3
+sampling.frame <- 1:N #1, 2
+sample.idx <- sample(sampling.frame, n, replace=FALSE) #3
+head(sample.idx)
 ```
 
 Create a subset data frame with only the rows that were chosen and stored in the vector `get.these`.
 
 ```{r}
-(sample.stat.phd <- stat.phd[get.these, ])  #4
+sample.ag <- ag[sample.idx, ]  #4
+head(sample.ag[,1:5]) # only showing first 5 columns as an example
 ```
 
 **Using the `srswor()` function**
 
 ```{r}
-select.these <- srswor(10, NROW(stat.phd))
-getdata(stat.phd, select.these)
+#| eval: false
+srswor.idx <- srswor(n, N)
+getdata(ag, srswor.idx) 
 ```
+:::
 
-# Estimation under SRS framework
 
-Below is a table of common statistics and how they are estimated under the SRS framework.
+# Formulas for Estimation
+
+Below is a table of common statistics and how they are estimated under the SRS framework. This table can also be found on the [formulas](https://sampling-458.netlify.app/notes/formulas.html) page. 
 
 | Measure    | Unbiased Estimate $(\hat{\theta})$         | Estimated variance of $(\hat{\theta})$                             |
 |------------------|-------------------------|-----------------------------|
@@ -139,36 +147,145 @@ Below is a table of common statistics and how they are estimated under the SRS f
 | Total      | $\hat{\tau} = N\bar{y}$                    | $\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})$                      |
 | Proportion | $\hat{p} = \bar{y}$                        | $\hat{V}(\hat{p}) = (1-\frac{n}{N})\frac{\hat{p}(1-\hat{p})}{n-1}$ |
 
-[This table can also be found on the [formulas](https://sampling-458.netlify.app/notes/formulas.html) page.]{.aside}
-
 * $i \in S$ : Unit $i$ is an element in the sample $S$
+
+Did you notice something different about the formula for the variances? 
 
 ::: callout-important
 ### Finite Population Correction
 
-$$(1-\frac{n}{N})$$
+$$\Big(1-\frac{n}{N}\Big)$$
 
 The larger % of the population that you include in your sample (sampling fraction = $\frac{n}{N}$), the closer you are to a census, the smaller the variability your estimate will have.
 :::
 
 * Most samples that are taken from a very large population, the fpc is close to 1.
-    * So the variance is more determined by the size of the sample, not the % of the population sampled.
+* So the variance is more determined by the size of the sample, not the % of the population sampled.
 
 :::{.callout-tip icon=true}
-### Example: 
-perhaps? we've done a lot of these so far. 
+### Example
+Calculate the estimated standard deviation of the sample mean $\sqrt{\hat{V}(\bar{y})}$ of the the number of acres devoted to farms in 1992 (variable `acres92`). Interpret this number. 
 :::
 
-# Sampling Weights 
+```{r}
+y.bar <- mean(sample.ag$acres92)
+s2 <- sum((sample.ag$acres92-y.bar)^2)/(n-1)
+(sd.ybar <- sqrt((1-n/N)*(s2/n)))
+```
+
+[Inline R code: `prettyNum(sd.ybar, big.mark=',')`]{.aside}
+Sample means generated from samples of size `r n` will vary from sample to sample by `r prettyNum(sd.ybar, big.mark=',')` acres. 
 
 
-# Using the `survey` package.
+:::{.callout-warning icon=false}
+### :star: You try it
+Draw a sample of size 500, and estimate the standard deviation of the sample proportion of the number of farms with 200,000 acres or less. _Careful, don't overwrite your sample of 300. We'll need that later_.
+:::
 
-# Determining sample size
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+```{r}
+n2 <- 500
+srswor.idx2 <- srswor(n2, NROW(ag))
+sample.ag.500 <- getdata(ag, srswor.idx2)
+
+p.hat <- mean(sample.ag.500$acres92<=200000)
+(s.phat <- sqrt((1-n2/N)*(p.hat * (1-p.hat))/(n2-1)))
+```
+
+The estimated proportion of number of farms with 200k acres or less varies by 2.04% from sample to sample. 
+
+:::
+
+
+# Sampling Weights (Lohr Ch 2.4)
+
+Recall that a goal of sampling is to obtain a representative sample, one that is similar to the true unknown population. Thus, conceptually if we duplicate certain units from our sample a certain amount of times, we could "reconstruct" what the population looks like. That is, we could create $w_{i}$ copies of unit $i$ for each unit in the sample. 
+
+::: callout-important
+### Definition: Sampling Weight (Design weight)
+
+Inverse of the inclusion/selection probability for unit $i$. 
+
+$$w_{i} = \frac{1}{\delta_i}$$
+
+Also interpreted as the number of population units represented by unit $i$.
+:::
+
+In an SRS, each unit has an inclusion probability of $\delta_{i} = \frac{n}{N}$, so the sampling weights are all $w_{i} =\frac{N}{n}$. 
+
+[We _did_ do this in cn03 with the quiz scores when using the `rep` function to repeat the data values $y_{i}$, $f_{i}$ times. [ref](https://sampling-458.netlify.app/notes/cn03-statistical_foundations.html#numerical-summaries)]{.aside}
+We don't _actually_ make copies of the data, but use the sampling weights as a multiplier in our estimation calculations. 
+
+|         Population size         |                   Total                    |                   Mean                    |
+|:---------------------:|:-----------------:|:-----------------------:|
+| $\hat{N} = \sum_{i \in S}w_{i}$ | $\hat{\tau} = \sum_{i \in S}w_{i}y_{i}$ | $\bar{y} = \frac{\hat{\tau}}{\hat{N}}$ |
+
+These weighted estimators are used in all probability sampling designs. 
+
+:::{.callout-tip icon=true}
+### Example: Calculating weighted estimates
+Estimate the total and average number of acres devoted to farms in 1992 using both weighted and unweighted estimates. Then compare these values to the parameter. 
+:::
+
+The sampling weights are $w_{i} = \frac{3078}{300}$ for each unit $i$ in the sample, so we'll add that on as a new column before calculating the weighted estimates. 
+[See Lohr Table 2.1 for a nicer visual of the data frame with weights. ]{.aside}
+```{r}
+sample.ag$wt <- 3078/300
+(N.hat <- sum(sample.ag$wt)) # just to confirm to myself
+```
+
+Calculate weighted and unweighted estimates, then the pop parameters. 
+```{r}
+tau.hat.wt <- sum(sample.ag$acres92*sample.ag$wt)
+y.bar.wt <- tau.hat.wt/N.hat
+tau.hat.nowt <- sum(sample.ag$acres92)
+y.bar.nowt <- mean(sample.ag$acres92)
+mu <- mean(ag$acres92)
+tau <- sum(ag$acres92)
+```
+
+Shove it in a data frame for easier viewing. 
+```{r}
+data.frame(
+  Measure = c("Total", "Mean"), 
+  Parameter = c(tau,mu),
+  Unweighted = c(tau.hat.nowt, y.bar.nowt), 
+  Weighted = c(tau.hat.wt, y.bar.wt)
+  ) |> knitr::kable(align = 'lccc', 
+             caption = "Comparing weighted and unweighted estimates")
+```
+
+
+:::{.callout-warning icon=false}
+### :star: You try it
+Calculate the proportion of farms with 200k acres or less, with, and without weights. Compare to the population proportion. 
+:::
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+```{r}
+sample.ag$lt200k <- 1*(sample.ag$acres92<=200000)
+(p.hat <- sum(sample.ag$lt200k * sample.ag$wt))
+```
+:::
+
+# Using the `survey` package (Lohr Ch 2.6)
+
+```{r}
+N <- 100; n <- 10
+y <- sample(1:N, n)
+y.bar <- mean(y)
+s2 <- sum((y-y.bar)^2)/(n-1)
+var.ybar <- (1-n/N)*(s2/n)
+var(y)
+```
 
 
 
-# Model based theory vs Randomization based theory (Lohr 2.10, 2.11)
+
+# Determining sample size (Lohr Ch 2.7)
+
 
 # Closing: When should SRS be used
 
