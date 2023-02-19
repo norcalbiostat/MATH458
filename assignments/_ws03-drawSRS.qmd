@@ -23,8 +23,7 @@ Be sure to read the codebook to make sure you understand what exactly the number
 
 1. Generate a random sample without replacement that is between 10% and 40% of the population sample size. The exact number is your choice. Set a seed to ensure reproducibility.
 
-2. Choose a numeric variable Estimate the total, mean, and proportions of variables of your choice with 95% confidence intervals. 
+2. Choose a numeric variable. Estimate the total, mean, and proportions of variables of your choice with 95% confidence intervals. Interpret each estimate and interval in context of the problem. 
 
-3. Combine counties into districts or regions. Use Google to find existing district or region profiles and cite your reference. Not sure how to collapse factors? Check out [Lesson 06 from Math 130](https://norcalbiostat.github.io/MATH130/notes/06_factors.html). 
  
 
