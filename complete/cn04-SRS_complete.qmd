@@ -238,14 +238,14 @@ sample.ag$wt <- 3078/300
 Calculate weighted and unweighted estimates, then the pop parameters. 
 ```{r}
 tau.hat.wt <- sum(sample.ag$acres92*sample.ag$wt)
-y.bar.wt <- tau.hat.wt/N.hat
+y.bar.wt   <- tau.hat.wt/N.hat
 tau.hat.nowt <- sum(sample.ag$acres92)
-y.bar.nowt <- mean(sample.ag$acres92)
-mu <- mean(ag$acres92)
+y.bar.nowt   <- mean(sample.ag$acres92)
+mu  <- mean(ag$acres92)
 tau <- sum(ag$acres92)
 ```
 
-Shove it in a data frame for easier viewing. 
+Package it in a data frame for easier viewing. 
 ```{r}
 data.frame(
   Measure = c("Total", "Mean"), 
