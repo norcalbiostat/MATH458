@@ -1,5 +1,5 @@
 ---
-title: "Worksheet 03: Exploring Statewide hospital data using SRS"
+title: "Worksheet 03: Exploring Statewide hospitalizations due to Covid-19"
 categories: Worksheet
 date: 2/24/23
 ---

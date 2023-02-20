@@ -1,5 +1,6 @@
 ---
 title: "Formulas and Definitions"
+description: "Helpful equations and R code"
 date: "2023-01-20"
 ---
 

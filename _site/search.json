@@ -32,7 +32,7 @@
     "href": "assignments.html",
     "title": "Assignments",
     "section": "",
-    "text": "Title\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nWorksheet 01: Writing Functions\n\n\n\n\nHomework 01: Simulation and Estimation\n\n\n\n\nWorksheet 02: Comparing sampling plans\n\n\n\n\nHomework 02: Simple Random Sampling\n\n\n\n\nWorksheet 03: Exploring Statewide hospital data using SRS\n\n\n\n\n\n\nNo matching items"
+    "text": "Title\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nWorksheet 01: Writing Functions\n\n\n\n\nHomework 01: Simulation and Estimation\n\n\n\n\nWorksheet 02: Comparing sampling plans\n\n\n\n\nHomework 02: Simple Random Sampling\n\n\n\n\nWorksheet 03: Exploring Statewide hospitalizations due to Covid-19\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "complete/cn01-intro_simulation_complete_posted.html",
@@ -424,7 +424,7 @@
     "href": "notes.html",
     "title": "Course Notes",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2023\n\n\nFormulas and Definitions\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 25, 2023\n\n\nIntroduction to Simulation\n\n\nFoundations of writing your own custom functions, drawing samples and conducting a simulation.\n\n\n\n\nJan 30, 2023\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 6, 2023\n\n\nFoundations of Statistical Estimation\n\n\nWe review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.\n\n\n\n\nFeb 20, 2023\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2023\n\n\nFormulas and Definitions\n\n\nHelpful equations and R code\n\n\n\n\nJan 23, 2023\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 25, 2023\n\n\nIntroduction to Simulation\n\n\nFoundations of writing your own custom functions, drawing samples and conducting a simulation.\n\n\n\n\nJan 30, 2023\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 6, 2023\n\n\nFoundations of Statistical Estimation\n\n\nWe review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.\n\n\n\n\nFeb 20, 2023\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus.html",
@@ -681,7 +681,7 @@
   {
     "objectID": "assignments/ws03-drawSRS.html",
     "href": "assignments/ws03-drawSRS.html",
-    "title": "Worksheet 03: Exploring Statewide hospital data using SRS",
+    "title": "Worksheet 03: Exploring Statewide hospitalizations due to Covid-19",
     "section": "",
     "text": "This assignment will use statewide open source data on Covid-19 hospitalizations.\n\nGo go the CA Open data portal: https://data.ca.gov/\nAt the top, click on “Datasets”\nOn the left, click on “CSV”\nDownload the COVID-19 Hospital data (data dictionary and data set)\n\nBe sure to read the codebook to make sure you understand what exactly the numbers mean, your answers must be in context of the data.\n\nGenerate two random samples without replacement. One between 10% and 30% of the data set size, and one between 50 and 70%. The exact numbers are your choice. Set a seed to ensure reproducibility.\nChoose a numeric variable. For both samples estimate the total, mean, and proportions of variables of your choice with 95% confidence intervals. Interpret each estimate and interval in context of the problem.\nAre your estimates generalizable to the entire state? Comment on what assumptions are needed for this to be the case. What other limitations are"
   }
