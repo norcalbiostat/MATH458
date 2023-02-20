@@ -1,0 +1,22 @@
+---
+title: "Worksheet 03: Exploring Statewide hospital data using SRS"
+categories: Worksheet
+date: 2/24/23
+---
+
+This assignment will use statewide open source data on Covid-19 hospitalizations. 
+
+1. Go go the CA Open data portal: https://data.ca.gov/
+2. At the top, click on "Datasets"
+3. On the left, click on "CSV" 
+4. Download the COVID-19 Hospital data (data dictionary and data set)
+
+Be sure to read the codebook to make sure you understand what exactly the numbers mean, your answers must be in context of the data. 
+
+1. Generate two random samples without replacement. One between 10% and 30% of the data set size, and one between 50 and 70%. The exact numbers are your choice. Set a seed to ensure reproducibility.
+
+2. Choose a numeric variable. For both samples estimate the total, mean, and proportions of variables of your choice with 95% confidence intervals. Interpret each estimate and interval in context of the problem. 
+
+
+3. Are your estimates generalizable to the entire state? Comment on what assumptions are needed for this to be the case. What other limitations are 
+

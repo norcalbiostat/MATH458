@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-02-24">
 
-<title>Sampling Methods - Complete notes</title>
+<title>Sampling Methods - Worksheet 03: Exploring Statewide hospital data using SRS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,37 +60,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -102,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
@@ -112,15 +81,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./weekly_details.html">
+    <a class="nav-link" href="../weekly_details.html">
  <span class="menu-text">Weekly Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html">
+    <a class="nav-link" href="../notes.html">
  <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./assignments.html">
+    <a class="nav-link" href="../assignments.html">
  <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
@@ -149,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html">
+    <a class="nav-link" href="../syllabus.html">
  <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
@@ -173,14 +142,23 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Complete notes</h1>
-</div>
+<h1 class="title">Worksheet 03: Exploring Statewide hospital data using SRS</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Worksheet</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 24, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -188,63 +166,23 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>This assignment will use statewide open source data on Covid-19 hospitalizations.</p>
+<ol type="1">
+<li>Go go the CA Open data portal: https://data.ca.gov/</li>
+<li>At the top, click on “Datasets”</li>
+<li>On the left, click on “CSV”</li>
+<li>Download the COVID-19 Hospital data (data dictionary and data set)</li>
+</ol>
+<p>Be sure to read the codebook to make sure you understand what exactly the numbers mean, your answers must be in context of the data.</p>
+<ol type="1">
+<li><p>Generate two random samples without replacement. One between 10% and 30% of the data set size, and one between 50 and 70%. The exact numbers are your choice. Set a seed to ensure reproducibility.</p></li>
+<li><p>Choose a numeric variable. For both samples estimate the total, mean, and proportions of variables of your choice with 95% confidence intervals. Interpret each estimate and interval in context of the problem.</p></li>
+<li><p>Are your estimates generalizable to the entire state? Comment on what assumptions are needed for this to be the case. What other limitations are</p></li>
+</ol>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1674633600000" data-listing-file-modified-sort="1675020917135" data-listing-reading-time-sort="7" data-listing-title-sort="Introduction to Simulation" data-listing-filename-sort="cn01-intro_simulation_complete_posted.qmd">
-<td class="listing-date">
-01-25
-</td>
-<td class="listing-title">
-<a href="./complete/cn01-intro_simulation_complete_posted.html" class="title">Introduction to Simulation</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1675065600000" data-listing-file-modified-sort="1675833450849" data-listing-reading-time-sort="8.395" data-listing-title-sort="The Sampling Framework" data-listing-filename-sort="cn02-intro_sampling_complete_posted.qmd">
-<td class="listing-date">
-01-30
-</td>
-<td class="listing-title">
-<a href="./complete/cn02-intro_sampling_complete_posted.html" class="title">The Sampling Framework</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1675670400000" data-listing-file-modified-sort="1676753797728" data-listing-reading-time-sort="18.855" data-listing-title-sort="Foundations of Statistical Estimation" data-listing-filename-sort="cn03-statistical_foundations_complete.qmd">
-<td class="listing-date">
-02-06
-</td>
-<td class="listing-title">
-<a href="./complete/cn03-statistical_foundations_complete.html" class="title">Foundations of Statistical Estimation</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1676880000000" data-listing-file-modified-sort="1676854706799" data-listing-reading-time-sort="10.51" data-listing-title-sort="Simple Random Sampling" data-listing-filename-sort="cn04-SRS_complete.qmd">
-<td class="listing-date">
-02-20
-</td>
-<td class="listing-title">
-<a href="./complete/cn04-SRS_complete.html" class="title">Simple Random Sampling</a>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
