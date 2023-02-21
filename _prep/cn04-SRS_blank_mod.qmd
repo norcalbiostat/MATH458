@@ -48,6 +48,8 @@ Random does not mean haphazard, contrary it's actually quite intentional. Avoid 
 
 To avoid the haphazard nature of "blindly choosing", or worse looking at what was sampled and changing it because "it doesn't look random enough", we use techniques that leverage pseudo-random number generating algorithms.
 
+## Drawing a SRS using a computer
+
 ::: callout-important
 ### Process 
 
@@ -57,51 +59,56 @@ To avoid the haphazard nature of "blindly choosing", or worse looking at what wa
 4.  Subset the data to keep only the selected rows.
 :::
 
-## Drawing a SRS using a computer
-
-Previously we saw how to use the `sample` function to accomplish this. An alternative is to use the functions `srswor` or `srswr` from the `sampling` package. Each have their pros and cons, so we explore both. 
-
 :::{.callout-tip icon=true}
-### Example: Sampling from Dr. D's animal names. 
+### Example: Sampling Statistics PhD programs. 
+To _demonstrate_ this example, lets only grab the first 10 programs in the StatisticsPhD data set. From that we'll draw a sample of $n=4$ programs out of these 10. 
+
 ```{r}
-set.seed(4134)
-my.animals <- c("Toki", "Meka", "Riley", "TJ", "Dodger", "DC", "Sid", "Spike")
+stats <- readr::read_csv(here::here("data", "StatisticsPhD.csv"))
+(stats10 <- stats[1:10,])
 ```
 :::
 
-When using `sample()` the vector of data that you want to sample from is provided as the first argument, and what is returned is the values in that vector.
+### Using the `sample()` function
 
+**without replacement**
 ```{r}
-sample(my.animals, 3)
-sample(my.animals, 3, replace=TRUE)
+pop.idx <- 1:NROW(stats10) # 1, 2
+(idx <- sample(pop.idx, 4)) #3 
+stats10[idx,] #4
 ```
 
-To use this method to draw records from a data set, you'll need to follow the steps above. Index rows in the data set, draw from that index, and then subset the data using those indicies. 
+* Rows `r idx` were chosen. 
+
+**with replacement**
 ```{r}
-animal.list <- 1:length(my.animals) # for a data set this would be NROW()
-idx <- sample(animal.list,3)
-my.animals[idx]
+set.seed(4134) # again, for demonstration of duplicate records
+(idx.with.dups <- sample(pop.idx, 4, replace=TRUE)) #3 
+stats10[idx.with.dups,] #4
 ```
 
-Since most data sets have multiple columns, you need to specify you want all columns: `data[idx,]`
+* Rows `r idx.with.dups` were chosen. 
+* Carnegie (row 4) was sampled twice. 
 
+## Using the `sampling` package
 
-The functions `srswr` and `srswor` draw SRS with, and without replacement respectively. Each take two arguments: $n$ the sample size, and $N$ the population size, and what is returned is a vector of length $N$ that indicates how many times that position in the vector is selected.
+The functions `srswr(n,N)` and `srswor(n,N)` draw SRS with, and without replacement respectively. Each take two arguments: $n$ the sample size, and $N$ the population size, and what is returned is a vector of length $N$ that indicates how many times that position in the vector is selected.
 
 ```{r}
 set.seed(4134)
-(choose.these.wor <- srswor(3, 8)) 
-(choose.these.wr <- srswr(3,8)) 
+(choose.these.wor <- srswor(4, 10)) 
+(choose.these.wr <- srswr(4,10)) 
 ```
 
 Then the `getdata()` function is used to extract the values from the population the indicated number of times.
 
 ```{r}
-getdata(my.animals, choose.these.wor)
-getdata(my.animals, choose.these.wr)
+getdata(stats10, choose.these.wor)
+getdata(stats10, choose.these.wr)
 ```
 
-This method can be advantageous when drawing with replacement from a large dataset.
+* Again, notice Boston was chosen twice when sampling with replacement. 
+* Interestingly, the result from sampling without replacement added a column called `ID_unit` on it that denotes the row it was sampled from. 
 
 :::{.callout-warning icon=false}
 ### You try it 
@@ -113,10 +120,11 @@ Draw a sample of 300 farms without replacement using both `sample` and `srswor`.
 
 ```{r}
 agpop <- readr::read_csv(here::here("data", "agpop.csv"))
-n <- 300; N <- NROW(agpop)
+n <- 300; N <- NROW(agpop) # i'm storing these as constants here because we'll use them later. 
 set.seed(8675309)
 ag.idx <- srswor(n, N)
 ag.srs <- getdata(agpop, ag.idx)
+head(ag.srs)
 ```
 
 
@@ -157,13 +165,17 @@ s2 <- sum((ag.srs$acres92 - y.bar)^2)/(n-1)
 (sd.ybar <- sqrt((1-n/N)*s2/n))
 ```
 
-Sample means generated from samples of size 300 will vary from sample to sample by 32,316.99 acres. 
+Sample means generated from samples of size ______ will vary from sample to sample by _____ acres. 
 
 
 :::{.callout-warning icon=false}
 ### You try it
 Draw a sample of size 500, and estimate the standard deviation of the sample proportion of the number of farms with less than 200,000 acres. 
 :::
+
+
+
+
 
 :::{.callout-important icon=false collapse="true" appearance=minimal}
 ### Clean up
