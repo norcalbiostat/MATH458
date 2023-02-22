@@ -2,6 +2,10 @@
 title: "Foundations of Statistical Estimation"
 description: "We review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course."
 date: 2/06/23
+author: DRAFT
+execute: 
+  error: true
+  freeze: true
 ---
 
 # Introduction
@@ -19,9 +23,9 @@ Statistical inference centers around using information from a sample to understa
 On April 29, 2011, Prince William married Kate Middleton in London. The Pew Research Center reports that 34% of US adults watched some or all of the royal wedding. How do we know that 34% of all US adults watched? Did anyone ask **you** if you watched it? In order to know for sure what proportion of US adults watched the wedding, we would need to ask **all** US adults whether or not they watched. This would be very difficult to do. As we will see, however, we can estimate the _population_ proportion _parameter_ quite accurately with a _sample statistic_, as long as we use a random sample. In the case of the royal wedding, the estimate is based on a poll using a random sample of 1006 US adults.
 
 
-* _Statistical inference_: The process of drawing conclusions about the entire population based on the information in the sample.
-* _Parameter_: A number that describes the entire population. $\mu$, $p$, $\tau$
-* _Statistic_: A number calculated from a sample. $\bar{x}$, $\hat{p}$, $\hat{\tau}$. 
+* _Statistical inference_: 
+* _Parameter_: 
+* _Statistic_: 
 
 Generally our goal is to know the value of the population parameter exactly but this usually isn't possible since we usually cannot collect information from the entire population. 
 
@@ -35,13 +39,9 @@ The US Census states that 27.5% of US adults who are at least 25 years old have 
 What is the population parameter? What is the sample statistic? Use correct notation for your answer.
 :::
 
-:::{.callout-warning icon=false collapse="true" appearance=minimal}
-### Solution
-**Population Parameter**: $p = .275$  
-**Sample Statistic**: $\hat{p} = 58/200 = .29$
-:::
 
-The value of a statistic for a particular sample gives a _point estimate_ of the population parameter. If we only have the one sample and don't know the value of the population parameter, this point estimate is our best estimate of the true value of the population parameter.
+The value of a statistic for a particular sample gives a _point estimate_ of the population parameter. If we only have the one sample and don't know the value of the population parameter, ...
+
 
 After we have a little more mathematical terminology and foundation, we'll come back to what we mean by "best estimate", and examine how we can determine if something is a "good" estimate. 
 
@@ -52,14 +52,14 @@ After we have a little more mathematical terminology and foundation, we'll come 
 The first thing that we do with data is to summarize it with graphs and numbers. 
 [_Empirical_: Relying on or derived from observation or experiment.]{.aside}
 
-* Histograms or relative frequency tables can be used to try to make an empirical estimation of the shape of the distribution. 
-* Once a relative frequency distribution has been established for a population, we can use probability arguments to calculate numerical summary measures such as the mean, variance, and standard deviation. 
-* The numerical measures used to summarize the characteristics of a population are defined as **expected values** of $y$. 
+* Histograms or relative frequency tables can be used to...
+* Once a relative frequency distribution has been established for a population, we can use probability arguments to ...
+* The numerical measures used to summarize the characteristics of a population are defined as ...
 
 :::{.callout-important}
 ### Definition: Expected Value
 $$
-E(y)=\sum_{y}y*p(y)
+E(y) = 
 $$
 where the summation is over all the values of $y$ for which $p(y)>0$.  
 $p(y)$ is the probability of each value of $y$.
@@ -79,7 +79,9 @@ $E(y)=\sum_{y}yp(y) = (1)(.1) + (2)(.5) + (3)(.4) = 2.3$
 
 :::{.callout-important}
 ### Definition: Population Mean
-$$E(y)=\mu$$ 
+$$
+
+$$ 
 where $y$ is a value of a single measurement chosen at random from the population.
 :::
 
@@ -87,15 +89,16 @@ where $y$ is a value of a single measurement chosen at random from the populatio
 :::{.callout-important}
 ### Definition: Population Variance & Standard Deviation
 
-$$\sigma^{2} = V(y)=E(y-\mu)^{2}=\sum_{y}\left(y-\mu\right)^{2}*p(y)$$
+$$\sigma^{2} = V(y)=E(y-\mu)^{2} = \sum_{y}\left(y-\mu\right)^{2}*p(y)$$
 
-The variability of measurements in a population can be measured by the **variance** which is defined as the average squared deviation from the mean between a randomly selected measurement $y$ and its mean value $\mu$. 
+The variability of measurements in a population can be measured by the **variance** which is defined as the average squared deviation from the mean between a randomly selected measurement $\_$ and its mean value $\_$
 
-The standard deviation is defined as the square root of the variance, and is denoted $\sigma$.
+
+The standard deviation is defined as the square root of the variance, and is denoted $\_$.
 
 Sometimes it's may be convenient to calculate the variance using this formulation: 
 
-$$V(y)=E(y^2) - E(y)^{2}$$
+$$ $$
 :::
 
 
@@ -118,32 +121,13 @@ Consider the following results: 16 students scored a 3, 4 students scored a 2, 2
 Calculate both the sample and population values of the average and standard deviation. 
 :::
 
-
-:::{.callout-warning icon=false collapse="true" appearance=minimal}
-### Solution
-| Score (Y) | Frequency | Proportion |
-|-----------|-----------|------------|
-| 3         | 16        | .64        |
-| 2         | 4         | .16        |
-| 1         | 2         | .08        |
-| 0         | 3         | .12        |
-
+Here is some starter code. 
 ```{r}
 y <- 3:0
 f <- c(16, 4, 2, 3)
 p <- c(.64, .16, .08, .12)
-
-# Sample
-(dta <- rep(y, f)) # expand out the data
-n <- length(dta)
-(y.bar <- sum(dta)/n)
-sqrt(sum((dta-y.bar)^2)/(n-1)) 
-
-# Population
-(y.bar.p <- sum(y*p))
-sqrt(sum(p*(y-y.bar.p)^2)) #
+dta <- rep(y, f)
 ```
-:::
 
 ## The Finite Population Case (Lohr Ch 2.2)
 
@@ -159,8 +143,8 @@ Suppose, for example, we want to estimate the total number of job openings in a 
 
 * Suppose the population consists of the set of elements $\{u_{1},u_{2},...,u_{N}\}$ and a sample of $n$ elements is to be selected with replacement independently of one another.
 * Let $\{\delta_{1},\delta_{2},...,\delta_{N}\}$ represent the respective probabilities of selection for the population elements. 
-    - $\delta_{i}$ is the probability that $u_{i}$ is selected on any one draw. 
-    - for the case of random sampling with replacement, each $\delta_{i} = 1/N$
+    - $\delta_{i}$ is 
+    - for the case of random sampling with replacement, each $\delta_{i} = $
 
 [Note: The mathematical definition of unbiased is not the same thing as selection biased discussed earlier. The math definition of bias will be discussed below.]{.aside}
 An **unbiased estimator** of the population total, $\tau$, is given by
@@ -175,7 +159,7 @@ $$
 \hat{\tau} = \frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{(1/N)} = \frac{N}{n} \sum^{n}_{i=1}y_{i} = N\bar{y}
 $$
 
-It is in the best interest to select the $\delta_{i}$ values in such a way that the variance is as small as possible. The best practical way to choose the $\delta_{i}$ is to choose them proportional to a known measurement that is highly correlated with $y_{i}$. 
+It is in the best interest to select the $\delta_{i}$ values in such a way that the _______ is as small as possible. The best practical way to choose the $\delta_{i}$ is to choose them proportional to a known measurement that is highly correlated with $y_{i}$. 
 
 :::{.callout-tip icon=true}
 ### Example: Job openings cont. 
@@ -189,24 +173,25 @@ Our universe only consists of these $N=4$ firms: A, B, C and D.
 | D    | 61         | 300          | 300/580      |
 :::
 
-The population total of job openings is $\tau= 99$. But of course we don't know this, so we want to take a sample of $n=2$ firms and count the nubmer of jobs at each firm $x$ as a way to estimate this total. 
+The population total of job openings is $\tau= 99$. But of course we don't know this, so we want to take a sample of $n=2$ firms and count the number of jobs at each firm $x$ as a way to estimate this total. 
 
 If all firms have equal probability of being selected, then the subset of firms $\{A, B\}$ have the same chance of being selected as any other subset of two firms such as $\{A, C\}$. However, we may want to select firms with probabilities in proportion to their workforce ($\delta_{i}$).  
 
 Without adjustment the estimate of the total job openings based on the $\{A, B\}$ sample would be: 
 $$
-\hat{\tau} = N\bar{X} = 4*(13/2) = 26
+\hat{\tau} = N\bar{X} = 
 $$
 
 
 If we adjust $y_{i}$ based on the probability of selecting firms A and B,
 $$
-\hat{\tau} = \frac{1}{2}\Big[\frac{3}{70/580} + \frac{10}{90/580}\Big]  = 44.7
+\hat{\tau} = \frac{.}{.}\Big[\frac{.}{./.} + \frac{.}{./.}\Big]  = 
 $$
+
+> replace the dots with numbers, then delete this line. 
 
 :question: Was this a good estimate of $\tau$? Why or why not? 
 
-> No! The population total $\tau$ is nearly double that of the estimate. However, the weighted mean is much closer to the true value than the unweighted mean is. 
 
 # Variability of Estimates
 
@@ -215,8 +200,7 @@ $$
 Why do we usually think of a parameter $\mu$ or $p$ as a fixed value, while the sample statistic $\bar{x}$ or $\hat{p}$ as a random variable?
 :::
 
-> write your answer in HackMD. 
-
+> write your answer in your notes AND in HackMD
 
 Along with the point estimate we also want to know how accurate we can expect the point estimate to be. In other words, if we took another random sample of the same size from the population, is the point estimate from this new sample likely to be similar to the first point estimate or are they likely to be far apart.
 
@@ -227,22 +211,21 @@ Graduate programs in statistics often pay their graduate students, which means t
 :question: What is the average full-time graduate student enrollment in US statistics doctoral programs in 2009? 
 :::   
 
-
 [I don't feel like loading packages in this file so I'm using the `::` shortcut method to access the `here` and `read_csv` functions to load in the data.]{.aside}
 
 ```{r}
-stat.phd <- readr::read_csv(here::here("data", "StatisticsPhD.csv"))
-head(stat.phd) #always look at your imported data to check for import errors
-mean(stat.phd$FTGradEnrollment)
+stat.phd <- readr::read_csv(here::here("___", "_______"))
+head(stat.phd)
+mean(stat.phd$_______)
 ```
 
-Based on the data set, the mean enrollment in 2009 is 53.54 full-time graduate students. Because this is the mean for the entire population of all US statistics doctoral programs for which data were available that year, we have that $\mu=53.54$ students.
+Based on the data set, the mean enrollment in 2009 is ____ full-time graduate students. Because this is the mean for the entire population of all US statistics doctoral programs for which data were available that year, we have that $\mu=$ students.
 
 :star: Use the code below take a random sample of 10 programs from the data file and calculate the mean.
 
 ```{r}
-my.sample.programs <- sample(stat.phd$FTGradEnrollment, size=10)
-mean(my.sample.programs)
+my.sample.programs <- sample(______, size=__)
+mean(______)
 ```
 
 :::{.callout-note appearance=minimal}
@@ -254,35 +237,36 @@ mean(my.sample.programs)
 * If we created a histogram of all our sample means, what would it look like? Where would it be centered at? What is the spread of the histogram?
 :::
 
+> write your summary discussion in HackMD and in your notes 
+
 Knowing the behavior of of repeated sample statistics (like the mean in the prior example) is critically important. Let's dig into this a little more by repeating this sampling experiment many times. 
 
 ```{r}
-many.means <- replicate(n=100, {
+many.means <- replicate(n=_____, {
   my.sample.programs <- sample(stat.phd$FTGradEnrollment, size=10)
   mean(my.sample.programs)
 })
 ```
-[:cry: Getting an error with replicate? Take a step back and first make sure the internal code is working. Then add replicate with n=5, and DONT assign it to an object. Visually see with your eyes what the result of the `replicate` function gives you. Then once that is working, you can increase the number of replications, assign it as an object and explore the object.]{.aside}
 
 Let's visualize the distribution of all those sample means. 
 
 ```{r}
-hist(many.means)
-summary(many.means)
+hist(_____)
+summary(_____)
 ```
 
 Characteristics of this distribution:  
 
-* _Shape_: The distribution of average enrollment isn't quite normal, there seems to perhaps be two peaks? 
-* _Center_: The average enrollment is `r round(mean(many.means),2)`
-* _Spread_: Average enrollment ranges from `r range(many.means)`. 
+* _Shape_: 
+* _Center_: 
+* _Spread_: 
 
 
-:tada: We have just created a _sampling distribution_ of the sample mean. 
+:tada: We have just created a _____ of the sample mean. 
 
-## Sampling Distribution 
+## Sampling Distribution
 
-A _sampling distribution_ is the distribution of sample statistics computed for different samples of the same size from the same population. 
+A _sampling distribution_ is the distribution of
 
 :::{.callout-note appearance=minimal}
 ### :question: :busts_in_silhouette: Turn to your neighbor and discuss the following questions
@@ -292,6 +276,9 @@ A _sampling distribution_ is the distribution of sample statistics computed for 
 * What would happen if we increased the number of replications (holding $n$ constant) to 1000 instead of 100? What about the sampling distribution would change?
 :::
 
+> write your summary discussion in your notes AND HackMD 
+
+
 [The proof of the CLT is generally seen in a first graduate Statistics class that uses convergence in distribution concepts from MATH 420.]{.aside}
 In elementary statistics you were introduced to the "Central Limit Theorem" (CLT). The CLT states that the sampling distribution of $\bar{y}$ should be centered at $\mu$ with a standard deviation of $\sigma/n$. It also states that the shape of the distribution should be approximately Normal for a large $n$.
 
@@ -299,8 +286,8 @@ In elementary statistics you were introduced to the "Central Limit Theorem" (CLT
 
 In general, suppose that $\hat{\theta}$ is an estimator of the parameter $\theta$. Two properties that we would like $\hat{\theta}$ to have are
 
-1. The estimate is **unbiased**: $E(\hat{\theta}) = \theta$.
-2. The estimate is **precise**: $Var(\hat{\theta})$ is small. 
+1. The estimate is **unbiased**: 
+2. The estimate is **precise**: 
 
 To clarify: 
 
@@ -313,7 +300,7 @@ To clarify:
 
 If two unbiased estimators are available for $\theta$ we generally prefer the one with the smaller variance.
 
-Because sometimes we use biased estimators, we often use the **Mean Squared Error (MSE)** instead of the variance to estimate the **accuracy**. 
+Because sometimes we use biased estimators, we often use the _______ instead of the variance to estimate the **_____________**. 
 
 :::{.callout-important}
 ### Definition: Bias, Variance, Accuracy
@@ -326,14 +313,17 @@ $$\mbox{MSE}(\hat{\theta}) = V(\hat{\theta}) + [Bias(\hat{\theta})]^2$$
 
 ![Textbook Figure 2.3. Unbiased, precise and accurate archers.](../figs/fig2_3.jpg)
 
-* A is **unbiased**. The average position of all arrows is at the center of the target.
-* B is **precise** but not unbiased. All arrows are close together but systematically away from the center. 
-* C is **accurate**. All arrows are close together and near the center of the target. 
+:busts_in_silhouette: TPS. Fill in the blanks. 
+
+* A is **_____________**. The average position of all arrows is at the center of the target.
+* B is **_____________** but not unbiased. All arrows are close together but systematically away from the center. 
+* C is **_____________**. All arrows are close together and near the center of the target. 
 
 :::{.callout-tip icon=true}
 ### Example
 Suppose probability samples of size $n=2$ are selected from the list `c(1,2,3,4)`, with $\delta_{i}$ probabilities `c(.4, .4, .1, .1)`. Demonstrate that $\hat{\tau}$ is an unbiased estimator of the population total $\tau$, but its variance is 81.25. 
 :::
+
 
 [If you are not familiar with working with vectors and matrices in R, check out this [YouTube tutorial by MarinStats](https://www.youtube.com/watch?v=2TcPAZOyV0U)]{.aside}
 
@@ -348,13 +338,10 @@ Create all possible samples of size $n=2$, and add the probability of selection 
 
 ```{r}
 # Create all possible samples of size 2
-universe <- expand.grid(x, x)
-names(universe)[1:2] <- c("x1", "x2") # rename first two columns for ease of reference
+
 
 # Add the selection probabilities 
-universe$d1 <- rep(deltas,4)
-universe$d2 <- rep(deltas, each=4)
-universe
+
 ```
 [An alternative method of creating the universe is to create separate vectors `x1 <- rep(x,4); x2 <- rep(x, each=4)`.]{.aside}
 Note the resulting object is a table/matrix with 16 rows and 4 columns, where each row is a possible sample of $n=2$ from the universe. 
@@ -362,22 +349,22 @@ Note the resulting object is a table/matrix with 16 rows and 4 columns, where ea
 Now calculate $\hat{\tau} = \frac{1}{2}\Big[\frac{x_1}{\delta_1} + \frac{x_2}{\delta_2}\Big]$. 
 
 ```{r}
-universe$tau.hat <- .5*(universe$x1/universe$d1 + universe$x2/universe$d2)
-head(universe)
+
 ```
 
 _manually verify calculation_
 ```{r}
-.5*(1/.4 + 1/.4)
+
 ```
+
 
 Now calculate $E[\hat{\tau}] = \sum \hat{\tau}*p(\hat{\tau})$ and $V[\hat{\tau}] = E[\hat{\tau}] - E[\hat{\tau}]^2]$, where $p(\hat{\tau}) = \delta_1*\delta_2$ is the probability that sample is chosen. 
 
 ```{r}
 # Calculate selection probability 
-universe$p.hat.tau <- universe$d1*universe$d2
-(E.tau.hat <- sum(universe$tau.hat * universe$p.hat.tau))
-(Var.tau.hat <- sum(universe$tau.hat^2 * universe$p.hat.tau) - E.tau.hat^2)
+universe$p.hat.tau <- 
+(E.tau.hat <- )
+(Var.tau.hat <- )
 ```
 
 :::{.callout-warning icon=false}
@@ -390,22 +377,21 @@ Lohr Ch 2 exercises, #1.
 
 In general, it is usually not enough to just give a point estimate when estimating a population parameter. Why?
 
+> 
+
 ## Bounds on Estimators
 
 The objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How can we determine how many sampling units to select? 
 
-> It depends on the magnitude of the error that we find acceptable.
+> 
 
-Suppose that we are trying to estimate some parameter $\theta$ using the sample estimator $\hat{\theta}$. We want the value of $\theta-\hat{\theta}$ to be small. We refer to the value of $\theta-\hat{\theta}$ as the error because it is the difference between the estimated value and the true value. 
+Suppose that we are trying to estimate some parameter $\theta$ using the sample estimator $\hat{\theta}$. We want the value of _________ to be small. We refer to the value of _________ as the **error** because it is the difference between the _________ value and the _________ value. 
 
 :::{.callout-note appearance=minimal}
 ### :question: :busts_in_silhouette: Turn & talk
 
 What is the difference between the _error_ and _bias_?
 :::
-
-> * The _error_ is the difference between the estimated value and the true value.
-> *The _bias_ is the difference in _expected value_ of the estimator and the true value
 
 
 We might want to specify that the absolute value of the error is less than some number, say $B$. Thus,
@@ -418,16 +404,16 @@ $$
 P\left(|\theta-\hat{\theta}|<B\right)=1-\alpha
 $$
 
-We will often select $B$ to be approximately 2 times the standard deviation of $\hat{\theta}$, $B=2\hat{\sigma}_{\hat{\theta}}$. As we saw earlier in @ref(#sampling-distribution), many of the statistics that we will discuss exhibit a normal sampling distribution even when the population distribution is skewed.
+We will often select $B$ to be approximately ______________________ of $\hat{\theta}$, ______________________. As we saw earlier in @ref(#sampling-distribution), many of the statistics that we will discuss exhibit a normal sampling distribution even when the population distribution is skewed.
 
 
 ## Standard Error
 
-
 :::{.callout-important}
 ### Definition: Standard Error
-The _standard error_ of a statistic is the standard deviation of the sample statistic. In other words, the standard deviation of the sampling distribution.  
+The _standard error_ of a statistic is ...  
 :::
+
 
 The standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use closed form mathematical formulas to calculate the standard error.
 
@@ -436,16 +422,11 @@ The standard error of a statistic tells us how much the sample statistic will va
 Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20. 
 :::
 
-[I used the base pipe `|>` here to pass the results of the replicate function into the `sd()` function]{.aside}
-
 ```{r}
-sd(many.means) #because the example above already had n=10
+sd(many.means) # where did this come from?
 
-replicate(n=100, {
-  my.sample.programs <- sample(stat.phd$FTGradEnrollment, size=20)
-  mean(my.sample.programs)
-}) |> sd()
 ```
+
 
 ## Confidence Intervals
 
@@ -460,25 +441,26 @@ Interpret this confidence interval in context of the problem.
 :::
 
 [Wrapping the entire line of code in `()` will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below. ]{.aside}
-
 ```{r}
-(LCL <- mean(many.means) - 2*sd(many.means))
-(UCL <- mean(many.means) + 2*sd(many.means))
+(LCL <- )
+(UCL <- )
 ```
+
 
 [Every time I compile these notes, I draw a different sample and will get a different numbers. To avoid conflicts in my written response, and what the code shows, I use _inline R code_ here. See the RStudio _Help --> Markdown Quick Reference_ for more information.]{.aside}
 
-> We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (`r paste0(round(LCL,1), " , ", round(UCL,1))`). 
+> We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval ( ). 
 
-
+ 
 :::{.callout-note appearance=minimal}
 ### :question: :busts_in_silhouette: Turn & talk
 
 Consider the following interpretation of the above confidence interval. 
 
-> We can be 95% confident that PhD programs in Statistics have a total enrollment of between `r round(LCL,1)` and `r round(UCL,1)` students. 
+> We can be 95% confident that PhD programs in Statistics have a total enrollment of between ______ and ______ students. 
 
 Why is this an incorrect interpretation? 
 
 :::
 
+> Write your answer in HackMD and your notes.

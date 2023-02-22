@@ -124,6 +124,46 @@ The U.S. government conducts a Census of Agriculture every five years, collectin
 Draw a sample of 300 farms without replacement using both `sample` and `srswor`. Save one of these data frames with the name `ag.srs` for later use. 
 :::
 
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+Import the data and define our sample and population sizes. 
+```{r}
+ag <- readr::read_csv(here::here("data", "agpop.csv")) 
+N <- NROW(ag)
+n <- 300
+```
+
+**Using the `sample()` function**
+
+[Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.]{.aside} Generate list of numbers for each observational unit, then draw 5 numbers without replacement.
+
+```{r}
+sampling.frame <- 1:N #1, 2
+sample.idx <- sample(sampling.frame, n, replace=FALSE) #3
+head(sample.idx)
+```
+
+Create a subset data frame with only the rows that were chosen and stored in the vector `get.these`.
+
+```{r}
+sample.ag <- ag[sample.idx, ]  #4
+head(sample.ag[,1:5]) # only showing first 5 columns as an example
+```
+
+**Using the `srswor()` function**
+
+```{r}
+set.seed(1067)
+srswor.idx <- srswor(n, N)
+ag.srs <- getdata(ag, srswor.idx) 
+```
+:::
+
+
+
+
+
 # Formulas for Estimation
 
 Below is a table of common statistics and how they are estimated under the SRS framework. This table can also be found on the [formulas](https://sampling-458.netlify.app/notes/formulas.html) page. 

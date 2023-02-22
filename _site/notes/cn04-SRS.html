@@ -286,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>How do we calculate parameter estimates from an SRS that account for both the fpc and sampling weights?</li>
 </ul>
 </section>
-<section id="drawing-a-simple-random-sample-lohr-ch-2.3" class="level1">
+<section id="drawing-a-simple-random-sample-lohr-ch-2.3" class="level1 page-columns page-full">
 <h1>Drawing a Simple Random Sample (Lohr Ch 2.3)</h1>
 <p>Recall there are two ways to draw simple random samples, with and without replacement.</p>
 <div class="callout-important callout callout-style-default no-icon callout-captioned">
@@ -380,21 +380,21 @@ Example: Sampling Statistics PhD programs.
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pop.idx <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stats10)  <span class="co"># Steps 1, 2</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop.idx, <span class="dv">4</span>)) <span class="co"># Step 3 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8 7 5 4</code></pre>
+<pre><code>[1]  1  6  3 10</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stats10[idx,]               <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  University                      Department    FTGradEnrollment
-  &lt;chr&gt;                           &lt;chr&gt;                    &lt;dbl&gt;
-1 Columbia University             Statistics                 196
-2 Columbia University             Biostatistics               64
-3 Case Western Reserve University Statistics                  11
-4 Carnegie Mellon University      Statistics                  39</code></pre>
+  University                Department    FTGradEnrollment
+  &lt;chr&gt;                     &lt;chr&gt;                    &lt;dbl&gt;
+1 Baylor University         Statistics                  26
+2 Colorado State University Statistics                  14
+3 Brown University          Biostatistics               21
+4 Duke University           Statistics                  31</code></pre>
 </div>
 </div>
 <ul>
-<li>Rows 8, 7, 5, 4 were chosen.</li>
+<li>Rows 1, 6, 3, 10 were chosen.</li>
 </ul>
 <p><strong>with replacement</strong></p>
 <div class="cell">
@@ -420,7 +420,7 @@ Example: Sampling Statistics PhD programs.
 </ul>
 </section>
 </section>
-<section id="using-the-sampling-package" class="level2">
+<section id="using-the-sampling-package" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="using-the-sampling-package">Using the <code>sampling</code> package</h2>
 <ul>
 <li>The functions <code>srswr(n,N)</code> and <code>srswor(n,N)</code> draw SRS with, and without replacement respectively.</li>
@@ -481,7 +481,60 @@ Then the <code>getdata()</code> function is used to extract the values from the 
 <p>Draw a sample of 300 farms without replacement using both <code>sample</code> and <code>srswor</code>. Save one of these data frames with the name <code>ag.srs</code> for later use.</p>
 </div>
 </div>
-</section>
+<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Import the data and define our sample and population sizes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ag <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agpop.csv"</span>)) </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">NROW</span>(ag)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">300</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Using the <code>sample()</code> function</strong></p>
+<p> Generate list of numbers for each observational unit, then draw 5 numbers without replacement.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sampling.frame <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>N <span class="co">#1, 2</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sample.idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(sampling.frame, n, <span class="at">replace=</span><span class="cn">FALSE</span>) <span class="co">#3</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample.idx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1788   38  450 1019 2976 1031</code></pre>
+</div>
+</div>
+<p>Create a subset data frame with only the rows that were chosen and stored in the vector <code>get.these</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sample.ag <span class="ot">&lt;-</span> ag[sample.idx, ]  <span class="co">#4</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample.ag[,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="co"># only showing first 5 columns as an example</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  county         state acres92 acres87 acres82
+  &lt;chr&gt;          &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 BUFFALO COUNTY NE     587595  581861  567657
+2 HALE COUNTY    AL     167583  154581  179618
+3 LIBERTY COUNTY GA      15583   18248   19965
+4 HICKMAN COUNTY KY      99066   95560  105051
+5 PIERCE COUNTY  WI     272876  269644  298538
+6 LEE COUNTY     KY      20803   23097   22866</code></pre>
+</div>
+</div>
+<p><strong>Using the <code>srswor()</code> function</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1067</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>srswor.idx <span class="ot">&lt;-</span> <span class="fu">srswor</span>(n, N)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ag.srs <span class="ot">&lt;-</span> <span class="fu">getdata</span>(ag, srswor.idx) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><span class="callout-6-contents callout-collapse collapse callout-margin-content callout-margin-content-simple">Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.</span></div></section>
 </section>
 <section id="formulas-for-estimation" class="level1 page-columns page-full">
 <h1>Formulas for Estimation</h1>
@@ -569,7 +622,7 @@ Example
 </div>
 </div>
 <div class="callout-important callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -578,11 +631,11 @@ Clean up
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>As we go through these notes, we create a lot of the same named objects, like <code>n</code> and <code>N</code>, or <code>idx</code> and <code>idx2</code>. Every once in a while its a good idea to clean out your global environment to not get confused. Use the <code>rm()</code> function to remove everything except the population <code>ag</code>, our sample of 300 <code>ag.srs</code>, and their respective sample sizes: <code>n</code> and <code>N</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -648,12 +701,12 @@ Example: Calculating weighted estimates
 </div>
 <p>Calculate weighted and unweighted estimates, then the pop parameters.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tau.hat.wt <span class="ot">&lt;-</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>y.bar.wt   <span class="ot">&lt;-</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>tau.hat.nowt <span class="ot">&lt;-</span> </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>y.bar.nowt   <span class="ot">&lt;-</span> </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>mu  <span class="ot">&lt;-</span> </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>tau.hat.wt <span class="ot">&lt;-</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>y.bar.wt   <span class="ot">&lt;-</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>tau.hat.nowt <span class="ot">&lt;-</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>y.bar.nowt   <span class="ot">&lt;-</span> </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>mu  <span class="ot">&lt;-</span> </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: &lt;text&gt;:7:0: unexpected end of input
 5: mu  &lt;- 
@@ -663,13 +716,13 @@ Example: Calculating weighted estimates
 </div>
 <p>Package it in a data frame for easier viewing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Total"</span>, <span class="st">"Mean"</span>), </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Parameter =</span> <span class="fu">c</span>(tau,mu),</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Unweighted =</span> <span class="fu">c</span>(tau.hat.nowt, y.bar.nowt), </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weighted =</span> <span class="fu">c</span>(tau.hat.wt, y.bar.wt)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'lccc'</span>, </span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Comparing weighted and unweighted estimates"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Total"</span>, <span class="st">"Mean"</span>), </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Parameter =</span> <span class="fu">c</span>(tau,mu),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Unweighted =</span> <span class="fu">c</span>(tau.hat.nowt, y.bar.nowt), </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weighted =</span> <span class="fu">c</span>(tau.hat.wt, y.bar.wt)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'lccc'</span>, </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Comparing weighted and unweighted estimates"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in data.frame(Measure = c("Total", "Mean"), Parameter = c(tau, mu), : object 'tau' not found</code></pre>
 </div>

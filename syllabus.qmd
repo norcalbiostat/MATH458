@@ -59,6 +59,7 @@ Instructions for signing up & obtaining materials are in HW 0
 # Assignments / graded items 
 Your final grade will be a straight sum of points earned and will be displayed as a running total in Canvas.  I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F  
 
+> Automatic half credit will be applied to any assignment submitted after the solutions are posted. This includes homework, worksheets, and the course notes. 
 
 #### Exams (30%)
 * 2 Exams (midterm/final, not cumulative). 
