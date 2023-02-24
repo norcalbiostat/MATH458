@@ -373,21 +373,21 @@ Example: Sampling Statistics PhD programs.
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop.idx <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stats10)  <span class="co"># Steps 1, 2</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop.idx, <span class="dv">4</span>)) <span class="co"># Step 3 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10  9  7  6</code></pre>
+<pre><code>[1] 2 4 3 9</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stats10[idx,]               <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  University                Department    FTGradEnrollment
-  &lt;chr&gt;                     &lt;chr&gt;                    &lt;dbl&gt;
-1 Duke University           Statistics                  31
-2 Cornell University        Statistics                  78
-3 Columbia University       Biostatistics               64
-4 Colorado State University Statistics                  14</code></pre>
+  University                 Department    FTGradEnrollment
+  &lt;chr&gt;                      &lt;chr&gt;                    &lt;dbl&gt;
+1 Boston University          Biostatistics               39
+2 Carnegie Mellon University Statistics                  39
+3 Brown University           Biostatistics               21
+4 Cornell University         Statistics                  78</code></pre>
 </div>
 </div>
 <ul>
-<li>Rows 10, 9, 7, 6 were chosen.</li>
+<li>Rows 2, 4, 3, 9 were chosen.</li>
 </ul>
 <p><strong>with replacement</strong></p>
 <div class="cell">
@@ -777,23 +777,9 @@ Example: Calculating weighted estimates
 </table>
 </div>
 </div>
-<section id="wheres-my-error-the-weighted-and-unweighted-mean-shouldnt-equal..right" class="level4">
-<h4 class="anchored" data-anchor-id="wheres-my-error-the-weighted-and-unweighted-mean-shouldnt-equal..right"><span class="emoji" data-emoji="question">❓</span> Where’s my error? The weighted and unweighted mean shouldn’t equal..right? <span class="emoji" data-emoji="question">❓</span></h4>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-<span class="emoji" data-emoji="star">⭐</span> You try it
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Calculate the proportion of farms with less than 200k acres, with, and without weights. Compare to the population proportion.</p>
-</div>
-</div>
+<p>Note that when we have an SRS with equal sampling weights <span class="math inline">\(w_{i} = \frac{N}{n}\)</span>, the weighted mean is equal to the weighted mean. :::{.callout-warning icon=false} ### <span class="emoji" data-emoji="star">⭐</span> You try it Calculate the proportion of farms with less than 200k acres, with, and without weights. Compare to the population proportion. :::</p>
 <div class="callout-warning callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -802,7 +788,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ag.srs<span class="sc">$</span>lt200k <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(ag.srs<span class="sc">$</span>acres92<span class="sc">&lt;</span><span class="dv">200000</span>)</span>
@@ -822,7 +808,6 @@ Solution
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="analysis-using-the-survey-package-lohr-ch-2.6" class="level1 page-columns page-full">
 <h1>Analysis using the <code>survey</code> package (Lohr Ch 2.6)</h1>

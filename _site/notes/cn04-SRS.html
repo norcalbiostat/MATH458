@@ -380,21 +380,21 @@ Example: Sampling Statistics PhD programs.
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pop.idx <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stats10)  <span class="co"># Steps 1, 2</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop.idx, <span class="dv">4</span>)) <span class="co"># Step 3 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1  6  3 10</code></pre>
+<pre><code>[1] 5 1 4 7</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stats10[idx,]               <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  University                Department    FTGradEnrollment
-  &lt;chr&gt;                     &lt;chr&gt;                    &lt;dbl&gt;
-1 Baylor University         Statistics                  26
-2 Colorado State University Statistics                  14
-3 Brown University          Biostatistics               21
-4 Duke University           Statistics                  31</code></pre>
+  University                      Department    FTGradEnrollment
+  &lt;chr&gt;                           &lt;chr&gt;                    &lt;dbl&gt;
+1 Case Western Reserve University Statistics                  11
+2 Baylor University               Statistics                  26
+3 Carnegie Mellon University      Statistics                  39
+4 Columbia University             Biostatistics               64</code></pre>
 </div>
 </div>
 <ul>
-<li>Rows 1, 6, 3, 10 were chosen.</li>
+<li>Rows 5, 1, 4, 7 were chosen.</li>
 </ul>
 <p><strong>with replacement</strong></p>
 <div class="cell">
@@ -727,8 +727,7 @@ Example: Calculating weighted estimates
 <pre><code>Error in data.frame(Measure = c("Total", "Mean"), Parameter = c(tau, mu), : object 'tau' not found</code></pre>
 </div>
 </div>
-<section id="wheres-my-error-the-weighted-and-unweighted-mean-shouldnt-equal..right" class="level4">
-<h4 class="anchored" data-anchor-id="wheres-my-error-the-weighted-and-unweighted-mean-shouldnt-equal..right"><span class="emoji" data-emoji="question">❓</span> Where’s my error? The weighted and unweighted mean shouldn’t equal..right? <span class="emoji" data-emoji="question">❓</span></h4>
+<p>Note that when we have an SRS with equal sampling weights <span class="math inline">\(w_{i} = \frac{N}{n}\)</span>, the weighted mean is equal to the weighted mean.</p>
 <div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -742,7 +741,6 @@ Example: Calculating weighted estimates
 <p>Calculate the proportion of farms with less than 200k acres, with, and without weights. Compare to the population proportion.</p>
 </div>
 </div>
-</section>
 </section>
 <section id="analysis-using-the-survey-package-lohr-ch-2.6" class="level1 page-columns page-full">
 <h1>Analysis using the <code>survey</code> package (Lohr Ch 2.6)</h1>

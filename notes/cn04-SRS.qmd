@@ -272,7 +272,7 @@ data.frame(
              caption = "Comparing weighted and unweighted estimates")
 ```
 
-#### :question: Where's my error? The weighted and unweighted mean shouldn't equal..right? :question:
+Note that when we have an SRS with equal sampling weights $w_{i} = \frac{N}{n}$, the weighted mean is equal to the weighted mean. 
 
 :::{.callout-warning icon=false}
 ### :star: You try it
