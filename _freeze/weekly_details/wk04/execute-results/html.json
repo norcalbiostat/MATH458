@@ -1,0 +1,14 @@
+{
+  "hash": "84c961637f832260853ea91768a7765e",
+  "result": {
+    "markdown": "---\ntitle: \"Foundations of Statistical Estimation (cont.)\"\ndate: \"2/13/23\"\nprepare: \"Clean up all prior course notes to date. Check content  with classmates.\"\nexecute: \n  echo: false\n---\n\n::: {.cell}\n\n:::\n\n\n\n# Learning Objectives\nBy the end of the week, learners will be able to: \n\n::: {.cell}\n::: {.cell-output-display}\n* Create and describe a sampling distribution of a sample statistic\n  * Define in english and mathematically accuracy, bias and precision\n  * Calculate and interpret a confidence interval\n\n<!-- end of list -->\n:::\n:::\n\n\n# How to prepare\n\n::: {.cell}\n::: {.cell-output-display}\n* Clean up all prior course notes to date. Check content  with classmates.\n\n<!-- end of list -->\n:::\n:::\n\n\n# [Content Notes & Readings](https://sampling-458.netlify.app/notes.html)\n\n::: {.cell}\n::: {.cell-output-display}\n* [Formulas and Definitions](https://sampling-458.netlify.app/notes/formulas.html)\n\n<!-- end of list -->\n:::\n:::\n\n\n\n# Monday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Properties of Estimation\n\n<!-- end of list -->\n:::\n:::\n\n\n# Wednesday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Interval Estimation\n\n<!-- end of list -->\n:::\n:::\n\n\n# Friday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Worksheet 2\n\n<!-- end of list -->\n:::\n:::\n\n\n# [To Do](https://sampling-458.netlify.app/assignments.html)\n\n::: {.cell}\n::: {.cell-output-display}\n* _NA_\n\n<!-- end of list -->\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

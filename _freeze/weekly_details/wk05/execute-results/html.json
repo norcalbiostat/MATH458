@@ -1,0 +1,14 @@
+{
+  "hash": "74a83138a4667cdaa988eff865976b70",
+  "result": {
+    "markdown": "---\ntitle: \"Simple Random Sampling\"\ndate: \"2/20/23\"\nprepare: \"Get course notes, download book data\"\nexecute: \n  echo: false\n---\n\n::: {.cell}\n\n:::\n\n\n\n# Learning Objectives\nBy the end of the week, learners will be able to: \n\n::: {.cell}\n::: {.cell-output-display}\n* Draw simple random samples from a data set\n  * Calculate estimates, errors and bounds for various parameters\n  * Conduct analysis using a SRS design\n\n<!-- end of list -->\n:::\n:::\n\n\n# How to prepare\n\n::: {.cell}\n::: {.cell-output-display}\n* Download ALL the datasets from the book's website.\n  * Install the `sampling` and `survey` packages\n  * Download the cn04 blank notes template from Canvas\n\n<!-- end of list -->\n:::\n:::\n\n\n# [Content Notes & Readings](https://sampling-458.netlify.app/notes.html)\n\n::: {.cell}\n::: {.cell-output-display}\n* [Simple Random Sampling](https://sampling-458.netlify.app/notes/cn04-srs)\n\n<!-- end of list -->\n:::\n:::\n\n\n\n# Monday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Drawing a SRS using multiple approaches\n  * Formulas for estimation\n\n<!-- end of list -->\n:::\n:::\n\n\n# Wednesday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Sampling weights, analysis of survey data\n\n<!-- end of list -->\n:::\n:::\n\n\n# Friday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Worksheet 3\n\n<!-- end of list -->\n:::\n:::\n\n\n# [To Do](https://sampling-458.netlify.app/assignments.html)\n\n::: {.cell}\n::: {.cell-output-display}\n* Worksheet 3\n  * Course notes: cn04\n  * HW02\n\n<!-- end of list -->\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

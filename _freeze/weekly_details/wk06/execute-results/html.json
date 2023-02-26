@@ -1,0 +1,14 @@
+{
+  "hash": "a13b84d906e4d3d21369161e8e88dacc",
+  "result": {
+    "markdown": "---\ntitle: \"Strategies for Teaching and Learning\"\ndate: \"2/27/23\"\nprepare: \"Finalize and submit all outstanding assignments\"\nexecute: \n  echo: false\n---\n\n::: {.cell}\n\n:::\n\n\n\n# Learning Objectives\nBy the end of the week, learners will be able to: \n\n::: {.cell}\n::: {.cell-output-display}\n* Identify methods to create materials to teach others\n\n<!-- end of list -->\n:::\n:::\n\n\n# How to prepare\n\n::: {.cell}\n::: {.cell-output-display}\n* Finalize and submit all outstanding assigments\n\n<!-- end of list -->\n:::\n:::\n\n\n# [Content Notes & Readings](https://sampling-458.netlify.app/notes.html)\n\n::: {.cell}\n::: {.cell-output-display}\n* _NA_\n\n<!-- end of list -->\n:::\n:::\n\n\n\n# Monday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Learning materials by teaching others\n\n<!-- end of list -->\n:::\n:::\n\n\n# Wednesday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Exam review\n\n<!-- end of list -->\n:::\n:::\n\n\n# Friday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Exam 1\n\n<!-- end of list -->\n:::\n:::\n\n\n# [To Do](https://sampling-458.netlify.app/assignments.html)\n\n::: {.cell}\n::: {.cell-output-display}\n* Prepare lecture notes for stratified sampling\n\n<!-- end of list -->\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

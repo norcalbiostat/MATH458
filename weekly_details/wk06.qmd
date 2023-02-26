@@ -1,0 +1,62 @@
+---
+title: "Strategies for Teaching and Learning"
+date: "2/27/23"
+prepare: "Finalize and submit all outstanding assignments"
+execute: 
+  echo: false
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr);library(readxl); library(stringr); library(pander)
+
+# Read in schedule, extract week
+wd <- read_excel(here::here("schedule_458.xlsx"), sheet="weekly_detail") %>%
+  filter(wk==6)
+
+# strip data columns into separate lists
+SLO  <- as.list(str_split(wd$SLO, "\r\n", simplify=TRUE))
+prep <- as.list(str_split(wd$Prepare, "\r\n", simplify=TRUE))
+note <- as.list(str_split(wd$Notes, "\r\n", simplify=TRUE))
+mon  <- as.list(str_split(wd$Monday, "\r\n", simplify=TRUE))
+wed  <- as.list(str_split(wd$Wednesday, "\r\n", simplify=TRUE))
+fri  <- as.list(str_split(wd$Friday, "\r\n", simplify=TRUE))
+do   <- as.list(str_split(wd$Do, "\r\n", simplify=TRUE))
+```
+
+
+# Learning Objectives
+By the end of the week, learners will be able to: 
+```{r}
+pander(SLO)
+```
+
+# How to prepare
+```{r}
+pander(prep)
+```
+
+# [Content Notes & Readings](https://sampling-458.netlify.app/notes.html)
+```{r}
+pander(note)
+```
+
+
+# Monday overview
+```{r}
+pander(mon)
+```
+
+# Wednesday overview
+```{r}
+pander(wed)
+```
+
+# Friday overview
+```{r}
+pander(fri)
+```
+
+# [To Do](https://sampling-458.netlify.app/assignments.html)
+```{r}
+pander(do)
+```
