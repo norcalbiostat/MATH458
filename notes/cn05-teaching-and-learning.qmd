@@ -1,0 +1,88 @@
+---
+title: "Teaching and Learning"
+description: "The best way to learn something is to teach it to others"
+date: "2023-27-23"
+format: 
+  revealjs:
+    theme: blood
+    transition: fade
+    slide-number: true
+---
+
+
+# Inside-Outside (I-O) learning strategy
+
+::: {.callout-note appearance="minimal"}
+The Inside-Outside learning strategy intends to emphasize the transformations: from inside to outside and from learning to teaching.
+:::
+
+In this learning strategy students do the following: 
+
+* collaborate to create your own learning materials
+* develop memorization questionnaires, discussion topics and questions, summary tables, relation trees and other visualization aids.
+* develop specific problems and exercises that may be included in assessments such as homework or exams 
+
+Each learning item developed by students is peer-reviewed before
+being approved as a learning material.
+
+
+# Elements of Collaborative Learning
+Refer to page 1840 (pdf page 6) of the I-O strategy PDF. 
+
+## 1. Clearly Perceived Positive Interdependence
+In collaborative learning the success of one person is bound up with the success of others. There are a few suggested ways to facilitate this dependency: 
+
+* Goal sharing
+* Role sharing
+* Task interdependence
+
+
+## 2. Interaction
+
+There is an expectation that students will help each other so that common goals can be achieved. Help may be resources, advice, provision of feedback and challenging conclusions. 
+
+## 3. Individual Accountability and Personal Responsibility
+
+Everyone is expected to do their fair share of work and it is important for all group members to know that they cannot 'free ride.'
+
+## 4. Small Group Skills 
+
+Interpersonal skills such as making decisions and solving conflicts are important. In order to achieve these goals students must:
+
+* Get to know and trust each other
+* Communicate clearly
+* Provide and accept support
+* Resolve conflict constructively
+
+## 5. Group Processing
+
+Group work is effective when group participants reflect on how well they function as a group. This reflection assists members to maintain good working relationships.
+
+
+# Establishing Ground Rules and a "code of conduct"
+
+
+# Methods for creating teaching material
+
+1. Create an outline of topics to cover.
+    - May not be every single section
+2. Create a summary of each retained section
+    - With an example to go over as a group
+    - and a very similar example for individuals to try on their own
+3.
+
+## Dissemination tools
+
+* Single quarto file with first level headers for each section
+* Fully reproducible, packages and data read in at the top. 
+* 
+
+
+
+
+# References & additional reading
+
+* https://en.wikipedia.org/wiki/Jigsaw_(teaching_technique)
+* https://en.wikipedia.org/wiki/Learning_by_teaching
+    * https://en.wikipedia.org/wiki/Rubber_duck_debugging
+* [Collaborative learning]
