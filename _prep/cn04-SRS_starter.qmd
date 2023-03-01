@@ -1,16 +1,19 @@
 ---
 title: "Simple Random Sampling"
 description: "SRS is the basic form of probability sampling, and serves as the basis for more complicated forms."
-author: COMPLETE
+author: DRAFT
 date: 2/20/23
+execute: 
+  error: true
 ---
+
 
 ::: {.callout-note appearance="minimal"}
 These notes use functions from the [sampling](https://cran.r-project.org/web/packages/sampling/index.html), and [survey](https://r-survey.r-forge.r-project.org/survey/) packages.[The best way to learn a new package is to reference the help file and vignette often for examples.  The R Companion for the book (free pdf from book website) is also very helpful. ]{.aside}
 :::
 
-```{r, echo=FALSE}
-library(sampling)
+```{r}
+library(sampling);library(survey)
 ```
 
 # Introduction
@@ -45,7 +48,6 @@ A SRS of size $n$ is selected so that every possible subset of $n$ distinct unit
 Random does not mean haphazard, contrary it's actually quite intentional. Avoid selecting a sample that you "feel" is random or representative of the population. These practices can lead to bias and lack of generalizability.
 
 To avoid the haphazard nature of "blindly choosing", or worse looking at what was sampled and changing it because "it doesn't look random enough", we use techniques that leverage pseudo-random number generating algorithms.
-
 
 ## Drawing a SRS using a computer
 
@@ -122,6 +124,7 @@ The U.S. government conducts a Census of Agriculture every five years, collectin
 Draw a sample of 300 farms without replacement using both `sample` and `srswor`. Save one of these data frames with the name `ag.srs` for later use. 
 :::
 
+
 :::{.callout-warning icon=false collapse="true" appearance=minimal}
 ### Solution
 Import the data and define our sample and population sizes. 
@@ -158,6 +161,9 @@ ag.srs <- getdata(ag, srswor.idx)
 :::
 
 
+
+
+
 # Formulas for Estimation
 
 Below is a table of common statistics and how they are estimated under the SRS framework. This table can also be found on the [formulas](https://sampling-458.netlify.app/notes/formulas.html) page. 
@@ -175,13 +181,13 @@ Did you notice something different about the formula for the variances?
 ::: callout-important
 ### Finite Population Correction
 
-$$\Big(1-\frac{n}{N}\Big)$$
+\vspace{2cm} 
 
 The larger % of the population that you include in your sample (sampling fraction = $\frac{n}{N}$), the closer you are to a census, the smaller the variability your estimate will have.
 :::
 
-* Most samples that are taken from a very large population, the fpc is close to 1.
-* So the variance is more determined by the size of the sample, not the % of the population sampled.
+* Most samples that are taken from a very large population, the fpc is close to ____.
+* So the variance is more determined by ___________, not the % of the ___________.
 
 :::{.callout-tip icon=true}
 ### Example
@@ -189,13 +195,11 @@ Calculate the estimated standard deviation of the sample mean $\sqrt{\hat{V}(\ba
 :::
 
 ```{r}
-y.bar <- mean(ag.srs$acres92)
-s2 <- sum((ag.srs$acres92-y.bar)^2)/(n-1)
-(sd.ybar <- sqrt((1-n/N)*(s2/n)))
+
 ```
 
 [Inline R code: `prettyNum(sd.ybar, big.mark=',')`]{.aside}
-Sample means generated from samples of size `r n` will vary from sample to sample by `r prettyNum(sd.ybar, big.mark=',')` acres. 
+Sample means generated from samples of size ________ will vary from sample to sample by _______________ acres. 
 
 
 :::{.callout-warning icon=false}
@@ -203,27 +207,11 @@ Sample means generated from samples of size `r n` will vary from sample to sampl
 Draw a sample of size 500, and estimate the standard deviation of the sample proportion of the number of farms with less than 200,000 acres. 
 :::
 
-:::{.callout-warning icon=false collapse="true" appearance=minimal}
-### Solution
-```{r}
-n2 <- 500
-srswor.idx2 <- srswor(n2, NROW(ag))
-sample.ag.500 <- getdata(ag, srswor.idx2)
-
-p.hat <- mean(sample.ag.500$acres92<200000)
-(s.phat <- sqrt((1-n2/N)*(p.hat * (1-p.hat))/(n2-1)))
-```
-
-The estimated proportion of number of farms with less than 200k acres varies by 2.04% from sample to sample. 
-
-:::
-
 :::{.callout-important icon=false collapse="true" appearance=minimal}
 ### Clean up
 As we go through these notes, we create a lot of the same named objects, like `n` and `N`, or `idx` and `idx2`. Every once in a while its a good idea to clean out your global environment to not get confused. Use the `rm()` function to remove everything except the population `ag`, our sample of 300 `ag.srs`, and their respective sample sizes: `n` and `N`. 
 ```{r}
-rm(sample.ag, choose.these.wor, choose.these.wr, my.animals, sample.idx, sampling.frame, 
-   n2, p.hat, s.phat, s2, y.bar, srswor.idx, srswor.idx2, sample.ag.500, sd.ybar)
+rm()
 ```
 
 :::
@@ -237,7 +225,6 @@ Recall that a goal of sampling is to obtain a representative sample, one that is
 
 Inverse of the inclusion/selection probability for unit $i$. 
 
-$$w_{i} = \frac{1}{\delta_i}$$
 
 Also interpreted as the number of population units represented by unit $i$.
 :::
@@ -261,18 +248,17 @@ Estimate the total and average number of acres devoted to farms in 1992 using bo
 The sampling weights are $w_{i} = \frac{3078}{300}$ for each unit $i$ in the sample, so we'll add that on as a new column before calculating the weighted estimates. 
 [See Lohr Table 2.1 for a nicer visual of the data frame with weights. ]{.aside}
 ```{r}
-ag.srs$wt <- N/n
-(N.hat <- sum(ag.srs$wt)) # just to confirm to myself
+
 ```
 
 Calculate weighted and unweighted estimates, then the pop parameters. 
 ```{r}
-tau.hat.wt <- sum(ag.srs$acres92*ag.srs$wt)
-y.bar.wt   <- tau.hat.wt/N.hat
-tau.hat.nowt <- sum(ag.srs$acres92)
-y.bar.nowt   <- mean(ag.srs$acres92)
-mu  <- mean(ag$acres92)
-tau <- sum(ag$acres92)
+tau.hat.wt <- 
+y.bar.wt   <- 
+tau.hat.nowt <- 
+y.bar.nowt   <- 
+mu  <- 
+tau <- 
 ```
 
 Package it in a data frame for easier viewing. 
@@ -287,19 +273,10 @@ data.frame(
 ```
 
 Note that when we have an SRS with equal sampling weights $w_{i} = \frac{N}{n}$, the weighted mean is equal to the weighted mean. 
+
 :::{.callout-warning icon=false}
 ### :star: You try it
 Calculate the proportion of farms with less than 200k acres, with, and without weights. Compare to the population proportion. 
-:::
-
-:::{.callout-warning icon=false collapse="true" appearance=minimal}
-### Solution
-```{r}
-ag.srs$lt200k <- 1*(ag.srs$acres92<200000)
-(p.hat.nowt <- mean(ag.srs$lt200k))
-(p.hat.wt   <- sum(ag.srs$lt200k * ag.srs$wt)/N)
-(p          <- mean(ag$acres92<200000))
-```
 :::
 
 # Analysis using the `survey` package (Lohr Ch 2.6)
@@ -307,8 +284,7 @@ ag.srs$lt200k <- 1*(ag.srs$acres92<200000)
 Survey designs are specified using the `svydesign` function. The main arguments to the the function are id to specify sampling units, weights to specify sampling weights, and fpc to specify finite population size corrections. These arguments should be given as formulas, referring to columns in a data frame given as the data argument.
 [Similar to using `group_by` in dplyr, that adds a "flag" to the data set indicting that all subsequent actions are to be done to each group separately, the `svydesign` function adds information to the data set so subsequent actions know how to incorporate measures like weights and strata]{.aside}
 ```{r}
-library(survey)
-ag.srs.dsgn <- svydesign(id = ~1, weights = ~wt, fpc = rep(N,n), data = ag.srs)
+
 ```
 
 The `id` argument specifies the clusters. We are not using any clustering, so each unit has it's own id. 
@@ -317,22 +293,20 @@ The `id` argument specifies the clusters. We are not using any clustering, so ea
 
 Survey design adjusted estimates can be obtained using `svymean` and `svytotal`. 
 ```{r}
-svymean(~acres92, ag.srs.dsgn)
-svytotal(~acres92, ag.srs.dsgn)
-svymean(~lt200k, ag.srs.dsgn)
+
 ```
 
 Estimates for multiple variables can be obtained at the same time. 
 ```{r}
-svymean(~acres92+farms92, ag.srs.dsgn)
+
 ```
 
 You can pass the results to construct confidence intervals. 
 ```{r}
-svytotal(~acres92+farms92, ag.srs.dsgn) |> confint()
+
 ```
 
-We can be 95% confident that the interval (1,646,531, 1,937,985) covers the true number of farms in the united states in 1992. 
+> interpretation here 
 
 :::{.callout-warning icon=false}
 ### :star: You try it

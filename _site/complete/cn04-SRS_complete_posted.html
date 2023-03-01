@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="COMPLETE">
 <meta name="dcterms.date" content="2023-02-20">
 <meta name="description" content="SRS is the basic form of probability sampling, and serves as the basis for more complicated forms.">
 
@@ -243,12 +242,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>COMPLETE </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -380,21 +373,21 @@ Example: Sampling Statistics PhD programs.
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop.idx <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stats10)  <span class="co"># Steps 1, 2</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop.idx, <span class="dv">4</span>)) <span class="co"># Step 3 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10  3  7  4</code></pre>
+<pre><code>[1] 2 1 3 6</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stats10[idx,]               <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  University                 Department    FTGradEnrollment
-  &lt;chr&gt;                      &lt;chr&gt;                    &lt;dbl&gt;
-1 Duke University            Statistics                  31
-2 Brown University           Biostatistics               21
-3 Columbia University        Biostatistics               64
-4 Carnegie Mellon University Statistics                  39</code></pre>
+  University                Department    FTGradEnrollment
+  &lt;chr&gt;                     &lt;chr&gt;                    &lt;dbl&gt;
+1 Boston University         Biostatistics               39
+2 Baylor University         Statistics                  26
+3 Brown University          Biostatistics               21
+4 Colorado State University Statistics                  14</code></pre>
 </div>
 </div>
 <ul>
-<li>Rows 10, 3, 7, 4 were chosen.</li>
+<li>Rows 2, 1, 3, 6 were chosen.</li>
 </ul>
 <p><strong>with replacement</strong></p>
 <div class="cell">
