@@ -810,5 +810,40 @@
     "title": "Stratified Sampling",
     "section": "",
     "text": "What is Stratified Sampling (Lohr 3.1)\n\n\nTheory & Weights (Lohr 3.2, 3.3)"
+  },
+  {
+    "objectID": "notes_DrD/cn06.html",
+    "href": "notes_DrD/cn06.html",
+    "title": "Stratified Sampling",
+    "section": "",
+    "text": "library(ggplot2); library(sampling)"
+  },
+  {
+    "objectID": "notes_DrD/cn06.html#estimating-population-parameters",
+    "href": "notes_DrD/cn06.html#estimating-population-parameters",
+    "title": "Stratified Sampling",
+    "section": "Estimating population parameters",
+    "text": "Estimating population parameters\nSince a SRS was taken from within each strata, we can use the same equations from SRS to estimate the population parameters for each stratum.\n\nOverall Total = sum of within strata totals\nVariance of the overall total = sum of variances of totals"
+  },
+  {
+    "objectID": "notes_DrD/cn06.html#gain-from-stratification",
+    "href": "notes_DrD/cn06.html#gain-from-stratification",
+    "title": "Stratified Sampling",
+    "section": "Gain from stratification",
+    "text": "Gain from stratification\n\nObservations within strata are more similar to each other, than they are to the population as a whole\nreduction in variance in individual strata can lead to a reduced variance for the population estimate.\n\n\n\n\n\n\n\nDefinition: Relative gain from stratification\n\n\n\n\\[\n\\frac{\\hat{Var_{strata}}}{\\hat{Var_{SRS}}}\n\\]\n\n\nFrom the Farm example, this ratio was calculated to be 0.75. That means we would only need 0.75*300 = 225 observations from a stratified sample to obtain the same precision as from a SRS of 300.\n\nBy sampling within strata, we are “borrowing” information from other similar observations."
+  },
+  {
+    "objectID": "notes_DrD/cn06.html#closing-thoughts",
+    "href": "notes_DrD/cn06.html#closing-thoughts",
+    "title": "Stratified Sampling",
+    "section": "closing thoughts",
+    "text": "closing thoughts\n\nDon’t have to sample the same % from each strata\n\nCould see a greater reduction in variance with an increased sampling fraction from the West."
+  },
+  {
+    "objectID": "notes_DrD/cn06.html#for-next-time-later",
+    "href": "notes_DrD/cn06.html#for-next-time-later",
+    "title": "Stratified Sampling",
+    "section": "For next time / later",
+    "text": "For next time / later\nUsing R to compute statistics from a stratified random sample. Ref R companion from SDA\nUsing the books example (how to do this using R will be covered later), we load in the agstrat data file. Notice there already is a varible for the weights included for us.\n\nagstrat <- readr::read_csv(here::here(\"data\", \"agstrat.csv\"))\nnames(agstrat)\n\n [1] \"county\"   \"state\"    \"acres92\"  \"acres87\"  \"acres82\"  \"farms92\" \n [7] \"farms87\"  \"farms82\"  \"largef92\" \"largef87\" \"largef82\" \"smallf92\"\n[13] \"smallf87\" \"smallf82\" \"region\"   \"rn\"       \"strwt\""
   }
 ]
