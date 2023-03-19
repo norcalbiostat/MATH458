@@ -3,6 +3,7 @@ tags: math458 # HackMD specific. Don't copy into your file
 robots: noindex, nofollow # also HackMD specific.  
 title: "Foundations of Statistical Estimation"
 ---
+
 :::danger
 :warning: We're changing the way we use these notes. Download the full blank notes from Canvas. This file will be used only for the collaborative discussion and some fill in the blank locations. 
 :::

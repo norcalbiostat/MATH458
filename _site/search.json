@@ -613,7 +613,7 @@
     "href": "notes.html",
     "title": "Course Notes",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2023\n\n\nFormulas and Definitions\n\n\nHelpful equations and R code\n\n\n\n\nJan 23, 2023\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 25, 2023\n\n\nIntroduction to Simulation\n\n\nFoundations of writing your own custom functions, drawing samples and conducting a simulation.\n\n\n\n\nJan 30, 2023\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 6, 2023\n\n\nFoundations of Statistical Estimation\n\n\nWe review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.\n\n\n\n\nFeb 20, 2023\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\nFeb 27, 2023\n\n\nTeaching and Learning\n\n\nThe best way to learn something is to teach it to others\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2023\n\n\nFormulas and Definitions\n\n\nHelpful equations and R code\n\n\n\n\nJan 23, 2023\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 25, 2023\n\n\nIntroduction to Simulation\n\n\nFoundations of writing your own custom functions, drawing samples and conducting a simulation.\n\n\n\n\nJan 30, 2023\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 6, 2023\n\n\nFoundations of Statistical Estimation\n\n\nWe review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.\n\n\n\n\nFeb 20, 2023\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\nFeb 27, 2023\n\n\nTeaching and Learning\n\n\nThe best way to learn something is to teach it to others\n\n\n\n\nMar 20, 2023\n\n\nStratified Sampling\n\n\nA method to use additional information about the population in the survey design.\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus.html",
@@ -803,5 +803,12 @@
     "title": "Stratified Sampling Methods",
     "section": "",
     "text": "Learning Objectives\nBy the end of the week, learners will be able to:\n\n\n\nCompare and contrast a SRS from Stratified sampling design\n\nIdentify correct estimates, errors and bounds for various parameters\n\n\n\n\n\n\n\n\nHow to prepare\n\n\n\nReview the Ground Rules discussion board in Canvas\n\nRead and take notes from Lohr 3.1 using these rules\n\n\n\n\n\n\n\nContent Notes & Readings\n\n\n\nNA\n\n\n\n\n\n\nMonday overview\n\n\n\nWhat is Stratified Sampling (Lohr 3.1)\n\n\n\n\n\n\nWednesday overview\n\n\n\nTheory & Weights (Lohr 3.2, 3.3)\n\n\n\n\n\n\nFriday overview\n\n\n\nExercises\n\n\n\n\n\n\nTo Do\n\n\n\nNA"
+  },
+  {
+    "objectID": "notes/cn06-stratified_sampling.html",
+    "href": "notes/cn06-stratified_sampling.html",
+    "title": "Stratified Sampling",
+    "section": "",
+    "text": "What is Stratified Sampling (Lohr 3.1)\n\n\nTheory & Weights (Lohr 3.2, 3.3)"
   }
 ]
