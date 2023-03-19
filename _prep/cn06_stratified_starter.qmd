@@ -1,0 +1,118 @@
+---
+title: "Stratified Sampling"
+description: "A method to use additional information about the population in the survey design."
+author: Dr. D
+date: 3/20/23
+execute: 
+  error: true
+  warning: false
+  message: false
+---
+
+```{r}
+library(ggplot2); library(sampling)
+```
+
+# What is Stratified Sampling (Lohr 3.1)
+
+:::{.callout-tip icon=true}
+### Motivating Example
+Valuating bank assets is a time consuming but critical action needed in the case of a bank failure where the FDIC needs to take over. These assets can be described as 1 of 7 types such as real estate mortgages, commercial loans, and consumer loans. 
+
+If we were to take a SRS of all assets from a failed bank to estimate the total dollar amount the FDIC needs to acquire, we could run into a few problems. 
+
+* Consumer loans tend to be smaller on average compared to other types, so the variance of the total could be very large, leading to an imprecise estimate
+* A SRS won't guarantee that items from each of the 7 types of asset categories will be sampled. This would result in undercoverage bias. 
+:::
+
+It is desirable then to create a sampling design that uses information about the population to improve precision and would prevent a bad (heavily biased) estimate. 
+
+If the average value of a variable of itnerset is different for different subpopulations (e.g. average amount of loans in the 7 different types), then we may be able to obtain a more precise estimate by taking a **stratified** random sample. 
+
+
+:::{.callout-important}
+### Definition: Stratified Random Sampling
+The word _stratify_ means to "arrange or deposit in layers". That is to divide the population into $H$ non-overlapping subpopulations called **strata**. 
+
+We then draw an independent probability sample (simple random sample) from each strata, then pool the information to obtain overall population estimates. 
+:::
+
+:::{.callout-tip icon=true}
+### Example: Revisiting farmland size 
+Let's reconsider the estimate for the average number of acres devoted to farms in 1992.
+Recall that each row in the dataset represents a county in the United States. In Example 2.6 we took a 10% SRS from the entire population and looked at the distribution of `farms92`. 
+:::
+
+```{r}
+#| fig-cap: The number of acres devoted to farms in 1992 is very skewed. Most counties have fewer than 500k acres in farms, where some have more than 1.5M acres.
+#| fig-width: 4
+#| fig-height: 2
+agpop <- readr::read_csv(here::here("data", "agpop.csv"))
+set.seed(8126834)
+N <- nrow(agpop)
+index <- srswor(300,N)
+agsrs <- getdata(agpop,index)
+
+ggplot(agsrs, aes(x=acres92)) + geom_histogram()
+```
+
+:question: What if this large variance is because counties in the West are physically larger than those in the East? (e.g. LA County is HUGE). The frequency table below confirms that there are many more counties (rows in the data set) from the North Central and Southern compared to from the West or Northeast. 
+
+```{r}
+table(agpop$region)
+```
+
+
+Instead of taking a 10% sample from the entire population, let's stratify by region first, and then take a 10% sample within region. 
+Review Table and Figure 3.1. What do you notice about the sampled proportion within region, and the sample average and variance within regions? 
+
+![](../figs/table_3_1.png)
+
+![](../figs/fig3_1.jpg)
+
+Things to notice: 
+
+* West has highest mean, and highest variance
+* Distribution of acerage is still skewed right within region
+
+
+## Estimating population parameters
+
+Since a SRS was taken from within each strata, we can use the [same equations](https://sampling-458.netlify.app/notes/formulas.html#simple-random-sample) from SRS to estimate the population parameters for each stratum. 
+
+* Overall Total = sum of within strata totals
+* Variance of the overall total = sum of variances of totals 
+
+
+## Gain from stratification
+
+* Observations within strata are more similar to each other, than they are to the population as a whole
+* reduction in variance in individual strata can lead to a reduced variance for the population estimate.
+
+:::{.callout-important}
+### Definition: Relative gain from stratification
+
+$$
+\frac{\hat{Var_{strata}}}{\hat{Var_{SRS}}}
+$$
+:::
+
+From the Farm example, this ratio was calculated to be 0.75. That means we would only need 0.75*300 = 225 observations from a stratified sample to obtain the same precision as from a SRS of 300. 
+
+> By sampling within strata, we are "borrowing" information from other similar observations. 
+
+## closing thoughts
+
+* Don't have to sample the same % from each strata
+    * Could see a greater reduction in variance with an increased sampling fraction from the West. 
+    
+## For next time / later
+
+Using R to compute statistics from a stratified random sample. Ref R companion from SDA
+
+Using the books example (how to do this using R will be covered later), we load in the `agstrat` data file. Notice there already is a varible for the weights included for us. 
+
+```{r}
+agstrat <- readr::read_csv(here::here("data", "agstrat.csv"))
+names(agstrat)
+```

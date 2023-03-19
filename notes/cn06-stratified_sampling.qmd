@@ -3,6 +3,10 @@ title: "Stratified Sampling"
 description: "A method to use additional information about the population in the survey design."
 author: DRAFT
 date: 3/20/23
+execute: 
+  error: true
+  warning: false
+  message: false
 ---
 
 # What is Stratified Sampling (Lohr 3.1)
