@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -210,7 +210,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#estimating-population-parameters" id="toc-estimating-population-parameters" class="nav-link" data-scroll-target="#estimating-population-parameters">Estimating population parameters</a></li>
   <li><a href="#gain-from-stratification" id="toc-gain-from-stratification" class="nav-link" data-scroll-target="#gain-from-stratification">Gain from stratification</a></li>
   <li><a href="#closing-thoughts" id="toc-closing-thoughts" class="nav-link" data-scroll-target="#closing-thoughts">closing thoughts</a></li>
-  <li><a href="#for-next-time-later" id="toc-for-next-time-later" class="nav-link" data-scroll-target="#for-next-time-later">For next time / later</a></li>
+  </ul></li>
+  <li><a href="#theory-of-stratified-sampling-lohr-3.2" id="toc-theory-of-stratified-sampling-lohr-3.2" class="nav-link" data-scroll-target="#theory-of-stratified-sampling-lohr-3.2">Theory of Stratified Sampling (Lohr 3.2)</a>
+  <ul class="collapse">
+  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
+  <li><a href="#bias-and-variance-of-estimators" id="toc-bias-and-variance-of-estimators" class="nav-link" data-scroll-target="#bias-and-variance-of-estimators">Bias and variance of estimators</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -276,7 +280,7 @@ Motivating Example
 </div>
 </div>
 <p>It is desirable then to create a sampling design that uses information about the population to improve precision and would prevent a bad (heavily biased) estimate.</p>
-<p>If the average value of a variable of itnerset is different for different subpopulations (e.g.&nbsp;average amount of loans in the 7 different types), then we may be able to obtain a more precise estimate by taking a <strong>stratified</strong> random sample.</p>
+<p>If the average value of a variable of interest is different for different subpopulations (e.g.&nbsp;average amount of loans in the 7 different types), then we may be able to obtain a more precise estimate by taking a <strong>stratified</strong> random sample.</p>
 <div class="callout-important callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -381,19 +385,224 @@ Definition: Relative gain from stratification
 </ul></li>
 </ul>
 </section>
-<section id="for-next-time-later" class="level2">
-<h2 class="anchored" data-anchor-id="for-next-time-later">For next time / later</h2>
-<p>Using R to compute statistics from a stratified random sample. Ref R companion from SDA</p>
-<p>Using the books example (how to do this using R will be covered later), we load in the <code>agstrat</code> data file. Notice there already is a varible for the weights included for us.</p>
+</section>
+<section id="theory-of-stratified-sampling-lohr-3.2" class="level1">
+<h1>Theory of Stratified Sampling (Lohr 3.2)</h1>
+<section id="notation" class="level2">
+<h2 class="anchored" data-anchor-id="notation">Notation</h2>
+<ul>
+<li><span class="math inline">\(h=1 \ldots H\)</span> strata</li>
+<li>strata membership of every unit in the population</li>
+<li><span class="math inline">\(y_{hj}\)</span> value of the <span class="math inline">\(j\)</span>th unit in strata <span class="math inline">\(h\)</span></li>
+<li><span class="math inline">\(\sum_{j=1}^{n_{h}}\)</span> sum of <em>all</em> units in strata <span class="math inline">\(h\)</span></li>
+<li><span class="math inline">\(\sum_{j}\)</span> sum over the units that were sampled from in strata <span class="math inline">\(h\)</span></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Population <span class="math inline">\((\theta)\)</span></th>
+<th>Sample <span class="math inline">\((\hat{\theta})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample size in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(N_{h}\)</span></td>
+<td><span class="math inline">\(n_{h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall sample size</td>
+<td><span class="math inline">\(N = \sum^{H}_{h=1} N_{h}\)</span></td>
+<td><span class="math inline">\(n = \sum^{H}_{h=1} n_{h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Total in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall total</td>
+<td><span class="math inline">\(\tau = \sum_{h=1}^{H} \tau_{h}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h=1}^{H}N_{h}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Mean in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\mu_{h} = \frac{\tau_{h}}{N_{h}}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall mean</td>
+<td><span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{str} = \sum_{h=1}^{H} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Variance</td>
+<td><span class="math inline">\(\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2\)</span></td>
+<td><span class="math inline">\(s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2\)</span></td>
+</tr>
+<tr class="even">
+<td>Proportion<span class="math inline">\(^*\)</span></td>
+<td><span class="math inline">\(p = \mu\)</span></td>
+<td><span class="math inline">\(\hat{p} = \bar{y}\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">\(\bar{y}_{str}\)</span> is a weighted average of the sample stratum means.</li>
+</ul>
+</section>
+<section id="bias-and-variance-of-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="bias-and-variance-of-estimators">Bias and variance of estimators</h2>
+<ul>
+<li><p>Both are unbiased estimators <span class="math inline">\(E[\bar{y}_{str}] = \mu; E[\hat{\tau}_{str}] = \tau\)</span></p></li>
+<li><p>Variance of the estimator for the total: <span class="math display">\[
+\hat{V}\big(\hat{\tau}_{str}\big) = \sum_{h=1}^{H} \Big(1 - \frac{n_{h}}{N_{h}}\Big)N^{2}_{h}\frac{s^{2}_{h}}{n_{h}}
+\]</span></p></li>
+<li><p>Variance of the estimator for the mean <span class="math display">\[
+\hat{V}\big(\bar{y}_{str}\big) = \frac{1}{N^2}\hat{V}\big(\hat{\tau}_{str}\big)
+\]</span></p></li>
+<li><p>Confidence intervals can be calculated as</p></li>
+</ul>
+<p><span class="math display">\[
+\bar{y}_{str} \pm t_{\alpha/2, n-H}\sqrt{\hat{V}\big(\bar{y}_{str}\big)}
+\]</span></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Estimate the total number of farm acres in 1992 (Table 3.2)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The best way to understand an equation, is to try to use it to calculate a number.</p>
+</div>
+</div>
+<ol type="1">
+<li>Import the population data, and the stratified sample that the book authors use.</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>agstrat <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agstrat.csv"</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agstrat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here); <span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>agpop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agpop.csv"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>agstrat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agstrat.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To keep my data frame simple, I am going to create a new data set <code>farm92</code> that only contains the <span class="math inline">\(y\)</span> value of interest, <code>acres92</code>, and the stratification variable <code>region</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>farm92 <span class="ot">&lt;-</span> agstrat <span class="sc">%&gt;%</span> <span class="fu">select</span>(region, acres92)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Calculate summary statistics for each region</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(strata.summary.stats <span class="ot">&lt;-</span> farm92 <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">y.bar.h =</span> <span class="fu">mean</span>(acres92),  </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">s2.h    =</span> <span class="fu">var</span>(acres92),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.h     =</span> <span class="fu">n</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "county"   "state"    "acres92"  "acres87"  "acres82"  "farms92" 
- [7] "farms87"  "farms82"  "largef92" "largef87" "largef82" "smallf92"
-[13] "smallf87" "smallf82" "region"   "rn"       "strwt"   </code></pre>
+<pre><code># A tibble: 4 × 4
+  region y.bar.h          s2.h   n.h
+  &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;int&gt;
+1 NC     300504.  29618183543.   103
+2 NE      97630.   7647472708.    21
+3 S      211315.  53587487856.   135
+4 W      662296. 396185950266.    41</code></pre>
 </div>
 </div>
+<ol start="2" type="1">
+<li>Calculate Population region sizes, add this vector to the data frame created above.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(region.size <span class="ot">&lt;-</span> agpop <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> <span class="fu">tally</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  region     n
+  &lt;chr&gt;  &lt;int&gt;
+1 NC      1054
+2 NE       220
+3 S       1382
+4 W        422</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>strata.summary.stats<span class="sc">$</span>N.h <span class="ot">&lt;-</span> region.size<span class="sc">$</span>n</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>strata.summary.stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  region y.bar.h          s2.h   n.h   N.h
+  &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+1 NC     300504.  29618183543.   103  1054
+2 NE      97630.   7647472708.    21   220
+3 S      211315.  53587487856.   135  1382
+4 W      662296. 396185950266.    41   422</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Calculate the sample total <span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>strata.summary.stats<span class="sc">$</span>tau.hat.h <span class="ot">&lt;-</span> strata.summary.stats<span class="sc">$</span>y.bar.h <span class="sc">*</span> strata.summary.stats<span class="sc">$</span>N.h</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>strata.summary.stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 6
+  region y.bar.h          s2.h   n.h   N.h  tau.hat.h
+  &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;int&gt; &lt;int&gt;      &lt;dbl&gt;
+1 NC     300504.  29618183543.   103  1054 316731380.
+2 NE      97630.   7647472708.    21   220  21478558.
+3 S      211315.  53587487856.   135  1382 292037391.
+4 W      662296. 396185950266.    41   422 279488706.</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Calculate the within-strata variance of this total <span class="math inline">\(\Big(1 - \frac{n_{h}}{N_{h}}\Big)N^{2}_{h}\frac{s^{2}_{h}}{n_{h}}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>strata.summary.stats <span class="ot">&lt;-</span> strata.summary.stats <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">var.tau.hat.h =</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>           (<span class="dv">1</span> <span class="sc">-</span> n.h<span class="sc">/</span>N.h)<span class="sc">*</span>(N.h<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>(s2.h<span class="sc">/</span>n.h)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>strata.summary.stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+  region y.bar.h          s2.h   n.h   N.h  tau.hat.h var.tau.hat.h
+  &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt; &lt;int&gt; &lt;int&gt;      &lt;dbl&gt;         &lt;dbl&gt;
+1 NC     300504.  29618183543.   103  1054 316731380.       2.88e14
+2 NE      97630.   7647472708.    21   220  21478558.       1.59e13
+3 S      211315.  53587487856.   135  1382 292037391.       6.84e14
+4 W      662296. 396185950266.    41   422 279488706.       1.55e15</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Calculate the overall total <span class="math inline">\(\hat{\tau}_{str}\)</span> and variance <span class="math inline">\(\hat{V}\big(\hat{\tau}_{str}\big)\)</span> by summing these values across the strata.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(tau.hat.str <span class="ot">&lt;-</span> <span class="fu">sum</span>(strata.summary.stats<span class="sc">$</span>tau.hat.h))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 909736035</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(V.tau.hat.str <span class="ot">&lt;-</span> <span class="fu">sum</span>(strata.summary.stats<span class="sc">$</span>var.tau.hat.h))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.541899e+15</code></pre>
+</div>
+</div>
+<p>The estimated total number of acres devoted to farming is 30,161.83, with standard error 50,417,248. These numbers match those found in Table 3.2.</p>
+<p>We can then use these totals to get <span class="math inline">\(\bar{y}_{str}\)</span> and <span class="math inline">\(\hat{V}\big(\bar{y}_{str}\big)\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(y.bar.str <span class="ot">&lt;-</span> tau.hat.str <span class="sc">/</span> <span class="fu">sum</span>(strata.summary.stats<span class="sc">$</span>N.h))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 295560.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(V.y.bar.str <span class="ot">&lt;-</span> V.tau.hat.str <span class="sc">/</span> (<span class="fu">sum</span>(strata.summary.stats<span class="sc">$</span>N.h)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 268300231</code></pre>
+</div>
+</div>
+<p>We estimate the average number of acres devoted to farming per county as 295,560.8 with standard error 16,379.87. These numbers match those found in the text below Table 3.2.</p>
 
 
 </section>
