@@ -8,7 +8,7 @@
 
 <meta name="author" content="DRAFT">
 <meta name="dcterms.date" content="2023-03-20">
-<meta name="description" content="A method to use additional information about the population in the survey design.">
+<meta name="description" content="A method to use additional information about the population in the survey design. Lohr Ch 3.">
 
 <title>Sampling Methods - Stratified Sampling</title>
 <style>
@@ -23,6 +23,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -141,8 +204,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-stratified-sampling-lohr-3.1" id="toc-what-is-stratified-sampling-lohr-3.1" class="nav-link active" data-scroll-target="#what-is-stratified-sampling-lohr-3.1">What is Stratified Sampling (Lohr 3.1)</a></li>
+  <li><a href="#what-is-stratified-sampling" id="toc-what-is-stratified-sampling" class="nav-link active" data-scroll-target="#what-is-stratified-sampling">What is Stratified Sampling</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#why-use-a-stratified-sample" id="toc-why-use-a-stratified-sample" class="nav-link" data-scroll-target="#why-use-a-stratified-sample">Why Use A Stratified Sample?</a></li>
+  <li><a href="#motivating-example---estimating-the-average-number-of-farm-acres." id="toc-motivating-example---estimating-the-average-number-of-farm-acres." class="nav-link" data-scroll-target="#motivating-example---estimating-the-average-number-of-farm-acres.">Motivating Example - Estimating the average number of farm acres.</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#theory-weights-lohr-3.2-3.3" id="toc-theory-weights-lohr-3.2-3.3" class="nav-link" data-scroll-target="#theory-weights-lohr-3.2-3.3">Theory &amp; Weights (Lohr 3.2, 3.3)</a></li>
+  <li><a href="#drawing-stratified-samples-using-r" id="toc-drawing-stratified-samples-using-r" class="nav-link" data-scroll-target="#drawing-stratified-samples-using-r">Drawing stratified samples using R</a></li>
   </ul>
 </nav>
     </div>
@@ -156,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    A method to use additional information about the population in the survey design.
+    A method to use additional information about the population in the survey design. Lohr Ch 3.
   </div>
 </div>
 
@@ -183,11 +254,82 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="what-is-stratified-sampling-lohr-3.1" class="level1">
-<h1>What is Stratified Sampling (Lohr 3.1)</h1>
+<section id="what-is-stratified-sampling" class="level1">
+<h1>What is Stratified Sampling</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<ul>
+<li>A sampling technique in which we divide the desired population into subgroups called <em>strata</em></li>
+<li>Each individual is necessarily in a single strata; no overlap within strata</li>
+<li>All strata consist of the entire population</li>
+<li>An SRS is taken from each strata, then results can be pooled to make inferences about the entire population</li>
+</ul>
+<section id="why-use-a-stratified-sample" class="level3">
+<h3 class="anchored" data-anchor-id="why-use-a-stratified-sample">Why Use A Stratified Sample?</h3>
+<ul>
+<li>Protection from bad samples; less likely of drawing a non representative sample through pure chance</li>
+<li>Want data of known subgroups (i.e., if we are interested in people’s heights, we know that men tend to be taller than women)</li>
+<li>Convenience / cost effectiveness – At what point will this compromise the legitimacy of the study?</li>
+<li>Lowers variance when done properly; variance within each strata is likely lower than the population variance</li>
+<li>you do not have to sample the same fraction of observations in each stratum. If the variability is higher in a certain strata then you can try to reduce the variability of the estimated total by taking more observations from that stratum. :::{.callout-tip icon=true}</li>
+</ul>
+</section>
+<section id="motivating-example---estimating-the-average-number-of-farm-acres." class="level3">
+<h3 class="anchored" data-anchor-id="motivating-example---estimating-the-average-number-of-farm-acres.">Motivating Example - Estimating the average number of farm acres.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here); <span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>agpop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agpop.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In Example 2.6 we took a SRS to find the average number of farm acres per county. Even though our methods of taking an SRS were correct, some areas of the country were over or underrepresented due to the variability in the size of farms in different regions in the country. An example of this would be that western states in the U.S tend to be larger, and therefore tend to have larger farms.</p>
+<p>To try and fix this, we can use a stratified sample can give balance to the sample on the stratifying variable, which in this case would be region that the farms are located. :::</p>
+<p>To begin, we can divide our data into four regions (these are the strata):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(agpop<span class="sc">$</span>region) <span class="co"># the four regions and their names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "W"  "S"  "NE" "NC"</code></pre>
+</div>
+</div>
+<p>Previously we sampled 10% of the population with an SRS, and so to be able to compare our results with our stratified sample, we should sample 10% of the population from each strata through four separate and independent SRS’s.</p>
+<p>The process to do this would be to take the four regions, number off the counties that are in the region, calculate what number of counties is 10% of the total number of counties in the region, and select that many numbers from the list of numbered counties.</p>
+<blockquote class="blockquote">
+<p><em>Details on how to do this in R is covered in a later section. For now we will use the <code>agstrat</code> dataset from the book as the stratified sample.</em></p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>agstrat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agstrat.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exploring the distribution of farm acreage by region.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell fig-cap-location-top">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(acres92<span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">6</span> <span class="sc">~</span> region, <span class="at">data =</span> agstrat,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Region"</span>, <span class="at">ylab =</span> <span class="st">"Millions of Acres"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="cn06-stratified_sampling_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">The thick line for each region is the median of the sample data from that region. The upper and lower horizontal lines of the boxes are the 25th and 75th percentiles.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The Northeast has the lowest median and the smallest variance. The West has the highest median and the highest mean and variance. The distribution of farm acreage appears to to be positively skewed in each region.</p>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="theory-weights-lohr-3.2-3.3" class="level1">
 <h1>Theory &amp; Weights (Lohr 3.2, 3.3)</h1>
+</section>
+<section id="drawing-stratified-samples-using-r" class="level1">
+<h1>Drawing stratified samples using R</h1>
 
 
 </section>
