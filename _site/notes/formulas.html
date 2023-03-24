@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2023-01-20">
-<meta name="description" content="Helpful equations and R code">
+<meta name="description" content="Equations and R code">
 
 <title>Sampling Methods - Formulas and Definitions</title>
 <style>
@@ -145,20 +145,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link active" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a></li>
-  <li><a href="#expected-value-and-variance-of-estimates" id="toc-expected-value-and-variance-of-estimates" class="nav-link" data-scroll-target="#expected-value-and-variance-of-estimates">Expected Value and Variance of estimates</a></li>
-  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple Random Sample</a>
+  <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link active" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a>
   <ul class="collapse">
-  <li><a href="#weighted-estimators-under-srs" id="toc-weighted-estimators-under-srs" class="nav-link" data-scroll-target="#weighted-estimators-under-srs">Weighted Estimators under SRS</a></li>
+  <li><a href="#expected-value-and-variance-of-estimates" id="toc-expected-value-and-variance-of-estimates" class="nav-link" data-scroll-target="#expected-value-and-variance-of-estimates">Expected Value and Variance of estimates</a></li>
+  </ul></li>
+  <li><a href="#weighted-estimators-for-probability-sampling-designs" id="toc-weighted-estimators-for-probability-sampling-designs" class="nav-link" data-scroll-target="#weighted-estimators-for-probability-sampling-designs">Weighted Estimators for Probability sampling designs</a></li>
+  <li><a href="#estimators-under-different-sampling-designs" id="toc-estimators-under-different-sampling-designs" class="nav-link" data-scroll-target="#estimators-under-different-sampling-designs">Estimators under different Sampling Designs</a>
+  <ul class="collapse">
+  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple Random Sample</a></li>
   <li><a href="#stratified-random-sample" id="toc-stratified-random-sample" class="nav-link" data-scroll-target="#stratified-random-sample">Stratified Random Sample</a></li>
   </ul></li>
-  <li><a href="#using-the-survey-package-functions" id="toc-using-the-survey-package-functions" class="nav-link" data-scroll-target="#using-the-survey-package-functions">Using the <code>survey</code> package functions</a>
+  <li><a href="#r-commands" id="toc-r-commands" class="nav-link" data-scroll-target="#r-commands">R commands</a>
   <ul class="collapse">
   <li><a href="#specify-survey-design-svydesign" id="toc-specify-survey-design-svydesign" class="nav-link" data-scroll-target="#specify-survey-design-svydesign">Specify survey design <code>svydesign</code></a></li>
   <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#other-r-help-references" id="toc-other-r-help-references" class="nav-link" data-scroll-target="#other-r-help-references">Other R help References</a></li>
   </ul></li>
-  <li><a href="#r-help-references" id="toc-r-help-references" class="nav-link" data-scroll-target="#r-help-references">R help References</a></li>
   </ul>
 </nav>
     </div>
@@ -172,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Helpful equations and R code
+    Equations and R code
   </div>
 </div>
 
@@ -236,9 +239,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="math inline">\(y_{i}\)</span> = Value of measurement <span class="math inline">\(y\)</span> on unit <span class="math inline">\(i\)</span></p></li>
 <li><p><span class="math inline">\(^*\)</span>For proportions <span class="math inline">\(y_{i}\)</span> is a binary indicator of success. <span class="math inline">\(y \in {[0,1]}\)</span>. I.e. <span class="math inline">\(I(y_{i}=1)\)</span>.</p></li>
 </ul>
-</section>
-<section id="expected-value-and-variance-of-estimates" class="level1">
-<h1>Expected Value and Variance of estimates</h1>
+<section id="expected-value-and-variance-of-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="expected-value-and-variance-of-estimates">Expected Value and Variance of estimates</h2>
 <p><span class="math display">\[E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta}) = \sum [\hat{\theta} - E(\hat{\theta})]^2*p(\hat{\theta})\]</span></p>
 <ul>
 <li>Sums are over all possible values of <span class="math inline">\(\hat{\theta}\)</span>.</li>
@@ -247,9 +249,39 @@ ul.task-list li input[type="checkbox"] {
 <li>This is similar to what we’re calling <span class="math inline">\(\delta_{i}\)</span>, the probability that population unit <span class="math inline">\(i\)</span> appears in the sample. The book uses the symbol <span class="math inline">\(\pi_{i}\)</span></li>
 </ul></li>
 </ul>
+<hr>
 </section>
-<section id="simple-random-sample" class="level1">
-<h1>Simple Random Sample</h1>
+</section>
+<section id="weighted-estimators-for-probability-sampling-designs" class="level1">
+<h1>Weighted Estimators for Probability sampling designs</h1>
+<p>These weighted estimators are used in all probability sampling designs. Weights <span class="math inline">\(w\)</span> are applied directly to the data value <span class="math inline">\(y\)</span> before use in any formulas.</p>
+<table class="table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 28%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Population size</th>
+<th style="text-align: center;">Total</th>
+<th style="text-align: center;">Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\hat{N} = \sum_{i \in S}w_{i}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\hat{\tau} = \sum_{i \in S}w_{i}y_{i}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{y} = \frac{\hat{\tau}}{\hat{N}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="estimators-under-different-sampling-designs" class="level1">
+<h1>Estimators under different Sampling Designs</h1>
+<section id="simple-random-sample" class="level2">
+<h2 class="anchored" data-anchor-id="simple-random-sample">Simple Random Sample</h2>
 <table class="table">
 <colgroup>
 <col style="width: 25%">
@@ -285,30 +317,6 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(i \in S\)</span> : Unit <span class="math inline">\(i\)</span> is an element in the sample <span class="math inline">\(S\)</span></li>
 <li><span class="math inline">\((1-\frac{n}{N})\)</span>: Finite population correction (fpc)</li>
 </ul>
-<section id="weighted-estimators-under-srs" class="level3">
-<h3 class="anchored" data-anchor-id="weighted-estimators-under-srs">Weighted Estimators under SRS</h3>
-<p>These weighted estimators are used in all probability sampling designs.</p>
-<table class="table">
-<colgroup>
-<col style="width: 34%">
-<col style="width: 28%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Population size</th>
-<th style="text-align: center;">Total</th>
-<th style="text-align: center;">Mean</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(\hat{N} = \sum_{i \in S}w_{i}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\hat{\tau} = \sum_{i \in S}w_{i}y_{i}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\bar{y} = \frac{\hat{\tau}}{\hat{N}}\)</span></td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="stratified-random-sample" class="level2">
 <h2 class="anchored" data-anchor-id="stratified-random-sample">Stratified Random Sample</h2>
@@ -378,10 +386,11 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><span class="math inline">\(\bar{y}_{str}\)</span> is a weighted average of the sample stratum means.</li>
 </ul>
+<hr>
 </section>
 </section>
-<section id="using-the-survey-package-functions" class="level1">
-<h1>Using the <code>survey</code> package functions</h1>
+<section id="r-commands" class="level1">
+<h1>R commands</h1>
 <p>This is a quick reference list. See the R companion for the textbook, the <code>survey</code> package help file or vignette for more information.</p>
 <section id="specify-survey-design-svydesign" class="level2">
 <h2 class="anchored" data-anchor-id="specify-survey-design-svydesign">Specify survey design <code>svydesign</code></h2>
@@ -417,15 +426,15 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><a href="https://twitter.com/WomenInStat/status/1286420597505892352">Play the game: Is this fancy analysis “Just” a linear model?</a></p>
 </section>
-</section>
-<section id="r-help-references" class="level1">
-<h1>R help References</h1>
+<section id="other-r-help-references" class="level2">
+<h2 class="anchored" data-anchor-id="other-r-help-references">Other R help References</h2>
 <ul>
 <li><a href="http://r-survey.r-forge.r-project.org/survey/"><code>survey</code> package vignette</a></li>
 <li><a href="https://epirhandbook.com/en/survey-analysis.html">The Epidemiologist R handbook</a></li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

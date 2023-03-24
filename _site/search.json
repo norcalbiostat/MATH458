@@ -620,7 +620,7 @@
     "href": "notes/formulas.html",
     "title": "Formulas and Definitions",
     "section": "",
-    "text": "Measure\nPopulation \\((\\theta)\\)\nSample \\((\\hat{\\theta})\\)\n\n\n\n\nTotal\n\\(\\tau = \\sum_{i=1}^N y_{i}\\)\n\\(\\hat{\\tau} = \\sum_{i=1}^n y_{i}\\)\n\n\nMean\n\\(\\mu = \\frac{1}{N}\\sum_{i=1}^N y_{i}\\)\n\\(\\bar{y} = \\frac{1}{n}\\sum_{i=1}^n y_{i}\\)\n\n\nVariance\n\\(\\sigma^2 = \\frac{1}{N}\\sum_{i=1}^{N}(y_i-\\mu)^2\\)\n\\(s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(y_i-\\bar{y})^2\\)\n\n\nProportion\\(^*\\)\n\\(p = \\mu\\)\n\\(\\hat{p} = \\bar{y}\\)\n\n\n\n\n\\(N\\) = total population size\n\\(y_{i}\\) = Value of measurement \\(y\\) on unit \\(i\\)\n\\(^*\\)For proportions \\(y_{i}\\) is a binary indicator of success. \\(y \\in {[0,1]}\\). I.e. \\(I(y_{i}=1)\\)."
+    "text": "Measure\nPopulation \\((\\theta)\\)\nSample \\((\\hat{\\theta})\\)\n\n\n\n\nTotal\n\\(\\tau = \\sum_{i=1}^N y_{i}\\)\n\\(\\hat{\\tau} = \\sum_{i=1}^n y_{i}\\)\n\n\nMean\n\\(\\mu = \\frac{1}{N}\\sum_{i=1}^N y_{i}\\)\n\\(\\bar{y} = \\frac{1}{n}\\sum_{i=1}^n y_{i}\\)\n\n\nVariance\n\\(\\sigma^2 = \\frac{1}{N}\\sum_{i=1}^{N}(y_i-\\mu)^2\\)\n\\(s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(y_i-\\bar{y})^2\\)\n\n\nProportion\\(^*\\)\n\\(p = \\mu\\)\n\\(\\hat{p} = \\bar{y}\\)\n\n\n\n\n\\(N\\) = total population size\n\\(y_{i}\\) = Value of measurement \\(y\\) on unit \\(i\\)\n\\(^*\\)For proportions \\(y_{i}\\) is a binary indicator of success. \\(y \\in {[0,1]}\\). I.e. \\(I(y_{i}=1)\\).\n\n\n\n\\[E(\\hat{\\theta}) = \\sum\\hat{\\theta}*p(\\hat{\\theta}) \\qquad \\qquad V(\\hat{\\theta}) = \\sum [\\hat{\\theta} - E(\\hat{\\theta})]^2*p(\\hat{\\theta})\\]\n\nSums are over all possible values of \\(\\hat{\\theta}\\).\n\\(p(\\hat{\\theta})\\) is the probability of \\(\\hat{\\theta}\\) occurring.\n\nThis is similar to what we’re calling \\(\\delta_{i}\\), the probability that population unit \\(i\\) appears in the sample. The book uses the symbol \\(\\pi_{i}\\)"
   },
   {
     "objectID": "notes/formulas.html#stratified-random-sample",
@@ -655,7 +655,7 @@
     "href": "notes.html",
     "title": "Course Notes",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2023\n\n\nFormulas and Definitions\n\n\nHelpful equations and R code\n\n\n\n\nJan 23, 2023\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 25, 2023\n\n\nIntroduction to Simulation\n\n\nFoundations of writing your own custom functions, drawing samples and conducting a simulation.\n\n\n\n\nJan 30, 2023\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 6, 2023\n\n\nFoundations of Statistical Estimation\n\n\nWe review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.\n\n\n\n\nFeb 20, 2023\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\nFeb 27, 2023\n\n\nTeaching and Learning\n\n\nThe best way to learn something is to teach it to others\n\n\n\n\nMar 20, 2023\n\n\nStratified Sampling\n\n\nA method to use additional information about the population in the survey design. Lohr Ch 3.\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2023\n\n\nFormulas and Definitions\n\n\nEquations and R code\n\n\n\n\nJan 23, 2023\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 25, 2023\n\n\nIntroduction to Simulation\n\n\nFoundations of writing your own custom functions, drawing samples and conducting a simulation.\n\n\n\n\nJan 30, 2023\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 6, 2023\n\n\nFoundations of Statistical Estimation\n\n\nWe review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.\n\n\n\n\nFeb 20, 2023\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\nFeb 27, 2023\n\n\nTeaching and Learning\n\n\nThe best way to learn something is to teach it to others\n\n\n\n\nMar 20, 2023\n\n\nStratified Sampling\n\n\nA method to use additional information about the population in the survey design. Lohr Ch 3.\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes_DrD/cn06.html",
@@ -866,5 +866,19 @@
     "title": "Weekly Details",
     "section": "",
     "text": "Date\n\n\nTopic\n\n\nHow to prepare\n\n\n\n\n\n\n01-23\n\n\nWelcome to Math 458: Sampling Methods\n\n\nLook over this course website, the syllabus, and Canvas\n\n\n\n\n01-30\n\n\nIntroduction to the Sampling Framework\n\n\nCreate blank notes file. Read textbook\n\n\n\n\n02-06\n\n\nFoundations of Statistical Estimation\n\n\nPrepare notes file. Download data\n\n\n\n\n02-13\n\n\nFoundations of Statistical Estimation (cont.)\n\n\nClean up all prior course notes to date. Check content with classmates.\n\n\n\n\n02-20\n\n\nSimple Random Sampling\n\n\nGet course notes, download book data\n\n\n\n\n02-27\n\n\nStrategies for Teaching and Learning\n\n\nFinalize and submit all outstanding assignments\n\n\n\n\n03-20\n\n\nStratified Sampling Methods\n\n\nRead & Take notes from Lohr 3.1\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "notes/formulas.html#simple-random-sample",
+    "href": "notes/formulas.html#simple-random-sample",
+    "title": "Formulas and Definitions",
+    "section": "Simple Random Sample",
+    "text": "Simple Random Sample\n\n\n\n\n\n\n\n\nMeasure\nUnbiased Estimate \\((\\hat{\\theta})\\)\nEstimated variance of \\((\\hat{\\theta})\\)\n\n\n\n\nMean\n\\(\\bar{y} = \\frac{1}{n}\\sum_{i\\in S} y_{i}\\)\n\\(\\hat{V}(\\bar{y}) = (1-\\frac{n}{N})\\frac{s^{2}}{n}\\)\n\n\nTotal\n\\(\\hat{\\tau} = N\\bar{y}\\)\n\\(\\hat{V}(\\hat{\\tau}) = N^{2}\\hat{V}(\\bar{y})\\)\n\n\nProportion\n\\(\\hat{p} = \\bar{y}\\)\n\\(\\hat{V}(\\hat{p}) = (1-\\frac{n}{N})\\frac{\\hat{p}(1-\\hat{p})}{n-1}\\)\n\n\n\n\n\\(i \\in S\\) : Unit \\(i\\) is an element in the sample \\(S\\)\n\\((1-\\frac{n}{N})\\): Finite population correction (fpc)"
+  },
+  {
+    "objectID": "notes/formulas.html#other-r-help-references",
+    "href": "notes/formulas.html#other-r-help-references",
+    "title": "Formulas and Definitions",
+    "section": "Other R help References",
+    "text": "Other R help References\n\nsurvey package vignette\nThe Epidemiologist R handbook"
   }
 ]

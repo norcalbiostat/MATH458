@@ -1,6 +1,6 @@
 ---
 title: "Formulas and Definitions"
-description: "Helpful equations and R code"
+description: "Equations and R code"
 date: "2023-01-20"
 ---
 
@@ -19,7 +19,7 @@ date: "2023-01-20"
 
 -   $^*$For proportions $y_{i}$ is a binary indicator of success. $y \in {[0,1]}$. I.e. $I(y_{i}=1)$.
 
-# Expected Value and Variance of estimates
+## Expected Value and Variance of estimates
 
 $$E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta}) = \sum [\hat{\theta} - E(\hat{\theta})]^2*p(\hat{\theta})$$
 
@@ -27,7 +27,23 @@ $$E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta
 -   $p(\hat{\theta})$ is the probability of $\hat{\theta}$ occurring.
     -   This is similar to what we're calling $\delta_{i}$, the probability that population unit $i$ appears in the sample. The book uses the symbol $\pi_{i}$
 
-# Simple Random Sample
+----
+
+# Weighted Estimators for Probability sampling designs
+
+These weighted estimators are used in all probability sampling designs. Weights $w$ are applied directly to the data value $y$ before use in any formulas. 
+
+
+|         Population size         |                  Total                  |                  Mean                  |
+|:-----------------------:|:-------------------:|:-------------------------:|
+| $\hat{N} = \sum_{i \in S}w_{i}$ | $\hat{\tau} = \sum_{i \in S}w_{i}y_{i}$ | $\bar{y} = \frac{\hat{\tau}}{\hat{N}}$ |
+
+
+----
+
+# Estimators under different Sampling Designs
+
+## Simple Random Sample
 
 | Measure    | Unbiased Estimate $(\hat{\theta})$         | Estimated variance of $(\hat{\theta})$                             |
 |------------------|---------------------|---------------------------------|
@@ -37,14 +53,6 @@ $$E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta
 
 -   $i \in S$ : Unit $i$ is an element in the sample $S$
 -   $(1-\frac{n}{N})$: Finite population correction (fpc)
-
-### Weighted Estimators under SRS
-
-These weighted estimators are used in all probability sampling designs.
-
-|         Population size         |                  Total                  |                  Mean                  |
-|:-----------------------:|:-------------------:|:-------------------------:|
-| $\hat{N} = \sum_{i \in S}w_{i}$ | $\hat{\tau} = \sum_{i \in S}w_{i}y_{i}$ | $\bar{y} = \frac{\hat{\tau}}{\hat{N}}$ |
 
 
 ## Stratified Random Sample
@@ -68,7 +76,9 @@ These weighted estimators are used in all probability sampling designs.
 
 -   $\bar{y}_{str}$ is a weighted average of the sample stratum means.
 
-# Using the `survey` package functions
+----
+
+# R commands 
 
 This is a quick reference list. See the R companion for the textbook, the `survey` package help file or vignette for more information. 
 
@@ -107,7 +117,7 @@ http://r-survey.r-forge.r-project.org/survey/example-regression.html
 [Play the game: Is this fancy analysis "Just" a linear model?](https://twitter.com/WomenInStat/status/1286420597505892352) 
 
 
-# R help References
+## Other R help References
 
 -   [`survey` package vignette](http://r-survey.r-forge.r-project.org/survey/)
 -   [The Epidemiologist R handbook](https://epirhandbook.com/en/survey-analysis.html)
