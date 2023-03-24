@@ -39,6 +39,8 @@ website:
             url: https://hackmd.io/@norcalbiostat/cn02-intro_sampling
           - text: "Foundations of Estimation"
             url: https://hackmd.io/@norcalbiostat/cn03-statistical_foundations
+          - text: "Stratified Sampling"
+            url: https://hackmd.io/@norcalbiostat/cn06_stratified
       - text: "Syllabus"
         file: syllabus.qmd
 

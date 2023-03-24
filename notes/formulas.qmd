@@ -38,7 +38,7 @@ $$E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta
 -   $i \in S$ : Unit $i$ is an element in the sample $S$
 -   $(1-\frac{n}{N})$: Finite population correction (fpc)
 
-# Weighted Estimators
+### Weighted Estimators under SRS
 
 These weighted estimators are used in all probability sampling designs.
 
@@ -47,11 +47,43 @@ These weighted estimators are used in all probability sampling designs.
 | $\hat{N} = \sum_{i \in S}w_{i}$ | $\hat{\tau} = \sum_{i \in S}w_{i}y_{i}$ | $\bar{y} = \frac{\hat{\tau}}{\hat{N}}$ |
 
 
+## Stratified Random Sample
+
+-   $h=1 \ldots H$ strata
+-   strata membership of every unit in the population
+-   $y_{hj}$ value of the $j$th unit in strata $h$
+-   $\sum_{j=1}^{n_{h}}$ sum of *all* units in strata $h$
+-   $\sum_{j}$ sum over the units that were sampled from in strata $h$
+
+| Measure                   | Population $(\theta)$                                                  | Sample $(\hat{\theta})$                                     |
+|------------------|-----------------------------|-----------------------------|
+| Sample size in strata $h$ | $N_{h}$                                                                | $n_{h}$                                                     |
+| Overall sample size       | $N = \sum^{H}_{h=1} N_{h}$                                             | $n = \sum^{H}_{h=1} n_{h}$                                  |
+| Total in strata $h$       | $\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}$                                 | $\hat{\tau}_{h} = N_{h}\bar{y_h}$                           |
+| Overall total             | $\tau = \sum_{h=1}^{H} \tau_{h}$                                       | $\hat{\tau}_{str} = \sum_{h=1}^{H}N_{h}\bar{y}_{h}$         |
+| Mean in strata $h$        | $\mu_{h} = \frac{\tau_{h}}{N_{h}}$                                     | $\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}$              |
+| Overall mean              | $\mu = \frac{\tau}{N}$                                                 | $\bar{y}_{str} = \sum_{h=1}^{H} \frac{N_{h}}{N}\bar{y}_{h}$ |
+| Variance                  | $\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2$ | $s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2$ |
+| Proportion$^*$            | $p = \mu$                                                              | $\hat{p} = \bar{y}$                                         |
+
+-   $\bar{y}_{str}$ is a weighted average of the sample stratum means.
+
 # Using the `survey` package functions
 
-This is a quick reference list. See the help file or vignettes for more information. 
+This is a quick reference list. See the R companion for the textbook, the `survey` package help file or vignette for more information. 
 
-* Specify survey design:  `svydesign(id = , weights=,  fpc= , data = )`
+## Specify survey design `svydesign`
+
+* Function call: `svydesign(id = , weights=,  fpc= , data = )`
+* `id` = variable that identifies clusters 
+* `weights` = variable that holds the sampling weights
+* `fpc` = finite population correction. Typically defined in the function call. 
+
+Argument details: 
+
+* SRS page R companion pg21
+* Stratified Random Sample R companion pg34
+
 
 ## Summary Statistics
 

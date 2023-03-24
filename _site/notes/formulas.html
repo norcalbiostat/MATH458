@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -117,6 +117,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn03-statistical_foundations">
  <span class="dropdown-text">Foundations of Estimation</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn06_stratified">
+ <span class="dropdown-text">Stratified Sampling</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -143,10 +147,14 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link active" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a></li>
   <li><a href="#expected-value-and-variance-of-estimates" id="toc-expected-value-and-variance-of-estimates" class="nav-link" data-scroll-target="#expected-value-and-variance-of-estimates">Expected Value and Variance of estimates</a></li>
-  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple Random Sample</a></li>
-  <li><a href="#weighted-estimators" id="toc-weighted-estimators" class="nav-link" data-scroll-target="#weighted-estimators">Weighted Estimators</a></li>
+  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple Random Sample</a>
+  <ul class="collapse">
+  <li><a href="#weighted-estimators-under-srs" id="toc-weighted-estimators-under-srs" class="nav-link" data-scroll-target="#weighted-estimators-under-srs">Weighted Estimators under SRS</a></li>
+  <li><a href="#stratified-random-sample" id="toc-stratified-random-sample" class="nav-link" data-scroll-target="#stratified-random-sample">Stratified Random Sample</a></li>
+  </ul></li>
   <li><a href="#using-the-survey-package-functions" id="toc-using-the-survey-package-functions" class="nav-link" data-scroll-target="#using-the-survey-package-functions">Using the <code>survey</code> package functions</a>
   <ul class="collapse">
+  <li><a href="#specify-survey-design-svydesign" id="toc-specify-survey-design-svydesign" class="nav-link" data-scroll-target="#specify-survey-design-svydesign">Specify survey design <code>svydesign</code></a></li>
   <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
   </ul></li>
@@ -277,9 +285,8 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(i \in S\)</span> : Unit <span class="math inline">\(i\)</span> is an element in the sample <span class="math inline">\(S\)</span></li>
 <li><span class="math inline">\((1-\frac{n}{N})\)</span>: Finite population correction (fpc)</li>
 </ul>
-</section>
-<section id="weighted-estimators" class="level1">
-<h1>Weighted Estimators</h1>
+<section id="weighted-estimators-under-srs" class="level3">
+<h3 class="anchored" data-anchor-id="weighted-estimators-under-srs">Weighted Estimators under SRS</h3>
 <p>These weighted estimators are used in all probability sampling designs.</p>
 <table class="table">
 <colgroup>
@@ -303,12 +310,93 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
+<section id="stratified-random-sample" class="level2">
+<h2 class="anchored" data-anchor-id="stratified-random-sample">Stratified Random Sample</h2>
+<ul>
+<li><span class="math inline">\(h=1 \ldots H\)</span> strata</li>
+<li>strata membership of every unit in the population</li>
+<li><span class="math inline">\(y_{hj}\)</span> value of the <span class="math inline">\(j\)</span>th unit in strata <span class="math inline">\(h\)</span></li>
+<li><span class="math inline">\(\sum_{j=1}^{n_{h}}\)</span> sum of <em>all</em> units in strata <span class="math inline">\(h\)</span></li>
+<li><span class="math inline">\(\sum_{j}\)</span> sum over the units that were sampled from in strata <span class="math inline">\(h\)</span></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Population <span class="math inline">\((\theta)\)</span></th>
+<th>Sample <span class="math inline">\((\hat{\theta})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample size in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(N_{h}\)</span></td>
+<td><span class="math inline">\(n_{h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall sample size</td>
+<td><span class="math inline">\(N = \sum^{H}_{h=1} N_{h}\)</span></td>
+<td><span class="math inline">\(n = \sum^{H}_{h=1} n_{h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Total in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall total</td>
+<td><span class="math inline">\(\tau = \sum_{h=1}^{H} \tau_{h}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h=1}^{H}N_{h}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Mean in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\mu_{h} = \frac{\tau_{h}}{N_{h}}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall mean</td>
+<td><span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{str} = \sum_{h=1}^{H} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Variance</td>
+<td><span class="math inline">\(\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2\)</span></td>
+<td><span class="math inline">\(s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2\)</span></td>
+</tr>
+<tr class="even">
+<td>Proportion<span class="math inline">\(^*\)</span></td>
+<td><span class="math inline">\(p = \mu\)</span></td>
+<td><span class="math inline">\(\hat{p} = \bar{y}\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">\(\bar{y}_{str}\)</span> is a weighted average of the sample stratum means.</li>
+</ul>
+</section>
+</section>
 <section id="using-the-survey-package-functions" class="level1">
 <h1>Using the <code>survey</code> package functions</h1>
-<p>This is a quick reference list. See the help file or vignettes for more information.</p>
+<p>This is a quick reference list. See the R companion for the textbook, the <code>survey</code> package help file or vignette for more information.</p>
+<section id="specify-survey-design-svydesign" class="level2">
+<h2 class="anchored" data-anchor-id="specify-survey-design-svydesign">Specify survey design <code>svydesign</code></h2>
 <ul>
-<li>Specify survey design: <code>svydesign(id = , weights=,  fpc= , data = )</code></li>
+<li>Function call: <code>svydesign(id = , weights=,  fpc= , data = )</code></li>
+<li><code>id</code> = variable that identifies clusters</li>
+<li><code>weights</code> = variable that holds the sampling weights</li>
+<li><code>fpc</code> = finite population correction. Typically defined in the function call.</li>
 </ul>
+<p>Argument details:</p>
+<ul>
+<li>SRS page R companion pg21</li>
+<li>Stratified Random Sample R companion pg34</li>
+</ul>
+</section>
 <section id="summary-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h2>
 <ul>

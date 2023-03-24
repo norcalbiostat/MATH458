@@ -59,7 +59,7 @@ agstrat <- read_csv(here("data", "agstrat.csv"))
 
 
 :::{.callout-tip icon=true}
-### Exploring the distribution of farm acreage by region.
+### Exploring the distribution of farm acreage in 1992 by region.
 
 ```{r}
 #| fig-cap: The thick line for each region is the median of the sample data from that region. The upper and lower horizontal lines of the boxes are the 25th and 75th percentiles. 
@@ -74,10 +74,143 @@ The Northeast has the lowest median and the smallest variance. The West has the 
 
 :::
 
+:::{.callout-warning icon=false}
+### :star: You try it. 
+Explore the distribution of farm acreage in 1987 by region. Create a table of summary statistics and a boxplot. Discuss your findings. 
+:::
 
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+```{r}
+agstrat %>%
+  group_by(region) %>%
+  summarize(y.bar = mean(farms87),
+            s2 = var(farms87),
+            n. =n())
+
+ggplot(agstrat, aes(x = region, y = farms87, fill = region)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of Farm acreage in 1987 by Region",
+       x = "Region",
+       y = "Acreage")
+```
+
+:::
+
+:::{.callout-important}
+### MISSING INFO
+This group needs to add text information here. Interpret your numbers and plots in context of the purpose of the motivating example. 
+:::
 
 # Theory & Weights (Lohr 3.2, 3.3)
 
 
-# Drawing stratified samples using R
+
+
+# Selecting a Stratified Random Sample
+
+
+## Using Base R
+
+
+## Using the `strata` function from the `sampling` package
+
+1. Sort the data by the stratification variable
+```{r}
+agpop.sorted <- agpop %>% arrange(region)
+```
+
+2. Calculate the desired within-strata sample sizes $n_{k}$. For example if we want a 10% SRS within strata, we would find $N_{k}$ and multiply it by 0.1. **Round up to the next digit in case of decimal places**
+```{r}
+(N.k <- table(agpop.sorted$region) %>% as.vector())
+(n.k <- ceiling(0.1*N.k))
+```
+
+3. Create the sampling index of records to select using the `strata` function with arguments specifying the strata names, strata size, and sampling method within strata. 
+```{r}
+strat.idx <- strata(data = agpop.sorted, stratanames = "region", 
+                    size = n.k, method = "srswor")
+```
+
+4. Extract the data records that correspond to the sampling index. 
+```{r}
+ag.str <- getdata(agpop.sorted, strat.idx)
+head(ag.str)
+```
+
+5. Calculate the sampling weights using the inclusion probabilities (these were created as the variable `Prob` when you used the `strata` function)
+```{r}
+ag.str$wt <- 1/ag.str$Prob
+head(ag.str)
+```
+
+5b. Check that the sampling weights sum to the stratum population sizes. 
+```{r}
+ag.str %>% group_by(region) %>% summarize(sum.wts = sum(wt))
+N.k
+```
+
+:::{.callout-important}
+### Warning
+If they do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes. 
+:::
+
+# Computing Statistics from a Stratified Random Sample
+
+## Setup the information for the survey design. 
+
+### Specify weights
+
+We created the weights in the dataset in the the last step. 
+
+### Specify fpc
+
+We need to create a vector of fpc's that are equal to the strata population size. In a SRS, we used `fpc = rep(N,n)`. This create a vector that contains the value `N`, repeated `n` times. In this case, we need to match the strata population size to each record from that strata. 
+
+Option 1: Create a vector that repeats the values in the vector `N.k`, each `n.k` times. 
+:::{.callout-tip icon=true}
+#### Example
+```{r}
+ex.N.k <- c(10,25,50) # example population sizes
+ex.n.k <- c(2,5,10)   # example strata sizes
+rep(ex.N.k, ex.n.k)   
+```
+
+The pop size for stratum 1 is repeated twice (the size of the sample from that stratum), the pop size for stratum 2 is repeated 5 times (the sample size for stat stratum) etc. 
+:::
+
+```{r}
+option1.fpc <- rep(N.k, n.k)
+```
+
+Option 2: Merge the pop sizes onto the sample data using `region` as a joining key
+```{r}
+(pop.strata.sizes <- table(agpop.sorted$region) %>% data.frame())
+pop.strata.sizes <- rename(pop.strata.sizes, region = Var1, popsize = Freq)
+ag.str.opt2 <- ag.str %>% left_join(pop.strata.sizes)
+```
+
+### Call `svydesign`
+```{r}
+agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt, 
+                            fpc = ~popsize, 
+                            # fpc = option1.fpc # This would be Option 1
+                            data= ag.str.opt2)
+```
+
+## Calculate mean, SE and CI
+Note the degrees of freedom for a CI under a stratified sample is $n-H$, which can be extracted from the `svydesign` object using the `degf` function. 
+
+```{r}
+(str.total <- svymean(~acres92, agpop.str.dsgn))
+confint(str.total, level = .95, df = degf(agpop.str.dsgn))
+```
+
+Compare these to our prior "hand" calculated values (and approximate 95% CI): 
+```{r}
+tau.hat.str
+tau.hat.str - 2*sqrt(V.tau.hat.str)
+tau.hat.str + 2*sqrt(V.tau.hat.str)
+```
+
 

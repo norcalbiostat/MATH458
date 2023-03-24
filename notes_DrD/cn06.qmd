@@ -10,7 +10,7 @@ execute:
 ---
 
 ```{r}
-library(ggplot2); library(sampling)
+library(ggplot2); library(sampling); library(survey)
 ```
 
 # What is Stratified Sampling (Lohr 3.1)
@@ -41,7 +41,7 @@ We then draw an independent probability sample (simple random sample) from each 
 ::: {.callout-tip icon="true"}
 ### Example: Revisiting farmland size
 
-Let's reconsider the estimate for the average number of acres devoted to farms in 1992. Recall that each row in the dataset represents a county in the United States. In Example 2.6 we took a 10% SRS from the entire population and looked at the distribution of `farms92`.
+Let's reconsider the estimate for the average number of acres devoted to farms in 1992. Recall that each row in the data set represents a county in the United States. In Example 2.6 we took a 10% SRS from the entire population and looked at the distribution of `farms92`.
 :::
 
 ```{r}
@@ -213,4 +213,196 @@ We can then use these totals to get $\bar{y}_{str}$ and $\hat{V}\big(\bar{y}_{st
 
 We estimate the average number of acres devoted to farming per county as `r prettyNum(y.bar.str, big.mark=",")` with standard error `r prettyNum(sqrt(V.y.bar.str), big.mark=",")`. These numbers match those found in the text below Table 3.2.
 
+# Sampling Weights (Lohr 3.3)
 
+* Weights are still the inverse of the inclusion probability, but there may be different inclusion probabilities in different strata. 
+    - So weights are not the same for all units
+* $w_{hj} = \frac{N_h}{n_h}$
+    - This makes sense because $w_{i} = \frac{N}{n}$ in a SRS, and in stratified sampling we do a SRS within each strata $h$. So the weights are the ratio of pop/sample size within strata.
+
+* Estimator for pop'n total can be written as: 
+$$
+\hat{\tau}_{str} = \sum_{h=1}^{H}\sum_{j}w_{hj}y_{hj}
+$$
+
+* Reminder: Sampling weights can be thought of as the number of units in the pop'n represented by each sample member. 
+
+:::{.callout-tip icon=true}
+### Example Figure 3.2
+![](../figs/fig3_2.jpg)
+:::
+
+* Stratum 1 has $N_{1}=20$ and $n_{1} = 10$, so each sampled unit counts for 2 population units. 
+* Stratum 3 has $N_{3} = 420$ and $n_{3} = 20$, so each sampled unit counts for 21 population units.
+
+:::{.callout-tip icon=true}
+### Example: Re-Estimate the total number of farm acres in 1992 using sample weights
+
+The weights need to be applied to the individual data points, $y_{jh}$, then all the above calculations can occur again. 
+
+1. Calculate stratum weights
+```{r}
+strat.weights <- data.frame(
+  region = table(agpop$region) %>% names(),
+  N.h = table(agpop$region) %>% as.vector(), 
+  n.h = table(agstrat$region) %>% as.vector()
+)
+strat.weights$wt <- strat.weights$N.h / strat.weights$n.h
+strat.weights
+```
+
+2. Merge those weights back onto the data, joining by region. 
+```{r}
+agpop <- agpop %>% left_join(strat.weights)
+table(agpop$wt)
+```
+
+3. Calculate the weighted values $w_{hj}y_{hj}$
+```{r}
+agpop$wtd.acres92 <- agpop$acres92 * agpop$wt 
+```
+
+4. Recalculate weighted mean and variances within strata. Also re-merge the `strat.weights` data back onto this summary so we can calculate the within strata variance. 
+```{r}
+wt.str.sum.stats <- agpop %>%
+   group_by(region) %>% 
+   summarize(y.bar.h = mean(wtd.acres92),  
+             s2.h    = var(wtd.acres92))
+
+(wt.str.sum.stats <- wt.str.sum.stats %>% left_join(strat.weights) )
+```
+
+5. Re-calculate $\hat{\tau}_{h}$ and $\hat{V}(\hat{\tau}_{h})$.
+```{r}
+wt.str.sum.stats <- wt.str.sum.stats %>% 
+    mutate(tau.hat.h = y.bar.h * N.h, 
+           var.tau.hat.h = (1 - n.h/N.h)*(N.h^2)*(s2.h/n.h))
+```
+
+6. Re-calculate the overall total $\hat{\tau}_{str}$ and variance $\hat{V}\big(\hat{\tau}_{str}\big)$ by summing these values across the strata.
+```{r}
+(tau.hat.str <- sum(wt.str.sum.stats$tau.hat.h))
+(V.tau.hat.str <- sum(wt.str.sum.stats$var.tau.hat.h))
+```
+
+> Hmmm..... something isn't right here.
+
+
+:::{.callout-warning icon=false}
+### :star: You try it. 
+Calculate the strata weights for the caribou example from Table 3.4, and re-estimate the total number of caribou using these weights. 
+:::
+
+
+
+  
+
+
+# Selecting a Stratified Random Sample
+
+
+## Using Base R
+
+
+## Using the `strata` function from the `sampling` package
+
+1. Sort the data by the stratification variable
+```{r}
+agpop.sorted <- agpop %>% arrange(region)
+```
+
+2. Calculate the desired within-strata sample sizes $n_{k}$. For example if we want a 10% SRS within strata, we would find $N_{k}$ and multiply it by 0.1. **Round up to the next digit in case of decimal places**
+```{r}
+(N.k <- table(agpop.sorted$region) %>% as.vector())
+(n.k <- ceiling(0.1*N.k))
+```
+
+3. Create the sampling index of records to select using the `strata` function with arguments specifying the strata names, strata size, and sampling method within strata. 
+```{r}
+strat.idx <- strata(data = agpop.sorted, stratanames = "region", 
+                    size = n.k, method = "srswor")
+```
+
+4. Extract the data records that correspond to the sampling index. 
+```{r}
+ag.str <- getdata(agpop.sorted, strat.idx)
+head(ag.str)
+```
+
+5. Calculate the sampling weights using the inclusion probabilities (these were created as the variable `Prob` when you used the `strata` function)
+```{r}
+ag.str$wt <- 1/ag.str$Prob
+head(ag.str)
+```
+
+5b. Check that the sampling weights sum to the stratum population sizes. 
+```{r}
+ag.str %>% group_by(region) %>% summarize(sum.wts = sum(wt))
+N.k
+```
+
+:::{.callout-important}
+### Warning
+If they do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes. 
+:::
+
+# Computing Statistics from a Stratified Random Sample
+
+## Setup the information for the survey design. 
+
+### Specify weights
+
+We created the weights in the dataset in the the last step. 
+
+### Specify fpc
+
+We need to create a vector of fpc's that are equal to the strata population size. In a SRS, we used `fpc = rep(N,n)`. This create a vector that contains the value `N`, repeated `n` times. In this case, we need to match the strata population size to each record from that strata. 
+
+Option 1: Create a vector that repeats the values in the vector `N.k`, each `n.k` times. 
+:::{.callout-tip icon=true}
+#### Example
+```{r}
+ex.N.k <- c(10,25,50) # example population sizes
+ex.n.k <- c(2,5,10)   # example strata sizes
+rep(ex.N.k, ex.n.k)   
+```
+
+The pop size for stratum 1 is repeated twice (the size of the sample from that stratum), the pop size for stratum 2 is repeated 5 times (the sample size for stat stratum) etc. 
+:::
+
+```{r}
+option1.fpc <- rep(N.k, n.k)
+```
+
+Option 2: Merge the pop sizes onto the sample data using `region` as a joining key
+```{r}
+(pop.strata.sizes <- table(agpop.sorted$region) %>% data.frame())
+pop.strata.sizes <- rename(pop.strata.sizes, region = Var1, popsize = Freq)
+ag.str.opt2 <- ag.str %>% left_join(pop.strata.sizes)
+```
+
+### Call `svydesign`
+```{r}
+agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt, 
+                            fpc = ~popsize, 
+                            # fpc = option1.fpc # This would be Option 1
+                            data= ag.str.opt2)
+```
+
+## Calculate mean, SE and CI
+Note the degrees of freedom for a CI under a stratified sample is $n-H$, which can be extracted from the `svydesign` object using the `degf` function. 
+
+```{r}
+(str.total <- svymean(~acres92, agpop.str.dsgn))
+confint(str.total, level = .95, df = degf(agpop.str.dsgn))
+```
+
+Compare these to our prior "hand" calculated values (and approximate 95% CI): 
+```{r}
+tau.hat.str
+tau.hat.str - 2*sqrt(V.tau.hat.str)
+tau.hat.str + 2*sqrt(V.tau.hat.str)
+```
+
+
+  

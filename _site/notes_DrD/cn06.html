@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -181,6 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn03-statistical_foundations">
  <span class="dropdown-text">Foundations of Estimation</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn06_stratified">
+ <span class="dropdown-text">Stratified Sampling</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -215,6 +219,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
   <li><a href="#bias-and-variance-of-estimators" id="toc-bias-and-variance-of-estimators" class="nav-link" data-scroll-target="#bias-and-variance-of-estimators">Bias and variance of estimators</a></li>
+  </ul></li>
+  <li><a href="#sampling-weights-lohr-3.3" id="toc-sampling-weights-lohr-3.3" class="nav-link" data-scroll-target="#sampling-weights-lohr-3.3">Sampling Weights (Lohr 3.3)</a>
+  <ul class="collapse">
+  <li><a href="#call-svydesign" id="toc-call-svydesign" class="nav-link" data-scroll-target="#call-svydesign">Call <code>svydesign</code></a></li>
+  <li><a href="#calculate-mean-se-and-ci" id="toc-calculate-mean-se-and-ci" class="nav-link" data-scroll-target="#calculate-mean-se-and-ci">Calculate mean, SE and CI</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -257,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2); <span class="fu">library</span>(sampling)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2); <span class="fu">library</span>(sampling); <span class="fu">library</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="what-is-stratified-sampling-lohr-3.1" class="level1">
 <h1>What is Stratified Sampling (Lohr 3.1)</h1>
@@ -305,7 +314,7 @@ Example: Revisiting farmland size
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let’s reconsider the estimate for the average number of acres devoted to farms in 1992. Recall that each row in the dataset represents a county in the United States. In Example 2.6 we took a 10% SRS from the entire population and looked at the distribution of <code>farms92</code>.</p>
+<p>Let’s reconsider the estimate for the average number of acres devoted to farms in 1992. Recall that each row in the data set represents a county in the United States. In Example 2.6 we took a 10% SRS from the entire population and looked at the distribution of <code>farms92</code>.</p>
 </div>
 </div>
 <div class="cell">
@@ -603,6 +612,319 @@ Example: Estimate the total number of farm acres in 1992 (Table 3.2)
 </div>
 </div>
 <p>We estimate the average number of acres devoted to farming per county as 295,560.8 with standard error 16,379.87. These numbers match those found in the text below Table 3.2.</p>
+</section>
+</section>
+<section id="sampling-weights-lohr-3.3" class="level1">
+<h1>Sampling Weights (Lohr 3.3)</h1>
+<ul>
+<li><p>Weights are still the inverse of the inclusion probability, but there may be different inclusion probabilities in different strata.</p>
+<ul>
+<li>So weights are not the same for all units</li>
+</ul></li>
+<li><p><span class="math inline">\(w_{hj} = \frac{N_h}{n_h}\)</span></p>
+<ul>
+<li>This makes sense because <span class="math inline">\(w_{i} = \frac{N}{n}\)</span> in a SRS, and in stratified sampling we do a SRS within each strata <span class="math inline">\(h\)</span>. So the weights are the ratio of pop/sample size within strata.</li>
+</ul></li>
+<li><p>Estimator for pop’n total can be written as: <span class="math display">\[
+\hat{\tau}_{str} = \sum_{h=1}^{H}\sum_{j}w_{hj}y_{hj}
+\]</span></p></li>
+<li><p>Reminder: Sampling weights can be thought of as the number of units in the pop’n represented by each sample member.</p></li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example Figure 3.2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="../figs/fig3_2.jpg" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>Stratum 1 has <span class="math inline">\(N_{1}=20\)</span> and <span class="math inline">\(n_{1} = 10\)</span>, so each sampled unit counts for 2 population units.</li>
+<li>Stratum 3 has <span class="math inline">\(N_{3} = 420\)</span> and <span class="math inline">\(n_{3} = 20\)</span>, so each sampled unit counts for 21 population units.</li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Re-Estimate the total number of farm acres in 1992 using sample weights
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The weights need to be applied to the individual data points, <span class="math inline">\(y_{jh}\)</span>, then all the above calculations can occur again.</p>
+<ol type="1">
+<li>Calculate stratum weights</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>strat.weights <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">table</span>(agpop<span class="sc">$</span>region) <span class="sc">%&gt;%</span> <span class="fu">names</span>(),</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">N.h =</span> <span class="fu">table</span>(agpop<span class="sc">$</span>region) <span class="sc">%&gt;%</span> <span class="fu">as.vector</span>(), </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.h =</span> <span class="fu">table</span>(agstrat<span class="sc">$</span>region) <span class="sc">%&gt;%</span> <span class="fu">as.vector</span>()</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>strat.weights<span class="sc">$</span>wt <span class="ot">&lt;-</span> strat.weights<span class="sc">$</span>N.h <span class="sc">/</span> strat.weights<span class="sc">$</span>n.h</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>strat.weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  region  N.h n.h       wt
+1     NC 1054 103 10.23301
+2     NE  220  21 10.47619
+3      S 1382 135 10.23704
+4      W  422  41 10.29268</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Merge those weights back onto the data, joining by region.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>agpop <span class="ot">&lt;-</span> agpop <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(strat.weights)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(agpop<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+10.2330097087379  10.237037037037 10.2926829268293 10.4761904761905 
+            1054             1382              422              220 </code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Calculate the weighted values <span class="math inline">\(w_{hj}y_{hj}\)</span></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>agpop<span class="sc">$</span>wtd.acres92 <span class="ot">&lt;-</span> agpop<span class="sc">$</span>acres92 <span class="sc">*</span> agpop<span class="sc">$</span>wt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>Recalculate weighted mean and variances within strata. Also re-merge the <code>strat.weights</code> data back onto this summary so we can calculate the within strata variance.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>wt.str.sum.stats <span class="ot">&lt;-</span> agpop <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">y.bar.h =</span> <span class="fu">mean</span>(wtd.acres92),  </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">s2.h    =</span> <span class="fu">var</span>(wtd.acres92))</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>(wt.str.sum.stats <span class="ot">&lt;-</span> wt.str.sum.stats <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(strat.weights) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 6
+  region  y.bar.h    s2.h   N.h   n.h    wt
+  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+1 NC     3335459. 7.71e12  1054   103  10.2
+2 NE      949342. 6.91e11   220    21  10.5
+3 S      2038608. 6.24e12  1382   135  10.2
+4 W      7445150. 7.40e13   422    41  10.3</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Re-calculate <span class="math inline">\(\hat{\tau}_{h}\)</span> and <span class="math inline">\(\hat{V}(\hat{\tau}_{h})\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>wt.str.sum.stats <span class="ot">&lt;-</span> wt.str.sum.stats <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">tau.hat.h =</span> y.bar.h <span class="sc">*</span> N.h, </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">var.tau.hat.h =</span> (<span class="dv">1</span> <span class="sc">-</span> n.h<span class="sc">/</span>N.h)<span class="sc">*</span>(N.h<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>(s2.h<span class="sc">/</span>n.h))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="6" type="1">
+<li>Re-calculate the overall total <span class="math inline">\(\hat{\tau}_{str}\)</span> and variance <span class="math inline">\(\hat{V}\big(\hat{\tau}_{str}\big)\)</span> by summing these values across the strata.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(tau.hat.str <span class="ot">&lt;-</span> <span class="fu">sum</span>(wt.str.sum.stats<span class="sc">$</span>tau.hat.h))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9683638877</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(V.tau.hat.str <span class="ot">&lt;-</span> <span class="fu">sum</span>(wt.str.sum.stats<span class="sc">$</span>var.tau.hat.h))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.461667e+17</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Hmmm….. something isn’t right here.</p>
+</blockquote>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Calculate the strata weights for the caribou example from Table 3.4, and re-estimate the total number of caribou using these weights.</p>
+</div>
+</div>
+<section id="selecting-a-stratified-random-sample" class="level1">
+<h1>Selecting a Stratified Random Sample</h1>
+<section id="using-base-r" class="level2">
+<h2 class="anchored" data-anchor-id="using-base-r">Using Base R</h2>
+</section>
+<section id="using-the-strata-function-from-the-sampling-package" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-strata-function-from-the-sampling-package">Using the <code>strata</code> function from the <code>sampling</code> package</h2>
+<ol type="1">
+<li>Sort the data by the stratification variable</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>agpop.sorted <span class="ot">&lt;-</span> agpop <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Calculate the desired within-strata sample sizes <span class="math inline">\(n_{k}\)</span>. For example if we want a 10% SRS within strata, we would find <span class="math inline">\(N_{k}\)</span> and multiply it by 0.1. <strong>Round up to the next digit in case of decimal places</strong></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>(N.k <span class="ot">&lt;-</span> <span class="fu">table</span>(agpop.sorted<span class="sc">$</span>region) <span class="sc">%&gt;%</span> <span class="fu">as.vector</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1054  220 1382  422</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(n.k <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fl">0.1</span><span class="sc">*</span>N.k))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 106  22 139  43</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Create the sampling index of records to select using the <code>strata</code> function with arguments specifying the strata names, strata size, and sampling method within strata.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>strat.idx <span class="ot">&lt;-</span> <span class="fu">strata</span>(<span class="at">data =</span> agpop.sorted, <span class="at">stratanames =</span> <span class="st">"region"</span>, </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> n.k, <span class="at">method =</span> <span class="st">"srswor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in strata(data = agpop.sorted, stratanames = "region", size = n.k, : all arguments must be the same length</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Extract the data records that correspond to the sampling index.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="ot">&lt;-</span> <span class="fu">getdata</span>(agpop.sorted, strat.idx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in getdata(agpop.sorted, strat.idx): object 'strat.idx' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'head': object 'ag.str' not found</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Calculate the sampling weights using the inclusion probabilities (these were created as the variable <code>Prob</code> when you used the <code>strata</code> function)</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>ag.str<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>ag.str<span class="sc">$</span>Prob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'ag.str' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'head': object 'ag.str' not found</code></pre>
+</div>
+</div>
+<p>5b. Check that the sampling weights sum to the stratum population sizes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">sum.wts =</span> <span class="fu">sum</span>(wt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in group_by(., region): object 'ag.str' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>N.k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1054  220 1382  422</code></pre>
+</div>
+</div>
+<div class="callout-important callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If they do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="computing-statistics-from-a-stratified-random-sample" class="level1">
+<h1>Computing Statistics from a Stratified Random Sample</h1>
+<section id="setup-the-information-for-the-survey-design." class="level2">
+<h2 class="anchored" data-anchor-id="setup-the-information-for-the-survey-design.">Setup the information for the survey design.</h2>
+<section id="specify-weights" class="level3">
+<h3 class="anchored" data-anchor-id="specify-weights">Specify weights</h3>
+<p>We created the weights in the dataset in the the last step.</p>
+</section>
+<section id="specify-fpc" class="level3">
+<h3 class="anchored" data-anchor-id="specify-fpc">Specify fpc</h3>
+<p>We need to create a vector of fpc’s that are equal to the strata population size. In a SRS, we used <code>fpc = rep(N,n)</code>. This create a vector that contains the value <code>N</code>, repeated <code>n</code> times. In this case, we need to match the strata population size to each record from that strata.</p>
+<p>Option 1: Create a vector that repeats the values in the vector <code>N.k</code>, each <code>n.k</code> times. :::{.callout-tip icon=true} #### Example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>ex.N.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>) <span class="co"># example population sizes</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>ex.n.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>)   <span class="co"># example strata sizes</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(ex.N.k, ex.n.k)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 10 10 25 25 25 25 25 50 50 50 50 50 50 50 50 50 50</code></pre>
+</div>
+</div>
+<p>The pop size for stratum 1 is repeated twice (the size of the sample from that stratum), the pop size for stratum 2 is repeated 5 times (the sample size for stat stratum) etc.</p>
+</section>
+</section>
+</section>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>option1.fpc <span class="ot">&lt;-</span> <span class="fu">rep</span>(N.k, n.k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Option 2: Merge the pop sizes onto the sample data using <code>region</code> as a joining key</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>(pop.strata.sizes <span class="ot">&lt;-</span> <span class="fu">table</span>(agpop.sorted<span class="sc">$</span>region) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Var1 Freq
+1   NC 1054
+2   NE  220
+3    S 1382
+4    W  422</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>pop.strata.sizes <span class="ot">&lt;-</span> <span class="fu">rename</span>(pop.strata.sizes, <span class="at">region =</span> Var1, <span class="at">popsize =</span> Freq)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>ag.str.opt2 <span class="ot">&lt;-</span> ag.str <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(pop.strata.sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in left_join(., pop.strata.sizes): object 'ag.str' not found</code></pre>
+</div>
+</div>
+<section id="call-svydesign" class="level3">
+<h3 class="anchored" data-anchor-id="call-svydesign">Call <code>svydesign</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>agpop.str.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">strata =</span> <span class="sc">~</span>region, <span class="at">weights =</span> <span class="sc">~</span>wt, </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fpc =</span> <span class="sc">~</span>popsize, </span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># fpc = option1.fpc # This would be Option 1</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data=</span> ag.str.opt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in svydesign(id = ~1, strata = ~region, weights = ~wt, fpc = ~popsize, : object 'ag.str.opt2' not found</code></pre>
+</div>
+</div>
+</section>
+<section id="calculate-mean-se-and-ci" class="level2">
+<h2 class="anchored" data-anchor-id="calculate-mean-se-and-ci">Calculate mean, SE and CI</h2>
+<p>Note the degrees of freedom for a CI under a stratified sample is <span class="math inline">\(n-H\)</span>, which can be extracted from the <code>svydesign</code> object using the <code>degf</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>(str.total <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>acres92, agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in .svycheck(design): object 'agpop.str.dsgn' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(str.total, <span class="at">level =</span> .<span class="dv">95</span>, <span class="at">df =</span> <span class="fu">degf</span>(agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in confint(str.total, level = 0.95, df = degf(agpop.str.dsgn)): object 'str.total' not found</code></pre>
+</div>
+</div>
+<p>Compare these to our prior “hand” calculated values (and approximate 95% CI):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>tau.hat.str</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9683638877</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>tau.hat.str <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(V.tau.hat.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8347724609</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>tau.hat.str <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(V.tau.hat.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11019553144</code></pre>
+</div>
+</div>
 
 
 </section>
