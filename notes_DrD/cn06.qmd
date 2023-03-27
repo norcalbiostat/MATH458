@@ -10,7 +10,8 @@ execute:
 ---
 
 ```{r}
-library(ggplot2); library(sampling); library(survey)
+library(sampling); library(survey)
+library(here); library(tidyverse)
 ```
 
 # What is Stratified Sampling (Lohr 3.1)
@@ -154,7 +155,6 @@ The best way to understand an equation, is to try to use it to calculate a numbe
 
 1. Import the population data, and the stratified sample that the book authors use. 
 ```{r}
-library(here); library(tidyverse)
 agpop <- read_csv(here("data", "agpop.csv"))
 agstrat <- read_csv(here("data", "agstrat.csv"))
 ```
@@ -311,17 +311,18 @@ Calculate the strata weights for the caribou example from Table 3.4, and re-esti
 agpop.sorted <- agpop %>% arrange(region)
 ```
 
-2. Calculate the desired within-strata sample sizes $n_{k}$. For example if we want a 10% SRS within strata, we would find $N_{k}$ and multiply it by 0.1. **Round up to the next digit in case of decimal places**
+2. Specify the desired within-strata sample sizes $n_{k}$. The different methods on how to allocate sample sizes to strata is covered in the next section.
 ```{r}
-(N.k <- table(agpop.sorted$region) %>% as.vector())
-(n.k <- ceiling(0.1*N.k))
+n.k <- c(103, 21, 135, 41)
 ```
 
 3. Create the sampling index of records to select using the `strata` function with arguments specifying the strata names, strata size, and sampling method within strata. 
 ```{r}
-strat.idx <- strata(data = agpop.sorted, stratanames = "region", 
+strat.idx <- sampling::strata(data = agpop.sorted, stratanames = "region", 
                     size = n.k, method = "srswor")
 ```
+
+:warning: Package conflicts can occur with the `strata` function. If it is not working for you, use the `sampling::strata` method of calling the function to ensure you are using the correct version of the `strata` function from the `sampling` package. 
 
 4. Extract the data records that correspond to the sampling index. 
 ```{r}
@@ -338,7 +339,7 @@ head(ag.str)
 5b. Check that the sampling weights sum to the stratum population sizes. 
 ```{r}
 ag.str %>% group_by(region) %>% summarize(sum.wts = sum(wt))
-N.k
+table(agpop.sorted$region)
 ```
 
 :::{.callout-important}
@@ -399,10 +400,14 @@ confint(str.total, level = .95, df = degf(agpop.str.dsgn))
 
 Compare these to our prior "hand" calculated values (and approximate 95% CI): 
 ```{r}
+#| echo: false
+#| eval: false
 tau.hat.str
 tau.hat.str - 2*sqrt(V.tau.hat.str)
 tau.hat.str + 2*sqrt(V.tau.hat.str)
 ```
+
+
 
 
   

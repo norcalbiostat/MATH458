@@ -1,13 +1,18 @@
 ---
 title: "Stratified Sampling"
 description: "A method to use additional information about the population in the survey design. Lohr Ch 3. "
-author: DRAFT
+author: DRAFT - 458 class
 date: 3/20/23
 execute: 
   error: true
   warning: false
   message: false
 ---
+
+```{r}
+library(here); library(tidyverse);library(knitr)
+library(sampling); library(survey)
+```
 
 # What is Stratified Sampling 
 
@@ -32,8 +37,6 @@ execute:
 ### Motivating Example - Estimating the average number of farm acres.  
 
 ```{r}
-library(here); library(tidyverse)
-library(sampling); library(survey)
 agpop <- read_csv(here("data", "agpop.csv"))
 ```
 
@@ -75,6 +78,35 @@ The Northeast has the lowest median and the smallest variance. The West has the 
 
 :::
 
+Because we took an SRS in each stratum, we can use the following equations to estimate population quantities for each stratum. 
+
+$$\hat{\tau_{h}} = N * \bar{y}_{h} \qquad \hat{V}(\hat{\tau}_{h}) = N_{h}^{2} * \hat{V}(\bar{y}_{h})$$
+
+The summary statistics $\bar{y}_{h}$ and $s^{2}_{h}$ can be calculated using R after grouping by the stratification variable. 
+
+```{r}
+#| fig-cap: Lohr Table 3.1. Summary statistics for each stratum
+table3.1 <- agstrat %>% 
+   group_by(region) %>% 
+   summarize(y.bar.h = mean(acres92),
+             s2.h    = var(acres92),
+             n.h     = n())
+
+counties_in_pop <- table(agpop$region)
+new_table3.1 <- cbind(table3.1, counties_in_pop)
+new_table3.1 <- select(new_table3.1, -Var1) # drop the extra variable 
+colnames(new_table3.1) <- c("Region", "Sample Avg in Region", "Sample Variance in Region", 
+"Number of Counties in Region", "Number of Counties in Population")
+
+kable(new_table3.1)
+```
+
+These summary statistics can be used to calculate within-strata totals (with variances) such as those seen in Table 3.2 which gives estimates of the total number of farms acres, and estimated variance of the total for each of the four stratum. 
+
+* We can estimate the total number of acres devoted to farming in the United States in 1992 by summing the estimated totals for each stratum.
+* The variance of the total is the sum of the variances of the estimated stratum totals.
+
+
 :::{.callout-warning icon=false}
 ### :star: You try it. 
 Explore the distribution of farm acreage in 1987 by region. Create a table of summary statistics and a boxplot. Discuss your findings. 
@@ -103,118 +135,91 @@ ggplot(agstrat, aes(x = region, y = farms87, fill = region)) +
 This group needs to add text information here. Interpret your numbers and plots in context of the purpose of the motivating example. 
 :::
 
-# Theory & Weights (Lohr 3.2, 3.3)
 
+## Gain from stratification
 
+-   Observations within strata are more similar to each other, than they are to the population as a whole
+-   reduction in variance in individual strata can lead to a reduced variance for the population estimate.
 
+::: callout-important
+### Definition: Relative gain from stratification
 
-# Selecting a Stratified Random Sample
-
-
-## Using Base R
-
-
-## Using the `strata` function from the `sampling` package
-
-1. Sort the data by the stratification variable
-```{r}
-agpop.sorted <- agpop %>% arrange(region)
-```
-
-2. Specify the desired within-strata sample sizes $n_{k}$. The different methods on how to allocate sample sizes to strata is covered in the next section.
-```{r}
-n.k <- c(103, 21, 135, 41)
-```
-
-3. Create the sampling index of records to select using the `strata` function with arguments specifying the strata names, strata size, and sampling method within strata. 
-```{r}
-strat.idx <- sampling::strata(data = agpop.sorted, stratanames = "region", 
-                    size = n.k, method = "srswor")
-```
-
-:warning: Package conflicts can occur with the `strata` function. If it is not working for you, use the `sampling::strata` method of calling the function to ensure you are using the correct version of the `strata` function from the `sampling` package. 
-
-4. Extract the data records that correspond to the sampling index. 
-```{r}
-ag.str <- getdata(agpop.sorted, strat.idx)
-head(ag.str)
-```
-
-5. Calculate the sampling weights using the inclusion probabilities (these were created as the variable `Prob` when you used the `strata` function)
-```{r}
-ag.str$wt <- 1/ag.str$Prob
-head(ag.str)
-```
-
-5b. Check that the sampling weights sum to the stratum population sizes. 
-```{r}
-ag.str %>% group_by(region) %>% summarize(sum.wts = sum(wt))
-table(agpop.sorted$region)
-```
-
-:::{.callout-important}
-### Warning
-If they do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes. 
+$$
+\frac{\hat{Var_{strata}}}{\hat{Var_{SRS}}}
+$$
 :::
 
-# Computing Statistics from a Stratified Random Sample
+From the Farm example, this ratio was calculated to be 0.75. That means we would only need 0.75\*300 = 225 observations from a stratified sample to obtain the same precision as from a SRS of 300.
 
-## Setup the information for the survey design. 
+> By sampling within strata, we are "borrowing" information from other similar observations.
 
-### Specify weights
 
-We created the weights in the dataset in the the last step. 
+## Summary
 
-### Specify fpc
+* This section setup the motivation for why using the stratified sampling method may be beneficial. 
+* Once SRS's are taken from each strata, the results can be pooled to make inferences about the entire population (the ultimate goal). 
+* Don't have to sample the same % from each strata
+* Could see a greater reduction in variance with an increased sampling fraction from the West.
 
-We need to create a vector of fpc's that are equal to the strata population size. In a SRS, we used `fpc = rep(N,n)`. This create a vector that contains the value `N`, repeated `n` times. In this case, we need to match the strata population size to each record from that strata. 
 
-Option 1: Create a vector that repeats the values in the vector `N.k`, each `n.k` times. 
+# Theory of Stratified Sampling 
+
+> Overall summary notes will go here
+
+
 :::{.callout-tip icon=true}
-#### Example
-```{r}
-ex.N.k <- c(10,25,50) # example population sizes
-ex.n.k <- c(2,5,10)   # example strata sizes
-rep(ex.N.k, ex.n.k)   
-```
-
-The pop size for stratum 1 is repeated twice (the size of the sample from that stratum), the pop size for stratum 2 is repeated 5 times (the sample size for stat stratum) etc. 
+### Example: Estimate the total number of farm acres in 1992 (Table 3.2)
+The best way to understand an equation, is to try to use it in a calculation. 
 :::
 
+1. Calculate summary statistics for each region. _This was seen earlier as `new_table3.1`_
 ```{r}
-option1.fpc <- rep(N.k, n.k)
+strata.summary.stats <- agstrat %>% 
+   group_by(region) %>% 
+   summarize(y.bar.h = mean(acres92),
+             s2.h    = var(acres92),
+             n.h     = n()) 
 ```
 
-Option 2: Merge the pop sizes onto the sample data using `region` as a joining key
+2. Calculate Population region sizes, add this vector to the data frame created above.
 ```{r}
-(pop.strata.sizes <- table(agpop.sorted$region) %>% data.frame())
-pop.strata.sizes <- rename(pop.strata.sizes, region = Var1, popsize = Freq)
-ag.str.opt2 <- ag.str %>% left_join(pop.strata.sizes)
+(region.size <- agpop %>% group_by(region) %>% tally())
+strata.summary.stats$N.h <- region.size$n
+strata.summary.stats
 ```
 
-### Call `svydesign`
+3. Calculate the sample total $\hat{\tau}_{h} = N_{h}\bar{y_h}$.
 ```{r}
-agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt, 
-                            fpc = ~popsize, 
-                            # fpc = option1.fpc # This would be Option 1
-                            data= ag.str.opt2)
+strata.summary.stats$tau.hat.h <- strata.summary.stats$y.bar.h * strata.summary.stats$N.h
+strata.summary.stats
 ```
 
-## Calculate mean, SE and CI
-Note the degrees of freedom for a CI under a stratified sample is $n-H$, which can be extracted from the `svydesign` object using the `degf` function. 
+4. Calculate the within-strata variance of this total $\Big(1 - \frac{n_{h}}{N_{h}}\Big)N^{2}_{h}\frac{s^{2}_{h}}{n_{h}}$.
 
 ```{r}
-(str.total <- svymean(~acres92, agpop.str.dsgn))
-confint(str.total, level = .95, df = degf(agpop.str.dsgn))
+strata.summary.stats <- strata.summary.stats %>%
+  mutate(var.tau.hat.h = 
+           (1 - n.h/N.h)*(N.h^2)*(s2.h/n.h)
+  )
+strata.summary.stats
 ```
 
-Compare these to our prior "hand" calculated values (and approximate 95% CI): 
+5. Calculate the overall total $\hat{\tau}_{str}$ and variance $\hat{V}\big(\hat{\tau}_{str}\big)$ by summing these values across the strata.
 ```{r}
-#| echo: false
-#| eval: false
-tau.hat.str
-tau.hat.str - 2*sqrt(V.tau.hat.str)
-tau.hat.str + 2*sqrt(V.tau.hat.str)
+(tau.hat.str <- sum(strata.summary.stats$tau.hat.h))
+(V.tau.hat.str <- sum(strata.summary.stats$var.tau.hat.h))
 ```
+
+The estimated total number of acres devoted to farming is `r prettyNum(tau.hat.str, big.mark=",")`, with standard error `r prettyNum(sqrt(V.tau.hat.str), big.mark=",")`. These numbers match those found in Table 3.2.  
+
+:::{.callout-warning icon=false}
+### :star: You try it: Caribou
+text
+:::
+
+:::{.callout-warning icon=false}
+### :star: You try it: ACLS survey
+text
+:::
 
 
