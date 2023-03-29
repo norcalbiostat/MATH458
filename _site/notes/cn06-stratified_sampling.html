@@ -219,7 +219,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#gain-from-stratification" id="toc-gain-from-stratification" class="nav-link" data-scroll-target="#gain-from-stratification">Gain from stratification</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
-  <li><a href="#theory-of-stratified-sampling-lohr-3.2" id="toc-theory-of-stratified-sampling-lohr-3.2" class="nav-link" data-scroll-target="#theory-of-stratified-sampling-lohr-3.2">Theory of Stratified Sampling (Lohr 3.2)</a></li>
+  <li><a href="#theory-of-stratified-sampling" id="toc-theory-of-stratified-sampling" class="nav-link" data-scroll-target="#theory-of-stratified-sampling">Theory of Stratified Sampling</a>
+  <ul class="collapse">
+  <li><a href="#notation-and-formulas-used-in-stratified-random-sampling" id="toc-notation-and-formulas-used-in-stratified-random-sampling" class="nav-link" data-scroll-target="#notation-and-formulas-used-in-stratified-random-sampling">Notation and Formulas used in Stratified Random Sampling</a></li>
+  <li><a href="#confidence-interval-for-stratified-random-sample" id="toc-confidence-interval-for-stratified-random-sample" class="nav-link" data-scroll-target="#confidence-interval-for-stratified-random-sample">Confidence Interval for Stratified Random Sample</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -331,8 +335,6 @@ Exploring the distribution of farm acreage in 1992 by region.
 <p>The Northeast has the lowest median and the smallest variance. The West has the highest median and the highest mean and variance. The distribution of farm acreage appears to to be positively skewed in each region.</p>
 </div>
 </div>
-<p>Because we took an SRS in each stratum, we can use the following equations to estimate population quantities for each stratum.</p>
-<p><span class="math display">\[\hat{\tau_{h}} = N * \bar{y}_{h} \qquad \hat{V}(\hat{\tau}_{h}) = N_{h}^{2} * \hat{V}(\bar{y}_{h})\]</span></p>
 <p>The summary statistics <span class="math inline">\(\bar{y}_{h}\)</span> and <span class="math inline">\(s^{2}_{h}\)</span> can be calculated using R after grouping by the stratification variable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>table3<span class="fl">.1</span> <span class="ot">&lt;-</span> agstrat <span class="sc">%&gt;%</span> </span>
@@ -400,11 +402,16 @@ Exploring the distribution of farm acreage in 1992 by region.
 <p>Lohr Table 3.1. Summary statistics for each stratum</p>
 </div>
 </div>
-<p>These summary statistics can be used to calculate within-strata totals (with variances) such as those seen in Table 3.2 which gives estimates of the total number of farms acres, and estimated variance of the total for each of the four stratum.</p>
+<p>These summary statistics can be used to calculate estimates of the total number of farms acres, and estimated variance of the total within each of the four stratum (Table 3.2 below)</p>
+<p>Because we took an SRS in each stratum, we can use the following equations to estimate population quantities for each stratum.</p>
+<p><span class="math inline">\(\hat{\tau_{h}} = N * \bar{y}_{h} \quad \mbox{ and } \quad \hat{V}(\hat{\tau}_{h}) = N_{h}^{2} * \hat{V}(\bar{y}_{h})\)</span></p>
 <ul>
 <li>We can estimate the total number of acres devoted to farming in the United States in 1992 by summing the estimated totals for each stratum.</li>
 <li>The variance of the total is the sum of the variances of the estimated stratum totals.</li>
 </ul>
+<blockquote class="blockquote">
+<p>More information on how to do this in the next section.</p>
+</blockquote>
 <div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -508,11 +515,176 @@ Definition: Relative gain from stratification
 </ul>
 </section>
 </section>
-<section id="theory-of-stratified-sampling-lohr-3.2" class="level1">
-<h1>Theory of Stratified Sampling (Lohr 3.2)</h1>
-<blockquote class="blockquote">
-<p>Overall summary notes will go here</p>
-</blockquote>
+<section id="theory-of-stratified-sampling" class="level1">
+<h1>Theory of Stratified Sampling</h1>
+<section id="notation-and-formulas-used-in-stratified-random-sampling" class="level2">
+<h2 class="anchored" data-anchor-id="notation-and-formulas-used-in-stratified-random-sampling">Notation and Formulas used in Stratified Random Sampling</h2>
+<ul>
+<li>To take a stratified random sample, we take a SRS from each stratum, so that <span class="math inline">\(n_h\)</span> units are sampled from the <span class="math inline">\(N_h\)</span> population units in stratum <span class="math inline">\(h\)</span>.</li>
+<li>Statistics and sample sizes for stratum <span class="math inline">\(h\)</span> have subscript <span class="math inline">\(h\)</span> where <span class="math inline">\(h=1 \ldots H\)</span> index strata</li>
+<li>When a statistic has the subscript <span class="math inline">\(str\)</span>, that means that the statistic is the combined estimate across all stratas.
+<ul>
+<li><span class="math inline">\(\bar{y}_{str}\)</span> is a weighted average of the sample stratum means</li>
+<li><span class="math inline">\(\hat{p}_{str}\)</span> estimated proportion of population units having a specified characteristic. <em>Recall a proportion is a mean of a variable that takes on the values 0 and 1.</em></li>
+</ul></li>
+<li><span class="math inline">\(y_{hj}\)</span> value of the <span class="math inline">\(j\)</span>th unit in strata <span class="math inline">\(h\)</span></li>
+<li><span class="math inline">\(\sum_{j=1}^{n_{h}}\)</span> means to sum of <em>all</em> units in strata <span class="math inline">\(h\)</span></li>
+<li><span class="math inline">\(\sum_{j}\)</span> means to sum over the units that were sampled from in strata <span class="math inline">\(h\)</span></li>
+<li><span class="math inline">\(\sum_{h}\)</span> is shorthand for <span class="math inline">\(\sum_{H=1}^{h}\)</span></li>
+</ul>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Formulas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Explanations</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Population <span class="math inline">\((\theta)\)</span></th>
+<th>Sample <span class="math inline">\((\hat{\theta})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample size in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(N_{h}\)</span></td>
+<td><span class="math inline">\(n_{h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall sample size</td>
+<td><span class="math inline">\(N = \sum_{h} N_{h}\)</span></td>
+<td><span class="math inline">\(n = \sum_{h} n_{h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Total in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall total</td>
+<td><span class="math inline">\(\tau = \sum_{h} \tau_{h}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h}N_{h}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Mean in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\mu_{h} = \frac{\tau_{h}}{N_{h}}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall mean</td>
+<td><span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{str} = \sum_{h} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Variance of the mean</td>
+<td><span class="math inline">\(\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2\)</span></td>
+<td><span class="math inline">\(s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2\)</span></td>
+</tr>
+<tr class="even">
+<td>Proportion in strata</td>
+<td><span class="math inline">\(p_{h} = \mu_h\)</span></td>
+<td><span class="math inline">\(\bar{y}_h = \hat{p}_h\)</span></td>
+</tr>
+<tr class="odd">
+<td>Variance of <span class="math inline">\(p_{h}\)</span></td>
+<td><span class="math inline">\(\sigma_h^2=\frac{N_h}{N_h-1} p_h(1-p_h)\)</span></td>
+<td><span class="math inline">\(s_h^2=\frac{n_h}{n_h-1} \hat{p}_h(1-\hat{p}_h)\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall proportion</td>
+<td><span class="math inline">\(p = \sum_{h} \frac{N_h}{N} p_h\)</span></td>
+<td><span class="math inline">\(\hat{p}_{str} = \sum_{h} \frac{N_h}{N}\hat{p}_h\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Population <span class="math inline">\((\theta)\)</span></th>
+<th>Sample <span class="math inline">\((\hat{\theta})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample size in strata <span class="math inline">\(h\)</span></td>
+<td>number of population units in stratum h</td>
+<td>sample size taken in stratum h</td>
+</tr>
+<tr class="even">
+<td>Overall sample size</td>
+<td>total population size, from all strata</td>
+<td>total sample size, from all strata</td>
+</tr>
+<tr class="odd">
+<td>Total in strata <span class="math inline">\(h\)</span></td>
+<td>population total in strata h</td>
+<td>estimated population total in stratum h</td>
+</tr>
+<tr class="even">
+<td>Overall total</td>
+<td>population total</td>
+<td>estimated population total</td>
+</tr>
+<tr class="odd">
+<td>Mean in strata <span class="math inline">\(h\)</span></td>
+<td>population mean in strata h</td>
+<td>sample mean in stratum h</td>
+</tr>
+<tr class="even">
+<td>Overall mean</td>
+<td>population mean</td>
+<td>weighted average of the sample stratum means</td>
+</tr>
+<tr class="odd">
+<td>Variance of the mean</td>
+<td>population variance in stratum h</td>
+<td>sample variance in stratum h</td>
+</tr>
+<tr class="even">
+<td>Proportion in strata <span class="math inline">\(h\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Variance of proportion</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Overall proportion</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Misc additional equations;</p>
+<ul>
+<li>Estimated variance of population total <span class="math inline">\(\hat{V}(\hat{\tau}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span></li>
+<li>Estimated variance of population proportion <span class="math inline">\(\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}\)</span></li>
+<li>Estimated total number of population units having a specified characteristic: <span class="math inline">\(\hat{t}_{str} = \sum_{h} N_h \hat{p}_h\)</span>, with variance <span class="math inline">\(N^2\hat{V}(\hat{p}_{str})\)</span>.</li>
+</ul>
+</section>
+<section id="confidence-interval-for-stratified-random-sample" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-for-stratified-random-sample">Confidence Interval for Stratified Random Sample</h2>
+<p>If either the sample sizes within each stratum are large or the sampling design has a large number of strata, then the confidence interval for the population mean <span class="math inline">\(\bar{y}\mu\)</span> is:</p>
+<p><span class="math display">\[ \bar{y}_{str}= \pm z_{\alpha /2 } SE (\bar{y}_{str})\]</span></p>
+<p>However, most survey packages use a <span class="math inline">\(t_{n-H}\)</span> distribution instead of using the normal assumption.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -617,11 +789,87 @@ Example: Estimate the total number of farm acres in 1992 (Table 3.2)
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-<span class="emoji" data-emoji="star">⭐</span> You try it: Caribou
+<span class="emoji" data-emoji="star">⭐</span> You try it
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>text</p>
+<p>Siniff and Skoog (1964) used stratified random sampling to estimate the size of a herd of Alaskan caribou in 1992. Using known density estimates, the researches divided the area into 6 strata, each of 4 sq miles. The summary information from each strata is contained in the table below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stratum</th>
+<th style="text-align: right;">N.h</th>
+<th style="text-align: right;">n.h</th>
+<th style="text-align: right;">y.bar.h</th>
+<th style="text-align: right;">s2.h</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">24.1</td>
+<td style="text-align: right;">5575</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">25.6</td>
+<td style="text-align: right;">4064</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">267.6</td>
+<td style="text-align: right;">347556</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">179.0</td>
+<td style="text-align: right;">22798</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">E</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">293.7</td>
+<td style="text-align: right;">123578</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">33.2</td>
+<td style="text-align: right;">9795</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Use this information and the equations from this chapter to calculate the estimated total number of caribou in this region in Alaska.</p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This CI only explains uncertainty due to sampling error, if researchers tend to miss animals, this CI will be low</p>
+</div>
 </div>
 </div>
 <div class="callout-warning callout callout-style-default no-icon callout-captioned">
@@ -630,15 +878,105 @@ Example: Estimate the total number of farm acres in 1992 (Table 3.2)
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-<span class="emoji" data-emoji="star">⭐</span> You try it: ACLS survey
+<span class="emoji" data-emoji="star">⭐</span> You try it
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>text</p>
+<p>The ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas.</p>
+<p>Use the summary table below to estimate the the percentage and number of respondents that are female in those seven disciplines.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Membership</th>
+<th style="text-align: center;">Valid.Returns</th>
+<th style="text-align: center;">Female.members</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">9100</td>
+<td style="text-align: center;">636</td>
+<td style="text-align: center;">0.38</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1950</td>
+<td style="text-align: center;">451</td>
+<td style="text-align: center;">0.27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5500</td>
+<td style="text-align: center;">481</td>
+<td style="text-align: center;">0.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10850</td>
+<td style="text-align: center;">611</td>
+<td style="text-align: center;">0.19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2100</td>
+<td style="text-align: center;">493</td>
+<td style="text-align: center;">0.36</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5500</td>
+<td style="text-align: center;">575</td>
+<td style="text-align: center;">0.13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9000</td>
+<td style="text-align: center;">588</td>
+<td style="text-align: center;">0.26</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Create the within stratum total and variances.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Nh <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9100</span>,<span class="dv">1950</span>,<span class="dv">5500</span>,<span class="dv">10850</span>,<span class="dv">2100</span>,<span class="dv">5500</span>,<span class="dv">9000</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>nh <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">636</span>,<span class="dv">451</span>,<span class="dv">481</span>,<span class="dv">611</span>,<span class="dv">493</span>,<span class="dv">575</span>,<span class="dv">588</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ph <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">38</span>,.<span class="dv">27</span>,.<span class="dv">18</span>,.<span class="dv">19</span>,.<span class="dv">36</span>,.<span class="dv">13</span>,.<span class="dv">26</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">sum</span>(Nh)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The overall estimated proportion of female members in the societies is calculated as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">p.str =</span> <span class="fu">sum</span>((Nh<span class="sc">/</span>N)<span class="sc">*</span>ph))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2465227</code></pre>
+</div>
+</div>
+<p>with variance….</p>
+<p>The total number of female members in this society is calculate as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>N<span class="sc">*</span>p.str</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10847</code></pre>
+</div>
+</div>
+<p>There are 10,847 female members.</p>
+</div>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

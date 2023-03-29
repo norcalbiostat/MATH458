@@ -57,24 +57,26 @@ These weighted estimators are used in all probability sampling designs. Weights 
 
 ## Stratified Random Sample
 
--   $h=1 \ldots H$ strata
--   strata membership of every unit in the population
--   $y_{hj}$ value of the $j$th unit in strata $h$
--   $\sum_{j=1}^{n_{h}}$ sum of *all* units in strata $h$
--   $\sum_{j}$ sum over the units that were sampled from in strata $h$
 
 | Measure                   | Population $(\theta)$                                                  | Sample $(\hat{\theta})$                                     |
 |------------------|-----------------------------|-----------------------------|
 | Sample size in strata $h$ | $N_{h}$                                                                | $n_{h}$                                                     |
-| Overall sample size       | $N = \sum^{H}_{h=1} N_{h}$                                             | $n = \sum^{H}_{h=1} n_{h}$                                  |
+| Overall sample size       | $N = \sum_{h} N_{h}$                                             | $n = \sum_{h} n_{h}$                                  |
 | Total in strata $h$       | $\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}$                                 | $\hat{\tau}_{h} = N_{h}\bar{y_h}$                           |
-| Overall total             | $\tau = \sum_{h=1}^{H} \tau_{h}$                                       | $\hat{\tau}_{str} = \sum_{h=1}^{H}N_{h}\bar{y}_{h}$         |
+| Overall total             | $\tau = \sum_{h} \tau_{h}$                                       | $\hat{\tau}_{str} = \sum_{h}N_{h}\bar{y}_{h}$         |
 | Mean in strata $h$        | $\mu_{h} = \frac{\tau_{h}}{N_{h}}$                                     | $\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}$              |
-| Overall mean              | $\mu = \frac{\tau}{N}$                                                 | $\bar{y}_{str} = \sum_{h=1}^{H} \frac{N_{h}}{N}\bar{y}_{h}$ |
-| Variance                  | $\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2$ | $s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2$ |
-| Proportion$^*$            | $p = \mu$                                                              | $\hat{p} = \bar{y}$                                         |
+| Overall mean              | $\mu = \frac{\tau}{N}$                                                 | $\bar{y}_{str} = \sum_{h} \frac{N_{h}}{N}\bar{y}_{h}$ |
+| Variance of the mean     | $\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2$ | $s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2$ |
+| Proportion in strata| $p_{h} = \mu_h$ | $\bar{y}_h = \hat{p}_h$ |
+| Variance of $p_{h}$ | $\sigma_h^2=\frac{N_h}{N_h-1} p_h(1-p_h)$ | $s_h^2=\frac{n_h}{n_h-1} \hat{p}_h(1-\hat{p}_h)$ |
+| Overall proportion | $p = \sum_{h} \frac{N_h}{N} p_h$ | $\hat{p}_{str} = \sum_{h} \frac{N_h}{N}\hat{p}_h$  |
 
--   $\bar{y}_{str}$ is a weighted average of the sample stratum means.
+
+Misc additional equations; 
+
+* Estimated variance of population total $\hat{V}(\hat{\tau}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}$
+* Estimated variance of population proportion $\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}$
+* Estimated total number of population units having a specified characteristic: $\hat{t}_{str} = \sum_{h} N_h \hat{p}_h$, with variance $N^2\hat{V}(\hat{p}_{str})$. 
 
 ----
 

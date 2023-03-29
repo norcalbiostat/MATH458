@@ -320,13 +320,6 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="stratified-random-sample" class="level2">
 <h2 class="anchored" data-anchor-id="stratified-random-sample">Stratified Random Sample</h2>
-<ul>
-<li><span class="math inline">\(h=1 \ldots H\)</span> strata</li>
-<li>strata membership of every unit in the population</li>
-<li><span class="math inline">\(y_{hj}\)</span> value of the <span class="math inline">\(j\)</span>th unit in strata <span class="math inline">\(h\)</span></li>
-<li><span class="math inline">\(\sum_{j=1}^{n_{h}}\)</span> sum of <em>all</em> units in strata <span class="math inline">\(h\)</span></li>
-<li><span class="math inline">\(\sum_{j}\)</span> sum over the units that were sampled from in strata <span class="math inline">\(h\)</span></li>
-</ul>
 <table class="table">
 <colgroup>
 <col style="width: 23%">
@@ -348,8 +341,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Overall sample size</td>
-<td><span class="math inline">\(N = \sum^{H}_{h=1} N_{h}\)</span></td>
-<td><span class="math inline">\(n = \sum^{H}_{h=1} n_{h}\)</span></td>
+<td><span class="math inline">\(N = \sum_{h} N_{h}\)</span></td>
+<td><span class="math inline">\(n = \sum_{h} n_{h}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Total in strata <span class="math inline">\(h\)</span></td>
@@ -358,8 +351,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Overall total</td>
-<td><span class="math inline">\(\tau = \sum_{h=1}^{H} \tau_{h}\)</span></td>
-<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h=1}^{H}N_{h}\bar{y}_{h}\)</span></td>
+<td><span class="math inline">\(\tau = \sum_{h} \tau_{h}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h}N_{h}\bar{y}_{h}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Mean in strata <span class="math inline">\(h\)</span></td>
@@ -369,22 +362,35 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>Overall mean</td>
 <td><span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
-<td><span class="math inline">\(\bar{y}_{str} = \sum_{h=1}^{H} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{str} = \sum_{h} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
 </tr>
 <tr class="odd">
-<td>Variance</td>
+<td>Variance of the mean</td>
 <td><span class="math inline">\(\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2\)</span></td>
 <td><span class="math inline">\(s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2\)</span></td>
 </tr>
 <tr class="even">
-<td>Proportion<span class="math inline">\(^*\)</span></td>
-<td><span class="math inline">\(p = \mu\)</span></td>
-<td><span class="math inline">\(\hat{p} = \bar{y}\)</span></td>
+<td>Proportion in strata</td>
+<td><span class="math inline">\(p_{h} = \mu_h\)</span></td>
+<td><span class="math inline">\(\bar{y}_h = \hat{p}_h\)</span></td>
+</tr>
+<tr class="odd">
+<td>Variance of <span class="math inline">\(p_{h}\)</span></td>
+<td><span class="math inline">\(\sigma_h^2=\frac{N_h}{N_h-1} p_h(1-p_h)\)</span></td>
+<td><span class="math inline">\(s_h^2=\frac{n_h}{n_h-1} \hat{p}_h(1-\hat{p}_h)\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall proportion</td>
+<td><span class="math inline">\(p = \sum_{h} \frac{N_h}{N} p_h\)</span></td>
+<td><span class="math inline">\(\hat{p}_{str} = \sum_{h} \frac{N_h}{N}\hat{p}_h\)</span></td>
 </tr>
 </tbody>
 </table>
+<p>Misc additional equations;</p>
 <ul>
-<li><span class="math inline">\(\bar{y}_{str}\)</span> is a weighted average of the sample stratum means.</li>
+<li>Estimated variance of population total <span class="math inline">\(\hat{V}(\hat{\tau}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span></li>
+<li>Estimated variance of population proportion <span class="math inline">\(\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}\)</span></li>
+<li>Estimated total number of population units having a specified characteristic: <span class="math inline">\(\hat{t}_{str} = \sum_{h} N_h \hat{p}_h\)</span>, with variance <span class="math inline">\(N^2\hat{V}(\hat{p}_{str})\)</span>.</li>
 </ul>
 <hr>
 </section>

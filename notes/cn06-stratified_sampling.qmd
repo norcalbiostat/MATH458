@@ -78,10 +78,6 @@ The Northeast has the lowest median and the smallest variance. The West has the 
 
 :::
 
-Because we took an SRS in each stratum, we can use the following equations to estimate population quantities for each stratum. 
-
-$$\hat{\tau_{h}} = N * \bar{y}_{h} \qquad \hat{V}(\hat{\tau}_{h}) = N_{h}^{2} * \hat{V}(\bar{y}_{h})$$
-
 The summary statistics $\bar{y}_{h}$ and $s^{2}_{h}$ can be calculated using R after grouping by the stratification variable. 
 
 ```{r}
@@ -101,10 +97,16 @@ colnames(new_table3.1) <- c("Region", "Sample Avg in Region", "Sample Variance i
 kable(new_table3.1)
 ```
 
-These summary statistics can be used to calculate within-strata totals (with variances) such as those seen in Table 3.2 which gives estimates of the total number of farms acres, and estimated variance of the total for each of the four stratum. 
+These summary statistics can be used to calculate estimates of the total number of farms acres, and estimated variance of the total within each of the four stratum (Table 3.2 below)
+
+Because we took an SRS in each stratum, we can use the following equations to estimate population quantities for each stratum. 
+
+$\hat{\tau_{h}} = N * \bar{y}_{h} \quad \mbox{ and } \quad \hat{V}(\hat{\tau}_{h}) = N_{h}^{2} * \hat{V}(\bar{y}_{h})$
 
 * We can estimate the total number of acres devoted to farming in the United States in 1992 by summing the estimated totals for each stratum.
 * The variance of the total is the sum of the variances of the estimated stratum totals.
+
+> More information on how to do this in the next section. 
 
 
 :::{.callout-warning icon=false}
@@ -164,8 +166,70 @@ From the Farm example, this ratio was calculated to be 0.75. That means we would
 
 # Theory of Stratified Sampling 
 
-> Overall summary notes will go here
+## Notation and Formulas used in Stratified Random Sampling 
 
+* To take a stratified random sample, we take a SRS from each stratum, so that $n_h$ units are sampled from the $N_h$ population units in stratum $h$. 
+* Statistics and sample sizes for stratum $h$ have subscript $h$ where $h=1 \ldots H$ index strata
+* When a statistic has the subscript $str$, that means that the statistic is the combined estimate across all stratas. 
+    - $\bar{y}_{str}$ is a weighted average of the sample stratum means
+    - $\hat{p}_{str}$ estimated proportion of population units having a specified characteristic. _Recall a proportion is a mean of a variable that takes on the values 0 and 1._
+* $y_{hj}$ value of the $j$th unit in strata $h$
+* $\sum_{j=1}^{n_{h}}$ means to sum of *all* units in strata $h$
+* $\sum_{j}$ means to sum over the units that were sampled from in strata $h$
+* $\sum_{h}$ is shorthand for $\sum_{H=1}^{h}$
+
+
+
+::: {.panel-tabset}
+## Formulas
+
+
+| Measure                   | Population $(\theta)$                                                  | Sample $(\hat{\theta})$                                     |
+|------------------|-----------------------------|-----------------------------|
+| Sample size in strata $h$ | $N_{h}$                                                                | $n_{h}$                                                     |
+| Overall sample size       | $N = \sum_{h} N_{h}$                                             | $n = \sum_{h} n_{h}$                                  |
+| Total in strata $h$       | $\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}$                                 | $\hat{\tau}_{h} = N_{h}\bar{y_h}$                           |
+| Overall total             | $\tau = \sum_{h} \tau_{h}$                                       | $\hat{\tau}_{str} = \sum_{h}N_{h}\bar{y}_{h}$         |
+| Mean in strata $h$        | $\mu_{h} = \frac{\tau_{h}}{N_{h}}$                                     | $\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}$              |
+| Overall mean              | $\mu = \frac{\tau}{N}$                                                 | $\bar{y}_{str} = \sum_{h} \frac{N_{h}}{N}\bar{y}_{h}$ |
+| Variance of the mean     | $\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2$ | $s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2$ |
+| Proportion in strata| $p_{h} = \mu_h$ | $\bar{y}_h = \hat{p}_h$ |
+| Variance of $p_{h}$ | $\sigma_h^2=\frac{N_h}{N_h-1} p_h(1-p_h)$ | $s_h^2=\frac{n_h}{n_h-1} \hat{p}_h(1-\hat{p}_h)$ |
+| Overall proportion | $p = \sum_{h} \frac{N_h}{N} p_h$ | $\hat{p}_{str} = \sum_{h} \frac{N_h}{N}\hat{p}_h$  |
+
+
+## Explanations
+
+
+| Measure                   | Population $(\theta)$                                                  | Sample $(\hat{\theta})$                                     |
+|------------------|-----------------------------|-----------------------------|
+| Sample size in strata $h$ | number of population units in stratum h                                                                | sample size taken in stratum h                                                     |
+| Overall sample size       | total population size, from all strata                                             | total sample size, from all strata                                  |
+| Total in strata $h$       | population total in strata h                                 | estimated population total in stratum h                           |
+| Overall total             | population total                                        |estimated population total         |
+| Mean in strata $h$        | population mean in strata h                                     | sample mean in stratum h              |
+| Overall mean              | population mean                                                 | weighted average of the sample stratum means |
+| Variance  of the mean   | population variance in stratum h  | sample variance in stratum h |
+| Proportion in strata $h$    |  |  |
+| Variance of proportion   |  |  |
+| Overall proportion   |  |  |
+
+:::
+
+
+Misc additional equations; 
+
+* Estimated variance of population total $\hat{V}(\hat{\tau}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}$
+* Estimated variance of population proportion $\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}$
+* Estimated total number of population units having a specified characteristic: $\hat{t}_{str} = \sum_{h} N_h \hat{p}_h$, with variance $N^2\hat{V}(\hat{p}_{str})$. 
+
+## Confidence Interval for Stratified Random Sample
+
+If either the sample sizes within each stratum are large or the sampling design has a large number of strata, then the confidence interval for the population mean $\bar{y}\mu$ is: 
+
+$$ \bar{y}_{str}= \pm z_{\alpha /2 } SE (\bar{y}_{str})$$
+
+However, most survey packages use a $t_{n-H}$ distribution instead of using the normal assumption. 
 
 :::{.callout-tip icon=true}
 ### Example: Estimate the total number of farm acres in 1992 (Table 3.2)
@@ -213,13 +277,73 @@ strata.summary.stats
 The estimated total number of acres devoted to farming is `r prettyNum(tau.hat.str, big.mark=",")`, with standard error `r prettyNum(sqrt(V.tau.hat.str), big.mark=",")`. These numbers match those found in Table 3.2.  
 
 :::{.callout-warning icon=false}
-### :star: You try it: Caribou
-text
+### :star: You try it
+Siniff and Skoog (1964) used stratified random sampling to estimate the size of a herd of Alaskan caribou in 1992. Using known density estimates, the researches divided the area into 6 strata, each of 4 sq miles. The summary information from each strata is contained in the table below. 
+```{r}
+#| echo: false
+caribou <- data.frame(
+  Stratum = c("A", "B", "C", "D", "E", "F"), 
+  N.h = c(400, 30, 61, 18, 70, 120), 
+  n.h = c(8, 10, 37, 6, 39, 21), 
+  y.bar.h = c(24.1, 25.6, 267.6, 179, 293.7, 33.2), 
+  s2.h = c(5575, 4064, 347556, 22798, 123578, 9795))
+kable(caribou)
+```
+
+Use this information and the equations from this chapter to calculate the estimated total number of caribou in this region in Alaska. 
 :::
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+
+
+This CI only explains uncertainty due to sampling error, if researchers tend to miss animals, this CI will be low
+
+:::
+
 
 :::{.callout-warning icon=false}
-### :star: You try it: ACLS survey
-text
+### :star: You try it
+The ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas. 
+
+Use the summary table below to estimate the the percentage and number of respondents that are female in those seven disciplines. 
+
+```{r}
+#| echo: false
+data.frame(
+  Membership = c(9100,1950,5500,10850,2100,5500,9000), 
+  `Valid Returns` = c(636,451,481,611,493,575,588), 
+  `Female members` = c(.38,.27,.18,.19,.36,.13,.26)) |> kable(align = 'c')
+```
 :::
 
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+
+Create the within stratum total and variances. 
+
+```{r}
+Nh <- c(9100,1950,5500,10850,2100,5500,9000)
+nh <- c(636,451,481,611,493,575,588)
+ph <- c(.38,.27,.18,.19,.36,.13,.26)
+N <- sum(Nh)
+```
+
+
+The overall estimated proportion of female members in the societies is calculated as 
+```{r}
+(p.str = sum((Nh/N)*ph))
+```
+with variance....
+
+
+The total number of female members in this society is calculate as
+```{r}
+N*p.str
+```
+
+There are 10,847 female members.
+
+:::
 
