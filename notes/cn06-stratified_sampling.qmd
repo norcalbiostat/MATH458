@@ -164,6 +164,13 @@ From the Farm example, this ratio was calculated to be 0.75. That means we would
 * Could see a greater reduction in variance with an increased sampling fraction from the West.
 
 
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Clean up
+```{r}
+rm(counties_in_pop, table3.1, new_table3.1)
+```
+:::
+
 # Theory of Stratified Sampling 
 
 ## Notation and Formulas used in Stratified Random Sampling 
@@ -290,15 +297,41 @@ caribou <- data.frame(
 kable(caribou)
 ```
 
-Use this information and the equations from this chapter to calculate the estimated total number of caribou in this region in Alaska. 
+Use this information and the equations from this chapter to calculate the estimated total number of caribou in this region in Alaska with a 95% CI.  
 :::
 
 :::{.callout-warning icon=false collapse="true" appearance=minimal}
 ### Solution
+```{r}
+# Create data frame
+caribou <- data.frame(
+  Stratum = c("A", "B", "C", "D", "E", "F"), 
+  N.h = c(400, 30, 61, 18, 70, 120), 
+  n.h = c(8, 10, 37, 6, 39, 21), 
+  y.bar.h = c(24.1, 25.6, 267.6, 179, 293.7, 33.2), 
+  s2.h = c(5575, 4064, 347556, 22798, 123578, 9795))
+
+# within strata total
+caribou$tau.hat.h <- caribou$y.bar.h *caribou$N.h
+
+# within strata variance
+caribou <- caribou %>%
+  mutate(var.tau.hat.h = (1 - n.h/N.h)*(N.h^2)*(s2.h/n.h)
+  )
+
+# overall total and variance of the total
+(tau.hat.str <- sum(caribou$tau.hat.h))
+V.tau.hat.str <- sum(caribou$var.tau.hat.h)
+
+# calculating at CI using a t_{n-H} distribution
+n.caribou <- sum(caribou$n.h)
+n.strata <- length(caribou$Stratum)
+df <- n.caribou - n.strata
+(crit.value <- qt(.975, df))
+```
 
 
-This CI only explains uncertainty due to sampling error, if researchers tend to miss animals, this CI will be low
-
+This CI only explains uncertainty due to sampling error, if researchers tend to miss animals, this CI will be low. 
 :::
 
 
@@ -321,7 +354,7 @@ data.frame(
 :::{.callout-warning icon=false collapse="true" appearance=minimal}
 ### Solution
 
-Create the within stratum total and variances. 
+First extract the table information into vectors. 
 
 ```{r}
 Nh <- c(9100,1950,5500,10850,2100,5500,9000)
@@ -330,20 +363,272 @@ ph <- c(.38,.27,.18,.19,.36,.13,.26)
 N <- sum(Nh)
 ```
 
-
-The overall estimated proportion of female members in the societies is calculated as 
+Then the overall estimated proportion of female members in the societies is calculated as 
 ```{r}
 (p.str = sum((Nh/N)*ph))
 ```
-with variance....
+with variance
+```{r}
+sum((1-(nh/Nh))*((Nh/N)^2)*((ph*(1-ph))/(nh-1)))
+```
 
-
-The total number of female members in this society is calculate as
+The total number of female members in this society is calculated as
 ```{r}
 N*p.str
 ```
 
-There are 10,847 female members.
+There are an estimated 10,847 female members.
+:::
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Clean up
+```{r}
+rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou")])
+```
+:::
+
+# Sampling Weights (Lohr 3.3)
+
+## How are weights calculated? 
+
+* sampling weights are the number of units in the population represented by the sample member = $\frac{N}{n}$
+* $\hat{\tau}$ is the weighted sum of individual sampling units
+* the probability of an individual unit being selected is $\frac{n}{N}$
+* note that this is the reciprocal of the weights, and the sum of the weights will equal N.
+
+:::{.callout-tip icon=true}
+### Example: Caribou weights
+In the caribou example, strata A had N=400 and n=98, so the sampling weight is 400/98 or 4.08.
+
+```{r}
+caribou %>% select(Stratum:n.h)
+```
+:::
+
+
+## How are the equations above modified to include stratified sampling weights? 
+
+> Waiting for notes. 
+
+
+
+:::{.callout-tip icon=true}
+### Example: Re-Estimate the total number of farm acres in 1992 using sample weights
+
+Note, this agriculture example was designed so that each county in the US had approximately the same probability of appearing in the sample. 
 
 :::
+
+1. Calculate stratum weights. Sometimes this is given to you, othertimes you have to calculate it. 
+
+```{r}
+strat.weights <- data.frame(
+  region = table(agpop$region) %>% names(),
+  N.h = table(agpop$region) %>% as.vector(), 
+  n.h = table(agstrat$region) %>% as.vector()
+)
+strat.weights$wt <- strat.weights$N.h / strat.weights$n.h
+strat.weights
+```
+
+2. Merge those weights back onto the sample data, joining by region. 
+```{r}
+agstrat <- agstrat %>% left_join(strat.weights)
+table(agstrat$wt)
+```
+
+This last table is used to confirm that the number of weighting values equals the strata sample sizes.
+
+3. Calculate the weighted values $w_{hj}y_{hj}$. The weights need to be applied to the individual data points, $y_{jh}$, then all the above calculations can occur again. 
+```{r}
+agstrat$wtd.acres92 <- agstrat$acres92 * agstrat$wt 
+```
+
+4. Calculate the weighted totals and variances within strata. Include the population and sample sizes within each strata in the `group_by` statement so it can remain on the grouped dataset for later use. 
+
+```{r}
+(wt.str.sum.stats <- agstrat %>%
+   group_by(region, N.h, n.h) %>% 
+   summarize(y.bar.h = sum(wtd.acres92)/n.h,  
+             s2.h    = (1/(n.h-1))*sum((wtd.acres92-y.bar.h)^2)
+             ) %>%
+   unique() # this removes duplicate rows created in the variance function
+ )
+```
+
+5. Calculate within strata totals and variances $\hat{\tau}_{h}$ and $\hat{V}(\hat{\tau}_{h})$.
+```{r}
+(wt.str.sum.stats <- wt.str.sum.stats %>% 
+    mutate(tau.hat.h = y.bar.h * N.h , 
+           var.tau.hat.h = (1 - n.h/N.h)*(N.h^2)*(s2.h/n.h)))
+```
+
+6. Calculate the overall total $\hat{\tau}_{str}$ and variance $\hat{V}\big(\hat{\tau}_{str}\big)$ by summing these values across the strata.
+```{r}
+(tau.hat.str <- sum(wt.str.sum.stats$tau.hat.h))
+(V.tau.hat.str <- sum(wt.str.sum.stats$var.tau.hat.h))
+```
+
+> Note. This value for `tau.hat.str` does not match what the book says. Not sure where the error is at. 
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Clean up
+```{r}
+rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou")])
+```
+:::
+
+----
+
+# Allocation Methods
+
+
+----
+
+# Selecting a Stratified Random Sample
+
+## Using the `strata` function from the `sampling` package
+
+1. Sort the data by the stratification variable
+```{r}
+agpop.sorted <- agpop %>% arrange(region)
+```
+
+2. Specify the desired within-strata sample sizes $n_{k}$. 
+```{r}
+n.k <- c(103, 21, 135, 41)
+```
+
+3. Create the sampling index of records to select using the `strata` function with arguments specifying the strata names, strata size, and sampling method within strata. 
+```{r}
+strat.idx <- sampling::strata(data = agpop.sorted, stratanames = "region", 
+                    size = n.k, method = "srswor")
+```
+
+:warning: Package conflicts can occur with the `strata` function. If it is not working for you, use the `sampling::strata` method of calling the function to ensure you are using the correct version of the `strata` function from the `sampling` package. 
+
+4. Extract the data records that correspond to the sampling index. 
+```{r}
+ag.str <- getdata(agpop.sorted, strat.idx)
+head(ag.str)
+```
+
+5. Calculate the sampling weights using the inclusion probabilities (these were created as the variable `Prob` when you used the `strata` function)
+```{r}
+ag.str$wt <- 1/ag.str$Prob
+head(ag.str)
+```
+
+5b. Check that the sampling weights sum to the stratum population sizes. 
+```{r}
+ag.str %>% group_by(region) %>% summarize(sum.wts = sum(wt))
+table(agpop.sorted$region)
+```
+
+:::{.callout-important}
+### Warning
+If they do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes. 
+:::
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Clean up
+```{r}
+rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou", "agpop.sorted", "N.k", "n.k")])
+```
+:::
+
+----
+
+# Computing Statistics from a Stratified Random Sample
+
+## Setup the information for the survey design. 
+
+### Specify weights
+
+We created the weights in the dataset in the the last step. 
+
+### Specify fpc
+
+We need to create a vector of fpc's that are equal to the strata population size. In a SRS, we used `fpc = rep(N,n)`. This create a vector that contains the value `N`, repeated `n` times. In this case, we need to match the strata population size to each record from that strata. 
+
+Option 1: Create a vector that repeats the values in the vector `N.k`, each `n.k` times. 
+:::{.callout-tip icon=true}
+#### Example
+```{r}
+ex.N.k <- c(10,25,50) # example population sizes
+ex.n.k <- c(2,5,10)   # example strata sizes
+rep(ex.N.k, ex.n.k)   
+```
+
+The pop size for stratum 1 is repeated twice (the size of the sample from that stratum), the pop size for stratum 2 is repeated 5 times (the sample size for stat stratum) etc. 
+:::
+
+```{r, eval=FALSE}
+option1.fpc <- rep(N.k, n.k)
+```
+
+Option 2: Merge the pop sizes onto the sample data using `region` as a joining key
+```{r}
+(pop.strata.sizes <- table(agpop.sorted$region) %>% data.frame())
+pop.strata.sizes <- rename(pop.strata.sizes, region = Var1, popsize = Freq)
+ag.str.opt2 <- ag.str %>% left_join(pop.strata.sizes)
+```
+
+### Call `svydesign`
+```{r}
+agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt, 
+                            fpc = ~popsize, 
+                            # fpc = option1.fpc # This would be Option 1
+                            data= ag.str.opt2)
+```
+
+## Calculate mean, SE and CI
+Note the degrees of freedom for a CI under a stratified sample is $n-H$, which can be extracted from the `svydesign` object using the `degf` function. 
+
+```{r}
+(str.total <- svytotal(~acres92, agpop.str.dsgn))
+confint(str.total, level = .95, df = degf(agpop.str.dsgn))
+```
+
+:::{.callout-tip icon=true}
+### Example: Farmland in 1992
+The book's provided `agstrat` data set is a stratified random sample with proportional allocation. The weights are contained in a variable called `strwt`. Let's re-estimate the total amount of farmland using the sampling package. 
+:::
+
+1. Calculate the vector of population sizes for the fpc using Option 2 above. 
+
+```{r}
+agstrat <- agstrat %>% left_join(pop.strata.sizes)
+table(agstrat$popsize) # confirm
+```
+
+2. Define the survey design
+```{r}
+agstrat.dsgn <- svydesign(id = ~1, strata = ~region, 
+                          weights = ~strwt, 
+                          fpc = ~popsize, 
+                          data= agstrat)
+```
+
+3. calculate the stratified total with CI. 
+```{r}
+(str.total <- svytotal(~acres92, agstrat.dsgn))
+confint(str.total, level = .95, df = degf(agstrat.dsgn))
+```
+:::
+
+## Calculating stratum means and variances
+Instead of using the formulas as shown in Ch 3.3, we can use the `svyby` function.  
+```{r}
+regional.totals <- svyby(~acres92, by=~region, agstrat.dsgn, 
+                         svytotal, keep.var = TRUE)
+kable(regional.totals)
+```
+
+Confirm the overall total $\hat{\tau}_{str}$ by summing these values across the strata.
+
+```{r}
+sum(regional.totals$acres92)
+```
+
 

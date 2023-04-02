@@ -57,6 +57,7 @@ These weighted estimators are used in all probability sampling designs. Weights 
 
 ## Stratified Random Sample
 
+* CI's should use a $t_{n-H}$ distribution instead of using the normal assumption. 
 
 | Measure                   | Population $(\theta)$                                                  | Sample $(\hat{\theta})$                                     |
 |------------------|-----------------------------|-----------------------------|
@@ -105,7 +106,19 @@ Argument details:
 * **CI for the mean or total**: Use `confint()` after calculating the point estimate
 * **CI for proportion**: `svyciprop(~x, design)` Will also print out $\hat{p}$
 
+## Calculating stratum means and variances
 
+* The first argument of `svyby` is the formula for the variable(s) for which
+statistics are desired
+* `(by=)` is the variable that defines the groups.
+* Then list the `design` object
+* and the name of the function that calculates the statistics. 
+* Set `keep.var=TRUE` to display the standard errors for the statistics.
+
+```{r}
+#| eval: false
+svyby(~acres92, by=~region, agstrat.dsgn, svytotal, keep.var = TRUE)
+```
 
 ## Analysis
 
