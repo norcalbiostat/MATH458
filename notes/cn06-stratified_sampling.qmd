@@ -533,7 +533,7 @@ If they do not sum to the stratum population sizes, you have made a mistake some
 :::{.callout-warning icon=false collapse="true" appearance=minimal}
 ### Clean up
 ```{r}
-rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou", "agpop.sorted", "N.k", "n.k")])
+rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou", "agpop.sorted", "N.k", "n.k", "ag.str")])
 ```
 :::
 
@@ -541,19 +541,25 @@ rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou", "agpop.sorted", "N.k", "
 
 # Computing Statistics from a Stratified Random Sample
 
-## Setup the information for the survey design. 
+## 1. Setup the information for the survey design. 
 
-### Specify weights
+### a. Specify weights
 
 We created the weights in the dataset in the the last step. 
 
-### Specify fpc
+### b. Specify fpc
 
 We need to create a vector of fpc's that are equal to the strata population size. In a SRS, we used `fpc = rep(N,n)`. This create a vector that contains the value `N`, repeated `n` times. In this case, we need to match the strata population size to each record from that strata. 
 
 Option 1: Create a vector that repeats the values in the vector `N.k`, each `n.k` times. 
-:::{.callout-tip icon=true}
-#### Example
+
+```{r, eval=FALSE}
+option1.fpc <- rep(N.k, n.k)
+```
+
+
+:::{.callout-tip icon=false collapse="true" appearance=minimal}
+**Example on how to use the `rep` function**
 ```{r}
 ex.N.k <- c(10,25,50) # example population sizes
 ex.n.k <- c(2,5,10)   # example strata sizes
@@ -563,9 +569,6 @@ rep(ex.N.k, ex.n.k)
 The pop size for stratum 1 is repeated twice (the size of the sample from that stratum), the pop size for stratum 2 is repeated 5 times (the sample size for stat stratum) etc. 
 :::
 
-```{r, eval=FALSE}
-option1.fpc <- rep(N.k, n.k)
-```
 
 Option 2: Merge the pop sizes onto the sample data using `region` as a joining key
 ```{r}
@@ -574,7 +577,7 @@ pop.strata.sizes <- rename(pop.strata.sizes, region = Var1, popsize = Freq)
 ag.str.opt2 <- ag.str %>% left_join(pop.strata.sizes)
 ```
 
-### Call `svydesign`
+## 2. Call `svydesign`
 ```{r}
 agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt, 
                             fpc = ~popsize, 
@@ -582,7 +585,7 @@ agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt,
                             data= ag.str.opt2)
 ```
 
-## Calculate mean, SE and CI
+## 3. Calculate total, SE and CI
 Note the degrees of freedom for a CI under a stratified sample is $n-H$, which can be extracted from the `svydesign` object using the `degf` function. 
 
 ```{r}
@@ -615,7 +618,7 @@ agstrat.dsgn <- svydesign(id = ~1, strata = ~region,
 (str.total <- svytotal(~acres92, agstrat.dsgn))
 confint(str.total, level = .95, df = degf(agstrat.dsgn))
 ```
-:::
+
 
 ## Calculating stratum means and variances
 Instead of using the formulas as shown in Ch 3.3, we can use the `svyby` function.  
