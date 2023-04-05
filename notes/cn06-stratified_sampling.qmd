@@ -32,8 +32,8 @@ library(sampling); library(survey)
 – At what point will this compromise the legitimacy of the study? 
 * Lowers variance when done properly; variance within each strata is likely lower than the population variance
 * you do not have to sample the same fraction of observations in each stratum. If the variability is higher in a certain strata then you can try to reduce the variability of the estimated total by taking more observations from that stratum. 
-:::{.callout-tip icon=true}
 
+:::{.callout-tip icon=true}
 ### Motivating Example - Estimating the average number of farm acres.  
 
 ```{r}
@@ -41,9 +41,10 @@ agpop <- read_csv(here("data", "agpop.csv"))
 ```
 
 In Example 2.6  we took a SRS to find the average number of farm acres per county. Even though our methods of taking an SRS were correct, some areas of the country were over or underrepresented due to the variability in the size of farms in different regions in the country. An example of this would be that western states in the U.S tend to be larger, and therefore tend to have larger farms. 
+:::
+
 
 To try and fix this, we can use a stratified sample can give balance to the sample on the stratifying variable, which in this case would be region that the farms are located. 
-:::
 
 To begin, we can divide our data into four regions (these are the strata): 
 
@@ -130,11 +131,9 @@ ggplot(agstrat, aes(x = region, y = farms87, fill = region)) +
        y = "Acreage")
 ```
 
-:::
 
-:::{.callout-important}
-### MISSING INFO
-This group needs to add text information here. Interpret your numbers and plots in context of the purpose of the motivating example. 
+Both the boxplot and the table suggest that, on average, farms in the north-central region have the most acreage (837 acres). The mean acreages in the North East, South, and West regions are similar, ranging from 605-615 acres. The variances for all four regions are large, suggesting the individual acreage of the farms varies greatly and is not precise. The results indicate that the quantity's mean value for area North Central is 837.0485 with a variance of 156503.3 and a sample size of 103. The mean value for area North East is 605.2381, with a variance of 175660.4 and a sample size of 21. With a sample size of 135 and a variance of 231169.2, the mean value for region South is 610.4889. For region West with a sample size of 41, the mean value is 614.7073 with a variance of 275506.9.
+
 :::
 
 
@@ -156,15 +155,8 @@ From the Farm example, this ratio was calculated to be 0.75. That means we would
 > By sampling within strata, we are "borrowing" information from other similar observations.
 
 
-## Summary
 
-* This section setup the motivation for why using the stratified sampling method may be beneficial. 
-* Once SRS's are taken from each strata, the results can be pooled to make inferences about the entire population (the ultimate goal). 
-* Don't have to sample the same % from each strata
-* Could see a greater reduction in variance with an increased sampling fraction from the West.
-
-
-:::{.callout-warning icon=false collapse="true" appearance=minimal}
+:::{.callout-note icon=false collapse="true" appearance=minimal}
 ### Clean up
 ```{r}
 rm(counties_in_pop, table3.1, new_table3.1)
@@ -307,7 +299,7 @@ Use this information and the equations from this chapter to calculate the estima
 caribou <- data.frame(
   Stratum = c("A", "B", "C", "D", "E", "F"), 
   N.h = c(400, 30, 61, 18, 70, 120), 
-  n.h = c(8, 10, 37, 6, 39, 21), 
+  n.h = c(98, 10, 37, 6, 39, 21), 
   y.bar.h = c(24.1, 25.6, 267.6, 179, 293.7, 33.2), 
   s2.h = c(5575, 4064, 347556, 22798, 123578, 9795))
 
@@ -380,36 +372,35 @@ N*p.str
 There are an estimated 10,847 female members.
 :::
 
-:::{.callout-warning icon=false collapse="true" appearance=minimal}
+:::{.callout-note icon=false collapse="true" appearance=minimal}
 ### Clean up
 ```{r}
 rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou")])
 ```
 :::
 
-# Sampling Weights (Lohr 3.3)
+# Sampling Weights 
 
 ## How are weights calculated? 
 
-* sampling weights are the number of units in the population represented by the sample member = $\frac{N}{n}$
-* $\hat{\tau}$ is the weighted sum of individual sampling units
-* the probability of an individual unit being selected is $\frac{n}{N}$
-* note that this is the reciprocal of the weights, and the sum of the weights will equal N.
+Sampling weights in the context of Stratified Sampling function almost identically as they did in SRS.
 
-:::{.callout-tip icon=true}
-### Example: Caribou weights
-In the caribou example, strata A had N=400 and n=98, so the sampling weight is 400/98 or 4.08.
+For any unit $j$ in a stratum $h$, a sampling weight($w_{hj}$) is still the inverse of an inclusion probability($\pi_{hj}$). However, because the population of a stratum, $N_h$, and the size of a sample of a stratum, $n_h$, don't have to be constant within a population of $H$ strata, each stratum will have different sampling weights. 
 
-```{r}
-caribou %>% select(Stratum:n.h)
-```
-:::
+$w_{hj}= \frac{1}{\pi_{hj}}=\frac{N_h}{n_h}$
 
+## How are weights used? 
 
-## How are the equations above modified to include stratified sampling weights? 
+The weights are directly applied to the values of $y$ before being used in any calculations. 
 
-> Waiting for notes. 
+$$\hat{t}_{str}= \sum_{h=1}^H\sum_{j\in S_h} w_{hj}y_{hj}$$
 
+is the estimator of the total population using a stratified sample, and
+
+$$\bar{y}_{str}= \frac{\hat{t}_{str}}{\sum_{h=1}^H\sum_{j\in S_h} w_{hj}}=
+\frac{\sum_{h=1}^H\sum_{j\in S_h} w_{hj}y_{hj}}{\sum_{h=1}^H\sum_{j\in S_h} w_{hj}}$$
+
+is the estimate for a population mean using stratified sampling.
 
 
 :::{.callout-tip icon=true}
@@ -471,7 +462,18 @@ agstrat$wtd.acres92 <- agstrat$acres92 * agstrat$wt
 
 > Note. This value for `tau.hat.str` does not match what the book says. Not sure where the error is at. 
 
-:::{.callout-warning icon=false collapse="true" appearance=minimal}
+:::{.callout-warning icon=true}
+### :star: You try it Caribou weights
+In the caribou example, strata A had N=400 and n=98, so the sampling weight is 400/98 or 4.08.
+
+```{r}
+caribou$w.hj <- caribou$N.h/ caribou$n.h
+caribou %>% select(Stratum:n.h, w.hj)
+```
+:::
+
+
+:::{.callout-note icon=false collapse="true" appearance=minimal}
 ### Clean up
 ```{r}
 rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou")])
@@ -482,12 +484,35 @@ rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou")])
 
 # Allocation Methods
 
+Designing the survey is the most important part of using a survey in research. If the survey is badly designed, then no amount of analysis will yield the needed information. 
+
+Simple random sample was easy - you just need to figure out the end sample size. For stratified sampling, we need to define the strata, and the sample size within each strata. 
+
+The next subsections describe how to figure out the sample sizes for each strata, and Section 3.5 will discuss how to choose Strata. 
+
+## Proportional Allocation
+
+## Optimal Allocation
+
+## Allocation for Specified Precision within Strata
+
+## Which allocation to use?
 
 ----
 
-# Selecting a Stratified Random Sample
+## Summary
 
-## Using the `strata` function from the `sampling` package
+* This section setup the motivation for why using the stratified sampling method may be beneficial. 
+* Once SRS's are taken from each strata, the results can be pooled to make inferences about the entire population (the ultimate goal). 
+* Don't have to sample the same % from each strata
+* Could see a greater reduction in variance of the overall estimate with an increased sampling fraction from strata with high variance. 
+
+----
+# Using R
+
+## Selecting a Stratified Random Sample
+
+### Using the `strata` function from the `sampling` package
 
 1. Sort the data by the stratification variable
 ```{r}
@@ -527,10 +552,10 @@ table(agpop.sorted$region)
 
 :::{.callout-important}
 ### Warning
-If they do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes. 
+If the weights do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes. 
 :::
 
-:::{.callout-warning icon=false collapse="true" appearance=minimal}
+:::{.callout-note icon=false collapse="true" appearance=minimal}
 ### Clean up
 ```{r}
 rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou", "agpop.sorted", "N.k", "n.k", "ag.str")])
@@ -539,15 +564,15 @@ rm(list=ls()[!ls() %in% c("agpop", "agstrat","caribou", "agpop.sorted", "N.k", "
 
 ----
 
-# Computing Statistics from a Stratified Random Sample
+## Computing Statistics from a Stratified Random Sample
 
-## 1. Setup the information for the survey design. 
+### 1. Setup the information for the survey design. 
 
-### a. Specify weights
+#### a. Specify weights
 
 We created the weights in the dataset in the the last step. 
 
-### b. Specify fpc
+#### b. Specify fpc
 
 We need to create a vector of fpc's that are equal to the strata population size. In a SRS, we used `fpc = rep(N,n)`. This create a vector that contains the value `N`, repeated `n` times. In this case, we need to match the strata population size to each record from that strata. 
 
@@ -577,7 +602,7 @@ pop.strata.sizes <- rename(pop.strata.sizes, region = Var1, popsize = Freq)
 ag.str.opt2 <- ag.str %>% left_join(pop.strata.sizes)
 ```
 
-## 2. Call `svydesign`
+### 2. Call `svydesign`
 ```{r}
 agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt, 
                             fpc = ~popsize, 
@@ -585,7 +610,7 @@ agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt,
                             data= ag.str.opt2)
 ```
 
-## 3. Calculate total, SE and CI
+### 3. Calculate total, SE and CI
 Note the degrees of freedom for a CI under a stratified sample is $n-H$, which can be extracted from the `svydesign` object using the `degf` function. 
 
 ```{r}
@@ -620,7 +645,7 @@ confint(str.total, level = .95, df = degf(agstrat.dsgn))
 ```
 
 
-## Calculating stratum means and variances
+### Calculating stratum means and variances
 Instead of using the formulas as shown in Ch 3.3, we can use the `svyby` function.  
 ```{r}
 regional.totals <- svyby(~acres92, by=~region, agstrat.dsgn, 

@@ -754,9 +754,6 @@ Example: Re-Estimate the total number of farm acres in 1992 using sample weights
 </div>
 <section id="selecting-a-stratified-random-sample" class="level1">
 <h1>Selecting a Stratified Random Sample</h1>
-<section id="using-base-r" class="level2">
-<h2 class="anchored" data-anchor-id="using-base-r">Using Base R</h2>
-</section>
 <section id="using-the-strata-function-from-the-sampling-package" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-strata-function-from-the-sampling-package">Using the <code>strata</code> function from the <code>sampling</code> package</h2>
 <ol type="1">
@@ -766,7 +763,7 @@ Example: Re-Estimate the total number of farm acres in 1992 using sample weights
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>agpop.sorted <span class="ot">&lt;-</span> agpop <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li>Specify the desired within-strata sample sizes <span class="math inline">\(n_{k}\)</span>. The different methods on how to allocate sample sizes to strata is covered in the next section.</li>
+<li>Specify the desired within-strata sample sizes <span class="math inline">\(n_{k}\)</span>.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>n.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">103</span>, <span class="dv">21</span>, <span class="dv">135</span>, <span class="dv">41</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
