@@ -277,7 +277,7 @@ The estimated total number of acres devoted to farming is `r prettyNum(tau.hat.s
 
 :::{.callout-warning icon=false}
 ### :star: You try it
-Siniff and Skoog (1964) used stratified random sampling to estimate the size of a herd of Alaskan caribou in 1992. Using known density estimates, the researches divided the area into 6 strata, each of 4 sq miles. The summary information from each strata is contained in the table below. 
+Siniff and Skoog (1964) used stratified random sampling to estimate the size of a herd of Alaskan caribou in 1992. Using prior known caribou density estimates for the region, the researches divided the area into 6 strata, then within each strata they formed a grid where each cell was 4 sq miles. They then randomly sampled the grids within each strata. The summary information from each strata is contained in the table below. 
 ```{r}
 #| echo: false
 caribou <- data.frame(
@@ -319,9 +319,19 @@ V.tau.hat.str <- sum(caribou$var.tau.hat.h)
 n.caribou <- sum(caribou$n.h)
 n.strata <- length(caribou$Stratum)
 df <- n.caribou - n.strata
+
 (crit.value <- qt(.975, df))
+
+s.error <- sqrt(var.tau.hat.str)
+
+(tau.hat.str - crit.value*s.error)
+(tau.hat.str + crit.value*s.error)
 ```
 
+:::{.callout-tip icon=true}
+### missing
+CI and interpretation of CI
+:::
 
 This CI only explains uncertainty due to sampling error, if researchers tend to miss animals, this CI will be low. 
 :::
@@ -508,6 +518,7 @@ The next subsections describe how to figure out the sample sizes for each strata
 * Could see a greater reduction in variance of the overall estimate with an increased sampling fraction from strata with high variance. 
 
 ----
+
 # Using R
 
 ## Selecting a Stratified Random Sample
