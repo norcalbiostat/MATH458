@@ -482,6 +482,8 @@ caribou %>% select(Stratum:n.h, w.hj)
 ```
 :::
 
+Note: We cannot re-estimate the total number of caribou using the information provided because we are given the summary statistics $\bar{Y}_h$, not the raw data $y_{hj}$. To re-estimate the total number of caribou we would need to multiply the weights $w_{h}$ to $y_{hj}$.
+
 
 :::{.callout-note icon=false collapse="true" appearance=minimal}
 ### Clean up
@@ -498,13 +500,29 @@ Designing the survey is the most important part of using a survey in research. I
 
 Simple random sample was easy - you just need to figure out the end sample size. For stratified sampling, we need to define the strata, and the sample size within each strata. 
 
-The next subsections describe how to figure out the sample sizes for each strata, and Section 3.5 will discuss how to choose Strata. 
 
-## Proportional Allocation
+#### Method 1: Proportional Allocation
 
-## Optimal Allocation
+The number of sampling unit in a stratum is proportional to the population of each stratum.
 
-## Allocation for Specified Precision within Strata
+* Probability selection (n/N) the same for each stratum (n being the number of sampling units in the stratum and N being the population of the stratum)
+* Weight of each sample will be the same
+* Stratified sampling estimate of the population mean is the average of all observations
+* Self-weighting: every unit in sample carries the same weight
+* When the strata are large enough, $Var(\bar{y}_{str})$ will almost always be less than the population variance of $Var(\bar{y}_{srs})$ of the same sample size
+* The more the means of the strata differ, the more precision you will gain from using proportional allocation.
+
+#### Method 2: Optimal Allocation
+
+Allocation of sampling units to strata so that the variance of the estimator is minimized for a given total cost.
+
+* Disproportional allocation:  Allocation of sampling units to strata so that the sampling fractions $\frac{n_h}{N_h} are unequal
+
+#### Method 3: Allocation for Specified Precision within Strata
+
+* Sometimes we are less interested in estimating the overall population values, and more interested in comparing the totals or means across stratum
+* In this case we would need to determine the sample size for each stratum that corresponds to a specific level of precision. 
+
 
 ## Which allocation to use?
 

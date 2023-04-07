@@ -229,9 +229,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#allocation-methods" id="toc-allocation-methods" class="nav-link" data-scroll-target="#allocation-methods">Allocation Methods</a>
   <ul class="collapse">
-  <li><a href="#proportional-allocation" id="toc-proportional-allocation" class="nav-link" data-scroll-target="#proportional-allocation">Proportional Allocation</a></li>
-  <li><a href="#optimal-allocation" id="toc-optimal-allocation" class="nav-link" data-scroll-target="#optimal-allocation">Optimal Allocation</a></li>
-  <li><a href="#allocation-for-specified-precision-within-strata" id="toc-allocation-for-specified-precision-within-strata" class="nav-link" data-scroll-target="#allocation-for-specified-precision-within-strata">Allocation for Specified Precision within Strata</a></li>
   <li><a href="#which-allocation-to-use" id="toc-which-allocation-to-use" class="nav-link" data-scroll-target="#which-allocation-to-use">Which allocation to use?</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
@@ -1239,6 +1236,7 @@ Example: Re-Estimate the total number of farm acres in 1992 using sample weights
 </div>
 </div>
 </div>
+<p>Note: We cannot re-estimate the total number of caribou using the information provided because we are given the summary statistics <span class="math inline">\(\bar{Y}_h\)</span>, not the raw data <span class="math inline">\(y_{hj}\)</span>. To re-estimate the total number of caribou we would need to multiply the weights <span class="math inline">\(w_{h}\)</span> to <span class="math inline">\(y_{hj}\)</span>.</p>
 <div class="callout-note callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1264,15 +1262,31 @@ Clean up
 <h1>Allocation Methods</h1>
 <p>Designing the survey is the most important part of using a survey in research. If the survey is badly designed, then no amount of analysis will yield the needed information.</p>
 <p>Simple random sample was easy - you just need to figure out the end sample size. For stratified sampling, we need to define the strata, and the sample size within each strata.</p>
-<p>The next subsections describe how to figure out the sample sizes for each strata, and Section 3.5 will discuss how to choose Strata.</p>
-<section id="proportional-allocation" class="level2">
-<h2 class="anchored" data-anchor-id="proportional-allocation">Proportional Allocation</h2>
+<section id="method-1-proportional-allocation" class="level4">
+<h4 class="anchored" data-anchor-id="method-1-proportional-allocation">Method 1: Proportional Allocation</h4>
+<p>The number of sampling unit in a stratum is proportional to the population of each stratum.</p>
+<ul>
+<li>Probability selection (n/N) the same for each stratum (n being the number of sampling units in the stratum and N being the population of the stratum)</li>
+<li>Weight of each sample will be the same</li>
+<li>Stratified sampling estimate of the population mean is the average of all observations</li>
+<li>Self-weighting: every unit in sample carries the same weight</li>
+<li>When the strata are large enough, <span class="math inline">\(Var(\bar{y}_{str})\)</span> will almost always be less than the population variance of <span class="math inline">\(Var(\bar{y}_{srs})\)</span> of the same sample size</li>
+<li>The more the means of the strata differ, the more precision you will gain from using proportional allocation.</li>
+</ul>
 </section>
-<section id="optimal-allocation" class="level2">
-<h2 class="anchored" data-anchor-id="optimal-allocation">Optimal Allocation</h2>
+<section id="method-2-optimal-allocation" class="level4">
+<h4 class="anchored" data-anchor-id="method-2-optimal-allocation">Method 2: Optimal Allocation</h4>
+<p>Allocation of sampling units to strata so that the variance of the estimator is minimized for a given total cost.</p>
+<ul>
+<li>Disproportional allocation: Allocation of sampling units to strata so that the sampling fractions $ are unequal</li>
+</ul>
 </section>
-<section id="allocation-for-specified-precision-within-strata" class="level2">
-<h2 class="anchored" data-anchor-id="allocation-for-specified-precision-within-strata">Allocation for Specified Precision within Strata</h2>
+<section id="method-3-allocation-for-specified-precision-within-strata" class="level4">
+<h4 class="anchored" data-anchor-id="method-3-allocation-for-specified-precision-within-strata">Method 3: Allocation for Specified Precision within Strata</h4>
+<ul>
+<li>Sometimes we are less interested in estimating the overall population values, and more interested in comparing the totals or means across stratum</li>
+<li>In this case we would need to determine the sample size for each stratum that corresponds to a specific level of precision.</li>
+</ul>
 </section>
 <section id="which-allocation-to-use" class="level2">
 <h2 class="anchored" data-anchor-id="which-allocation-to-use">Which allocation to use?</h2>
@@ -1322,27 +1336,27 @@ Clean up
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="ot">&lt;-</span> <span class="fu">getdata</span>(agpop.sorted, strat.idx)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           county state acres92 acres87 acres82 farms92 farms87 farms82
-2    ADAMS COUNTY    IA  239800  243607  254071     643     688     737
-14 CARROLL COUNTY    IA  359755  366656  363436    1197    1319    1396
-27 DECATUR COUNTY    IA  261494  278714  300684     648     715     769
-39 GUTHRIE COUNTY    IA  328885  316631  326495     946     960    1105
-58  LOUISA COUNTY    IA  191291  198855  208670     554     634     699
-62 MAHASKA COUNTY    IA  314887  328093  336033    1075    1193    1265
+<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
+5    AUDUBON COUNTY    IA  268506  268437  283782     740     851     905
+19 CHICKASAW COUNTY    IA  274905  276216  289542    1007    1054    1180
+25    DALLAS COUNTY    IA  312173  328319  346023     944    1081    1208
+49   JACKSON COUNTY    IA  346569  345612  347358    1326    1354    1422
+58    LOUISA COUNTY    IA  191291  198855  208670     554     634     699
+81       SAC COUNTY    IA  364172  359677  359157     967    1035    1146
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-2        38       32       21       40       50       33     NC       2
-14       39       25       20      108      121      115     NC      14
-27       52       54       56       20       34       37     NC      27
-39       60       42       33       74       58       67     NC      39
+5        45       30       25       60       79       39     NC       5
+19       36       22       33       82       73      103     NC      19
+25       67       59       48       82       85       81     NC      25
+49       28       22       17       86       91       91     NC      49
 58       30       28       21       29       43       43     NC      58
-62       32       27       22       93       95       87     NC      62
+81       56       38       31       82       73       79     NC      81
          Prob Stratum
-2  0.09772296       1
-14 0.09772296       1
-27 0.09772296       1
-39 0.09772296       1
+5  0.09772296       1
+19 0.09772296       1
+25 0.09772296       1
+49 0.09772296       1
 58 0.09772296       1
-62 0.09772296       1</code></pre>
+81 0.09772296       1</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
@@ -1352,27 +1366,27 @@ Clean up
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>ag.str<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>ag.str<span class="sc">$</span>Prob</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           county state acres92 acres87 acres82 farms92 farms87 farms82
-2    ADAMS COUNTY    IA  239800  243607  254071     643     688     737
-14 CARROLL COUNTY    IA  359755  366656  363436    1197    1319    1396
-27 DECATUR COUNTY    IA  261494  278714  300684     648     715     769
-39 GUTHRIE COUNTY    IA  328885  316631  326495     946     960    1105
-58  LOUISA COUNTY    IA  191291  198855  208670     554     634     699
-62 MAHASKA COUNTY    IA  314887  328093  336033    1075    1193    1265
+<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
+5    AUDUBON COUNTY    IA  268506  268437  283782     740     851     905
+19 CHICKASAW COUNTY    IA  274905  276216  289542    1007    1054    1180
+25    DALLAS COUNTY    IA  312173  328319  346023     944    1081    1208
+49   JACKSON COUNTY    IA  346569  345612  347358    1326    1354    1422
+58    LOUISA COUNTY    IA  191291  198855  208670     554     634     699
+81       SAC COUNTY    IA  364172  359677  359157     967    1035    1146
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-2        38       32       21       40       50       33     NC       2
-14       39       25       20      108      121      115     NC      14
-27       52       54       56       20       34       37     NC      27
-39       60       42       33       74       58       67     NC      39
+5        45       30       25       60       79       39     NC       5
+19       36       22       33       82       73      103     NC      19
+25       67       59       48       82       85       81     NC      25
+49       28       22       17       86       91       91     NC      49
 58       30       28       21       29       43       43     NC      58
-62       32       27       22       93       95       87     NC      62
+81       56       38       31       82       73       79     NC      81
          Prob Stratum       wt
-2  0.09772296       1 10.23301
-14 0.09772296       1 10.23301
-27 0.09772296       1 10.23301
-39 0.09772296       1 10.23301
+5  0.09772296       1 10.23301
+19 0.09772296       1 10.23301
+25 0.09772296       1 10.23301
+49 0.09772296       1 10.23301
 58 0.09772296       1 10.23301
-62 0.09772296       1 10.23301</code></pre>
+81 0.09772296       1 10.23301</code></pre>
 </div>
 </div>
 <p>5b. Check that the sampling weights sum to the stratum population sizes.</p>
@@ -1493,12 +1507,12 @@ Clean up
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>(str.total <span class="ot">&lt;-</span> <span class="fu">svytotal</span>(<span class="sc">~</span>acres92, agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            total       SE
-acres92 898029665 65754455</code></pre>
+acres92 915413718 56657601</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(str.total, <span class="at">level =</span> .<span class="dv">95</span>, <span class="at">df =</span> <span class="fu">degf</span>(agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            2.5 %     97.5 %
-acres92 768624192 1027435138</code></pre>
+acres92 803910951 1026916486</code></pre>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
