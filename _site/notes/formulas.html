@@ -223,7 +223,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#specify-survey-design-svydesign" id="toc-specify-survey-design-svydesign" class="nav-link" data-scroll-target="#specify-survey-design-svydesign">Specify survey design <code>svydesign</code></a></li>
   <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
   <li><a href="#calculating-stratum-means-and-variances" id="toc-calculating-stratum-means-and-variances" class="nav-link" data-scroll-target="#calculating-stratum-means-and-variances">Calculating stratum means and variances</a></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
   <li><a href="#other-r-help-references" id="toc-other-r-help-references" class="nav-link" data-scroll-target="#other-r-help-references">Other R help References</a></li>
   </ul></li>
   </ul>
@@ -408,36 +407,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td>Overall sample size</td>
-<td><span class="math inline">\(N = \sum_{h} N_{h}\)</span></td>
-<td><span class="math inline">\(n = \sum_{h} n_{h}\)</span></td>
+<td><span class="math inline">\(N = \sum^{H}_{h=1} N_{h}\)</span></td>
+<td><span class="math inline">\(n = \sum^{H}_{h=1} n_{h}\)</span></td>
 </tr>
 <tr class="odd">
-<td>Total in strata <span class="math inline">\(h\)</span></td>
-<td><span class="math inline">\(\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}\)</span></td>
-<td><span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span></td>
-</tr>
-<tr class="even">
-<td>Overall total</td>
-<td><span class="math inline">\(\tau = \sum_{h} \tau_{h}\)</span></td>
-<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h}N_{h}\bar{y}_{h}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Mean in strata <span class="math inline">\(h\)</span></td>
-<td><span class="math inline">\(\mu_{h} = \frac{\tau_{h}}{N_{h}}\)</span></td>
-<td><span class="math inline">\(\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}\)</span></td>
-</tr>
-<tr class="even">
-<td>Overall mean</td>
-<td><span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
-<td><span class="math inline">\(\bar{y}_{str} = \sum_{h} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Variance of the mean</td>
+<td>Var(y) in strata <span class="math inline">\(h\)</span></td>
 <td><span class="math inline">\(\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2\)</span></td>
 <td><span class="math inline">\(s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2\)</span></td>
 </tr>
 <tr class="even">
-<td>Proportion in strata</td>
+<td>Total in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Overall total</td>
+<td><span class="math inline">\(\tau = \sum_{h=1}^{H} \tau_{h}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h=1}^{H}N_{h}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Mean in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\mu_{h} = \frac{\tau_{h}}{N_{h}}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Overall mean</td>
+<td><span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{str} = \sum_{h=1}^{H} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Proportion in strata <span class="math inline">\(h\)</span></td>
 <td><span class="math inline">\(p_{h} = \mu_h\)</span></td>
 <td><span class="math inline">\(\bar{y}_h = \hat{p}_h\)</span></td>
 </tr>
@@ -448,16 +447,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td>Overall proportion</td>
-<td><span class="math inline">\(p = \sum_{h} \frac{N_h}{N} p_h\)</span></td>
-<td><span class="math inline">\(\hat{p}_{str} = \sum_{h} \frac{N_h}{N}\hat{p}_h\)</span></td>
+<td><span class="math inline">\(p_{str} = \sum_{h=1}^{H} \frac{N_h}{N} p_h\)</span></td>
+<td><span class="math inline">\(\hat{p}_{str} = \sum_{h=1}^{H} \frac{N_h}{N}\hat{p}_h\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Misc additional equations;</p>
+<p>Estimated variances;</p>
 <ul>
-<li>Estimated variance of population total <span class="math inline">\(\hat{V}(\hat{\tau}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span></li>
-<li>Estimated variance of population proportion <span class="math inline">\(\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}\)</span></li>
-<li>Estimated total number of population units having a specified characteristic: <span class="math inline">\(\hat{t}_{str} = \sum_{h} N_h \hat{p}_h\)</span>, with variance <span class="math inline">\(N^2\hat{V}(\hat{p}_{str})\)</span>.</li>
+<li>Within strata total <span class="math inline">\(\hat{V}(\hat{\tau}_{h}) = (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span><br>
+</li>
+<li>Within strata mean <span class="math inline">\(\hat{V}(\bar{y}_{h}) = \frac{1}{N^2}V(\hat{\tau}_{h})\)</span></li>
+<li>Overall population total <span class="math inline">\(\hat{V}(\hat{\tau}_{str}) = \sum_{h=1}^H (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span></li>
+<li>Population proportion <span class="math inline">\(\hat{V}(\hat{p}_{str}) = \sum_{h=1}^H (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}\)</span></li>
+<li>Estimated total number of population units having a specified characteristic: <span class="math inline">\(\hat{t}_{\it{str}} = \sum_{h=1}^H N_h \hat{p}_h\)</span></li>
 </ul>
 <hr>
 </section>
@@ -501,16 +503,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svyby</span>(<span class="sc">~</span>acres92, <span class="at">by=</span><span class="sc">~</span>region, agstrat.dsgn, svytotal, <span class="at">keep.var =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<p>http://r-survey.r-forge.r-project.org/survey/example-regression.html</p>
-<ul>
-<li>Linear Regression: y~x</li>
-<li>T-Test: y ~x where x is binary</li>
-<li>ANOVA: y~x where x is categorical</li>
-</ul>
-<p><a href="https://twitter.com/WomenInStat/status/1286420597505892352">Play the game: Is this fancy analysis “Just” a linear model?</a></p>
 </section>
 <section id="other-r-help-references" class="level2">
 <h2 class="anchored" data-anchor-id="other-r-help-references">Other R help References</h2>

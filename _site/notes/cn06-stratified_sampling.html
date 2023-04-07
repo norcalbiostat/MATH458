@@ -585,36 +585,36 @@ Clean up
 </tr>
 <tr class="even">
 <td>Overall sample size</td>
-<td><span class="math inline">\(N = \sum_{h} N_{h}\)</span></td>
-<td><span class="math inline">\(n = \sum_{h} n_{h}\)</span></td>
+<td><span class="math inline">\(N = \sum^{H}_{h=1} N_{h}\)</span></td>
+<td><span class="math inline">\(n = \sum^{H}_{h=1} n_{h}\)</span></td>
 </tr>
 <tr class="odd">
-<td>Total in strata <span class="math inline">\(h\)</span></td>
-<td><span class="math inline">\(\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}\)</span></td>
-<td><span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span></td>
-</tr>
-<tr class="even">
-<td>Overall total</td>
-<td><span class="math inline">\(\tau = \sum_{h} \tau_{h}\)</span></td>
-<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h}N_{h}\bar{y}_{h}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Mean in strata <span class="math inline">\(h\)</span></td>
-<td><span class="math inline">\(\mu_{h} = \frac{\tau_{h}}{N_{h}}\)</span></td>
-<td><span class="math inline">\(\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}\)</span></td>
-</tr>
-<tr class="even">
-<td>Overall mean</td>
-<td><span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
-<td><span class="math inline">\(\bar{y}_{str} = \sum_{h} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Variance of the mean</td>
+<td>Var(y) in strata <span class="math inline">\(h\)</span></td>
 <td><span class="math inline">\(\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2\)</span></td>
 <td><span class="math inline">\(s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2\)</span></td>
 </tr>
 <tr class="even">
-<td>Proportion in strata</td>
+<td>Total in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Overall total</td>
+<td><span class="math inline">\(\tau = \sum_{h=1}^{H} \tau_{h}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h=1}^{H}N_{h}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Mean in strata <span class="math inline">\(h\)</span></td>
+<td><span class="math inline">\(\mu_{h} = \frac{\tau_{h}}{N_{h}}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Overall mean</td>
+<td><span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{str} = \sum_{h=1}^{H} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Proportion in strata <span class="math inline">\(h\)</span></td>
 <td><span class="math inline">\(p_{h} = \mu_h\)</span></td>
 <td><span class="math inline">\(\bar{y}_h = \hat{p}_h\)</span></td>
 </tr>
@@ -625,8 +625,8 @@ Clean up
 </tr>
 <tr class="even">
 <td>Overall proportion</td>
-<td><span class="math inline">\(p = \sum_{h} \frac{N_h}{N} p_h\)</span></td>
-<td><span class="math inline">\(\hat{p}_{str} = \sum_{h} \frac{N_h}{N}\hat{p}_h\)</span></td>
+<td><span class="math inline">\(p_{str} = \sum_{h=1}^{H} \frac{N_h}{N} p_h\)</span></td>
+<td><span class="math inline">\(\hat{p}_{str} = \sum_{h=1}^{H} \frac{N_h}{N}\hat{p}_h\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -634,9 +634,9 @@ Clean up
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <table class="table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 38%">
-<col style="width: 38%">
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -701,11 +701,14 @@ Clean up
 </div>
 </div>
 </div>
-<p>Misc additional equations;</p>
+<p>With estimated variances;</p>
 <ul>
-<li>Estimated variance of population total <span class="math inline">\(\hat{V}(\hat{\tau}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span></li>
-<li>Estimated variance of population proportion <span class="math inline">\(\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}\)</span></li>
-<li>Estimated total number of population units having a specified characteristic: <span class="math inline">\(\hat{t}_{str} = \sum_{h} N_h \hat{p}_h\)</span>, with variance <span class="math inline">\(N^2\hat{V}(\hat{p}_{str})\)</span>.</li>
+<li>Within strata total <span class="math inline">\(\hat{V}(\hat{\tau}_{h}) = (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span><br>
+</li>
+<li>Within strata mean <span class="math inline">\(\hat{V}(\bar{y}_{h}) = \frac{1}{N^2}V(\hat{\tau}_{h})\)</span></li>
+<li>Overall population total <span class="math inline">\(\hat{V}(\hat{\tau}_{str}) = \sum_{h=1}^H (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span></li>
+<li>Population proportion <span class="math inline">\(\hat{V}(\hat{p}_{str}) = \sum_{h=1}^H (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}\)</span></li>
+<li>Estimated total number of population units having a specified characteristic: <span class="math inline">\(\hat{t}_{\it{str}} = \sum_{h=1}^H N_h \hat{p}_h\)</span></li>
 </ul>
 </section>
 <section id="confidence-interval-for-stratified-random-sample" class="level2">
@@ -1336,27 +1339,27 @@ Clean up
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="ot">&lt;-</span> <span class="fu">getdata</span>(agpop.sorted, strat.idx)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
-5    AUDUBON COUNTY    IA  268506  268437  283782     740     851     905
-19 CHICKASAW COUNTY    IA  274905  276216  289542    1007    1054    1180
-25    DALLAS COUNTY    IA  312173  328319  346023     944    1081    1208
-49   JACKSON COUNTY    IA  346569  345612  347358    1326    1354    1422
-58    LOUISA COUNTY    IA  191291  198855  208670     554     634     699
-81       SAC COUNTY    IA  364172  359677  359157     967    1035    1146
+<pre><code>              county state acres92 acres87 acres82 farms92 farms87 farms82
+4   APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
+7  BLACK HAWK COUNTY    IA  299502  305516  308845    1111    1269    1352
+31    DUBUQUE COUNTY    IA  343870  334112  338912    1653    1689    1708
+52    JOHNSON COUNTY    IA  284537  305634  328240    1242    1356    1508
+60       LYON COUNTY    IA  347599  342938  357493    1194    1234    1391
+61    MADISON COUNTY    IA  305685  293643  313648    1026    1059    1154
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-5        45       30       25       60       79       39     NC       5
-19       36       22       33       82       73      103     NC      19
-25       67       59       48       82       85       81     NC      25
-49       28       22       17       86       91       91     NC      49
-58       30       28       21       29       43       43     NC      58
-81       56       38       31       82       73       79     NC      81
+4        28       33       23       25       39       36     NC       4
+7        49       34       27      116      152      154     NC       7
+31       13       10        8      107      128       88     NC      31
+52       27       31       26       74      104       99     NC      52
+60       32       24       15      128      125      127     NC      60
+61       47       44       39       47       75       81     NC      61
          Prob Stratum
-5  0.09772296       1
-19 0.09772296       1
-25 0.09772296       1
-49 0.09772296       1
-58 0.09772296       1
-81 0.09772296       1</code></pre>
+4  0.09772296       1
+7  0.09772296       1
+31 0.09772296       1
+52 0.09772296       1
+60 0.09772296       1
+61 0.09772296       1</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
@@ -1366,27 +1369,27 @@ Clean up
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>ag.str<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>ag.str<span class="sc">$</span>Prob</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
-5    AUDUBON COUNTY    IA  268506  268437  283782     740     851     905
-19 CHICKASAW COUNTY    IA  274905  276216  289542    1007    1054    1180
-25    DALLAS COUNTY    IA  312173  328319  346023     944    1081    1208
-49   JACKSON COUNTY    IA  346569  345612  347358    1326    1354    1422
-58    LOUISA COUNTY    IA  191291  198855  208670     554     634     699
-81       SAC COUNTY    IA  364172  359677  359157     967    1035    1146
+<pre><code>              county state acres92 acres87 acres82 farms92 farms87 farms82
+4   APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
+7  BLACK HAWK COUNTY    IA  299502  305516  308845    1111    1269    1352
+31    DUBUQUE COUNTY    IA  343870  334112  338912    1653    1689    1708
+52    JOHNSON COUNTY    IA  284537  305634  328240    1242    1356    1508
+60       LYON COUNTY    IA  347599  342938  357493    1194    1234    1391
+61    MADISON COUNTY    IA  305685  293643  313648    1026    1059    1154
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-5        45       30       25       60       79       39     NC       5
-19       36       22       33       82       73      103     NC      19
-25       67       59       48       82       85       81     NC      25
-49       28       22       17       86       91       91     NC      49
-58       30       28       21       29       43       43     NC      58
-81       56       38       31       82       73       79     NC      81
+4        28       33       23       25       39       36     NC       4
+7        49       34       27      116      152      154     NC       7
+31       13       10        8      107      128       88     NC      31
+52       27       31       26       74      104       99     NC      52
+60       32       24       15      128      125      127     NC      60
+61       47       44       39       47       75       81     NC      61
          Prob Stratum       wt
-5  0.09772296       1 10.23301
-19 0.09772296       1 10.23301
-25 0.09772296       1 10.23301
-49 0.09772296       1 10.23301
-58 0.09772296       1 10.23301
-81 0.09772296       1 10.23301</code></pre>
+4  0.09772296       1 10.23301
+7  0.09772296       1 10.23301
+31 0.09772296       1 10.23301
+52 0.09772296       1 10.23301
+60 0.09772296       1 10.23301
+61 0.09772296       1 10.23301</code></pre>
 </div>
 </div>
 <p>5b. Check that the sampling weights sum to the stratum population sizes.</p>
@@ -1507,12 +1510,12 @@ Clean up
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>(str.total <span class="ot">&lt;-</span> <span class="fu">svytotal</span>(<span class="sc">~</span>acres92, agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            total       SE
-acres92 915413718 56657601</code></pre>
+acres92 914183605 65768044</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(str.total, <span class="at">level =</span> .<span class="dv">95</span>, <span class="at">df =</span> <span class="fu">degf</span>(agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            2.5 %     97.5 %
-acres92 803910951 1026916486</code></pre>
+acres92 784751390 1043615820</code></pre>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">

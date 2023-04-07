@@ -62,22 +62,24 @@ These weighted estimators are used in all probability sampling designs. Weights 
 | Measure                   | Population $(\theta)$                                                  | Sample $(\hat{\theta})$                                     |
 |------------------|-----------------------------|-----------------------------|
 | Sample size in strata $h$ | $N_{h}$                                                                | $n_{h}$                                                     |
-| Overall sample size       | $N = \sum_{h} N_{h}$                                             | $n = \sum_{h} n_{h}$                                  |
-| Total in strata $h$       | $\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}$                                 | $\hat{\tau}_{h} = N_{h}\bar{y_h}$                           |
-| Overall total             | $\tau = \sum_{h} \tau_{h}$                                       | $\hat{\tau}_{str} = \sum_{h}N_{h}\bar{y}_{h}$         |
+| Overall sample size       | $N = \sum^{H}_{h=1} N_{h}$                                             | $n = \sum^{H}_{h=1} n_{h}$                                  |
+| Var(y) in strata $h$    | $\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2$ | $s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2$ |
+| Total in strata $h$       | $\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}$                                 | $\hat{\tau}_{h} = N_{h}\bar{y_h}$                           |                         |
+| Overall total             | $\tau = \sum_{h=1}^{H} \tau_{h}$                                       | $\hat{\tau}_{str} = \sum_{h=1}^{H}N_{h}\bar{y}_{h}$         |
 | Mean in strata $h$        | $\mu_{h} = \frac{\tau_{h}}{N_{h}}$                                     | $\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}$              |
-| Overall mean              | $\mu = \frac{\tau}{N}$                                                 | $\bar{y}_{str} = \sum_{h} \frac{N_{h}}{N}\bar{y}_{h}$ |
-| Variance of the mean     | $\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2$ | $s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2$ |
-| Proportion in strata| $p_{h} = \mu_h$ | $\bar{y}_h = \hat{p}_h$ |
+| Overall mean              | $\mu = \frac{\tau}{N}$                                                 | $\bar{y}_{str} = \sum_{h=1}^{H} \frac{N_{h}}{N}\bar{y}_{h}$ |
+| Proportion in strata $h$ | $p_{h} = \mu_h$ | $\bar{y}_h = \hat{p}_h$ |
 | Variance of $p_{h}$ | $\sigma_h^2=\frac{N_h}{N_h-1} p_h(1-p_h)$ | $s_h^2=\frac{n_h}{n_h-1} \hat{p}_h(1-\hat{p}_h)$ |
-| Overall proportion | $p = \sum_{h} \frac{N_h}{N} p_h$ | $\hat{p}_{str} = \sum_{h} \frac{N_h}{N}\hat{p}_h$  |
+| Overall proportion | $p_{str} = \sum_{h=1}^{H} \frac{N_h}{N} p_h$ | $\hat{p}_{str} = \sum_{h=1}^{H} \frac{N_h}{N}\hat{p}_h$  |
 
+Estimated variances; 
 
-Misc additional equations; 
+* Within strata total $\hat{V}(\hat{\tau}_{h}) = (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}$  
+* Within strata mean  $\hat{V}(\bar{y}_{h}) = \frac{1}{N^2}V(\hat{\tau}_{h})$
+* Overall population total $\hat{V}(\hat{\tau}_{str}) = \sum_{h=1}^H (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}$
+* Population proportion $\hat{V}(\hat{p}_{str}) = \sum_{h=1}^H (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}$
+* Estimated total number of population units having a specified characteristic: $\hat{t}_{\it{str}} = \sum_{h=1}^H N_h \hat{p}_h$
 
-* Estimated variance of population total $\hat{V}(\hat{\tau}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}$
-* Estimated variance of population proportion $\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}$
-* Estimated total number of population units having a specified characteristic: $\hat{t}_{str} = \sum_{h} N_h \hat{p}_h$, with variance $N^2\hat{V}(\hat{p}_{str})$. 
 
 ----
 
@@ -119,18 +121,6 @@ statistics are desired
 #| eval: false
 svyby(~acres92, by=~region, agstrat.dsgn, svytotal, keep.var = TRUE)
 ```
-
-## Analysis
-
-
-http://r-survey.r-forge.r-project.org/survey/example-regression.html
-
-* Linear Regression: y~x
-* T-Test: y ~x where x is binary
-* ANOVA: y~x where x is categorical
-
-[Play the game: Is this fancy analysis "Just" a linear model?](https://twitter.com/WomenInStat/status/1286420597505892352) 
-
 
 ## Other R help References
 
