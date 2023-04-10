@@ -630,27 +630,6 @@
     "text": "How are weights used?\nThe weights are directly applied to the values of \\(y\\) before being used in any calculations.\n\\[\\hat{t}_{str}= \\sum_{h=1}^H\\sum_{j\\in S_h} w_{hj}y_{hj}\\]\nis the estimator of the total population using a stratified sample, and\n\\[\\bar{y}_{str}= \\frac{\\hat{t}_{str}}{\\sum_{h=1}^H\\sum_{j\\in S_h} w_{hj}}=\n\\frac{\\sum_{h=1}^H\\sum_{j\\in S_h} w_{hj}y_{hj}}{\\sum_{h=1}^H\\sum_{j\\in S_h} w_{hj}}\\]\nis the estimate for a population mean using stratified sampling.\n\n\n\n\n\n\nExample: Re-Estimate the total number of farm acres in 1992 using sample weights\n\n\n\nNote, this agriculture example was designed so that each county in the US had approximately the same probability of appearing in the sample.\n\n\n\nCalculate stratum weights. Sometimes this is given to you, othertimes you have to calculate it.\n\n\nstrat.weights <- data.frame(\n  region = table(agpop$region) %>% names(),\n  N.h = table(agpop$region) %>% as.vector(), \n  n.h = table(agstrat$region) %>% as.vector()\n)\nstrat.weights$wt <- strat.weights$N.h / strat.weights$n.h\nstrat.weights\n\n  region  N.h n.h       wt\n1     NC 1054 103 10.23301\n2     NE  220  21 10.47619\n3      S 1382 135 10.23704\n4      W  422  41 10.29268\n\n\n\nMerge those weights back onto the sample data, joining by region.\n\n\nagstrat <- agstrat %>% left_join(strat.weights)\ntable(agstrat$wt)\n\n\n10.2330097087379  10.237037037037 10.2926829268293 10.4761904761905 \n             103              135               41               21 \n\n\nThis last table is used to confirm that the number of weighting values equals the strata sample sizes.\n\nCalculate the weighted values \\(w_{hj}y_{hj}\\). The weights need to be applied to the individual data points, \\(y_{jh}\\), then all the above calculations can occur again.\n\n\nagstrat$wtd.acres92 <- agstrat$acres92 * agstrat$wt \n\n\nCalculate the weighted totals and variances within strata. Include the population and sample sizes within each strata in the group_by statement so it can remain on the grouped dataset for later use.\n\n\n(wt.str.sum.stats <- agstrat %>%\n   group_by(region, N.h, n.h) %>% \n   summarize(y.bar.h = sum(wtd.acres92)/n.h,  \n             s2.h    = (1/(n.h-1))*sum((wtd.acres92-y.bar.h)^2)\n             ) %>%\n   unique() # this removes duplicate rows created in the variance function\n )\n\n# A tibble: 4 × 5\n# Groups:   region, N.h, n.h [4]\n  region   N.h   n.h  y.bar.h    s2.h\n  <chr>  <int> <int>    <dbl>   <dbl>\n1 NC      1054   103 3075062. 3.10e12\n2 NE       220    21 1022788. 8.39e11\n3 S       1382   135 2163240. 5.62e12\n4 W        422    41 6816798. 4.20e13\n\n\n\nCalculate within strata totals and variances \\(\\hat{\\tau}_{h}\\) and \\(\\hat{V}(\\hat{\\tau}_{h})\\).\n\n\n(wt.str.sum.stats <- wt.str.sum.stats %>% \n    mutate(tau.hat.h = y.bar.h * N.h , \n           var.tau.hat.h = (1 - n.h/N.h)*(N.h^2)*(s2.h/n.h)))\n\n# A tibble: 4 × 7\n# Groups:   region, N.h, n.h [4]\n  region   N.h   n.h  y.bar.h    s2.h   tau.hat.h var.tau.hat.h\n  <chr>  <int> <int>    <dbl>   <dbl>       <dbl>         <dbl>\n1 NC      1054   103 3075062. 3.10e12 3241115284.       3.02e16\n2 NE       220    21 1022788. 8.39e11  225013466.       1.75e15\n3 S       1382   135 2163240. 5.62e12 2989597592.       7.17e16\n4 W        422    41 6816798. 4.20e13 2876688634.       1.65e17\n\n\n\nCalculate the overall total \\(\\hat{\\tau}_{str}\\) and variance \\(\\hat{V}\\big(\\hat{\\tau}_{str}\\big)\\) by summing these values across the strata.\n\n\n(tau.hat.str <- sum(wt.str.sum.stats$tau.hat.h))\n\n[1] 9332414976\n\n(V.tau.hat.str <- sum(wt.str.sum.stats$var.tau.hat.h))\n\n[1] 2.682133e+17\n\n\n\nNote. This value for tau.hat.str does not match what the book says. Not sure where the error is at.\n\n\n\n\n\n\n\n⭐ You try it Caribou weights\n\n\n\nIn the caribou example, strata A had N=400 and n=98, so the sampling weight is 400/98 or 4.08.\n\ncaribou$w.hj <- caribou$N.h/ caribou$n.h\ncaribou %>% select(Stratum:n.h, w.hj)\n\n  Stratum N.h n.h     w.hj\n1       A 400  98 4.081633\n2       B  30  10 3.000000\n3       C  61  37 1.648649\n4       D  18   6 3.000000\n5       E  70  39 1.794872\n6       F 120  21 5.714286\n\n\n\n\nNote: We cannot re-estimate the total number of caribou using the information provided because we are given the summary statistics \\(\\bar{Y}_h\\), not the raw data \\(y_{hj}\\). To re-estimate the total number of caribou we would need to multiply the weights \\(w_{h}\\) to \\(y_{hj}\\).\n\n\n\n\n\n\nClean up\n\n\n\n\n\n\nrm(list=ls()[!ls() %in% c(\"agpop\", \"agstrat\",\"caribou\")])"
   },
   {
-    "objectID": "notes/cn06-stratified_sampling.html#proportional-allocation",
-    "href": "notes/cn06-stratified_sampling.html#proportional-allocation",
-    "title": "Stratified Sampling",
-    "section": "Proportional Allocation",
-    "text": "Proportional Allocation"
-  },
-  {
-    "objectID": "notes/cn06-stratified_sampling.html#optimal-allocation",
-    "href": "notes/cn06-stratified_sampling.html#optimal-allocation",
-    "title": "Stratified Sampling",
-    "section": "Optimal Allocation",
-    "text": "Optimal Allocation"
-  },
-  {
-    "objectID": "notes/cn06-stratified_sampling.html#allocation-for-specified-precision-within-strata",
-    "href": "notes/cn06-stratified_sampling.html#allocation-for-specified-precision-within-strata",
-    "title": "Stratified Sampling",
-    "section": "Allocation for Specified Precision within Strata",
-    "text": "Allocation for Specified Precision within Strata"
-  },
-  {
     "objectID": "notes/cn06-stratified_sampling.html#which-allocation-to-use",
     "href": "notes/cn06-stratified_sampling.html#which-allocation-to-use",
     "title": "Stratified Sampling",
@@ -721,13 +700,6 @@
     "text": "Calculating stratum means and variances\n\nThe first argument of svyby is the formula for the variable(s) for which statistics are desired\n(by=) is the variable that defines the groups.\nThen list the design object\nand the name of the function that calculates the statistics.\nSet keep.var=TRUE to display the standard errors for the statistics.\n\n\nsvyby(~acres92, by=~region, agstrat.dsgn, svytotal, keep.var = TRUE)"
   },
   {
-    "objectID": "notes/formulas.html#analysis",
-    "href": "notes/formulas.html#analysis",
-    "title": "Formulas and Definitions",
-    "section": "Analysis",
-    "text": "Analysis\nhttp://r-survey.r-forge.r-project.org/survey/example-regression.html\n\nLinear Regression: y~x\nT-Test: y ~x where x is binary\nANOVA: y~x where x is categorical\n\nPlay the game: Is this fancy analysis “Just” a linear model?"
-  },
-  {
     "objectID": "notes/formulas.html#other-r-help-references",
     "href": "notes/formulas.html#other-r-help-references",
     "title": "Formulas and Definitions",
@@ -739,7 +711,7 @@
     "href": "notes.html",
     "title": "Course Notes",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2023\n\n\nFormulas and Definitions\n\n\nEquations and R code\n\n\n\n\nJan 23, 2023\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 25, 2023\n\n\nIntroduction to Simulation\n\n\nFoundations of writing your own custom functions, drawing samples and conducting a simulation.\n\n\n\n\nJan 30, 2023\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 6, 2023\n\n\nFoundations of Statistical Estimation\n\n\nWe review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.\n\n\n\n\nFeb 20, 2023\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\nFeb 27, 2023\n\n\nTeaching and Learning\n\n\nThe best way to learn something is to teach it to others\n\n\n\n\nMar 20, 2023\n\n\nStratified Sampling\n\n\nA method to use additional information about the population in the survey design. Lohr Ch 3.\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2023\n\n\nFormulas and Definitions\n\n\nEquations and R code\n\n\n\n\nJan 23, 2023\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 25, 2023\n\n\nIntroduction to Simulation\n\n\nFoundations of writing your own custom functions, drawing samples and conducting a simulation.\n\n\n\n\nJan 30, 2023\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 6, 2023\n\n\nFoundations of Statistical Estimation\n\n\nWe review some of the introductory concepts of statistics that will be a pre-requisite for the remainder of the course.\n\n\n\n\nFeb 20, 2023\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\nFeb 27, 2023\n\n\nTeaching and Learning\n\n\nThe best way to learn something is to teach it to others\n\n\n\n\nMar 20, 2023\n\n\nStratified Sampling\n\n\nA method to use additional information about the population in the survey design. Lohr Ch 3.\n\n\n\n\nMar 20, 2023\n\n\nCluster Sampling\n\n\nSelecting groups at . Lohr Ch 5.\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes_DrD/cn06.html",
@@ -942,6 +914,41 @@
     "href": "weekly_details.html",
     "title": "Weekly Details",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nHow to prepare\n\n\n\n\n\n\n01-23\n\n\nWelcome to Math 458: Sampling Methods\n\n\nLook over this course website, the syllabus, and Canvas\n\n\n\n\n01-30\n\n\nIntroduction to the Sampling Framework\n\n\nCreate blank notes file. Read textbook\n\n\n\n\n02-06\n\n\nFoundations of Statistical Estimation\n\n\nPrepare notes file. Download data\n\n\n\n\n02-13\n\n\nFoundations of Statistical Estimation (cont.)\n\n\nClean up all prior course notes to date. Check content with classmates.\n\n\n\n\n02-20\n\n\nSimple Random Sampling\n\n\nGet course notes, download book data\n\n\n\n\n02-27\n\n\nStrategies for Teaching and Learning\n\n\nFinalize and submit all outstanding assignments\n\n\n\n\n03-20\n\n\nStratified Sampling Methods\n\n\nRead & Take notes from Lohr 3.1\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTopic\n\n\nHow to prepare\n\n\n\n\n\n\n01-23\n\n\nWelcome to Math 458: Sampling Methods\n\n\nLook over this course website, the syllabus, and Canvas\n\n\n\n\n01-30\n\n\nIntroduction to the Sampling Framework\n\n\nCreate blank notes file. Read textbook\n\n\n\n\n02-06\n\n\nFoundations of Statistical Estimation\n\n\nPrepare notes file. Download data\n\n\n\n\n02-13\n\n\nFoundations of Statistical Estimation (cont.)\n\n\nClean up all prior course notes to date. Check content with classmates.\n\n\n\n\n02-20\n\n\nSimple Random Sampling\n\n\nGet course notes, download book data\n\n\n\n\n02-27\n\n\nStrategies for Teaching and Learning\n\n\nFinalize and submit all outstanding assignments\n\n\n\n\n03-20\n\n\nCluster Sampling Methods\n\n\nRead & Take notes from Lohr 5 Introduction\n\n\n\n\n03-20\n\n\nStratified Sampling Methods\n\n\nRead & Take notes from Lohr 3.1\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "notes/cn07-cluster_sampling.html",
+    "href": "notes/cn07-cluster_sampling.html",
+    "title": "Cluster Sampling",
+    "section": "",
+    "text": "library(here); library(tidyverse);library(knitr)\nlibrary(sampling); library(survey)"
+  },
+  {
+    "objectID": "notes/cn07-cluster_sampling.html#introduction",
+    "href": "notes/cn07-cluster_sampling.html#introduction",
+    "title": "Cluster Sampling",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "notes/cn07-cluster_sampling.html#selecting-a-cluster-random-sample",
+    "href": "notes/cn07-cluster_sampling.html#selecting-a-cluster-random-sample",
+    "title": "Cluster Sampling",
+    "section": "Selecting a Cluster Random Sample",
+    "text": "Selecting a Cluster Random Sample"
+  },
+  {
+    "objectID": "notes/cn07-cluster_sampling.html#computing-statistics-from-a-cluster-sample",
+    "href": "notes/cn07-cluster_sampling.html#computing-statistics-from-a-cluster-sample",
+    "title": "Cluster Sampling",
+    "section": "Computing Statistics from a Cluster Sample",
+    "text": "Computing Statistics from a Cluster Sample"
+  },
+  {
+    "objectID": "weekly_details/wk011.html",
+    "href": "weekly_details/wk011.html",
+    "title": "Cluster Sampling Methods",
+    "section": "",
+    "text": "Learning Objectives\nBy the end of the week, learners will be able to:\n\n\n\nCompare and contrast Cluster sampling design to SRS and Stratified\n\nIdentify correct estimates, errors and bounds for various parameters\nCalculate estimates (point and interval) using equations\n\n\n\n\n\n\n\nHow to prepare\n\n\n\nNA\n\n\n\n\n\n\nContent Notes & Readings\n\n\n\nLive Notes\n\nHackMD Collab Notes\n\n\n\n\n\n\n\nMonday overview\n\n\n\nWhat is Cluster Sampling (Lohr 5.1)\n\nReform working teams.\n\n\n\n\n\n\n\nWednesday overview\n\n\n\nAnalyzing data collected via cluster sampling using R\n\n\n\n\n\n\nFriday overview\n\n\n\nOpen Work Day (project/notes/worksheet)\n\n\n\n\n\n\nTo Do\n\n\n\nSubmit personal notes for 5.1 by Monday."
   }
 ]

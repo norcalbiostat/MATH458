@@ -1,0 +1,14 @@
+{
+  "hash": "e5c63b14887bd17c311af8f366631463",
+  "result": {
+    "markdown": "---\ntitle: \"Cluster Sampling\"\ndescription: \"Selecting groups at . Lohr Ch 5. \"\nauthor: DRAFT - 458 class\ndate: 3/20/23\nexecute: \n  error: true\n  warning: false\n  message: false\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(here); library(tidyverse);library(knitr)\nlibrary(sampling); library(survey)\n```\n:::\n\n\n# What is Cluster Sampling\n\n## Introduction\n\n\n\n------------------------------------------------------------------------\n\n# Summary\n\n------------------------------------------------------------------------\n\n# Using R\n\n## Selecting a Cluster Random Sample\n\n------------------------------------------------------------------------\n\n## Computing Statistics from a Cluster Sample\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

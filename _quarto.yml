@@ -41,6 +41,8 @@ website:
             url: https://hackmd.io/@norcalbiostat/cn03-statistical_foundations
           - text: "Stratified Sampling"
             url: https://hackmd.io/@norcalbiostat/cn06_stratified
+          - text: "Cluster Sampling"
+            url: https://hackmd.io/@norcalbiostat/cn07_cluster
       - text: "Syllabus"
         file: syllabus.qmd
 

@@ -1,0 +1,36 @@
+---
+title: "Cluster Sampling"
+description: "Selecting groups at . Lohr Ch 5. "
+author: DRAFT - 458 class
+date: 3/20/23
+execute: 
+  error: true
+  warning: false
+  message: false
+---
+
+```{r}
+library(here); library(tidyverse);library(knitr)
+library(sampling); library(survey)
+```
+
+# What is Cluster Sampling
+
+## Introduction
+
+
+
+------------------------------------------------------------------------
+
+# Summary
+
+------------------------------------------------------------------------
+
+# Using R
+
+## Selecting a Cluster Random Sample
+
+------------------------------------------------------------------------
+
+## Computing Statistics from a Cluster Sample
+

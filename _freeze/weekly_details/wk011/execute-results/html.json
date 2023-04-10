@@ -1,0 +1,14 @@
+{
+  "hash": "371dec92f1704956edea53a8ddfca372",
+  "result": {
+    "markdown": "---\ntitle: \"Cluster Sampling Methods\"\ndate: \"3/20/23\"\nprepare: \"Read & Take notes from Lohr 5 Introduction\"\nexecute: \n  echo: false\n---\n\n::: {.cell}\n\n:::\n\n\n\n# Learning Objectives\nBy the end of the week, learners will be able to: \n\n::: {.cell}\n::: {.cell-output-display}\n* Compare and contrast Cluster sampling design to SRS and Stratified\n  * Identify correct estimates, errors and bounds for various parameters\n  * Calculate estimates (point and interval) using equations\n\n<!-- end of list -->\n:::\n:::\n\n\n# How to prepare\n\n::: {.cell}\n::: {.cell-output-display}\n* _NA_\n\n<!-- end of list -->\n:::\n:::\n\n\n# [Content Notes & Readings](https://sampling-458.netlify.app/notes.html)\n\n::: {.cell}\n::: {.cell-output-display}\n* [Live Notes](https://sampling-458.netlify.app/notes/cn07_cluster.html)\n  * [HackMD Collab Notes](https://hackmd.io/@norcalbiostat/cn07_cluster)\n\n<!-- end of list -->\n:::\n:::\n\n\n\n# Monday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* What is Cluster Sampling (Lohr 5.1)\n  * Reform working teams.\n\n<!-- end of list -->\n:::\n:::\n\n\n# Wednesday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Analyzing data collected via cluster sampling using R\n\n<!-- end of list -->\n:::\n:::\n\n\n# Friday overview\n\n::: {.cell}\n::: {.cell-output-display}\n* Open Work Day (project/notes/worksheet)\n\n<!-- end of list -->\n:::\n:::\n\n\n# [To Do](https://sampling-458.netlify.app/assignments.html)\n\n::: {.cell}\n::: {.cell-output-display}\n* Submit personal notes for 5.1 by Monday.\n\n<!-- end of list -->\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
