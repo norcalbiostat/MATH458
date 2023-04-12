@@ -16,42 +16,60 @@ library(sampling); library(survey)
 
 # Introduction
 
+## Why use Cluster Sampling?
 
-## Why use Cluster Sampling? 
+-   Constructing a sample frame list may be expensive, difficult, or impossible.
+    -   Making a sampling frame of all honeybees in a region would be impossible-you cannot enumerate them, or even be sure how many there are (N)
+    -   Making a sampling frame of all trees in a region is possible, however it may be extremely time consuming, and therefore expensive.
+-   The population may be widely distributed geographically or appear in natural clusters.
+    -   Households or schools can appear in natural clusters
+    -   If your target population is nursing home residents in the US, it would be very hard to take an SRS of all nursing home residents, and then travel to each one individually. Taking a cluster sample of a few nursing homes and then taking observations from everyone in them would be less expensive and time consuming.
+
+:::{.callout-note icon=false}
+A cluster is similar to a stratum because it is grouping members of the population.
+
+However, cluster sampling reduces precision compared to SRS whereas precision is increased with a stratified sample. 
+:::
+
+This is because members of the same cluster tend to be very similar, and sampling everyone in the cluster results in the same information being repeated rather than learning new information.
+
+Most large surveys usually use cluster sampling, most likely because of the low costs and convenience compared to other sampling methods
+
+To increase the precision of the clusters, survey conductors could group the population primary sampling units (the clusters) into stratas and select a probability sample of psus within each stratum. 
+
 
 
 ------------------------------------------------------------------------
 
-# One-Stage Clustering Sampling 
+# One-Stage Clustering Sampling
 
 ## Equal size clusters
 
-* Each _psu_ has the same number of elements; $M_{i} = m_{i} = M$.
-* Often can be found in agriculture or industrial sampling. 
-* $t_{i}$ is the total for all elements in _psu_ $i$. 
-* $t_{i}$ is known for sampled households, since data is collected on both individuals. (E.g. $Var(t_{i})=0$)
+-   Each *psu* has the same number of elements; $M_{i} = m_{i} = M$.
+-   Often can be found in agriculture or industrial sampling.
+-   $t_{i}$ is the total for all elements in *psu* $i$.
+-   $t_{i}$ is known for sampled households, since data is collected on both individuals. (E.g. $Var(t_{i})=0$)
 
-:arrow_right: Treat the _psu_ means or totals as observations, and ignore the individual elements. We now have an SRS of $n$ data points. 
+:arrow_right: Treat the *psu* means or totals as observations, and ignore the individual elements. We now have an SRS of $n$ data points.
 
-Thus we can use the same SRS formulas to estimate the total and mean, **however** this is an SRS of $n$ _psu_'s, not an SRS of $nM$ observational units. So the $df$ needed to create a Confidence Interval is $n-1$. 
+Thus we can use the same SRS formulas to estimate the total and mean, **however** this is an SRS of $n$ *psu*'s, not an SRS of $nM$ observational units. So the $df$ needed to create a Confidence Interval is $n-1$.
 
-To estimate the population total $t$ or average $\mu$, we can use the following estimators and variances: 
+To estimate the population total $t$ or average $\mu$, we can use the following estimators and variances:
 
 $$
 \hat{t} = \frac{N}{n}\sum_{i \in S}t_{i} \qquad 
 s_{t}^{2} = \frac{1}{n-1}\sum_{i \in S}\Big(t_{i} - \frac{\hat{t}}{N}\Big)^2
 $$
 
-and 
-$$
+and $$
 \hat{\bar{y}} = \frac{\hat{t}}{NM} \qquad
 V(\hat{\bar{y}}) = \Big(1-\frac{n}{N}\Big)\frac{s^{2}_t}{nM^2}
 $$
 
-:::{.callout-tip icon=true}
+::: {.callout-tip icon="true"}
 ### Estimate the income in a two person households
 
-Consider individual incomes ($y_{ij}$) for each of $j=1,2$ persons in the 3 sampled households out of the 50 in the population. 
+Consider individual incomes ($y_{ij}$) for each of $j=1,2$ persons in the 3 sampled households out of the 50 in the population.
 
 ```{r}
 hhi <- data.frame(
@@ -63,9 +81,9 @@ kable(hhi, align = 'c')
 ```
 :::
 
-First define our known values: N = 50, n = 3, M = 2. 
+First define our known values: N = 50, n = 3, M = 2.
 
-The total household income $t_i$ is calculated as the sum of the individual incomes within each cluster $\sum_j y_{ij}$. 
+The total household income $t_i$ is calculated as the sum of the individual incomes within each cluster $\sum_j y_{ij}$.
 
 ```{r}
 hhi$ti <- hhi$yi1 + hhi$yi2
@@ -73,31 +91,33 @@ hhi
 ```
 
 The estimated mean is
+
 ```{r}
 t.hat <- (50/3)*sum(hhi$ti)
 (ybar.hat <- t.hat / (50*2))
 ```
 
 with variance
+
 ```{r}
 s2.t <- (1/(3-1))*sum((hhi$ti - t.hat/50)^2)
 (var.ybar.hat <- (1 - 3/50)*(s2.t/(3*2^2)))
 ```
 
-Calculate CI. 
+Calculate CI.
+
 ```{r}
 crit.t <- qt(.975, 3-1)
 ci.low.mu  <- ybar.hat - crit.t*sqrt(var.ybar.hat)
 ci.hi.mu   <- ybar.hat + crit.t*sqrt(var.ybar.hat)
 ```
 
-We can be 95% confident that the average population income for a household of two people is contained in the interval (`r scales::dollar(ci.low.mu, accuracy=1)`, `r scales::dollar(ci.hi.mu, accuracy=1)`. 
+We can be 95% confident that the average population income for a household of two people is contained in the interval (`r scales::dollar(ci.low.mu, accuracy=1)`, `r scales::dollar(ci.hi.mu, accuracy=1)`.
 
-
-:::{.callout-warning icon=false}
+::: {.callout-warning icon="false"}
 ### :star: You try it: Average GPA in a dorm
 
-A student wants to estimate the average GPA in their dorm. Obtaining a listing of all students in the hall and conducting an SRS would take a lot of time. Instead, since each of the 100 suites in the hall have 4 students, the student randomly samples 5 suites and collects GPA data for each student in the suite. 
+A student wants to estimate the average GPA in their dorm. Obtaining a listing of all students in the hall and conducting an SRS would take a lot of time. Instead, since each of the 100 suites in the hall have 4 students, the student randomly samples 5 suites and collects GPA data for each student in the suite.
 
 Using functions from the `sampling` package, estimate the average GPA for all students living in that dorm, with a proper 95% CI. Interpret your interval.
 
@@ -106,10 +126,11 @@ gpa <- readr::read_csv(here::here("data", "gpa.csv"))
 head(gpa)
 ```
 
-The data was recorded in long format -- this is the format needed for analysis. The table in the book is formatted for human eyeball consumption, not for analysis. 
+The data was recorded in long format -- this is the format needed for analysis. The table in the book is formatted for human eyeball consumption, not for analysis.
 :::
 
-1. Set the survey design. 
+1.  Set the survey design.
+
 ```{r}
 gpa.design <- svydesign(id = ~suite,
                         weights = ~wt,
@@ -117,7 +138,8 @@ gpa.design <- svydesign(id = ~suite,
                         data=gpa) 
 ```
 
-2. Call `surveymean` and CI. 
+2.  Call `surveymean` and CI.
+
 ```{r}
 (dorm.gpa.mean <- svymean(~gpa, gpa.design))
 
@@ -126,5 +148,4 @@ gpa.design <- svydesign(id = ~suite,
 confint(dorm.gpa.mean, level=.95, df=4)
 ```
 
-We can be 95% confident that the average GPA for students living in this dorm is contained in the interval 2.37 to 3.28. 
-
+We can be 95% confident that the average GPA for students living in this dorm is contained in the interval 2.37 to 3.28.
