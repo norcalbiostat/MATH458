@@ -1,0 +1,25 @@
+---
+title: "Worksheet 05: Introduction to Cluster Sampling"
+author: Dr. D's Solutions
+format: pdf
+date: 4/12/23
+---
+
+```{r}
+#| echo: false
+library(here); library(tidyverse);library(knitr)
+library(sampling); library(survey)
+```
+
+A student wants to estimate the average GPA in their dorm. Obtaining a listing of all students in the hall and conducting an SRS would take a lot of time. Instead, since each of the 100 suites in the hall have 4 students, the student randomly samples 5 suites and collects GPA data for each student in the suite. A summary table is shown below. 
+
+```{r}
+#| echo=FALSE
+gpa <- readr::read_csv(here::here("data", "gpa.csv"))
+gpa %>% group_by(suite) %>% mutate(person = 1:n()) %>% 
+  pivot_wider(id_cols = person, values_from = gpa, names_from = suite, 
+              names_prefix = "Suite ") %>% kable(align = 'c')
+```
+
+Using hand written equations, estimate the average GPA for all students living in that dorm, with a proper 95% CI. Interpret your interval
+

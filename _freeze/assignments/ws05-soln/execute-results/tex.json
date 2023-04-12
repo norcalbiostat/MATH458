@@ -1,0 +1,14 @@
+{
+  "hash": "96040776c720f073b137539feb8dc5d7",
+  "result": {
+    "markdown": "---\ntitle: \"Worksheet 05: Introduction to Cluster Sampling\"\nauthor: Dr. D's Solutions\nformat: pdf\ndate: 4/12/23\n---\n\n::: {.cell}\n\n:::\n\n\nA student wants to estimate the average GPA in their dorm. Obtaining a listing of all students in the hall and conducting an SRS would take a lot of time. Instead, since each of the 100 suites in the hall have 4 students, the student randomly samples 5 suites and collects GPA data for each student in the suite. A summary table is shown below. \n\n\n::: {.cell}\n::: {.cell-output-display}\n| person | Suite 1 | Suite 2 | Suite 3 | Suite 4 | Suite 5 |\n|:------:|:-------:|:-------:|:-------:|:-------:|:-------:|\n|   1    |  3.08   |  2.36   |  2.00   |  3.00   |  2.68   |\n|   2    |  2.60   |  3.04   |  2.56   |  2.88   |  1.92   |\n|   3    |  3.44   |  3.28   |  2.52   |  3.44   |  3.28   |\n|   4    |  3.04   |  2.68   |  1.88   |  3.64   |  3.20   |\n:::\n:::\n\n\nUsing hand written equations, estimate the average GPA for all students living in that dorm, with a proper 95% CI. Interpret your interval\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}
