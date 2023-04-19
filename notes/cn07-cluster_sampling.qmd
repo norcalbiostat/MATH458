@@ -16,6 +16,59 @@ library(sampling); library(survey)
 
 # Introduction
 
+Let’s say we want to find the number of bicycles owned within a community of 10,000 households. We have several options for picking a sample:
+
+- Obtaining a SRS of 400 households
+- Stratifying households into groups then choosing a SRS from these groups 
+- Separate the population into blocks of 500 and then randomly select 20 of these blocks and survey every household that is part of the blocks chosen
+
+ This last option is an example of **cluster sampling**. In cluster sampling, we have **primary sampling units**(psus), or clusters, which are represented by the blocks. We also have **secondary sampling units**(ssus) which are the households within the blocks. In an SRS, the units sampled are the observed elements, but in a cluster sample, the sampling units are our clusters. In a cluster sample, our universe is the population $N$ clusters. 
+
+Cluster of 400 households vs SRS of 400 households?
+
+- The cluster sample would result in less precision because of our blocks. Some might be composed of mainly families(who are more likely to have bikes) while others are mainly older people.
+- In this case, clusters won’t be as representative of the population as a SRS would. 
+- Can be cheaper and faster than other sampling methods
+
+# Notation & Formulas
+
+::: panel-tabset
+## Pop psu level
+
+| Symbol      | Formula                                                          | Description                                    |
+|------------|--------------------------|----------------------------------------|
+| $y_{ij}$    |                                                                  | measurement for the $j$th element in $i$th psu |
+| $N$         |                                                                  | number of clusters (psus) in the population    |
+| $M_{i}$     |                                                                  | number of ssus in psu $i$                      |
+| $M_{0}$     | $\sum_{i=1}^{N} M_{i}$                                           | total number of ssus in the population         |
+| $t_{i}$     | $\sum_{j=1}^{M_{i}} y_{ij}$                                      | total in psu $i$                               |
+| $t$         | $\sum_{i=1}^{N} t_{i}= \sum_{i=1}^{N} \sum_{j=1}^{M_{i}} y_{ij}$ | population total                               |
+| $S_{t}^{2}$ | $\frac{1}{N-1} \sum_{i=1}^{N} (t_{i} - \frac{t}{N})^2$           | population variance of the psu totals          |
+
+## Pop ssu level
+
+| Symbol           | Formula                                                                  | Description                        |
+|-------------------|-----------------------------------|-------------------|
+| $\bar{y}_{\mu}$  | $\frac{1}{M_0} \sum_{i=1}^N \sum_{j=1}^{M_i} y_{ij}$                     | population mean                    |
+| $\bar{y}_{i\mu}$ | $\frac{1}{M_i} \sum_{j=1}^{M_i} y_{ij} = \frac{t_i}{M_i}$                | population mean in psu $i$         |
+| $S^2$            | $\frac{1}{M_0-1} \sum_{i=1}^N \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2$ | population variance (per ssu)      |
+| $S_{i}^{2}$      | $\frac{1}{M_i-1} \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2$              | population variance within psu $i$ |
+
+## Sample
+| Symbol                   | Formula                                                  | Description                                     |
+|------------------|-----------------------------|-----------------------------|
+| $y_{ij}$ |                                                                |Measurement for$j$th element in $i$ht psu                                             |
+|$N$||Number of clusters (psus) in the population|
+|$M_i$||Number of ssus in psu $i$|
+|$M_{o}$|$\sum_{i=1}^NM_i$|Total number of psus in the popultion|
+|$t_i$|$\sum_{j=1}^{M_i}y_{ij}$|Total in psu $i$|
+|$t$|$\sum_{i=1}^Nt_i = \sum_{i=1}^N\sum_{j=i}^{M_i}y_{ij}$|Popultion Total|
+|$S_i^2$|$\frac{1}{N-1} \sum_{i=1}^N(t_i-\frac{t}{N})^2$|Popultion variance of the psu totals|
+
+:::
+
+
+
 ## Why use Cluster Sampling?
 
 -   Constructing a sample frame list may be expensive, difficult, or impossible.
@@ -37,6 +90,24 @@ Most large surveys usually use cluster sampling, most likely because of the low 
 
 To increase the precision of the clusters, survey conductors could group the population primary sampling units (the clusters) into stratas and select a probability sample of psus within each stratum. 
 
+## When clusters are Ignored
+
+Do not analyze cluster samples like you would analyze an SRS. Doing so can lead to statistics from the survey appearing more precise than they actually are.
+
+:::success
+### Studies in education
+
+Due to the natural clustering of students within a classroom, educational studies often involve cluster sampling. 
+
+Consider a study where a school (the population) is stratified by classroom. 32 professors (16 male and 16 female) were selected based on the subject they taught, years of experience, and tenure status. In this example, the classrooms are the clusters.
+:::
+
+Questionnaires went out to all students in each of the selected classrooms. The researchers wanted to see if students evaluated male and female professors differently.
+
+* The sample size in this study is $n = 32$, the number of faculty studied
+    * Note this is **not** the total number of students who returned the questionnaire.
+* Because the students in each classroom are likely to have some agreement in the rating they assign to their professor, they can not be treated as independent.
+    * If the students are treated as independent, the variance from the sample will be _smaller_ than the real value and differences between clusters will be declared statistically significant more often than they should be.
 
 
 ------------------------------------------------------------------------
@@ -61,7 +132,8 @@ $$
 s_{t}^{2} = \frac{1}{n-1}\sum_{i \in S}\Big(t_{i} - \frac{\hat{t}}{N}\Big)^2
 $$
 
-and $$
+and 
+$$
 \hat{\bar{y}} = \frac{\hat{t}}{NM} \qquad
 V(\hat{\bar{y}}) = \Big(1-\frac{n}{N}\Big)\frac{s^{2}_t}{nM^2}
 $$
@@ -149,3 +221,34 @@ confint(dorm.gpa.mean, level=.95, df=4)
 ```
 
 We can be 95% confident that the average GPA for students living in this dorm is contained in the interval 2.37 to 3.28.
+
+
+------------------------------------------------------------------------
+
+# Two-Stage Clustering Sampling
+
+
+# One Stage vs Two Stage Clustering
+
+### One Stage Clustering
+
+* All you do is carry out an SRS on all available PSUs from your population of $N$ PSUs.  Then subsequently establish a census.
+* This provides us the variance across clusters
+
+### Two Stage Clustering
+
+* In two stage clustering the only additional step is to take an SRS of size $m_i$ within each already sample $i$th PSU.
+* This finds the variance within clusters
+
+#### Unbiased Estimate for $t$
+
+$$t=w_{ij}\sum y_{ij}=\sum\frac{NM_i}{nm_i}y_{ij}$$
+
+Note: The same formula is applicable to both one and two stage clustering because, if you think about it, one stage clustering is just a special case of two stage clustering.  That being the case where $M_i=m_i$.
+
+
+
+------------------------------------------------------------------------
+
+# Systematic Sampling
+

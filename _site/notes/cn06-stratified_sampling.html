@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.319">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -49,43 +50,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -126,6 +97,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -141,65 +113,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../weekly_details.html">
+    <a class="nav-link" href="../weekly_details.html" rel="" target="">
  <span class="menu-text">Weekly Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html">
+    <a class="nav-link" href="../notes.html" rel="" target="">
  <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html">
+    <a class="nav-link" href="../assignments.html" rel="" target="">
  <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">HackMD</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-hackmd">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources" rel="" target="">
  <span class="dropdown-text">R resources</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-intro_sampling">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-intro_sampling" rel="" target="">
  <span class="dropdown-text">Sampling Framework notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn03-statistical_foundations">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn03-statistical_foundations" rel="" target="">
  <span class="dropdown-text">Foundations of Estimation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn06_stratified">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn06_stratified" rel="" target="">
  <span class="dropdown-text">Stratified Sampling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn07_cluster">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn07_cluster" rel="" target="">
  <span class="dropdown-text">Cluster Sampling</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -234,8 +206,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#allocation-methods" id="toc-allocation-methods" class="nav-link" data-scroll-target="#allocation-methods">Allocation Methods</a>
   <ul class="collapse">
   <li><a href="#which-allocation-to-use" id="toc-which-allocation-to-use" class="nav-link" data-scroll-target="#which-allocation-to-use">Which allocation to use?</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
+  <li><a href="#selecting-strata" id="toc-selecting-strata" class="nav-link" data-scroll-target="#selecting-strata">Selecting Strata</a>
+  <ul class="collapse">
+  <li><a href="#defining-strata" id="toc-defining-strata" class="nav-link" data-scroll-target="#defining-strata">Defining Strata</a></li>
+  <li><a href="#how-many-strata" id="toc-how-many-strata" class="nav-link" data-scroll-target="#how-many-strata">How Many Strata?</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#using-r" id="toc-using-r" class="nav-link" data-scroll-target="#using-r">Using R</a>
   <ul class="collapse">
   <li><a href="#selecting-a-stratified-random-sample" id="toc-selecting-a-stratified-random-sample" class="nav-link" data-scroll-target="#selecting-a-stratified-random-sample">Selecting a Stratified Random Sample</a>
@@ -313,12 +290,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Lowers variance when done properly; variance within each strata is likely lower than the population variance</li>
 <li>you do not have to sample the same fraction of observations in each stratum. If the variability is higher in a certain strata then you can try to reduce the variability of the estimated total by taking more observations from that stratum.</li>
 </ul>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Motivating Example - Estimating the average number of farm acres.
 </div>
 </div>
@@ -345,12 +322,12 @@ Motivating Example - Estimating the average number of farm acres.
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>agstrat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agstrat.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exploring the distribution of farm acreage in 1992 by region.
 </div>
 </div>
@@ -386,7 +363,7 @@ Exploring the distribution of farm acreage in 1992 by region.
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(new_table3<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 6%">
 <col style="width: 18%">
@@ -447,12 +424,12 @@ Exploring the distribution of farm acreage in 1992 by region.
 <blockquote class="blockquote">
 <p>More information on how to do this in the next section.</p>
 </blockquote>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="star">⭐</span> You try it.
 </div>
 </div>
@@ -460,12 +437,12 @@ Exploring the distribution of farm acreage in 1992 by region.
 <p>Explore the distribution of farm acreage in 1987 by region. Create a table of summary statistics and a boxplot. Discuss your findings.</p>
 </div>
 </div>
-<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -508,12 +485,12 @@ Solution
 <li>Observations within strata are more similar to each other, than they are to the population as a whole</li>
 <li>reduction in variance in individual strata can lead to a reduced variance for the population estimate.</li>
 </ul>
-<div class="callout-important callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition: Relative gain from stratification
 </div>
 </div>
@@ -527,12 +504,12 @@ Definition: Relative gain from stratification
 <blockquote class="blockquote">
 <p>By sampling within strata, we are “borrowing” information from other similar observations.</p>
 </blockquote>
-<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Clean up
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -564,7 +541,7 @@ Clean up
 <li><span class="math inline">\(\sum_{j}\)</span> means to sum over the units that were sampled from in strata <span class="math inline">\(h\)</span></li>
 <li><span class="math inline">\(\sum_{h}\)</span> is shorthand for <span class="math inline">\(\sum_{H=1}^{h}\)</span></li>
 </ul>
-<div class="panel-tabset">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Formulas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Explanations</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
@@ -720,12 +697,12 @@ Clean up
 <p>If either the sample sizes within each stratum are large or the sampling design has a large number of strata, then the confidence interval for the population mean <span class="math inline">\(\bar{y}\mu\)</span> is:</p>
 <p><span class="math display">\[ \bar{y}_{str}= \pm z_{\alpha /2 } SE (\bar{y}_{str})\]</span></p>
 <p>However, most survey packages use a <span class="math inline">\(t_{n-H}\)</span> distribution instead of using the normal assumption.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Example: Estimate the total number of farm acres in 1992 (Table 3.2)
 </div>
 </div>
@@ -818,12 +795,12 @@ Example: Estimate the total number of farm acres in 1992 (Table 3.2)
 </div>
 </div>
 <p>The estimated total number of acres devoted to farming is 909,736,035, with standard error 50,417,248. These numbers match those found in Table 3.2.</p>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="star">⭐</span> You try it
 </div>
 </div>
@@ -831,7 +808,7 @@ Example: Estimate the total number of farm acres in 1992 (Table 3.2)
 <p>Siniff and Skoog (1964) used stratified random sampling to estimate the size of a herd of Alaskan caribou in 1992. Using prior known caribou density estimates for the region, the researches divided the area into 6 strata, then within each strata they formed a grid where each cell was 4 sq miles. They then randomly sampled the grids within each strata. The summary information from each strata is contained in the table below.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Stratum</th>
@@ -891,12 +868,12 @@ Example: Estimate the total number of farm acres in 1992 (Table 3.2)
 <p>Use this information and the equations from this chapter to calculate the estimated total number of caribou in this region in Alaska with a 95% CI.</p>
 </div>
 </div>
-<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -949,12 +926,12 @@ Solution
 <pre><code>Error in eval(expr, envir, enclos): object 's.error' not found</code></pre>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 missing
 </div>
 </div>
@@ -966,12 +943,12 @@ missing
 </div>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="star">⭐</span> You try it
 </div>
 </div>
@@ -980,7 +957,7 @@ missing
 <p>Use the summary table below to estimate the the percentage and number of respondents that are female in those seven disciplines.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Membership</th>
@@ -1030,12 +1007,12 @@ missing
 </div>
 </div>
 </div>
-<div class="callout-warning callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1074,12 +1051,12 @@ Solution
 </div>
 </div>
 </div>
-<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Clean up
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1110,12 +1087,12 @@ Clean up
 <p><span class="math display">\[\bar{y}_{str}= \frac{\hat{t}_{str}}{\sum_{h=1}^H\sum_{j\in S_h} w_{hj}}=
 \frac{\sum_{h=1}^H\sum_{j\in S_h} w_{hj}y_{hj}}{\sum_{h=1}^H\sum_{j\in S_h} w_{hj}}\]</span></p>
 <p>is the estimate for a population mean using stratified sampling.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Example: Re-Estimate the total number of farm acres in 1992 using sample weights
 </div>
 </div>
@@ -1217,12 +1194,12 @@ Example: Re-Estimate the total number of farm acres in 1992 using sample weights
 <blockquote class="blockquote">
 <p>Note. This value for <code>tau.hat.str</code> does not match what the book says. Not sure where the error is at.</p>
 </blockquote>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="star">⭐</span> You try it Caribou weights
 </div>
 </div>
@@ -1244,12 +1221,12 @@ Example: Re-Estimate the total number of farm acres in 1992 using sample weights
 </div>
 </div>
 <p>Note: We cannot re-estimate the total number of caribou using the information provided because we are given the summary statistics <span class="math inline">\(\bar{Y}_h\)</span>, not the raw data <span class="math inline">\(y_{hj}\)</span>. To re-estimate the total number of caribou we would need to multiply the weights <span class="math inline">\(w_{h}\)</span> to <span class="math inline">\(y_{hj}\)</span>.</p>
-<div class="callout-note callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Clean up
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1269,9 +1246,19 @@ Clean up
 <h1>Allocation Methods</h1>
 <p>Designing the survey is the most important part of using a survey in research. If the survey is badly designed, then no amount of analysis will yield the needed information.</p>
 <p>Simple random sample was easy - you just need to figure out the end sample size. For stratified sampling, we need to define the strata, and the sample size within each strata.</p>
-<section id="method-1-proportional-allocation" class="level4">
-<h4 class="anchored" data-anchor-id="method-1-proportional-allocation">Method 1: Proportional Allocation</h4>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Method 1: Proportional Allocation
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The number of sampling unit in a stratum is proportional to the population of each stratum.</p>
+</div>
+</div>
 <ul>
 <li>Probability selection (n/N) the same for each stratum (n being the number of sampling units in the stratum and N being the population of the stratum)</li>
 <li>Weight of each sample will be the same</li>
@@ -1279,36 +1266,187 @@ Clean up
 <li>Self-weighting: every unit in sample carries the same weight</li>
 <li>When the strata are large enough, <span class="math inline">\(Var(\bar{y}_{str})\)</span> will almost always be less than the population variance of <span class="math inline">\(Var(\bar{y}_{srs})\)</span> of the same sample size</li>
 <li>The more the means of the strata differ, the more precision you will gain from using proportional allocation.</li>
+<li>When the variances are roughly the same across all strata, proportional allocation is likely your best bet for increasing precision</li>
 </ul>
-</section>
-<section id="method-2-optimal-allocation" class="level4">
-<h4 class="anchored" data-anchor-id="method-2-optimal-allocation">Method 2: Optimal Allocation</h4>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Method 2: Optimal Allocation
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Allocation of sampling units to strata so that the variance of the estimator is minimized for a given total cost.</p>
+</div>
+</div>
 <ul>
-<li>Disproportional allocation: Allocation of sampling units to strata so that the sampling fractions $ are unequal</li>
-</ul>
-</section>
-<section id="method-3-allocation-for-specified-precision-within-strata" class="level4">
-<h4 class="anchored" data-anchor-id="method-3-allocation-for-specified-precision-within-strata">Method 3: Allocation for Specified Precision within Strata</h4>
+<li>It is best to use when the sampling units are from corporations, cities, hospitals, or wherever the size varies largely. You want to get the most from the least cost.
 <ul>
-<li>Sometimes we are less interested in estimating the overall population values, and more interested in comparing the totals or means across stratum</li>
-<li>In this case we would need to determine the sample size for each stratum that corresponds to a specific level of precision.</li>
+<li>E.g. If we wanted to estimate trade with Europe, the variance among large corporations would be larger than when compared to small corporations, so we’d sample more large corporations</li>
+</ul></li>
+<li>When the variances of the strata are significantly different, optimal allocation lowers the cost</li>
+<li>When certain strata are more expensive to sample than others, optimal allocation may be useful</li>
+<li>Generally, heavily sample from a stratum if:
+<ul>
+<li>Stratum is large</li>
+<li>Variance of stratum is large</li>
+<li>Its cheap</li>
+</ul></li>
 </ul>
-</section>
+<p>Optimization methods:</p>
+<ul>
+<li><em>Disproportional allocation</em>: Allocation of sampling units to strata so that the sampling fractions <span class="math inline">\(\frac{n_h}{N_h}\)</span> are unequal</li>
+<li><em>Oversampling</em>: Selecting more observations in a stratum than would be called for in proportional allocation. An oversampled stratum has <span class="math inline">\(\frac{n_h}{N_h} \gt \frac{n}{N}\)</span></li>
+<li><em>Neyman Allocation</em>: special case of optimal allocation where the costs in the strata are about equal, but the variances are not
+<ul>
+<li>If variances within strata are specified correctly, Neyman Allocation will give a smaller variance than proportional allocation</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Method 3: Allocation for Specified Precision within Strata
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sometimes we are less interested in estimating the overall population values, and more interested in comparing the totals or means across stratum</p>
+<p>In this case we would need to determine the sample size for each stratum that corresponds to a specific level of precision.</p>
+</div>
+</div>
 <section id="which-allocation-to-use" class="level2">
 <h2 class="anchored" data-anchor-id="which-allocation-to-use">Which allocation to use?</h2>
+<p>Proportional Allocation</p>
+<ul>
+<li>should be used when you want your sample to be a mini version of the population.</li>
+<li>the only knowledge about your data that is needed is N, making this a better option for some survey designs that might not have information about variances</li>
+</ul>
+<p>Disproportional Allocation:</p>
+<ul>
+<li>should be used when you want to oversample one or more of the strata</li>
+<li>to guarantee precision in a certain strata</li>
+</ul>
+</section>
+</section>
+<section id="selecting-strata" class="level1">
+<h1>Selecting Strata</h1>
+<section id="defining-strata" class="level3">
+<h3 class="anchored" data-anchor-id="defining-strata">Defining Strata</h3>
+<ul>
+<li>Stratified sampling with proportional allocation improves the precision for every variable y measured in the survey.</li>
+<li>We want the means across strata to be as different as possible
+<ul>
+<li>We do this to minimize the variability within strata</li>
+</ul></li>
+<li>Most surveys measure more than one variable, so any stratification design should keep many characteristics of interest in mind.
+<ul>
+<li>If several stratification designs are applicable, use the design associated with the most important responses.</li>
+</ul></li>
+</ul>
+</section>
+<section id="how-many-strata" class="level3">
+<h3 class="anchored" data-anchor-id="how-many-strata">How Many Strata?</h3>
+<ul>
+<li>The more information you have, the more strata you should use.</li>
+<li>If there is a lot of prior information known about the target population, then an SRS may be more convenient.</li>
+<li>Appropriate number of strata depends on a lot
+<ul>
+<li>The difficulty in constructing a sampling frame with stratifying information</li>
+<li>Cost of Stratifying</li>
+</ul></li>
+<li>General rule: The less information, the fewer strata you should use.
+<ul>
+<li>Use an SRS when you know practically nothing about the target population.
+<ul>
+<li>However, you can usually collect preliminary data
+<ul>
+<li>The information used to construct strata does not need to be perfect because misclassification does not affect the validity of estimates from the survey because their properties depend only on the stratification that was used.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Estimating homeless population from NYC
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>New York City takes an annual survey to estimate the homeless population and collect data on their characteristics. The survey is conducted on one of the first 10 nights in January; all data is collected in one night to reduce the chances of double counting.</p>
+<p>The sampling plan needs to meet two criteria:</p>
+<ol type="1">
+<li>Provide an accurate estimate on the size of the unsheltered population (data on sheltered homeless is collected from the shelters, so population size is known)<br>
+</li>
+<li>Contact as many unsheltered homeless as possible.</li>
+</ol>
+</div>
+</div>
+<p>NYC decided to use a stratified random sample, to do this they:</p>
+<ul>
+<li>Partitioned the city into 7000 areas</li>
+<li>Using previous years’ data and other available resources, classified each area as either “high density” or “low density”
+<ul>
+<li>High density is defined as an area expected to contain at least 1 homeless person, save for in Manhattan or the subway system, where we would expect to find at least two homeless people there</li>
+<li>Low density is defined as not high density</li>
+</ul></li>
+</ul>
+<p>This results in 12 strata: one high and one low density stratum for each of the 5 boroughs plus the subway system.</p>
+<p>All areas in high density areas were canvassed, while they took a random sample of areas in low density strata</p>
+<p>The results are statistically valid because a random sample of areas is sampled from each of the low density stratum</p>
+<p>There is some measurement error due to 3 things:</p>
+<ol type="1">
+<li>Some homeless people are in dark places and are not seen</li>
+<li>Some areas are deemed unsafe so no samples can be taken</li>
+<li>Cannot always tell if an individual is homeless or not</li>
+</ol>
 <hr>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
 <ul>
-<li>This section setup the motivation for why using the stratified sampling method may be beneficial.</li>
-<li>Once SRS’s are taken from each strata, the results can be pooled to make inferences about the entire population (the ultimate goal).</li>
-<li>Don’t have to sample the same % from each strata</li>
-<li>Could see a greater reduction in variance of the overall estimate with an increased sampling fraction from strata with high variance.</li>
+<li><p>This section setup the motivation for why using the stratified sampling method may be beneficial.</p></li>
+<li><p>Once SRS’s are taken from each strata, the results can be pooled to make inferences about the entire population (the ultimate goal).</p></li>
+<li><p>Don’t have to sample the same % from each strata</p></li>
+<li><p>Could see a greater reduction in variance of the overall estimate with an increased sampling fraction from strata with high variance.</p></li>
+<li><p>Stratification is an SRS of size n_h from each stratum h</p>
+<ul>
+<li>Relative pop size for each stratum: N_h/N</li>
+<li>Probability for unit i in stratum h: n_h/N_h</li>
+<li>Sampling weight: N_h/n_h</li>
+<li>To estimate the population total using a stratified random sample, let <span class="math inline">\(\hat{tau_h}\)</span> estimate the population total in stratum <span class="math inline">\(h\)</span>.</li>
+</ul></li>
+</ul>
+<p><strong>3 Design Issues When Stratifying</strong></p>
+<ul>
+<li>Strata Definitions</li>
+<li>Total sample size</li>
+<li>Proper Allocation Method</li>
+</ul>
+<p><strong>Allocation Methods</strong></p>
+<ul>
+<li>Proportional allocation focuses on reducing the variance of the final estimate.
+<ul>
+<li>The same sampling fraction is used in each stratum</li>
+<li>Almost always results in smaller variances for estimated means and totals than SRS</li>
+</ul></li>
+<li>Disproportional allocation
+<ul>
+<li>May be preferred if some strata should have higher sampling fractions than others ex. If wanting to have larger sample sizes for strata with minority populations or for strata with large companies</li>
+</ul></li>
+<li>Optimal Allocation
+<ul>
+<li>Specifies taking larger sampling fractions in strata that have larger variances or lower sampling costs</li>
+</ul></li>
 </ul>
 <hr>
-</section>
 </section>
 <section id="using-r" class="level1">
 <h1>Using R</h1>
@@ -1343,27 +1481,27 @@ Clean up
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="ot">&lt;-</span> <span class="fu">getdata</span>(agpop.sorted, strat.idx)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>              county state acres92 acres87 acres82 farms92 farms87 farms82
-4   APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
-7  BLACK HAWK COUNTY    IA  299502  305516  308845    1111    1269    1352
-31    DUBUQUE COUNTY    IA  343870  334112  338912    1653    1689    1708
-52    JOHNSON COUNTY    IA  284537  305634  328240    1242    1356    1508
-60       LYON COUNTY    IA  347599  342938  357493    1194    1234    1391
-61    MADISON COUNTY    IA  305685  293643  313648    1026    1059    1154
+<pre><code>           county state acres92 acres87 acres82 farms92 farms87 farms82
+15    CASS COUNTY    IA  347353  333083  345726     905     942    1087
+36 FREMONT COUNTY    IA  302352  308796  306786     596     719     771
+37  GREENE COUNTY    IA  366927  353283  359023     851     948    1054
+44   HENRY COUNTY    IA  225835  231617  239403     795     893     963
+45  HOWARD COUNTY    IA  260781  269285  278861     881     938    1055
+48    IOWA COUNTY    IA  321285  329705  361465     977    1057    1150
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-4        28       33       23       25       39       36     NC       4
-7        49       34       27      116      152      154     NC       7
-31       13       10        8      107      128       88     NC      31
-52       27       31       26       74      104       99     NC      52
-60       32       24       15      128      125      127     NC      60
-61       47       44       39       47       75       81     NC      61
+15       70       52       38       55       66       72     NC      15
+36       91       72       51       37       59       50     NC      36
+37       78       52       38       51       81       89     NC      37
+44       31       20       18       57       69       63     NC      44
+45       40       33       30       68       64       70     NC      45
+48       43       32       36       58       64       62     NC      48
          Prob Stratum
-4  0.09772296       1
-7  0.09772296       1
-31 0.09772296       1
-52 0.09772296       1
-60 0.09772296       1
-61 0.09772296       1</code></pre>
+15 0.09772296       1
+36 0.09772296       1
+37 0.09772296       1
+44 0.09772296       1
+45 0.09772296       1
+48 0.09772296       1</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
@@ -1373,27 +1511,27 @@ Clean up
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>ag.str<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>ag.str<span class="sc">$</span>Prob</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>              county state acres92 acres87 acres82 farms92 farms87 farms82
-4   APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
-7  BLACK HAWK COUNTY    IA  299502  305516  308845    1111    1269    1352
-31    DUBUQUE COUNTY    IA  343870  334112  338912    1653    1689    1708
-52    JOHNSON COUNTY    IA  284537  305634  328240    1242    1356    1508
-60       LYON COUNTY    IA  347599  342938  357493    1194    1234    1391
-61    MADISON COUNTY    IA  305685  293643  313648    1026    1059    1154
+<pre><code>           county state acres92 acres87 acres82 farms92 farms87 farms82
+15    CASS COUNTY    IA  347353  333083  345726     905     942    1087
+36 FREMONT COUNTY    IA  302352  308796  306786     596     719     771
+37  GREENE COUNTY    IA  366927  353283  359023     851     948    1054
+44   HENRY COUNTY    IA  225835  231617  239403     795     893     963
+45  HOWARD COUNTY    IA  260781  269285  278861     881     938    1055
+48    IOWA COUNTY    IA  321285  329705  361465     977    1057    1150
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-4        28       33       23       25       39       36     NC       4
-7        49       34       27      116      152      154     NC       7
-31       13       10        8      107      128       88     NC      31
-52       27       31       26       74      104       99     NC      52
-60       32       24       15      128      125      127     NC      60
-61       47       44       39       47       75       81     NC      61
+15       70       52       38       55       66       72     NC      15
+36       91       72       51       37       59       50     NC      36
+37       78       52       38       51       81       89     NC      37
+44       31       20       18       57       69       63     NC      44
+45       40       33       30       68       64       70     NC      45
+48       43       32       36       58       64       62     NC      48
          Prob Stratum       wt
-4  0.09772296       1 10.23301
-7  0.09772296       1 10.23301
-31 0.09772296       1 10.23301
-52 0.09772296       1 10.23301
-60 0.09772296       1 10.23301
-61 0.09772296       1 10.23301</code></pre>
+15 0.09772296       1 10.23301
+36 0.09772296       1 10.23301
+37 0.09772296       1 10.23301
+44 0.09772296       1 10.23301
+45 0.09772296       1 10.23301
+48 0.09772296       1 10.23301</code></pre>
 </div>
 </div>
 <p>5b. Check that the sampling weights sum to the stratum population sizes.</p>
@@ -1415,12 +1553,12 @@ Clean up
 1054  220 1382  422 </code></pre>
 </div>
 </div>
-<div class="callout-important callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Warning
 </div>
 </div>
@@ -1428,17 +1566,17 @@ Warning
 <p>If the weights do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Clean up
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>()[<span class="sc">!</span><span class="fu">ls</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"agpop"</span>, <span class="st">"agstrat"</span>,<span class="st">"caribou"</span>, <span class="st">"agpop.sorted"</span>, <span class="st">"N.k"</span>, <span class="st">"n.k"</span>, <span class="st">"ag.str"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1464,7 +1602,7 @@ Clean up
 <div class="cell">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>option1.fpc <span class="ot">&lt;-</span> <span class="fu">rep</span>(N.k, n.k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-tip callout callout-style-simple no-icon">
+<div class="callout callout-style-simple callout-tip no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -1514,20 +1652,20 @@ Clean up
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>(str.total <span class="ot">&lt;-</span> <span class="fu">svytotal</span>(<span class="sc">~</span>acres92, agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            total       SE
-acres92 914183605 65768044</code></pre>
+acres92 958967357 56164159</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(str.total, <span class="at">level =</span> .<span class="dv">95</span>, <span class="at">df =</span> <span class="fu">degf</span>(agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            2.5 %     97.5 %
-acres92 784751390 1043615820</code></pre>
+acres92 848435688 1069499025</code></pre>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Example: Farmland in 1992
 </div>
 </div>
@@ -1580,7 +1718,7 @@ acres92 810514350 1008957721</code></pre>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>                         svytotal, <span class="at">keep.var =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(regional.totals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -1623,6 +1761,65 @@ acres92 810514350 1008957721</code></pre>
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(regional.totals<span class="sc">$</span>acres92)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 909736036</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> Estimating vehicle information for the entire USA.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Vehicle Inventory and Use Survey (VIUS) used is the result of a a stratified random sampling design that collects information on the number of private and commercial trucks in each state.</p>
+<p>In the 2002 survey, 255 strata (51 * 5) were created from truck registrations among the 51 states and 5 truck types. Within each state (+DC),the truck registrations were partitioned into one of five classes:</p>
+<ol type="1">
+<li>Pickups</li>
+<li>Minivans, other light vans, and sport utility vehicles</li>
+<li>Light single-unit trucks with gross vehicle weight less than 26,000 pounds</li>
+<li>Heavy single-unit trucks with gross vehicle weight greater than or equal to 26,000 pounds</li>
+<li>Truck-tractors</li>
+</ol>
+<p>Use the <code>vius.csv</code> data to answer the following questions. The stratification variable is named <code>stratum</code> and the weights are contained in the variable <code>tabtrucks</code>.</p>
+<ol type="a">
+<li>Estimate the total number of trucks in the US</li>
+<li>Estimate the total number of truck miles driven in 2002 (variable <code>miles_annl</code>)</li>
+<li>Estimate the total number of truck miles driven in 2002 for each of the five trucktypes classes.</li>
+<li>Estimate the total number of vehicles that have gross vehicle weight exceeding 10,000 lbs (variable <code>vius_gvw</code>)</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>vius <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"vius.csv"</span>))</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(vius<span class="sc">$</span>trucktype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1     2     3     4     5 
+11654 11966 26424 27239 21399 </code></pre>
+</div>
+</div>
+<p>Set the survey design.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>vius.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">strata =</span> <span class="sc">~</span>stratum, </span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">weights =</span> <span class="sc">~</span>tabtrucks,</span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> vius)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -1774,9 +1971,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1841,6 +2052,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1884,6 +2181,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 

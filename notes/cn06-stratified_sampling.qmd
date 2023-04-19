@@ -505,9 +505,10 @@ Designing the survey is the most important part of using a survey in research. I
 
 Simple random sample was easy - you just need to figure out the end sample size. For stratified sampling, we need to define the strata, and the sample size within each strata.
 
-#### Method 1: Proportional Allocation
-
+:::{.callout-important}
+### Method 1: Proportional Allocation
 The number of sampling unit in a stratum is proportional to the population of each stratum.
+:::
 
 -   Probability selection (n/N) the same for each stratum (n being the number of sampling units in the stratum and N being the population of the stratum)
 -   Weight of each sample will be the same
@@ -515,29 +516,139 @@ The number of sampling unit in a stratum is proportional to the population of ea
 -   Self-weighting: every unit in sample carries the same weight
 -   When the strata are large enough, $Var(\bar{y}_{str})$ will almost always be less than the population variance of $Var(\bar{y}_{srs})$ of the same sample size
 -   The more the means of the strata differ, the more precision you will gain from using proportional allocation.
+* When the variances are roughly the same across all strata, proportional allocation is likely your best bet for increasing precision
 
-#### Method 2: Optimal Allocation
 
+:::{.callout-important}
+### Method 2: Optimal Allocation
 Allocation of sampling units to strata so that the variance of the estimator is minimized for a given total cost.
+:::
 
--   Disproportional allocation: Allocation of sampling units to strata so that the sampling fractions \$\frac{n_h}{N_h} are unequal
+* It is best to use when the sampling units are from corporations, cities, hospitals, or wherever the size varies largely. You want to get the most from the least cost.
+    - E.g. If we wanted to estimate trade with Europe, the variance among large corporations would be larger than when compared to small corporations, so we’d sample more large corporations 
+* When the variances of the strata are significantly different, optimal allocation lowers the cost
+* When certain strata are more expensive to sample than others, optimal allocation may be useful
+* Generally, heavily sample from a stratum if:
+    * Stratum is large
+    * Variance of stratum is large
+    * Its cheap
+  
+Optimization methods: 
 
-#### Method 3: Allocation for Specified Precision within Strata
+* _Disproportional allocation_: Allocation of sampling units to strata so that the sampling fractions $\frac{n_h}{N_h}$ are unequal
+* _Oversampling_: Selecting more observations in a stratum than would be called for in proportional allocation. An oversampled stratum has $\frac{n_h}{N_h} \gt   \frac{n}{N}$
+* _Neyman Allocation_: special case of optimal allocation where the costs in the strata are about equal, but the variances are not
+    * If variances within strata are specified correctly, Neyman Allocation will give a smaller variance than proportional allocation
 
--   Sometimes we are less interested in estimating the overall population values, and more interested in comparing the totals or means across stratum
--   In this case we would need to determine the sample size for each stratum that corresponds to a specific level of precision.
+
+
+:::{.callout-important}
+### Method 3: Allocation for Specified Precision within Strata
+Sometimes we are less interested in estimating the overall population values, and more interested in comparing the totals or means across stratum
+
+In this case we would need to determine the sample size for each stratum that corresponds to a specific level of precision.
+:::
+
 
 ## Which allocation to use?
 
+Proportional Allocation 
+
+* should be used when you want your sample to be a mini version of the population. 
+* the only knowledge about your data that is needed is N, making this a better option for some survey designs that might not have information about variances
+
+Disproportional Allocation: 
+
+* should be used when you want to oversample one or more of the strata
+* to guarantee precision in a certain strata 
+
+
+# Selecting Strata
+
+
+### Defining Strata
+
+* Stratified sampling with proportional allocation improves the precision for every variable y measured in the survey.
+* We want the means across strata to be as different as possible
+    * We do this to minimize the variability within strata
+* Most surveys measure more than one variable, so any stratification design should keep many characteristics of interest in mind.
+    * If several stratification designs are applicable, use the design associated with the most important responses.
+
+### How Many Strata?
+
+* The more information you have, the more strata you should use.
+* If there is a lot of prior information known about the target population, then an SRS may be more convenient. 
+* Appropriate number of strata depends on a lot 
+    * The difficulty in constructing a sampling frame with stratifying information
+    * Cost of Stratifying
+* General rule: The less information, the fewer strata you should use. 
+    * Use an SRS when you know practically nothing about the target population.
+        * However, you can usually collect preliminary data
+            * The information used to construct strata does not need to be perfect because misclassification does not affect the validity of estimates from the survey because their properties depend only on the stratification that was used.
+
+:::{.callout-tip icon=true}
+### Example: Estimating homeless population from NYC
+New York City takes an annual survey to estimate the homeless population and collect data on their characteristics. The survey is conducted on one of the first 10 nights in January; all data is collected in one night to reduce the chances of double counting.
+
+The sampling plan needs to meet two criteria:
+
+1. Provide an accurate estimate on the size of the unsheltered population (data on sheltered homeless is collected from the shelters, so population size is known)  
+2. Contact as many unsheltered homeless as possible.
+:::
+
+
+NYC decided to use a stratified random sample, to do this they:
+
+* Partitioned the city into 7000 areas
+* Using previous years’ data and other available resources, classified each area as either “high density” or “low density”
+    * High density is defined as an area expected to contain at least 1 homeless person, save for in Manhattan or the subway system, where we would expect to find at least two homeless people there
+    * Low density is defined as not high density
+
+This results in 12 strata: one high and one low density stratum for each of the 5 boroughs plus the subway system.
+
+All areas in high density areas were canvassed, while they took a random sample of areas in low density strata
+
+The results are statistically valid because a random sample of areas is sampled from each of the low density stratum
+
+There is some measurement error due to 3 things:
+
+1. Some homeless people are in dark places and are not seen
+2. Some areas are deemed unsafe so no samples can be taken
+3. Cannot always tell if an individual is homeless or not
+
+
 ------------------------------------------------------------------------
 
-## Summary
+# Summary
 
 -   This section setup the motivation for why using the stratified sampling method may be beneficial.
 -   Once SRS's are taken from each strata, the results can be pooled to make inferences about the entire population (the ultimate goal).
 -   Don't have to sample the same % from each strata
 -   Could see a greater reduction in variance of the overall estimate with an increased sampling fraction from strata with high variance.
 
+* Stratification is an SRS of size n_h from each stratum h 
+    * Relative pop size for each stratum: N_h/N
+    * Probability for unit i in stratum h: n_h/N_h
+    * Sampling weight: N_h/n_h
+    * To estimate the population total using a stratified random sample, let $\hat{tau_h}$ estimate the population total in stratum $h$.
+
+**3 Design Issues When Stratifying**
+
+* Strata Definitions 
+* Total sample size
+* Proper Allocation Method
+
+**Allocation Methods**
+
+* Proportional allocation focuses on reducing the variance of the final estimate. 
+    * The same sampling fraction is used in each stratum 
+    * Almost always results in smaller variances for estimated means and totals than SRS
+* Disproportional allocation 
+    * May be preferred if some strata should have higher sampling fractions than others
+    ex. If wanting to have larger sample sizes for strata with minority populations or for strata with large companies 
+* Optimal Allocation 
+    * Specifies taking larger sampling fractions in strata that have larger variances or lower sampling costs
+    
 ------------------------------------------------------------------------
 
 # Using R
@@ -704,3 +815,43 @@ Confirm the overall total $\hat{\tau}_{str}$ by summing these values across the 
 ```{r}
 sum(regional.totals$acres92)
 ```
+
+
+:::{.callout-warning icon=false}
+### :star: Estimating vehicle information for the entire USA. 
+
+The Vehicle Inventory and Use Survey (VIUS) used is the result of a a stratified random sampling design that collects information on the number of private and commercial trucks in each state. 
+
+In the 2002 survey, 255 strata (51 * 5) were created from truck registrations among the 51 states and 5 truck types. Within each state (+DC),the truck registrations were partitioned into one of five classes: 
+
+1. Pickups
+2. Minivans, other light vans, and sport utility vehicles
+3. Light single-unit trucks with gross vehicle weight less than 26,000 pounds
+4. Heavy single-unit trucks with gross vehicle weight greater than or equal to 26,000 pounds
+5. Truck-tractors
+
+Use the `vius.csv` data to answer the following questions. The stratification variable is named `stratum` and the weights are contained in the variable `tabtrucks`.
+
+a) Estimate the total number of trucks in the US
+b) Estimate the total number of truck miles driven in 2002 (variable `miles_annl`)
+c) Estimate the total number of truck miles driven in 2002 for each of the five trucktypes classes. 
+d) Estimate the total number of vehicles that have gross vehicle weight exceeding 10,000 lbs (variable `vius_gvw`)
+:::
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+
+```{r}
+vius <- readr::read_csv(here::here("data", "vius.csv"))
+table(vius$trucktype)
+```
+
+Set the survey design. 
+```{r}
+vius.dsgn <- svydesign(id = ~1, 
+              strata = ~stratum, 
+              weights = ~tabtrucks,
+              data = vius)
+```
+
+:::

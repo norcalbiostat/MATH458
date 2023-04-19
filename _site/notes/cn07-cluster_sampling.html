@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.319">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -49,43 +50,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -126,6 +97,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -141,65 +113,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../weekly_details.html">
+    <a class="nav-link" href="../weekly_details.html" rel="" target="">
  <span class="menu-text">Weekly Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html">
+    <a class="nav-link" href="../notes.html" rel="" target="">
  <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html">
+    <a class="nav-link" href="../assignments.html" rel="" target="">
  <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">HackMD</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-hackmd">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources" rel="" target="">
  <span class="dropdown-text">R resources</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-intro_sampling">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-intro_sampling" rel="" target="">
  <span class="dropdown-text">Sampling Framework notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn03-statistical_foundations">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn03-statistical_foundations" rel="" target="">
  <span class="dropdown-text">Foundations of Estimation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn06_stratified">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn06_stratified" rel="" target="">
  <span class="dropdown-text">Stratified Sampling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn07_cluster">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn07_cluster" rel="" target="">
  <span class="dropdown-text">Cluster Sampling</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -213,14 +185,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#notation-formulas" id="toc-notation-formulas" class="nav-link" data-scroll-target="#notation-formulas">Notation &amp; Formulas</a>
   <ul class="collapse">
   <li><a href="#why-use-cluster-sampling" id="toc-why-use-cluster-sampling" class="nav-link" data-scroll-target="#why-use-cluster-sampling">Why use Cluster Sampling?</a></li>
+  <li><a href="#when-clusters-are-ignored" id="toc-when-clusters-are-ignored" class="nav-link" data-scroll-target="#when-clusters-are-ignored">When clusters are Ignored</a>
+  <ul class="collapse">
+  <li><a href="#studies-in-education" id="toc-studies-in-education" class="nav-link" data-scroll-target="#studies-in-education">Studies in education</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#one-stage-clustering-sampling" id="toc-one-stage-clustering-sampling" class="nav-link" data-scroll-target="#one-stage-clustering-sampling">One-Stage Clustering Sampling</a>
   <ul class="collapse">
   <li><a href="#equal-size-clusters" id="toc-equal-size-clusters" class="nav-link" data-scroll-target="#equal-size-clusters">Equal size clusters</a></li>
   </ul></li>
+  <li><a href="#two-stage-clustering-sampling" id="toc-two-stage-clustering-sampling" class="nav-link" data-scroll-target="#two-stage-clustering-sampling">Two-Stage Clustering Sampling</a></li>
+  <li><a href="#one-stage-vs-two-stage-clustering" id="toc-one-stage-vs-two-stage-clustering" class="nav-link" data-scroll-target="#one-stage-vs-two-stage-clustering">One Stage vs Two Stage Clustering</a>
+  <ul class="collapse">
+  <li><a href="#one-stage-clustering" id="toc-one-stage-clustering" class="nav-link" data-scroll-target="#one-stage-clustering">One Stage Clustering</a></li>
+  <li><a href="#two-stage-clustering" id="toc-two-stage-clustering" class="nav-link" data-scroll-target="#two-stage-clustering">Two Stage Clustering</a></li>
+  </ul></li>
+  <li><a href="#systematic-sampling" id="toc-systematic-sampling" class="nav-link" data-scroll-target="#systematic-sampling">Systematic Sampling</a></li>
   </ul>
 </nav>
     </div>
@@ -267,6 +251,171 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<p>Let’s say we want to find the number of bicycles owned within a community of 10,000 households. We have several options for picking a sample:</p>
+<ul>
+<li>Obtaining a SRS of 400 households</li>
+<li>Stratifying households into groups then choosing a SRS from these groups</li>
+<li>Separate the population into blocks of 500 and then randomly select 20 of these blocks and survey every household that is part of the blocks chosen</li>
+</ul>
+<p>This last option is an example of <strong>cluster sampling</strong>. In cluster sampling, we have <strong>primary sampling units</strong>(psus), or clusters, which are represented by the blocks. We also have <strong>secondary sampling units</strong>(ssus) which are the households within the blocks. In an SRS, the units sampled are the observed elements, but in a cluster sample, the sampling units are our clusters. In a cluster sample, our universe is the population <span class="math inline">\(N\)</span> clusters.</p>
+<p>Cluster of 400 households vs SRS of 400 households?</p>
+<ul>
+<li>The cluster sample would result in less precision because of our blocks. Some might be composed of mainly families(who are more likely to have bikes) while others are mainly older people.</li>
+<li>In this case, clusters won’t be as representative of the population as a SRS would.</li>
+<li>Can be cheaper and faster than other sampling methods</li>
+</ul>
+</section>
+<section id="notation-formulas" class="level1">
+<h1>Notation &amp; Formulas</h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Pop psu level</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Pop ssu level</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Sample</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 33%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Formula</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y_{ij}\)</span></td>
+<td></td>
+<td>measurement for the <span class="math inline">\(j\)</span>th element in <span class="math inline">\(i\)</span>th psu</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N\)</span></td>
+<td></td>
+<td>number of clusters (psus) in the population</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(M_{i}\)</span></td>
+<td></td>
+<td>number of ssus in psu <span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(M_{0}\)</span></td>
+<td><span class="math inline">\(\sum_{i=1}^{N} M_{i}\)</span></td>
+<td>total number of ssus in the population</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(t_{i}\)</span></td>
+<td><span class="math inline">\(\sum_{j=1}^{M_{i}} y_{ij}\)</span></td>
+<td>total in psu <span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(t\)</span></td>
+<td><span class="math inline">\(\sum_{i=1}^{N} t_{i}= \sum_{i=1}^{N} \sum_{j=1}^{M_{i}} y_{ij}\)</span></td>
+<td>population total</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(S_{t}^{2}\)</span></td>
+<td><span class="math inline">\(\frac{1}{N-1} \sum_{i=1}^{N} (t_{i} - \frac{t}{N})^2\)</span></td>
+<td>population variance of the psu totals</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 47%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Formula</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\bar{y}_{\mu}\)</span></td>
+<td><span class="math inline">\(\frac{1}{M_0} \sum_{i=1}^N \sum_{j=1}^{M_i} y_{ij}\)</span></td>
+<td>population mean</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\bar{y}_{i\mu}\)</span></td>
+<td><span class="math inline">\(\frac{1}{M_i} \sum_{j=1}^{M_i} y_{ij} = \frac{t_i}{M_i}\)</span></td>
+<td>population mean in psu <span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(S^2\)</span></td>
+<td><span class="math inline">\(\frac{1}{M_0-1} \sum_{i=1}^N \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2\)</span></td>
+<td>population variance (per ssu)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(S_{i}^{2}\)</span></td>
+<td><span class="math inline">\(\frac{1}{M_i-1} \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2\)</span></td>
+<td>population variance within psu <span class="math inline">\(i\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Formula</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y_{ij}\)</span></td>
+<td></td>
+<td>Measurement for<span class="math inline">\(j\)</span>th element in <span class="math inline">\(i\)</span>ht psu</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N\)</span></td>
+<td></td>
+<td>Number of clusters (psus) in the population</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(M_i\)</span></td>
+<td></td>
+<td>Number of ssus in psu <span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(M_{o}\)</span></td>
+<td><span class="math inline">\(\sum_{i=1}^NM_i\)</span></td>
+<td>Total number of psus in the popultion</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(t_i\)</span></td>
+<td><span class="math inline">\(\sum_{j=1}^{M_i}y_{ij}\)</span></td>
+<td>Total in psu <span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(t\)</span></td>
+<td><span class="math inline">\(\sum_{i=1}^Nt_i = \sum_{i=1}^N\sum_{j=i}^{M_i}y_{ij}\)</span></td>
+<td>Popultion Total</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(S_i^2\)</span></td>
+<td><span class="math inline">\(\frac{1}{N-1} \sum_{i=1}^N(t_i-\frac{t}{N})^2\)</span></td>
+<td>Popultion variance of the psu totals</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <section id="why-use-cluster-sampling" class="level2">
 <h2 class="anchored" data-anchor-id="why-use-cluster-sampling">Why use Cluster Sampling?</h2>
 <ul>
@@ -281,12 +430,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>If your target population is nursing home residents in the US, it would be very hard to take an SRS of all nursing home residents, and then travel to each one individually. Taking a cluster sample of a few nursing homes and then taking observations from everyone in them would be less expensive and time consuming.</li>
 </ul></li>
 </ul>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -298,6 +447,26 @@ Note
 <p>This is because members of the same cluster tend to be very similar, and sampling everyone in the cluster results in the same information being repeated rather than learning new information.</p>
 <p>Most large surveys usually use cluster sampling, most likely because of the low costs and convenience compared to other sampling methods</p>
 <p>To increase the precision of the clusters, survey conductors could group the population primary sampling units (the clusters) into stratas and select a probability sample of psus within each stratum.</p>
+</section>
+<section id="when-clusters-are-ignored" class="level2">
+<h2 class="anchored" data-anchor-id="when-clusters-are-ignored">When clusters are Ignored</h2>
+<p>Do not analyze cluster samples like you would analyze an SRS. Doing so can lead to statistics from the survey appearing more precise than they actually are.</p>
+<section id="studies-in-education" class="level3 success">
+<h3 class="anchored" data-anchor-id="studies-in-education">Studies in education</h3>
+<p>Due to the natural clustering of students within a classroom, educational studies often involve cluster sampling.</p>
+<p>Consider a study where a school (the population) is stratified by classroom. 32 professors (16 male and 16 female) were selected based on the subject they taught, years of experience, and tenure status. In this example, the classrooms are the clusters.</p>
+</section>
+<p>Questionnaires went out to all students in each of the selected classrooms. The researchers wanted to see if students evaluated male and female professors differently.</p>
+<ul>
+<li>The sample size in this study is <span class="math inline">\(n = 32\)</span>, the number of faculty studied
+<ul>
+<li>Note this is <strong>not</strong> the total number of students who returned the questionnaire.</li>
+</ul></li>
+<li>Because the students in each classroom are likely to have some agreement in the rating they assign to their professor, they can not be treated as independent.
+<ul>
+<li>If the students are treated as independent, the variance from the sample will be <em>smaller</em> than the real value and differences between clusters will be declared statistically significant more often than they should be.</li>
+</ul></li>
+</ul>
 <hr>
 </section>
 </section>
@@ -322,12 +491,12 @@ s_{t}^{2} = \frac{1}{n-1}\sum_{i \in S}\Big(t_{i} - \frac{\hat{t}}{N}\Big)^2
 \hat{\bar{y}} = \frac{\hat{t}}{NM} \qquad
 V(\hat{\bar{y}}) = \Big(1-\frac{n}{N}\Big)\frac{s^{2}_t}{nM^2}
 \]</span></p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Estimate the income in a two person households
 </div>
 </div>
@@ -341,7 +510,7 @@ Estimate the income in a two person households
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(hhi, <span class="at">align =</span> <span class="st">'c'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: center;">household</th>
@@ -406,12 +575,12 @@ Estimate the income in a two person households
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ci.hi.mu   <span class="ot">&lt;-</span> ybar.hat <span class="sc">+</span> crit.t<span class="sc">*</span><span class="fu">sqrt</span>(var.ybar.hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can be 95% confident that the average population income for a household of two people is contained in the interval ($16,571, $102,670.</p>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="star">⭐</span> You try it: Average GPA in a dorm
 </div>
 </div>
@@ -465,9 +634,39 @@ gpa 2.371593 3.280407</code></pre>
 </div>
 </div>
 <p>We can be 95% confident that the average GPA for students living in this dorm is contained in the interval 2.37 to 3.28.</p>
-
-
+<hr>
 </section>
+</section>
+<section id="two-stage-clustering-sampling" class="level1">
+<h1>Two-Stage Clustering Sampling</h1>
+</section>
+<section id="one-stage-vs-two-stage-clustering" class="level1">
+<h1>One Stage vs Two Stage Clustering</h1>
+<section id="one-stage-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="one-stage-clustering">One Stage Clustering</h3>
+<ul>
+<li>All you do is carry out an SRS on all available PSUs from your population of <span class="math inline">\(N\)</span> PSUs. Then subsequently establish a census.</li>
+<li>This provides us the variance across clusters</li>
+</ul>
+</section>
+<section id="two-stage-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="two-stage-clustering">Two Stage Clustering</h3>
+<ul>
+<li>In two stage clustering the only additional step is to take an SRS of size <span class="math inline">\(m_i\)</span> within each already sample <span class="math inline">\(i\)</span>th PSU.</li>
+<li>This finds the variance within clusters</li>
+</ul>
+<section id="unbiased-estimate-for-t" class="level4">
+<h4 class="anchored" data-anchor-id="unbiased-estimate-for-t">Unbiased Estimate for <span class="math inline">\(t\)</span></h4>
+<p><span class="math display">\[t=w_{ij}\sum y_{ij}=\sum\frac{NM_i}{nm_i}y_{ij}\]</span></p>
+<p>Note: The same formula is applicable to both one and two stage clustering because, if you think about it, one stage clustering is just a special case of two stage clustering. That being the case where <span class="math inline">\(M_i=m_i\)</span>.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="systematic-sampling" class="level1">
+<h1>Systematic Sampling</h1>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -613,9 +812,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -680,6 +893,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -723,6 +1022,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 
