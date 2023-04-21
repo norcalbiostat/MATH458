@@ -30,6 +30,10 @@ Cluster of 400 households vs SRS of 400 households?
 - In this case, clusters won’t be as representative of the population as a SRS would. 
 - Can be cheaper and faster than other sampling methods
 
+
+![Textbook Figure 5.1. Contrasting stratified sampling with one-stage cluster sampling.](../figs/fig5_1.jpg)
+
+
 # Notation & Formulas
 
 ::: panel-tabset
@@ -186,8 +190,8 @@ ci.hi.mu   <- ybar.hat + crit.t*sqrt(var.ybar.hat)
 
 We can be 95% confident that the average population income for a household of two people is contained in the interval (`r scales::dollar(ci.low.mu, accuracy=1)`, `r scales::dollar(ci.hi.mu, accuracy=1)`.
 
-::: {.callout-warning icon="false"}
-### :star: You try it: Average GPA in a dorm
+:::{.callout-tip icon=true}
+### Example: Average GPA in a dorm
 
 A student wants to estimate the average GPA in their dorm. Obtaining a listing of all students in the hall and conducting an SRS would take a lot of time. Instead, since each of the 100 suites in the hall have 4 students, the student randomly samples 5 suites and collects GPA data for each student in the suite.
 
@@ -201,13 +205,13 @@ head(gpa)
 The data was recorded in long format -- this is the format needed for analysis. The table in the book is formatted for human eyeball consumption, not for analysis.
 :::
 
-1.  Set the survey design.
+1.  Set the survey design. Here we finally use the `id` argument to identify the variable containing the _psu_'s. Printing out the object `gpa.design` lets us confirm that it is being recognized as a 1 stage cluster design with 5 clusters. 
 
 ```{r}
-gpa.design <- svydesign(id = ~suite,
+(gpa.design <- svydesign(id = ~suite,
                         weights = ~wt,
                         fpc=~rep(100,20),
-                        data=gpa) 
+                        data=gpa) )
 ```
 
 2.  Call `surveymean` and CI.
@@ -222,25 +226,151 @@ confint(dorm.gpa.mean, level=.95, df=4)
 
 We can be 95% confident that the average GPA for students living in this dorm is contained in the interval 2.37 to 3.28.
 
+:::{.callout-warning icon=false}
+### :star: You try it. High school Algebra
+Consider a population of 187 high school algebra classes in a city. An investigator takes an SRS of classes, and gives each student in the sampled classes a test about function knowledge. The (hypothetical) data are given in the file `algebra.csv`. 
+
+a. Load in the data and look at the first few rows. Explain what the values in each column mean.
+b. Plot the distribution of test score by class. Interpret your graph by comparing the medians, ranges, and variances across classes. What do you notice?
+c. How many _psus_ are there? What is the _psu_ with the highest number of _ssus_? Which one has the least? You must answer this question using R functions such as`unique` or `table`. Don't count this by hand (practice for when you have a billion rows)
+d. Add variables containing the weights and the `fpc` to this data set. Assign the value of 187 to a new variable for the fpc. 
+e. Using the proper functions from the `survey` package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the `degf` function to get the proper degrees of freedom out of the survey design object and pass it to the `confint` function. 
+:::
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+```{r}
+yay.math <- read_csv(here::here("data/algebra.csv"))
+head(yay.math) 
+```
+
+**a)**
+
+* `class`: Class number. This is a `psu`. 
+* `Mi`: Number of `ssus` in each `psu`. 
+* `score`: Test score for each `ssu`
+
+**b)**
+
+```{r}
+ggplot(yay.math, aes(y=score, x=as.factor(class))) + geom_boxplot()
+```
+
+The distribution of test scores are similar-ish. Most range between 50 and 75, with class number 51 having the highest median, but also nearly the lowest minimum. The variances of classes 39, 41, and 44 have the smaller variance compared to the other classes. 
+
+**c)**
+
+```{r}
+length(unique(yay.math$class))
+table(yay.math$class)
+```
+
+There are 12 different classes, with class sizes ranging from 17 in class number 58 to 34 in class number 39. 
+
+**d)**
+Survey weights were not included, so those need to be added. For a single cluster sample, the weights are calculated as $w_{ij} = \frac{N}{n}$, the number of clusters in the population divided by the number of clusters in the sample. Here this is 187/12. 
+
+```{r}
+yay.math$wt <- 187/12
+yay.math$fpc <- 187
+
+yay.math.design <- svydesign(id = ~class, weights = ~wt, 
+                             fpc = ~fpc,  data = yay.math)
+yay.math.design
+```
+
+**e)**
+```{r}
+svymean(~score, yay.math.design)
+svymean(~score, yay.math.design) %>% confint(df = degf(yay.math.design))
+```
+
+The population average math score is 62.6 (95% CI 59.3 - 65.9). 
+
+:::
+
 
 ------------------------------------------------------------------------
 
 # Two-Stage Clustering Sampling
 
+Sometimes measurements on individual ssus are not easy to obtain, or the ssus within a psu are so similar that collecting data on all of them is a waste of resources. 
 
-# One Stage vs Two Stage Clustering
+Two-stage clustering employes **another** SRS of ssus within each psu. Or, more formally; 
 
-### One Stage Clustering
+1. Select an SRS of $n$ psus from the population of N psus. 
+2. Select an SRS of ssus from each selected psu, where $m_{i}$ is the number of ssus selected from the $i^{th}$ psu. 
 
-* All you do is carry out an SRS on all available PSUs from your population of $N$ PSUs.  Then subsequently establish a census.
+The point estimates for parameters such as the total or mean will still be calculated the same, but the variance equations now need to take into consideration the variance of the SRS of psus, AND the variance of the SRS of the ssus. Another way to think about it is that we have within-psu and a between-psu components to the variance now. 
+
+This means we can use ANOVA to calculate and understand the ratio of the between and within variance components. 
+
+### Survey weights
+
+Since the two SRS's are independent, we can calculate the inclusion probability as the multiplication of the inclusion probability at each stage. 
+
+* Stage 1: $P$($i$th psu selected) = $\frac{n}{N}$. 
+* Stage 2: $P$($j$th ssu selected | $i$th psu selected) = $\frac{m_i}{M_i}$
+
+Since the weights are the reciprocal of the inclusion probability, 
+$$
+w_{ij} = \frac{N}{n}\frac{M_{i}}{m_{i}}
+$$
+
+:::{.callout-tip icon=true}
+### Example: More estimation of math scores. 
+The file `schools.csv` contains data from a two-stage sample of students from hypothetical classes. The final weights are provided in the variable `finalwt`. 
+
+a) Create side by side boxplots for the math score for sampled schools. Which do you think is larger, the within or between cluster variance? 
+b) Create an ANOVA table for this example. Is your interpretation from the graph upheld by this analysis? 
+c) Estimate with proper 95% CI the average math score for the population of students under consideration. _Do not include a value for the `fpc` in this example_. 
+:::
+
+```{r}
+schools <- read_csv(here::here("data/schools.csv"))
+head(schools)
+```
+
+**a)**
+
+```{r}
+ggplot(schools, aes(y=math, x=as.factor(schoolid))) + geom_boxplot()
+```
+
+Math scores within school seem to be more similar than math scores across schools. 
+
+**b)**
+```{r}
+aov(math ~ as.factor(schoolid), data = schools) %>% summary()
+```
+
+The within cluster variation (MSE) is smaller than the between cluster variation (MSB). This matches my interpretation of the prior graph. 
+
+**c)**
+```{r}
+sch.dsgn <- svydesign(id = ~schoolid, weights = ~finalwt, data = schools)
+svymean(~math, sch.dsgn)
+svymean(~math, sch.dsgn) %>% confint(df = degf(sch.dsgn))
+```
+
+The average math score in this example is 33.1 with 95% CI 29.1-37.1
+
+
+## Summary of One vs Two Stage Clustering
+
+![Textbook Figure 5.2. Differences between one-stage and two-stage cluster sampling.](../figs/fig5_2.jpg)
+
+**One Stage Clustering**
+
+* All you do is carry out an SRS on all available PSUs from your population of $N$ PSUs. Then subsequently establish a census.
 * This provides us the variance across clusters
 
-### Two Stage Clustering
+**Two Stage Clustering**
 
 * In two stage clustering the only additional step is to take an SRS of size $m_i$ within each already sample $i$th PSU.
 * This finds the variance within clusters
 
-#### Unbiased Estimate for $t$
+**Unbiased Estimate for $t$**
 
 $$t=w_{ij}\sum y_{ij}=\sum\frac{NM_i}{nm_i}y_{ij}$$
 
@@ -251,4 +381,23 @@ Note: The same formula is applicable to both one and two stage clustering becaus
 ------------------------------------------------------------------------
 
 # Systematic Sampling
+
+## Overview
+
+
+
+## How does the order of the sampling frame influence estimates
+
+
+:::{.callout-tip icon=true}
+### Example: sampling toxic waste
+text
+:::
+
+
+:::{.callout-important}
+### Definition: Interpenetrating Sampling
+text
+:::
+
 

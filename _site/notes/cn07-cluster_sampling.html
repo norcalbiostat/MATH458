@@ -198,13 +198,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#equal-size-clusters" id="toc-equal-size-clusters" class="nav-link" data-scroll-target="#equal-size-clusters">Equal size clusters</a></li>
   </ul></li>
-  <li><a href="#two-stage-clustering-sampling" id="toc-two-stage-clustering-sampling" class="nav-link" data-scroll-target="#two-stage-clustering-sampling">Two-Stage Clustering Sampling</a></li>
-  <li><a href="#one-stage-vs-two-stage-clustering" id="toc-one-stage-vs-two-stage-clustering" class="nav-link" data-scroll-target="#one-stage-vs-two-stage-clustering">One Stage vs Two Stage Clustering</a>
+  <li><a href="#two-stage-clustering-sampling" id="toc-two-stage-clustering-sampling" class="nav-link" data-scroll-target="#two-stage-clustering-sampling">Two-Stage Clustering Sampling</a>
   <ul class="collapse">
-  <li><a href="#one-stage-clustering" id="toc-one-stage-clustering" class="nav-link" data-scroll-target="#one-stage-clustering">One Stage Clustering</a></li>
-  <li><a href="#two-stage-clustering" id="toc-two-stage-clustering" class="nav-link" data-scroll-target="#two-stage-clustering">Two Stage Clustering</a></li>
+  <li><a href="#survey-weights" id="toc-survey-weights" class="nav-link" data-scroll-target="#survey-weights">Survey weights</a></li>
+  <li><a href="#summary-of-one-vs-two-stage-clustering" id="toc-summary-of-one-vs-two-stage-clustering" class="nav-link" data-scroll-target="#summary-of-one-vs-two-stage-clustering">Summary of One vs Two Stage Clustering</a></li>
   </ul></li>
-  <li><a href="#systematic-sampling" id="toc-systematic-sampling" class="nav-link" data-scroll-target="#systematic-sampling">Systematic Sampling</a></li>
+  <li><a href="#systematic-sampling" id="toc-systematic-sampling" class="nav-link" data-scroll-target="#systematic-sampling">Systematic Sampling</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#how-does-the-order-of-the-sampling-frame-influence-estimates" id="toc-how-does-the-order-of-the-sampling-frame-influence-estimates" class="nav-link" data-scroll-target="#how-does-the-order-of-the-sampling-frame-influence-estimates">How does the order of the sampling frame influence estimates</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -264,6 +267,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>In this case, clusters won’t be as representative of the population as a SRS would.</li>
 <li>Can be cheaper and faster than other sampling methods</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/fig5_1.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Textbook Figure 5.1. Contrasting stratified sampling with one-stage cluster sampling.</figcaption><p></p>
+</figure>
+</div>
 </section>
 <section id="notation-formulas" class="level1">
 <h1>Notation &amp; Formulas</h1>
@@ -575,13 +584,13 @@ Estimate the income in a two person households
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ci.hi.mu   <span class="ot">&lt;-</span> ybar.hat <span class="sc">+</span> crit.t<span class="sc">*</span><span class="fu">sqrt</span>(var.ybar.hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can be 95% confident that the average population income for a household of two people is contained in the interval ($16,571, $102,670.</p>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="emoji" data-emoji="star">⭐</span> You try it: Average GPA in a dorm
+Example: Average GPA in a dorm
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -606,67 +615,297 @@ Estimate the income in a two person households
 </div>
 </div>
 <ol type="1">
-<li>Set the survey design.</li>
+<li>Set the survey design. Here we finally use the <code>id</code> argument to identify the variable containing the <em>psu</em>’s. Printing out the object <code>gpa.design</code> lets us confirm that it is being recognized as a 1 stage cluster design with 5 clusters.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gpa.design <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span>suite,</span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(gpa.design <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span>suite,</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">weights =</span> <span class="sc">~</span>wt,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fpc=</span><span class="sc">~</span><span class="fu">rep</span>(<span class="dv">100</span>,<span class="dv">20</span>),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data=</span>gpa) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data=</span>gpa) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 - level Cluster Sampling design
+With (5) clusters.
+svydesign(id = ~suite, weights = ~wt, fpc = ~rep(100, 20), data = gpa)</code></pre>
+</div>
 </div>
 <ol start="2" type="1">
 <li>Call <code>surveymean</code> and CI.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(dorm.gpa.mean <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>gpa, gpa.design))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(dorm.gpa.mean <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>gpa, gpa.design))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     mean     SE
 gpa 2.826 0.1637</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(df <span class="ot">&lt;-</span> <span class="fu">degf</span>(gpa.design)) <span class="co"># Extract degrees of freedom</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(df <span class="ot">&lt;-</span> <span class="fu">degf</span>(gpa.design)) <span class="co"># Extract degrees of freedom</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(dorm.gpa.mean, <span class="at">level=</span>.<span class="dv">95</span>, <span class="at">df=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(dorm.gpa.mean, <span class="at">level=</span>.<span class="dv">95</span>, <span class="at">df=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       2.5 %   97.5 %
 gpa 2.371593 3.280407</code></pre>
 </div>
 </div>
 <p>We can be 95% confident that the average GPA for students living in this dorm is contained in the interval 2.37 to 3.28.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it. High school Algebra
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider a population of 187 high school algebra classes in a city. An investigator takes an SRS of classes, and gives each student in the sampled classes a test about function knowledge. The (hypothetical) data are given in the file <code>algebra.csv</code>.</p>
+<ol type="a">
+<li>Load in the data and look at the first few rows. Explain what the values in each column mean.</li>
+<li>Plot the distribution of test score by class. Interpret your graph by comparing the medians, ranges, and variances across classes. What do you notice?</li>
+<li>How many <em>psus</em> are there? What is the <em>psu</em> with the highest number of <em>ssus</em>? Which one has the least? You must answer this question using R functions such as<code>unique</code> or <code>table</code>. Don’t count this by hand (practice for when you have a billion rows)</li>
+<li>Add variables containing the weights and the <code>fpc</code> to this data set. Assign the value of 187 to a new variable for the fpc.</li>
+<li>Using the proper functions from the <code>survey</code> package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the <code>degf</code> function to get the proper degrees of freedom out of the survey design object and pass it to the <code>confint</code> function.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>yay.math <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/algebra.csv"</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yay.math) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  class    Mi score
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1    23    20    57
+2    23    20    90
+3    23    20    56
+4    23    20    57
+5    23    20    46
+6    23    20    55</code></pre>
+</div>
+</div>
+<p><strong>a)</strong></p>
+<ul>
+<li><code>class</code>: Class number. This is a <code>psu</code>.</li>
+<li><code>Mi</code>: Number of <code>ssus</code> in each <code>psu</code>.</li>
+<li><code>score</code>: Test score for each <code>ssu</code></li>
+</ul>
+<p><strong>b)</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(yay.math, <span class="fu">aes</span>(<span class="at">y=</span>score, <span class="at">x=</span><span class="fu">as.factor</span>(class))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="cn07-cluster_sampling_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The distribution of test scores are similar-ish. Most range between 50 and 75, with class number 51 having the highest median, but also nearly the lowest minimum. The variances of classes 39, 41, and 44 have the smaller variance compared to the other classes.</p>
+<p><strong>c)</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(yay.math<span class="sc">$</span>class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(yay.math<span class="sc">$</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ 23  37  38  39  41  44  46  51  58  62 106 108 
+ 20  26  24  34  26  28  19  32  17  21  26  26 </code></pre>
+</div>
+</div>
+<p>There are 12 different classes, with class sizes ranging from 17 in class number 58 to 34 in class number 39.</p>
+<p><strong>d)</strong> Survey weights were not included, so those need to be added. For a single cluster sample, the weights are calculated as <span class="math inline">\(w_{ij} = \frac{N}{n}\)</span>, the number of clusters in the population divided by the number of clusters in the sample. Here this is 187/12.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>yay.math<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">187</span><span class="sc">/</span><span class="dv">12</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>yay.math<span class="sc">$</span>fpc <span class="ot">&lt;-</span> <span class="dv">187</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>yay.math.design <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span>class, <span class="at">weights =</span> <span class="sc">~</span>wt, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">fpc =</span> <span class="sc">~</span>fpc,  <span class="at">data =</span> yay.math)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>yay.math.design</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 - level Cluster Sampling design
+With (12) clusters.
+svydesign(id = ~class, weights = ~wt, fpc = ~fpc, data = yay.math)</code></pre>
+</div>
+</div>
+<p><strong>e)</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>score, yay.math.design)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        mean     SE
+score 62.569 1.4916</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>score, yay.math.design) <span class="sc">%&gt;%</span> <span class="fu">confint</span>(<span class="at">df =</span> <span class="fu">degf</span>(yay.math.design))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         2.5 %  97.5 %
+score 59.28562 65.8515</code></pre>
+</div>
+</div>
+<p>The population average math score is 62.6 (95% CI 59.3 - 65.9).</p>
+</div>
+</div>
+</div>
 <hr>
 </section>
 </section>
 <section id="two-stage-clustering-sampling" class="level1">
 <h1>Two-Stage Clustering Sampling</h1>
+<p>Sometimes measurements on individual ssus are not easy to obtain, or the ssus within a psu are so similar that collecting data on all of them is a waste of resources.</p>
+<p>Two-stage clustering employes <strong>another</strong> SRS of ssus within each psu. Or, more formally;</p>
+<ol type="1">
+<li>Select an SRS of <span class="math inline">\(n\)</span> psus from the population of N psus.</li>
+<li>Select an SRS of ssus from each selected psu, where <span class="math inline">\(m_{i}\)</span> is the number of ssus selected from the <span class="math inline">\(i^{th}\)</span> psu.</li>
+</ol>
+<p>The point estimates for parameters such as the total or mean will still be calculated the same, but the variance equations now need to take into consideration the variance of the SRS of psus, AND the variance of the SRS of the ssus. Another way to think about it is that we have within-psu and a between-psu components to the variance now.</p>
+<p>This means we can use ANOVA to calculate and understand the ratio of the between and within variance components.</p>
+<section id="survey-weights" class="level3">
+<h3 class="anchored" data-anchor-id="survey-weights">Survey weights</h3>
+<p>Since the two SRS’s are independent, we can calculate the inclusion probability as the multiplication of the inclusion probability at each stage.</p>
+<ul>
+<li>Stage 1: <span class="math inline">\(P\)</span>(<span class="math inline">\(i\)</span>th psu selected) = <span class="math inline">\(\frac{n}{N}\)</span>.</li>
+<li>Stage 2: <span class="math inline">\(P\)</span>(<span class="math inline">\(j\)</span>th ssu selected | <span class="math inline">\(i\)</span>th psu selected) = <span class="math inline">\(\frac{m_i}{M_i}\)</span></li>
+</ul>
+<p>Since the weights are the reciprocal of the inclusion probability, <span class="math display">\[
+w_{ij} = \frac{N}{n}\frac{M_{i}}{m_{i}}
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: More estimation of math scores.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The file <code>schools.csv</code> contains data from a two-stage sample of students from hypothetical classes. The final weights are provided in the variable <code>finalwt</code>.</p>
+<ol type="a">
+<li>Create side by side boxplots for the math score for sampled schools. Which do you think is larger, the within or between cluster variance?</li>
+<li>Create an ANOVA table for this example. Is your interpretation from the graph upheld by this analysis?</li>
+<li>Estimate with proper 95% CI the average math score for the population of students under consideration. <em>Do not include a value for the <code>fpc</code> in this example</em>.</li>
+</ol>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>schools <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/schools.csv"</span>))</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(schools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+  schoolid gender  math reading mathlevel readlevel    Mi finalwt
+     &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+1        9 F         42      42         2         2   163    61.1
+2        9 F         29      30         1         1   163    61.1
+3        9 M         31      25         1         1   163    61.1
+4        9 F         22      33         1         2   163    61.1
+5        9 M         35      36         1         2   163    61.1
+6        9 F         30      17         1         1   163    61.1</code></pre>
+</div>
+</div>
+<p><strong>a)</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(schools, <span class="fu">aes</span>(<span class="at">y=</span>math, <span class="at">x=</span><span class="fu">as.factor</span>(schoolid))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="cn07-cluster_sampling_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Math scores within school seem to be more similar than math scores across schools.</p>
+<p><strong>b)</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(math <span class="sc">~</span> <span class="fu">as.factor</span>(schoolid), <span class="at">data =</span> schools) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+as.factor(schoolid)   9   7018   779.8   7.583 1.79e-09 ***
+Residuals           190  19538   102.8                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The within cluster variation (MSE) is smaller than the between cluster variation (MSB). This matches my interpretation of the prior graph.</p>
+<p><strong>c)</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sch.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span>schoolid, <span class="at">weights =</span> <span class="sc">~</span>finalwt, <span class="at">data =</span> schools)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>math, sch.dsgn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       mean     SE
+math 33.123 1.7599</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>math, sch.dsgn) <span class="sc">%&gt;%</span> <span class="fu">confint</span>(<span class="at">df =</span> <span class="fu">degf</span>(sch.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        2.5 %  97.5 %
+math 29.14179 37.1041</code></pre>
+</div>
+</div>
+<p>The average math score in this example is 33.1 with 95% CI 29.1-37.1</p>
 </section>
-<section id="one-stage-vs-two-stage-clustering" class="level1">
-<h1>One Stage vs Two Stage Clustering</h1>
-<section id="one-stage-clustering" class="level3">
-<h3 class="anchored" data-anchor-id="one-stage-clustering">One Stage Clustering</h3>
+<section id="summary-of-one-vs-two-stage-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-one-vs-two-stage-clustering">Summary of One vs Two Stage Clustering</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/fig5_2.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Textbook Figure 5.2. Differences between one-stage and two-stage cluster sampling.</figcaption><p></p>
+</figure>
+</div>
+<p><strong>One Stage Clustering</strong></p>
 <ul>
 <li>All you do is carry out an SRS on all available PSUs from your population of <span class="math inline">\(N\)</span> PSUs. Then subsequently establish a census.</li>
 <li>This provides us the variance across clusters</li>
 </ul>
-</section>
-<section id="two-stage-clustering" class="level3">
-<h3 class="anchored" data-anchor-id="two-stage-clustering">Two Stage Clustering</h3>
+<p><strong>Two Stage Clustering</strong></p>
 <ul>
 <li>In two stage clustering the only additional step is to take an SRS of size <span class="math inline">\(m_i\)</span> within each already sample <span class="math inline">\(i\)</span>th PSU.</li>
 <li>This finds the variance within clusters</li>
 </ul>
-<section id="unbiased-estimate-for-t" class="level4">
-<h4 class="anchored" data-anchor-id="unbiased-estimate-for-t">Unbiased Estimate for <span class="math inline">\(t\)</span></h4>
+<p><strong>Unbiased Estimate for <span class="math inline">\(t\)</span></strong></p>
 <p><span class="math display">\[t=w_{ij}\sum y_{ij}=\sum\frac{NM_i}{nm_i}y_{ij}\]</span></p>
 <p>Note: The same formula is applicable to both one and two stage clustering because, if you think about it, one stage clustering is just a special case of two stage clustering. That being the case where <span class="math inline">\(M_i=m_i\)</span>.</p>
 <hr>
 </section>
 </section>
-</section>
 <section id="systematic-sampling" class="level1">
 <h1>Systematic Sampling</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+</section>
+<section id="how-does-the-order-of-the-sampling-frame-influence-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-the-order-of-the-sampling-frame-influence-estimates">How does the order of the sampling frame influence estimates</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: sampling toxic waste
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>text</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: Interpenetrating Sampling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>text</p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
