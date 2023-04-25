@@ -1041,5 +1041,12 @@
     "title": "Worksheet 06: Analysis of One and Two stage Cluster Sampling using R",
     "section": "2. Reading level across a different school district.",
     "text": "2. Reading level across a different school district.\nThe file schools.csv contains data from a two-stage sample of students from hypothetical classes. The final weights are provided in the variable finalwt.\n\nCreate side by side boxplots for the reading score for sampled schools. Which do you think is larger, the within or between cluster variance?\nCreate an ANOVA table for this example. Is your interpretation from the graph upheld by this analysis?\nEstimate with proper 95% CI the average reading score for the population of students under consideration. Do not include a value for the fpc in this example."
+  },
+  {
+    "objectID": "notes/formulas.html#expected-value-and-variance-of-estimates",
+    "href": "notes/formulas.html#expected-value-and-variance-of-estimates",
+    "title": "Formulas and Definitions",
+    "section": "",
+    "text": "\\[E(\\hat{\\theta}) = \\sum\\hat{\\theta}*p(\\hat{\\theta}) \\qquad \\qquad V(\\hat{\\theta}) = \\sum [\\hat{\\theta} - E(\\hat{\\theta})]^2*p(\\hat{\\theta})\\]\n\nSums are over all possible values of \\(\\hat{\\theta}\\).\n\\(p(\\hat{\\theta})\\) is the probability of \\(\\hat{\\theta}\\) occurring.\n\nThis is similar to what we’re calling \\(\\delta_{i}\\), the probability that population unit \\(i\\) appears in the sample. The book uses the symbol \\(\\pi_{i}\\)"
   }
 ]

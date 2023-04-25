@@ -122,6 +122,71 @@ statistics are desired
 svyby(~acres92, by=~region, agstrat.dsgn, svytotal, keep.var = TRUE)
 ```
 
+# Setup a data collection sheet using random sampling from a sampling frame
+
+1. Setup your sampling frame in a spreadsheet. [See this example using google sheets](https://docs.google.com/spreadsheets/d/1L0voUNhw5CsZ3YPWsuTJCBYm963L0zFIhDKS5HUjmms). 
+2. Import your sampling frame into R. More info can be found on the [googlesheets4](https://googlesheets4.tidyverse.org/articles/googlesheets4.html) package vignette. 
+```{r}
+library(googlesheets4)
+sheet.url <- "https://docs.google.com/spreadsheets/d/1L0voUNhw5CsZ3YPWsuTJCBYm963L0zFIhDKS5HUjmms"
+frame.srs <- read_sheet(sheet.url, sheet = "srs") 
+frame.str <- read_sheet(sheet.url, sheet = "stratified") 
+frame.clu <- read_sheet(sheet.url, sheet = "cluster") 
+```
+
+3. Use functions from the `sampling` package to draw random samples according to your design. See the links for more details on what the arguments mean. 
+
+* [SRS](https://sampling-458.netlify.app/notes/cn04-srs#drawing-a-srs-using-a-computer).
+
+```{r}
+library(sampling)
+set.seed(12345)
+srs.idx <- srswor(8, length(frame.srs$unit_id)) 
+getdata(frame.srs, srs.idx)
+```
+
+
+* [Stratified](https://sampling-458.netlify.app/notes/cn06-stratified_sampling.html#using-r)
+```{r}
+library(dplyr)
+frame.str <- frame.str %>% arrange(group) # sort first
+strata.idx <- sampling::strata(data = frame.str,      # data set
+                 stratanames = "group", # variable name
+                 size = c(6,4,5),      # stratum sample sizes     
+                 method = "srswor")     # method for selecting within strata
+getdata(frame.str, strata.idx)
+```
+
+* One stage cluster
+```{r}
+onestage.idx <- sampling::cluster(data=frame.clu,         # Data set
+                  clustername = "group",  # variable name containing clusters 
+                  size = 3,               # number of clusters
+                  method = "srswor",      # how to draw clusters 
+                  description = TRUE)     # show descriptive output
+getdata(frame.clu, onestage.idx)
+```
+
+
+
+* Two stage cluster
+```{r}
+mstage.idx <- sampling::mstage(data=frame.clu, 
+                 stage = c("cluster", ""),  # sampling method for each stage, blank means SRS
+                 varnames = list("group", "unit_id"),  # variable names for each stage
+                 size = list(3, c(5,5,5)), # 3 psus, 5 ssus from each psu
+                 method = c("srswor", "srswor"))
+
+getdata(frame.clu, mstage.idx)
+```
+
+See `?mstage` for more examples of multistage sampling. 
+
+4. Make a new spreadsheet containing the sampled rows, and add a column for $y$ the thing you are going to measure on each unit. 
+
+5. Go collect data! 
+
+
 ## Other R help References
 
 -   [`survey` package vignette](http://r-survey.r-forge.r-project.org/survey/)
