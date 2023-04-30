@@ -1,0 +1,9 @@
+---
+format: html
+title: "Homework 04: Cluster Sampling"
+subtitle: ""
+date: 04/24/23
+categories: Homework
+---
+
+Chapter 5 problems: #2, #5 (use the survey package functions), #13a, 16

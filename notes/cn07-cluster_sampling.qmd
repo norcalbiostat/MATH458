@@ -382,11 +382,36 @@ Note: The same formula is applicable to both one and two stage clustering becaus
 
 # Systematic Sampling
 
-## Overview
+Systematic Sampling is a special case of Cluster Sampling
 
+## Method
+* Determine a desired sample size, X
+* Determine the number of elements in the target population
+* Chose a number of desired psus, Y
+* Now draw an element and every Xth elements afterwards
+    * Do that Y times so that you are left with Y psus 
+* Then SRS one of the psus
 
+## Attributes to Note 
+* Systematic sample is more precise than SRS when the variance within the PSUs are larger than the variance of the total population.
+* In systematic sampling, we usually only SRS one psu, meaning n=1, so we cannot find the variance of population estimates.
+* So, we need to identify the structure of the population of interest to estimate the variance
 
-## How does the order of the sampling frame influence estimates
+:::{.callout-tip icon=true}
+### Example: Choosing a Systematic Sample
+
+Suppose we want to take a sample of 3 from a population of 12 that is numbered 1-12. 
+
+* Choose a random number between one and 4 and draw that element and also every fourth element after that. 
+    * Do that until all your suss have been grouped
+* Now we have four _psus_ each containing 3 _ssus_ 
+* Take an SRS of one _psu_ to use as your sample. 
+
+:::
+
+## Order matters
+
+How does the order of the sampling frame influence estimates?
 
 
 :::{.callout-tip icon=true}
@@ -396,12 +421,71 @@ text
 
 
 :::{.callout-important}
-### Definition: Interpenetrating Sampling
-text
+## Definition: Interpenetrating Sampling
+Modify a Systematic Sampling approach by 
+
+1. change the starting point and keep the interval, 
+2. change the interval and keep the starting point, 
+3. or change both
 :::
 
+* Used if we are concerned about periodicity 
+* Any of these changes force more coverage of the total population vs a systematic sample
+* Instead of taking one systematic sample from our population, we take several
+* In this case, each systematic sample acts as a cluster
+* We can use formulas for cluster samples to estimate variance
+
+    
 ------------------------------------------------------------------------
 
-# Drawing Clusters Samples
+# Clusters of Equal Sizes (Theory)
 
+This section compares the analysis of variance in cluster sampling compared to stratified and SRS. 
+
+* Cluster sampling almost always has less precision for the estimates than from an SRS with the same amount of elements!
+* In one-stage cluster sampling, the variability of an unbiased estimator depends on the between psu variability.
+* We can use an ANOVA table to explore the breakdown of the source of variance into between _psus_
+ and within _psus._ 
+ 
+:::{.callout-important}
+### ANalysis Of VAriance
+Don't recall how ANOVA works to break up the variance into components? See [this great video](https://www.youtube.com/watch?v=W36DMVJ4Ibo&list=PLkIselvEzpM5G3IO1tzQ-DUThsJKQzQCD) from the Open Intro Statistics author, Mine Cetinkaya-Rundel
+:::
+ 
+### MSB (Mean Squared Between Clusters)
+
+* A measure of between cluster variability
+* In stratification, increase in MSB increases precision
+* In clustering, increase in MSB decreases precision
+    * MSB is relatively large because it measures the cluster-to-cluster variability. Also, the MSB can be too large when unmeasured factors affect the overall mean for a cluster
+
+### MSW (Mean Squared Within Clusters)
+
+* A measure of within cluster variability
+* When clusters are relatively homogeneous, the MSW will be small
+
+
+:::{.callout-note appearance=minimal}
+When MSB/MSW is large, precision decreases! Better off doing an SRS of the same size.
+:::
+
+## ICC (Intraclass Correlation Coefficient)
+
+Let’s us know how similar elements are in the same cluster; a measure of homogeneity within the cluster
+
+* With a positive ICC, elements within the same cluster are similar. A negative ICC indicates the elements within a cluster to not be similar; elements are dispersed more.
+    * Cluster sampling is less efficient than SRS of elements
+* With a negative ICC, then the elements within a cluster are dispersed more than a randomly chosen group
+* Naturally occurring clusters is the cause for an ICC to be positive, usually not negative
+
+## R Squared
+
+Adjusted $R^2$ is for an alternative measure of homogeneity in general populations.
+
+* $R^2$ can be used to measure homogeneity because its interpretation in linear regression
+* When the _psus_ are homogeneous then the _psu_ means will be highly variable relative to the variation within _psus_, and $R^2$ will be high.
+
+--------------------------------------------------------
+
+# Designing a Cluster Sample
 

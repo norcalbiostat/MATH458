@@ -14,7 +14,7 @@ website:
  
   page-footer:
     #background: light
-    left: "This site is built with :heart:, {{< fa brands r-project >}} and [Quarto](https://quarto.org/) by [Robin Donatello](www.norcalbiostat.com)."
+    left: "This site is built with :heart:, {{< fa brands r-project >}} and [Quarto](https://quarto.org/) by [Robin Donatello](www.norcalbiostat.com) and the Spring 2023 MATH 458 class."
       
   navbar: 
     pinned: true
