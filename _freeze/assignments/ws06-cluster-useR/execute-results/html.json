@@ -1,0 +1,14 @@
+{
+  "hash": "41d58df53eaf1a8e10d9564d092a1ba4",
+  "result": {
+    "markdown": "---\ntitle: \"Worksheet 06: Analysis of One and Two stage Cluster Sampling using R\"\ndate: 4/20/23\ncategories: Worksheet\n---\n\n::: {.cell}\n\n:::\n\n\n## 1. High school Algebra \n\nConsider a population of 187 high school algebra classes in a city. An investigator takes an SRS of classes, and gives each student in the sampled classes a test about function knowledge. The (hypothetical) data are given in the file `algebra.csv`. \n\na. Load in the data and look at the first few rows. Explain what the values in each column mean.\nb. Plot the distribution of test score by class. Interpret your graph by comparing the medians, ranges, and variances across classes. What do you notice?\nc. How many _psus_ are there? What is the _psu_ with the highest number of _ssus_? Which one has the least? You must answer this question using R functions such as`unique` or `table`. Don't count this by hand (practice for when you have a billion rows)\nd. Add variables containing the weights and the `fpc` to this data set. Assign the value of 187 to a new variable for the fpc. \ne. Using the proper functions from the `survey` package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the `degf` function to get the proper degrees of freedom out of the survey design object and pass it to the `confint` function. \n\n## 2. Reading level across a different school district.\nThe file `schools.csv` contains data from a two-stage sample of students from hypothetical classes. The final weights are provided in the variable `finalwt`. \n\na) Create side by side boxplots for the reading score for sampled schools. Which do you think is larger, the within or between cluster variance? \nb) Create an ANOVA table for this example. Is your interpretation from the graph upheld by this analysis? \nc) Estimate with proper 95% CI the average reading score for the population of students under consideration. _Do not include a value for the `fpc` in this example_. \n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

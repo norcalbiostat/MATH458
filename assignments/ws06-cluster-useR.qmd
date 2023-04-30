@@ -1,6 +1,7 @@
 ---
 title: "Worksheet 06: Analysis of One and Two stage Cluster Sampling using R"
 date: 4/20/23
+categories: Worksheet
 ---
 
 ```{r}

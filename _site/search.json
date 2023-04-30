@@ -70,22 +70,29 @@
     "text": "Introductory Exercises (End of chapter exercises part A)\n\n\nJasmine & Rachel\n\n\nSaul & JP\n\n\nMatthew\n\n\nYazmin & Miguel\n\n\nZoe + Chase\n\n\n\n\nWorking with Survey Data (End of chapter exercises part B)\n\n\nJasmine & Miguel\n\n14b. Saul\n\nMatthew & Zoe\n\n\nYazmin, Rachel, Othmann"
   },
   {
-    "objectID": "assignments/ws06-cluster-b.html",
-    "href": "assignments/ws06-cluster-b.html",
+    "objectID": "assignments/ws05-cluster-byhand.html",
+    "href": "assignments/ws05-cluster-byhand.html",
+    "title": "Worksheet 05: Introduction to Cluster Sampling",
+    "section": "",
+    "text": "A student wants to estimate the average GPA in their dorm. Obtaining a listing of all students in the hall and conducting an SRS would take a lot of time. Instead, since each of the 100 suites in the hall have 4 students, the student randomly samples 5 suites and collects GPA data for each student in the suite. A summary table is shown below.\n\n\n\n\n\nperson\nSuite 1\nSuite 2\nSuite 3\nSuite 4\nSuite 5\n\n\n\n\n1\n3.08\n2.36\n2.00\n3.00\n2.68\n\n\n2\n2.60\n3.04\n2.56\n2.88\n1.92\n\n\n3\n3.44\n3.28\n2.52\n3.44\n3.28\n\n\n4\n3.04\n2.68\n1.88\n3.64\n3.20\n\n\n\n\n\nUsing hand written equations, estimate the average GPA for all students living in that dorm, with a proper 95% CI. Interpret your interval"
+  },
+  {
+    "objectID": "assignments/ws06-cluster-useR.html",
+    "href": "assignments/ws06-cluster-useR.html",
     "title": "Worksheet 06: Analysis of One and Two stage Cluster Sampling using R",
     "section": "",
     "text": "Consider a population of 187 high school algebra classes in a city. An investigator takes an SRS of classes, and gives each student in the sampled classes a test about function knowledge. The (hypothetical) data are given in the file algebra.csv.\n\nLoad in the data and look at the first few rows. Explain what the values in each column mean.\nPlot the distribution of test score by class. Interpret your graph by comparing the medians, ranges, and variances across classes. What do you notice?\nHow many psus are there? What is the psu with the highest number of ssus? Which one has the least? You must answer this question using R functions such asunique or table. Don’t count this by hand (practice for when you have a billion rows)\nAdd variables containing the weights and the fpc to this data set. Assign the value of 187 to a new variable for the fpc.\nUsing the proper functions from the survey package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the degf function to get the proper degrees of freedom out of the survey design object and pass it to the confint function."
   },
   {
-    "objectID": "assignments/ws06-cluster-b.html#high-school-algebra",
-    "href": "assignments/ws06-cluster-b.html#high-school-algebra",
+    "objectID": "assignments/ws06-cluster-useR.html#high-school-algebra",
+    "href": "assignments/ws06-cluster-useR.html#high-school-algebra",
     "title": "Worksheet 06: Analysis of One and Two stage Cluster Sampling using R",
     "section": "",
     "text": "Consider a population of 187 high school algebra classes in a city. An investigator takes an SRS of classes, and gives each student in the sampled classes a test about function knowledge. The (hypothetical) data are given in the file algebra.csv.\n\nLoad in the data and look at the first few rows. Explain what the values in each column mean.\nPlot the distribution of test score by class. Interpret your graph by comparing the medians, ranges, and variances across classes. What do you notice?\nHow many psus are there? What is the psu with the highest number of ssus? Which one has the least? You must answer this question using R functions such asunique or table. Don’t count this by hand (practice for when you have a billion rows)\nAdd variables containing the weights and the fpc to this data set. Assign the value of 187 to a new variable for the fpc.\nUsing the proper functions from the survey package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the degf function to get the proper degrees of freedom out of the survey design object and pass it to the confint function."
   },
   {
-    "objectID": "assignments/ws06-cluster-b.html#reading-level-across-a-different-school-district.",
-    "href": "assignments/ws06-cluster-b.html#reading-level-across-a-different-school-district.",
+    "objectID": "assignments/ws06-cluster-useR.html#reading-level-across-a-different-school-district.",
+    "href": "assignments/ws06-cluster-useR.html#reading-level-across-a-different-school-district.",
     "title": "Worksheet 06: Analysis of One and Two stage Cluster Sampling using R",
     "section": "2. Reading level across a different school district.",
     "text": "2. Reading level across a different school district.\nThe file schools.csv contains data from a two-stage sample of students from hypothetical classes. The final weights are provided in the variable finalwt.\n\nCreate side by side boxplots for the reading score for sampled schools. Which do you think is larger, the within or between cluster variance?\nCreate an ANOVA table for this example. Is your interpretation from the graph upheld by this analysis?\nEstimate with proper 95% CI the average reading score for the population of students under consideration. Do not include a value for the fpc in this example."
