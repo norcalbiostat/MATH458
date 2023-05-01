@@ -2,162 +2,166 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw00-setup.html</loc>
-    <lastmod>2023-04-30T22:15:24.007Z</lastmod>
+    <lastmod>2023-05-01T00:43:09.965Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw01-simulation.html</loc>
-    <lastmod>2023-04-30T22:15:25.359Z</lastmod>
+    <lastmod>2023-05-01T00:43:11.717Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw02-SRS.html</loc>
-    <lastmod>2023-04-30T22:15:26.068Z</lastmod>
+    <lastmod>2023-05-01T00:43:12.609Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw03-stratified.html</loc>
-    <lastmod>2023-04-30T22:15:26.757Z</lastmod>
+    <lastmod>2023-05-01T00:43:13.346Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw04-cluster.html</loc>
-    <lastmod>2023-04-30T22:15:27.430Z</lastmod>
+    <lastmod>2023-05-01T00:43:14.193Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/ws01-functions.html</loc>
-    <lastmod>2023-04-30T22:15:28.257Z</lastmod>
+    <lastmod>2023-05-01T00:43:15.009Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/ws02-estimation.html</loc>
-    <lastmod>2023-04-30T22:15:28.992Z</lastmod>
+    <lastmod>2023-05-01T00:43:15.811Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/ws03-drawSRS.html</loc>
-    <lastmod>2023-04-30T22:15:29.752Z</lastmod>
+    <lastmod>2023-05-01T00:43:16.621Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/ws04-stratified.html</loc>
-    <lastmod>2023-04-30T22:15:30.431Z</lastmod>
+    <lastmod>2023-05-01T00:43:17.435Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/ws05-cluster-byhand.html</loc>
-    <lastmod>2023-04-30T22:15:35.515Z</lastmod>
+    <lastmod>2023-05-01T00:43:18.294Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/ws06-cluster-useR.html</loc>
-    <lastmod>2023-04-30T22:15:39.837Z</lastmod>
+    <lastmod>2023-05-01T00:43:19.217Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments.html</loc>
-    <lastmod>2023-04-30T22:15:40.689Z</lastmod>
+    <lastmod>2023-05-01T00:43:20.159Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/complete/cn01-intro_simulation_complete_posted.html</loc>
-    <lastmod>2023-04-30T22:15:42.189Z</lastmod>
+    <lastmod>2023-05-01T00:43:21.725Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/complete/cn02-intro_sampling_complete_posted.html</loc>
-    <lastmod>2023-04-30T22:15:43.350Z</lastmod>
+    <lastmod>2023-05-01T00:43:22.932Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/complete/cn03-statistical_foundations_complete_posted.html</loc>
-    <lastmod>2023-04-30T22:15:45.767Z</lastmod>
+    <lastmod>2023-05-01T00:43:25.308Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/complete/cn04-SRS_complete_posted.html</loc>
-    <lastmod>2023-04-30T22:15:47.603Z</lastmod>
+    <lastmod>2023-05-01T00:43:27.076Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/complete.html</loc>
-    <lastmod>2023-04-30T22:15:48.378Z</lastmod>
+    <lastmod>2023-05-01T00:43:27.868Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/ideas.html</loc>
-    <lastmod>2023-04-30T22:15:49.058Z</lastmod>
+    <lastmod>2023-05-01T00:43:28.532Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/index.html</loc>
-    <lastmod>2023-04-30T22:15:50.050Z</lastmod>
+    <lastmod>2023-05-01T00:43:29.269Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn00-welcome.html</loc>
-    <lastmod>2023-04-30T22:15:51.101Z</lastmod>
+    <lastmod>2023-05-01T00:43:30.282Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn01-intro_simulation.html</loc>
-    <lastmod>2023-04-30T22:15:52.686Z</lastmod>
+    <lastmod>2023-05-01T00:43:31.750Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn02-intro_sampling.html</loc>
-    <lastmod>2023-04-30T22:15:53.946Z</lastmod>
+    <lastmod>2023-05-01T00:43:32.988Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn03-statistical_foundations.html</loc>
-    <lastmod>2023-04-30T22:15:56.757Z</lastmod>
+    <lastmod>2023-05-01T00:43:35.379Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn04-SRS.html</loc>
-    <lastmod>2023-04-30T22:15:59.138Z</lastmod>
+    <lastmod>2023-05-01T00:43:37.342Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn05-teaching-and-learning.html</loc>
-    <lastmod>2023-04-30T22:15:59.977Z</lastmod>
+    <lastmod>2023-05-01T00:43:38.225Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn06-stratified_sampling.html</loc>
-    <lastmod>2023-04-30T22:16:04.026Z</lastmod>
+    <lastmod>2023-05-01T00:43:42.407Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn07-cluster_sampling.html</loc>
-    <lastmod>2023-04-30T22:16:06.376Z</lastmod>
+    <lastmod>2023-05-01T00:43:44.937Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sampling-458.netlify.app/notes/cn08-ratio.html</loc>
+    <lastmod>2023-05-01T00:43:51.064Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/formulas.html</loc>
-    <lastmod>2023-04-30T22:16:07.699Z</lastmod>
+    <lastmod>2023-05-01T00:43:52.502Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes.html</loc>
-    <lastmod>2023-04-30T22:16:08.596Z</lastmod>
+    <lastmod>2023-05-01T00:43:53.455Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes_DrD/cn06.html</loc>
-    <lastmod>2023-04-30T22:16:10.471Z</lastmod>
+    <lastmod>2023-05-01T00:43:55.379Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/syllabus.html</loc>
-    <lastmod>2023-04-30T22:16:11.610Z</lastmod>
+    <lastmod>2023-05-01T00:43:56.605Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk01.html</loc>
-    <lastmod>2023-04-30T22:16:12.515Z</lastmod>
+    <lastmod>2023-05-01T00:43:57.612Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk011.html</loc>
-    <lastmod>2023-04-30T22:16:13.325Z</lastmod>
+    <lastmod>2023-05-01T00:43:58.485Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk02.html</loc>
-    <lastmod>2023-04-30T22:16:14.136Z</lastmod>
+    <lastmod>2023-05-01T00:43:59.377Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk03.html</loc>
-    <lastmod>2023-04-30T22:16:14.961Z</lastmod>
+    <lastmod>2023-05-01T00:44:00.276Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk04.html</loc>
-    <lastmod>2023-04-30T22:16:15.749Z</lastmod>
+    <lastmod>2023-05-01T00:44:01.158Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk05.html</loc>
-    <lastmod>2023-04-30T22:16:16.649Z</lastmod>
+    <lastmod>2023-05-01T00:44:02.047Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk06.html</loc>
-    <lastmod>2023-04-30T22:16:17.531Z</lastmod>
+    <lastmod>2023-05-01T00:44:02.941Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details/wk08.html</loc>
-    <lastmod>2023-04-30T22:16:18.392Z</lastmod>
+    <lastmod>2023-05-01T00:44:03.785Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/weekly_details.html</loc>
-    <lastmod>2023-04-30T22:16:19.257Z</lastmod>
+    <lastmod>2023-05-01T00:44:04.634Z</lastmod>
   </url>
 </urlset>
