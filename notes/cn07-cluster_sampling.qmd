@@ -1,7 +1,7 @@
 ---
 title: "Cluster Sampling"
 description: "Selecting groups at . Lohr Ch 5. "
-author: DRAFT - 458 class
+author: 458 class
 date: 3/20/23
 execute: 
   error: true
@@ -413,11 +413,43 @@ Suppose we want to take a sample of 3 from a population of 12 that is numbered 1
 
 How does the order of the sampling frame influence estimates?
 
+**The sampling frame is in random order**
+
+*    Systematic sampling is likely to produce a sample that behaves like an SRS. 
+*    Oftentimes, the ordering of the population is unrelated to the characteristic of interest.
+*    We can use SRS results and formulas to calculate the variance of a systematic sample.
+
+**The sampling frame is increasing or decreasing in order**
+
+*    Systematic sampling is likely to be more precise than SRS.
+*    Forces the sample values to be more spread out; an SRS could consist of mostly low or high values.
+*    Can use SRS formulas to calculate SE, but it will likely be an overestimate.
+
+**The sampling frame has a periodic pattern**
+
+*    Less precise than SRS
+*    Most dangerous when the population is cyclical or periodic order, and the sampling interval coincides with a multiple of the period
+
+If periodicity is a concern, using **interpenetrating systematic samples** may be beneficial. 
+
+* Take multiple systematic samples from the population, then use formulas for cluster sampling to estimate the desired point estimates.
+
 
 :::{.callout-tip icon=true}
 ### Example: sampling toxic waste
-text
+Many dumps and landfills contan hazardous waste that was sealed when it was deposited, however may have began leaking since it was dumped. Since we dont know where the waste was deposited, in order to know if there is any leakage of waste, a systematic sample can be used. 
+
+1. Choose a point in a random area, and construct a grid containing that point so that the grid points are equal distance away from each other
+2. take soil samples from each to see if there are traces of hazardous waste
 :::
+
+![Example of sampling Toxic Waste sites](../figs/toxic_waste.png)
+
+
+**Pros and Cons of Systematic Sampling in this example**: 
+forces even coverage of the reason, and it is easy to implement in the field. If you have little knowledge about the exact location of what you are looking for. 
+
+As with any grid sample, you need to worry about whether or not the hazardous waste is reglarly placed so that the grid would miss all of it. 
 
 
 :::{.callout-important}
@@ -488,4 +520,15 @@ Adjusted $R^2$ is for an alternative measure of homogeneity in general populatio
 --------------------------------------------------------
 
 # Designing a Cluster Sample
+
+A psu that is too large may eliminate the cost related benefits of clustering
+
+* Step 1: What overall precision is needed?
+* Step 2: What size should the psus be?
+* Step 3: How many ssus should be sampled in each psu selected for the sample?
+* Step 4: How many psus should be sampled?
+
+Any survey design must know the answer to question 1, and to answer questions 2-4 the cost of sampling a psu for potential psus, the cost of sampling a ssu, and a measure of homogeneity (ICC) for potential sizes of psu must be known.
+
+
 

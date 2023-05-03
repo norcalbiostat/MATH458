@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="DRAFT - 458 class">
+<meta name="author" content="458 class">
 <meta name="dcterms.date" content="2023-03-20">
 <meta name="description" content="Selecting groups at . Lohr Ch 5.">
 
@@ -162,6 +162,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn07_cluster" rel="" target="">
  <span class="dropdown-text">Cluster Sampling</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn08_ratio" rel="" target="">
+ <span class="dropdown-text">Ratio &amp; Regression Estimation</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -240,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>DRAFT - 458 class </p>
+             <p>458 class </p>
           </div>
   </div>
     
@@ -927,6 +931,27 @@ Example: Choosing a Systematic Sample
 <section id="order-matters" class="level2">
 <h2 class="anchored" data-anchor-id="order-matters">Order matters</h2>
 <p>How does the order of the sampling frame influence estimates?</p>
+<p><strong>The sampling frame is in random order</strong></p>
+<ul>
+<li>Systematic sampling is likely to produce a sample that behaves like an SRS.</li>
+<li>Oftentimes, the ordering of the population is unrelated to the characteristic of interest.</li>
+<li>We can use SRS results and formulas to calculate the variance of a systematic sample.</li>
+</ul>
+<p><strong>The sampling frame is increasing or decreasing in order</strong></p>
+<ul>
+<li>Systematic sampling is likely to be more precise than SRS.</li>
+<li>Forces the sample values to be more spread out; an SRS could consist of mostly low or high values.</li>
+<li>Can use SRS formulas to calculate SE, but it will likely be an overestimate.</li>
+</ul>
+<p><strong>The sampling frame has a periodic pattern</strong></p>
+<ul>
+<li>Less precise than SRS</li>
+<li>Most dangerous when the population is cyclical or periodic order, and the sampling interval coincides with a multiple of the period</li>
+</ul>
+<p>If periodicity is a concern, using <strong>interpenetrating systematic samples</strong> may be beneficial.</p>
+<ul>
+<li>Take multiple systematic samples from the population, then use formulas for cluster sampling to estimate the desired point estimates.</li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -937,9 +962,21 @@ Example: sampling toxic waste
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>text</p>
+<p>Many dumps and landfills contan hazardous waste that was sealed when it was deposited, however may have began leaking since it was dumped. Since we dont know where the waste was deposited, in order to know if there is any leakage of waste, a systematic sample can be used.</p>
+<ol type="1">
+<li>Choose a point in a random area, and construct a grid containing that point so that the grid points are equal distance away from each other</li>
+<li>take soil samples from each to see if there are traces of hazardous waste</li>
+</ol>
 </div>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/toxic_waste.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Example of sampling Toxic Waste sites</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Pros and Cons of Systematic Sampling in this example</strong>: forces even coverage of the reason, and it is easy to implement in the field. If you have little knowledge about the exact location of what you are looking for.</p>
+<p>As with any grid sample, you need to worry about whether or not the hazardous waste is reglarly placed so that the grid would miss all of it.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1041,6 +1078,14 @@ ANalysis Of VAriance
 </section>
 <section id="designing-a-cluster-sample" class="level1">
 <h1>Designing a Cluster Sample</h1>
+<p>A psu that is too large may eliminate the cost related benefits of clustering</p>
+<ul>
+<li>Step 1: What overall precision is needed?</li>
+<li>Step 2: What size should the psus be?</li>
+<li>Step 3: How many ssus should be sampled in each psu selected for the sample?</li>
+<li>Step 4: How many psus should be sampled?</li>
+</ul>
+<p>Any survey design must know the answer to question 1, and to answer questions 2-4 the cost of sampling a psu for potential psus, the cost of sampling a ssu, and a measure of homogeneity (ICC) for potential sizes of psu must be known.</p>
 
 
 </section>
