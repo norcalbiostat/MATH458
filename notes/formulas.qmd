@@ -94,11 +94,14 @@ This is a quick reference list. See the R companion for the textbook, the `surve
 * `weights` = variable that holds the sampling weights
 * `fpc` = finite population correction. Typically defined in the function call. 
 
-Argument details: 
 
-* SRS page R companion pg21
-* Stratified Random Sample R companion pg34
+The argument details can be found on the specified pages in the R companion for the book. 
 
+* SRS: pg 21
+* Stratified Random Sample: pg 34
+* Cluster sampling: 
+* Ratio estimates: pg 41
+* Regression estimates: pg 44
 
 ## Summary Statistics
 
@@ -122,7 +125,9 @@ statistics are desired
 svyby(~acres92, by=~region, agstrat.dsgn, svytotal, keep.var = TRUE)
 ```
 
-# Setup a data collection sheet using random sampling from a sampling frame
+# Manage data collection 
+
+Setup a data collection sheet using random sampling from a sampling frame
 
 1. Setup your sampling frame in a spreadsheet. [See this example using google sheets](https://docs.google.com/spreadsheets/d/1L0voUNhw5CsZ3YPWsuTJCBYm963L0zFIhDKS5HUjmms). 
 2. Import your sampling frame into R. More info can be found on the [googlesheets4](https://googlesheets4.tidyverse.org/articles/googlesheets4.html) package vignette. 

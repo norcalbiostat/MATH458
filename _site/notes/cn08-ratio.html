@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.319">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -125,6 +96,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -140,69 +112,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../weekly_details.html">
+    <a class="nav-link" href="../weekly_details.html" rel="" target="">
  <span class="menu-text">Weekly Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html">
+    <a class="nav-link" href="../notes.html" rel="" target="">
  <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html">
+    <a class="nav-link" href="../assignments.html" rel="" target="">
  <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">HackMD</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-hackmd">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources" rel="" target="">
  <span class="dropdown-text">R resources</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-intro_sampling">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-intro_sampling" rel="" target="">
  <span class="dropdown-text">Sampling Framework notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn03-statistical_foundations">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn03-statistical_foundations" rel="" target="">
  <span class="dropdown-text">Foundations of Estimation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn06_stratified">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn06_stratified" rel="" target="">
  <span class="dropdown-text">Stratified Sampling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn07_cluster">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn07_cluster" rel="" target="">
  <span class="dropdown-text">Cluster Sampling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn08_ratio">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn08_ratio" rel="" target="">
  <span class="dropdown-text">Ratio &amp; Regression Estimation</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -220,9 +192,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#using-auxilary-information" id="toc-using-auxilary-information" class="nav-link" data-scroll-target="#using-auxilary-information">Using Auxilary information</a></li>
   </ul></li>
-  <li><a href="#ratio-estimation-in-srs" id="toc-ratio-estimation-in-srs" class="nav-link" data-scroll-target="#ratio-estimation-in-srs">Ratio Estimation in SRS</a>
-  <ul class="collapse">
+  <li><a href="#ratio-estimation-in-srs" id="toc-ratio-estimation-in-srs" class="nav-link" data-scroll-target="#ratio-estimation-in-srs">Ratio Estimation in SRS</a></li>
   <li><a href="#why-use-ratio-estimation" id="toc-why-use-ratio-estimation" class="nav-link" data-scroll-target="#why-use-ratio-estimation">Why use Ratio Estimation</a></li>
+  <li><a href="#regression-estimation-in-srs" id="toc-regression-estimation-in-srs" class="nav-link" data-scroll-target="#regression-estimation-in-srs">Regression Estimation in SRS</a></li>
+  <li><a href="#estimation-using-r" id="toc-estimation-using-r" class="nav-link" data-scroll-target="#estimation-using-r">Estimation using R</a>
+  <ul class="collapse">
+  <li><a href="#ratio-est-using-svyratio" id="toc-ratio-est-using-svyratio" class="nav-link" data-scroll-target="#ratio-est-using-svyratio">Ratio est using <code>svyratio</code></a></li>
+  <li><a href="#regression-est-using-svyglm" id="toc-regression-est-using-svyglm" class="nav-link" data-scroll-target="#regression-est-using-svyglm">Regression est using <code>svyglm</code></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -261,12 +237,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Motivating Example: Estimating number of people living in France in 1802
 </div>
 </div>
@@ -295,12 +271,12 @@ t_{y} = \sum_{i=1}^Ny_{i} \qquad t_{x} = \sum_{i=1}^Nx_{i}
 <p>and their ratio is calculated as <span class="math display">\[
 B = \frac{t_{y}}{t_{x}} = \frac{\mu_{y}}{\mu_{x}}.
 \]</span></p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Example: Farm yield
 </div>
 </div>
@@ -324,12 +300,12 @@ Example: Farm yield
 <li><span class="math inline">\(\hat{\bar{y}_r} = \hat{B}\mu_x\)</span></li>
 <li><span class="math inline">\(\hat{t}_{yr} = \hat{B}t_x\)</span></li>
 </ul>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="question">❓</span> Why <span class="math inline">\(B\)</span>?
 </div>
 </div>
@@ -337,27 +313,101 @@ Example: Farm yield
 <p>The equation <span class="math inline">\(y = Bx\)</span> is a linear equation line, with <span class="math inline">\(B\)</span> as the slope!</p>
 </div>
 </div>
-<section id="why-use-ratio-estimation" class="level2">
-<h2 class="anchored" data-anchor-id="why-use-ratio-estimation">Why use Ratio Estimation</h2>
-<div class="callout-note callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Class Contributions
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Class write up this section.</p>
-</div>
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+</section>
+<section id="why-use-ratio-estimation" class="level1">
+<h1>Why use Ratio Estimation</h1>
+<section id="its-our-metric-of-interest" class="level4">
+<h4 class="anchored" data-anchor-id="its-our-metric-of-interest">1. It’s our metric of interest</h4>
+<p>When we sample populations, sometimes we are interested in ratios.</p>
+<p><strong>Such as:</strong> The average crop yield per acre (Dr.D example) The ratio of liabilities to assets Fish caught per hour Per Capita household income</p>
+<p>However, when should/can you use ratio estimation? General rule of thumb, if the denominator of your ratio of interest is something that would be likely to change from sample to sample, ratio estimation is a valid course of action.</p>
+<p><strong>Example</strong> Let’s say you wanted to find the percent of pages in your favorite magazine that contain at least one advertisement.</p>
+<p>To do so, you sample ten different magazine issues. You count the total number of pages in each ith magazine, <span class="math inline">\(x_i\)</span>, and the number of pages that contain at least one advertisement in each ith magazine, <span class="math inline">\(y_i\)</span>.</p>
+<p>The proportion of interest, <span class="math inline">\(\hat{B}\)</span>, would be the overall total number of pages with ads, <span class="math inline">\(\hat{t}_y\)</span>, divided by the overall total amount of pages, <span class="math inline">\(\hat{t}_x\)</span>.</p>
+<p>Or <span class="math inline">\(\hat{B} = \frac{\hat{t}_y}{\hat{t}_x}\)</span></p>
+<p>It is important to note that the denominator is not the number of issues you randomly sampled, as that would always be ten, or whatever number of issues you chose to sample. The denominator, in this case, was the sum of pages of the issues you would sample. We want our denominator to be something that could vary, as we would expect it to vary in accordance to whatever the true ratio is.</p>
+<p><strong>Common Usages:</strong></p>
+<p>Ratio estimation is used every time an SRS is taken to estimate a mean or proportion for a subpopulation</p>
+<p>In cluster sampling, ratio estimation is commonly used to estimate means.</p>
+</section>
+<section id="unknown-n" class="level4">
+<h4 class="anchored" data-anchor-id="unknown-n">2. Unknown N</h4>
+<p>Sometimes we want to estimate a population total, but the population size N is unknown.</p>
+<p>For instance, we want estimate the total number of fish in a haul that are longer than 12 cm.</p>
+<ul>
+<li>First we would take a random sample of fish
+<ul>
+<li>Initially, we would estimate the proportion of fish that are larger than 12 cm, and multiply that proportion by the total number of fish, N. Or, <span class="math inline">\(\hat{t_y} = N * \bar{y}\)</span></li>
+<li>However, we cannot do this because we don’t know N</li>
+</ul></li>
+<li>Find auxiliary information
+<ul>
+<li>We can the fact that having a length of more than 12 cm (y) is related to weight (x).</li>
+<li>Used the proportion of total weight of haul by average weight if the fish. The book explains that its easy to find the total weight of the haul, and the average weight of a fish; AUTHORITY.</li>
+</ul></li>
+<li>We need to manipulate the following equation:
+<ul>
+<li><span class="math inline">\(\frac{\hat{t_y}}{\hat{t_x}} = \frac{\bar{y}}{\bar{x}}\)</span></li>
+<li><span class="math inline">\(\hat{t_y} = \frac{\bar{y}*{\hat{t_x}}}{\bar{x}}\)</span></li>
+<li><span class="math inline">\(\hat{t_y} = \bar{y} * \frac{\hat{t_x}}{\bar{x}}\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\hat{t_y}\)</span>: our estimated total number of fish in a haul</p>
+<p><span class="math inline">\(\bar{y}\)</span>: average length of the fish longer than 12 cm</p>
+<p><span class="math inline">\(\hat{t_x}\)</span>: total weight of the haul</p>
+<p><span class="math inline">\(\bar{x}\)</span>: average weight of a fish</p>
+<p>Overall, we find an auxiliary information that we can use to relate to another known value. We manipulate the following equation: <span class="math inline">\(\hat{B} = \frac{\hat{t_y}}{\hat{t_x}} = \frac{\bar{y}}{\bar{x}}\)</span>, then add in the known values to find our unknown value.</p>
+</section>
+<section id="strong-correlation" class="level4">
+<h4 class="anchored" data-anchor-id="strong-correlation">3. Strong correlation</h4>
+<p>The higher the correlation coefficient, the better ratio estimation works.</p>
+<p>France had no population census in 1802 and Laplace wanted to estimate the number of people living there. Laplace observed the number of births over the next 3 years and came up with the ratio of for every 1 birth there is 28.352845 persons. The number 28 was reached by dividing the total population in the 30 communes by dividing the amount of births over the 3 years by 3. His reasoning was that communes with large, and it would be similar throughout France.</p>
+<p>Ratio estimation is often used to increase the precision of estimated means and totals. <span class="math inline">\(y_{i}\)</span>= numbers of persons in commune i <span class="math inline">\(x_{i}\)</span>= number of registered births in commune i</p>
+<p>Laplace reasoned the ratio estimator would obtain better precision than multiplying the average number of persons by the 30 communes. The larger the population of a commune, the higher the number of registered births, thus the correlation coefficient is likely to be positive.</p>
+<p>If the <span class="math inline">\(t_{x}\)</span>= total number of registered births is known, the mean squared error of the estimated total of the <span class="math inline">\(\hat{t_y}\)</span> = <span class="math inline">\(\hat{B_tx}\)</span> is likely to be smaller than the MSE of the population mean and estimator that does not use additional information of registered birth.</p>
+</section>
+<section id="adjust-for-demographic-totals" class="level4">
+<h4 class="anchored" data-anchor-id="adjust-for-demographic-totals">4. Adjust for demographic totals</h4>
+<p>Ratio estimation is used to adjust estimates from the sample to reflect demographic totals.</p>
+<ul>
+<li>Say an SRS was taken of 400 out of 4000 students at a university, and there were 240 women and 160 men in the sample
+<ul>
+<li>Say 84 women and 40 men wanted to be teachers</li>
+<li>Using info from the SRS you’d conclude (4000/400)*(84+40) =1240 students want to be teachers at this university</li>
+<li>If we know there are 2700 women and 1300 men at this university, then we’d conclude (84/240)<em>2700 + (40/160)</em>1300=1270 students want to be teachers</li>
+</ul></li>
+<li>In this example we used ratio estimation within each gender, so we adjust our estimate for the total according to the ratio within the population</li>
+<li>For this instance, we are adjusting our estimate for the total amount of women who want to be teachers because 60% of the sample is women but the population of women is 67.5%
+<ul>
+<li><span class="math inline">\(y_{i}\)</span> = 1 if woman and plans career in teaching, 0 otherwise</li>
+<li><span class="math inline">\(x_{i}\)</span> = 1 if woman, 0 otherwise</li>
+</ul></li>
+<li>(84/240)*2700 = 945 is the ratio estimate for the total amount of women who want to teach</li>
+<li>(40/160)*1300 = 325 is the ratio estimate for the total amount of men who want to teach</li>
+<li>This use of ratio estimation is also called poststratification</li>
+</ul>
+</section>
+<section id="ratio-estimation-may-be-used-to-adjust-for-non-response." class="level4">
+<h4 class="anchored" data-anchor-id="ratio-estimation-may-be-used-to-adjust-for-non-response.">5. Ratio Estimation may be used to adjust for non-response.</h4>
+<ul>
+<li>Suppose a sample of businesses is taken<br>
+</li>
+<li>Let <span class="math inline">\(y_i\)</span> be the amount spent on health insurance by business <span class="math inline">\(i\)</span> , and let let <span class="math inline">\(x_i\)</span> be the number of employees in business <span class="math inline">\(i\)</span> .<br>
+</li>
+<li>Assume that <span class="math inline">\(t_x\)</span> the total number of employees in all businesses in the population is known.<br>
+We expect that the amount that the business spends on healthcare will be related to the number of employees that the business has. Because some businesses may not respond to the survey, one way to adjust for non-response is:<br>
+</li>
+<li>Multiply the data <span class="math inline">\(\bar{y}\)</span> / <span class="math inline">\(\bar{x}\)</span> using the data from only the respondents by the population total <span class="math inline">\(t_x\)</span>.</li>
+</ul>
+<p>If companies with fewer employees are less likely to respond, and <span class="math inline">\(y_i\)</span> is proportional to <span class="math inline">\(x_i\)</span>, then we would expect the estimate <span class="math inline">\(N\bar{y}\)</span> to overestimate the population total <span class="math inline">\(t_y\)</span></p>
+<p>But, in the ratio estimation, the estimate is likely to be smaller than N because companies with many employees are more likely to respond.</p>
+<p>Therefore, the ratio estimate will help compensate for the non-response of small companies.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Example: Total acreage of farms in 1992, based on data from ’87.
 </div>
 </div>
@@ -442,12 +492,12 @@ Example: Total acreage of farms in 1992, based on data from ’87.
 <li>Since <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are positively correlated, it is reasonable to expect that <span class="math inline">\(\bar{y}\)</span> will similarily underestimate <span class="math inline">\(\mu_y\)</span></li>
 <li>However, the ratio estimator <span class="math inline">\(\hat{\bar{y}}_r\)</span> gives a more precise estimate of <span class="math inline">\(\mu_y\)</span> because <span class="math inline">\(\bar{y}\)</span> is multiplied by the factor <span class="math inline">\(\frac{\mu}{\bar{x}}\)</span>, which corrects for that underestimation.</li>
 </ul>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="star">⭐</span> You try it
 </div>
 </div>
@@ -455,6 +505,217 @@ Example: Total acreage of farms in 1992, based on data from ’87.
 <p>What if we didn’t have data from 1987? Could we use data from 1982? Use the correlation coefficient and a plot to justify your answer.</p>
 </div>
 </div>
+</section>
+</section>
+<section id="regression-estimation-in-srs" class="level1">
+<h1>Regression Estimation in SRS</h1>
+<p>Regression estimation uses the method of ordinary least squares to calculate estimates for the slope <span class="math inline">\(B_1\)</span> and intercept <span class="math inline">\(B_{0}\)</span> of a ‘line of best fit’ between the outcome measure of interest <span class="math inline">\(y\)</span> and the auxiliary variable <span class="math inline">\(x\)</span>.</p>
+<p><span class="math display">\[
+y = B_0 + B_1x
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\hat{B}_1 = \frac{rs_y}{s_x} \qquad \hat{B}_0 = \bar{y} - \hat{B}_1\bar{x}
+\]</span></p>
+<p>where <span class="math inline">\(r\)</span> is the sample correlation coefficient between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, and <span class="math inline">\(s_x\)</span> and <span class="math inline">\(s_y\)</span> are sample standard deviations of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> respectively.</p>
+<p>Regression estimation uses the sample correlation between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> to obtain an estimate for <span class="math inline">\(\mu_y\)</span> with increased precision.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: Regression Estimation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The regression estimator of <span class="math inline">\(\mu\)</span> is the predicted value of <span class="math inline">\(y\)</span> from the fitted regression equation when <span class="math inline">\(x = \mu\)</span>.</p>
+<p><span class="math display">\[
+\hat{\bar{y}}_{reg} = \hat{B}_0  + \hat{B}_1, \mu = \bar{y} +\hat{B}_1(\mu - \bar{x})
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Dead trees
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Instead of wandering around the forest looking for dead trees and getting bitten by spiders, we can take pictures of an area and then count the dead trees in the photographs. While this can be quicker, there is a chance of misclassification (identifying a live tree as dead, or a dead tree as living) or not seeing trees altogether.</p>
+<p>So let’s divide the area into 100 square plots, take pictures of all 100, then take an SRS of 25 plots for in person counting. Then we’ll use regression estimation to estimate the actual average number of dead trees in a plot, using the estimates counted from the photos.</p>
+</div>
+</div>
+<p>First read in the data and take a <code>glimpse</code> of the values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/deadtrees.csv"</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(trees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 25
+Columns: 2
+$ photo &lt;dbl&gt; 10, 12, 7, 13, 13, 6, 17, 16, 15, 10, 14, 12, 10, 5, 12, 10, 10,…
+$ field &lt;dbl&gt; 15, 14, 9, 14, 8, 5, 18, 15, 13, 15, 11, 15, 12, 8, 13, 9, 11, 1…</code></pre>
+</div>
+</div>
+<p>The variable <code>photo</code> is our auxiliary variable <span class="math inline">\(x\)</span>, containing the count of dead trees from the photograph in each of the sampled plots. The variable <code>field</code> is the outcome variable <span class="math inline">\(y\)</span>, the count of dead trees from field observation.</p>
+<p>To visualize this relationship, we create a scatterplot of <code>photo</code> against <code>field</code>, and adding a best fit line using the <code>method=lm</code> argument to <code>geom_smooth()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(trees, <span class="fu">aes</span>(<span class="at">x=</span>photo, <span class="at">y=</span>field)) <span class="sc">+</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="cn08-ratio_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The equation of that line can be found using the <code>lm</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(field <span class="sc">~</span> photo, <span class="at">data=</span>trees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = field ~ photo, data = trees)
+
+Coefficients:
+(Intercept)        photo  
+     5.0593       0.6133  </code></pre>
+</div>
+</div>
+<p><span class="math display">\[ \hat{y} = 5.06 + 0.613x \]</span></p>
+<p>The average number of dead trees per plot from the photo count is <span class="math inline">\(\mu_x = 11.3\)</span>, so we can plug this value into <span class="math inline">\(x\)</span> and get our estimated <span class="math inline">\(\hat{y}_{reg}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fl">5.06</span> <span class="sc">+</span> <span class="fl">0.613</span><span class="sc">*</span><span class="fl">11.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.9869</code></pre>
+</div>
+</div>
+<p>On average, we estimate there to be 11.986 dead trees per plot.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use a regression model to estimate the average number of acres devoted to farmland in 1992 using the values from 1987. Compare your answer to the one obtained using ratio estimation. How do they differ?</p>
+</div>
+</div>
+</section>
+<section id="estimation-using-r" class="level1">
+<h1>Estimation using R</h1>
+<p>The above examples were from SRS’s, and we know that sampling methods can get more complex, and that we typically need to adjust for weights. So we look now at how to use the <code>survey</code> package functions to calculate ratio and regression estimates.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="ratio-est-using-svyratio" class="level2">
+<h2 class="anchored" data-anchor-id="ratio-est-using-svyratio">Ratio est using <code>svyratio</code></h2>
+<p>The <code>svyratio</code> function is what we’ll use to calculate ratio estimates using survey data. For this example we’ll use the farmland example where we’re predicting the total number of acres devoted to farming in 1992, based on that same value in 1987.</p>
+<ol type="1">
+<li>Add the survey weights and population size <span class="math inline">\(N\)</span> (for the fpc) to the data set if not already present.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>agsrs<span class="sc">$</span>N <span class="ot">&lt;-</span> <span class="dv">3078</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>agsrs<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">3078</span><span class="sc">/</span><span class="dv">300</span> <span class="co">#N/n</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Set our survey design</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ag.design <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="co"># no clustering</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">weight =</span> <span class="sc">~</span>wt, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fpc =</span> <span class="sc">~</span>N, <span class="co"># pop size to be used in FPC</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> agsrs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>estimate the ratio <span class="math inline">\(\hat{B}\)</span> as <code>acres92</code>/ <code>acres87</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(b.hat <span class="ot">&lt;-</span> <span class="fu">svyratio</span>(<span class="at">numerator =</span> <span class="sc">~</span>acres92,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">denominator =</span> <span class="sc">~</span>acres87, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">design =</span> ag.design))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Ratio estimator: svyratio.survey.design2(numerator = ~acres92, denominator = ~acres87, 
+    design = ag.design)
+Ratios=
+          acres87
+acres92 0.9865652
+SEs=
+            acres87
+acres92 0.005750473</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Use this model to predict <span class="math inline">\(t_{r, acres in 1992}\)</span>, the ratio estimate for the total number of acres in 1992.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># provide the population total of x</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>xpoptotal <span class="ot">&lt;-</span> <span class="dv">964470625</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ratio estimate of population total</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(b.hat, <span class="at">total=</span>xpoptotal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$total
+          acres87
+acres92 951513191
+
+$se
+        acres87
+acres92 5546162</code></pre>
+</div>
+</div>
+</section>
+<section id="regression-est-using-svyglm" class="level2">
+<h2 class="anchored" data-anchor-id="regression-est-using-svyglm">Regression est using <code>svyglm</code></h2>
+<p>The <code>svyglm</code> function calculates regression coefficients from survey data. It is the analog of the R function <code>glm</code> which fits generalized linear models.</p>
+<ol type="1">
+<li>Add the survey weights and population size <span class="math inline">\(N\)</span> (for the fpc) to the data set if not already present.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>trees<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>trees<span class="sc">$</span>N <span class="ot">&lt;-</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Set our survey design</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dtree <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="co"># no clustering</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weight =</span> <span class="sc">~</span>wt, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fpc =</span> <span class="sc">~</span>N, <span class="co"># pop size to be used in FPC</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> trees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Fit the regression model and estimate the slope and intercept coefficients.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>tree.model <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(field<span class="sc">~</span>photo, <span class="at">design =</span> dtree)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(tree.model) <span class="co"># print the coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)       photo 
+  5.0592920   0.6132743 </code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Use this model to predict <span class="math inline">\(\hat{\bar{y}}\)</span> using <span class="math inline">\(\mu_x = 11.3\)</span></li>
+</ol>
+<p>We create a new data frame that only contains the value for the <span class="math inline">\(x\)</span> variable we want to predict. The variable name in <code>newdata</code> has to match the one in the <code>tree.model</code>. This new data then is passed into the <code>predict</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">photo =</span> <span class="fl">11.3</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(tree.model, newdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    link    SE
+1 11.989 0.418</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(tree.model, newdata, <span class="at">df =</span> <span class="fu">degf</span>(tree.model)) <span class="sc">%&gt;%</span> <span class="fu">confint</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     2.5 %  97.5 %
+1 11.16998 12.8086</code></pre>
+</div>
+</div>
+<p>We can be 95% confident that there are on average 12.0 (95% CI 11.2-12.8) dead trees per plot in the 100 plot area under investigation.</p>
 
 
 </section>
@@ -603,9 +864,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -670,6 +945,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -713,6 +1074,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a> and the Spring 2023 MATH 458 class.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 
