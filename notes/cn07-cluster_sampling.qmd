@@ -328,23 +328,24 @@ c) Estimate with proper 95% CI the average math score for the population of stud
 
 ```{r}
 schools <- read_csv(here::here("data/schools.csv"))
-head(schools)
 ```
 
 **a)**
 
 ```{r}
-ggplot(schools, aes(y=math, x=as.factor(schoolid))) + geom_boxplot()
+ggplot(schools, aes(y=math, x=as.factor(schoolid))) + 
+  geom_boxplot() + geom_jitter(width=.1)
 ```
 
-Math scores within school seem to be more similar than math scores across schools. 
+There is so much overlap in the distributions of math score across the schools. I think the across cluster variance may be more than the within cluster variance. Except perhaps school 35 and 75. Scores from those schools seem to be more closer within their own school. 
 
 **b)**
+
 ```{r}
 aov(math ~ as.factor(schoolid), data = schools) %>% summary()
 ```
 
-The within cluster variation (MSE) is smaller than the between cluster variation (MSB). This matches my interpretation of the prior graph. 
+The within cluster variation (MSE = 102) is smaller than the between cluster variation (MSB = 779.8). This does not match my interpretation of the prior graph. 
 
 **c)**
 ```{r}
