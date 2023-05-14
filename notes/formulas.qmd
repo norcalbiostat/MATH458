@@ -31,13 +31,20 @@ $$E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta
 
 # Weighted Estimators for Probability sampling designs
 
-These weighted estimators are used in all probability sampling designs. Weights $w$ are applied directly to the data value $y$ before use in any formulas. 
+Survey weights can be used in all probability sampling designs and calculated as the reciprocal of the inclusion probability $\delta_{i}$. Weights $w_{i}$ are applied directly to the data value $y$ before use in any formulas. 
 
 
 |         Population size         |                  Total                  |                  Mean                  |
 |:-----------------------:|:-------------------:|:-------------------------:|
 | $\hat{N} = \sum_{i \in S}w_{i}$ | $\hat{\tau} = \sum_{i \in S}w_{i}y_{i}$ | $\bar{y} = \frac{\hat{\tau}}{\hat{N}}$ |
 
+
+* **SRS**: $w_{i} =\frac{N}{n}$
+* **Stratified**: $w_{hj}=\frac{N_h}{n_h}$
+* **One stage cluster**: is an SRS of clusters.
+* **Two stage cluster**: $w_{ij} = \frac{N}{n}\frac{M_{i}}{m_{i}}$
+    - Stage 1: $P$($i$th psu selected) = $\frac{n}{N}$
+    - Stage 2: $P$($j$th ssu selected | $i$th psu selected) = $\frac{m_i}{M_i}$
 
 ----
 
@@ -80,6 +87,73 @@ Estimated variances;
 * Population proportion $\hat{V}(\hat{p}_{str}) = \sum_{h=1}^H (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}$
 * Estimated total number of population units having a specified characteristic: $\hat{t}_{\it{str}} = \sum_{h=1}^H N_h \hat{p}_h$
 
+## Cluster Random Sample
+
+
+::: panel-tabset
+## Pop psu level
+
+| Symbol      | Formula                                                          | Description                                    |
+|------------|--------------------------|----------------------------------------|
+| $y_{ij}$    |                                                                  | measurement for the $j$th element in $i$th psu |
+| $N$         |                                                                  | number of clusters (psus) in the population    |
+| $M_{i}$     |                                                                  | number of ssus in psu $i$                      |
+| $M_{0}$     | $\sum_{i=1}^{N} M_{i}$                                           | total number of ssus in the population         |
+| $t_{i}$     | $\sum_{j=1}^{M_{i}} y_{ij}$                                      | total in psu $i$                               |
+| $t$         | $\sum_{i=1}^{N} t_{i}= \sum_{i=1}^{N} \sum_{j=1}^{M_{i}} y_{ij}$ | population total                               |
+| $S_{t}^{2}$ | $\frac{1}{N-1} \sum_{i=1}^{N} (t_{i} - \frac{t}{N})^2$           | population variance of the psu totals          |
+
+## Pop ssu level
+
+| Symbol           | Formula                                                                  | Description                        |
+|-------------------|-----------------------------------|-------------------|
+| $\bar{y}_{\mu}$  | $\frac{1}{M_0} \sum_{i=1}^N \sum_{j=1}^{M_i} y_{ij}$                     | population mean                    |
+| $\bar{y}_{i\mu}$ | $\frac{1}{M_i} \sum_{j=1}^{M_i} y_{ij} = \frac{t_i}{M_i}$                | population mean in psu $i$         |
+| $S^2$            | $\frac{1}{M_0-1} \sum_{i=1}^N \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2$ | population variance (per ssu)      |
+| $S_{i}^{2}$      | $\frac{1}{M_i-1} \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2$              | population variance within psu $i$ |
+
+## Sample
+| Symbol                   | Formula                                                  | Description                                     |
+|------------------|-----------------------------|-----------------------------|
+| $y_{ij}$ |                                                                |Measurement for$j$th element in $i$ht psu                                             |
+|$N$||Number of clusters (psus) in the population|
+|$M_i$||Number of ssus in psu $i$|
+|$M_{o}$|$\sum_{i=1}^NM_i$|Total number of psus in the popultion|
+|$t_i$|$\sum_{j=1}^{M_i}y_{ij}$|Total in psu $i$|
+|$t$|$\sum_{i=1}^Nt_i = \sum_{i=1}^N\sum_{j=i}^{M_i}y_{ij}$|Popultion Total|
+|$S_i^2$|$\frac{1}{N-1} \sum_{i=1}^N(t_i-\frac{t}{N})^2$|Popultion variance of the psu totals|
+
+:::
+
+## Ratio Estimation in SRS
+
+Let $y_{i}$ be the measure of interest, and $x_{i}$ be the auxiliary variable. In a population of size $N$ the totals for each measure are
+
+$$
+t_{y} = \sum_{i=1}^Ny_{i} \qquad t_{x} = \sum_{i=1}^Nx_{i}
+$$
+
+and their ratio is calculated as
+$$
+B = \frac{t_{y}}{t_{x}} = \frac{\mu_{y}}{\mu_{x}}.
+$$
+
+## Regression Estimation in SRS
+
+Regression estimation uses the method of ordinary least squares to calculate estimates for the slope $B_1$ and intercept $B_{0}$ of a 'line of best fit' between the outcome measure of interest $y$ and the auxiliary variable $x$. 
+
+$$
+y = B_0 + B_1x
+$$
+
+where
+
+$$
+\hat{B}_1 = \frac{rs_y}{s_x} \qquad \hat{B}_0 = \bar{y} - \hat{B}_1\bar{x}
+$$
+
+where $r$ is the sample correlation coefficient between $x$ and $y$, and $s_x$ and $s_y$ are sample standard deviations of $x$ and $y$ respectively. 
+
 
 ----
 
@@ -103,13 +177,15 @@ The argument details can be found on the specified pages in the R companion for 
 * Ratio estimates: pg 41
 * Regression estimates: pg 44
 
-## Summary Statistics
+## Estimators
 
 * **mean**: `svymean(~x, design)`
 * **total**: `svytotal(~x, design)`
 * **proportion**: Use `svytotal` and divide by `N`
 * **CI for the mean or total**: Use `confint()` after calculating the point estimate
 * **CI for proportion**: `svyciprop(~x, design)` Will also print out $\hat{p}$
+* **Ratio estimate**: `svyratio(~numerator, ~denominator, design)`
+* **Regression estimate**: `svyglm(y~x, design)`
 
 ## Calculating stratum means and variances
 
