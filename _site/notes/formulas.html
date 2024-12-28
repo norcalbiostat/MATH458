@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.319">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,7 +48,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -91,13 +63,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -105,9 +106,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
@@ -119,63 +120,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../weekly_details.html" rel="" target="">
- <span class="menu-text">Weekly Overview</span></a>
+    <a class="nav-link" href="../notes.html"> 
+<span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html" rel="" target="">
- <span class="menu-text">Notes</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../assignments.html" rel="" target="">
- <span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../assignments.html"> 
+<span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">HackMD</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-hackmd">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources">
  <span class="dropdown-text">R resources</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
  <span class="dropdown-text">What is HackMD</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-intro_sampling" rel="" target="">
- <span class="dropdown-text">Sampling Framework notes</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn03-statistical_foundations" rel="" target="">
- <span class="dropdown-text">Foundations of Estimation</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn06_stratified" rel="" target="">
- <span class="dropdown-text">Stratified Sampling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn07_cluster" rel="" target="">
- <span class="dropdown-text">Cluster Sampling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn08_ratio" rel="" target="">
- <span class="dropdown-text">Ratio &amp; Regression Estimation</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html" rel="" target="">
- <span class="menu-text">Syllabus</span></a>
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -191,24 +168,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link active" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a>
   <ul class="collapse">
   <li><a href="#expected-value-and-variance-of-estimates" id="toc-expected-value-and-variance-of-estimates" class="nav-link" data-scroll-target="#expected-value-and-variance-of-estimates">Expected Value and Variance of estimates</a></li>
-  </ul></li>
-  <li><a href="#weighted-estimators-for-probability-sampling-designs" id="toc-weighted-estimators-for-probability-sampling-designs" class="nav-link" data-scroll-target="#weighted-estimators-for-probability-sampling-designs">Weighted Estimators for Probability sampling designs</a></li>
-  <li><a href="#estimators-under-different-sampling-designs" id="toc-estimators-under-different-sampling-designs" class="nav-link" data-scroll-target="#estimators-under-different-sampling-designs">Estimators under different Sampling Designs</a>
-  <ul class="collapse">
-  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple Random Sample</a></li>
-  <li><a href="#stratified-random-sample" id="toc-stratified-random-sample" class="nav-link" data-scroll-target="#stratified-random-sample">Stratified Random Sample</a></li>
-  <li><a href="#cluster-random-sample" id="toc-cluster-random-sample" class="nav-link" data-scroll-target="#cluster-random-sample">Cluster Random Sample</a></li>
-  <li><a href="#ratio-estimation-in-srs" id="toc-ratio-estimation-in-srs" class="nav-link" data-scroll-target="#ratio-estimation-in-srs">Ratio Estimation in SRS</a></li>
-  <li><a href="#regression-estimation-in-srs" id="toc-regression-estimation-in-srs" class="nav-link" data-scroll-target="#regression-estimation-in-srs">Regression Estimation in SRS</a></li>
-  </ul></li>
-  <li><a href="#r-commands" id="toc-r-commands" class="nav-link" data-scroll-target="#r-commands">R commands</a>
-  <ul class="collapse">
-  <li><a href="#specify-survey-design-svydesign" id="toc-specify-survey-design-svydesign" class="nav-link" data-scroll-target="#specify-survey-design-svydesign">Specify survey design <code>svydesign</code></a></li>
-  <li><a href="#estimators" id="toc-estimators" class="nav-link" data-scroll-target="#estimators">Estimators</a></li>
-  <li><a href="#calculating-stratum-means-and-variances" id="toc-calculating-stratum-means-and-variances" class="nav-link" data-scroll-target="#calculating-stratum-means-and-variances">Calculating stratum means and variances</a></li>
-  </ul></li>
-  <li><a href="#manage-data-collection" id="toc-manage-data-collection" class="nav-link" data-scroll-target="#manage-data-collection">Manage data collection</a>
-  <ul class="collapse">
   <li><a href="#other-r-help-references" id="toc-other-r-help-references" class="nav-link" data-scroll-target="#other-r-help-references">Other R help References</a></li>
   </ul></li>
   </ul>
@@ -243,11 +202,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="parameters-and-statistics" class="level1">
 <h1>Parameters and Statistics</h1>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 36%">
@@ -300,570 +261,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <hr>
 </section>
-</section>
-<section id="weighted-estimators-for-probability-sampling-designs" class="level1">
-<h1>Weighted Estimators for Probability sampling designs</h1>
-<p>Survey weights can be used in all probability sampling designs and calculated as the reciprocal of the inclusion probability <span class="math inline">\(\delta_{i}\)</span>. Weights <span class="math inline">\(w_{i}\)</span> are applied directly to the data value <span class="math inline">\(y\)</span> before use in any formulas.</p>
-<table class="table">
-<colgroup>
-<col style="width: 34%">
-<col style="width: 28%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Population size</th>
-<th style="text-align: center;">Total</th>
-<th style="text-align: center;">Mean</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(\hat{N} = \sum_{i \in S}w_{i}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\hat{\tau} = \sum_{i \in S}w_{i}y_{i}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\bar{y} = \frac{\hat{\tau}}{\hat{N}}\)</span></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>SRS</strong>: <span class="math inline">\(w_{i} =\frac{N}{n}\)</span></li>
-<li><strong>Stratified</strong>: <span class="math inline">\(w_{hj}=\frac{N_h}{n_h}\)</span></li>
-<li><strong>One stage cluster</strong>: is an SRS of clusters.</li>
-<li><strong>Two stage cluster</strong>: <span class="math inline">\(w_{ij} = \frac{N}{n}\frac{M_{i}}{m_{i}}\)</span>
-<ul>
-<li>Stage 1: <span class="math inline">\(P\)</span>(<span class="math inline">\(i\)</span>th psu selected) = <span class="math inline">\(\frac{n}{N}\)</span></li>
-<li>Stage 2: <span class="math inline">\(P\)</span>(<span class="math inline">\(j\)</span>th ssu selected | <span class="math inline">\(i\)</span>th psu selected) = <span class="math inline">\(\frac{m_i}{M_i}\)</span></li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="estimators-under-different-sampling-designs" class="level1">
-<h1>Estimators under different Sampling Designs</h1>
-<section id="simple-random-sample" class="level2">
-<h2 class="anchored" data-anchor-id="simple-random-sample">Simple Random Sample</h2>
-<table class="table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 29%">
-<col style="width: 45%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Measure</th>
-<th>Unbiased Estimate <span class="math inline">\((\hat{\theta})\)</span></th>
-<th>Estimated variance of <span class="math inline">\((\hat{\theta})\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Mean</td>
-<td><span class="math inline">\(\bar{y} = \frac{1}{n}\sum_{i\in S} y_{i}\)</span></td>
-<td><span class="math inline">\(\hat{V}(\bar{y}) = (1-\frac{n}{N})\frac{s^{2}}{n}\)</span></td>
-</tr>
-<tr class="even">
-<td>Total</td>
-<td><span class="math inline">\(\hat{\tau} = N\bar{y}\)</span></td>
-<td><span class="math inline">\(\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})\)</span></td>
-</tr>
-<tr class="odd">
-<td>Proportion</td>
-<td><span class="math inline">\(\hat{p} = \bar{y}\)</span></td>
-<td><span class="math inline">\(\hat{V}(\hat{p}) = (1-\frac{n}{N})\frac{\hat{p}(1-\hat{p})}{n-1}\)</span></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><span class="math inline">\(i \in S\)</span> : Unit <span class="math inline">\(i\)</span> is an element in the sample <span class="math inline">\(S\)</span></li>
-<li><span class="math inline">\((1-\frac{n}{N})\)</span>: Finite population correction (fpc)</li>
-</ul>
-</section>
-<section id="stratified-random-sample" class="level2">
-<h2 class="anchored" data-anchor-id="stratified-random-sample">Stratified Random Sample</h2>
-<ul>
-<li>CI’s should use a <span class="math inline">\(t_{n-H}\)</span> distribution instead of using the normal assumption.</li>
-</ul>
-<table class="table">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 38%">
-<col style="width: 38%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Measure</th>
-<th>Population <span class="math inline">\((\theta)\)</span></th>
-<th>Sample <span class="math inline">\((\hat{\theta})\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Sample size in strata <span class="math inline">\(h\)</span></td>
-<td><span class="math inline">\(N_{h}\)</span></td>
-<td><span class="math inline">\(n_{h}\)</span></td>
-</tr>
-<tr class="even">
-<td>Overall sample size</td>
-<td><span class="math inline">\(N = \sum^{H}_{h=1} N_{h}\)</span></td>
-<td><span class="math inline">\(n = \sum^{H}_{h=1} n_{h}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Var(y) in strata <span class="math inline">\(h\)</span></td>
-<td><span class="math inline">\(\sigma_{h}^2 = \frac{1}{N_{h}-1}\sum_{j=1}^{N_{h}}(y_{hj}-\mu_{h})^2\)</span></td>
-<td><span class="math inline">\(s_{h}^2 = \frac{1}{n_{h}-1}\sum_{j}(y_{hj}-\bar{y}_{h})^2\)</span></td>
-</tr>
-<tr class="even">
-<td>Total in strata <span class="math inline">\(h\)</span></td>
-<td><span class="math inline">\(\tau_{h} = \sum_{j=1}^{N_{h}} y_{hj}\)</span></td>
-<td><span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Overall total</td>
-<td><span class="math inline">\(\tau = \sum_{h=1}^{H} \tau_{h}\)</span></td>
-<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h=1}^{H}N_{h}\bar{y}_{h}\)</span></td>
-</tr>
-<tr class="even">
-<td>Mean in strata <span class="math inline">\(h\)</span></td>
-<td><span class="math inline">\(\mu_{h} = \frac{\tau_{h}}{N_{h}}\)</span></td>
-<td><span class="math inline">\(\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Overall mean</td>
-<td><span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
-<td><span class="math inline">\(\bar{y}_{str} = \sum_{h=1}^{H} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
-</tr>
-<tr class="even">
-<td>Proportion in strata <span class="math inline">\(h\)</span></td>
-<td><span class="math inline">\(p_{h} = \mu_h\)</span></td>
-<td><span class="math inline">\(\bar{y}_h = \hat{p}_h\)</span></td>
-</tr>
-<tr class="odd">
-<td>Variance of <span class="math inline">\(p_{h}\)</span></td>
-<td><span class="math inline">\(\sigma_h^2=\frac{N_h}{N_h-1} p_h(1-p_h)\)</span></td>
-<td><span class="math inline">\(s_h^2=\frac{n_h}{n_h-1} \hat{p}_h(1-\hat{p}_h)\)</span></td>
-</tr>
-<tr class="even">
-<td>Overall proportion</td>
-<td><span class="math inline">\(p_{str} = \sum_{h=1}^{H} \frac{N_h}{N} p_h\)</span></td>
-<td><span class="math inline">\(\hat{p}_{str} = \sum_{h=1}^{H} \frac{N_h}{N}\hat{p}_h\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>Estimated variances;</p>
-<ul>
-<li>Within strata total <span class="math inline">\(\hat{V}(\hat{\tau}_{h}) = (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span><br>
-</li>
-<li>Within strata mean <span class="math inline">\(\hat{V}(\bar{y}_{h}) = \frac{1}{N^2}V(\hat{\tau}_{h})\)</span></li>
-<li>Overall population total <span class="math inline">\(\hat{V}(\hat{\tau}_{str}) = \sum_{h=1}^H (1-\frac{n_h}{N_h})N^2 \frac{s^2_h}{n_h}\)</span></li>
-<li>Population proportion <span class="math inline">\(\hat{V}(\hat{p}_{str}) = \sum_{h=1}^H (1-\frac{n_h}{N_h}) (\frac{N_h}{N})^2 \frac{\hat{p}_h (1-\hat{p}_h)}{n_h-1}\)</span></li>
-<li>Estimated total number of population units having a specified characteristic: <span class="math inline">\(\hat{t}_{\it{str}} = \sum_{h=1}^H N_h \hat{p}_h\)</span></li>
-</ul>
-</section>
-<section id="cluster-random-sample" class="level2">
-<h2 class="anchored" data-anchor-id="cluster-random-sample">Cluster Random Sample</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Pop psu level</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Pop ssu level</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Sample</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<table class="table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 33%">
-<col style="width: 51%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th>Formula</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(y_{ij}\)</span></td>
-<td></td>
-<td>measurement for the <span class="math inline">\(j\)</span>th element in <span class="math inline">\(i\)</span>th psu</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(N\)</span></td>
-<td></td>
-<td>number of clusters (psus) in the population</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(M_{i}\)</span></td>
-<td></td>
-<td>number of ssus in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(M_{0}\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^{N} M_{i}\)</span></td>
-<td>total number of ssus in the population</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(t_{i}\)</span></td>
-<td><span class="math inline">\(\sum_{j=1}^{M_{i}} y_{ij}\)</span></td>
-<td>total in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(t\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^{N} t_{i}= \sum_{i=1}^{N} \sum_{j=1}^{M_{i}} y_{ij}\)</span></td>
-<td>population total</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(S_{t}^{2}\)</span></td>
-<td><span class="math inline">\(\frac{1}{N-1} \sum_{i=1}^{N} (t_{i} - \frac{t}{N})^2\)</span></td>
-<td>population variance of the psu totals</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<table class="table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 47%">
-<col style="width: 26%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th>Formula</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\bar{y}_{\mu}\)</span></td>
-<td><span class="math inline">\(\frac{1}{M_0} \sum_{i=1}^N \sum_{j=1}^{M_i} y_{ij}\)</span></td>
-<td>population mean</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\bar{y}_{i\mu}\)</span></td>
-<td><span class="math inline">\(\frac{1}{M_i} \sum_{j=1}^{M_i} y_{ij} = \frac{t_i}{M_i}\)</span></td>
-<td>population mean in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(S^2\)</span></td>
-<td><span class="math inline">\(\frac{1}{M_0-1} \sum_{i=1}^N \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2\)</span></td>
-<td>population variance (per ssu)</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(S_{i}^{2}\)</span></td>
-<td><span class="math inline">\(\frac{1}{M_i-1} \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2\)</span></td>
-<td>population variance within psu <span class="math inline">\(i\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<table class="table">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 38%">
-<col style="width: 38%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th>Formula</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(y_{ij}\)</span></td>
-<td></td>
-<td>Measurement for<span class="math inline">\(j\)</span>th element in <span class="math inline">\(i\)</span>ht psu</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(N\)</span></td>
-<td></td>
-<td>Number of clusters (psus) in the population</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(M_i\)</span></td>
-<td></td>
-<td>Number of ssus in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(M_{o}\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^NM_i\)</span></td>
-<td>Total number of psus in the popultion</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(t_i\)</span></td>
-<td><span class="math inline">\(\sum_{j=1}^{M_i}y_{ij}\)</span></td>
-<td>Total in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(t\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^Nt_i = \sum_{i=1}^N\sum_{j=i}^{M_i}y_{ij}\)</span></td>
-<td>Popultion Total</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(S_i^2\)</span></td>
-<td><span class="math inline">\(\frac{1}{N-1} \sum_{i=1}^N(t_i-\frac{t}{N})^2\)</span></td>
-<td>Popultion variance of the psu totals</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="ratio-estimation-in-srs" class="level2">
-<h2 class="anchored" data-anchor-id="ratio-estimation-in-srs">Ratio Estimation in SRS</h2>
-<p>Let <span class="math inline">\(y_{i}\)</span> be the measure of interest, and <span class="math inline">\(x_{i}\)</span> be the auxiliary variable. In a population of size <span class="math inline">\(N\)</span> the totals for each measure are</p>
-<p><span class="math display">\[
-t_{y} = \sum_{i=1}^Ny_{i} \qquad t_{x} = \sum_{i=1}^Nx_{i}
-\]</span></p>
-<p>and their ratio is calculated as <span class="math display">\[
-B = \frac{t_{y}}{t_{x}} = \frac{\mu_{y}}{\mu_{x}}.
-\]</span></p>
-</section>
-<section id="regression-estimation-in-srs" class="level2">
-<h2 class="anchored" data-anchor-id="regression-estimation-in-srs">Regression Estimation in SRS</h2>
-<p>Regression estimation uses the method of ordinary least squares to calculate estimates for the slope <span class="math inline">\(B_1\)</span> and intercept <span class="math inline">\(B_{0}\)</span> of a ‘line of best fit’ between the outcome measure of interest <span class="math inline">\(y\)</span> and the auxiliary variable <span class="math inline">\(x\)</span>.</p>
-<p><span class="math display">\[
-y = B_0 + B_1x
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
-\hat{B}_1 = \frac{rs_y}{s_x} \qquad \hat{B}_0 = \bar{y} - \hat{B}_1\bar{x}
-\]</span></p>
-<p>where <span class="math inline">\(r\)</span> is the sample correlation coefficient between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, and <span class="math inline">\(s_x\)</span> and <span class="math inline">\(s_y\)</span> are sample standard deviations of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> respectively.</p>
-<hr>
-</section>
-</section>
-<section id="r-commands" class="level1">
-<h1>R commands</h1>
-<p>This is a quick reference list. See the R companion for the textbook, the <code>survey</code> package help file or vignette for more information.</p>
-<section id="specify-survey-design-svydesign" class="level2">
-<h2 class="anchored" data-anchor-id="specify-survey-design-svydesign">Specify survey design <code>svydesign</code></h2>
-<ul>
-<li>Function call: <code>svydesign(id = , weights=,  fpc= , data = )</code></li>
-<li><code>id</code> = variable that identifies clusters</li>
-<li><code>weights</code> = variable that holds the sampling weights</li>
-<li><code>fpc</code> = finite population correction. Typically defined in the function call.</li>
-</ul>
-<p>The argument details can be found on the specified pages in the R companion for the book.</p>
-<ul>
-<li>SRS: pg 21</li>
-<li>Stratified Random Sample: pg 34</li>
-<li>Cluster sampling:</li>
-<li>Ratio estimates: pg 41</li>
-<li>Regression estimates: pg 44</li>
-</ul>
-</section>
-<section id="estimators" class="level2">
-<h2 class="anchored" data-anchor-id="estimators">Estimators</h2>
-<ul>
-<li><strong>mean</strong>: <code>svymean(~x, design)</code></li>
-<li><strong>total</strong>: <code>svytotal(~x, design)</code></li>
-<li><strong>proportion</strong>: Use <code>svytotal</code> and divide by <code>N</code></li>
-<li><strong>CI for the mean or total</strong>: Use <code>confint()</code> after calculating the point estimate</li>
-<li><strong>CI for proportion</strong>: <code>svyciprop(~x, design)</code> Will also print out <span class="math inline">\(\hat{p}\)</span></li>
-<li><strong>Ratio estimate</strong>: <code>svyratio(~numerator, ~denominator, design)</code></li>
-<li><strong>Regression estimate</strong>: <code>svyglm(y~x, design)</code></li>
-</ul>
-</section>
-<section id="calculating-stratum-means-and-variances" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-stratum-means-and-variances">Calculating stratum means and variances</h2>
-<ul>
-<li>The first argument of <code>svyby</code> is the formula for the variable(s) for which statistics are desired</li>
-<li><code>(by=)</code> is the variable that defines the groups.</li>
-<li>Then list the <code>design</code> object</li>
-<li>and the name of the function that calculates the statistics.</li>
-<li>Set <code>keep.var=TRUE</code> to display the standard errors for the statistics.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svyby</span>(<span class="sc">~</span>acres92, <span class="at">by=</span><span class="sc">~</span>region, agstrat.dsgn, svytotal, <span class="at">keep.var =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="manage-data-collection" class="level1">
-<h1>Manage data collection</h1>
-<p>Setup a data collection sheet using random sampling from a sampling frame</p>
-<ol type="1">
-<li>Setup your sampling frame in a spreadsheet. <a href="https://docs.google.com/spreadsheets/d/1L0voUNhw5CsZ3YPWsuTJCBYm963L0zFIhDKS5HUjmms">See this example using google sheets</a>.</li>
-<li>Import your sampling frame into R. More info can be found on the <a href="https://googlesheets4.tidyverse.org/articles/googlesheets4.html">googlesheets4</a> package vignette.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sheet.url <span class="ot">&lt;-</span> <span class="st">"https://docs.google.com/spreadsheets/d/1L0voUNhw5CsZ3YPWsuTJCBYm963L0zFIhDKS5HUjmms"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>frame.srs <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(sheet.url, <span class="at">sheet =</span> <span class="st">"srs"</span>) </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>frame.str <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(sheet.url, <span class="at">sheet =</span> <span class="st">"stratified"</span>) </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>frame.clu <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(sheet.url, <span class="at">sheet =</span> <span class="st">"cluster"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="3" type="1">
-<li>Use functions from the <code>sampling</code> package to draw random samples according to your design. See the links for more details on what the arguments mean.</li>
-</ol>
-<ul>
-<li><a href="https://sampling-458.netlify.app/notes/cn04-srs#drawing-a-srs-using-a-computer">SRS</a>.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampling)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>srs.idx <span class="ot">&lt;-</span> <span class="fu">srswor</span>(<span class="dv">8</span>, <span class="fu">length</span>(frame.srs<span class="sc">$</span>unit_id)) </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(frame.srs, srs.idx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID_unit unit_id
-1       2       2
-2       6       6
-3       8       8
-4      11      11
-5      14      14
-6      16      16
-7      18      18
-8      19      19</code></pre>
-</div>
-</div>
-<ul>
-<li><a href="https://sampling-458.netlify.app/notes/cn06-stratified_sampling.html#using-r">Stratified</a></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>frame.str <span class="ot">&lt;-</span> frame.str <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(group) <span class="co"># sort first</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>strata.idx <span class="ot">&lt;-</span> sampling<span class="sc">::</span><span class="fu">strata</span>(<span class="at">data =</span> frame.str,      <span class="co"># data set</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stratanames =</span> <span class="st">"group"</span>, <span class="co"># variable name</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size =</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">5</span>),      <span class="co"># stratum sample sizes     </span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"srswor"</span>)     <span class="co"># method for selecting within strata</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(frame.str, strata.idx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   unit_id group ID_unit      Prob Stratum
-1        1     A       1 0.5454545       1
-2        2     A       2 0.5454545       1
-6        6     A       6 0.5454545       1
-7        7     A       7 0.5454545       1
-10      10     A      10 0.5454545       1
-11      11     A      11 0.5454545       1
-12       1     B      12 0.5000000       2
-17       6     B      17 0.5000000       2
-18       7     B      18 0.5000000       2
-19       8     B      19 0.5000000       2
-21       2     C      21 0.8333333       3
-22       3     C      22 0.8333333       3
-23       4     C      23 0.8333333       3
-24       5     C      24 0.8333333       3
-25       6     C      25 0.8333333       3</code></pre>
-</div>
-</div>
-<ul>
-<li>One stage cluster</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>onestage.idx <span class="ot">&lt;-</span> sampling<span class="sc">::</span><span class="fu">cluster</span>(<span class="at">data=</span>frame.clu,         <span class="co"># Data set</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">clustername =</span> <span class="st">"group"</span>,  <span class="co"># variable name containing clusters </span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">3</span>,               <span class="co"># number of clusters</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method =</span> <span class="st">"srswor"</span>,      <span class="co"># how to draw clusters </span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">description =</span> <span class="cn">TRUE</span>)     <span class="co"># show descriptive output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of selected clusters: 3 
-Number of units in the population and number of selected units: 50 25 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(frame.clu, onestage.idx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   unit_id group ID_unit Prob
-1        3     A       3  0.6
-2        1     A       1  0.6
-3        2     A       2  0.6
-4        7     A       7  0.6
-5        4     A       4  0.6
-6        5     A       5  0.6
-7        6     A       6  0.6
-8        5     B      12  0.6
-9        1     B       8  0.6
-10       2     B       9  0.6
-11       3     B      10  0.6
-12       4     B      11  0.6
-13       9     B      16  0.6
-14       6     B      13  0.6
-15       7     B      14  0.6
-16       8     B      15  0.6
-17      10     B      17  0.6
-18       8     C      25  0.6
-19       1     C      18  0.6
-20       2     C      19  0.6
-21       3     C      20  0.6
-22       4     C      21  0.6
-23       5     C      22  0.6
-24       6     C      23  0.6
-25       7     C      24  0.6</code></pre>
-</div>
-</div>
-<ul>
-<li>Two stage cluster</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mstage.idx <span class="ot">&lt;-</span> sampling<span class="sc">::</span><span class="fu">mstage</span>(<span class="at">data=</span>frame.clu, </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stage =</span> <span class="fu">c</span>(<span class="st">"cluster"</span>, <span class="st">""</span>),  <span class="co"># sampling method for each stage, blank means SRS</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">varnames =</span> <span class="fu">list</span>(<span class="st">"group"</span>, <span class="st">"unit_id"</span>),  <span class="co"># variable names for each stage</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size =</span> <span class="fu">list</span>(<span class="dv">3</span>, <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>)), <span class="co"># 3 psus, 5 ssus from each psu</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"srswor"</span>, <span class="st">"srswor"</span>))</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(frame.clu, mstage.idx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-   unit_id group ID_unit Prob_ 1 _stage
-1        6     B      13            0.6
-2       10     B      17            0.6
-3        7     B      14            0.6
-4        8     B      15            0.6
-5        9     B      16            0.6
-6        1     B       8            0.6
-7        2     B       9            0.6
-8        3     B      10            0.6
-9        4     B      11            0.6
-10       5     B      12            0.6
-11       1     D      26            0.6
-12       2     D      27            0.6
-13       3     D      28            0.6
-14       4     D      29            0.6
-15       5     D      30            0.6
-16       6     D      31            0.6
-17       7     D      32            0.6
-18       8     D      33            0.6
-19       9     D      34            0.6
-20      10     D      35            0.6
-21      11     D      36            0.6
-22      12     D      37            0.6
-23      13     D      38            0.6
-24       1     E      39            0.6
-25       2     E      40            0.6
-26       3     E      41            0.6
-27       4     E      42            0.6
-28       5     E      43            0.6
-29       6     E      44            0.6
-30       7     E      45            0.6
-31       8     E      46            0.6
-32       9     E      47            0.6
-33      10     E      48            0.6
-34      11     E      49            0.6
-35      12     E      50            0.6
-
-[[2]]
-   group unit_id ID_unit Prob_ 2 _stage      Prob
-1      B      10      17      0.5000000 0.3000000
-2      B       7      14      0.5000000 0.3000000
-3      B       8      15      0.5000000 0.3000000
-4      B       2       9      0.5000000 0.3000000
-5      B       3      10      0.5000000 0.3000000
-6      D       4      29      0.3846154 0.2307692
-7      D       6      31      0.3846154 0.2307692
-8      D       8      33      0.3846154 0.2307692
-9      D       9      34      0.3846154 0.2307692
-10     D      13      38      0.3846154 0.2307692
-11     E       1      39      0.4166667 0.2500000
-12     E       3      41      0.4166667 0.2500000
-13     E       5      43      0.4166667 0.2500000
-14     E       7      45      0.4166667 0.2500000
-15     E       9      47      0.4166667 0.2500000</code></pre>
-</div>
-</div>
-<p>See <code>?mstage</code> for more examples of multistage sampling.</p>
-<ol start="4" type="1">
-<li><p>Make a new spreadsheet containing the sampled rows, and add a column for <span class="math inline">\(y\)</span> the thing you are going to measure on each unit.</p></li>
-<li><p>Go collect data!</p></li>
-</ol>
 <section id="other-r-help-references" class="level2">
 <h2 class="anchored" data-anchor-id="other-r-help-references">Other R help References</h2>
 <ul>
@@ -917,6 +314,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -985,13 +409,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1070,10 +496,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1083,8 +526,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1096,7 +548,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1140,6 +715,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1165,6 +741,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1227,7 +829,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a> and the Spring 2023 MATH 458 class.</div>   
+    <div class="nav-footer-left">
+<p>This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a> and the Spring 2025 MATH 458 class.</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1236,6 +840,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

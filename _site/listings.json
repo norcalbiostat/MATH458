@@ -3,16 +3,15 @@
     "listing": "/assignments.html",
     "items": [
       "/assignments/hw00-setup.html",
-      "/assignments/ws01-functions.html",
-      "/assignments/hw01-simulation.html",
-      "/assignments/ws02-estimation.html",
-      "/assignments/hw02-SRS.html",
-      "/assignments/ws03-drawSRS.html",
-      "/assignments/ws04-stratified.html",
-      "/assignments/hw03-stratified.html",
-      "/assignments/ws05-cluster-byhand.html",
-      "/assignments/ws06-cluster-useR.html",
-      "/assignments/hw04-cluster.html"
+      "/assignments/ws01-functions.html"
+    ]
+  },
+  {
+    "listing": "/notes.html",
+    "items": [
+      "/notes/formulas.html",
+      "/notes/cn00-welcome.html",
+      "/notes/cn01-intro_simulation.html"
     ]
   },
   {
@@ -22,34 +21,6 @@
       "/complete/cn02-intro_sampling_complete_posted.html",
       "/complete/cn03-statistical_foundations_complete_posted.html",
       "/complete/cn04-SRS_complete_posted.html"
-    ]
-  },
-  {
-    "listing": "/notes.html",
-    "items": [
-      "/notes/formulas.html",
-      "/notes/cn00-welcome.html",
-      "/notes/cn01-intro_simulation.html",
-      "/notes/cn02-intro_sampling.html",
-      "/notes/cn03-statistical_foundations.html",
-      "/notes/cn04-SRS.html",
-      "/notes/cn05-teaching-and-learning.html",
-      "/notes/cn06-stratified_sampling.html",
-      "/notes/cn07-cluster_sampling.html",
-      "/notes/cn08-ratio.html"
-    ]
-  },
-  {
-    "listing": "/weekly_details.html",
-    "items": [
-      "/weekly_details/wk01.html",
-      "/weekly_details/wk02.html",
-      "/weekly_details/wk03.html",
-      "/weekly_details/wk04.html",
-      "/weekly_details/wk05.html",
-      "/weekly_details/wk06.html",
-      "/weekly_details/wk011.html",
-      "/weekly_details/wk08.html"
     ]
   }
 ]

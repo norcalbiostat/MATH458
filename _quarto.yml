@@ -9,19 +9,17 @@ project:
 website:
   page-navigation: true
   title: "Sampling Methods"
-  description: "Homepage for MATH 458 Spring 23"
+  description: "Homepage for MATH 458 Spring 25"
   site-url: "https://sampling-458.netlify.app/"
  
   page-footer:
     #background: light
-    left: "This site is built with :heart:, {{< fa brands r-project >}} and [Quarto](https://quarto.org/) by [Robin Donatello](www.norcalbiostat.com) and the Spring 2023 MATH 458 class."
+    left: "This site is built with :heart:, [R](https://posit.co/) and [Quarto](https://quarto.org/) by [Robin Donatello](www.norcalbiostat.com) and the Spring 2025 MATH 458 class."
       
   navbar: 
     pinned: true
     #background: "#654378"
     left: 
-      - text: "Weekly Overview"
-        file: weekly_details.qmd
       - text: "Notes"
         file: notes.qmd
       - text: "Assignments"
@@ -35,16 +33,16 @@ website:
             url: https://hackmd.io/@norcalbiostat/sampling_r_resources
           - text: "What is HackMD"
             url: https://hackmd.io/@norcalbiostat/458_intro_hackmd
-          - text: "Sampling Framework notes"
-            url: https://hackmd.io/@norcalbiostat/cn02-intro_sampling
-          - text: "Foundations of Estimation"
-            url: https://hackmd.io/@norcalbiostat/cn03-statistical_foundations
-          - text: "Stratified Sampling"
-            url: https://hackmd.io/@norcalbiostat/cn06_stratified
-          - text: "Cluster Sampling"
-            url: https://hackmd.io/@norcalbiostat/cn07_cluster
-          - text: "Ratio & Regression Estimation"
-            url: https://hackmd.io/@norcalbiostat/cn08_ratio
+          # - text: "Sampling Framework notes"
+          #   url: https://hackmd.io/@norcalbiostat/cn02-intro_sampling
+          # - text: "Foundations of Estimation"
+          #   url: https://hackmd.io/@norcalbiostat/cn03-statistical_foundations
+          # - text: "Stratified Sampling"
+          #   url: https://hackmd.io/@norcalbiostat/cn06_stratified
+          # - text: "Cluster Sampling"
+          #   url: https://hackmd.io/@norcalbiostat/cn07_cluster
+          # - text: "Ratio & Regression Estimation"
+          #   url: https://hackmd.io/@norcalbiostat/cn08_ratio
       - text: "Syllabus"
         file: syllabus.qmd
 
@@ -65,3 +63,4 @@ execute:
   freeze: auto # re-render only when source changes
   echo: true
   warning: false
+  message: false

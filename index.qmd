@@ -1,7 +1,7 @@
 ---
 title: "Sampling Methods"
 subtitle: |
-  MATH 458 • Spring 2023 <br> California State University, Chico
+  MATH 458 • Spring 2025 <br> California State University, Chico
 toc: false
 sidebar: false
 page-layout: full
@@ -12,45 +12,42 @@ page-layout: full
 
 The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors. 
 
-::: {.grid .course-details}
 
+::: {.grid .course-details}
 
 ::: {.g-col-4}
 ### Course details
 
-{{< fa calendar >}} &nbsp; {{< var course.dt >}}
-{{< fa location-dot >}} &nbsp; {{< var course.location >}}
-{{< fa people-roof >}} &nbsp; {{< var course.moi >}}
+📅 &nbsp; Mon & Wed  
+🕓 &nbsp; 4:00 - 5:15 PM    
+🏛 &nbsp; Holt 155  
+👥️ &nbsp; In Person
+:::
 
+
+::: {.g-col-4}
 #### Pre-reqs
-{{< var course.pre_req >}}
-_(may be taken concurrently)_
+MATH 314, MATH 315, or MATH 351 (may be taken concurrently)
 
-:::
-
-
-::: {.g-col-4}
 #### Student Drop in Hours
-{{< var course.oh >}}
 
-#### Need more R help?
-[Community Coding](https://www.csuchico.edu/datascience/community-coding.shtml)
-
+TBD
 :::
 
 
+
 ::: {.g-col-4}
-### Instructor Info
-* [{{< var instructor.name >}}]({{< var instructor.url >}})
-* **Office**: {{< var instructor.office >}}
-* <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
-* [Schedule an appointment]({{< var instructor.appointment_url >}})
-{{< var instructor.contact_policy >}}  
+### Instructor
+
+🐾 &nbsp; [Dr. Robin Donatello](https://www.norcalbiostat.com)  
+🚪 &nbsp; Holt 202  
+📧 &nbsp; <a href="mailto:rdonatello@csuchico.edu">rdonatello@csuchico.edu</a>  
+🙋 &nbsp; [Schedule an appointment](https://dr-donatello.youcanbook.me/)
 :::
 
 :::
 
 
 :::{.callout-tip}
-You can toggle between light and dark mode by clicking the {{< fa toggle-off >}} button in the top right navigation bar.
+You can toggle dark mode by clicking the toggle button in the top right navigation bar.
 :::
