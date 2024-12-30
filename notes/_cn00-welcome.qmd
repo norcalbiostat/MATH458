@@ -2,7 +2,7 @@
 title: "Welcome to MATH 458"
 subtitle: "Sampling Methods"
 description: "Course Overview slides"
-date: "2023-01-23"
+date: "2025-01-22"
 author: "Robin Donatello"
 format: 
   revealjs:

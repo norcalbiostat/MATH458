@@ -16,7 +16,7 @@ I get way too many emails that it's easy to miss one from you. Got questions abo
 :::
 
 a. [Download the Desktop app](https://discord.com/download). <span style="color:red">**You should not rely on remembering to log in using the web version.**</span> Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider. 
-b. You are welcome to have any username you choose as long as it's suitable for school. 
+b. Please change your display name to something resembling your name so your classmates (and I) can identify and tag you.
 c. Once you join the server and accept the code of conduct, go to the `#class-selection` channel (left side bar) and click the icon that'll add you to our class folder. 
 d. Post an introduction in the `#458-class-chat` channel. Include the following:
     * major
@@ -26,17 +26,16 @@ d. Post an introduction in the `#458-class-chat` channel. Include the following:
 
 <br>
 
-# 2. Update your R (4.2+) and R Studio (latest). 
+# 2. Update your R and R Studio to the latest versions 
 
-* All homework is to be done in a literate programming/reproducible manner. This means either `.Rmd` or `.qmd` files compiled to PDF. 
-    - If you don't know what this means, review lecture 02 & 03 from [Math 130 week 1](https://norcalbiostat.github.io/MATH130/wk1.html)
-    - Also check out the next generation of literate programming tools: [Quarto](https://quarto.org/docs/get-started/hello/rstudio.html). I will be giving you `.qmd` files to work in. They work essentially the same as Rmarkdown files with subtle differences. You must have the newest version of Rstudio to work with these files. 
+* Install the `survey` package
+* All homework is to be done in a literate programming/reproducible manner using Quarto (`.qmd`) files compiled to PDF. 
 * Make sure you can knit to PDF. If you cannot, then install the `tinytex` package and then run `tinytex::install_tinytex()` in the console to install a lightweight version of LaTeX.
     
 
 # 3. Get Organized
 
-Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for **scripts**, **data**, and **reports**.
+Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. 
 
 You need to choose a naming convention for your folders and try to stick with it. Recommended options are: 
 
@@ -51,7 +50,7 @@ Create this class folder along with the following subfolders to organize your da
 * `worksheets` - scripts used for completing worksheets 
 * `homework`- assignments to be submitted
 * `notes` - you will be writing and contributing notes to the class
-* `exams` - because they're likely to be computer based. 
+* `project` - for project specific files 
 
 :::{.callout-important}
 ## Do not let everything live in your downloads folder.
@@ -61,24 +60,16 @@ This means when you download a file, right click and "Save as" or "Save target a
 # 4. Quick access
 
 Bookmark this class website. Going through Canvas every time just is a waste of your time. 
-
-
 # 5. HackMD
 
 Go to the [What is HackMD collaborative notes](https://hackmd.io/@norcalbiostat/458_intro_hackmd/), read the introduction and add your name and major to the list.
 
 
 
-# 6. Student office hours 
-
-Help me decide when to hold student office hours. Remember, these are open drop in times where I dedicate my time to YOU as students. My time outside these hours is limited, so be sure to fill this out so I can best choose times that you are free. [[Link]](https://forms.gle/aZgtaBbt2tH21ZAr6)   
-
-:stop_sign: If you are doing this for Math 456, do not submit a second entry. You only need to do this once.
 
 # 7. Programming Assessment 
 
-This is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions are found in Canvas. 
+This is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions for this quiz are found in Canvas. 
 
-:stop_sign: If you are doing this for Math 456, do not submit a second entry. You only need to do this once.
 
 

@@ -43,8 +43,7 @@ website:
           #   url: https://hackmd.io/@norcalbiostat/cn07_cluster
           # - text: "Ratio & Regression Estimation"
           #   url: https://hackmd.io/@norcalbiostat/cn08_ratio
-      - text: "Syllabus"
-        file: syllabus.qmd
+
 
 from: markdown+emoji
 format:
