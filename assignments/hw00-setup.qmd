@@ -6,7 +6,14 @@ categories: Homework
 subtitle: "Getting all the materials and tools for the class"
 ---
 
-# 1. Discord
+# 1. Get the textbook
+
+I don't care if it's physical or electronic. Having a copy is essential. I have had students use a prior edition, but the page numbers and some content are different. If you go this route be prepared to work with another student to ensure you are looking at the correct content.
+
+[Sampling, 3rd Edition. Sharon Lohr](https://www.sharonlohr.com/sampling-design-and-analysis-3e)
+
+
+# 2. Discord
 
 Click this link to join the Math & Stats Discord server [https://discord.gg/xCQTAgu8bE](https://discord.gg/xCQTAgu8bE). This is a support platform where student office hours will be held and personalized channels can be made. 
 
@@ -28,7 +35,7 @@ d. Post an introduction in the `#458-class-chat` channel. Include the following:
 
 # 2. Update your R and R Studio to the latest versions 
 
-* Install the `survey` package
+* Install following packages: `tidyverse, survey, sampling, srvyr` 
 * All homework is to be done in a literate programming/reproducible manner using Quarto (`.qmd`) files compiled to PDF. 
 * Make sure you can knit to PDF. If you cannot, then install the `tinytex` package and then run `tinytex::install_tinytex()` in the console to install a lightweight version of LaTeX.
     
@@ -47,8 +54,7 @@ You need to choose a naming convention for your folders and try to stick with it
 Create this class folder along with the following subfolders to organize your data and script files.
 
 * `data` - any data that's handed out goes in here
-* `worksheets` - scripts used for completing worksheets 
-* `homework`- assignments to be submitted
+* `assignments` - scripts used for completing worksheets and assignments
 * `notes` - you will be writing and contributing notes to the class
 * `project` - for project specific files 
 
@@ -59,17 +65,18 @@ This means when you download a file, right click and "Save as" or "Save target a
 
 # 4. Quick access
 
-Bookmark this class website. Going through Canvas every time just is a waste of your time. 
-# 5. HackMD
+Bookmark this class website. Going through Canvas every time just is a waste of your time.
 
-Go to the [What is HackMD collaborative notes](https://hackmd.io/@norcalbiostat/458_intro_hackmd/), read the introduction and add your name and major to the list.
-
-
+# 5. Look over the Canvas content, course website, and syllabus. 
+Ask at least one question about the logistics or organization of this class in Discord. 
 
 
-# 7. Programming Assessment 
+# 6. HackMD
 
-This is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions for this quiz are found in Canvas. 
+* Make an account using your campus email at [https://hackmd.io/](https://hackmd.io/)
+* Go to the [What is HackMD collaborative notes](https://hackmd.io/@norcalbiostat/458_intro_hackmd/), read the introduction and add your name to the list.
+
+
 
 
 

@@ -24,13 +24,10 @@ website:
         file: notes.qmd
       - text: "Assignments"
         file: assignments.qmd
-
-        
-    right: 
-      - text: "HackMD"
+      - text: "HackMD Notes"
         menu: 
-          - text: "R resources"
-            url: https://hackmd.io/@norcalbiostat/sampling_r_resources
+          # - text: "R resources"
+          #   url: https://hackmd.io/@norcalbiostat/sampling_r_resources
           - text: "What is HackMD"
             url: https://hackmd.io/@norcalbiostat/458_intro_hackmd
           # - text: "Sampling Framework notes"
@@ -43,6 +40,12 @@ website:
           #   url: https://hackmd.io/@norcalbiostat/cn07_cluster
           # - text: "Ratio & Regression Estimation"
           #   url: https://hackmd.io/@norcalbiostat/cn08_ratio
+
+        
+    right: 
+      - text: "Syllabus"
+        file: syllabus.qmd
+
 
 
 from: markdown+emoji
