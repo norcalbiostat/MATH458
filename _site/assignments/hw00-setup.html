@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.319">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-01-23">
+<meta name="dcterms.date" content="2025-01-20">
 
 <title>Sampling Methods - Homework 00: Getting setup</title>
 <style>
@@ -47,13 +47,7 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -62,10 +56,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -76,9 +68,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
@@ -90,39 +82,35 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html"> 
-<span class="menu-text">Notes</span></a>
+    <a class="nav-link" href="../notes.html" rel="" target="">
+ <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../assignments.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">HackMD</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">HackMD Notes</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-hackmd">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources">
- <span class="dropdown-text">R resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
     </ul>
   </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Syllabus</span></a>
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -135,13 +123,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#discord" id="toc-discord" class="nav-link active" data-scroll-target="#discord">1. Discord</a></li>
-  <li><a href="#update-your-r-4.2-and-r-studio-latest." id="toc-update-your-r-4.2-and-r-studio-latest." class="nav-link" data-scroll-target="#update-your-r-4.2-and-r-studio-latest.">2. Update your R (4.2+) and R Studio (latest).</a></li>
-  <li><a href="#get-organized" id="toc-get-organized" class="nav-link" data-scroll-target="#get-organized">3. Get Organized</a></li>
-  <li><a href="#quick-access" id="toc-quick-access" class="nav-link" data-scroll-target="#quick-access">4. Quick access</a></li>
-  <li><a href="#hackmd" id="toc-hackmd" class="nav-link" data-scroll-target="#hackmd">5. HackMD</a></li>
-  <li><a href="#student-office-hours" id="toc-student-office-hours" class="nav-link" data-scroll-target="#student-office-hours">6. Student office hours</a></li>
-  <li><a href="#programming-assessment" id="toc-programming-assessment" class="nav-link" data-scroll-target="#programming-assessment">7. Programming Assessment</a></li>
+  <li><a href="#get-organized" id="toc-get-organized" class="nav-link active" data-scroll-target="#get-organized">1. Get Organized</a></li>
+  <li><a href="#discord" id="toc-discord" class="nav-link" data-scroll-target="#discord">2. Discord</a></li>
+  <li><a href="#get-the-textbook" id="toc-get-the-textbook" class="nav-link" data-scroll-target="#get-the-textbook">3. Get the textbook</a></li>
+  <li><a href="#read-the-syllabus" id="toc-read-the-syllabus" class="nav-link" data-scroll-target="#read-the-syllabus">4. Read the syllabus</a></li>
+  <li><a href="#quick-access" id="toc-quick-access" class="nav-link" data-scroll-target="#quick-access">5. Quick access</a></li>
+  <li><a href="#update-rr-studio.-demonstrate-that-you-can-reender-to-pdf." id="toc-update-rr-studio.-demonstrate-that-you-can-reender-to-pdf." class="nav-link" data-scroll-target="#update-rr-studio.-demonstrate-that-you-can-reender-to-pdf.">6. Update R/R Studio. Demonstrate that you can reender to PDF.</a></li>
+  <li><a href="#hackmd" id="toc-hackmd" class="nav-link" data-scroll-target="#hackmd">7. HackMD</a></li>
   </ul>
 </nav>
     </div>
@@ -165,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 23, 2023</p>
+      <p class="date">January 20, 2025</p>
     </div>
   </div>
   
@@ -173,12 +161,54 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-
 </header>
 
-
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Complete this checklist in Canvas.</p>
+</div>
+</div>
+<section id="get-organized" class="level1">
+<h1>1. Get Organized</h1>
+<p>Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects.</p>
+<p>You need to choose a naming convention for your folders and try to stick with it. Recommended options are:</p>
+<ul>
+<li>ALL CAPS (MATH458)</li>
+<li>no caps (math458)</li>
+<li>snake_case (math_458)</li>
+<li>CamelCase (Math458)</li>
+</ul>
+<p>Create this class folder along with the following subfolders to organize your data and script files.</p>
+<ul>
+<li><code>data</code> - any data that’s handed out goes in here</li>
+<li><code>assignments</code> - scripts used for completing worksheets and assignments</li>
+<li><code>notes</code> - you will be writing and contributing notes to the class</li>
+<li><code>project</code> - for project specific files</li>
+</ul>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Do not let everything live in your downloads folder.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This means when you download a file, right click and “Save as” or “Save target as” and <strong>actively choose</strong> where to download this file.</p>
+</div>
+</div>
+</section>
 <section id="discord" class="level1">
-<h1>1. Discord</h1>
+<h1>2. Discord</h1>
 <p>Click this link to join the Math &amp; Stats Discord server <a href="https://discord.gg/xCQTAgu8bE">https://discord.gg/xCQTAgu8bE</a>. This is a support platform where student office hours will be held and personalized channels can be made.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -195,7 +225,7 @@ This is the defacto method of communication for this class
 </div>
 <ol type="a">
 <li><a href="https://discord.com/download">Download the Desktop app</a>. <span style="color:red"><strong>You should not rely on remembering to log in using the web version.</strong></span> Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider.</li>
-<li>You are welcome to have any username you choose as long as it’s suitable for school.</li>
+<li>Please change your display name to something resembling your name so your classmates (and I) can identify and tag you.</li>
 <li>Once you join the server and accept the code of conduct, go to the <code>#class-selection</code> channel (left side bar) and click the icon that’ll add you to our class folder.</li>
 <li>Post an introduction in the <code>#458-class-chat</code> channel. Include the following:
 <ul>
@@ -207,66 +237,69 @@ This is the defacto method of communication for this class
 </ol>
 <p><br></p>
 </section>
-<section id="update-your-r-4.2-and-r-studio-latest." class="level1">
-<h1>2. Update your R (4.2+) and R Studio (latest).</h1>
-<ul>
-<li>All homework is to be done in a literate programming/reproducible manner. This means either <code>.Rmd</code> or <code>.qmd</code> files compiled to PDF.
-<ul>
-<li>If you don’t know what this means, review lecture 02 &amp; 03 from <a href="https://norcalbiostat.github.io/MATH130/wk1.html">Math 130 week 1</a></li>
-<li>Also check out the next generation of literate programming tools: <a href="https://quarto.org/docs/get-started/hello/rstudio.html">Quarto</a>. I will be giving you <code>.qmd</code> files to work in. They work essentially the same as Rmarkdown files with subtle differences. You must have the newest version of Rstudio to work with these files.</li>
-</ul></li>
-<li>Make sure you can knit to PDF. If you cannot, then install the <code>tinytex</code> package and then run <code>tinytex::install_tinytex()</code> in the console to install a lightweight version of LaTeX.</li>
-</ul>
+<section id="get-the-textbook" class="level1">
+<h1>3. Get the textbook</h1>
+<p>I don’t care if it’s physical or electronic. Having a copy is essential. I have had students use a prior edition, but the page numbers and some content are different. If you go this route be prepared to work with another student to ensure you are looking at the correct content.</p>
+<p><a href="https://www.sharonlohr.com/sampling-design-and-analysis-3e">Sampling, 3rd Edition. Sharon Lohr</a></p>
+<p>Also download the R companion for the book and all data sets from this site as well.</p>
 </section>
-<section id="get-organized" class="level1">
-<h1>3. Get Organized</h1>
-<p>Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for <strong>scripts</strong>, <strong>data</strong>, and <strong>reports</strong>.</p>
-<p>You need to choose a naming convention for your folders and try to stick with it. Recommended options are:</p>
+<section id="read-the-syllabus" class="level1">
+<h1>4. Read the syllabus</h1>
+<p>Thoroughly read the syllabus, look over the Canvas classroom and the course website. Then ask at least one question about the logistics or organization of this class in Discord.</p>
+</section>
+<section id="quick-access" class="level1">
+<h1>5. Quick access</h1>
+<p>Bookmark this class website. Going through Canvas every time just is a waste of your time.</p>
+</section>
+<section id="update-rr-studio.-demonstrate-that-you-can-reender-to-pdf." class="level1">
+<h1>6. Update R/R Studio. Demonstrate that you can reender to PDF.</h1>
 <ul>
-<li>ALL CAPS (MATH458)</li>
-<li>no caps (math458)</li>
-<li>snake_case (math_458)</li>
-<li>CamelCase (Math458)</li>
+<li>Update both R and RStudio to the latest versions <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a></li>
+<li>(Re)install following packages: <code>tidyverse, survey, sampling, srvyr, googlesheets4, tinytex</code></li>
+<li>Run <code>tinytex::install_tinytex()</code> in the console to install a lightweight version of LaTeX</li>
 </ul>
-<p>Create this class folder along with the following subfolders to organize your data and script files.</p>
+<p>All homework is to be done in a literate programming/reproducible manner using Quarto (<code>.qmd</code>) files compiled to PDF.</p>
 <ul>
-<li><code>data</code> - any data that’s handed out goes in here</li>
-<li><code>worksheets</code> - scripts used for completing worksheets</li>
-<li><code>homework</code>- assignments to be submitted</li>
-<li><code>notes</code> - you will be writing and contributing notes to the class</li>
-<li><code>exams</code> - because they’re likely to be computer based.</li>
+<li>Demonstrate that you can render a Quarto file to PDF by downloading the <a href="https://quarto.org/docs/get-started/hello/rstudio/_hello.qmd">Hello Quarto</a> tutorial file
+<ul>
+<li>Add your name as an author in the YAML header in the format <code>author: Your name</code>.</li>
+<li>Add a code chunk at the bottom of the page with only this code in it: <code>version</code>.</li>
+</ul></li>
+<li>Render to PDF and upload the resulting document to Canvas</li>
 </ul>
-<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Do not let everything live in your downloads folder.
+New to Quarto?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This means when you download a file, right click and “Save as” or “Save target as” and <strong>actively choose</strong> where to download this file.</p>
+<p>Learn more about Quarto <a href="https://quarto.org/docs/get-started/hello/rstudio.html">here</a>. You do <em>NOT</em> need to install the <code>quarto</code> package to render files.</p>
 </div>
 </div>
-</section>
-<section id="quick-access" class="level1">
-<h1>4. Quick access</h1>
-<p>Bookmark this class website. Going through Canvas every time just is a waste of your time.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Need a refresher on R?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Review the “R Basics”, and “Reading Data into R” sections of the R Companion for SDA.</p>
+</div>
+</div>
 </section>
 <section id="hackmd" class="level1">
-<h1>5. HackMD</h1>
-<p>Go to the <a href="https://hackmd.io/@norcalbiostat/458_intro_hackmd/">What is HackMD collaborative notes</a>, read the introduction and add your name and major to the list.</p>
-</section>
-<section id="student-office-hours" class="level1">
-<h1>6. Student office hours</h1>
-<p>Help me decide when to hold student office hours. Remember, these are open drop in times where I dedicate my time to YOU as students. My time outside these hours is limited, so be sure to fill this out so I can best choose times that you are free. <a href="https://forms.gle/aZgtaBbt2tH21ZAr6">[Link]</a></p>
-<p><span class="emoji" data-emoji="stop_sign">🛑</span> If you are doing this for Math 456, do not submit a second entry. You only need to do this once.</p>
-</section>
-<section id="programming-assessment" class="level1">
-<h1>7. Programming Assessment</h1>
-<p>This is a required, but ungraded pre-assessment of your R programming skills. This allows both of us to have an understanding about where you are at. Instructions are found in Canvas.</p>
-<p><span class="emoji" data-emoji="stop_sign">🛑</span> If you are doing this for Math 456, do not submit a second entry. You only need to do this once.</p>
+<h1>7. HackMD</h1>
+<ul>
+<li>Make an account using your campus email at <a href="https://hackmd.io/">https://hackmd.io/</a></li>
+<li>Go to the <a href="https://hackmd.io/@norcalbiostat/458_intro_hackmd/">What is HackMD collaborative notes</a>, read the introduction and add your name to the list.</li>
+</ul>
 
 
 </section>
@@ -313,33 +346,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -408,15 +414,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -495,27 +499,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -525,17 +512,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -547,130 +525,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -714,7 +569,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -740,32 +594,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -828,9 +656,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a> and the Spring 2025 MATH 458 class.</p>
-</div>   
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -839,7 +665,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 
 
 

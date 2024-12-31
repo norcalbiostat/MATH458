@@ -14,7 +14,7 @@ website:
  
   page-footer:
     #background: light
-    left: "This site is built with :heart:, [R](https://posit.co/) and [Quarto](https://quarto.org/) by [Robin Donatello](www.norcalbiostat.com) and the Spring 2025 MATH 458 class."
+    left: "This site is built with :heart:, [R](https://posit.co/) and [Quarto](https://quarto.org/) by [Robin Donatello](www.norcalbiostat.com)"
       
   navbar: 
     pinned: true

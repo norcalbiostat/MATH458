@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.319">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -46,13 +46,7 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -61,10 +55,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -75,9 +67,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
@@ -89,39 +81,35 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html"> 
-<span class="menu-text">Notes</span></a>
+    <a class="nav-link" href="./notes.html" rel="" target="">
+ <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./assignments.html"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="./assignments.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">HackMD</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">HackMD Notes</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-hackmd">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/sampling_r_resources">
- <span class="dropdown-text">R resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
     </ul>
   </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./syllabus.html" aria-current="page"> 
-<span class="menu-text">Syllabus</span></a>
+    <a class="nav-link active" href="./syllabus.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -141,30 +129,31 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#schedule-of-topics" id="toc-schedule-of-topics" class="nav-link" data-scroll-target="#schedule-of-topics">Schedule of Topics</a></li>
   <li><a href="#required-materials-and-accounts" id="toc-required-materials-and-accounts" class="nav-link" data-scroll-target="#required-materials-and-accounts">Required materials and accounts</a></li>
-  <li><a href="#grading-breakdown" id="toc-grading-breakdown" class="nav-link" data-scroll-target="#grading-breakdown">Grading Breakdown</a></li>
   <li><a href="#assignments-graded-items" id="toc-assignments-graded-items" class="nav-link" data-scroll-target="#assignments-graded-items">Assignments / graded items</a></li>
   <li><a href="#class-policies-and-statements" id="toc-class-policies-and-statements" class="nav-link" data-scroll-target="#class-policies-and-statements">Class Policies and statements</a>
   <ul class="collapse">
   <li><a href="#everyone-is-welcome-here" id="toc-everyone-is-welcome-here" class="nav-link" data-scroll-target="#everyone-is-welcome-here">Everyone is welcome here</a></li>
   <li><a href="#attendance" id="toc-attendance" class="nav-link" data-scroll-target="#attendance">Attendance</a></li>
   <li><a href="#late-work" id="toc-late-work" class="nav-link" data-scroll-target="#late-work">Late work</a></li>
-  <li><a href="#collaboration" id="toc-collaboration" class="nav-link" data-scroll-target="#collaboration">Collaboration</a></li>
+  <li><a href="#collaboration" id="toc-collaboration" class="nav-link" data-scroll-target="#collaboration">Collaboration</a>
+  <ul class="collapse">
+  <li><a href="#with-people" id="toc-with-people" class="nav-link" data-scroll-target="#with-people">With people</a></li>
+  <li><a href="#with-ai" id="toc-with-ai" class="nav-link" data-scroll-target="#with-ai">With AI</a></li>
   </ul></li>
-  <li><a href="#student-resources" id="toc-student-resources" class="nav-link" data-scroll-target="#student-resources">Student Resources</a>
+  </ul></li>
+  <li><a href="#campus-resources" id="toc-campus-resources" class="nav-link" data-scroll-target="#campus-resources">Campus Resources</a>
   <ul class="collapse">
   <li><a href="#chico-state-basic-needs-project" id="toc-chico-state-basic-needs-project" class="nav-link" data-scroll-target="#chico-state-basic-needs-project">Chico State Basic Needs Project</a></li>
-  <li><a href="#wildcat-computing-support" id="toc-wildcat-computing-support" class="nav-link" data-scroll-target="#wildcat-computing-support">Wildcat Computing Support</a></li>
   <li><a href="#americans-with-disabilities-act" id="toc-americans-with-disabilities-act" class="nav-link" data-scroll-target="#americans-with-disabilities-act">Americans with Disabilities Act</a></li>
   </ul></li>
   <li><a href="#university-policies" id="toc-university-policies" class="nav-link" data-scroll-target="#university-policies">University Policies</a>
   <ul class="collapse">
-  <li><a href="#covid-19" id="toc-covid-19" class="nav-link" data-scroll-target="#covid-19">COVID-19</a></li>
   <li><a href="#adding-and-dropping-the-course" id="toc-adding-and-dropping-the-course" class="nav-link" data-scroll-target="#adding-and-dropping-the-course">Adding and Dropping the course</a></li>
   <li><a href="#confidentiality-and-mandatory-reoprting" id="toc-confidentiality-and-mandatory-reoprting" class="nav-link" data-scroll-target="#confidentiality-and-mandatory-reoprting">Confidentiality and Mandatory Reoprting</a></li>
   <li><a href="#academic-integrity" id="toc-academic-integrity" class="nav-link" data-scroll-target="#academic-integrity">Academic Integrity</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="syllabus.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -184,9 +173,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-
 </header>
-
 
 <section id="course-information" class="level1">
 <h1>Course Information</h1>
@@ -199,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Office Location:</strong> Holt 202</li>
 <li><strong>E-mail:</strong> rdonatello@csuchico.edu</li>
 <li><strong>Best Contact Method:</strong> Discord</li>
-<li><strong>Student Office Hours:</strong> WF 1-2pm + 2 hours Times TBD</li>
+<li><strong>Student Office Hours:</strong> TBD</li>
 </ul>
 </section>
 <section id="logistics" class="level2">
@@ -217,13 +204,12 @@ ul.task-list li input[type="checkbox"] {
 <p>We will tentatively cover the following sections and topics:</p>
 <ul>
 <li>Writing functions in R; Simulation; Sampling Distributions</li>
-<li>Introduction to Sampling (Textbook Ch 1)</li>
-<li>Concepts of Statistics</li>
-<li>Simple Random Sampling (Textbook Ch 2)</li>
-<li>Stratified Random Sampling (Textbook Ch 3)</li>
-<li>Ratio, Regression, and Difference Estimation</li>
-<li>Cluster Sampling (Textbook Ch 5)</li>
-<li>Estimating Population Size (Textbook Ch 13)</li>
+<li>Introduction to Sampling</li>
+<li>Statistical Estimation</li>
+<li>Simple Random Sampling</li>
+<li>Stratified Random Sampling</li>
+<li>Cluster Sampling</li>
+<li>Ratio &amp; Regression Estimation</li>
 </ul>
 <hr>
 </section>
@@ -233,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Class website</strong>: https://sampling-458.netlify.app/</li>
 <li><strong>Textbook (Required)</strong>: <a href="https://www.sharonlohr.com/sampling-design-and-analysis-3e">Sampling, 3rd Edition. Sharon Lohr</a></li>
 <li><strong>Laptop &amp; Internet</strong>: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Contact ITSS for help with internet.</li>
-<li><strong>Data Analysis software</strong>: R &amp; R Studio</li>
+<li><strong>Data Analysis software</strong>: R &amp; R Studio, Quarto</li>
 <li><strong>Canvas</strong>: Module overview, assignments, gradebook, calendar.</li>
 <li><strong>Discord</strong>: A free discussion platform with a lot of collaborative functionality.</li>
 <li><strong>Hack MD</strong>: A markdown based method for real time collaborative notes</li>
@@ -241,48 +227,44 @@ ul.task-list li input[type="checkbox"] {
 <p>Instructions for signing up &amp; obtaining materials are in HW 0</p>
 <hr>
 </section>
-<section id="grading-breakdown" class="level1">
-<h1>Grading Breakdown</h1>
-</section>
 <section id="assignments-graded-items" class="level1">
 <h1>Assignments / graded items</h1>
-<p>Your final grade will be a straight sum of points earned and will be displayed as a running total in Canvas. I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F</p>
-<blockquote class="blockquote">
-<p>Automatic half credit will be applied to any assignment submitted after the solutions are posted. This includes homework, worksheets, and the course notes.</p>
-</blockquote>
-<section id="exams-30" class="level4">
-<h4 class="anchored" data-anchor-id="exams-30">Exams (30%)</h4>
+<p>Below is a summary of the graded items for the class and their weights towards the final grade. Automatic half credit will be applied to any graded assignment submitted after the solutions are posted. I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F</p>
+<p><strong>Exams (30%)</strong></p>
 <ul>
 <li>2 Exams (midterm/final, not cumulative).</li>
 <li>Error Assessment available for the midterm. (Details TBD)</li>
 </ul>
-</section>
-<section id="homework-assignments-20" class="level4">
-<h4 class="anchored" data-anchor-id="homework-assignments-20">Homework Assignments (20%)</h4>
+<p><strong>Homework Assignments (20%)</strong></p>
 <ul>
-<li>Written homework assignments on the topics listed above. These may take multiple days to complete. #### Worksheets (20%)</li>
+<li>Written homework assignments on the topics listed above. These may take multiple days to complete.</li>
+</ul>
+<p><strong>Worksheets (20%)</strong></p>
+<ul>
 <li>In class worksheets. The intent is to work together and finish them that day, but you’ll have until the beginning of the next class period to turn it in.</li>
-<li>Lowest score dropped.</li>
 </ul>
-</section>
-<section id="applied-project-20" class="level4">
-<h4 class="anchored" data-anchor-id="applied-project-20">Applied Project (20%)</h4>
+<p><strong>Applied Project (10%)</strong></p>
 <ul>
-<li>Details are in development, but the overall goal will be for you to identify something that you are interested in researching, design a data collection tool &amp; method, collect and analyze the desired data, and report your findings.</li>
+<li>Design a data collection tool &amp; method, collect and analyze the desired data, and report your findings.</li>
 </ul>
-</section>
-<section id="notes-10" class="level4">
-<h4 class="anchored" data-anchor-id="notes-10">Notes (10%)</h4>
+<p><strong>Notes (20%)</strong></p>
+<ul>
+<li><strong>Taking notes</strong>
 <ul>
 <li>The course notes are available on the class website. What is presented in class will be incomplete, and we will work through them during class.</li>
-<li>Either directly, or through HackMD I will provide you the code that created those notes, with selected omissions that you are responsible for filling out during and after class.</li>
+<li>I will provide you with an incomplete version of the course notes that we will go through in class together. You are responsible for filling out during and after class.</li>
 <li>You will compile these notes to PDF and submit for review on a regular basis, typically a few days after the module is complete.</li>
 <li>After the note submission date I will update the online posted notes with the completed versions.</li>
-<li>If you miss a day, or miss something in a lecture, or don’t get to finish all the “you try it” questions it is up to you to check with a classmate and/or the online course notes to complete all entries before submission.</li>
 <li>These are graded on completion status.</li>
+</ul></li>
+<li><strong>Creating Notes</strong>
+<ul>
+<li>The structure and format will be guided by me you will work collaboratively with the class to read the textbook and <em>create</em> your own set of notes for certain topics.</li>
+<li>These require strong team based collaboration and accountability, and so will be subject to peer feedback.</li>
+<li>Once compiled together, these notes will go onto the course website</li>
+</ul></li>
 </ul>
 <hr>
-</section>
 </section>
 <section id="class-policies-and-statements" class="level1">
 <h1>Class Policies and statements</h1>
@@ -301,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="attendance" class="level2">
 <h2 class="anchored" data-anchor-id="attendance">Attendance</h2>
-<p>All students are expected to attend class in person each session. There is no specific plan for habitual synchronous hybrid zoom session, but I recognize things come up.</p>
+<p>All students are expected to attend class in person each session.</p>
 <p>Talk to me ahead of time if you need to miss a class for a planned reason. In the event of an unplanned reason, DM me in Discord and let’s see if we can zoom you in for that day.</p>
 <ul>
 <li>If you are not feeling well or are experiencing COVID symptoms <strong>DO NOT COME TO CLASS</strong>. DM me in Discord we’ll make a backup plan.</li>
@@ -309,39 +291,81 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="late-work" class="level2">
 <h2 class="anchored" data-anchor-id="late-work">Late work</h2>
-<p>I don’t penalize for late work, but I prioritize on time submissions. If you submit an assignment after i’m done grading everyone elses, and we’re moving on to the next topic then your assignment may have to wait a while before I get to it.</p>
+<p>Automatic half credit will be applied to any graded assignment submitted after the solutions are posted.</p>
+<p>I also prioritize on time submissions. If you submit an assignment after I’m done grading everyone elses, and we’re moving on to the next topic then your assignment will have to wait a while before I get to it.</p>
 </section>
 <section id="collaboration" class="level2">
 <h2 class="anchored" data-anchor-id="collaboration">Collaboration</h2>
-<p>Collaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts with.</p>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<section id="with-people" class="level3">
+<h3 class="anchored" data-anchor-id="with-people">With people</h3>
+<ul>
+<li>A big part of this class is collaborative note <em>creating</em>.</li>
+<li>We will talk more about being responsible and accountable to each other next week.<br>
+</li>
+<li>Collaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts and debugging with. However your submitted work must represent <strong>your personal effort</strong> on all parts.</li>
+<li>Collaboration on exams is not allowed.</li>
+</ul>
+</section>
+<section id="with-ai" class="level3">
+<h3 class="anchored" data-anchor-id="with-ai">With AI</h3>
+<p>As an instructor I recognize there are a variety of AI programs available to assist in creating text and writing code. However, I want to stress that, AI programs are not a replacement for human creativity, originality, and critical thinking. Writing (text and code) is a skill that you must nurture over time in order to develop your own individual voice, style, and view.</p>
+<ul>
+<li>You are not allowed to use AI to help you write text.</li>
+<li>Don’t immediately turn to Chat GPT to help you figure something out. Ask your classmates first.</li>
+<li>You can use ChatGPT/AI tools <strong>to help you learn</strong>, but the work you submit must be your own.</li>
+<li>You are expected to use the coding functions and style presented in the class.</li>
+<li>There is no short cut to learning. You must put in effort.</li>
+<li>I reserve the right to assign 0 points on any graded item that I suspect has been written or coded by AI</li>
+</ul>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+Not allowed
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Collaboration on exams is not allowed.</p>
+<ul>
+<li>Working with or getting help from others on exams and individual quizzes</li>
+<li>Copying code from another student’s homework and presenting it as your own work.</li>
+<li>Copy/paste from AI tools or internet sources without customization, citation or explanation</li>
+<li>Getting your sibling/friend/colleague to write code for you</li>
+<li>Submitting any assignment that is not your own personal effort.</li>
+</ul>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Allowed
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Helping each other solve homework problems (concepts or code)</li>
+<li>Use AI to help explain a concept or an error message</li>
+<li>Copy/paste code from my course notes (this is actually encouraged!)</li>
+</ul>
+</div>
+</div>
+<p>If at any time I suspect that the work you are submitting is not reflective of your personal knowledge I may ask you to verbally explain a piece of code to me. If your explanation is insufficient may result in a 0 on that assignment.</p>
+<p>Any use outside of this permission constitutes a violation of Chico State’s Integrity Policy and may result in you being reported to the Office of Students Rights and Responsibilities.</p>
 <hr>
 </section>
 </section>
-<section id="student-resources" class="level1">
-<h1>Student Resources</h1>
+</section>
+<section id="campus-resources" class="level1">
+<h1>Campus Resources</h1>
 <section id="chico-state-basic-needs-project" class="level2">
 <h2 class="anchored" data-anchor-id="chico-state-basic-needs-project">Chico State Basic Needs Project</h2>
 <p>The <strong>Hungry Wildcat Food Pantry</strong> provides supplemental food, fresh produce, CalFresh application assistance and basic needs referral services for students experiencing food and housing insecurity.</p>
 <p>All students are welcomed to visit the Pantry located in the Student Service Center 196, open Monday-Friday</p>
 <p>Please visit the Chico State Basic Needs website <a href="http://www.csuchico.edu/basic-needs">http://www.csuchico.edu/basic-needs</a> for more information.</p>
-</section>
-<section id="wildcat-computing-support" class="level2">
-<h2 class="anchored" data-anchor-id="wildcat-computing-support">Wildcat Computing Support</h2>
-<p>Everyone’s journey through education is different and varied. Part of your journey is learning to engage and leverage academic technology. It is extremely important to your success, and at the same time requires patience to learn how it can benefit you. While learning various technologies, they change and adapt quickly. Wildcat Computing Support is curated by students to better support you and enhance your experiences with technology. We provide information to support your success in using academic technology in and out of the classroom.</p>
-<p><a href="https://www.csuchico.edu/wcs/">https://www.csuchico.edu/wcs/</a></p>
 </section>
 <section id="americans-with-disabilities-act" class="level2">
 <h2 class="anchored" data-anchor-id="americans-with-disabilities-act">Americans with Disabilities Act</h2>
@@ -352,10 +376,6 @@ Warning
 </section>
 <section id="university-policies" class="level1">
 <h1>University Policies</h1>
-<section id="covid-19" class="level2">
-<h2 class="anchored" data-anchor-id="covid-19">COVID-19</h2>
-<p>The CSU requires students to be fully vaccinated and boosted against COVID-19 by February 28th, 2022, unless you have an approved exemption. While Chico State has relaxed its stance on mask mandates, for your and my health and safety I <em>request</em> that everyone wear an appropriate face mask covering the nose and mouth while in class.</p>
-</section>
 <section id="adding-and-dropping-the-course" class="level2">
 <h2 class="anchored" data-anchor-id="adding-and-dropping-the-course">Adding and Dropping the course</h2>
 <p>You are responsible for understanding the policies and procedures about add/drops, academic renewal, etc., found in the <a href="http://www.csuchico.edu/catalog/">CSU Chico University Catalog</a>. You should be aware of the new deadlines and penalties for adding and dropping classes.</p>
@@ -367,8 +387,6 @@ Warning
 <section id="academic-integrity" class="level2">
 <h2 class="anchored" data-anchor-id="academic-integrity">Academic Integrity</h2>
 <p>Academic integrity is defined as “a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility”. From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity.</p>
-<hr>
-<p><em>Last updated: <code>r format(Sys.time(), "%a %b %d %Y %X")</code></em></p>
 
 
 </section>
@@ -416,33 +434,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -511,15 +502,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -598,27 +587,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -628,17 +600,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -650,130 +613,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -817,7 +657,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -843,32 +682,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -931,9 +744,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a> and the Spring 2025 MATH 458 class.</p>
-</div>   
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -942,7 +753,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 
 
 

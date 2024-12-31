@@ -1,0 +1,132 @@
+---
+title: "Welcome to MATH 458"
+subtitle: "Sampling Methods"
+description: "Course Overview slides"
+date: "2025-01-20"
+author: "Robin Donatello"
+format: 
+  revealjs:
+    theme: serif
+    transition: fade
+    slide-number: true
+---
+
+# Meet your instructor {background-image="../figs/Zombatar.jpg" background-size="250px" background-position="95% 15%"}
+
+## Dr. Robin Donatello (she/her) {.smaller}
+
+You can address me as "Robin", "Dr. D", or some other respectful title that you feel comfortable with. 
+
+I have a Doctorate in Public Health (DrPH) Biostatistics from UCLA, but I'm a Chico alum. I double majored in Statistics & Biology, with minor in Chemistry, and a first generation college student who started at Butte College.
+
+My campus life consists of training the next generation of Scientists how to harness the power of Statistics and Data in a responsible and ethical manner, leading the Data Science Initiative (DSI) provide training and experiences for students and faculty, and providing analytical support and statistical consulting for many projects on and off campus.
+
+When I'm not on campus, typically I'm growing food for my family, out adventuring with my dogs, or getting some game time in. You can learn more about the projects i'm involved in on my [website](http://www.norcalbiostat.com/).
+
+
+# Code of Conduct
+
+## Everyone is welcome here
+
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit. 
+
+It is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture. 
+
+## Supportive Learning Environment
+
+I would like to create a learning environment that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.) 
+
+## To help accomplish this:
+
+* Let me know if you have a name and/or set of pronouns that differ from those that appear in your official Chico records. 
+* Help me pronounce your name as accurately as possible. Corrections are welcome. 
+* If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. I want to be a resource for you.
+
+
+
+# What is this class about? 
+
+## Course Description
+
+The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.
+
+By `survey` we are referring to a way of collecting data. 
+
+
+## Learning goals 
+
+1. Define principal concepts, advantages and disadvantages of sampling.
+2. Categorize, define, compare between, and implement various sampling methods.
+3. Formulate and calculate appropriate estimators and confidence intervals for population parameters under various sampling methods. 
+4. Estimate the convenient or optimal sample size for various sampling methods.
+5. Design, conduct, and analyze your own data collection mini-study 
+
+# How are we going to work together? 
+
+## A variety of learning and working tools
+
+* I don't sanitize this class for you by keeping everything in a learning management system like Canvas.
+* In a working environment you have to deal with multiple platforms, multiple accounts and manage multiple locations for files and content. I use the best tools for the job.
+* Homework 0 provides a checklist for getting connected to your tools.
+
+## Class website
+
+<div style="text-align:center">https://sampling-458.netlify.app/
+
+-   Bookmark this page. You will be here a lot. Going through Canvas each time is a waste of your time and clicks. 
+-   Contains a weekly overview, lecture notes, homework files, relevant links. 
+-   Sometimes links will be broken. Typo's happen. Notify me via Discord and I'll get to it asap.
+
+## Canvas
+
+* Due dates
+* Module organization
+* Gradebook
+* Assignment submission
+
+
+## Discord
+
+-   Used for outside class discussions, collaboration, meme sharing, and general chatter.
+-   I will not answer most class-content based questions through email.
+-   Download either the phone app or the desktop app (I use both). This is mandatory.
+    -   Do not rely on remembering to log in via the web browser. You will miss important notifications.
+
+## Collaborative Notes
+
+* Quarto based notes that to start out with are semi-complete. [(Example)](https://sampling-458.netlify.app/notes/cn01-intro_simulation.html)
+* During class we will work together through examples, you will work together on "you try it" practice problems, and answer questions
+* You will have a version of these notes that have blank spots for you to fill in, or answer questions
+    - You will compile these notes to PDF and submit them through Canvas a few days after we complete a section 
+* As the term progresses, you will be creating sections of these notes (that will be posted) and "teaching" the rest of the class your topic. 
+
+## Hack MD
+
+- Interactive markdown based collaborative notes
+- I will give you a file for the first set of 'blank' notes.
+- Afterward you will be responsible for copying them (and sometimes filling out sections) of the notes directly in HackMD. 
+
+# Policies
+
+## Collaboration - with people
+
+* A big part of this class is collaborative note _creating_.
+* We will talk more about being responsible and accountable to each other next week.  
+* Collaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts and debugging with. However your submitted work must represent **your personal effort** on all parts. 
+* Collaboration on exams is not allowed.
+
+
+## Collaboration -- with AI
+
+* You are not allowed to use AI to help you write text. 
+* Don't immediately turn to Chat GPT to help you figure something out. Ask your classmates first. 
+* You can use ChatGPT/AI tools **to help you learn**, but the work you submit must be your own. 
+* You are expected to use the coding functions and style presented in the class.
+* There is no short cut to learning. You must put in effort. 
+* I reserve the right to assign 0 points on any graded item that I suspect has been written or coded by AI
+
+
+# Get started with a motivating example
+
+Read through the motivating example discussion post in Canvas. Then respond to the thread by writing a few sentence summary of the example and include your take away message. 
+

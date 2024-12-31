@@ -1,46 +1,17 @@
 ---
 format: html
 title: "Homework 00: Getting setup"
-date: "01/23/23"
+date: "01/20/25"
 categories: Homework
 subtitle: "Getting all the materials and tools for the class"
 ---
 
-# 1. Get the textbook
-
-I don't care if it's physical or electronic. Having a copy is essential. I have had students use a prior edition, but the page numbers and some content are different. If you go this route be prepared to work with another student to ensure you are looking at the correct content.
-
-[Sampling, 3rd Edition. Sharon Lohr](https://www.sharonlohr.com/sampling-design-and-analysis-3e)
-
-
-# 2. Discord
-
-Click this link to join the Math & Stats Discord server [https://discord.gg/xCQTAgu8bE](https://discord.gg/xCQTAgu8bE). This is a support platform where student office hours will be held and personalized channels can be made. 
-
 :::{.callout-important}
-## This is the defacto method of communication for this class
-I get way too many emails that it's easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.
+Complete this checklist in Canvas. 
 :::
+ 
 
-a. [Download the Desktop app](https://discord.com/download). <span style="color:red">**You should not rely on remembering to log in using the web version.**</span> Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider. 
-b. Please change your display name to something resembling your name so your classmates (and I) can identify and tag you.
-c. Once you join the server and accept the code of conduct, go to the `#class-selection` channel (left side bar) and click the icon that'll add you to our class folder. 
-d. Post an introduction in the `#458-class-chat` channel. Include the following:
-    * major
-    * Any pets (include pics!)
-    * what fictional family would you like to belong to? 
-    * your biggest concern about the class
-
-<br>
-
-# 2. Update your R and R Studio to the latest versions 
-
-* Install following packages: `tidyverse, survey, sampling, srvyr` 
-* All homework is to be done in a literate programming/reproducible manner using Quarto (`.qmd`) files compiled to PDF. 
-* Make sure you can knit to PDF. If you cannot, then install the `tinytex` package and then run `tinytex::install_tinytex()` in the console to install a lightweight version of LaTeX.
-    
-
-# 3. Get Organized
+# 1. Get Organized
 
 Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects. 
 
@@ -63,15 +34,83 @@ Create this class folder along with the following subfolders to organize your da
 This means when you download a file, right click and "Save as" or "Save target as" and **actively choose** where to download this file. 
 :::
 
-# 4. Quick access
+
+# 2. Discord
+
+Click this link to join the Math & Stats Discord server [https://discord.gg/xCQTAgu8bE](https://discord.gg/xCQTAgu8bE). This is a support platform where student office hours will be held and personalized channels can be made. 
+
+:::{.callout-important}
+## This is the defacto method of communication for this class
+I get way too many emails that it's easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.
+:::
+
+a. [Download the Desktop app](https://discord.com/download). <span style="color:red">**You should not rely on remembering to log in using the web version.**</span> Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider. 
+b. Please change your display name to something resembling your name so your classmates (and I) can identify and tag you.
+c. Once you join the server and accept the code of conduct, go to the `#class-selection` channel (left side bar) and click the icon that'll add you to our class folder. 
+d. Post an introduction in the `#458-class-chat` channel. Include the following:
+    * major
+    * Any pets (include pics!)
+    * what fictional family would you like to belong to? 
+    * your biggest concern about the class
+
+<br>
+
+# 3. Get the textbook
+
+I don't care if it's physical or electronic. Having a copy is essential. I have had students use a prior edition, but the page numbers and some content are different. If you go this route be prepared to work with another student to ensure you are looking at the correct content.
+
+[Sampling, 3rd Edition. Sharon Lohr](https://www.sharonlohr.com/sampling-design-and-analysis-3e)
+
+Also download the R companion for the book and all data sets from this site as well. 
+
+
+# 4. Read the syllabus
+Thoroughly read the syllabus, look over the Canvas classroom and the course website. Then ask at least one question about the logistics or organization of this class in Discord.
+
+
+# 5. Quick access
 
 Bookmark this class website. Going through Canvas every time just is a waste of your time.
 
-# 5. Look over the Canvas content, course website, and syllabus. 
-Ask at least one question about the logistics or organization of this class in Discord. 
+
+# 6. Update R/R Studio. Demonstrate that you can reender to PDF.
+
+* Update both R and RStudio to the latest versions [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
+* (Re)install following packages: `tidyverse, survey, sampling, srvyr, googlesheets4, tinytex` 
+* Run `tinytex::install_tinytex()` in the console to install a lightweight version of LaTeX
+
+All homework is to be done in a literate programming/reproducible manner using Quarto (`.qmd`) files compiled to PDF. 
+
+* Demonstrate that you can render a Quarto file to PDF by downloading the [Hello Quarto](https://quarto.org/docs/get-started/hello/rstudio/_hello.qmd) tutorial file
+    - Add your name as an author in the YAML header in the format `author: Your name`. 
+    - Add a code chunk at the bottom of the page with only this code in it: `version`. 
+* Render to PDF and upload the resulting document to Canvas
 
 
-# 6. HackMD
+:::{.callout-warning}
+#### New to Quarto? 
+
+Learn more about Quarto [here](https://quarto.org/docs/get-started/hello/rstudio.html). You do *NOT* need to install the `quarto` package to render files. 
+
+:::
+
+
+:::{.callout-warning}
+#### Need a refresher on R? 
+
+Review the "R Basics", and "Reading Data into R" sections of the R Companion for SDA. 
+
+:::
+
+ 
+
+
+
+
+
+    
+
+# 7. HackMD
 
 * Make an account using your campus email at [https://hackmd.io/](https://hackmd.io/)
 * Go to the [What is HackMD collaborative notes](https://hackmd.io/@norcalbiostat/458_intro_hackmd/), read the introduction and add your name to the list.

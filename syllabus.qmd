@@ -1,6 +1,8 @@
 ---
-format: html
 title: "Syllabus"
+format: 
+  html: default
+  pdf: default
 ---
 
 
@@ -15,7 +17,7 @@ _The theory and application of survey sampling techniques. Topics include simple
 * **Office Location:** Holt 202
 * **E-mail:** rdonatello@csuchico.edu
 * **Best Contact Method:** Discord
-* **Student Office Hours:** WF 1-2pm + 2 hours Times TBD
+* **Student Office Hours:** TBD
 
 ## Logistics
 * **Meeting Pattern:** MW 4-4:50, Holt 291
@@ -28,13 +30,12 @@ _The theory and application of survey sampling techniques. Topics include simple
 We will tentatively cover the following sections and topics:
 
 * Writing functions in R; Simulation; Sampling Distributions
-* Introduction to Sampling (Textbook Ch 1)
-* Concepts of Statistics
-* Simple Random Sampling (Textbook Ch 2)
-* Stratified Random Sampling (Textbook Ch 3)
-* Ratio, Regression, and Difference Estimation
-* Cluster Sampling (Textbook Ch 5)
-* Estimating Population Size (Textbook Ch 13)
+* Introduction to Sampling 
+* Statistical Estimation
+* Simple Random Sampling 
+* Stratified Random Sampling 
+* Cluster Sampling 
+* Ratio & Regression Estimation 
 
 
 ----
@@ -44,7 +45,7 @@ We will tentatively cover the following sections and topics:
 * **Class website**: https://sampling-458.netlify.app/
 * **Textbook (Required)**: [Sampling, 3rd Edition. Sharon Lohr](https://www.sharonlohr.com/sampling-design-and-analysis-3e)
 * **Laptop & Internet**: Expect to bring your laptop to class every day. Contact me if this poses a problem or concern for you. Contact ITSS for help with internet. 
-* **Data Analysis software**: R & R Studio
+* **Data Analysis software**: R & R Studio, Quarto
 * **Canvas**: Module overview, assignments, gradebook, calendar. 
 * **Discord**: A free discussion platform with a lot of collaborative functionality. 
 * **Hack MD**: A markdown based method for real time collaborative notes
@@ -53,34 +54,43 @@ Instructions for signing up & obtaining materials are in HW 0
 
 ----
 
-# Grading Breakdown
-
-
 # Assignments / graded items 
-Your final grade will be a straight sum of points earned and will be displayed as a running total in Canvas.  I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F  
 
-> Automatic half credit will be applied to any assignment submitted after the solutions are posted. This includes homework, worksheets, and the course notes. 
+Below is a summary of the graded items for the class and their weights towards the final grade. Automatic half credit will be applied to any graded assignment submitted after the solutions are posted.  I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F  
 
-#### Exams (30%)
+
+**Exams (30%)**
+
 * 2 Exams (midterm/final, not cumulative). 
 * Error Assessment available for the midterm. (Details TBD)
 
-#### Homework Assignments (20%)
+**Homework Assignments (20%)**
+
 * Written homework assignments on the topics listed above. These may take multiple days to complete. 
-#### Worksheets (20%)
+
+**Worksheets (20%)**
+
 * In class worksheets. The intent is to work together and finish them that day, but you'll have until the beginning of the next class period to turn it in. 
-* Lowest score dropped. 
 
-#### Applied Project (20%)
-* Details are in development, but the overall goal will be for you to identify something that you are interested in researching, design a data collection tool & method, collect and analyze the desired data, and report your findings. 
+**Applied Project (10%)**
 
-#### Notes (10%)
-* The course notes are available on the class website. What is presented in class will be incomplete, and we will work through them during class. 
-* Either directly, or through HackMD I will provide you the code that created those notes, with selected omissions that you are responsible for filling out during and after class.
-* You will compile these notes to PDF and submit for review on a regular basis, typically a few days after the module is complete. 
-* After the note submission date I will update the online posted notes with the completed versions.
-* If you miss a day, or miss something in a lecture, or don't get to finish all the "you try it" questions it is up to you to check with a classmate and/or the online course notes to complete all entries before submission.
-* These are graded on completion status. 
+* Design a data collection tool & method, collect and analyze the desired data, and report your findings. 
+
+**Notes (20%)**
+
+* **Taking notes**
+    - The course notes are available on the class website. What is presented in class will be incomplete, and we will work through them during class. 
+    - I will provide you with an incomplete version of the course notes that we will go through in class together. You are responsible for filling out during and after class.
+    - You will compile these notes to PDF and submit for review on a regular basis, typically a few days after the module is complete. 
+    - After the note submission date I will update the online posted notes with the completed versions.
+    - These are graded on completion status. 
+
+* **Creating Notes**
+    - The structure and format will be guided by me you will work collaboratively with the class to read the textbook and _create_ your own set of notes for certain topics. 
+    - These require strong team based collaboration and accountability, and so will be subject to peer feedback. 
+    - Once compiled together, these notes will go onto the course website
+
+
 
 ----
 
@@ -105,7 +115,7 @@ Furthermore, I would like to acknowledge that Chico State stands on lands that w
 
 ## Attendance
 
-All students are expected to attend class in person each session. There is no specific plan for habitual synchronous hybrid zoom session, but I recognize things come up. 
+All students are expected to attend class in person each session. 
 
 Talk to me ahead of time if you need to miss a class for a planned reason. In the event of an unplanned reason, DM me in Discord and let's see if we can zoom you in for that day. 
 
@@ -115,19 +125,59 @@ Talk to me ahead of time if you need to miss a class for a planned reason. In th
 
 ## Late work
 
-I don't penalize for late work, but I prioritize on time submissions. If you submit an assignment after i'm done grading everyone elses, and we're moving on to the next topic then your assignment may have to wait a while before I get to it. 
+Automatic half credit will be applied to any graded assignment submitted after the solutions are posted. 
 
-## Collaboration
+I also prioritize on time submissions. If you submit an assignment after I'm done grading everyone elses, and we're moving on to the next topic then your assignment will have to wait a while before I get to it. 
 
-Collaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts with. 
 
-:::{.callout-warning}
-Collaboration on exams is not allowed.
+## Collaboration 
+
+### With people
+
+* A big part of this class is collaborative note _creating_.
+* We will talk more about being responsible and accountable to each other next week.  
+* Collaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts and debugging with. However your submitted work must represent **your personal effort** on all parts. 
+* Collaboration on exams is not allowed.
+
+
+### With AI
+
+As an instructor I recognize there are a variety of AI programs available to assist in creating text and writing code. However, I want to stress that, AI programs are not a replacement for human creativity, originality, and critical thinking. Writing (text and code) is a skill that you must nurture over time in order to develop your own individual voice, style, and view.  
+
+* You are not allowed to use AI to help you write text. 
+* Don't immediately turn to Chat GPT to help you figure something out. Ask your classmates first. 
+* You can use ChatGPT/AI tools **to help you learn**, but the work you submit must be your own. 
+* You are expected to use the coding functions and style presented in the class. 
+* There is no short cut to learning. You must put in effort. 
+* I reserve the right to assign 0 points on any graded item that I suspect has been written or coded by AI
+
+
+:::{.callout-important}
+### Not allowed
+
+* Working with or getting help from others on exams and individual quizzes 
+* Copying code from another student's homework and presenting it as your own work.
+* Copy/paste from AI tools or internet sources without customization, citation or explanation 
+* Getting your sibling/friend/colleague to write code for you
+* Submitting any assignment that is not your own personal effort. 
 :::
+
+
+:::{.callout-tip}
+### Allowed
+* Helping each other solve homework problems (concepts or code)
+* Use AI to help explain a concept or an error message
+* Copy/paste code from my course notes (this is actually encouraged!)
+:::
+
+
+If at any time I suspect that the work you are submitting is not reflective of your personal knowledge I may ask you to verbally explain a piece of code to me. If your explanation is insufficient may result in a 0 on that assignment. 
+
+Any use outside of this permission constitutes a violation of Chico State's Integrity Policy and may result in you being reported to the Office of Students Rights and Responsibilities.
 
 ----
 
-# Student Resources
+# Campus Resources
 
 ## Chico State Basic Needs Project
 
@@ -137,11 +187,6 @@ All students are welcomed to visit the Pantry located in the Student Service Cen
 
 Please visit the Chico State Basic Needs website [http://www.csuchico.edu/basic-needs](http://www.csuchico.edu/basic-needs) for more information.
 
-## Wildcat Computing Support
-
-Everyone's journey through education is different and varied. Part of your journey is learning to engage and leverage academic technology. It is extremely important to your success, and at the same time requires patience to learn how it can benefit you. While learning various technologies, they change and adapt quickly. Wildcat Computing Support is curated by students to better support you and enhance your experiences with technology. We provide information to support your success in using academic technology in and out of the classroom.
-
-[https://www.csuchico.edu/wcs/](https://www.csuchico.edu/wcs/)
 
 
 ## Americans with Disabilities Act
@@ -154,10 +199,6 @@ Accessibility Resource Center 530-898-5959 Student Services Center 170 [arcdept\
 
 # University Policies
 
-## COVID-19 
-
-The CSU requires students to be fully vaccinated and boosted against COVID-19 by February 28th, 2022, unless you have an approved exemption. While Chico State has relaxed its stance on mask mandates, for your and my health and safety I _request_ that everyone wear an appropriate face mask covering the nose and mouth while in class. 
-
 ## Adding and Dropping the course
 
 You are responsible for understanding the policies and procedures about add/drops, academic renewal, etc., found in the [CSU Chico University Catalog](http://www.csuchico.edu/catalog/). You should be aware of the new deadlines and penalties for adding and dropping classes.
@@ -166,13 +207,7 @@ You are responsible for understanding the policies and procedures about add/drop
 
 As an instructor, one of my responsibilities is to help create a safe learning environment on our campus. I also have a mandatory reporting responsibility related to my role as a your instructor. I am required to share information regarding sexual misconduct with the University. Students may speak to someone confidentially by contacting the Counseling and Wellness Center (898-6345) or Safe Place (898-3030). Information on campus reporting obligations and other Title IX related resources are available here: www.csuchico.edu/title-ix.
 
-
 ## Academic Integrity
 
-Academic integrity is defined as “a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility”. From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity.
-
------
-
-_Last updated: `r format(Sys.time(), "%a %b %d %Y %X")`_
-
+Academic integrity is defined as "a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility". From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity.
     

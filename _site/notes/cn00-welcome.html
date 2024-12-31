@@ -7,11 +7,11 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.555">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.319">
 
   <meta name="author" content="Robin Donatello">
-  <meta name="dcterms.date" content="2023-01-23">
+  <meta name="dcterms.date" content="2025-01-20">
   <title>Sampling Methods - Welcome to MATH 458</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -31,7 +31,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -157,8 +157,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -322,7 +321,7 @@
     }
   </style>
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
@@ -338,7 +337,7 @@ Robin Donatello
 </div>
 </div>
 
-  <p class="date">2023-01-23</p>
+  <p class="date">2025-01-20</p>
 </section>
 <section>
 <section id="meet-your-instructor" class="title-slide slide level1 center" data-background-image="../figs/Zombatar.jpg" data-background-size="250px" data-background-position="95% 15%">
@@ -351,13 +350,6 @@ Robin Donatello
 <p>I have a Doctorate in Public Health (DrPH) Biostatistics from UCLA, but I’m a Chico alum. I double majored in Statistics &amp; Biology, with minor in Chemistry, and a first generation college student who started at Butte College.</p>
 <p>My campus life consists of training the next generation of Scientists how to harness the power of Statistics and Data in a responsible and ethical manner, leading the Data Science Initiative (DSI) provide training and experiences for students and faculty, and providing analytical support and statistical consulting for many projects on and off campus.</p>
 <p>When I’m not on campus, typically I’m growing food for my family, out adventuring with my dogs, or getting some game time in. You can learn more about the projects i’m involved in on my <a href="http://www.norcalbiostat.com/">website</a>.</p>
-</section>
-<section id="your-turn" class="slide level2">
-<h2>Your turn</h2>
-<ul>
-<li>Turn to your neighbor and introduce yourself.</li>
-<li>You’ll post an introduction in Discord this week so everyone will get to know everyone else.</li>
-</ul>
 </section></section>
 <section>
 <section id="code-of-conduct" class="title-slide slide level1 center">
@@ -380,31 +372,7 @@ Robin Donatello
 <li>Help me pronounce your name as accurately as possible. Corrections are welcome.</li>
 <li>If you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. I want to be a resource for you.</li>
 </ul>
-</section>
-<section id="mitigating-our-risk-of-covid-19" class="slide level2 smaller">
-<h2>Mitigating our risk of COVID-19</h2>
-<ul>
-<li>This is still a real thing, but we all have different levels of risk we are willing to take ourselves, and different risk management strategies.</li>
-<li>I personally am working on reducing my mask wearing to re-challenge my immune system, but I also have immunocompromised elderly mother at home. Always a balance.</li>
-<li>Masks will ALWAYS be welcome and respected in this classroom. No questions.</li>
-<li>I am likely to request masks be worn in my office.</li>
-<li>Please keep up to date with available booster shots. You can’t learn if you’re ill.&nbsp;</li>
-<li>If you have COVID symptoms, <span class="emoji" data-emoji="stop_sign">🛑</span> Do not come to class. I’ll turn on Zoom for the day so you can participate.</li>
-<li>If you are just generally feeling unwell, please use a mask. I will always have some on hand.</li>
-</ul>
 </section></section>
-<section id="disclaimer" class="title-slide slide level1 smaller center">
-<h1>Disclaimer</h1>
-<ul>
-<li>This is my first time teaching this class. Last I worked with this material I was in your shoes (Undergrad, Senior, 2004ish)</li>
-<li>I’ve also been sick for most of winter break <span class="emoji" data-emoji="mask">😷</span></li>
-<li>I have all the materials from another instructor, and a highly recommended book. So for much of the class we will be learning the material together.</li>
-<li>That’s the main thing that makes me a different learner from you. Some of you have better working knowledge of pure and applied mathematical topics than I do. I just have more practice applying, and learning new statistics than you do.</li>
-<li>So this is all to say that this won’t be a passive class where I’m up here telling you how it is.</li>
-<li>And I can’t give you a solid schedule of topics &amp; calendar of due dates because i’m not sure how long it’ll take for us to cover each topic.</li>
-</ul>
-</section>
-
 <section>
 <section id="what-is-this-class-about" class="title-slide slide level1 center">
 <h1>What is this class about?</h1>
@@ -413,22 +381,16 @@ Robin Donatello
 <section id="course-description" class="slide level2">
 <h2>Course Description</h2>
 <p>The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.</p>
-<p>By “survey” we do not strictly mean a self report survey such as the Student Feedback on Teaching. The concept is much broader.</p>
+<p>By <code>survey</code> we are referring to a way of collecting data.</p>
 </section>
-<section id="motivating-example" class="slide level2">
-<h2>Motivating Example</h2>
-<p>Go to Canvas, week 0 module and read through the motivating example. Then respond to this thread by writing a few sentence summary of the example and include your take away message.</p>
-<p>Read through all posts later this week to see how similar, or different their messages are from yours. We all come to this class from different backgrounds and perspectives, and so will see things differently. You are welcome and encouraged to respond to other’s posts.</p>
-</section>
-<section id="learning-goals" class="slide level2 smaller">
+<section id="learning-goals" class="slide level2">
 <h2>Learning goals</h2>
 <ol type="1">
 <li>Define principal concepts, advantages and disadvantages of sampling.</li>
-<li>Categorize, define, compare between, and implement various sampling methods such as Simple Random Sampling, Stratified Sampling, and Cluster Sampling.</li>
-<li>Formulate and calculate appropriate estimators and confidence intervals for population parameters under various sampling frameworks.</li>
+<li>Categorize, define, compare between, and implement various sampling methods.</li>
+<li>Formulate and calculate appropriate estimators and confidence intervals for population parameters under various sampling methods.</li>
 <li>Estimate the convenient or optimal sample size for various sampling methods.</li>
 <li>Design, conduct, and analyze your own data collection mini-study</li>
-<li>Bonus: You’ll get <em>really</em> good at writing R functions.</li>
 </ol>
 </section></section>
 <section>
@@ -439,9 +401,9 @@ Robin Donatello
 <section id="a-variety-of-learning-and-working-tools" class="slide level2">
 <h2>A variety of learning and working tools</h2>
 <ul>
-<li>Many of you have had me as an instructor in the past, so some of this won’t be new.</li>
-<li>I use a combination of tools that are most appropriate for the task or outcome at hand.</li>
-<li>Homework 0 provides a checklist for getting connected and testing out your tools.</li>
+<li>I don’t sanitize this class for you by keeping everything in a learning management system like Canvas.</li>
+<li>In a working environment you have to deal with multiple platforms, multiple accounts and manage multiple locations for files and content. I use the best tools for the job.</li>
+<li>Homework 0 provides a checklist for getting connected to your tools.</li>
 </ul>
 </section>
 <section id="class-website" class="slide level2">
@@ -454,29 +416,19 @@ Robin Donatello
 <li>Sometimes links will be broken. Typo’s happen. Notify me via Discord and I’ll get to it asap.</li>
 </ul>
 </div></section>
-<section id="textbook" class="slide level2">
-<h2>Textbook</h2>
-<ul>
-<li><a href="https://www.sharonlohr.com/sampling-design-and-analysis-3e">Sampling, 3rd Edition. Sharon Lohr</a></li>
-<li>Download the R companion for the book from this site as well. I anticipate it’ll be useful.</li>
-</ul>
-</section>
 <section id="canvas" class="slide level2">
 <h2>Canvas</h2>
 <ul>
-<li>Canvas is new to me, and it seems reasonable for organizing due dates &amp; submissions so we’ll try that out</li>
-<li>It’ll be your gradebook as well.</li>
-<li>Content is organized into Modules, with flow and due dates</li>
-<li>I will also put links to files that you need to download here.</li>
+<li>Due dates</li>
+<li>Module organization</li>
+<li>Gradebook</li>
+<li>Assignment submission</li>
 </ul>
-<blockquote>
-<p>I reserve the right to adjust where links and content are contained throughout the semseter if I find Canvas not to be the right tool at this time for me (or perhaps it will work better?)</p>
-</blockquote>
 </section>
 <section id="discord" class="slide level2">
 <h2>Discord</h2>
 <ul>
-<li>Used for outside class discussions, meme sharing, homework help and general chatter.</li>
+<li>Used for outside class discussions, collaboration, meme sharing, and general chatter.</li>
 <li>I will not answer most class-content based questions through email.</li>
 <li>Download either the phone app or the desktop app (I use both). This is mandatory.
 <ul>
@@ -484,58 +436,58 @@ Robin Donatello
 </ul></li>
 </ul>
 </section>
-<section id="learning-content" class="slide level2 smaller">
-<h2>Learning Content</h2>
+<section id="collaborative-notes" class="slide level2">
+<h2>Collaborative Notes</h2>
 <ul>
-<li>HTML based notes that to start out with are semi-complete. <a href="https://sampling-458.netlify.app/notes/cn01-intro_simulation.html">Example</a></li>
+<li>Quarto based notes that to start out with are semi-complete. <a href="https://sampling-458.netlify.app/notes/cn01-intro_simulation.html">(Example)</a></li>
 <li>During class we will work together through examples, you will work together on “you try it” practice problems, and answer questions</li>
 <li>You will have a version of these notes that have blank spots for you to fill in, or answer questions
 <ul>
 <li>You will compile these notes to PDF and submit them through Canvas a few days after we complete a section</li>
 </ul></li>
-<li>I will update the online posted notes with our collaborative solutions to the “you try it” problems.</li>
 <li>As the term progresses, you will be creating sections of these notes (that will be posted) and “teaching” the rest of the class your topic.</li>
 </ul>
 </section>
 <section id="hack-md" class="slide level2">
 <h2>Hack MD</h2>
 <ul>
-<li>Account setup instructions part of HW0</li>
 <li>Interactive markdown based collaborative notes</li>
 <li>I will give you a file for the first set of ‘blank’ notes.</li>
 <li>Afterward you will be responsible for copying them (and sometimes filling out sections) of the notes directly in HackMD.</li>
 </ul>
+</section></section>
+<section>
+<section id="policies" class="title-slide slide level1 center">
+<h1>Policies</h1>
+
 </section>
-<section id="r-r-studio" class="slide level2">
-<h2>R + R Studio</h2>
+<section id="collaboration---with-people" class="slide level2">
+<h2>Collaboration - with people</h2>
 <ul>
-<li>We will be using the R programming language, along with Rstudio the Integrated Development Environment. More info on how to download and update your system can be found in Hw0.</li>
-<li>New to R? I recommend you also enroll in Math 130 ASAP. This semester it is asynchronous online. This is a 5 week primer to get you from zero to basic ability to import, visualize and manage data.
-<ul>
-<li>Just need a refresher/jump start? Everything is online <a href="https://norcalbiostat.github.io/MATH130/">https://norcalbiostat.github.io/MATH130/</a></li>
-</ul></li>
+<li>A big part of this class is collaborative note <em>creating</em>.</li>
+<li>We will talk more about being responsible and accountable to each other next week.<br>
+</li>
+<li>Collaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts and debugging with. However your submitted work must represent <strong>your personal effort</strong> on all parts.</li>
+<li>Collaboration on exams is not allowed.</li>
 </ul>
 </section>
-<section id="graded-content" class="slide level2">
-<h2>Graded Content</h2>
+<section id="collaboration-with-ai" class="slide level2">
+<h2>Collaboration – with AI</h2>
 <ul>
-<li>Worksheets, homework assignments, notes, exams, and a project.</li>
-<li>Details in the <a href="https://sampling-458.netlify.app/syllabus.html#assignments-graded-items">Syllabus</a>.</li>
+<li>You are not allowed to use AI to help you write text.</li>
+<li>Don’t immediately turn to Chat GPT to help you figure something out. Ask your classmates first.</li>
+<li>You can use ChatGPT/AI tools <strong>to help you learn</strong>, but the work you submit must be your own.</li>
+<li>You are expected to use the coding functions and style presented in the class.</li>
+<li>There is no short cut to learning. You must put in effort.</li>
+<li>I reserve the right to assign 0 points on any graded item that I suspect has been written or coded by AI</li>
 </ul>
 </section></section>
-<section id="what-questions-do-you-have-for-me" class="title-slide slide level1 center">
-<h1>What questions do you have for me?</h1>
+<section id="get-started-with-a-motivating-example" class="title-slide slide level1 center">
+<h1>Get started with a motivating example</h1>
+<p>Read through the motivating example discussion post in Canvas. Then respond to the thread by writing a few sentence summary of the example and include your take away message.</p>
 
-</section>
-
-<section id="lets-get-started." class="title-slide slide level1 center">
-<h1>Let’s get started.</h1>
-<p>Go to the course website –&gt; weekly overview –&gt; week 1.</p>
-
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
     </div>
@@ -564,6 +516,7 @@ Robin Donatello
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -824,27 +777,10 @@ Robin Donatello
         // clear code selection
         e.clearSelection();
       });
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -854,17 +790,8 @@ Robin Donatello
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -878,11 +805,7 @@ Robin Donatello
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {

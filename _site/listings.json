@@ -2,25 +2,18 @@
   {
     "listing": "/assignments.html",
     "items": [
-      "/assignments/hw00-setup.html",
-      "/assignments/ws01-functions.html"
-    ]
-  },
-  {
-    "listing": "/notes.html",
-    "items": [
-      "/notes/formulas.html",
-      "/notes/cn00-welcome.html",
-      "/notes/cn01-intro_simulation.html"
+      "/assignments/hw00-setup.html"
     ]
   },
   {
     "listing": "/complete.html",
+    "items": []
+  },
+  {
+    "listing": "/notes.html",
     "items": [
-      "/complete/cn01-intro_simulation_complete_posted.html",
-      "/complete/cn02-intro_sampling_complete_posted.html",
-      "/complete/cn03-statistical_foundations_complete_posted.html",
-      "/complete/cn04-SRS_complete_posted.html"
+      "/notes/cn01-intro_simulation_starter.html",
+      "/notes/cn00-welcome.html"
     ]
   }
 ]
