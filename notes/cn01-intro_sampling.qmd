@@ -4,6 +4,43 @@ description: "The objective of sample surveys is to make inference about a popul
 date: 1/22/25
 ---
 
-Starter notes found in Hack MD [https://hackmd.io/@norcalbiostat/cn01-intro_sampling](https://hackmd.io/@norcalbiostat/cn01-intro_sampling)
 
-Completed notes will be posted here after the section is complete. 
+# Introduction
+
+The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean, proportion or total.
+
+# Populations and Representative Samples (1.2)
+
+A sample is representative if it can be used to "reconstruct" what the population looks like and if we can provide an accurate assessment of how good that reconstruction is.
+
+## Key Terms
+
+Some definitions are needed to make the notions of a "population" and a "representative sample" more precise.
+
+![Textbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.](../figs/fig1_1.png)
+
+-   **Target Population**:
+-   **Sampling frame**:  
+-   **Observational Unit**: 
+-   **Sample**: 
+-   **Sampled population**: 
+-   **Sampling unit**: 
+
+In an *ideal* survey, the sampled population will be identical to the target population. 🦄
+
+::: {.callout-note appearance="minimal"}
+### :question: :busts_in_silhouette: Key Terms
+
+In small groups go to our [collaborative notes](https://hackmd.io/@norcalbiostat/cn01-intro_sampling) and put your names in the `[names]` portion for one of the three examples that you are assigned to work on. Then as a group read the details for your example from the textbook and identify as many key terms as you can. 
+
+_Suggestion: Only one person from each group should be doing the writing but everyone should be logged in and viewing._
+:::
+
+----
+
+# Selection Bias (1.3)
+
+**Selection bias** occurs when the target population does not coincide with the sampled population because some population units are sampled at a different rate than intended by the investigator. 
+
+:question: If a survey designed to study household income has fewer poor households than would be obtained in a representative sample, would the survey estimates of the average or median household income be too high? or to low? 
+

@@ -6,7 +6,7 @@ date: today
 
 # Introduction
 
-The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean.
+The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean, proportion or total.
 
 # Populations and Representative Samples (1.2)
 
@@ -25,12 +25,12 @@ Some definitions are needed to make the notions of a "population" and a "represe
 
 In an *ideal* survey, the sampled population will be identical to the target population. 
 
-:::{.callout-warning icon=false}
-### :star: You try it
-An online bookseller summarizes readers' reviews of the books it sells. Persons who want to rate a book can submit a review online; the bookseller reports the average rating from all reviews on its website.
+::: {.callout-note appearance="minimal"}
+### :question: :busts_in_silhouette: Key Terms
 
-Describe the target population, sampling frame, sampling unit, and observation unit. Discuss any possible sources of selection bias or inaccuracy of responses.
+Copy your small group example key terms below.
 :::
+
 
 ----
 
@@ -39,6 +39,8 @@ Describe the target population, sampling frame, sampling unit, and observation u
 **Selection bias** occurs when the target population does not coincide with the sampled population because some population units are sampled at a different rate than intended by the investigator. 
 
 :question: If a survey designed to study household income has fewer poor households than would be obtained in a representative sample, would the survey estimates of the average or median household income be too high? or to low? 
+
+> your answer here
 
 ## Some types of selection bias
 
