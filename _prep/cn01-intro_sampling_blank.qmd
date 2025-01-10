@@ -34,7 +34,7 @@ Copy your small group example key terms below.
 
 ----
 
-# Selection Bias (1.3)
+# (1.3) Selection Bias
 
 **Selection bias** occurs when the target population does not coincide with the sampled population because some population units are sampled at a different rate than intended by the investigator. 
 
@@ -50,9 +50,19 @@ Summarize briefly and provide a unique example (that is, not the one in the text
 > After class add all examples provided to your notes. Clean them up (e.g. remove the names and headers)
 
 
-## Bias everywhere!
+* **Convenience Sample**: 
+* **Purposive or Judgement Sample**: 
+* **Self-Selected Sample**: 
+* **Undercoverage Bias**: 
+* **Overcoverage**: 
+* **Nonresponse**: 
 
-Can Bias ever be good? Yes! 
+
+### What Good Are Samples with Selection Bias?
+
+Can Bias ever be good? 
+
+> your answer here
 
 
 :::{.callout-tip icon=true}
@@ -60,19 +70,19 @@ Can Bias ever be good? Yes!
 
 By Oct '19, over 1,600 cases of lung injuries and 34 deaths were found to be associated with vaping, but the actual cause of injuries were not known. In 2019 a group of researchers (see text for citation) conducted a study that ultimately led to the recommendation that the public stop using these products until more research on the causal association could be conducted. 
 
-This impact survey had the following types of selection bias: 
+This impact survey had the following types of selection bias:
 
-* Researchers attempted to interview 83 patients who were reported to have lung injuries but only 53 responded (non-response bias). 
-* The sampling frame of 83 only came from physician-reported cases, which means there may be bias if the physicians only reported the more serious cases (undercoverage)
-* THC is illegal in that state, so patients may have under-reported their use (undercoverage)
-* Individuals who vape, incurred a lung injury but didn't seek care were excluded from the study (undercoverage)
+* Researchers attempted to interview 83 patients who were reported to have lung injuries but only 53 responded (________). 
+* The sampling frame of 83 only came from physician-reported cases, which means there may be bias if the physicians only reported the more serious cases (________)
+* THC is illegal in that state, so patients may have under-reported their use (________)
+* Individuals who vape, incurred a lung injury but didn't seek care were excluded from the study (________)
 :::
 
 Just because your sample may likely contain bias, being up front about it in your reporting (this is what the limitations section is all about) is a very important aspect of open science. 
 
 ----
 
-# Measurement Error (1.4)
+# (1.4) Measurement Error
 
 * **Measurement error**: 
 * **Measurement bias**: 
@@ -95,7 +105,10 @@ Obtaining accurate responses is challenging in all types of surveys. Especially 
 Write down _all_ reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a "good" response or not.  
 :::
 
-* 
+
+> After class add all examples provided to your notes. Remove these instructions. 
+
+* People may choose not to respond or lie if they're embarrassed about the response (like income level)
 * 
 * 
 
@@ -104,80 +117,48 @@ Clear sampling protocols and thoughtful & validated survey design can minimize m
 
 ----
 
-# Sampling and Nonsampling errors (1.6)
+# (1.6) Sampling and Nonsampling errors
 
 * Most surveys report a "margin of error", often something like "3 percentage points"
-* The **margin of error** 
-* **Nonsampling errors** 
+* The **margin of error** describes .....
+* **Nonsampling errors** cannot be attributed to ......
 
 
 :::{.callout-warning icon=false}
 ### :star: You try it
-Go find a poll on a subject that interests you. Share the following information in the HackMD notes. 
-
-The URL, population of interest, the statistic being estimated, and the margin of error. 
+Go find a poll on a subject that interests you. Share the following information in the `#458-class-chat` discord channel, and include this info in your notes. 
 :::
 
 
-* **Name**:
-* **Title and URL**:
+* **Name of poll**:
+* **URL**:
 * **Stated Population**:
 * **Statistic being estimated**
 * **Margin of Error**: 
 
 ----
 
-# The Design of the Sample Survey
 
-Since the objective of sampling is to estimate the population parameters, such as the mean or the total of a population from information contained in the sample. The experimenter controls the quantity of information by choosing an appropriate sample size. How do we determine which sampling procedure to use and how many sampling units to sample?
+# (1.7) Why use sampling? 
 
+> "After all, my opinion has never been asked, so how can the survey results claim to represent me?"
+> "Extrapolating what tens of millions are thinking from a tiny sample of opinions affronts human intelligence and negates true freedom of thought."
 
-> It depends on .....
+Public distrust of surveys intensify when high stakes elections (1936, 2016) are predicted incorrectly. 
 
+Initial recommendations to use a sample to understand a characteristic about a population developed in Norway in 1895, but it wasn't until 1920-1960 that statisticians were able to create mathematical proofs to support that a `probability sample` - a sample chosen using random selection methods - produces reliable results that can be used to make inference on a population. 
 
-Suppose that we are trying to estimate some parameter $\theta$ from our sample. $\hat{\theta}$ is what we will call the statistic that is used to estimate $\theta$. Thus, we will use $\hat{\theta}$ as an estimate of $\theta$. Therefore, we will want the value of $\theta-\hat{\theta}$ to be **______**. 
+## Advantages of a sample instead of a census
 
-We call the value of $\theta-\hat{\theta}$ the **______** because it is the ______. 
-
-:::{.callout-tip}
-A major objective in Statistics is to minimize error.
+:::{.callout-note appearance=minimal}
+### :question: :busts_in_silhouette: Think-pair-share
+In the list below, write down _all_ reasons you can think of for why a sample may be more advantageous compared to a census. Don't forget to consult the textbook when you run out of ideas. Add your ideas to HackMD, making sure to read others contributions and not duplicate ideas. 
 :::
 
-We might want to specify that the absolute value of the error is less than some number, say $B$. Thus,
 
-$$
-\mbox{Error of Estimation}=|\theta-\hat{\theta}|<B
-$$
+* 
+* 
 
-We should also state a probability ($1-\alpha$) that our error is less than $B$ if we were to take repeated samples. This is stated as
 
-$$
-P(\mbox{Error of Estimation}=|\theta-\hat{\theta}| < B) = 1-\alpha
-$$
-
-We will often select $B$ to be approximately 2 times the standard deviation of $\hat{\theta}$, $B=2\hat{\sigma}_{\hat{\theta}}$. Many of the statistics that we will discuss exhibit a normal sampling distribution even when the population distribution is skewed.
-
-## Types of sampling methods
-We will go into the different types of sampling methods throughout the class, but here are a few. 
-
-### Probability Sampling
-
-The classical formulation of a statistical estimation problem requires that randomness be brought into the sampling plan. With proper randomness in the sampling scheme we can be sure that we have an unbiased estimate and that our statements that involve our confidence in the estimate are accurate. Sampling designs based on planned randomness are called **__________**.
-
-### Simple random sample
-There are two types of simple random sampling. One is simple random sampling _with_ replacement, whereby a member of the population can be selected more than once; the other is simple random sampling _without_ replacement,whereby a member of the population can be selected at most once. 
-
-> Unless otherwise specified.....
-
-### Stratified sampling
-
-Often deployed when we want to guarantee representation from different groups (strata) in the population. In stratified sampling the population is first divided into subpopulations, called _strata_, and then sampling is done from each stratum. Ideally the members of the subpopulations should be homogeneous relative to the characteristic under consideration. 
-
-:::{.callout-tip icon=true}
-### Example: Would taxpayors support a neighborhood pool?
-
-For instance, suppose that a city planner is interested in finding out how his town would feel about a new public pool being built funded by tax payer dollars. He might divide the population up into different income groups such as high, middle, and low incomes. He would then  take a simple random sample of individuals within each strata (income group). This would guarantee that his sample had representation from all income groups.
-
-Note that this type of sampling plan makes use of an auxiliary variable, in this case income. By stratifying we should be increasing the accuracy of our estimate. 
-:::
+> “Sampling is not mere substitution of a partial coverage for a total coverage. Sampling is the science and art of controlling and measuring the reliability of useful statistical information through the theory of probability” (Deming, 1950, p. 2)
 
