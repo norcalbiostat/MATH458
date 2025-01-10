@@ -1,7 +1,8 @@
 ---
 title: "Introduction to Simulation"
 description: Foundations of writing your own custom functions, drawing samples and conducting a simulation. 
-date: 1/25/23
+date: 1/22/25
+draft: true
 ---
 
 # Writing your own R functions

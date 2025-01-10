@@ -92,7 +92,7 @@ By `survey` we are referring to a way of collecting data.
 -   Download either the phone app or the desktop app (I use both). This is mandatory.
     -   Do not rely on remembering to log in via the web browser. You will miss important notifications.
 
-## Collaborative Notes
+## Collaborative Notes {.smaller}
 
 * Quarto based notes that to start out with are semi-complete. [(Example)](https://sampling-458.netlify.app/notes/cn01-intro_simulation.html)
 * During class we will work together through examples, you will work together on "you try it" practice problems, and answer questions
