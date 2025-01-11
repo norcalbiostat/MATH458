@@ -117,6 +117,36 @@ Clear sampling protocols and thoughtful & validated survey design can minimize m
 
 ----
 
+
+# (1.5) Questionnaire Design
+
+This is a short, short version of how to design a questionnaire. If you are considering writing one for a project or thesis, please consult one of the references at the end of the chapter in the textbook. 
+
+:::{.callout-important}
+#### The most important step
+
+Is deciding what you want to learn. What are the goals of your survey? 
+
+:::
+
+Be as precise as possible
+
+> "I want to learn something about persons experiencing homelessness"
+
+Is not good enough. Let's revise this to
+
+> "What percentage of persons using homeless shelters in Chicago between January and March 2021 are under 16 years old?"
+
+
+Now you can write questions that will be able to actually answer this research question. 
+
+## Guidance
+
+> Clean up and copy the collaborative guidance notes here. 
+
+
+----
+
 # (1.6) Sampling and Nonsampling errors
 
 * Most surveys report a "margin of error", often something like "3 percentage points"

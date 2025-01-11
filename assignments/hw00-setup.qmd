@@ -32,6 +32,8 @@ Create this class folder along with the following subfolders to organize your da
 :::{.callout-important}
 ## Do not let everything live in your downloads folder.
 This means when you download a file, right click and "Save as" or "Save target as" and **actively choose** where to download this file. 
+
+Try this out by downloading the first set of blank course notes that you'll need for wednesday [from here](../notes/cn01-intro_sampling).
 :::
 
 
@@ -99,23 +101,11 @@ Learn more about Quarto [here](https://quarto.org/docs/get-started/hello/rstudio
 #### Need a refresher on R? 
 
 Review the "R Basics", and "Reading Data into R" sections of the R Companion for SDA. 
-
 :::
 
- 
 
-
-
-
-
-    
 
 # 7. HackMD
 
 * Make an account using your campus email at [https://hackmd.io/](https://hackmd.io/)
 * Go to the [What is HackMD collaborative notes](https://hackmd.io/@norcalbiostat/458_intro_hackmd/), read the introduction and add your name to the list.
-
-
-
-
-

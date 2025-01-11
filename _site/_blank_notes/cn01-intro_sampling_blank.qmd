@@ -1,41 +1,36 @@
 ---
-title: "The Sampling Framework"
-description: "The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population."
-date: 1/22/25
+title: "Sampling Framework"
+author: "Put your name here"
+date: today
 ---
-
-[Blank notes file](../_blank_notes/cn01-intro_sampling_blank.qmd)
 
 # Introduction
 
 The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean, proportion or total.
 
-# (1.2) Populations and Representative Samples
+# Populations and Representative Samples (1.2)
 
 A sample is representative if it can be used to "reconstruct" what the population looks like and if we can provide an accurate assessment of how good that reconstruction is.
 
-## Key Terms
-
 Some definitions are needed to make the notions of a "population" and a "representative sample" more precise.
 
-![Textbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.](../figs/fig1_1.png)
+### Key Terms
 
--   **Target Population**:
--   **Sampling frame**:  
 -   **Observational Unit**: 
+-   **Target Population**: 
 -   **Sample**: 
 -   **Sampled population**: 
 -   **Sampling unit**: 
+-   **Sampling frame**: 
 
-In an *ideal* survey, the sampled population will be identical to the target population. 🦄
+In an *ideal* survey, the sampled population will be identical to the target population. 
 
 ::: {.callout-note appearance="minimal"}
 ### :question: :busts_in_silhouette: Key Terms
 
-In small groups go to our [collaborative notes](https://hackmd.io/@norcalbiostat/cn01-intro_sampling) and put your names in the `[names]` portion for one of the three examples that you are assigned to work on. Then as a group read the details for your example from the textbook and identify as many key terms as you can. 
-
-_Suggestion: Only one person from each group should be doing the writing but everyone should be logged in and viewing._
+Copy your small group example key terms below.
 :::
+
 
 ----
 
@@ -45,11 +40,15 @@ _Suggestion: Only one person from each group should be doing the writing but eve
 
 :question: If a survey designed to study household income has fewer poor households than would be obtained in a representative sample, would the survey estimates of the average or median household income be too high? or to low? 
 
-::: {.callout-note appearance="minimal"}
-### :question: :busts_in_silhouette: Some types of selection bias
+> your answer here
 
-In small groups briefly summarize the type of selection bias that you are assigned to review. Write your answers in HackMD Provide a unique example (that is, not the one in the text). Be prepared to share this out with the class. 
-:::
+## Some types of selection bias
+
+Summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class. 
+
+
+> After class add all examples provided to your notes. Clean them up (e.g. remove the names and headers)
+
 
 * **Convenience Sample**: 
 * **Purposive or Judgement Sample**: 
@@ -58,16 +57,20 @@ In small groups briefly summarize the type of selection bias that you are assign
 * **Overcoverage**: 
 * **Nonresponse**: 
 
+
 ### What Good Are Samples with Selection Bias?
 
-Can Bias ever be good?
+Can Bias ever be good? 
+
+> your answer here
+
 
 :::{.callout-tip icon=true}
 ### Example: Early indicators of lung injury associated with vaping (2019)
 
 By Oct '19, over 1,600 cases of lung injuries and 34 deaths were found to be associated with vaping, but the actual cause of injuries were not known. In 2019 a group of researchers (see text for citation) conducted a study that ultimately led to the recommendation that the public stop using these products until more research on the causal association could be conducted. 
 
-This impact survey had the following types of selection bias: 
+This impact survey had the following types of selection bias:
 
 * Researchers attempted to interview 83 patients who were reported to have lung injuries but only 53 responded (________). 
 * The sampling frame of 83 only came from physician-reported cases, which means there may be bias if the physicians only reported the more serious cases (________)
@@ -84,7 +87,6 @@ Just because your sample may likely contain bias, being up front about it in you
 * **Measurement error**: 
 * **Measurement bias**: 
 
-
 :::{.callout-tip icon=true}
 ### Example: Ecology surveys
 
@@ -93,19 +95,21 @@ Often in ecological surveys, areas are divided into plots or grids of smaller si
 Field researchers have to make a decision about whether or not to count plants directly on the border. If one researcher always counts plants on the boarder as being inside the grid, and another one does not, their estimate will always be higher than the other person. 
 :::
 
+
 ## Surveying people 
 
 Obtaining accurate responses is challenging in all types of surveys. Especially when dealing with humans. 
 
-[Bonus credz to anyone who can name this bat. Double credz if you can quote a line from his intro rap.]{.aside}
-![Sourced from Tenor.com](../figs/batty.gif)
-
 :::{.callout-note appearance=minimal}
-### :question: :busts_in_silhouette: Think-pair-share
+### Why humans gotta be so hard?
 Write down _all_ reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a "good" response or not.  
 :::
 
+
+> After class add all examples provided to your notes. Remove these instructions. 
+
 * People may choose not to respond or lie if they're embarrassed about the response (like income level)
+* 
 * 
 
 
@@ -138,11 +142,7 @@ Now you can write questions that will be able to actually answer this research q
 
 ## Guidance
 
-:::{.callout-note appearance=minimal}
-### :question: :busts_in_silhouette: Think-pair-share
-Use HackMD to summarize the guidance item assigned to you. Be prepared to share out verbally in class.  
-:::
-
+> Clean up and copy the collaborative guidance notes here. 
 
 
 ----
@@ -153,19 +153,21 @@ Use HackMD to summarize the guidance item assigned to you. Be prepared to share 
 * The **margin of error** describes .....
 * **Nonsampling errors** cannot be attributed to ......
 
+
 :::{.callout-warning icon=false}
 ### :star: You try it
 Go find a poll on a subject that interests you. Share the following information in the `#458-class-chat` discord channel, and include this info in your notes. 
+:::
+
 
 * **Name of poll**:
 * **URL**:
 * **Stated Population**:
 * **Statistic being estimated**
 * **Margin of Error**: 
-:::
-
 
 ----
+
 
 # (1.7) Why use sampling? 
 
@@ -180,10 +182,12 @@ Initial recommendations to use a sample to understand a characteristic about a p
 
 :::{.callout-note appearance=minimal}
 ### :question: :busts_in_silhouette: Think-pair-share
-In your notes write down _all_ reasons you can think of for why a sample may be more advantageous compared to a census. Don't forget to consult the textbook when you run out of ideas. Add your ideas to HackMD, making sure to read others contributions and not duplicate ideas. 
+In the list below, write down _all_ reasons you can think of for why a sample may be more advantageous compared to a census. Don't forget to consult the textbook when you run out of ideas. Add your ideas to HackMD, making sure to read others contributions and not duplicate ideas. 
 :::
 
 
+* 
+* 
 
 
 > “Sampling is not mere substitution of a partial coverage for a total coverage. Sampling is the science and art of controlling and measuring the reliability of useful statistical information through the theory of probability” (Deming, 1950, p. 2)

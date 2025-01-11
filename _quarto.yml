@@ -30,8 +30,8 @@ website:
           #   url: https://hackmd.io/@norcalbiostat/sampling_r_resources
           - text: "What is HackMD"
             url: https://hackmd.io/@norcalbiostat/458_intro_hackmd
-          # - text: "Sampling Framework notes"
-          #   url: https://hackmd.io/@norcalbiostat/cn02-intro_sampling
+          - text: "Ch 1. Sampling Framework"
+            url: https://hackmd.io/@norcalbiostat/cn01-intro_sampling
           # - text: "Foundations of Estimation"
           #   url: https://hackmd.io/@norcalbiostat/cn03-statistical_foundations
           # - text: "Stratified Sampling"

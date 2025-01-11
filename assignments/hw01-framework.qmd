@@ -1,0 +1,22 @@
+---
+format: html
+title: "Homework 01: Sampling Framework"
+date: "01/27/25"
+categories: Homework
+subtitle: "Chapter 1 material"
+---
+
+
+# Part I. Key Terms
+
+Choose 2 items from Exercises 1–31 in the textbook to answer. Include the question text in your assignment. 
+
+
+# Part II. Survey tool evaluation.
+
+Many universities ask students to fill out a course evaluation at the end of the term. You will find a copy of ours in Canvas. 
+
+1. Evaluate the questions on this survey against each of the guidelines presented in the textbook chapter 1.5. 
+2. What procedure is used to distribute and collect the surveys? What are some possible sources of selection bias?
+3. Explain why you think the student evaluations do, or do not, give an accurate measurement of student satisfaction with the course.
+4. Suggest at least one question or method to improve this evaluation tool. 

@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw00-setup.html</loc>
-    <lastmod>2024-12-31T00:03:41.855Z</lastmod>
+    <lastmod>2025-01-11T02:13:01.118Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sampling-458.netlify.app/assignments/hw01-framework.html</loc>
+    <lastmod>2025-01-11T02:13:01.925Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments.html</loc>
-    <lastmod>2024-12-31T00:03:42.906Z</lastmod>
+    <lastmod>2025-01-11T02:13:02.758Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/complete.html</loc>
-    <lastmod>2024-12-31T00:03:43.759Z</lastmod>
+    <lastmod>2025-01-11T02:13:03.544Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/ideas.html</loc>
-    <lastmod>2024-12-31T00:03:44.698Z</lastmod>
+    <lastmod>2025-01-11T02:13:04.425Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/index.html</loc>
-    <lastmod>2024-12-31T00:03:45.688Z</lastmod>
+    <lastmod>2025-01-11T02:13:05.382Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn00-welcome.html</loc>
-    <lastmod>2025-01-09T00:47:43.955Z</lastmod>
+    <lastmod>2025-01-11T02:13:06.799Z</lastmod>
   </url>
   <url>
-    <loc>https://sampling-458.netlify.app/notes/cn01-intro_simulation_starter.html</loc>
-    <lastmod>2024-12-31T00:03:49.295Z</lastmod>
+    <loc>https://sampling-458.netlify.app/notes/cn01-intro_sampling.html</loc>
+    <lastmod>2025-01-11T02:13:40.194Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes.html</loc>
-    <lastmod>2024-12-28T17:31:06.566Z</lastmod>
+    <lastmod>2025-01-11T02:13:25.888Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/syllabus.html</loc>
-    <lastmod>2024-12-31T00:04:00.085Z</lastmod>
+    <lastmod>2025-01-11T02:13:18.971Z</lastmod>
   </url>
 </urlset>

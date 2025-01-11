@@ -2,7 +2,8 @@
   {
     "listing": "/assignments.html",
     "items": [
-      "/assignments/hw00-setup.html"
+      "/assignments/hw00-setup.html",
+      "/assignments/hw01-framework.html"
     ]
   },
   {
@@ -12,8 +13,8 @@
   {
     "listing": "/notes.html",
     "items": [
-      "/notes/cn01-intro_simulation_starter.html",
-      "/notes/cn00-welcome.html"
+      "/notes/cn00-welcome.html",
+      "/notes/cn01-intro_sampling.html"
     ]
   }
 ]
