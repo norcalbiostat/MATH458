@@ -6,6 +6,12 @@ categories: Homework
 subtitle: "Chapter 1 material"
 ---
 
+:::{.callout-note}
+#### Submission instructions
+Download the [HW01 template](_hw01-template.qmd) quarto file. Save this into your class folder, remove the `_` from the file name, and replace `template` with your username (e.g. rdonatello). Answer the following questions, compile to PDF and submit to Canvas by the due date. Look closely at your resulting PDF before submitting to make sure that all text, code and output are visible. 
+
+:::
+
 
 # Part I. Key Terms
 

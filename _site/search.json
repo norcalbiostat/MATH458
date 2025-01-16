@@ -11,7 +11,7 @@
     "href": "assignments/hw01-framework.html",
     "title": "Homework 01: Sampling Framework",
     "section": "",
-    "text": "Part I. Key Terms\nChoose 2 items from Exercises 1–31 in the textbook to answer. Include the question text in your assignment.\n\n\nPart II. Survey tool evaluation.\nMany universities ask students to fill out a course evaluation at the end of the term. Chico State has 5 forms that are approved for use in different departments. You can find the list and forms at this link.\n\nWhat procedure is used to distribute and collect these surveys? What are some possible sources of selection bias?\nPick one(1) of the forms and evaluate the questions on this survey against each of the guidelines presented in the textbook chapter 1.5.\nExplain why you think the specific student evaluation that you chose does, or does not, give an accurate measurement of student satisfaction with the course.\nNow consider all five forms. If you only had to give one, which one would you choose and why? Be prepared to defend your answer in class."
+    "text": "Submission instructions\n\n\n\nDownload the HW01 template quarto file. Save this into your class folder, remove the _ from the file name, and replace template with your username (e.g. rdonatello). Answer the following questions, compile to PDF and submit to Canvas by the due date. Look closely at your resulting PDF before submitting to make sure that all text, code and output are visible.\n\n\n\nPart I. Key Terms\nChoose 2 items from Exercises 1–31 in the textbook to answer. Include the question text in your assignment.\n\n\nPart II. Survey tool evaluation.\nMany universities ask students to fill out a course evaluation at the end of the term. Chico State has 5 forms that are approved for use in different departments. You can find the list and forms at this link.\n\nWhat procedure is used to distribute and collect these surveys? What are some possible sources of selection bias?\nPick one(1) of the forms and evaluate the questions on this survey against each of the guidelines presented in the textbook chapter 1.5.\nExplain why you think the specific student evaluation that you chose does, or does not, give an accurate measurement of student satisfaction with the course.\nNow consider all five forms. If you only had to give one, which one would you choose and why? Be prepared to defend your answer in class."
   },
   {
     "objectID": "assignments.html",
@@ -271,12 +271,5 @@
     "title": "Syllabus",
     "section": "Academic Integrity",
     "text": "Academic Integrity\nAcademic integrity is defined as “a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility”. From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html",
-    "href": "notes/cn00-welcome.html",
-    "title": "Welcome to MATH 458",
-    "section": "",
-    "text": "You can address me as “Robin”, “Dr. D”, or some other respectful title that you feel comfortable with.\nI have a Doctorate in Public Health (DrPH) Biostatistics from UCLA, but I’m a Chico alum. I double majored in Statistics & Biology, with minor in Chemistry, and a first generation college student who started at Butte College.\nMy campus life consists of training the next generation of Scientists how to harness the power of Statistics and Data in a responsible and ethical manner, leading the Data Science Initiative (DSI) provide training and experiences for students and faculty, and providing analytical support and statistical consulting for many projects on and off campus.\nWhen I’m not on campus, typically I’m growing food for my family, out adventuring with my dogs, or getting some game time in. You can learn more about the projects i’m involved in on my website."
   }
 ]

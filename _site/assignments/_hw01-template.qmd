@@ -1,0 +1,23 @@
+---
+title: "Homework 01: Sampling Framework"
+author: "YOUR NAME HERE"
+format: pdf
+---
+
+
+# Part I. Key Terms
+
+
+
+# Part II. Survey tool evaluation.
+
+**1. What procedure is used to distribute and collect these surveys? What are some possible sources of selection bias?**
+
+
+**2. Pick one(1) of the forms and evaluate the questions on this survey against each of the guidelines presented in the textbook chapter 1.5. **
+
+
+**3. Explain why you think the specific student evaluation that you chose does, or does not, give an accurate measurement of student satisfaction with the course.**
+
+
+**4. Now consider all five forms. If you only had to give one, which one would you choose and why? Be prepared to defend your answer in class. **

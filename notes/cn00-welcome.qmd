@@ -94,7 +94,7 @@ By `survey` we are referring to a way of collecting data.
 
 ## Collaborative Notes {.smaller}
 
-* Quarto based notes that to start out with are semi-complete. [(Example)](https://sampling-458.netlify.app/notes/cn01-intro_simulation.html)
+* Quarto based notes that to start out with are semi-complete. [(Example)](https://sampling-458.netlify.app/notes/cn01-intro_sampling.html)
 * During class we will work together through examples, you will work together on "you try it" practice problems, and answer questions
 * You will have a version of these notes that have blank spots for you to fill in, or answer questions
     - You will compile these notes to PDF and submit them through Canvas a few days after we complete a section 
