@@ -4,9 +4,9 @@ subtitle: "Sampling Methods"
 description: "Course Overview slides"
 date: "2025-01-20"
 author: "Robin Donatello"
-format: 
+format:
   revealjs:
-    theme: serif
+    theme: night
     transition: fade
     slide-number: true
 ---

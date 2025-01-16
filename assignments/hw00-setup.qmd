@@ -109,3 +109,16 @@ Review the "R Basics", and "Reading Data into R" sections of the R Companion for
 
 * Make an account using your campus email at [https://hackmd.io/](https://hackmd.io/)
 * Go to the [What is HackMD collaborative notes](https://hackmd.io/@norcalbiostat/458_intro_hackmd/), read the introduction and add your name to the list.
+
+# 8. Help decide office hours
+
+I would like to try to schedule my open drop in student help hours at a time that works for the majority of students across my classes. Please fill out this form to let me know when you would be able to attend office hours. Mark down a time even if you are only free for part of that time. 
+
+https://forms.gle/WNsZU5huMQ3AZnhH6
+
+
+
+
+
+
+

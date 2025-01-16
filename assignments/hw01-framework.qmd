@@ -14,9 +14,10 @@ Choose 2 items from Exercises 1–31 in the textbook to answer. Include the ques
 
 # Part II. Survey tool evaluation.
 
-Many universities ask students to fill out a course evaluation at the end of the term. You will find a copy of ours in Canvas. 
+Many universities ask students to fill out a course evaluation at the end of the term. Chico State has 5 forms that are approved for use in different departments. You can find the list and forms [at this link](https://www.csuchico.edu/ir/sfot/forms.shtml).
 
-1. Evaluate the questions on this survey against each of the guidelines presented in the textbook chapter 1.5. 
-2. What procedure is used to distribute and collect the surveys? What are some possible sources of selection bias?
-3. Explain why you think the student evaluations do, or do not, give an accurate measurement of student satisfaction with the course.
-4. Suggest at least one question or method to improve this evaluation tool. 
+
+1. What procedure is used to distribute and collect these surveys? What are some possible sources of selection bias?
+2. Pick one(1) of the forms and evaluate the questions on this survey against each of the guidelines presented in the textbook chapter 1.5. 
+3. Explain why you think the specific student evaluation that you chose does, or does not, give an accurate measurement of student satisfaction with the course.
+4. Now consider all five forms. If you only had to give one, which one would you choose and why? Be prepared to defend your answer in class. 
