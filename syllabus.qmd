@@ -20,7 +20,7 @@ _The theory and application of survey sampling techniques. Topics include simple
 * **Student Office Hours:** TBD
 
 ## Logistics
-* **Meeting Pattern:** MW 4-4:50, Holt 291
+* **Meeting Pattern:** MW 4-5:15, Holt 155
 * **Prerequisites:** MATH 314, MATH 315, or MATH 351 (may be taken concurrently)  
 * **Mode of Instruction:** In Person.   
 

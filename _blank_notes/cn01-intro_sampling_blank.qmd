@@ -2,6 +2,7 @@
 title: "Sampling Framework"
 author: "Put your name here"
 date: today
+format: pdf
 ---
 
 # Introduction
