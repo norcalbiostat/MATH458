@@ -2,6 +2,7 @@
 title: "Sampling Framework"
 author: "Put your name here"
 date: today
+format: pdf
 ---
 
 # Introduction
@@ -191,4 +192,30 @@ In the list below, write down _all_ reasons you can think of for why a sample ma
 
 
 > “Sampling is not mere substitution of a partial coverage for a total coverage. Sampling is the science and art of controlling and measuring the reliability of useful statistical information through the theory of probability” (Deming, 1950, p. 2)
+
+
+# (2.1) Types of Probability Sampling
+
+:::{.callout-important}
+### Definition: Probability Sample
+Each unit in the population has a known probability of selection, and a random number table or other randomization mechanism is used to choose the specific units to be included in the sample.
+
+> Need a recap on probability? See book Appendix A.1 and A.2
+:::
+
+In this class we assume: 
+
+* sampled population is the target population
+* the sampling frame is complete
+* that there is no nonresponse or missing data
+* there is no measurement error
+
+
+* **Simple Random Sample (SRS)**: 
+* **Stratified Random Sample**: 
+* **Cluster sample**: 
+* **Systematic sample**: 
+
+
+> put all examples here. If there are any you think need to be adjusted, say so and do it. 
 

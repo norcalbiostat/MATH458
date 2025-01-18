@@ -13,6 +13,7 @@
   {
     "listing": "/notes.html",
     "items": [
+      "/notes/cn02-statistical_foundations.html",
       "/notes/cn00-welcome.html",
       "/notes/cn01-intro_sampling.html"
     ]

@@ -33,7 +33,7 @@ website:
           - text: "Ch 1. Sampling Framework"
             url: https://hackmd.io/@norcalbiostat/cn01-intro_sampling
           # - text: "Foundations of Estimation"
-          #   url: https://hackmd.io/@norcalbiostat/cn03-statistical_foundations
+          #   url: https://hackmd.io/@norcalbiostat/cn02-statistical_foundations
           # - text: "Stratified Sampling"
           #   url: https://hackmd.io/@norcalbiostat/cn06_stratified
           # - text: "Cluster Sampling"
