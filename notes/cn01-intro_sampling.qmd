@@ -2,6 +2,7 @@
 title: "The Sampling Framework"
 description: "The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population."
 date: 1/22/25
+author: DRAFT
 ---
 
 [Blank notes file](../_blank_notes/cn01-intro_sampling_blank.qmd)
