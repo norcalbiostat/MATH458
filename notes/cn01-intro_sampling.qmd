@@ -5,7 +5,7 @@ date: 1/22/25
 author: DRAFT
 ---
 
-[Blank notes file](../_blank_notes/cn01-intro_sampling_blank.qmd)
+[cn01 Blank notes file](../_blank_notes/cn01-intro_sampling_blank.qmd)
 
 # Introduction
 

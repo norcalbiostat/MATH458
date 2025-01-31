@@ -3,18 +3,16 @@
     "listing": "/assignments.html",
     "items": [
       "/assignments/hw00-setup.html",
-      "/assignments/hw01-framework.html"
+      "/assignments/hw01-framework.html",
+      "/assignments/ws01-estimation.html"
     ]
-  },
-  {
-    "listing": "/complete.html",
-    "items": []
   },
   {
     "listing": "/notes.html",
     "items": [
       "/notes/cn00-welcome.html",
-      "/notes/cn01-intro_sampling.html"
+      "/notes/cn01-intro_sampling.html",
+      "/notes/cn02-statistical_foundations.html"
     ]
   }
 ]
