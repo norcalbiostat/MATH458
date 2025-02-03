@@ -14,9 +14,9 @@
     "text": "Submission instructions\n\n\n\nDownload the HW01 template quarto file. Save this into your class folder, remove the _ from the file name, and replace template with your username (e.g. rdonatello). Answer the following questions, compile to PDF and submit to Canvas by the due date. Look closely at your resulting PDF before submitting to make sure that all text, code and output are visible.\n\n\n\nPart I. Key Terms\nChoose 2 items from Exercises 1–31 in the textbook to answer. Include the question text in your assignment.\n\n\nPart II. Survey tool evaluation.\nMany universities ask students to fill out a course evaluation at the end of the term. Chico State has 5 forms that are approved for use in different departments. You can find the list and forms at this link.\n\nWhat procedure is used to distribute and collect these surveys? What are some possible sources of selection bias?\nPick one(1) of the forms and evaluate the questions on this survey against each of the guidelines presented in the textbook chapter 1.5.\nExplain why you think the specific student evaluation that you chose does, or does not, give an accurate measurement of student satisfaction with the course.\nNow consider all five forms. If you only had to give one, which one would you choose and why? Be prepared to defend your answer in class."
   },
   {
-    "objectID": "assignments/ws01-estimation.html",
-    "href": "assignments/ws01-estimation.html",
-    "title": "Worksheet 02: Comparing sampling plans",
+    "objectID": "assignments/hw02-estimation.html",
+    "href": "assignments/hw02-estimation.html",
+    "title": "Homework 02: Comparing sampling plans",
     "section": "",
     "text": "Sometimes we may need to choose between two sampling plans by comparing measures such as variance, bias and accuracy. Here we are interested in estimating \\(\\mu\\), the population mean.\nFor purposes of studying sampling distributions, assume that all population values are known: \\(y_1 = 98, y_2 = 109, y_3 = 154, y_4=133, y_5 = 190, y_6 = 175\\). Out of the \\(N=6\\) total possible values to sample from, we will choose \\(n=3\\).\nPlan 1: The following eight possible samples may be chosen with equal probability: {1,3,5}, {1,3,6}, {1,4,5}, {1,4,6}, {2,3,5}, {2,3,6}, {2,4,5}, {2,4,6}\nPlan 2: The following three samples may be chosen: {1,4,6}, {2,3,6}, {1,3,5} with respective probabilities \\(\\delta\\) = (.25, .5, .25).\nAnswer the following questions:\na) What is the value of \\(\\mu\\)? \nb) For each sampling plan, find: i)\\(E[\\bar{y}]\\), ii) \\(V[\\bar{y}]\\), iii)\\(\\mbox{Bias}(\\bar{y})\\), iv) \\(MSE(\\bar{y})\\), where \\(\\bar{y}\\) is the mean of sample values.\nc) Which sampling plan do you think is better, and why?"
   },
@@ -25,7 +25,7 @@
     "href": "assignments.html",
     "title": "Assignments",
     "section": "",
-    "text": "Title\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nHomework 01: Sampling Framework\n\n\n\n\nWorksheet 02: Comparing sampling plans\n\n\n\n\n\n\nNo matching items"
+    "text": "Title\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nHomework 01: Sampling Framework\n\n\n\n\nHomework 02: Comparing sampling plans\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "ideas.html",
@@ -193,7 +193,7 @@
     "href": "notes/cn02-statistical_foundations.html#standard-error",
     "title": "Foundations of Statistical Estimation",
     "section": "Standard Error",
-    "text": "Standard Error\n\n\n\n\n\n\nDefinition: Standard Error\n\n\n\nThe standard error of a statistic is ……\n\n\nThe standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use closed form mathematical formulas to calculate the standard error.\n\n\n\n\n\n\nExample Grad program example cont.\n\n\n\nEstimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20.\n\n\n\nsd(many.means) #because the example above already had n=10\n\nError: object 'many.means' not found\n\nreplicate(n=100, {\n  my.sample.programs &lt;- sample(stat.phd$FTGradEnrollment, size=20)\n  mean(my.sample.programs)\n}) |&gt; sd()\n\n[1] 6.008961"
+    "text": "Standard Error\n\n\n\n\n\n\nDefinition: Standard Error\n\n\n\nThe standard error of a statistic is ……\n\n\nThe standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use closed form mathematical formulas to calculate the standard error.\n\n\n\n\n\n\nExample Grad program example cont.\n\n\n\nEstimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20.\n\n\n\nsd(many.means) #because the example above already had n=10\n\nError: object 'many.means' not found\n\nreplicate(n=100, {\n  my.sample.programs &lt;- sample(stat.phd$FTGradEnrollment, size=20)\n  mean(my.sample.programs)\n}) |&gt; sd()\n\n[1] 6.997379"
   },
   {
     "objectID": "notes/cn02-statistical_foundations.html#confidence-intervals",
@@ -208,6 +208,13 @@
     "title": "Course Notes",
     "section": "",
     "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2025\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 22, 2025\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 3, 2025\n\n\nFoundations of Statistical Estimation\n\n\nWe cover the theoretical concepts of statistical estimation. (Lohr 2.2)\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Project",
+    "section": "",
+    "text": "Project Overview: Shaping the Future of Math & Data Science\nThis semester, you will go on a real-world project that will directly impact the future of the Mathematics and Data Science programs at Chico State. Working collaboratively as a class, you will design, implement, and analyze an alumni survey to gather valuable insights about their experiences and career paths. This is your chance to apply the sampling and statistical analysis methods you’ve learned in a practical and meaningful way.\nThis project isn’t just about crunching numbers; it’s about teamwork, communication, and project management. As a class you will be responsible for:\n\nDefining Roles & Responsibilities: Assign yourselves specific roles within the project (e.g., survey design team, data analysis team, communication lead).\nTask Management & Timelines: Establish clear timelines and track progress to ensure successful completion of each project phase.\nStakeholder Communication: Get stakeholder (Math Department faculty, Career center) input in the questions being asked.\nDesign & Implementing Multiple Sampling Frameworks: Implement multiple sampling methods (e.g., simple random, stratified, cluster) to select representative samples of alumni.\nData Collection & Analysis: Collect survey responses, clean the data, and perform appropriate statistical analyses to answer key research questions. You will also need to compare estimates obtained across the different sampling frameworks to assess their impact on the results.\nFinal Presentation: Present your findings and recommendations and insights to the Math Department or the assessment committee.\n\nThis is a full class collaborative effort, requiring everyone’s active participation and contribution. Every student should take lead on at least one aspect or activity. Your collective efforts will provide valuable data to inform curriculum development, program improvements, and future initiatives within the Mathematics & Statistics departments. Embrace this opportunity to make a real difference!"
   },
   {
     "objectID": "syllabus.html",

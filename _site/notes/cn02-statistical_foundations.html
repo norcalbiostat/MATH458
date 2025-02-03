@@ -126,6 +126,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../assignments.html" rel="" target="">
  <span class="menu-text">Assignments</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../project.html" rel="" target="">
+ <span class="menu-text">Project</span></a>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">HackMD Notes</span>
@@ -145,8 +149,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
-  <li class="dropdown-header">
- <span class="menu-text">Project</span></li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
@@ -667,7 +669,7 @@ Example: Enrollment in Graduate Programs in Statistics
 <p>❓ What is the average full-time graduate student enrollment in US statistics doctoral programs in 2009?</p>
 </div>
 </div>
-<p>Based on the data set, the mean enrollment in 2009 is ________ full-time graduate students. Because this is the mean for the entire population of all US statistics doctoral programs for which data were available that year, we have that <span class="math inline">\(\mu=_______\)</span> students.</p>
+<p>Based on the data set, the mean enrollment in 2009 is ________ full-time graduate students. Because this is the mean for the entire population of all US statistics doctoral programs for which data were available that year, we have that <span class="math inline">\(\mu\)</span> =_______ students.</p>
 <p>⭐ Use the code below take a random sample of 10 programs from the data file then calculate the mean.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>my.sample.programs <span class="ot">&lt;-</span> <span class="fu">sample</span>(stat.phd<span class="sc">$</span>FTGradEnrollment, <span class="at">size=</span>__)</span>
@@ -813,7 +815,7 @@ Example Grad program example cont.
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.008961</code></pre>
+<pre><code>[1] 6.997379</code></pre>
 </div>
 </div>
 </section>

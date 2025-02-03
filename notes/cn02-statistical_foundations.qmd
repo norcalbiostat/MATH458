@@ -302,7 +302,7 @@ Graduate programs in statistics sometimes pay their graduate students, which mea
 
 ```
 
-Based on the data set, the mean enrollment in 2009 is ________ full-time graduate students. Because this is the mean for the entire population of all US statistics doctoral programs for which data were available that year, we have that $\mu=_______$ students.
+Based on the data set, the mean enrollment in 2009 is ________ full-time graduate students. Because this is the mean for the entire population of all US statistics doctoral programs for which data were available that year, we have that $\mu$ =_______ students.
 
 ⭐ Use the code below take a random sample of 10 programs from the data file then calculate the mean.
 

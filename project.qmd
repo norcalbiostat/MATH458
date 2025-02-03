@@ -1,0 +1,22 @@
+---
+title: "Project"
+format: 
+  html: default
+---
+
+# Project Overview: Shaping the Future of Math & Data Science
+
+This semester, you will go on a real-world project that will directly impact the future of the Mathematics and Data Science programs at Chico State. Working collaboratively as a class, you will design, implement, and analyze an alumni survey to gather valuable insights about their experiences and career paths. This is your chance to apply the sampling and statistical analysis methods you've learned in a practical and meaningful way.
+
+This project isn't just about crunching numbers; it's about teamwork, communication, and project management. As a class you will be responsible for:
+
+* Defining Roles & Responsibilities: Assign yourselves specific roles within the project (e.g., survey design team, data analysis team, communication lead).
+* Task Management & Timelines: Establish clear timelines and track progress to ensure successful completion of each project phase.
+* Stakeholder Communication: Get stakeholder (Math Department faculty, Career center) input in the questions being asked.
+* Design & Implementing Multiple Sampling Frameworks: Implement multiple sampling methods (e.g., simple random, stratified, cluster) to select representative samples of alumni.
+* Data Collection & Analysis: Collect survey responses, clean the data, and perform appropriate statistical analyses to answer key research questions. You will also need to compare estimates obtained across the different sampling frameworks to assess their impact on the results.
+* Final Presentation: Present your findings and recommendations and insights to the Math Department or the assessment committee.
+
+This is a full class collaborative effort, requiring everyone's active participation and contribution. Every student should take lead on at least one aspect or activity. Your collective efforts will provide valuable data to inform curriculum development, program improvements, and future initiatives within the Mathematics & Statistics departments. Embrace this opportunity to make a real difference!
+
+    
