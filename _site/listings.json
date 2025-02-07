@@ -1,18 +1,18 @@
 [
   {
-    "listing": "/assignments.html",
-    "items": [
-      "/assignments/hw00-setup.html",
-      "/assignments/hw01-framework.html",
-      "/assignments/hw02-estimation.html"
-    ]
-  },
-  {
     "listing": "/notes.html",
     "items": [
       "/notes/cn00-welcome.html",
       "/notes/cn01-intro_sampling.html",
       "/notes/cn02-statistical_foundations.html"
+    ]
+  },
+  {
+    "listing": "/assignments.html",
+    "items": [
+      "/assignments/hw00-setup.html",
+      "/assignments/hw01-framework.html",
+      "/assignments/hw02-estimation.html"
     ]
   }
 ]

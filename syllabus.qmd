@@ -59,7 +59,7 @@ Instructions for signing up & obtaining materials are in HW 0
 Below is a summary of the graded items for the class and their weights towards the final grade. Automatic half credit will be applied to any graded assignment submitted after the solutions are posted.  I use a standard grade cutoff of 100-90%: A, 89-80%: B, 79-70%: C, 69-60%: D, 0-59%: F  
 
 
-**Exams (30%)**
+**Exams (20%)**
 
 * 2 Exams (midterm/final, not cumulative). 
 * Error Assessment available for the midterm. (Details TBD)
@@ -68,11 +68,11 @@ Below is a summary of the graded items for the class and their weights towards t
 
 * Written homework assignments on the topics listed above. These may take multiple days to complete. 
 
-**Worksheets (20%)**
+**Worksheets (10%)**
 
 * In class worksheets. The intent is to work together and finish them that day, but you'll have until the beginning of the next class period to turn it in. 
 
-**Applied Project (10%)**
+**Applied Project (20%)**
 
 * Design a data collection tool & method, collect and analyze the desired data, and report your findings. 
 
@@ -90,6 +90,10 @@ Below is a summary of the graded items for the class and their weights towards t
     - These require strong team based collaboration and accountability, and so will be subject to peer feedback. 
     - Once compiled together, these notes will go onto the course website
 
+**Participation (10%)**
+  - Self and peer evaluations
+  - Discussion board posts
+  - Generally being helpful over Discord to your classmates
 
 
 ----

@@ -32,9 +32,9 @@ Statistical inference centers around using information from a sample to understa
 
 On April 29, 2011, Prince William married Kate Middleton in London. The Pew Research Center reports that 34% of US adults watched some or all of the royal wedding. How do we know that 34% of all US adults watched? Did anyone ask **you** if you watched it? In order to know for sure what proportion of US adults watched the wedding, we would need to ask **all** US adults whether or not they watched. This would be very difficult to do. As we will see, however, we can estimate the *population* proportion *parameter* quite accurately with a *sample statistic*, as long as we use a random sample. In the case of the royal wedding, the estimate is based on a poll using a random sample of 1006 US adults.
 
--   *Statistical inference*: 
--   *Parameter*: 
--   *Statistic*: 
+-   *Statistical inference*: The process of drawing conclusions about the entire population based on the information in the sample.
+-   *Parameter*: A number that describes the entire population. $\mu$, $p$, $\tau$
+-   *Statistic*: A number calculated from a sample. $\bar{x}$, $\hat{p}$, $\hat{\tau}$.
 
 Generally our goal is to know the value of the population parameter exactly but this usually isn't possible since we usually cannot collect information from the entire population.
 
@@ -48,7 +48,12 @@ The US Census states that 27.5% of US adults who are at least 25 years old have 
 What is the population parameter? What is the sample statistic? Use correct notation for your answer.
 :::
 
-> write your solution here
+::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
+### Solution
+
+**Population Parameter**: $p = .275$\
+**Sample Statistic**: $\hat{p} = 58/200 = .29$
+:::
 
 The value of a statistic for a particular sample gives a *point estimate* of the population parameter. If we only have the one sample and don't know the value of the population parameter, this point estimate is our best estimate of the true value of the population parameter.
 
@@ -73,11 +78,13 @@ The population total $\tau$ would then be calculated as
 
 $$
 \tau = \sum_{i=1}^{N}y_{i}
-$$ where the $\sum$ symbols means to sum over all the values of $y_{i}$ for all $i=1, \ldots, N$ units in the population.
+$$ 
+where the $\sum$ symbols means to sum over all the values of $y_{i}$ for all $i=1, \ldots, N$ units in the population.
 
-However the nature of sampling means that $y_{i}$ is not observed for every unit in the population. In this case, we are going to consider a sample $S$ of 2 campuses. There are six different ways 2 units could be chosen from $U$. $$
+However the nature of sampling means that $y_{i}$ is not observed for every unit in the population. In this case, we are going to consider a sample $S$ of 2 campuses. There are six different ways 2 units could be chosen from $U$. 
+$$
 S_{1} = \{A,B\}, S_{2} = \{A,C\}, S_{3} = \{A,D\}, \\
-S_{5} = \{?, ?\}, S_{5} = \{?, ?\}, S_{6} = \{?, ?\}
+S_{4} = \{B,C\}, S_{5} = \{B,D\}, S_{6} = \{C,D\}
 $$
 
 Then we estimate the population value $\tau$ using an estimate $\hat{t}$, where we sum over all the values of $y_{i}$ when that $i^{th}$ campus is present in the chosen sample.
@@ -86,7 +93,7 @@ $$
 \hat{t} = \sum_{i \in S}y_{i}
 $$
 
-Let's assume we know the number of parking garages at each campus $y_{A} = 2, y_{B} = 4, y_{C} = 1, y_{D} = 3$. We can build a **sampling distribution**, that is a distribution of all possible values for $\hat{t}$ based on this design. 
+Let's assume we know the number of parking garages at each campus $y_{A} = 2, y_{B} = 4, y_{C} = 1, y_{D} = 3$. We can build a **sampling distribution**, that is a distribution of all possible values for $\hat{t}$ based on this design. [A **sampling distribution** is an example of a discrete probability distribution]{.aside}  
 
 The total from sample 1 $\hat{t}_{1} = y_{A} + y_{B} = 6$ is the total calculated from campus A and B, sample 2 total is $\hat{t}_{2} = y_{A} + y_{C} = 3$, and so forth. Doing this for all 6 samples results in the following graph:
 
@@ -101,7 +108,7 @@ points(x,y, type = "h", lwd=5)
 |  |  |  |  |  |  |
 |------------|:----------:|:----------:|:----------:|:----------:|:----------:|
 | k | 3 | 4 | 5 | 6 | 7 |
-| $P(\hat{t} = k)$ | $\frac{?}{?}$ | $\frac{?}{?}$ | $\frac{?}{?}$ | $\frac{?}{?}$ | $\frac{?}{?}$ |
+| $P(\hat{t} = k)$ | $\frac{1}{6}$ | $\frac{1}{6}$ | $\frac{1}{3}$ | $\frac{1}{6}$ | $\frac{1}{6}$ |
 
 : Sampling distribution for the estimated sample total $\hat{t}$ number of parking garages on two randomly selected college campuses in the north state.
 
@@ -110,7 +117,7 @@ The only reason we can calculate these probabilities exactly is because we knew 
 ::: callout-important
 ### Definition: Expected Value
 
-The expected value of the statistic is....
+[The **Expected Value** is the mean of the **sampling distribution**]{.aside} The expected value of the statistic is the weighted average of the possible sample values of the statistic, weighted by the probability that particular value of the statistic would occur. 
 $$
 E[y]=\sum_{y}y*p(y)
 $$
@@ -133,15 +140,15 @@ $E[y]=\sum_{y}yp(y) = (1)(.1) + (2)(.5) + (3)(.4) = 2.3$
 We can use R to calculate this for us.
 
 ```{r}
-y <-       # Define a vector y of data values
-p.y <-  # define a vector of probabilities
-(E.y <- )  # multiply the elements of y and p.y, then sum
+y <- c(1,2,3)        # Define a vector y of data values
+p.y <- c(.1, .5, .4) # define a vector of probabilities
+(E.y <- sum(y*p.y))  # multiply the elements of y and p.y, then sum
 ```
 
 ::: callout-important
 ### Definition: Population Mean
 
-The population mean $\mu$ is defined as ....
+The population mean $\mu$ is defined as the expected value of y.
 
 $$E[y]=\mu$$
 :::
@@ -151,24 +158,21 @@ $$E[y]=\mu$$
 
 $$\sigma^{2} = V(y)=E[y-\mu]^{2}=\sum_{y}\left(y-\mu\right)^{2}*p(y)$$
 
-The variability of measurements in a population can be measured by the **variance** which is defined as ...
+The variability of measurements in a population can be measured by the **variance** which is defined as the average squared deviation from the mean between a randomly selected measurement $y$ and its mean value $\mu$.
 
 The standard deviation is defined as the square root of the variance, and is denoted $\sigma$.
 
 Often it's more convenient to calculate the variance using this formulation:
 
-$$
-
-
-$$
+$$V(y)=E[y^2] - E[y]^{2}$$
 :::
 
 Using R on the probability distribution defined above this would look like;
 
 ```{r}
-y.sq <-             # square y
-E.y.sq <-   # calculate E(y^2)
-(Var.y <- )  # Calculate the variance of y
+y.sq <- y^2              # square y
+E.y.sq <- sum(y.sq*p.y)  # calculate E(y^2)
+(Var.y <- E.y.sq - E.y^2)  # Calculate the variance of y
 ```
 
 ::: {.callout-warning icon="false"}
@@ -196,23 +200,24 @@ The previous section develops results for random sampling from a population cons
 -   Most sampling problems don't live in an infinite world, but the population is usually finite although it may be quite large.
 -   In addition, we may want to take into consideration varying the probabilities with which the units are sampled.
 
-In *probability sampling*, each possible sample $S$ has a known probability $\delta$ of being chosen. Let's return to the university parking garage example and use $P(\delta_{1} = ?), P(\delta_{2} = ?), P(\delta_{6} = ?)$ and the rest have probability 0.
+In *probability sampling*, each possible sample $S$ has a known probability $\delta$ of being chosen. Let's return to the university parking garage example and use  $\delta_{1} = P(\S_{1}) = 1/3, \delta_{2} = P(S_{2}) = 1/6, \delta_{6} = P(S_{6}) = 1/2$ and the rest have probability 0.
 
 Additionally, each unit $i$ within the universe $U$ has a $\pi_{i} \gt 0$ probability of appearing in the selected sample. These unit probabilities are a function of the probability of selecting that random sample.
 
 |  |  |  |
 |:----------------:|:-------------------------------:|:-------------------:|
-| $\pi_{A}$ = | $P(\delta_{1}) + ...$ |  |
-| $\pi_{B}$ = | $P(\delta_{1}) + ...$ |  |
-| $\pi_{C}$ = | $P(\delta_{2}) + ...$ |  |
-| $\pi_{D}$ = | $P(\delta_{3}) + ...$ |  |
+| $\pi_{A}$ = | $\delta_{1} + \delta_{2} + \delta_{3}$ | 1/3 + 1/6 + 0 = 1/2 |
+| $\pi_{B}$ = | $\delta_{1} + \delta_{4} + \delta_{5}$ | 1/3 + 0 + 0 = 1/3 |
+| $\pi_{C}$ = | $\delta_{2} + \delta_{4} + \delta_{6}$ | 1/6 + 0 + 1/2 = 2/3 |
+| $\pi_{D}$ = | $\delta_{3} + \delta_{5} + \delta_{6}$ | 0 + 0 + 1/2 = 1/2 |
+
 
 So in this case, not all units (campuses) $i$ have the same probability of appearing in our sample.
 
 ::: {.callout-warning icon="false"}
 ### ⭐ You try it
 
-Change the values of $\delta$ for each of the 6 possible samples of $U$ above, so that each sample has a non-zero probabilty of being chosen. Then recalculate the observational probabilities $\pi_{A}-\pi_{D}$.
+Change the values of $\delta$ for each of the 6 possible samples of $U$ above, so that each sample has a non-zero probability of being chosen. Then recalculate the observational probabilities $\pi_{A}-\pi_{D}$.
 :::
 
 Probability sampling:
@@ -225,56 +230,60 @@ Probability sampling:
 ::: {.callout-tip icon="true"}
 ### Example: Estimate total number of job openings.
 
-Suppose, for example, we want to estimate the total number of job openings in a city by sampling industrial firms from within that city. Many of these firms will be small and a few firms will be large. In a random sample *of firms*, the size of the firm is not taken into account. However, the number of job openings will be directly dependent on the size of the firm. Thus, we might improve the sample if large firms are more likely to be included in the sample.
+Suppose, for example, we want to estimate the total number of job openings in a city by sampling industrial companies from within that city.
+
+| Company | Jobs ($y$) | Size of company |
+|---------|------------|-----------------|
+| A       | 3          | 70              |
+| B       | 10         | 90              |
+| C       | 25         | 120             |
+| D       | 61         | 300             |
+
+The population total of job openings is $\tau= 99$. But of course we don't know this, so we want to take a sample of $n=2$ firms and count the number of jobs at each firm $y$ as a way to estimate this total.
 :::
 
--   Suppose the population consists of the set of elements $\{u_{1},u_{2},...,u_{N}\}$ and a sample of $n$ elements is to be selected with replacement independently of one another.
--   Let $\{\delta_{1},\delta_{2},...,\delta_{N}\}$ represent the respective probabilities of selection for the population elements.
-    -   $\delta_{i}$ is the probability that $u_{i}$ is selected on any one draw.
-    -   for the case of random sampling with replacement, each $\delta_{i} = ?$
 
-An **unbiased estimator** of the population total, $\tau$, is given by
+[Note: The mathematical definition of unbiased is not the same thing as selection biased discussed earlier. The math definition of bias will be discussed below.]{.aside} An **unbiased estimator** of the population total, $\tau$, is given by
 
 $$
-\hat{\tau}=\frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{\delta_{i}}
+\hat{t}=\frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{\pi_{i}}
 $$
 
-When $\delta_{i} = ?$, we can rewrite this as
+
+If all companies have equal probability of being selected, then the subset of companies $\{A, B\}$ have the same chance of being selected as any other subset of two companies such as $\{A, C\}$. This can occur when we sample randomly with replacement, which means $\pi_{i} = 1/N$.  This allows us to rewrite this equation as
 
 $$
-\hat{\tau} = \frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{(1/N)} = \frac{N}{n} \sum^{n}_{i=1}y_{i} = N\bar{y}
+\hat{t} = \frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{(1/N)} = \frac{N}{n} \sum^{n}_{i=1}y_{i} = N\bar{y}
 $$
 
-It is in the best interest to select the $\delta_{i}$ values in such a way that the variance is as small as possible. The best practical way to choose the $\delta_{i}$ is to ...
+Thus the estimate of the total job openings based on the $\{A, B\}$ sample would be:
+
+$$
+\hat{t} = N\bar{X} = 4*(13/2) = 26
+$$
+
+
+Note that the size of these companies vary quite a lot, and the number of job openings will likely be directly dependent on the size of the company Thus, we might improve the sample if large companies are more likely to be included in the sample. One practical way to choose the $\pi_{i}$, is to choose them proportional to a known measurement that is highly correlated with $y_{i}$. In this case, that would be the company size. 
 
 ::: {.callout-tip icon="true"}
-### Example: Job openings cont.
 
-Our universe only consists of these $N=4$ firms: A, B, C and D.
-
-| Firm | Jobs ($x$) | Size of firm | $\delta_{i}$ |
-|------|------------|--------------|--------------|
-| A    | 3          | 70           | 70/580       |
-| B    | 10         | 90           | 90/580       |
-| C    | 25         | 120          | 120/580      |
-| D    | 61         | 300          | 300/580      |
+| Firm | Jobs ($y$) | Size of firm | $\pi_{i}$ |
+|------|------------|--------------|-----------|
+| A    | 3          | 70           | 70/580    |
+| B    | 10         | 90           | 90/580    |
+| C    | 25         | 120          | 120/580   |
+| D    | 61         | 300          | 300/580   |
 :::
 
-The population total of job openings is $\tau= 99$. But of course we don't know this, so we want to take a sample of $n=2$ firms and count the number of jobs at each firm $x$ as a way to estimate this total.
-
-If all firms have equal probability of being selected, then the subset of firms $\{A, B\}$ have the same chance of being selected as any other subset of two firms such as $\{A, C\}$. However, we may want to select firms with probabilities in proportion to their workforce ($?$).
-
-Without adjustment the estimate of the total job openings based on the $\{A, B\}$ sample would be: 
-$$
-\hat{t} = N\bar{X} = 
-$$
 
 If we adjust $y_{i}$ based on the probability of selecting firms A and B, 
+
 $$
-\hat{t} = \frac{?}{?}\Big[\frac{?}{?/?} + \frac{?}{?}\Big]  = 
+\hat{t}=\frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{\pi_{i}} = \frac{1}{2}\Big[\frac{3}{70/580} + \frac{10}{90/580}\Big]  = 44.7
 $$
 
 ❓ Was this a good estimate of $\tau$? Why or why not?
+
 
 > your answer here
 
@@ -346,7 +355,7 @@ Characteristics of this distribution:
 
 🎉 We have just created a *__________________* of the sample mean.
 
-In elementary statistics you were introduced to the "Central Limit Theorem" (CLT). The CLT states that the sampling distribution of $\bar{y}$ should be centered at $\mu$ ($E(\bar{y}) = \mu)$) with a variance of $\sigma^{2}/n$. It also states that the shape of the distribution should be approximately Normal for a large $n$.
+[The proof of the CLT is generally seen in a first graduate Statistics class that uses convergence in distribution concepts from MATH 420.]{.aside}In elementary statistics you were introduced to the "Central Limit Theorem" (CLT). The CLT states that the sampling distribution of $\bar{y}$ should be centered at $\mu$ ($E(\bar{y}) = \mu)$) with a variance of $\sigma^{2}/n$. It also states that the shape of the distribution should be approximately Normal for a large $n$.
 
 # Properties of Estimators
 
@@ -401,6 +410,7 @@ The standard error of a statistic tells us how much the sample statistic will va
 ### Example Grad program example cont.
 
 Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20.
+[I used the base pipe `|>` here to pass the results of the replicate function into the `sd()` function]{.aside}
 :::
 
 ```{r}
@@ -428,6 +438,8 @@ Based on our example, what would be a 95% confidence interval for $\mu$ the true
 (LCL <- )
 (UCL <- )
 ```
+
+[Wrapping the entire line of code in `()` will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below.]{.aside}
 
 > We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (?,?).
 

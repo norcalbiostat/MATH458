@@ -1,222 +1,5 @@
 [
   {
-    "objectID": "assignments/hw00-setup.html",
-    "href": "assignments/hw00-setup.html",
-    "title": "Homework 00: Getting setup",
-    "section": "",
-    "text": "Important\n\n\n\nComplete this checklist in Canvas.\n\n\n\n1. Get Organized\nUsing a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects.\nYou need to choose a naming convention for your folders and try to stick with it. Recommended options are:\n\nALL CAPS (MATH458)\nno caps (math458)\nsnake_case (math_458)\nCamelCase (Math458)\n\nCreate this class folder along with the following subfolders to organize your data and script files.\n\ndata - any data that’s handed out goes in here\nassignments - scripts used for completing worksheets and assignments\nnotes - you will be writing and contributing notes to the class\nproject - for project specific files\n\n\n\n\n\n\n\nDo not let everything live in your downloads folder.\n\n\n\nThis means when you download a file, right click and “Save as” or “Save target as” and actively choose where to download this file.\nTry this out by downloading the first set of blank course notes that you’ll need for wednesday from here.\n\n\n\n\n2. Discord\nClick this link to join the Math & Stats Discord server https://discord.gg/xCQTAgu8bE. This is a support platform where student office hours will be held and personalized channels can be made.\n\n\n\n\n\n\nThis is the defacto method of communication for this class\n\n\n\nI get way too many emails that it’s easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.\n\n\n\nDownload the Desktop app. You should not rely on remembering to log in using the web version. Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider.\nPlease change your display name to something resembling your name so your classmates (and I) can identify and tag you.\nOnce you join the server and accept the code of conduct, go to the #class-selection channel (left side bar) and click the icon that’ll add you to our class folder.\nPost an introduction in the #458-class-chat channel. Include the following:\n\nmajor\nAny pets (include pics!)\nwhat fictional family would you like to belong to?\nyour biggest concern about the class\n\n\n\n\n\n3. Get the textbook\nI don’t care if it’s physical or electronic. Having a copy is essential. I have had students use a prior edition, but the page numbers and some content are different. If you go this route be prepared to work with another student to ensure you are looking at the correct content.\nSampling, 3rd Edition. Sharon Lohr\nAlso download the R companion for the book and all data sets from this site as well.\n\n\n4. Read the syllabus\nThoroughly read the syllabus, look over the Canvas classroom and the course website. Then ask at least one question about the logistics or organization of this class in Discord.\n\n\n5. Quick access\nBookmark this class website. Going through Canvas every time just is a waste of your time.\n\n\n6. Update R/R Studio. Demonstrate that you can reender to PDF.\n\nUpdate both R and RStudio to the latest versions https://posit.co/download/rstudio-desktop/\n(Re)install following packages: tidyverse, survey, sampling, srvyr, googlesheets4, tinytex\nRun tinytex::install_tinytex() in the console to install a lightweight version of LaTeX\n\nAll homework is to be done in a literate programming/reproducible manner using Quarto (.qmd) files compiled to PDF.\n\nDemonstrate that you can render a Quarto file to PDF by downloading the Hello Quarto tutorial file\n\nAdd your name as an author in the YAML header in the format author: Your name.\nAdd a code chunk at the bottom of the page with only this code in it: version.\n\nRender to PDF and upload the resulting document to Canvas\n\n\n\n\n\n\n\nNew to Quarto?\n\n\n\nLearn more about Quarto here. You do NOT need to install the quarto package to render files.\n\n\n\n\n\n\n\n\nNeed a refresher on R?\n\n\n\nReview the “R Basics”, and “Reading Data into R” sections of the R Companion for SDA.\n\n\n\n\n7. HackMD\n\nMake an account using your campus email at https://hackmd.io/\nGo to the What is HackMD collaborative notes, read the introduction and add your name to the list.\n\n\n\n8. Help decide office hours\nI would like to try to schedule my open drop in student help hours at a time that works for the majority of students across my classes. Please fill out this form to let me know when you would be able to attend office hours. Mark down a time even if you are only free for part of that time.\nhttps://forms.gle/WNsZU5huMQ3AZnhH6"
-  },
-  {
-    "objectID": "assignments/hw01-framework.html",
-    "href": "assignments/hw01-framework.html",
-    "title": "Homework 01: Sampling Framework",
-    "section": "",
-    "text": "Submission instructions\n\n\n\nDownload the HW01 template quarto file. Save this into your class folder, remove the _ from the file name, and replace template with your username (e.g. rdonatello). Answer the following questions, compile to PDF and submit to Canvas by the due date. Look closely at your resulting PDF before submitting to make sure that all text, code and output are visible.\n\n\n\nPart I. Key Terms\nChoose 2 items from Exercises 1–31 in the textbook to answer. Include the question text in your assignment.\n\n\nPart II. Survey tool evaluation.\nMany universities ask students to fill out a course evaluation at the end of the term. Chico State has 5 forms that are approved for use in different departments. You can find the list and forms at this link.\n\nWhat procedure is used to distribute and collect these surveys? What are some possible sources of selection bias?\nPick one(1) of the forms and evaluate the questions on this survey against each of the guidelines presented in the textbook chapter 1.5.\nExplain why you think the specific student evaluation that you chose does, or does not, give an accurate measurement of student satisfaction with the course.\nNow consider all five forms. If you only had to give one, which one would you choose and why? Be prepared to defend your answer in class."
-  },
-  {
-    "objectID": "assignments/hw02-estimation.html",
-    "href": "assignments/hw02-estimation.html",
-    "title": "Homework 02: Comparing sampling plans",
-    "section": "",
-    "text": "Sometimes we may need to choose between two sampling plans by comparing measures such as variance, bias and accuracy. Here we are interested in estimating \\(\\mu\\), the population mean.\nFor purposes of studying sampling distributions, assume that all population values are known: \\(y_1 = 98, y_2 = 109, y_3 = 154, y_4=133, y_5 = 190, y_6 = 175\\). Out of the \\(N=6\\) total possible values to sample from, we will choose \\(n=3\\).\nPlan 1: The following eight possible samples may be chosen with equal probability: {1,3,5}, {1,3,6}, {1,4,5}, {1,4,6}, {2,3,5}, {2,3,6}, {2,4,5}, {2,4,6}\nPlan 2: The following three samples may be chosen: {1,4,6}, {2,3,6}, {1,3,5} with respective probabilities \\(\\delta\\) = (.25, .5, .25).\nAnswer the following questions:\na) What is the value of \\(\\mu\\)? \nb) For each sampling plan, find: i)\\(E[\\bar{y}]\\), ii) \\(V[\\bar{y}]\\), iii)\\(\\mbox{Bias}(\\bar{y})\\), iv) \\(MSE(\\bar{y})\\), where \\(\\bar{y}\\) is the mean of sample values.\nc) Which sampling plan do you think is better, and why?"
-  },
-  {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "Title\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nHomework 01: Sampling Framework\n\n\n\n\nHomework 02: Comparing sampling plans\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "ideas.html",
-    "href": "ideas.html",
-    "title": "Sampling Methods",
-    "section": "",
-    "text": "Have students self-generate homework assignments.\n\nIn pairs, they pick a question to work on. They write up the solutions together, then give it to the rest of the class.\n\nProject\nfind something that interests them\ndesign a data collection plan\ncollect data\nanalysis\nreport\n\nUpdates for next time:\n\nStart project in week 2! Big struggles with sampling frame\nDrop functions\nteach spreadsheet data collection methods\nteach long vs wide\nget googlesheets connected to R\nGo in order of book\nless time on theory(?), more time hands on conducting samples and using R\n\nexcept sampling distributions!!!! Do better next time. Do for each type of sampling method?\n\nnotes preparation & shareout worked great, collaborative notes onto website not so much.\n\nadd a peer comment feedback portion on shareout? see what i did the first time with the guided commentary.\n\nmore ownership of homework assignments"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sampling Methods",
-    "section": "",
-    "text": "The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.\n\n\n\n📅   Mon & Wed\n🕓   4:00 - 5:15 PM\n🏛   Holt 155\n👥️   In Person\n\n\n\n\nMATH 314, MATH 315, or MATH 351 (may be taken concurrently)\n\n\n\nMonday 12:30-1:30 Holt 202 Tuesday 2-3pm Zoom (starts 2/4) Wednesday 10-12, Community Coding at the Innovation Lab MLIB 2nd floor\n\n\n\n\n🐾   Dr. Robin Donatello\n🚪   Holt 202\n📧   rdonatello@csuchico.edu\n🙋   Schedule an appointment\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can toggle dark mode by clicking the toggle button in the top right navigation bar."
-  },
-  {
-    "objectID": "index.html#course-information",
-    "href": "index.html#course-information",
-    "title": "Sampling Methods",
-    "section": "",
-    "text": "The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.\n\n\n\n📅   Mon & Wed\n🕓   4:00 - 5:15 PM\n🏛   Holt 155\n👥️   In Person\n\n\n\n\nMATH 314, MATH 315, or MATH 351 (may be taken concurrently)\n\n\n\nMonday 12:30-1:30 Holt 202 Tuesday 2-3pm Zoom (starts 2/4) Wednesday 10-12, Community Coding at the Innovation Lab MLIB 2nd floor\n\n\n\n\n🐾   Dr. Robin Donatello\n🚪   Holt 202\n📧   rdonatello@csuchico.edu\n🙋   Schedule an appointment\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can toggle dark mode by clicking the toggle button in the top right navigation bar."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#dr.-robin-donatello-sheher",
-    "href": "notes/cn00-welcome.html#dr.-robin-donatello-sheher",
-    "title": "Welcome to MATH 458",
-    "section": "Dr. Robin Donatello (she/her)",
-    "text": "Dr. Robin Donatello (she/her)\nYou can address me as “Robin”, “Dr. D”, or some other respectful title that you feel comfortable with.\nI have a Doctorate in Public Health (DrPH) Biostatistics from UCLA, but I’m a Chico alum. I double majored in Statistics & Biology, with minor in Chemistry, and a first generation college student who started at Butte College.\nMy campus life consists of training the next generation of Scientists how to harness the power of Statistics and Data in a responsible and ethical manner, leading the Data Science Initiative (DSI) provide training and experiences for students and faculty, and providing analytical support and statistical consulting for many projects on and off campus.\nWhen I’m not on campus, typically I’m growing food for my family, out adventuring with my dogs, or getting some game time in. You can learn more about the projects i’m involved in on my website."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#everyone-is-welcome-here",
-    "href": "notes/cn00-welcome.html#everyone-is-welcome-here",
-    "title": "Welcome to MATH 458",
-    "section": "Everyone is welcome here",
-    "text": "Everyone is welcome here\nIt is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.\nIt is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#supportive-learning-environment",
-    "href": "notes/cn00-welcome.html#supportive-learning-environment",
-    "title": "Welcome to MATH 458",
-    "section": "Supportive Learning Environment",
-    "text": "Supportive Learning Environment\nI would like to create a learning environment that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.)"
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#to-help-accomplish-this",
-    "href": "notes/cn00-welcome.html#to-help-accomplish-this",
-    "title": "Welcome to MATH 458",
-    "section": "To help accomplish this:",
-    "text": "To help accomplish this:\n\nLet me know if you have a name and/or set of pronouns that differ from those that appear in your official Chico records.\nHelp me pronounce your name as accurately as possible. Corrections are welcome.\nIf you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. I want to be a resource for you."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#course-description",
-    "href": "notes/cn00-welcome.html#course-description",
-    "title": "Welcome to MATH 458",
-    "section": "Course Description",
-    "text": "Course Description\nThe theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.\nBy survey we are referring to a way of collecting data."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#learning-goals",
-    "href": "notes/cn00-welcome.html#learning-goals",
-    "title": "Welcome to MATH 458",
-    "section": "Learning goals",
-    "text": "Learning goals\n\nDefine principal concepts, advantages and disadvantages of sampling.\nCategorize, define, compare between, and implement various sampling methods.\nFormulate and calculate appropriate estimators and confidence intervals for population parameters under various sampling methods.\nEstimate the convenient or optimal sample size for various sampling methods.\nDesign, conduct, and analyze your own data collection mini-study"
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#a-variety-of-learning-and-working-tools",
-    "href": "notes/cn00-welcome.html#a-variety-of-learning-and-working-tools",
-    "title": "Welcome to MATH 458",
-    "section": "A variety of learning and working tools",
-    "text": "A variety of learning and working tools\n\nI don’t sanitize this class for you by keeping everything in a learning management system like Canvas.\nIn a working environment you have to deal with multiple platforms, multiple accounts and manage multiple locations for files and content. I use the best tools for the job.\nHomework 0 provides a checklist for getting connected to your tools."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#class-website",
-    "href": "notes/cn00-welcome.html#class-website",
-    "title": "Welcome to MATH 458",
-    "section": "Class website",
-    "text": "Class website\n\nhttps://sampling-458.netlify.app/\n\nBookmark this page. You will be here a lot. Going through Canvas each time is a waste of your time and clicks.\nContains a weekly overview, lecture notes, homework files, relevant links.\nSometimes links will be broken. Typo’s happen. Notify me via Discord and I’ll get to it asap."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#canvas",
-    "href": "notes/cn00-welcome.html#canvas",
-    "title": "Welcome to MATH 458",
-    "section": "Canvas",
-    "text": "Canvas\n\nDue dates\nModule organization\nGradebook\nAssignment submission"
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#discord",
-    "href": "notes/cn00-welcome.html#discord",
-    "title": "Welcome to MATH 458",
-    "section": "Discord",
-    "text": "Discord\n\nUsed for outside class discussions, collaboration, meme sharing, and general chatter.\nI will not answer most class-content based questions through email.\nDownload either the phone app or the desktop app (I use both). This is mandatory.\n\nDo not rely on remembering to log in via the web browser. You will miss important notifications."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#collaborative-notes",
-    "href": "notes/cn00-welcome.html#collaborative-notes",
-    "title": "Welcome to MATH 458",
-    "section": "Collaborative Notes",
-    "text": "Collaborative Notes\n\nQuarto based notes that to start out with are semi-complete. (Example)\nDuring class we will work together through examples, you will work together on “you try it” practice problems, and answer questions\nYou will have a version of these notes that have blank spots for you to fill in, or answer questions\n\nYou will compile these notes to PDF and submit them through Canvas a few days after we complete a section\n\nAs the term progresses, you will be creating sections of these notes (that will be posted) and “teaching” the rest of the class your topic."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#hack-md",
-    "href": "notes/cn00-welcome.html#hack-md",
-    "title": "Welcome to MATH 458",
-    "section": "Hack MD",
-    "text": "Hack MD\n\nInteractive markdown based collaborative notes\nI will give you a file for the first set of ‘blank’ notes.\nAfterward you will be responsible for copying them (and sometimes filling out sections) of the notes directly in HackMD."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#collaboration---with-people",
-    "href": "notes/cn00-welcome.html#collaboration---with-people",
-    "title": "Welcome to MATH 458",
-    "section": "Collaboration - with people",
-    "text": "Collaboration - with people\n\nA big part of this class is collaborative note creating.\nWe will talk more about being responsible and accountable to each other next week.\n\nCollaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts and debugging with. However your submitted work must represent your personal effort on all parts.\nCollaboration on exams is not allowed."
-  },
-  {
-    "objectID": "notes/cn00-welcome.html#collaboration-with-ai",
-    "href": "notes/cn00-welcome.html#collaboration-with-ai",
-    "title": "Welcome to MATH 458",
-    "section": "Collaboration – with AI",
-    "text": "Collaboration – with AI\n\nYou are not allowed to use AI to help you write text.\nDon’t immediately turn to Chat GPT to help you figure something out. Ask your classmates first.\nYou can use ChatGPT/AI tools to help you learn, but the work you submit must be your own.\nYou are expected to use the coding functions and style presented in the class.\nThere is no short cut to learning. You must put in effort.\nI reserve the right to assign 0 points on any graded item that I suspect has been written or coded by AI"
-  },
-  {
-    "objectID": "notes/cn01-intro_sampling.html",
-    "href": "notes/cn01-intro_sampling.html",
-    "title": "The Sampling Framework",
-    "section": "",
-    "text": "cn01 Blank notes file"
-  },
-  {
-    "objectID": "notes/cn01-intro_sampling.html#key-terms",
-    "href": "notes/cn01-intro_sampling.html#key-terms",
-    "title": "The Sampling Framework",
-    "section": "Key Terms",
-    "text": "Key Terms\nSome definitions are needed to make the notions of a “population” and a “representative sample” more precise.\n\n\n\nTextbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.\n\n\n\nTarget Population:\nSampling frame:\n\nObservational Unit:\nSample:\nSampled population:\nSampling unit:\n\nIn an ideal survey, the sampled population will be identical to the target population. 🦄\n\n\n\n\n\n\n❓ 👥 Key Terms\n\n\n\nIn small groups go to our collaborative notes and put your names in the [names] portion for one of the three examples that you are assigned to work on. Then as a group read the details for your example from the textbook and identify as many key terms as you can.\nSuggestion: Only one person from each group should be doing the writing but everyone should be logged in and viewing."
-  },
-  {
-    "objectID": "notes/cn01-intro_sampling.html#surveying-people",
-    "href": "notes/cn01-intro_sampling.html#surveying-people",
-    "title": "The Sampling Framework",
-    "section": "Surveying people",
-    "text": "Surveying people\nObtaining accurate responses is challenging in all types of surveys. Especially when dealing with humans.\n Bonus credz to anyone who can name this bat. Double credz if you can quote a line from his intro rap.\n\n\n\n\n\n\n❓ 👥 Think-pair-share\n\n\n\nWrite down all reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a “good” response or not.\n\n\n\nPeople may choose not to respond or lie if they’re embarrassed about the response (like income level)\n\n\nClear sampling protocols and thoughtful & validated survey design can minimize measurement error."
-  },
-  {
-    "objectID": "notes/cn01-intro_sampling.html#guidance",
-    "href": "notes/cn01-intro_sampling.html#guidance",
-    "title": "The Sampling Framework",
-    "section": "Guidance",
-    "text": "Guidance\n\n\n\n\n\n\n❓ 👥 Think-pair-share\n\n\n\nUse HackMD to summarize the guidance item assigned to you. Be prepared to share out verbally in class."
-  },
-  {
-    "objectID": "notes/cn01-intro_sampling.html#advantages-of-a-sample-instead-of-a-census",
-    "href": "notes/cn01-intro_sampling.html#advantages-of-a-sample-instead-of-a-census",
-    "title": "The Sampling Framework",
-    "section": "Advantages of a sample instead of a census",
-    "text": "Advantages of a sample instead of a census\n\n\n\n\n\n\n❓ 👥 Think-pair-share\n\n\n\nIn your notes write down all reasons you can think of for why a sample may be more advantageous compared to a census. Don’t forget to consult the textbook when you run out of ideas. Add your ideas to HackMD, making sure to read others contributions and not duplicate ideas.\n\n\n\n“Sampling is not mere substitution of a partial coverage for a total coverage. Sampling is the science and art of controlling and measuring the reliability of useful statistical information through the theory of probability” (Deming, 1950, p. 2)"
-  },
-  {
-    "objectID": "notes/cn02-statistical_foundations.html",
-    "href": "notes/cn02-statistical_foundations.html",
-    "title": "Foundations of Statistical Estimation",
-    "section": "",
-    "text": "cn02 Blank notes file"
-  },
-  {
-    "objectID": "notes/cn02-statistical_foundations.html#standard-error",
-    "href": "notes/cn02-statistical_foundations.html#standard-error",
-    "title": "Foundations of Statistical Estimation",
-    "section": "Standard Error",
-    "text": "Standard Error\n\n\n\n\n\n\nDefinition: Standard Error\n\n\n\nThe standard error of a statistic is ……\n\n\nThe standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use closed form mathematical formulas to calculate the standard error.\n\n\n\n\n\n\nExample Grad program example cont.\n\n\n\nEstimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20.\n\n\n\nsd(many.means) #because the example above already had n=10\n\nError: object 'many.means' not found\n\nreplicate(n=100, {\n  my.sample.programs &lt;- sample(stat.phd$FTGradEnrollment, size=20)\n  mean(my.sample.programs)\n}) |&gt; sd()\n\n[1] 6.997379"
-  },
-  {
-    "objectID": "notes/cn02-statistical_foundations.html#confidence-intervals",
-    "href": "notes/cn02-statistical_foundations.html#confidence-intervals",
-    "title": "Foundations of Statistical Estimation",
-    "section": "Confidence Intervals",
-    "text": "Confidence Intervals\nWhen the distributions are relatively symmetric and bell-shaped, the 95% rule tells us that approximately 95% of the data values fall within two standard deviations of the mean. Applying the 95% rule to sampling distributions, we see that about 95% of the sample statistics will fall within two standard errors of the mean. We use this rule many times to form what we call an approximate 95% confidence interval which gives us a range for which which we are quite confident that captures the true parameter we are trying to estimate.\nWhen using a formula to calculate an approximate 95% confidence interval, use ______________ as the margin of error.\n\n\n\n\n\n\nCI for PhD program enrollment\n\n\n\nBased on our example, what would be a 95% confidence interval for \\(\\mu\\) the true mean total enrollment for PhD programs in statistics. Interpret this confidence interval in context of the problem.\n\n\n\n(LCL &lt;- )\n(UCL &lt;- )\n\nError in parse(text = input): &lt;text&gt;:1:9: unexpected ')'\n1: (LCL &lt;- )\n            ^\n\n\n\nWe can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (?,?).\n\n\n\n\n\n\n\n❓👥 Turn & talk\n\n\n\nConsider the following interpretation of the above confidence interval.\n\nWe can be 95% confident that PhD programs in Statistics have a total enrollment of between ______ and ______ students.\n\nWhy is this an incorrect interpretation?"
-  },
-  {
-    "objectID": "notes.html",
-    "href": "notes.html",
-    "title": "Course Notes",
-    "section": "",
-    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2025\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 22, 2025\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 3, 2025\n\n\nFoundations of Statistical Estimation\n\n\nWe cover the theoretical concepts of statistical estimation. (Lohr 2.2)\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "project.html",
-    "href": "project.html",
-    "title": "Project",
-    "section": "",
-    "text": "Project Overview: Shaping the Future of Math & Data Science\nThis semester, you will go on a real-world project that will directly impact the future of the Mathematics and Data Science programs at Chico State. Working collaboratively as a class, you will design, implement, and analyze an alumni survey to gather valuable insights about their experiences and career paths. This is your chance to apply the sampling and statistical analysis methods you’ve learned in a practical and meaningful way.\nThis project isn’t just about crunching numbers; it’s about teamwork, communication, and project management. As a class you will be responsible for:\n\nDefining Roles & Responsibilities: Assign yourselves specific roles within the project (e.g., survey design team, data analysis team, communication lead).\nTask Management & Timelines: Establish clear timelines and track progress to ensure successful completion of each project phase.\nStakeholder Communication: Get stakeholder (Math Department faculty, Career center) input in the questions being asked.\nDesign & Implementing Multiple Sampling Frameworks: Implement multiple sampling methods (e.g., simple random, stratified, cluster) to select representative samples of alumni.\nData Collection & Analysis: Collect survey responses, clean the data, and perform appropriate statistical analyses to answer key research questions. You will also need to compare estimates obtained across the different sampling frameworks to assess their impact on the results.\nFinal Presentation: Present your findings and recommendations and insights to the Math Department or the assessment committee.\n\nThis is a full class collaborative effort, requiring everyone’s active participation and contribution. Every student should take lead on at least one aspect or activity. Your collective efforts will provide valuable data to inform curriculum development, program improvements, and future initiatives within the Mathematics & Statistics departments. Embrace this opportunity to make a real difference!"
-  },
-  {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "Syllabus",
@@ -299,5 +82,222 @@
     "title": "Syllabus",
     "section": "Academic Integrity",
     "text": "Academic Integrity\nAcademic integrity is defined as “a commitment, even in the face of adversity, to five fundamental values: honesty, trust, fairness, respect, and responsibility”. From these values flow principles of behavior that enable academic communities to translate ideals to action. Academic integrity is expected and required. No forms of cheating or plagiarism will be tolerated. Please see your student handbook at https://www.csuchico.edu/scrr/integrity.shtml if you have questions about the meaning of these terms or the consequences of violating academic integrity."
+  },
+  {
+    "objectID": "notes.html",
+    "href": "notes.html",
+    "title": "Course Notes",
+    "section": "",
+    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan 20, 2025\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan 22, 2025\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb 3, 2025\n\n\nFoundations of Statistical Estimation\n\n\nWe cover the theoretical concepts of statistical estimation. (Lohr 2.2)\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "notes/cn01-intro_sampling.html",
+    "href": "notes/cn01-intro_sampling.html",
+    "title": "The Sampling Framework",
+    "section": "",
+    "text": "The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean, proportion or total."
+  },
+  {
+    "objectID": "notes/cn01-intro_sampling.html#key-terms",
+    "href": "notes/cn01-intro_sampling.html#key-terms",
+    "title": "The Sampling Framework",
+    "section": "Key Terms",
+    "text": "Key Terms\nSome definitions are needed to make the notions of a “population” and a “representative sample” more precise.\n\n\n\nTextbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.\n\n\n\nObservational Unit: The singular object that is being measured. A 🐈.\nTarget Population: The complete collection of all observational units that we want to study. All 🐈 in Chico.\nSample: A subset of the population. The 🐈 at Butte Humane Society\nSampled population: The collection of all possible observational units that might have been chosen in a sample. Adoptable 🐈🐈 in Chico.\nSampling unit: A observational unit that can be selected for study. A 🐈 available for adoption at BHS.\nSampling frame: A list, map, or other specification that describes how sampling units from the sample may be selected. The roster of 🐈🐈 listed for adoption at BHS.\n\nIn an ideal survey, the sampled population will be identical to the target population. 🦄\n\n\n\n\n\n\n❓ 👥 Key Terms\n\n\n\n\n\n\n[names] American Community Survey [names] Agricultural survey [names] Literary Digest Election survey"
+  },
+  {
+    "objectID": "notes/cn01-intro_sampling.html#surveying-people",
+    "href": "notes/cn01-intro_sampling.html#surveying-people",
+    "title": "The Sampling Framework",
+    "section": "Surveying people",
+    "text": "Surveying people\nObtaining accurate responses is challenging in all types of surveys. Especially when dealing with humans.\n Bonus credz to anyone who can name this bat. Double credz if you can quote a line from his intro rap.\n\n\n\n\n\n\n❓ 👥 Think-pair-share\n\n\n\nWrite down all reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a “good” response or not.\n\n\n\ncopy here\n\n\nPeople may choose not to respond or lie if they’re embarrassed about the response (like income level)\n\n\nClear sampling protocols and thoughtful & validated survey design can minimize measurement error."
+  },
+  {
+    "objectID": "notes/cn01-intro_sampling.html#guidance",
+    "href": "notes/cn01-intro_sampling.html#guidance",
+    "title": "The Sampling Framework",
+    "section": "Guidance",
+    "text": "Guidance\n\n\n\n\n\n\n❓ 👥 Think-pair-share\n\n\n\nUse HackMD to summarize the guidance item assigned to you. Be prepared to share out verbally in class.\n\n\n\nTest the questions before administering the survey\nKeep it simple and clear\nDefine your terms\nRelate your questions to the concept of interest\nDecide whether to use open or closed questions\nPay attention to response option scales\nAvoid questions that prompt or motivate the respondent to answer in a particular way\nConsider the social desirability of responses to questions, and write questions and use modes that elicit accurate responses\nAvoid double negatives\nUse forced-choice rather than agree/disagree questions\nAsk only one concept per question\nPay attention to question order effects."
+  },
+  {
+    "objectID": "notes/cn01-intro_sampling.html#advantages-of-a-sample-instead-of-a-census",
+    "href": "notes/cn01-intro_sampling.html#advantages-of-a-sample-instead-of-a-census",
+    "title": "The Sampling Framework",
+    "section": "Advantages of a sample instead of a census",
+    "text": "Advantages of a sample instead of a census\n\n\n\n\n\n“Sampling is not mere substitution of a partial coverage for a total coverage. Sampling is the science and art of controlling and measuring the reliability of useful statistical information through the theory of probability” (Deming, 1950, p. 2)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sampling Methods",
+    "section": "",
+    "text": "The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.\n\n\n\n📅   Mon & Wed\n🕓   4:00 - 5:15 PM\n🏛   Holt 155\n👥️   In Person\n\n\n\n\nMATH 314, MATH 315, or MATH 351 (may be taken concurrently)\n\n\n\nMonday 12:30-1:30 Holt 202 Tuesday 2-3pm Zoom (starts 2/4) Wednesday 10-12, Community Coding at the Innovation Lab MLIB 2nd floor\n\n\n\n\n🐾   Dr. Robin Donatello\n🚪   Holt 202\n📧   rdonatello@csuchico.edu\n🙋   Schedule an appointment\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can toggle dark mode by clicking the toggle button in the top right navigation bar."
+  },
+  {
+    "objectID": "index.html#course-information",
+    "href": "index.html#course-information",
+    "title": "Sampling Methods",
+    "section": "",
+    "text": "The theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.\n\n\n\n📅   Mon & Wed\n🕓   4:00 - 5:15 PM\n🏛   Holt 155\n👥️   In Person\n\n\n\n\nMATH 314, MATH 315, or MATH 351 (may be taken concurrently)\n\n\n\nMonday 12:30-1:30 Holt 202 Tuesday 2-3pm Zoom (starts 2/4) Wednesday 10-12, Community Coding at the Innovation Lab MLIB 2nd floor\n\n\n\n\n🐾   Dr. Robin Donatello\n🚪   Holt 202\n📧   rdonatello@csuchico.edu\n🙋   Schedule an appointment\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can toggle dark mode by clicking the toggle button in the top right navigation bar."
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Title\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nHomework 01: Sampling Framework\n\n\n\n\nHomework 02: Comparing sampling plans\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "assignments/hw01-framework.html",
+    "href": "assignments/hw01-framework.html",
+    "title": "Homework 01: Sampling Framework",
+    "section": "",
+    "text": "Submission instructions\n\n\n\nDownload the HW01 template quarto file. Save this into your class folder, remove the _ from the file name, and replace template with your username (e.g. rdonatello). Answer the following questions, compile to PDF and submit to Canvas by the due date. Look closely at your resulting PDF before submitting to make sure that all text, code and output are visible.\n\n\n\nPart I. Key Terms\nChoose 2 items from Exercises 1–31 in the textbook to answer. Include the question text in your assignment.\n\n\nPart II. Survey tool evaluation.\nMany universities ask students to fill out a course evaluation at the end of the term. Chico State has 5 forms that are approved for use in different departments. You can find the list and forms at this link.\n\nWhat procedure is used to distribute and collect these surveys? What are some possible sources of selection bias?\nPick one(1) of the forms and evaluate the questions on this survey against each of the guidelines presented in the textbook chapter 1.5.\nExplain why you think the specific student evaluation that you chose does, or does not, give an accurate measurement of student satisfaction with the course.\nNow consider all five forms. If you only had to give one, which one would you choose and why? Be prepared to defend your answer in class."
+  },
+  {
+    "objectID": "assignments/hw00-setup.html",
+    "href": "assignments/hw00-setup.html",
+    "title": "Homework 00: Getting setup",
+    "section": "",
+    "text": "Important\n\n\n\nComplete this checklist in Canvas.\n\n\n\n1. Get Organized\nUsing a consistent folder structure across your projects will help keep things organized, and will also make it easy to find/file things in the future. This can be especially helpful when you have multiple projects.\nYou need to choose a naming convention for your folders and try to stick with it. Recommended options are:\n\nALL CAPS (MATH458)\nno caps (math458)\nsnake_case (math_458)\nCamelCase (Math458)\n\nCreate this class folder along with the following subfolders to organize your data and script files.\n\ndata - any data that’s handed out goes in here\nassignments - scripts used for completing worksheets and assignments\nnotes - you will be writing and contributing notes to the class\nproject - for project specific files\n\n\n\n\n\n\n\nDo not let everything live in your downloads folder.\n\n\n\nThis means when you download a file, right click and “Save as” or “Save target as” and actively choose where to download this file.\nTry this out by downloading the first set of blank course notes that you’ll need for wednesday from here.\n\n\n\n\n2. Discord\nClick this link to join the Math & Stats Discord server https://discord.gg/xCQTAgu8bE. This is a support platform where student office hours will be held and personalized channels can be made.\n\n\n\n\n\n\nThis is the defacto method of communication for this class\n\n\n\nI get way too many emails that it’s easy to miss one from you. Got questions about an assignment? Need help understanding a code error? Ask here and get help not just from me, but from your classmates as well. This is a collaborative not competitive class.\n\n\n\nDownload the Desktop app. You should not rely on remembering to log in using the web version. Chances are very high that you will miss out on important announcements and bonus activities. There also is a Discord phone app that you may want to consider.\nPlease change your display name to something resembling your name so your classmates (and I) can identify and tag you.\nOnce you join the server and accept the code of conduct, go to the #class-selection channel (left side bar) and click the icon that’ll add you to our class folder.\nPost an introduction in the #458-class-chat channel. Include the following:\n\nmajor\nAny pets (include pics!)\nwhat fictional family would you like to belong to?\nyour biggest concern about the class\n\n\n\n\n\n3. Get the textbook\nI don’t care if it’s physical or electronic. Having a copy is essential. I have had students use a prior edition, but the page numbers and some content are different. If you go this route be prepared to work with another student to ensure you are looking at the correct content.\nSampling, 3rd Edition. Sharon Lohr\nAlso download the R companion for the book and all data sets from this site as well.\n\n\n4. Read the syllabus\nThoroughly read the syllabus, look over the Canvas classroom and the course website. Then ask at least one question about the logistics or organization of this class in Discord.\n\n\n5. Quick access\nBookmark this class website. Going through Canvas every time just is a waste of your time.\n\n\n6. Update R/R Studio. Demonstrate that you can reender to PDF.\n\nUpdate both R and RStudio to the latest versions https://posit.co/download/rstudio-desktop/\n(Re)install following packages: tidyverse, survey, sampling, srvyr, googlesheets4, tinytex\nRun tinytex::install_tinytex() in the console to install a lightweight version of LaTeX\n\nAll homework is to be done in a literate programming/reproducible manner using Quarto (.qmd) files compiled to PDF.\n\nDemonstrate that you can render a Quarto file to PDF by downloading the Hello Quarto tutorial file\n\nAdd your name as an author in the YAML header in the format author: Your name.\nAdd a code chunk at the bottom of the page with only this code in it: version.\n\nRender to PDF and upload the resulting document to Canvas\n\n\n\n\n\n\n\nNew to Quarto?\n\n\n\nLearn more about Quarto here. You do NOT need to install the quarto package to render files.\n\n\n\n\n\n\n\n\nNeed a refresher on R?\n\n\n\nReview the “R Basics”, and “Reading Data into R” sections of the R Companion for SDA.\n\n\n\n\n7. HackMD\n\nMake an account using your campus email at https://hackmd.io/\nGo to the What is HackMD collaborative notes, read the introduction and add your name to the list.\n\n\n\n8. Help decide office hours\nI would like to try to schedule my open drop in student help hours at a time that works for the majority of students across my classes. Please fill out this form to let me know when you would be able to attend office hours. Mark down a time even if you are only free for part of that time.\nhttps://forms.gle/WNsZU5huMQ3AZnhH6"
+  },
+  {
+    "objectID": "assignments/hw02-estimation.html",
+    "href": "assignments/hw02-estimation.html",
+    "title": "Homework 02: Comparing sampling plans",
+    "section": "",
+    "text": "Sometimes we may need to choose between two sampling plans by comparing measures such as variance, bias and accuracy. Here we are interested in estimating \\(\\mu\\), the population mean.\nFor purposes of studying sampling distributions, assume that all population values are known: \\(y_1 = 98, y_2 = 109, y_3 = 154, y_4=133, y_5 = 190, y_6 = 175\\). Out of the \\(N=6\\) total possible values to sample from, we will choose \\(n=3\\).\nPlan 1: The following eight possible samples may be chosen with equal probability: {1,3,5}, {1,3,6}, {1,4,5}, {1,4,6}, {2,3,5}, {2,3,6}, {2,4,5}, {2,4,6}\nPlan 2: The following three samples may be chosen: {1,4,6}, {2,3,6}, {1,3,5} with respective probabilities \\(\\delta\\) = (.25, .5, .25).\nAnswer the following questions:\na) What is the value of \\(\\mu\\)? \nb) For each sampling plan, find: i)\\(E[\\bar{y}]\\), ii) \\(V[\\bar{y}]\\), iii)\\(\\mbox{Bias}(\\bar{y})\\), iv) \\(MSE(\\bar{y})\\), where \\(\\bar{y}\\) is the mean of sample values.\nc) Which sampling plan do you think is better, and why?"
+  },
+  {
+    "objectID": "ideas.html",
+    "href": "ideas.html",
+    "title": "Sampling Methods",
+    "section": "",
+    "text": "Have students self-generate homework assignments.\n\nIn pairs, they pick a question to work on. They write up the solutions together, then give it to the rest of the class.\n\nProject\nfind something that interests them\ndesign a data collection plan\ncollect data\nanalysis\nreport\n\nUpdates for next time:\n\nStart project in week 2! Big struggles with sampling frame\nDrop functions\nteach spreadsheet data collection methods\nteach long vs wide\nget googlesheets connected to R\nGo in order of book\nless time on theory(?), more time hands on conducting samples and using R\n\nexcept sampling distributions!!!! Do better next time. Do for each type of sampling method?\n\nnotes preparation & shareout worked great, collaborative notes onto website not so much.\n\nadd a peer comment feedback portion on shareout? see what i did the first time with the guided commentary.\n\nmore ownership of homework assignments"
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#dr.-robin-donatello-sheher",
+    "href": "notes/cn00-welcome.html#dr.-robin-donatello-sheher",
+    "title": "Welcome to MATH 458",
+    "section": "Dr. Robin Donatello (she/her)",
+    "text": "Dr. Robin Donatello (she/her)\nYou can address me as “Robin”, “Dr. D”, or some other respectful title that you feel comfortable with.\nI have a Doctorate in Public Health (DrPH) Biostatistics from UCLA, but I’m a Chico alum. I double majored in Statistics & Biology, with minor in Chemistry, and a first generation college student who started at Butte College.\nMy campus life consists of training the next generation of Scientists how to harness the power of Statistics and Data in a responsible and ethical manner, leading the Data Science Initiative (DSI) provide training and experiences for students and faculty, and providing analytical support and statistical consulting for many projects on and off campus.\nWhen I’m not on campus, typically I’m growing food for my family, out adventuring with my dogs, or getting some game time in. You can learn more about the projects i’m involved in on my website."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#everyone-is-welcome-here",
+    "href": "notes/cn00-welcome.html#everyone-is-welcome-here",
+    "title": "Welcome to MATH 458",
+    "section": "Everyone is welcome here",
+    "text": "Everyone is welcome here\nIt is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.\nIt is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#supportive-learning-environment",
+    "href": "notes/cn00-welcome.html#supportive-learning-environment",
+    "title": "Welcome to MATH 458",
+    "section": "Supportive Learning Environment",
+    "text": "Supportive Learning Environment\nI would like to create a learning environment that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.)"
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#to-help-accomplish-this",
+    "href": "notes/cn00-welcome.html#to-help-accomplish-this",
+    "title": "Welcome to MATH 458",
+    "section": "To help accomplish this:",
+    "text": "To help accomplish this:\n\nLet me know if you have a name and/or set of pronouns that differ from those that appear in your official Chico records.\nHelp me pronounce your name as accurately as possible. Corrections are welcome.\nIf you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. I want to be a resource for you."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#course-description",
+    "href": "notes/cn00-welcome.html#course-description",
+    "title": "Welcome to MATH 458",
+    "section": "Course Description",
+    "text": "Course Description\nThe theory and application of survey sampling techniques. Topics include simple random sampling, stratified sampling, systematic sampling, and cluster sampling. Appropriate for mathematics, computer science, psychology, social science, agriculture, biology, and other majors.\nBy survey we are referring to a way of collecting data."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#learning-goals",
+    "href": "notes/cn00-welcome.html#learning-goals",
+    "title": "Welcome to MATH 458",
+    "section": "Learning goals",
+    "text": "Learning goals\n\nDefine principal concepts, advantages and disadvantages of sampling.\nCategorize, define, compare between, and implement various sampling methods.\nFormulate and calculate appropriate estimators and confidence intervals for population parameters under various sampling methods.\nEstimate the convenient or optimal sample size for various sampling methods.\nDesign, conduct, and analyze your own data collection mini-study"
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#a-variety-of-learning-and-working-tools",
+    "href": "notes/cn00-welcome.html#a-variety-of-learning-and-working-tools",
+    "title": "Welcome to MATH 458",
+    "section": "A variety of learning and working tools",
+    "text": "A variety of learning and working tools\n\nI don’t sanitize this class for you by keeping everything in a learning management system like Canvas.\nIn a working environment you have to deal with multiple platforms, multiple accounts and manage multiple locations for files and content. I use the best tools for the job.\nHomework 0 provides a checklist for getting connected to your tools."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#class-website",
+    "href": "notes/cn00-welcome.html#class-website",
+    "title": "Welcome to MATH 458",
+    "section": "Class website",
+    "text": "Class website\n\nhttps://sampling-458.netlify.app/\n\nBookmark this page. You will be here a lot. Going through Canvas each time is a waste of your time and clicks.\nContains a weekly overview, lecture notes, homework files, relevant links.\nSometimes links will be broken. Typo’s happen. Notify me via Discord and I’ll get to it asap.\n\n\nCanvas\n\nDue dates\nModule organization\nGradebook\nAssignment submission\n\n\n\nDiscord\n\nUsed for outside class discussions, collaboration, meme sharing, and general chatter.\nI will not answer most class-content based questions through email.\nDownload either the phone app or the desktop app (I use both). This is mandatory.\n\nDo not rely on remembering to log in via the web browser. You will miss important notifications.\n\n\n\n\nCollaborative Notes\n\nQuarto based notes that to start out with are semi-complete. (Example)\nDuring class we will work together through examples, you will work together on “you try it” practice problems, and answer questions\nYou will have a version of these notes that have blank spots for you to fill in, or answer questions\n\nYou will compile these notes to PDF and submit them through Canvas a few days after we complete a section\n\nAs the term progresses, you will be creating sections of these notes (that will be posted) and “teaching” the rest of the class your topic.\n\n\n\nHack MD\n\nInteractive markdown based collaborative notes\nI will give you a file for the first set of ‘blank’ notes.\nAfterward you will be responsible for copying them (and sometimes filling out sections) of the notes directly in HackMD.\n\n\n\nPolicies\n\n\n\nCollaboration - with people\n\nA big part of this class is collaborative note creating.\nWe will talk more about being responsible and accountable to each other next week.\n\nCollaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts and debugging with. However your submitted work must represent your personal effort on all parts.\nCollaboration on exams is not allowed.\n\n\n\nCollaboration – with AI\n\nYou are not allowed to use AI to help you write text.\nDon’t immediately turn to Chat GPT to help you figure something out. Ask your classmates first.\nYou can use ChatGPT/AI tools to help you learn, but the work you submit must be your own.\nYou are expected to use the coding functions and style presented in the class.\nThere is no short cut to learning. You must put in effort.\nI reserve the right to assign 0 points on any graded item that I suspect has been written or coded by AI\n\n\n\n\nGet started with a motivating example\nRead through the motivating example discussion post in Canvas. Then respond to the thread by writing a few sentence summary of the example and include your take away message."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#canvas",
+    "href": "notes/cn00-welcome.html#canvas",
+    "title": "Welcome to MATH 458",
+    "section": "Canvas",
+    "text": "Canvas\n\nDue dates\nModule organization\nGradebook\nAssignment submission"
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#discord",
+    "href": "notes/cn00-welcome.html#discord",
+    "title": "Welcome to MATH 458",
+    "section": "Discord",
+    "text": "Discord\n\nUsed for outside class discussions, collaboration, meme sharing, and general chatter.\nI will not answer most class-content based questions through email.\nDownload either the phone app or the desktop app (I use both). This is mandatory.\n\nDo not rely on remembering to log in via the web browser. You will miss important notifications."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#collaborative-notes",
+    "href": "notes/cn00-welcome.html#collaborative-notes",
+    "title": "Welcome to MATH 458",
+    "section": "Collaborative Notes",
+    "text": "Collaborative Notes\n\nQuarto based notes that to start out with are semi-complete. (Example)\nDuring class we will work together through examples, you will work together on “you try it” practice problems, and answer questions\nYou will have a version of these notes that have blank spots for you to fill in, or answer questions\n\nYou will compile these notes to PDF and submit them through Canvas a few days after we complete a section\n\nAs the term progresses, you will be creating sections of these notes (that will be posted) and “teaching” the rest of the class your topic."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#hack-md",
+    "href": "notes/cn00-welcome.html#hack-md",
+    "title": "Welcome to MATH 458",
+    "section": "Hack MD",
+    "text": "Hack MD\n\nInteractive markdown based collaborative notes\nI will give you a file for the first set of ‘blank’ notes.\nAfterward you will be responsible for copying them (and sometimes filling out sections) of the notes directly in HackMD."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#collaboration---with-people",
+    "href": "notes/cn00-welcome.html#collaboration---with-people",
+    "title": "Welcome to MATH 458",
+    "section": "Collaboration - with people",
+    "text": "Collaboration - with people\n\nA big part of this class is collaborative note creating.\nWe will talk more about being responsible and accountable to each other next week.\n\nCollaboration on assignments is encouraged. People learn better when they have someone else to talk through concepts and debugging with. However your submitted work must represent your personal effort on all parts.\nCollaboration on exams is not allowed."
+  },
+  {
+    "objectID": "notes/cn00-welcome.html#collaboration-with-ai",
+    "href": "notes/cn00-welcome.html#collaboration-with-ai",
+    "title": "Welcome to MATH 458",
+    "section": "Collaboration – with AI",
+    "text": "Collaboration – with AI\n\nYou are not allowed to use AI to help you write text.\nDon’t immediately turn to Chat GPT to help you figure something out. Ask your classmates first.\nYou can use ChatGPT/AI tools to help you learn, but the work you submit must be your own.\nYou are expected to use the coding functions and style presented in the class.\nThere is no short cut to learning. You must put in effort.\nI reserve the right to assign 0 points on any graded item that I suspect has been written or coded by AI"
+  },
+  {
+    "objectID": "notes/cn02-statistical_foundations.html",
+    "href": "notes/cn02-statistical_foundations.html",
+    "title": "Foundations of Statistical Estimation",
+    "section": "",
+    "text": "cn02 Blank notes file"
+  },
+  {
+    "objectID": "notes/cn02-statistical_foundations.html#standard-error",
+    "href": "notes/cn02-statistical_foundations.html#standard-error",
+    "title": "Foundations of Statistical Estimation",
+    "section": "Standard Error",
+    "text": "Standard Error\n\n\n\n\n\n\nDefinition: Standard Error\n\n\n\nThe standard error of a statistic is ……\n\n\nThe standard error of a statistic tells us how much the sample statistic will vary from sample to sample. In situations like above where we can examine the distribution of the sample statistic using simulation, we can estimate the standard error by taking the sample standard deviation of the sampling distribution. In other situations we can use closed form mathematical formulas to calculate the standard error.\n\n\n\n\n\n\nExample Grad program example cont.\n\n\n\nEstimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20. \n\n\nI used the base pipe |&gt; here to pass the results of the replicate function into the sd() function\nsd(many.means) #because the example above already had n=10\n\nError: object 'many.means' not found\n\nreplicate(n=100, {\n  my.sample.programs &lt;- sample(stat.phd$FTGradEnrollment, size=20)\n  mean(my.sample.programs)\n}) |&gt; sd()\n\n[1] 7.218029"
+  },
+  {
+    "objectID": "notes/cn02-statistical_foundations.html#confidence-intervals",
+    "href": "notes/cn02-statistical_foundations.html#confidence-intervals",
+    "title": "Foundations of Statistical Estimation",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nWhen the distributions are relatively symmetric and bell-shaped, the 95% rule tells us that approximately 95% of the data values fall within two standard deviations of the mean. Applying the 95% rule to sampling distributions, we see that about 95% of the sample statistics will fall within two standard errors of the mean. We use this rule many times to form what we call an approximate 95% confidence interval which gives us a range for which which we are quite confident that captures the true parameter we are trying to estimate.\nWhen using a formula to calculate an approximate 95% confidence interval, use ______________ as the margin of error.\n\n\n\n\n\n\nCI for PhD program enrollment\n\n\n\nBased on our example, what would be a 95% confidence interval for \\(\\mu\\) the true mean total enrollment for PhD programs in statistics. Interpret this confidence interval in context of the problem.\n\n\n\n(LCL &lt;- )\n(UCL &lt;- )\n\nError in parse(text = input): &lt;text&gt;:1:9: unexpected ')'\n1: (LCL &lt;- )\n            ^\n\n\nWrapping the entire line of code in () will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below.\n\nWe can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (?,?).\n\n\n\n\n\n\n\n❓👥 Turn & talk\n\n\n\nConsider the following interpretation of the above confidence interval.\n\nWe can be 95% confident that PhD programs in Statistics have a total enrollment of between ______ and ______ students.\n\nWhy is this an incorrect interpretation?"
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Project",
+    "section": "",
+    "text": "Project Overview: Shaping the Future of Math & Data Science\nThis semester, you will go on a real-world project that will directly impact the future of the Mathematics and Data Science programs at Chico State. Working collaboratively as a class, you will design, implement, and analyze an alumni survey to gather valuable insights about their experiences and career paths. This is your chance to apply the sampling and statistical analysis methods you’ve learned in a practical and meaningful way.\nThis project isn’t just about crunching numbers; it’s about teamwork, communication, and project management. As a class you will be responsible for:\n\nDefining Roles & Responsibilities: Assign yourselves specific roles within the project (e.g., survey design team, data analysis team, communication lead).\nTask Management & Timelines: Establish clear timelines and track progress to ensure successful completion of each project phase.\nStakeholder Communication: Get stakeholder (Math Department faculty, Career center) input in the questions being asked.\nDesign & Implementing Multiple Sampling Frameworks: Implement multiple sampling methods (e.g., simple random, stratified, cluster) to select representative samples of alumni.\nData Collection & Analysis: Collect survey responses, clean the data, and perform appropriate statistical analyses to answer key research questions. You will also need to compare estimates obtained across the different sampling frameworks to assess their impact on the results.\nFinal Presentation: Present your findings and recommendations and insights to the Math Department or the assessment committee.\n\nThis is a full class collaborative effort, requiring everyone’s active participation and contribution. Every student should take lead on at least one aspect or activity. Your collective efforts will provide valuable data to inform curriculum development, program improvements, and future initiatives within the Mathematics & Statistics departments. Embrace this opportunity to make a real difference!"
   }
 ]

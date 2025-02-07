@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.319">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2025-02-03">
 <meta name="description" content="We cover the theoretical concepts of statistical estimation. (Lohr 2.2)">
 
-<title>Sampling Methods - Foundations of Statistical Estimation</title>
+<title>Foundations of Statistical Estimation – Sampling Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -91,13 +97,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -105,61 +140,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html" rel="" target="">
- <span class="menu-text">Notes</span></a>
+    <a class="nav-link" href="../notes.html"> 
+<span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html" rel="" target="">
- <span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../assignments.html"> 
+<span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../project.html" rel="" target="">
- <span class="menu-text">Project</span></a>
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">HackMD Notes</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling">
  <span class="dropdown-text">Ch 1. Sampling Framework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations" rel="" target="">
- <span class="dropdown-text">Foundations of Estimation</span></a>
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations">
+ <span class="dropdown-text">Ch 2. Foundations of Estimation</span></a>
   </li>  
     </ul>
   </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html" rel="" target="">
- <span class="menu-text">Syllabus</span></a>
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -186,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -214,7 +249,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p><a href="../_blank_notes/cn02-statistical_foundations_blank.qmd">cn02 Blank notes file</a></p>
 <section id="introduction" class="level1">
@@ -237,9 +274,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Statistical inference centers around using information from a sample to understand what might be true about the entire population of interest. If all we see are the data in the sample, what conclusions can we draw about the population? How sure are we about the accuracy of those conclusions?</p>
 <p>On April 29, 2011, Prince William married Kate Middleton in London. The Pew Research Center reports that 34% of US adults watched some or all of the royal wedding. How do we know that 34% of all US adults watched? Did anyone ask <strong>you</strong> if you watched it? In order to know for sure what proportion of US adults watched the wedding, we would need to ask <strong>all</strong> US adults whether or not they watched. This would be very difficult to do. As we will see, however, we can estimate the <em>population</em> proportion <em>parameter</em> quite accurately with a <em>sample statistic</em>, as long as we use a random sample. In the case of the royal wedding, the estimate is based on a poll using a random sample of 1006 US adults.</p>
 <ul>
-<li><em>Statistical inference</em>:</li>
-<li><em>Parameter</em>:</li>
-<li><em>Statistic</em>:</li>
+<li><em>Statistical inference</em>: The process of drawing conclusions about the entire population based on the information in the sample.</li>
+<li><em>Parameter</em>: A number that describes the entire population. <span class="math inline">\(\mu\)</span>, <span class="math inline">\(p\)</span>, <span class="math inline">\(\tau\)</span></li>
+<li><em>Statistic</em>: A number calculated from a sample. <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\hat{p}\)</span>, <span class="math inline">\(\hat{\tau}\)</span>.</li>
 </ul>
 <p>Generally our goal is to know the value of the population parameter exactly but this usually isn’t possible since we usually cannot collect information from the entire population.</p>
 <p>Instead we can select a sample from the population, calculate the quantity of interest for the sample, and use this sample statistic to estimate the value for the whole population.</p>
@@ -257,13 +294,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>What is the population parameter? What is the sample statistic? Use correct notation for your answer.</p>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>write your solution here</p>
-</blockquote>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Population Parameter</strong>: <span class="math inline">\(p = .275\)</span><br>
+<strong>Sample Statistic</strong>: <span class="math inline">\(\hat{p} = 58/200 = .29\)</span></p>
+</div>
+</div>
+</div>
 <p>The value of a statistic for a particular sample gives a <em>point estimate</em> of the population parameter. If we only have the one sample and don’t know the value of the population parameter, this point estimate is our best estimate of the true value of the population parameter.</p>
 <p>After we have a little more mathematical terminology and foundation, we’ll come back to what we mean by “best estimate”, and examine how we can determine if something is a “good” estimate.</p>
 </section>
-<section id="expected-values" class="level1">
+<section id="expected-values" class="level1 page-columns page-full">
 <h1>Expected Values</h1>
 <p>Generally we want to understand some measured characteristic <span class="math inline">\(y\)</span> about the units in the population.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -288,20 +339,24 @@ U = \{A, B, C, D\}
 \]</span> where the <span class="math inline">\(\sum\)</span> symbols means to sum over all the values of <span class="math inline">\(y_{i}\)</span> for all <span class="math inline">\(i=1, \ldots, N\)</span> units in the population.</p>
 <p>However the nature of sampling means that <span class="math inline">\(y_{i}\)</span> is not observed for every unit in the population. In this case, we are going to consider a sample <span class="math inline">\(S\)</span> of 2 campuses. There are six different ways 2 units could be chosen from <span class="math inline">\(U\)</span>. <span class="math display">\[
 S_{1} = \{A,B\}, S_{2} = \{A,C\}, S_{3} = \{A,D\}, \\
-S_{5} = \{?, ?\}, S_{5} = \{?, ?\}, S_{6} = \{?, ?\}
+S_{4} = \{B,C\}, S_{5} = \{B,D\}, S_{6} = \{C,D\}
 \]</span></p>
 <p>Then we estimate the population value <span class="math inline">\(\tau\)</span> using an estimate <span class="math inline">\(\hat{t}\)</span>, where we sum over all the values of <span class="math inline">\(y_{i}\)</span> when that <span class="math inline">\(i^{th}\)</span> campus is present in the chosen sample.</p>
 <p><span class="math display">\[
 \hat{t} = \sum_{i \in S}y_{i}
 \]</span></p>
-<p>Let’s assume we know the number of parking garages at each campus <span class="math inline">\(y_{A} = 2, y_{B} = 4, y_{C} = 1, y_{D} = 3\)</span>. We can build a <strong>sampling distribution</strong>, that is a distribution of all possible values for <span class="math inline">\(\hat{t}\)</span> based on this design.</p>
+<div class="page-columns page-full"><p>Let’s assume we know the number of parking garages at each campus <span class="math inline">\(y_{A} = 2, y_{B} = 4, y_{C} = 1, y_{D} = 3\)</span>. We can build a <strong>sampling distribution</strong>, that is a distribution of all possible values for <span class="math inline">\(\hat{t}\)</span> based on this design. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">A <strong>sampling distribution</strong> is an example of a discrete probability distribution</span></div></div>
 <p>The total from sample 1 <span class="math inline">\(\hat{t}_{1} = y_{A} + y_{B} = 6\)</span> is the total calculated from campus A and B, sample 2 total is <span class="math inline">\(\hat{t}_{2} = y_{A} + y_{C} = 3\)</span>, and so forth. Doing this for all 6 samples results in the following graph:</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="cn02-statistical_foundations_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="cn02-statistical_foundations_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<table class="table">
+</div>
+<table class="caption-top table">
 <caption>Sampling distribution for the estimated sample total <span class="math inline">\(\hat{t}\)</span> number of parking garages on two randomly selected college campuses in the north state.</caption>
 <colgroup>
 <col style="width: 16%">
@@ -322,11 +377,11 @@ S_{5} = \{?, ?\}, S_{5} = \{?, ?\}, S_{6} = \{?, ?\}
 </tr>
 <tr class="even">
 <td><span class="math inline">\(P(\hat{t} = k)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{?}{?}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{?}{?}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{?}{?}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{?}{?}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\frac{?}{?}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{3}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -341,13 +396,13 @@ Definition: Expected Value
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The expected value of the statistic is…. <span class="math display">\[
+<p> The expected value of the statistic is the weighted average of the possible sample values of the statistic, weighted by the probability that particular value of the statistic would occur. <span class="math display">\[
 E[y]=\sum_{y}y*p(y)
 \]</span></p>
 <p>where <span class="math inline">\(p(y)\)</span> is the probability of each value of <span class="math inline">\(y\)</span> occurring.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="no-row-height column-margin column-container"><span class="margin-aside callout-margin-content">The <strong>Expected Value</strong> is the mean of the <strong>sampling distribution</strong></span></div><div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -357,7 +412,7 @@ Example calculation of <span class="math inline">\(E(y)\)</span> from a discrete
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>y</th>
@@ -384,14 +439,11 @@ Example calculation of <span class="math inline">\(E(y)\)</span> from a discrete
 </div>
 <p>We can use R to calculate this for us.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span>       <span class="co"># Define a vector y of data values</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p.y <span class="ot">&lt;-</span>  <span class="co"># define a vector of probabilities</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(E.y <span class="ot">&lt;-</span> )  <span class="co"># multiply the elements of y and p.y, then sum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in parse(text = input): &lt;text&gt;:3:9: unexpected ')'
-2: p.y &lt;-  # define a vector of probabilities
-3: (E.y &lt;- )
-           ^</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)        <span class="co"># Define a vector y of data values</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p.y <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">5</span>, .<span class="dv">4</span>) <span class="co"># define a vector of probabilities</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(E.y <span class="ot">&lt;-</span> <span class="fu">sum</span>(y<span class="sc">*</span>p.y))  <span class="co"># multiply the elements of y and p.y, then sum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.3</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -404,7 +456,7 @@ Definition: Population Mean
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The population mean <span class="math inline">\(\mu\)</span> is defined as ….</p>
+<p>The population mean <span class="math inline">\(\mu\)</span> is defined as the expected value of y.</p>
 <p><span class="math display">\[E[y]=\mu\]</span></p>
 </div>
 </div>
@@ -419,23 +471,19 @@ Definition: Population Variance &amp; Standard Deviation
 </div>
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[\sigma^{2} = V(y)=E[y-\mu]^{2}=\sum_{y}\left(y-\mu\right)^{2}*p(y)\]</span></p>
-<p>The variability of measurements in a population can be measured by the <strong>variance</strong> which is defined as …</p>
+<p>The variability of measurements in a population can be measured by the <strong>variance</strong> which is defined as the average squared deviation from the mean between a randomly selected measurement <span class="math inline">\(y\)</span> and its mean value <span class="math inline">\(\mu\)</span>.</p>
 <p>The standard deviation is defined as the square root of the variance, and is denoted <span class="math inline">\(\sigma\)</span>.</p>
 <p>Often it’s more convenient to calculate the variance using this formulation:</p>
-<p>$$</p>
-<p>$$</p>
+<p><span class="math display">\[V(y)=E[y^2] - E[y]^{2}\]</span></p>
 </div>
 </div>
 <p>Using R on the probability distribution defined above this would look like;</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y.sq <span class="ot">&lt;-</span>             <span class="co"># square y</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>E.y.sq <span class="ot">&lt;-</span>   <span class="co"># calculate E(y^2)</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>(Var.y <span class="ot">&lt;-</span> )  <span class="co"># Calculate the variance of y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in parse(text = input): &lt;text&gt;:3:11: unexpected ')'
-2: E.y.sq &lt;-   # calculate E(y^2)
-3: (Var.y &lt;- )
-             ^</code></pre>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y.sq <span class="ot">&lt;-</span> y<span class="sc">^</span><span class="dv">2</span>              <span class="co"># square y</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>E.y.sq <span class="ot">&lt;-</span> <span class="fu">sum</span>(y.sq<span class="sc">*</span>p.y)  <span class="co"># calculate E(y^2)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>(Var.y <span class="ot">&lt;-</span> E.y.sq <span class="sc">-</span> E.y<span class="sc">^</span><span class="dv">2</span>)  <span class="co"># Calculate the variance of y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.41</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
@@ -450,7 +498,7 @@ Definition: Population Variance &amp; Standard Deviation
 <div class="callout-body-container callout-body">
 <p>When a few data points are repeated in a data set, the results are often arrayed in a frequency table. For example, a quiz given to each of 25 students was graded on a four-point scale (0,1,2,3), 3 being a perfect score.</p>
 <p>Consider the following results: 16 students scored a 3, 4 students scored a 2, 2 students scored a 1, and 3 scored a 0. Assume this distribution of scores is representative of the population distribution.</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Score (Y)</th>
@@ -485,16 +533,16 @@ Definition: Population Variance &amp; Standard Deviation
 </div>
 </div>
 </section>
-<section id="the-finite-population-case" class="level1">
+<section id="the-finite-population-case" class="level1 page-columns page-full">
 <h1>The Finite Population Case</h1>
 <p>The previous section develops results for random sampling from a population considered to be infinite. In such situations, each sampled element has the same chance of being selected and the selections are independent of one another.</p>
 <ul>
 <li>Most sampling problems don’t live in an infinite world, but the population is usually finite although it may be quite large.</li>
 <li>In addition, we may want to take into consideration varying the probabilities with which the units are sampled.</li>
 </ul>
-<p>In <em>probability sampling</em>, each possible sample <span class="math inline">\(S\)</span> has a known probability <span class="math inline">\(\delta\)</span> of being chosen. Let’s return to the university parking garage example and use <span class="math inline">\(P(\delta_{1} = ?), P(\delta_{2} = ?), P(\delta_{6} = ?)\)</span> and the rest have probability 0.</p>
+<p>In <em>probability sampling</em>, each possible sample <span class="math inline">\(S\)</span> has a known probability <span class="math inline">\(\delta\)</span> of being chosen. Let’s return to the university parking garage example and use <span class="math inline">\(\delta_{1} = P(\S_{1}) = 1/3, \delta_{2} = P(S_{2}) = 1/6, \delta_{6} = P(S_{6}) = 1/2\)</span> and the rest have probability 0.</p>
 <p>Additionally, each unit <span class="math inline">\(i\)</span> within the universe <span class="math inline">\(U\)</span> has a <span class="math inline">\(\pi_{i} \gt 0\)</span> probability of appearing in the selected sample. These unit probabilities are a function of the probability of selecting that random sample.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 45%">
@@ -503,23 +551,23 @@ Definition: Population Variance &amp; Standard Deviation
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">\(\pi_{A}\)</span> =</td>
-<td style="text-align: center;"><span class="math inline">\(P(\delta_{1}) + ...\)</span></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\delta_{1} + \delta_{2} + \delta_{3}\)</span></td>
+<td style="text-align: center;">1/3 + 1/6 + 0 = 1/2</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><span class="math inline">\(\pi_{B}\)</span> =</td>
-<td style="text-align: center;"><span class="math inline">\(P(\delta_{1}) + ...\)</span></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\delta_{1} + \delta_{4} + \delta_{5}\)</span></td>
+<td style="text-align: center;">1/3 + 0 + 0 = 1/3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">\(\pi_{C}\)</span> =</td>
-<td style="text-align: center;"><span class="math inline">\(P(\delta_{2}) + ...\)</span></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\delta_{2} + \delta_{4} + \delta_{6}\)</span></td>
+<td style="text-align: center;">1/6 + 0 + 1/2 = 2/3</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><span class="math inline">\(\pi_{D}\)</span> =</td>
-<td style="text-align: center;"><span class="math inline">\(P(\delta_{3}) + ...\)</span></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\delta_{3} + \delta_{5} + \delta_{6}\)</span></td>
+<td style="text-align: center;">0 + 0 + 1/2 = 1/2</td>
 </tr>
 </tbody>
 </table>
@@ -534,7 +582,7 @@ Definition: Population Variance &amp; Standard Deviation
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Change the values of <span class="math inline">\(\delta\)</span> for each of the 6 possible samples of <span class="math inline">\(U\)</span> above, so that each sample has a non-zero probabilty of being chosen. Then recalculate the observational probabilities <span class="math inline">\(\pi_{A}-\pi_{D}\)</span>.</p>
+<p>Change the values of <span class="math inline">\(\delta\)</span> for each of the 6 possible samples of <span class="math inline">\(U\)</span> above, so that each sample has a non-zero probability of being chosen. Then recalculate the observational probabilities <span class="math inline">\(\pi_{A}-\pi_{D}\)</span>.</p>
 </div>
 </div>
 <p>Probability sampling:</p>
@@ -554,44 +602,71 @@ Example: Estimate total number of job openings.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Suppose, for example, we want to estimate the total number of job openings in a city by sampling industrial firms from within that city. Many of these firms will be small and a few firms will be large. In a random sample <em>of firms</em>, the size of the firm is not taken into account. However, the number of job openings will be directly dependent on the size of the firm. Thus, we might improve the sample if large firms are more likely to be included in the sample.</p>
+<p>Suppose, for example, we want to estimate the total number of job openings in a city by sampling industrial companies from within that city.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Company</th>
+<th>Jobs (<span class="math inline">\(y\)</span>)</th>
+<th>Size of company</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>3</td>
+<td>70</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>10</td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>25</td>
+<td>120</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>61</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<p>The population total of job openings is <span class="math inline">\(\tau= 99\)</span>. But of course we don’t know this, so we want to take a sample of <span class="math inline">\(n=2\)</span> firms and count the number of jobs at each firm <span class="math inline">\(y\)</span> as a way to estimate this total.</p>
 </div>
 </div>
-<ul>
-<li>Suppose the population consists of the set of elements <span class="math inline">\(\{u_{1},u_{2},...,u_{N}\}\)</span> and a sample of <span class="math inline">\(n\)</span> elements is to be selected with replacement independently of one another.</li>
-<li>Let <span class="math inline">\(\{\delta_{1},\delta_{2},...,\delta_{N}\}\)</span> represent the respective probabilities of selection for the population elements.
-<ul>
-<li><span class="math inline">\(\delta_{i}\)</span> is the probability that <span class="math inline">\(u_{i}\)</span> is selected on any one draw.</li>
-<li>for the case of random sampling with replacement, each <span class="math inline">\(\delta_{i} = ?\)</span></li>
-</ul></li>
-</ul>
-<p>An <strong>unbiased estimator</strong> of the population total, <span class="math inline">\(\tau\)</span>, is given by</p>
+<div class="page-columns page-full"><p> An <strong>unbiased estimator</strong> of the population total, <span class="math inline">\(\tau\)</span>, is given by</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Note: The mathematical definition of unbiased is not the same thing as selection biased discussed earlier. The math definition of bias will be discussed below.</span></div></div>
 <p><span class="math display">\[
-\hat{\tau}=\frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{\delta_{i}}
+\hat{t}=\frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{\pi_{i}}
 \]</span></p>
-<p>When <span class="math inline">\(\delta_{i} = ?\)</span>, we can rewrite this as</p>
+<p>If all companies have equal probability of being selected, then the subset of companies <span class="math inline">\(\{A, B\}\)</span> have the same chance of being selected as any other subset of two companies such as <span class="math inline">\(\{A, C\}\)</span>. This can occur when we sample randomly with replacement, which means <span class="math inline">\(\pi_{i} = 1/N\)</span>. This allows us to rewrite this equation as</p>
 <p><span class="math display">\[
-\hat{\tau} = \frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{(1/N)} = \frac{N}{n} \sum^{n}_{i=1}y_{i} = N\bar{y}
+\hat{t} = \frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{(1/N)} = \frac{N}{n} \sum^{n}_{i=1}y_{i} = N\bar{y}
 \]</span></p>
-<p>It is in the best interest to select the <span class="math inline">\(\delta_{i}\)</span> values in such a way that the variance is as small as possible. The best practical way to choose the <span class="math inline">\(\delta_{i}\)</span> is to …</p>
+<p>Thus the estimate of the total job openings based on the <span class="math inline">\(\{A, B\}\)</span> sample would be:</p>
+<p><span class="math display">\[
+\hat{t} = N\bar{X} = 4*(13/2) = 26
+\]</span></p>
+<p>Note that the size of these companies vary quite a lot, and the number of job openings will likely be directly dependent on the size of the company Thus, we might improve the sample if large companies are more likely to be included in the sample. One practical way to choose the <span class="math inline">\(\pi_{i}\)</span>, is to choose them proportional to a known measurement that is highly correlated with <span class="math inline">\(y_{i}\)</span>. In this case, that would be the company size.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example: Job openings cont.
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Our universe only consists of these <span class="math inline">\(N=4\)</span> firms: A, B, C and D.</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Firm</th>
-<th>Jobs (<span class="math inline">\(x\)</span>)</th>
+<th>Jobs (<span class="math inline">\(y\)</span>)</th>
 <th>Size of firm</th>
-<th><span class="math inline">\(\delta_{i}\)</span></th>
+<th><span class="math inline">\(\pi_{i}\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -623,20 +698,16 @@ Example: Job openings cont.
 </table>
 </div>
 </div>
-<p>The population total of job openings is <span class="math inline">\(\tau= 99\)</span>. But of course we don’t know this, so we want to take a sample of <span class="math inline">\(n=2\)</span> firms and count the number of jobs at each firm <span class="math inline">\(x\)</span> as a way to estimate this total.</p>
-<p>If all firms have equal probability of being selected, then the subset of firms <span class="math inline">\(\{A, B\}\)</span> have the same chance of being selected as any other subset of two firms such as <span class="math inline">\(\{A, C\}\)</span>. However, we may want to select firms with probabilities in proportion to their workforce (<span class="math inline">\(?\)</span>).</p>
-<p>Without adjustment the estimate of the total job openings based on the <span class="math inline">\(\{A, B\}\)</span> sample would be: <span class="math display">\[
-\hat{t} = N\bar{X} =
-\]</span></p>
-<p>If we adjust <span class="math inline">\(y_{i}\)</span> based on the probability of selecting firms A and B, <span class="math display">\[
-\hat{t} = \frac{?}{?}\Big[\frac{?}{?/?} + \frac{?}{?}\Big]  =
+<p>If we adjust <span class="math inline">\(y_{i}\)</span> based on the probability of selecting firms A and B,</p>
+<p><span class="math display">\[
+\hat{t}=\frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{\pi_{i}} = \frac{1}{2}\Big[\frac{3}{70/580} + \frac{10}{90/580}\Big]  = 44.7
 \]</span></p>
 <p>❓ Was this a good estimate of <span class="math inline">\(\tau\)</span>? Why or why not?</p>
 <blockquote class="blockquote">
 <p>your answer here</p>
 </blockquote>
 </section>
-<section id="variability-of-estimates" class="level1">
+<section id="variability-of-estimates" class="level1 page-columns page-full">
 <h1>Variability of Estimates</h1>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -728,7 +799,7 @@ Example: Enrollment in Graduate Programs in Statistics
 <li><em>Spread</em>:</li>
 </ul>
 <p>🎉 We have just created a <em>__________________</em> of the sample mean.</p>
-<p>In elementary statistics you were introduced to the “Central Limit Theorem” (CLT). The CLT states that the sampling distribution of <span class="math inline">\(\bar{y}\)</span> should be centered at <span class="math inline">\(\mu\)</span> (<span class="math inline">\(E(\bar{y}) = \mu)\)</span>) with a variance of <span class="math inline">\(\sigma^{2}/n\)</span>. It also states that the shape of the distribution should be approximately Normal for a large <span class="math inline">\(n\)</span>.</p>
+<div class="page-columns page-full"><p>In elementary statistics you were introduced to the “Central Limit Theorem” (CLT). The CLT states that the sampling distribution of <span class="math inline">\(\bar{y}\)</span> should be centered at <span class="math inline">\(\mu\)</span> (<span class="math inline">\(E(\bar{y}) = \mu)\)</span>) with a variance of <span class="math inline">\(\sigma^{2}/n\)</span>. It also states that the shape of the distribution should be approximately Normal for a large <span class="math inline">\(n\)</span>.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">The proof of the CLT is generally seen in a first graduate Statistics class that uses convergence in distribution concepts from MATH 420.</span></div></div>
 </section>
 <section id="properties-of-estimators" class="level1">
 <h1>Properties of Estimators</h1>
@@ -773,10 +844,10 @@ Definition: Bias, Variance, Accuracy
 <li>C is <strong>______________</strong>. All arrows are close together and near the center of the target.</li>
 </ul>
 </section>
-<section id="interval-estimation" class="level1">
+<section id="interval-estimation" class="level1 page-columns page-full">
 <h1>Interval Estimation</h1>
 <p>In general, it is usually not enough to just give a point estimate when estimating a population parameter. Why?</p>
-<section id="standard-error" class="level2">
+<section id="standard-error" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="standard-error">Standard Error</h2>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -802,10 +873,10 @@ Example Grad program example cont.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20.</p>
+<p>Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20. </p>
 </div>
 </div>
-<div class="cell">
+<div class="no-row-height column-margin column-container"><span class="margin-aside callout-margin-content">I used the base pipe <code>|&gt;</code> here to pass the results of the replicate function into the <code>sd()</code> function</span></div><div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many.means) <span class="co">#because the example above already had n=10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: object 'many.means' not found</code></pre>
@@ -815,11 +886,11 @@ Example Grad program example cont.
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.997379</code></pre>
+<pre><code>[1] 7.218029</code></pre>
 </div>
 </div>
 </section>
-<section id="confidence-intervals" class="level2">
+<section id="confidence-intervals" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h2>
 <p>When the distributions are relatively symmetric and bell-shaped, the 95% rule tells us that approximately 95% of the data values fall within two standard deviations of the mean. Applying the 95% rule to sampling distributions, we see that about 95% of the sample statistics will fall within two standard errors of the mean. We use this rule many times to form what we call an approximate 95% confidence interval which gives us a range for which which we are quite confident that captures the true parameter we are trying to estimate.</p>
 <p>When using a formula to calculate an approximate 95% confidence interval, use ______________ as the margin of error.</p>
@@ -845,6 +916,7 @@ CI for PhD program enrollment
             ^</code></pre>
 </div>
 </div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Wrapping the entire line of code in <code>()</code> will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below.</span></div></div>
 <blockquote class="blockquote">
 <p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (?,?).</p>
 </blockquote>
@@ -914,6 +986,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -980,13 +1079,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1021,18 +1122,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1064,11 +1154,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1078,8 +1207,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1091,7 +1229,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1135,6 +1396,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1160,6 +1422,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1222,7 +1510,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></div>   
+    <div class="nav-footer-left">
+<p>This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1231,6 +1521,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

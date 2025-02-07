@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.319">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="DRAFT">
+<meta name="author" content="COMPLETE">
 <meta name="dcterms.date" content="2025-01-22">
 <meta name="description" content="The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.">
 
-<title>Sampling Methods - The Sampling Framework</title>
+<title>The Sampling Framework – Sampling Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,7 +49,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -58,11 +64,42 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -70,61 +107,61 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html" rel="" target="">
- <span class="menu-text">Notes</span></a>
+    <a class="nav-link" href="../notes.html"> 
+<span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html" rel="" target="">
- <span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../assignments.html"> 
+<span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../project.html" rel="" target="">
- <span class="menu-text">Project</span></a>
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">HackMD Notes</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling">
  <span class="dropdown-text">Ch 1. Sampling Framework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations" rel="" target="">
- <span class="dropdown-text">Foundations of Estimation</span></a>
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations">
+ <span class="dropdown-text">Ch 2. Foundations of Estimation</span></a>
   </li>  
     </ul>
   </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html" rel="" target="">
- <span class="menu-text">Syllabus</span></a>
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -183,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>DRAFT </p>
+             <p>COMPLETE </p>
           </div>
   </div>
     
@@ -198,9 +235,10 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
 
-<p><a href="../_blank_notes/cn01-intro_sampling_blank.qmd">cn01 Blank notes file</a></p>
+
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean, proportion or total.</p>
@@ -214,17 +252,16 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../figs/fig1_1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Textbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.</figcaption><p></p>
+<figcaption>Textbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.</figcaption>
 </figure>
 </div>
 <ul>
-<li><strong>Target Population</strong>:</li>
-<li><strong>Sampling frame</strong>:<br>
-</li>
-<li><strong>Observational Unit</strong>:</li>
-<li><strong>Sample</strong>:</li>
-<li><strong>Sampled population</strong>:</li>
-<li><strong>Sampling unit</strong>:</li>
+<li><strong>Observational Unit</strong>: The singular object that is being measured. A <span class="emoji" data-emoji="cat2">🐈</span>.</li>
+<li><strong>Target Population</strong>: The complete collection of all observational units that we want to study. All <span class="emoji" data-emoji="cat2">🐈</span> in Chico.</li>
+<li><strong>Sample</strong>: A subset of the population. The <span class="emoji" data-emoji="cat2">🐈</span> at Butte Humane Society</li>
+<li><strong>Sampled population</strong>: The collection of all possible observational units that <em>might</em> have been chosen in a sample. Adoptable <span class="emoji" data-emoji="cat2">🐈</span><span class="emoji" data-emoji="cat2">🐈</span> in Chico.</li>
+<li><strong>Sampling unit</strong>: A observational unit that can be selected for study. A <span class="emoji" data-emoji="cat2">🐈</span> available for adoption at BHS.</li>
+<li><strong>Sampling frame</strong>: A list, map, or other specification that describes how sampling units from the sample may be selected. The roster of <span class="emoji" data-emoji="cat2">🐈</span><span class="emoji" data-emoji="cat2">🐈</span> listed for adoption at BHS.</li>
 </ul>
 <p>In an <em>ideal</em> survey, the sampled population will be identical to the target population. 🦄</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
@@ -237,10 +274,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In small groups go to our <a href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling">collaborative notes</a> and put your names in the <code>[names]</code> portion for one of the three examples that you are assigned to work on. Then as a group read the details for your example from the textbook and identify as many key terms as you can.</p>
-<p><em>Suggestion: Only one person from each group should be doing the writing but everyone should be logged in and viewing.</em></p>
+
 </div>
 </div>
+<p>[names] <strong>American Community Survey</strong> [names] <strong>Agricultural survey</strong> [names] <strong>Literary Digest Election survey</strong></p>
 <hr>
 </section>
 </section>
@@ -248,6 +285,9 @@ ul.task-list li input[type="checkbox"] {
 <h1>(1.3) Selection Bias</h1>
 <p><strong>Selection bias</strong> occurs when the target population does not coincide with the sampled population because some population units are sampled at a different rate than intended by the investigator.</p>
 <p><span class="emoji" data-emoji="question">❓</span> If a survey designed to study household income has fewer poor households than would be obtained in a representative sample, would the survey estimates of the average or median household income be too high? or to low?</p>
+<blockquote class="blockquote">
+<p>Too high.</p>
+</blockquote>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -258,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In small groups briefly summarize the type of selection bias that you are assigned to review. Write your answers in HackMD Provide a unique example (that is, not the one in the text). Be prepared to share this out with the class.</p>
+<p>Summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class.</p>
 </div>
 </div>
 <ul>
@@ -271,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <section id="what-good-are-samples-with-selection-bias" class="level3">
 <h3 class="anchored" data-anchor-id="what-good-are-samples-with-selection-bias">What Good Are Samples with Selection Bias?</h3>
-<p>Can Bias ever be good?</p>
+<p>Can Bias ever be good? Yes! It may provide valuable information, especially in early stages of investigation.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -285,10 +325,10 @@ Example: Early indicators of lung injury associated with vaping (2019)
 <p>By Oct ’19, over 1,600 cases of lung injuries and 34 deaths were found to be associated with vaping, but the actual cause of injuries were not known. In 2019 a group of researchers (see text for citation) conducted a study that ultimately led to the recommendation that the public stop using these products until more research on the causal association could be conducted.</p>
 <p>This impact survey had the following types of selection bias:</p>
 <ul>
-<li>Researchers attempted to interview 83 patients who were reported to have lung injuries but only 53 responded (________).</li>
-<li>The sampling frame of 83 only came from physician-reported cases, which means there may be bias if the physicians only reported the more serious cases (________)</li>
-<li>THC is illegal in that state, so patients may have under-reported their use (________)</li>
-<li>Individuals who vape, incurred a lung injury but didn’t seek care were excluded from the study (________)</li>
+<li>Researchers attempted to interview 83 patients who were reported to have lung injuries but only 53 responded (non-response bias).</li>
+<li>The sampling frame of 83 only came from physician-reported cases, which means there may be bias if the physicians only reported the more serious cases (undercoverage)</li>
+<li>THC is illegal in that state, so patients may have under-reported their use (undercoverage)</li>
+<li>Individuals who vape, incurred a lung injury but didn’t seek care were excluded from the study (undercoverage)</li>
 </ul>
 </div>
 </div>
@@ -299,8 +339,8 @@ Example: Early indicators of lung injury associated with vaping (2019)
 <section id="measurement-error" class="level1 page-columns page-full">
 <h1>(1.4) Measurement Error</h1>
 <ul>
-<li><strong>Measurement error</strong>:</li>
-<li><strong>Measurement bias</strong>:</li>
+<li><strong>Measurement error</strong>: When the response differs from the true value</li>
+<li><strong>Measurement bias</strong>: When the error tends to only occur in one direction</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -319,7 +359,7 @@ Example: Ecology surveys
 <section id="surveying-people" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="surveying-people">Surveying people</h2>
 <p>Obtaining accurate responses is challenging in all types of surveys. Especially when dealing with humans.</p>
-<div class="page-columns page-full"><p> <img src="../figs/batty.gif" class="img-fluid" alt="Sourced from Tenor.com"></p><div class="no-row-height column-margin column-container"><span class="">Bonus credz to anyone who can name this bat. Double credz if you can quote a line from his intro rap.</span></div></div>
+<div class="page-columns page-full"><p> <img src="../figs/batty.gif" class="img-fluid" alt="Sourced from Tenor.com"></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Bonus credz to anyone who can name this bat. Double credz if you can quote a line from his intro rap.</span></div></div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -333,6 +373,9 @@ Example: Ecology surveys
 <p>Write down <em>all</em> reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a “good” response or not.</p>
 </div>
 </div>
+<blockquote class="blockquote">
+<p>copy here</p>
+</blockquote>
 <ul>
 <li>People may choose not to respond or lie if they’re embarrassed about the response (like income level)</li>
 <li></li>
@@ -381,6 +424,20 @@ The most important step
 <p>Use HackMD to summarize the guidance item assigned to you. Be prepared to share out verbally in class.</p>
 </div>
 </div>
+<ul>
+<li>Test the questions before administering the survey</li>
+<li>Keep it simple and clear</li>
+<li>Define your terms</li>
+<li>Relate your questions to the concept of interest</li>
+<li>Decide whether to use open or closed questions</li>
+<li>Pay attention to response option scales</li>
+<li>Avoid questions that prompt or motivate the respondent to answer in a particular way</li>
+<li>Consider the social desirability of responses to questions, and write questions and use modes that elicit accurate responses</li>
+<li>Avoid double negatives</li>
+<li>Use forced-choice rather than agree/disagree questions</li>
+<li>Ask only one concept per question</li>
+<li>Pay attention to question order effects.</li>
+</ul>
 <hr>
 </section>
 </section>
@@ -388,8 +445,8 @@ The most important step
 <h1>(1.6) Sampling and Nonsampling errors</h1>
 <ul>
 <li>Most surveys report a “margin of error”, often something like “3 percentage points”</li>
-<li>The <strong>margin of error</strong> describes …..</li>
-<li><strong>Nonsampling errors</strong> cannot be attributed to ……</li>
+<li>The <strong>margin of error</strong> describes the <strong>sampling error</strong> - that is the error that occurs from taking one random sample instead of measuring the entire population.</li>
+<li><strong>Nonsampling errors</strong> cannot be attributed to the sampling variability, but due to selection bias and measurement error.</li>
 </ul>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -422,19 +479,10 @@ The most important step
 <p>Initial recommendations to use a sample to understand a characteristic about a population developed in Norway in 1895, but it wasn’t until 1920-1960 that statisticians were able to create mathematical proofs to support that a <code>probability sample</code> - a sample chosen using random selection methods - produces reliable results that can be used to make inference on a population.</p>
 <section id="advantages-of-a-sample-instead-of-a-census" class="level2">
 <h2 class="anchored" data-anchor-id="advantages-of-a-sample-instead-of-a-census">Advantages of a sample instead of a census</h2>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Think-pair-share
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In your notes write down <em>all</em> reasons you can think of for why a sample may be more advantageous compared to a census. Don’t forget to consult the textbook when you run out of ideas. Add your ideas to HackMD, making sure to read others contributions and not duplicate ideas.</p>
-</div>
-</div>
+<ul>
+<li></li>
+<li></li>
+</ul>
 <blockquote class="blockquote">
 <p>“Sampling is not mere substitution of a partial coverage for a total coverage. Sampling is the science and art of controlling and measuring the reliability of useful statistical information through the theory of probability” (Deming, 1950, p.&nbsp;2)</p>
 </blockquote>
@@ -465,10 +513,10 @@ Definition: Probability Sample
 <li><p>the sampling frame is complete</p></li>
 <li><p>that there is no nonresponse or missing data</p></li>
 <li><p>there is no measurement error</p></li>
-<li><p><strong>Simple Random Sample (SRS)</strong>:</p></li>
-<li><p><strong>Stratified Random Sample</strong>:</p></li>
-<li><p><strong>Cluster sample</strong>:</p></li>
-<li><p><strong>Systematic sample</strong>:</p></li>
+<li><p><strong>Simple Random Sample (SRS)</strong>: Mix up the population before grabbing <span class="math inline">\(n\)</span> units</p></li>
+<li><p><strong>Stratified Random Sample</strong>: Divide population into strata, then take an SRS from each strata independently. Elements of the same strata are more similar, strata differ from each other on an important characteristic.</p></li>
+<li><p><strong>Cluster sample</strong>: Divide population into clusters where clusters are similar to each other. Then measure <em>all</em> units in the cluster.</p></li>
+<li><p><strong>Systematic sample</strong>: Start in a random position in list of population members. Then select that unit, and every <span class="math inline">\(k\)</span>th unit thereafter.</p></li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -483,6 +531,9 @@ Definition: Probability Sample
 <p>Use HackMD to write 1-2 examples of the type of sampling method assigned to you.</p>
 </div>
 </div>
+<blockquote class="blockquote">
+<p>copy here</p>
+</blockquote>
 
 
 </section>
@@ -529,6 +580,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -597,13 +675,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -638,18 +718,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -681,11 +750,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -695,8 +803,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -708,7 +825,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -752,6 +992,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -777,6 +1018,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -839,7 +1106,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></div>   
+    <div class="nav-footer-left">
+<p>This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -848,6 +1117,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
