@@ -264,21 +264,38 @@ window.Quarto = {
 <li><strong>Sampling frame</strong>: A list, map, or other specification that describes how sampling units from the sample may be selected. The roster of <span class="emoji" data-emoji="cat2">🐈</span><span class="emoji" data-emoji="cat2">🐈</span> listed for adoption at BHS.</li>
 </ul>
 <p>In an <em>ideal</em> survey, the sampled population will be identical to the target population. 🦄</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Key Terms
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<p>[names] <strong>American Community Survey</strong> [names] <strong>Agricultural survey</strong> [names] <strong>Literary Digest Election survey</strong></p>
+<section id="other-examples" class="level4">
+<h4 class="anchored" data-anchor-id="other-examples">Other examples</h4>
+<p><strong>American Community Survey</strong></p>
+<ul>
+<li><strong>Target Population</strong>: Resident Population of the US</li>
+<li><strong>Sampling frame</strong>: residental housing units and group quarters</li>
+<li><strong>Observational Unit</strong>: Household<br>
+</li>
+<li><strong>Sample</strong>: 3.5 million housing addresses</li>
+<li><strong>Sampled population</strong>: person who lives at one place on the list and will participate in survey</li>
+<li><strong>Sampling unit</strong>: household on the list</li>
+</ul>
+<p><strong>Agricultural survey</strong></p>
+<ul>
+<li><strong>Target Population</strong>: All areas of land used for agriculture in a country</li>
+<li><strong>Sampling frame</strong>: Random selections from a list of all the areas</li>
+<li><strong>Observational Unit</strong>: farm operator</li>
+<li><strong>Sample</strong>: Random areas of land</li>
+<li><strong>Sampled population</strong>: The list of land in the country</li>
+<li><strong>Sampling unit</strong>: Smaller sections of owned land</li>
+</ul>
+<p><strong>Literary Digest Election survey</strong></p>
+<ul>
+<li><strong>Target Population</strong>: All people who would vote on election day</li>
+<li><strong>Sampling frame</strong>: Voter registration datasets</li>
+<li><strong>Observational Unit</strong>: A single voter</li>
+<li><strong>Sample</strong>: people who read literary digest</li>
+<li><strong>Sampled population</strong>: persons on the lists used by the Literary Digest who would return the sample ballot.</li>
+<li><strong>Sampling unit</strong>: A single respondent</li>
+</ul>
 <hr>
+</section>
 </section>
 </section>
 <section id="selection-bias" class="level1">
@@ -302,12 +319,12 @@ window.Quarto = {
 </div>
 </div>
 <ul>
-<li><strong>Convenience Sample</strong>:</li>
-<li><strong>Purposive or Judgement Sample</strong>:</li>
-<li><strong>Self-Selected Sample</strong>:</li>
-<li><strong>Undercoverage Bias</strong>:</li>
-<li><strong>Overcoverage</strong>:</li>
-<li><strong>Nonresponse</strong>:</li>
+<li><strong>Convenience Sample</strong>: Choosing a sample which is not representative of the target population due to difficulties collecting certain portions/groups of the population response. Example: If I only surveyed everyone in this room to get information about people living in the United States since it’s more convenient, it wouldn’t be representative of all people in the United States.</li>
+<li><strong>Purposive or Judgement Sample</strong>: Choosing a sample that would favor in our experiment. An example would be choosing a race against crime rates.</li>
+<li><strong>Self-Selected Sample</strong>: The participants of a sample opt in voluntarily to participate. Not representative of larger population. People can sometimes respond more than once skewing the data. Example: Users of a specific website agree to take a survey.</li>
+<li><strong>Undercoverage Bias</strong>: The inability to achieve a representative sample because members of the population can not be reached for a variety of reasons (ex. phone surveys cant reach people without phones. Email surveys cant reach people without email addresses…).</li>
+<li><strong>Overcoverage</strong>: When observational units that are not part of the target population are included in the sample, this is <em>overcoverage</em>. In plain language, it’s when units that shouldn’t be surveyed are surveyed. This can occur when your sampling frame is too big, so you need to weed-out units that don’t belong in the sample. Units might be double-counted (like a house with two phone numbers getting called twice, or when ecologists both count the same bird).</li>
+<li><strong>Nonresponse</strong>: Failing to get responses from the sample, without external sources as to why. EX(Fewer than 1% households agree to participate in a poll.)</li>
 </ul>
 <section id="what-good-are-samples-with-selection-bias" class="level3">
 <h3 class="anchored" data-anchor-id="what-good-are-samples-with-selection-bias">What Good Are Samples with Selection Bias?</h3>
@@ -373,12 +390,28 @@ Example: Ecology surveys
 <p>Write down <em>all</em> reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a “good” response or not.</p>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>copy here</p>
-</blockquote>
 <ul>
 <li>People may choose not to respond or lie if they’re embarrassed about the response (like income level)</li>
-<li></li>
+<li>People may misunderstand the question</li>
+<li>People may not remember the information correctly</li>
+<li>(Caleb) People may have incorrect information influencing their response. For example, people may not actually know their ethnic background, only what their parents have told them.</li>
+<li>(Caleb) People might just lie for fun, like putting that they’re a 100 year old bazillionaire in a questionnaire.</li>
+<li>May accidentally respond to the wrong question (online survey)</li>
+<li>people may not care about the survey or forced to do it so speed through it</li>
+<li>May misunderstand the question</li>
+<li>May try to sound good (e.g.&nbsp;how much they donate or would donate to a cause)</li>
+<li>May over estimate own capabilities</li>
+<li>(Quinten) They don’t like the interviewer</li>
+<li>(Quinten) The question is too loaded</li>
+<li>People from different cultures may have different definitions of categorical responses. (Eg. “Very good” may have a different meaning among Italians vs.&nbsp;Americans)</li>
+<li>People may have a language barrier that makes it hard for people to answer</li>
+<li>They might feel unsecure disclosing certain information.</li>
+<li>if someone has done something illegal and fears repurcusions.</li>
+<li>does not want answers traced back to themselves</li>
+<li>Genuinely just dumb (taking a survey they know nothing about)</li>
+<li>Not being self-aware (being asked questions about self, thinks too highly or too lowly)</li>
+<li>overexaggerate a ‘positive’ thing and understate to a negative*</li>
+<li>Self incrimination</li>
 </ul>
 <p>Clear sampling protocols and thoughtful &amp; validated survey design can minimize measurement error.</p>
 <hr>
@@ -425,18 +458,63 @@ The most important step
 </div>
 </div>
 <ul>
-<li>Test the questions before administering the survey</li>
-<li>Keep it simple and clear</li>
-<li>Define your terms</li>
-<li>Relate your questions to the concept of interest</li>
-<li>Decide whether to use open or closed questions</li>
-<li>Pay attention to response option scales</li>
-<li>Avoid questions that prompt or motivate the respondent to answer in a particular way</li>
-<li>Consider the social desirability of responses to questions, and write questions and use modes that elicit accurate responses</li>
-<li>Avoid double negatives</li>
-<li>Use forced-choice rather than agree/disagree questions</li>
-<li>Ask only one concept per question</li>
-<li>Pay attention to question order effects.</li>
+<li>Test the questions before administering the survey.
+<ul>
+<li>Before you follow through with the survey, you should test the questions in a smaller sample within the target population to ensure that there is no misintepretation on the questions.</li>
+<li>In other words, test your questions(for clarity) on a very small sample before conducting a mass scale survey.</li>
+</ul></li>
+<li>Keep it simple and clear
+<ul>
+<li>The idea is the simpler question is easy to give an accurate answer.</li>
+<li>Keep language at a comprehendable level to your audience</li>
+<li>Try to get an answer for one variable/parameter at a time per question</li>
+</ul></li>
+<li>Define your terms - Be as specific as possible in your language. When there is ambiguity be explicit in what you are asking. Words mean different things to different people; be clear about your meaning. Ex. is a truck a car?</li>
+<li>Relate your questions to the concept of interest.
+<ul>
+<li>Ensure questions are directly correlating to what we want to learn, some surveys created mislead information due to the questions being too broad or too specific Example: Testing for income levels and including a question about depression</li>
+</ul></li>
+<li>Decide whether to use open or closed questions
+<ul>
+<li>Using open and closed questions each have their advantages and disadvantages. If you use open questions, the respondent can choose any answer that they feel is appropriate, but there might be some things that don’t come to mind. If you use closed questions, you can give the respondent a few ideas that they might forget about, but they might feel limited to just those options.</li>
+</ul></li>
+<li>Pay attention to response option scales - People tend to prefer responding when there is a neutral middle option to use as a reference for describing their opinions. ex: people prefer a five point scale to a six point. What “fairly happy” means is dependent on what the other options are, ie number of options worse or better than that option.</li>
+<li>Avoid questions that prompt or motivate the respondent to answer in a particular way. Avoid “loaded” questions which try to influence the respondent by using very positive or negative words.
+<ul>
+<li>Eg. “Would you rather increase funding for the music program (like any good community member would), or shut down the school altogether?”</li>
+</ul></li>
+<li>Consider the social desirability of responses to questions, and write questions and use modes that elicit accurate responses. People are more likely to over-report positive activities and under-report negative activities.
+<ul>
+<li>Eg. Respondents underreporting cigarette use to the question “how many packs do you smoke in a week?”</li>
+<li>Eg. “How much money loss to stop gambling in one session?”</li>
+</ul></li>
+<li>(Don’t not) avoid double negatives; they’re needlessly confusing and might cause the respondent to answer in the exact opposite way they intend.
+<ul>
+<li>Example from the book: “Do you favor or oppose not allowing drivers to use their cell phones while driving?” The double negative is “do you oppose not allowing…” This could be written as “Do you support or oppose a ban on cellphone use while driving” to alleviate the needless confusion.<br>
+</li>
+<li>Instead of “do you oppose not drilling for oil” should be asked as “do you support drilling for oil?”</li>
+<li>Another example, not from the book that would be considered confusing is “do you not disagree with this question?”</li>
+</ul></li>
+<li>Use forced-choice rather than agree/disagree questions
+<ul>
+<li>People answer differently if it’s a yes/no versus a multiple forced-choice option</li>
+<li>Examples from the book include: “Do you agree or disagree with this statement ‘most men are better suited emotionally for politics than are most women’” or “Would you say that most men are better suited emotionally for politics than are most owmen, that men and women are equally suited, or that women are better suited than men in this area”
+<ul>
+<li>Interpretation: What they found was that if it was a yes or no, people tend to lean toward yes if they had less schooling meanwhile if you are given options, a portion of the men that originally said “yes” were now spread across education levels</li>
+</ul></li>
+</ul></li>
+<li>Ask only one concept per question
+<ul>
+<li>Keep the questions as simple and straight forward. With two questions someone might agree with one but disagree with the other. The data is then wrong when two questions should of been asked.</li>
+<li>Example: Did you vote for Obama and should healthcare be free.</li>
+</ul></li>
+<li>Pay attention to question order effects.
+<ul>
+<li>Question and answer may affect response to following questions</li>
+<li>Emotionally loaded question may affect following question towards a bias</li>
+<li>Try to ask questions that may be emotionally disconnected from each other</li>
+<li>Government spending vs government control</li>
+</ul></li>
 </ul>
 <hr>
 </section>
@@ -480,8 +558,16 @@ The most important step
 <section id="advantages-of-a-sample-instead-of-a-census" class="level2">
 <h2 class="anchored" data-anchor-id="advantages-of-a-sample-instead-of-a-census">Advantages of a sample instead of a census</h2>
 <ul>
-<li></li>
-<li></li>
+<li>Lower cost</li>
+<li>less time consuming</li>
+<li>fewer errors?</li>
+<li>higher quality of data/ more efficient / reliable information</li>
+<li>Predicting trends/coming to conclusions faster(relevance of information after a certain time or time deadline )</li>
+<li>Calculable Sampling Error, estimate your uncertainty</li>
+<li>Can identify invalid measurements</li>
+<li>Higher quality information</li>
+<li>It’s easier to manage a sample than a census</li>
+<li>Census may cause behavior change in surveyee</li>
 </ul>
 <blockquote class="blockquote">
 <p>“Sampling is not mere substitution of a partial coverage for a total coverage. Sampling is the science and art of controlling and measuring the reliability of useful statistical information through the theory of probability” (Deming, 1950, p.&nbsp;2)</p>
@@ -509,31 +595,75 @@ Definition: Probability Sample
 </div>
 <p>In this class we assume:</p>
 <ul>
-<li><p>sampled population is the target population</p></li>
-<li><p>the sampling frame is complete</p></li>
-<li><p>that there is no nonresponse or missing data</p></li>
-<li><p>there is no measurement error</p></li>
-<li><p><strong>Simple Random Sample (SRS)</strong>: Mix up the population before grabbing <span class="math inline">\(n\)</span> units</p></li>
-<li><p><strong>Stratified Random Sample</strong>: Divide population into strata, then take an SRS from each strata independently. Elements of the same strata are more similar, strata differ from each other on an important characteristic.</p></li>
-<li><p><strong>Cluster sample</strong>: Divide population into clusters where clusters are similar to each other. Then measure <em>all</em> units in the cluster.</p></li>
-<li><p><strong>Systematic sample</strong>: Start in a random position in list of population members. Then select that unit, and every <span class="math inline">\(k\)</span>th unit thereafter.</p></li>
+<li>sampled population is the target population</li>
+<li>the sampling frame is complete</li>
+<li>that there is no nonresponse or missing data</li>
+<li>there is no measurement error</li>
 </ul>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Think-pair-share
+Simple Random Sample (SRS)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use HackMD to write 1-2 examples of the type of sampling method assigned to you.</p>
+<p>Mix up the population before grabbing <span class="math inline">\(n\)</span> units</p>
+<p>Examples: * Testing blood, already mixed * Taking soil samples from random locations within a land parcel. * Sampling colour ratio of skittles in a bag</p>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>copy here</p>
-</blockquote>
+<p><img src="figs/srs.jpg" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Stratified Random Sample
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Divide population into strata, then take an SRS from each strata independently. Elements of the same strata are more similar, strata differ from each other on an important characteristic.</p>
+<p>Example: Select an area of labled trees that has green and pink trees. split the two different types of trees into two different numbered lists. randomly select a set amount of trees from each list to sample seprately.</p>
+</div>
+</div>
+<p><img src="figs/strat.jpg" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cluster sample
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Divide population into clusters where clusters are similar to each other. Then measure <em>all</em> units in the cluster.</p>
+<p>Select an area of labled trees that has green and pink trees. split the two different types of trees into two different numbered lists. randomly select a set amount of trees from each list to sample seprately.</p>
+</div>
+</div>
+<p><img src="figs/cluster.jpg" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Systematic Sample
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Start in a random position in list of population members. Then select that unit, and every <span class="math inline">\(k\)</span>th unit thereafter.</p>
+<ul>
+<li>example 1 Surveying every 10th customer</li>
+<li>example 2 Getting mph data from every 4th car</li>
+<li>example 3 Testing every 47th can of food for quality</li>
+</ul>
+</div>
+</div>
+<p><img src="figs/systematic.jpg" class="img-fluid"></p>
 
 
 </section>
