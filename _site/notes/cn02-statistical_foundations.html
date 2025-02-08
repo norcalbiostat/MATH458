@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2025-02-03">
 <meta name="description" content="We cover the theoretical concepts of statistical estimation. (Lohr 2.2)">
 
-<title>Foundations of Statistical Estimation – Sampling Methods</title>
+<title>Sampling Methods - Foundations of Statistical Estimation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -104,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -148,7 +148,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -166,7 +166,7 @@ window.Quarto = {
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">HackMD Notes</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
@@ -192,7 +192,7 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -221,7 +221,7 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -314,7 +314,7 @@ Solution
 <p>The value of a statistic for a particular sample gives a <em>point estimate</em> of the population parameter. If we only have the one sample and don’t know the value of the population parameter, this point estimate is our best estimate of the true value of the population parameter.</p>
 <p>After we have a little more mathematical terminology and foundation, we’ll come back to what we mean by “best estimate”, and examine how we can determine if something is a “good” estimate.</p>
 </section>
-<section id="expected-values" class="level1 page-columns page-full">
+<section id="expected-values" class="level1">
 <h1>Expected Values</h1>
 <p>Generally we want to understand some measured characteristic <span class="math inline">\(y\)</span> about the units in the population.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -345,7 +345,7 @@ S_{4} = \{B,C\}, S_{5} = \{B,D\}, S_{6} = \{C,D\}
 <p><span class="math display">\[
 \hat{t} = \sum_{i \in S}y_{i}
 \]</span></p>
-<div class="page-columns page-full"><p>Let’s assume we know the number of parking garages at each campus <span class="math inline">\(y_{A} = 2, y_{B} = 4, y_{C} = 1, y_{D} = 3\)</span>. We can build a <strong>sampling distribution</strong>, that is a distribution of all possible values for <span class="math inline">\(\hat{t}\)</span> based on this design. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">A <strong>sampling distribution</strong> is an example of a discrete probability distribution</span></div></div>
+<p>Let’s assume we know the number of parking garages at each campus <span class="math inline">\(y_{A} = 2, y_{B} = 4, y_{C} = 1, y_{D} = 3\)</span>. We can build a <strong>sampling distribution</strong>, that is a distribution of all possible values for <span class="math inline">\(\hat{t}\)</span> based on this design. <span class="margin-aside">A <strong>sampling distribution</strong> is an example of a discrete probability distribution</span></p>
 <p>The total from sample 1 <span class="math inline">\(\hat{t}_{1} = y_{A} + y_{B} = 6\)</span> is the total calculated from campus A and B, sample 2 total is <span class="math inline">\(\hat{t}_{2} = y_{A} + y_{C} = 3\)</span>, and so forth. Doing this for all 6 samples results in the following graph:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -396,13 +396,13 @@ Definition: Expected Value
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p> The expected value of the statistic is the weighted average of the possible sample values of the statistic, weighted by the probability that particular value of the statistic would occur. <span class="math display">\[
+<p><span class="margin-aside">The <strong>Expected Value</strong> is the mean of the <strong>sampling distribution</strong></span> The expected value of the statistic is the weighted average of the possible sample values of the statistic, weighted by the probability that particular value of the statistic would occur. <span class="math display">\[
 E[y]=\sum_{y}y*p(y)
 \]</span></p>
 <p>where <span class="math inline">\(p(y)\)</span> is the probability of each value of <span class="math inline">\(y\)</span> occurring.</p>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><span class="margin-aside callout-margin-content">The <strong>Expected Value</strong> is the mean of the <strong>sampling distribution</strong></span></div><div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -533,7 +533,7 @@ Definition: Population Variance &amp; Standard Deviation
 </div>
 </div>
 </section>
-<section id="the-finite-population-case" class="level1 page-columns page-full">
+<section id="the-finite-population-case" class="level1">
 <h1>The Finite Population Case</h1>
 <p>The previous section develops results for random sampling from a population considered to be infinite. In such situations, each sampled element has the same chance of being selected and the selections are independent of one another.</p>
 <ul>
@@ -637,7 +637,7 @@ Example: Estimate total number of job openings.
 <p>The population total of job openings is <span class="math inline">\(\tau= 99\)</span>. But of course we don’t know this, so we want to take a sample of <span class="math inline">\(n=2\)</span> firms and count the number of jobs at each firm <span class="math inline">\(y\)</span> as a way to estimate this total.</p>
 </div>
 </div>
-<div class="page-columns page-full"><p> An <strong>unbiased estimator</strong> of the population total, <span class="math inline">\(\tau\)</span>, is given by</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Note: The mathematical definition of unbiased is not the same thing as selection biased discussed earlier. The math definition of bias will be discussed below.</span></div></div>
+<p><span class="margin-aside">Note: The mathematical definition of unbiased is not the same thing as selection biased discussed earlier. The math definition of bias will be discussed below.</span> An <strong>unbiased estimator</strong> of the population total, <span class="math inline">\(\tau\)</span>, is given by</p>
 <p><span class="math display">\[
 \hat{t}=\frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{\pi_{i}}
 \]</span></p>
@@ -707,7 +707,7 @@ Tip
 <p>your answer here</p>
 </blockquote>
 </section>
-<section id="variability-of-estimates" class="level1 page-columns page-full">
+<section id="variability-of-estimates" class="level1">
 <h1>Variability of Estimates</h1>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -799,7 +799,7 @@ Example: Enrollment in Graduate Programs in Statistics
 <li><em>Spread</em>:</li>
 </ul>
 <p>🎉 We have just created a <em>__________________</em> of the sample mean.</p>
-<div class="page-columns page-full"><p>In elementary statistics you were introduced to the “Central Limit Theorem” (CLT). The CLT states that the sampling distribution of <span class="math inline">\(\bar{y}\)</span> should be centered at <span class="math inline">\(\mu\)</span> (<span class="math inline">\(E(\bar{y}) = \mu)\)</span>) with a variance of <span class="math inline">\(\sigma^{2}/n\)</span>. It also states that the shape of the distribution should be approximately Normal for a large <span class="math inline">\(n\)</span>.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">The proof of the CLT is generally seen in a first graduate Statistics class that uses convergence in distribution concepts from MATH 420.</span></div></div>
+<p><span class="margin-aside">The proof of the CLT is generally seen in a first graduate Statistics class that uses convergence in distribution concepts from MATH 420.</span>In elementary statistics you were introduced to the “Central Limit Theorem” (CLT). The CLT states that the sampling distribution of <span class="math inline">\(\bar{y}\)</span> should be centered at <span class="math inline">\(\mu\)</span> (<span class="math inline">\(E(\bar{y}) = \mu)\)</span>) with a variance of <span class="math inline">\(\sigma^{2}/n\)</span>. It also states that the shape of the distribution should be approximately Normal for a large <span class="math inline">\(n\)</span>.</p>
 </section>
 <section id="properties-of-estimators" class="level1">
 <h1>Properties of Estimators</h1>
@@ -844,10 +844,10 @@ Definition: Bias, Variance, Accuracy
 <li>C is <strong>______________</strong>. All arrows are close together and near the center of the target.</li>
 </ul>
 </section>
-<section id="interval-estimation" class="level1 page-columns page-full">
+<section id="interval-estimation" class="level1">
 <h1>Interval Estimation</h1>
 <p>In general, it is usually not enough to just give a point estimate when estimating a population parameter. Why?</p>
-<section id="standard-error" class="level2 page-columns page-full">
+<section id="standard-error" class="level2">
 <h2 class="anchored" data-anchor-id="standard-error">Standard Error</h2>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -873,10 +873,10 @@ Example Grad program example cont.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20. </p>
+<p>Estimate the standard error for the mean enrollment in statistics PhD programs for a sample size of 10 and also a sample size of 20. <span class="margin-aside">I used the base pipe <code>|&gt;</code> here to pass the results of the replicate function into the <code>sd()</code> function</span></p>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><span class="margin-aside callout-margin-content">I used the base pipe <code>|&gt;</code> here to pass the results of the replicate function into the <code>sd()</code> function</span></div><div class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many.means) <span class="co">#because the example above already had n=10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: object 'many.means' not found</code></pre>
@@ -890,7 +890,7 @@ Example Grad program example cont.
 </div>
 </div>
 </section>
-<section id="confidence-intervals" class="level2 page-columns page-full">
+<section id="confidence-intervals" class="level2">
 <h2 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h2>
 <p>When the distributions are relatively symmetric and bell-shaped, the 95% rule tells us that approximately 95% of the data values fall within two standard deviations of the mean. Applying the 95% rule to sampling distributions, we see that about 95% of the sample statistics will fall within two standard errors of the mean. We use this rule many times to form what we call an approximate 95% confidence interval which gives us a range for which which we are quite confident that captures the true parameter we are trying to estimate.</p>
 <p>When using a formula to calculate an approximate 95% confidence interval, use ______________ as the margin of error.</p>
@@ -916,7 +916,7 @@ CI for PhD program enrollment
             ^</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Wrapping the entire line of code in <code>()</code> will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below.</span></div></div>
+<p><span class="margin-aside">Wrapping the entire line of code in <code>()</code> will execute that code AND print out the results. This lets me see the results in the rendered document AND store the results in an object to call later, like in my sentence response below.</span></p>
 <blockquote class="blockquote">
 <p>We can be 95% confident that the true mean total enrollment for PhD programs in statistics is covered by the interval (?,?).</p>
 </blockquote>
@@ -1122,7 +1122,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1154,29 +1165,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
@@ -1184,7 +1173,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
