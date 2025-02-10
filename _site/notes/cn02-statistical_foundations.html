@@ -503,9 +503,9 @@ Definition: Population Variance &amp; Standard Deviation
 <p>Additionally, each unit <span class="math inline">\(i\)</span> within the universe <span class="math inline">\(U\)</span> has a <span class="math inline">\(\pi_{i} \gt 0\)</span> probability of appearing in the selected sample. These unit probabilities are a function of the probability of selecting that random sample.</p>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 45%">
-<col style="width: 29%">
+<col style="width: 17%">
+<col style="width: 54%">
+<col style="width: 28%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -600,13 +600,13 @@ Example: Estimate total number of job openings.
 <p><span class="math display">\[
 \hat{t}=\frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{\pi_{i}}
 \]</span></p>
-<p>If all companies have equal probability of being selected, then the subset of companies <span class="math inline">\(\{A, B\}\)</span> have the same chance of being selected as any other subset of two companies such as <span class="math inline">\(\{A, C\}\)</span>. This can occur when we sample randomly with replacement, which means <span class="math inline">\(\pi_{i} = 1/N\)</span>. This allows us to rewrite this equation as</p>
+<p>If all companies have equal probability of being selected, then the subset of companies <span class="math inline">\(S = \{A, B\}\)</span> have the same chance of being selected as any other subset of two companies such as <span class="math inline">\(S = \{A, C\}\)</span>. This can occur when we sample one company out of the <span class="math inline">\(N\)</span> companies in the population randomly with replacement, which means <span class="math inline">\(\pi_{i} = 1/N\)</span>. This allows us to rewrite this equation as</p>
 <p><span class="math display">\[
 \hat{t} = \frac{1}{n}\sum^{n}_{i=1}\frac{y_{i}}{(1/N)} = \frac{N}{n} \sum^{n}_{i=1}y_{i} = N\bar{y}
 \]</span></p>
-<p>Thus the estimate of the total job openings based on the <span class="math inline">\(\{A, B\}\)</span> sample would be:</p>
+<p>Thus the estimate of the total job openings based on the <span class="math inline">\(S = \{A, B\}\)</span> sample would be:</p>
 <p><span class="math display">\[
-\hat{t} = N\bar{X} = 4*(13/2) = 26
+\hat{t} = N\bar{y} = 4*(13/2) = 26
 \]</span></p>
 <p>Note that the size of these companies vary quite a lot, and the number of job openings will likely be directly dependent on the size of the company Thus, we might improve the sample if large companies are more likely to be included in the sample. One practical way to choose the <span class="math inline">\(\pi_{i}\)</span>, is to choose them proportional to a known measurement that is highly correlated with <span class="math inline">\(y_{i}\)</span>. In this case, that would be the company size.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -622,9 +622,9 @@ Tip
 <table class="table">
 <thead>
 <tr class="header">
-<th>Firm</th>
+<th>Company</th>
 <th>Jobs (<span class="math inline">\(y\)</span>)</th>
-<th>Size of firm</th>
+<th>Size of company</th>
 <th><span class="math inline">\(\pi_{i}\)</span></th>
 </tr>
 </thead>
@@ -845,7 +845,7 @@ Example Grad program example cont.
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(my.sample.programs)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.817771</code></pre>
+<pre><code>[1] 7.214727</code></pre>
 </div>
 </div>
 </section>
