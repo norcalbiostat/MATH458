@@ -355,7 +355,7 @@ Characteristics of this distribution:
 
 🎉 We have just created a *__________________* of the sample mean.
 
-[The proof of the CLT is generally seen in a first graduate Statistics class that uses convergence in distribution concepts from MATH 420.]{.aside}In elementary statistics you were introduced to the "Central Limit Theorem" (CLT). The CLT states that the sampling distribution of $\bar{y}$ should be centered at $\mu$ ($E(\bar{y}) = \mu)$) with a variance of $\sigma^{2}/n$. It also states that the shape of the distribution should be approximately Normal for a large $n$.
+[The proof of the CLT is generally seen in a first graduate Statistics class that uses convergence in distribution concepts from MATH 420.]{.aside} In elementary statistics you were introduced to the "Central Limit Theorem" (CLT). The CLT states that the sampling distribution of $\bar{y}$ should be centered at $\mu$ ($E(\bar{y}) = \mu)$) with a variance of $\sigma^{2}/n$. It also states that the shape of the distribution should be approximately Normal for a large $n$.
 
 # Properties of Estimators
 
