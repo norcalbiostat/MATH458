@@ -129,15 +129,15 @@ Write down *all* reasons you can think of for measurement error in self-report s
 -   People may choose not to respond or lie if they're embarrassed about the response (like income level)
 -   People may misunderstand the question
 -   People may not remember the information correctly
--   (Caleb) People may have incorrect information influencing their response. For example, people may not actually know their ethnic background, only what their parents have told them.
--   (Caleb) People might just lie for fun, like putting that they're a 100 year old bazillionaire in a questionnaire.
+-   People may have incorrect information influencing their response. For example, people may not actually know their ethnic background, only what their parents have told them.
+-   People might just lie for fun, like putting that they're a 100 year old bazillionaire in a questionnaire.
 -   May accidentally respond to the wrong question (online survey)
 -   people may not care about the survey or forced to do it so speed through it
 -   May misunderstand the question
 -   May try to sound good (e.g. how much they donate or would donate to a cause)
 -   May over estimate own capabilities
--   (Quinten) They don't like the interviewer
--   (Quinten) The question is too loaded
+-   They don't like the interviewer
+-   The question is too loaded
 -   People from different cultures may have different definitions of categorical responses. (Eg. "Very good" may have a different meaning among Italians vs. Americans)
 -   People may have a language barrier that makes it hard for people to answer
 -   They might feel unsecure disclosing certain information.
@@ -145,7 +145,7 @@ Write down *all* reasons you can think of for measurement error in self-report s
 -   does not want answers traced back to themselves
 -   Genuinely just dumb (taking a survey they know nothing about)
 -   Not being self-aware (being asked questions about self, thinks too highly or too lowly)
--   overexaggerate a 'positive' thing and understate to a negative\*
+-   overexaggerate a 'positive' thing and understate to a negative
 -   Self incrimination
 
 Clear sampling protocols and thoughtful & validated survey design can minimize measurement error.
@@ -284,7 +284,11 @@ In this class we assume:
 
 Mix up the population before grabbing $n$ units
 
-Examples: \* Testing blood, already mixed \* Taking soil samples from random locations within a land parcel. \* Sampling colour ratio of skittles in a bag
+Examples:
+
+* Testing blood, already mixed
+* Taking soil samples from random locations within a land parcel. 
+* Sampling colour ratio of skittles in a bag
 :::
 
 ![](/figs/srs.jpg){fig-align="center"}
