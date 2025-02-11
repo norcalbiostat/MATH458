@@ -25,7 +25,11 @@ website:
       - text: "Assignments"
         file: assignments.qmd
       - text: "Project"
-        file: project.qmd
+        menu: 
+          - text: Overview
+            file: project.qmd
+          - text: Google Drive
+            url: https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA
       - text: "HackMD Notes"
         menu: 
           # - text: "R resources"

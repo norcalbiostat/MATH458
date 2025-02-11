@@ -21,11 +21,12 @@ In this section we review the basic concepts underlying the selection of an esti
 ::: {.callout-note appearance="minimal"}
 *Reminder: Most people come into this class with different pre-requisite classes and instructors. This recap helps ensure that we are all on the same page with concepts and notation that may be new for some.*
 
-These notes require the `StatisticsPhD.csv` data file.
+These notes require the [StatisticsPhD.csv]("../data/StatisticsPhD.csv") data file.
 
 ```{r}
 stat.phd <- readr::read_csv(here::here("data", "StatisticsPhD.csv"))
 ```
+_Note: I am using the `here` package and an [Rstudio project](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects) to manage my files and data. This is a recommended way to manage the files related to this class. If you choose not to, then you will have to modify this code to read in your own path._
 :::
 
 Statistical inference centers around using information from a sample to understand what might be true about the entire population of interest. If all we see are the data in the sample, what conclusions can we draw about the population? How sure are we about the accuracy of those conclusions?
@@ -290,7 +291,7 @@ Along with the point estimate we also want to know \_\_\_\_\_\_\_\_\_ we can exp
 ::: {.callout-tip icon="true"}
 ### Example: Enrollment in Graduate Programs in Statistics
 
-Graduate programs in statistics sometimes pay their graduate students, which means that many graduate students in statistics are able to attend graduate school tuition free with an assistantship or fellowship. There are 82 US statistics doctoral programs for which enrollment data were available. The data set `StatisticsPhD` lists all these schools together with the total enrollment of full-time graduate students in each program in 2009.
+One factor that can come into play when choosing a graduate program is the size of the program. This can help determine how much support and funding may be available. There are 82 US statistics doctoral programs for which enrollment data were available. The data set `StatisticsPhD` lists all these schools together with the total enrollment of full-time graduate students in each program in 2009.
 
 ❓ What is the average full-time graduate student enrollment in US statistics doctoral programs in 2009?
 :::
@@ -357,13 +358,13 @@ To clarify:
 -   **Measurement bias** means that the $y$'s are ......
     -   That means an estimator of a total $\tau$ calculated as $\hat{t} = \sum_{i \in U} y_{i}$ where $U$ is the entire universe, then $\hat{t}$ itself would not be the true total of interest.
     -   Trying to estimate heights of students, but your ruler is always off 3 cm
--   **Estimation bias** means that the estimator chosen resulted in \_\_\_\_\_\_\_\_.
+-   **Estimation bias** means that the estimator chosen resulted in _______.
     -   If we calculated the total as $t' = \sum_{i \in L} y_{i}$ from a random sample of $L$ units in the universe, $\hat{t'}$ would be biased.
     -   Trying to estimate heights of students by taking a sample of the shorter students only.
 
-If two unbiased estimators are available for $\theta$ we generally prefer the one with \_\_\_\_\_\_\_\_\_\_\_\_.
+If two unbiased estimators are available for $\theta$ we generally prefer the one with _______.
 
-Because sometimes we use biased estimators, we often use the **\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_** instead of the variance to estimate the **\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_**.
+Because sometimes we use biased estimators, we often use the _______ instead of the variance to estimate the _______..
 
 ::: callout-important
 ### Definition: Bias, Variance, Accuracy
@@ -375,9 +376,11 @@ $$V(\hat{\theta})  = $$
 $$\mbox{MSE}(\hat{\theta}) = $$
 :::
 
--   A is **\_\_\_\_\_\_\_\_\_\_\_\_\_\_**. The average position of all arrows is at the center of the target.
--   B is **\_\_\_\_\_\_\_\_\_\_\_\_\_\_** but not unbiased. All arrows are close together but systematically away from the center.
--   C is **\_\_\_\_\_\_\_\_\_\_\_\_\_\_**. All arrows are close together and near the center of the target.
+![Textbook Figure 2.3. Unbiased, precise and accurate archers.](../figs/fig2_3.jpg)
+
+-   A is _______ The average position of all arrows is at the center of the target.
+-   B is _______ but not unbiased. All arrows are close together but systematically away from the center.
+-   C is _______ All arrows are close together and near the center of the target.
 
 # Interval Estimation
 
