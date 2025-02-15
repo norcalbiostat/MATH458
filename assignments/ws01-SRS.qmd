@@ -1,0 +1,15 @@
+---
+title: "Worksheet 01: Estimating Crime rates"
+categories: Worksheet
+date: 2/19/25
+---
+
+The Chicago database of crimes known to police between 2001 and 2019 at https://data.cityofchicago.org/ contained 7,048,107 records. To reduce the size of the data for performing analyses, an SRS of 5,000 records was drawn from the database and saved in file `crimes.csv`. 
+
+a. What is the sampling weight for each record in the sample?
+
+b. What is the estimated percentage of crimes in which an arrest was made? Give a 95% CI.
+
+c. Estimate the total number of burglaries known to police between 2001 and 2019 (use variable `crimetype` to identify the burglaries), along with a 95% CI
+
+

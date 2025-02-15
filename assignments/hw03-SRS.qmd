@@ -1,0 +1,100 @@
+---
+format: html
+title: "Homework 03: Simple Random Sampling"
+subtitle: ""
+date: 02/24/25
+categories: Homework
+---
+
+
+This assignment will use statewide open source data on Covid-19 hospitalizations. 
+
+1. Go go the CA Open data portal: https://data.ca.gov/
+2. At the top, click on "Datasets"
+3. On the left, click on "CSV" 
+4. Download the COVID-19 Hospital data (data dictionary and data set)
+
+Be sure to read the codebook to make sure you understand what data was collected, the time frame, and exactly what the variables mean. Your answers must be in context of the data. 
+
+1. Generate two random samples without replacement. One between 10% and 30% of the data set size, and one between 50 and 70%. The exact numbers are your choice. Set a seed to ensure reproducibility.
+
+
+2. Choose a numeric variable. For both samples estimate the total, mean, and proportions of variables of your choice with 95% confidence intervals. Be sure to adjust for your sample weights and fpc. Use the functions from the `survey` package to do these calculations. Interpret each estimate and interval in context of the problem. 
+
+
+3. Using a summary table similar to the one from the notes, calculate and report the error of estimation for each sample. What effect did the sample size have on your estimates or the variability of the estimates? 
+
+
+
+### 2. Conduct your own survey. 
+
+Take a small SRS of something you are interested in. The data collection for this exercise should not take a great deal of effort, as you are surrounded by things waiting to be sampled. Some examples: proportion of web pages that result from an internet search about a topic, average weights of 1-pound bags of carrots at the supermarket, or the average cost of a used dining room table from an online classified advertisement site.
+
+a) Explain what it is you decide to measure. Be explicit about what parameter you are trying to estimate. 
+b) Define the following terms for your sample: target population, sampled population, sampling frame, sampling unit, observational unit
+c) Describe how you created your sampling frame and show how you generated the randomly sampled numbers.
+d) Collect your data, do your measurements, and create a data frame with appropriate weights. 
+e) Using the `svydesign` and appropriate `svy*` functions, calculate a point estimate and confidence interval for the parameter of interest.
+f) Report your results in a full complete english sentence with point estimate and CI. 
+
+:::{.callout-tip}
+#### Dr. D's book example
+
+```{r}
+#| warning: false
+#| message: false
+library(survey)
+```
+
+a) 
+I would like to estimate the average number of pages in books in my office. 
+
+b) 
+
+* My **target population** is all books in my office. 
+* The **sampled population** will be the books on the top shelf in my office.
+* My **sampling frame** is a numbered list of books on the top shelf in my office
+* A **sampling unit** is a number off the list that describes the position of the book starting on the right. 
+* My **observational unit** is a book. 
+
+c) 
+I have 26 books on my top shelf. I will take a random sample of 5 numbers between 1 and 26 and use that result to choose those books to measure. 
+
+```{r}
+set.seed(202)
+sample(1:26, 5)
+```
+
+Counting from the right, I will choose the books numbered listed above. 
+
+d) 
+```{r}
+books <- data.frame(
+  npages = c(601, 452, 259, 418, 418),
+  wt = 26/5
+)
+```
+
+e) 
+Create a sampling design. 
+```{r}
+book.design <- svydesign(id = ~1, 
+                         wt = ~wt, 
+                         fpc = rep(26,5),
+                         data = books)
+```
+
+Calculate the estimated total number of pages of books in my office: 
+
+```{r}
+svymean(~npages, book.design)
+svymean(~npages, book.design) |> confint()
+```
+
+f) 
+
+On average, books in my office are 430 (95% CI 333, 525) pages long. 
+:::
+
+
+
