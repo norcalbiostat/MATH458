@@ -1,0 +1,81 @@
+---
+title: "Formulas and Definitions"
+description: "Equations and R code"
+---
+
+# Parameters and Statistics 
+
+| Measure        | Population $(\theta)$                             | Sample $(\hat{\theta})$                            |
+|------------------|--------------------------|---------------------------|
+| Total          | $\tau = \sum_{i=1}^N y_{i}$                       | $\hat{\tau} = \sum_{i=1}^n y_{i}$                  |
+| Mean           | $\mu = \frac{1}{N}\sum_{i=1}^N y_{i}$             | $\bar{y} = \frac{1}{n}\sum_{i=1}^n y_{i}$          |
+| Variance       | $\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(y_i-\mu)^2$ | $s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(y_i-\bar{y})^2$ |
+| Proportion$^*$ | $p = \mu$                                         | $\hat{p} = \bar{y}$                                |
+
+-   $N$ = total population size
+
+-   $y_{i}$ = Value of measurement $y$ on unit $i$
+
+-   $^*$For proportions $y_{i}$ is a binary indicator of success. $y \in {[0,1]}$. I.e. $I(y_{i}=1)$.
+
+## Expected Value and Variance of estimates
+
+$$E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta}) = \sum [\hat{\theta} - E(\hat{\theta})]^2*p(\hat{\theta})$$
+
+-   Sums are over all possible values of $\hat{\theta}$.
+-   $p(\hat{\theta})$ is the probability of $\hat{\theta}$ occurring.
+
+
+## Weighting estimates
+
+|         Population size         |                   Total                    |                   Mean                    |
+|:---------------------:|:-----------------:|:-----------------------:|
+| $\hat{N} = \sum_{i \in S}w_{i}$ | $\hat{\tau} = \sum_{i \in S}w_{i}y_{i}$ | $\bar{y} = \frac{\hat{\tau}}{\hat{N}}$ |
+
+# Simple Random Sample
+
+| Measure    | Unbiased Estimate $(\hat{\theta})$         | Estimated variance of $(\hat{\theta})$                             |
+|------------------|-------------------------|-----------------------------|
+| Mean       | $\bar{y} = \frac{1}{n}\sum_{i\in S} y_{i}$ | $\hat{V}(\bar{y}) = (1-\frac{n}{N})\frac{s^{2}}{n}$                |
+| Total      | $\hat{\tau} = N\bar{y}$                    | $\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})$                      |
+| Proportion | $\hat{p} = \bar{y}$                        | $\hat{V}(\hat{p}) = (1-\frac{n}{N})\frac{\hat{p}(1-\hat{p})}{n-1}$ |
+
+* $i \in S$ : Unit $i$ is an element in the sample $S$
+
+
+----
+
+# `survey` package R commands 
+
+This is a quick reference list. See the R companion for the textbook, the `survey` package help file or vignette for more information. 
+
+## Specify survey design `svydesign`
+
+* Function call: `svydesign(id = , weights=,  fpc= , data = )`
+* `id` = variable that identifies clusters 
+* `weights` = variable that holds the sampling weights
+* `fpc` = finite population correction. Typically defined in the function call. 
+
+
+The argument details can be found on the specified pages in the R companion for the book. 
+
+* SRS: pg 21
+
+
+## Estimators
+
+* **mean**: `svymean(~x, design)`
+* **total**: `svytotal(~x, design)`
+* **proportion**: Use `svytotal` and divide by `N`
+* **CI for the mean or total**: Use `confint()` after calculating the point estimate
+* **CI for proportion**: `svyciprop(~x, design)` Will also print out $\hat{p}$
+
+
+
+----
+
+# Vignettes and handbooks
+
+-   [`survey` package vignette](http://r-survey.r-forge.r-project.org/survey/)
+-   [The Epidemiologist R handbook](https://epirhandbook.com/en/survey-analysis.html)
+

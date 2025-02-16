@@ -24,6 +24,7 @@ website:
         file: notes.qmd
       - text: "Assignments"
         file: assignments.qmd
+
       - text: "Project"
         menu: 
           - text: Overview
@@ -49,6 +50,7 @@ website:
       
 
     right: 
+      - file: formulas.qmd
       - text: "Syllabus"
         file: syllabus.qmd
 

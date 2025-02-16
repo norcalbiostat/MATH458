@@ -1,1 +1,8 @@
 /* css styles */
+
+/* -- listing pages--*/
+
+
+table td:nth-child(1)  {
+  white-space: nowrap;
+}

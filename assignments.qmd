@@ -1,14 +1,17 @@
 ---
 title: "Assignments"
 listing:
-  contents:
-    - assignments
-  categories: true
-  type: table
-  fields: [title]
-  field-display-names:
-    title: "Title"
-  sort: [date]
-  sort-ui: false
-  filter-ui: false
+  - contents: 
+      - assignments
+      - worksheets
+    type: table
+    fields: [title]
+    field-display-names:
+      title: "Item"
+    sort-ui: false
+    filter-ui: false
 ---
+
+See Canvas for due dates. 
+
+

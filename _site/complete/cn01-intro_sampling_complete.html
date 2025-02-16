@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.319">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="COMPLETE">
+<meta name="dcterms.date" content="2025-01-22">
+<meta name="description" content="The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.">
+
+<title>Sampling Methods - The Sampling Framework</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Sampling Methods</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../notes.html" rel="" target="">
+ <span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
+        <li>
+    <a class="dropdown-item" href="../project.html" rel="" target="">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA" rel="" target="">
+ <span class="dropdown-text">Google Drive</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">HackMD Notes</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
+        <li>
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
+ <span class="dropdown-text">What is HackMD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling" rel="" target="">
+ <span class="dropdown-text">Ch 1. Sampling Framework</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations" rel="" target="">
+ <span class="dropdown-text">Ch 2. Foundations of Estimation</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../formulas.html" rel="" target="">
+ <span class="menu-text">Formulas and Definitions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#populations-and-representative-samples" id="toc-populations-and-representative-samples" class="nav-link" data-scroll-target="#populations-and-representative-samples">(1.2) Populations and Representative Samples</a>
+  <ul class="collapse">
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  </ul></li>
+  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias">(1.3) Selection Bias</a>
+  <ul class="collapse">
+  <li><a href="#what-good-are-samples-with-selection-bias" id="toc-what-good-are-samples-with-selection-bias" class="nav-link" data-scroll-target="#what-good-are-samples-with-selection-bias">What Good Are Samples with Selection Bias?</a></li>
+  </ul></li>
+  <li><a href="#measurement-error" id="toc-measurement-error" class="nav-link" data-scroll-target="#measurement-error">(1.4) Measurement Error</a>
+  <ul class="collapse">
+  <li><a href="#surveying-people" id="toc-surveying-people" class="nav-link" data-scroll-target="#surveying-people">Surveying people</a></li>
+  </ul></li>
+  <li><a href="#questionnaire-design" id="toc-questionnaire-design" class="nav-link" data-scroll-target="#questionnaire-design">(1.5) Questionnaire Design</a>
+  <ul class="collapse">
+  <li><a href="#guidance" id="toc-guidance" class="nav-link" data-scroll-target="#guidance">Guidance</a></li>
+  </ul></li>
+  <li><a href="#sampling-and-nonsampling-errors" id="toc-sampling-and-nonsampling-errors" class="nav-link" data-scroll-target="#sampling-and-nonsampling-errors">(1.6) Sampling and Nonsampling errors</a></li>
+  <li><a href="#why-use-sampling" id="toc-why-use-sampling" class="nav-link" data-scroll-target="#why-use-sampling">(1.7) Why use sampling?</a>
+  <ul class="collapse">
+  <li><a href="#advantages-of-a-sample-instead-of-a-census" id="toc-advantages-of-a-sample-instead-of-a-census" class="nav-link" data-scroll-target="#advantages-of-a-sample-instead-of-a-census">Advantages of a sample instead of a census</a></li>
+  </ul></li>
+  <li><a href="#types-of-probability-sampling" id="toc-types-of-probability-sampling" class="nav-link" data-scroll-target="#types-of-probability-sampling">(2.1) Types of Probability Sampling</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Sampling Framework</h1>
+</div>
+
+<div>
+  <div class="description">
+    The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>COMPLETE </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 22, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean, proportion or total.</p>
+</section>
+<section id="populations-and-representative-samples" class="level1">
+<h1>(1.2) Populations and Representative Samples</h1>
+<p>A sample is representative if it can be used to “reconstruct” what the population looks like and if we can provide an accurate assessment of how good that reconstruction is.</p>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<p>Some definitions are needed to make the notions of a “population” and a “representative sample” more precise.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figs/fig1_1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Textbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li><strong>Observational Unit</strong>: The singular object that is being measured. A <span class="emoji" data-emoji="cat2">🐈</span>.</li>
+<li><strong>Target Population</strong>: The complete collection of all observational units that we want to study. All <span class="emoji" data-emoji="cat2">🐈</span> in Chico.</li>
+<li><strong>Sample</strong>: A subset of the population. The <span class="emoji" data-emoji="cat2">🐈</span> at Butte Humane Society</li>
+<li><strong>Sampled population</strong>: The collection of all possible observational units that <em>might</em> have been chosen in a sample. Adoptable <span class="emoji" data-emoji="cat2">🐈</span><span class="emoji" data-emoji="cat2">🐈</span> in Chico.</li>
+<li><strong>Sampling unit</strong>: A observational unit that can be selected for study. A <span class="emoji" data-emoji="cat2">🐈</span> available for adoption at BHS.</li>
+<li><strong>Sampling frame</strong>: A list, map, or other specification that describes how sampling units from the sample may be selected. The roster of <span class="emoji" data-emoji="cat2">🐈</span><span class="emoji" data-emoji="cat2">🐈</span> listed for adoption at BHS.</li>
+</ul>
+<p>In an <em>ideal</em> survey, the sampled population will be identical to the target population. 🦄</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Key Terms
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>[names] <strong>American Community Survey</strong> [names] <strong>Agricultural survey</strong> [names] <strong>Literary Digest Election survey</strong></p>
+<hr>
+</section>
+</section>
+<section id="selection-bias" class="level1">
+<h1>(1.3) Selection Bias</h1>
+<p><strong>Selection bias</strong> occurs when the target population does not coincide with the sampled population because some population units are sampled at a different rate than intended by the investigator.</p>
+<p><span class="emoji" data-emoji="question">❓</span> If a survey designed to study household income has fewer poor households than would be obtained in a representative sample, would the survey estimates of the average or median household income be too high? or to low?</p>
+<blockquote class="blockquote">
+<p>Too high.</p>
+</blockquote>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Some types of selection bias
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class.</p>
+</div>
+</div>
+<ul>
+<li><strong>Convenience Sample</strong>:</li>
+<li><strong>Purposive or Judgement Sample</strong>:</li>
+<li><strong>Self-Selected Sample</strong>:</li>
+<li><strong>Undercoverage Bias</strong>:</li>
+<li><strong>Overcoverage</strong>:</li>
+<li><strong>Nonresponse</strong>:</li>
+</ul>
+<section id="what-good-are-samples-with-selection-bias" class="level3">
+<h3 class="anchored" data-anchor-id="what-good-are-samples-with-selection-bias">What Good Are Samples with Selection Bias?</h3>
+<p>Can Bias ever be good? Yes! It may provide valuable information, especially in early stages of investigation.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Early indicators of lung injury associated with vaping (2019)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By Oct ’19, over 1,600 cases of lung injuries and 34 deaths were found to be associated with vaping, but the actual cause of injuries were not known. In 2019 a group of researchers (see text for citation) conducted a study that ultimately led to the recommendation that the public stop using these products until more research on the causal association could be conducted.</p>
+<p>This impact survey had the following types of selection bias:</p>
+<ul>
+<li>Researchers attempted to interview 83 patients who were reported to have lung injuries but only 53 responded (non-response bias).</li>
+<li>The sampling frame of 83 only came from physician-reported cases, which means there may be bias if the physicians only reported the more serious cases (undercoverage)</li>
+<li>THC is illegal in that state, so patients may have under-reported their use (undercoverage)</li>
+<li>Individuals who vape, incurred a lung injury but didn’t seek care were excluded from the study (undercoverage)</li>
+</ul>
+</div>
+</div>
+<p>Just because your sample may likely contain bias, being up front about it in your reporting (this is what the limitations section is all about) is a very important aspect of open science.</p>
+<hr>
+</section>
+</section>
+<section id="measurement-error" class="level1 page-columns page-full">
+<h1>(1.4) Measurement Error</h1>
+<ul>
+<li><strong>Measurement error</strong>: When the response differs from the true value</li>
+<li><strong>Measurement bias</strong>: When the error tends to only occur in one direction</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Ecology surveys
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Often in ecological surveys, areas are divided into plots or grids of smaller size. A sample of plots/grids are selected and the number of plants in those selected grids are counted.</p>
+<p>Field researchers have to make a decision about whether or not to count plants directly on the border. If one researcher always counts plants on the boarder as being inside the grid, and another one does not, their estimate will always be higher than the other person.</p>
+</div>
+</div>
+<section id="surveying-people" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="surveying-people">Surveying people</h2>
+<p>Obtaining accurate responses is challenging in all types of surveys. Especially when dealing with humans.</p>
+<div class="page-columns page-full"><p> <img src="../figs/batty.gif" class="img-fluid" alt="Sourced from Tenor.com"></p><div class="no-row-height column-margin column-container"><span class="">Bonus credz to anyone who can name this bat. Double credz if you can quote a line from his intro rap.</span></div></div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Think-pair-share
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Write down <em>all</em> reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a “good” response or not.</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>copy here</p>
+</blockquote>
+<ul>
+<li>People may choose not to respond or lie if they’re embarrassed about the response (like income level)</li>
+<li></li>
+</ul>
+<p>Clear sampling protocols and thoughtful &amp; validated survey design can minimize measurement error.</p>
+<hr>
+</section>
+</section>
+<section id="questionnaire-design" class="level1">
+<h1>(1.5) Questionnaire Design</h1>
+<p>This is a short, short version of how to design a questionnaire. If you are considering writing one for a project or thesis, please consult one of the references at the end of the chapter in the textbook.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The most important step
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Is deciding what you want to learn. What are the goals of your survey?</p>
+</div>
+</div>
+<p>Be as precise as possible</p>
+<blockquote class="blockquote">
+<p>“I want to learn something about persons experiencing homelessness”</p>
+</blockquote>
+<p>Is not good enough. Let’s revise this to</p>
+<blockquote class="blockquote">
+<p>“What percentage of persons using homeless shelters in Chicago between January and March 2021 are under 16 years old?”</p>
+</blockquote>
+<p>Now you can write questions that will be able to actually answer this research question.</p>
+<section id="guidance" class="level2">
+<h2 class="anchored" data-anchor-id="guidance">Guidance</h2>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Think-pair-share
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use HackMD to summarize the guidance item assigned to you. Be prepared to share out verbally in class.</p>
+</div>
+</div>
+<ul>
+<li>Test the questions before administering the survey</li>
+<li>Keep it simple and clear</li>
+<li>Define your terms</li>
+<li>Relate your questions to the concept of interest</li>
+<li>Decide whether to use open or closed questions</li>
+<li>Pay attention to response option scales</li>
+<li>Avoid questions that prompt or motivate the respondent to answer in a particular way</li>
+<li>Consider the social desirability of responses to questions, and write questions and use modes that elicit accurate responses</li>
+<li>Avoid double negatives</li>
+<li>Use forced-choice rather than agree/disagree questions</li>
+<li>Ask only one concept per question</li>
+<li>Pay attention to question order effects.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="sampling-and-nonsampling-errors" class="level1">
+<h1>(1.6) Sampling and Nonsampling errors</h1>
+<ul>
+<li>Most surveys report a “margin of error”, often something like “3 percentage points”</li>
+<li>The <strong>margin of error</strong> describes the <strong>sampling error</strong> - that is the error that occurs from taking one random sample instead of measuring the entire population.</li>
+<li><strong>Nonsampling errors</strong> cannot be attributed to the sampling variability, but due to selection bias and measurement error.</li>
+</ul>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="emoji" data-emoji="star">⭐</span> You try it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go find a poll on a subject that interests you. Share the following information in the <code>#458-class-chat</code> discord channel, and include this info in your notes.</p>
+<ul>
+<li><strong>Name of poll</strong>:</li>
+<li><strong>URL</strong>:</li>
+<li><strong>Stated Population</strong>:</li>
+<li><strong>Statistic being estimated</strong></li>
+<li><strong>Margin of Error</strong>:</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+<section id="why-use-sampling" class="level1">
+<h1>(1.7) Why use sampling?</h1>
+<blockquote class="blockquote">
+<p>“After all, my opinion has never been asked, so how can the survey results claim to represent me?” “Extrapolating what tens of millions are thinking from a tiny sample of opinions affronts human intelligence and negates true freedom of thought.”</p>
+</blockquote>
+<p>Public distrust of surveys intensify when high stakes elections (1936, 2016) are predicted incorrectly.</p>
+<p>Initial recommendations to use a sample to understand a characteristic about a population developed in Norway in 1895, but it wasn’t until 1920-1960 that statisticians were able to create mathematical proofs to support that a <code>probability sample</code> - a sample chosen using random selection methods - produces reliable results that can be used to make inference on a population.</p>
+<section id="advantages-of-a-sample-instead-of-a-census" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-of-a-sample-instead-of-a-census">Advantages of a sample instead of a census</h2>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<blockquote class="blockquote">
+<p>“Sampling is not mere substitution of a partial coverage for a total coverage. Sampling is the science and art of controlling and measuring the reliability of useful statistical information through the theory of probability” (Deming, 1950, p.&nbsp;2)</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="types-of-probability-sampling" class="level1">
+<h1>(2.1) Types of Probability Sampling</h1>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: Probability Sample
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Each unit in the population has a known probability of selection, and a random number table or other randomization mechanism is used to choose the specific units to be included in the sample.</p>
+<blockquote class="blockquote">
+<p>Need a recap on probability? See book Appendix A.1 and A.2</p>
+</blockquote>
+</div>
+</div>
+<p>In this class we assume:</p>
+<ul>
+<li><p>sampled population is the target population</p></li>
+<li><p>the sampling frame is complete</p></li>
+<li><p>that there is no nonresponse or missing data</p></li>
+<li><p>there is no measurement error</p></li>
+<li><p><strong>Simple Random Sample (SRS)</strong>: Mix up the population before grabbing <span class="math inline">\(n\)</span> units</p></li>
+<li><p><strong>Stratified Random Sample</strong>: Divide population into strata, then take an SRS from each strata independently. Elements of the same strata are more similar, strata differ from each other on an important characteristic.</p></li>
+<li><p><strong>Cluster sample</strong>: Divide population into clusters where clusters are similar to each other. Then measure <em>all</em> units in the cluster.</p></li>
+<li><p><strong>Systematic sample</strong>: Start in a random position in list of population members. Then select that unit, and every <span class="math inline">\(k\)</span>th unit thereafter.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="emoji" data-emoji="question">❓</span> <span class="emoji" data-emoji="busts_in_silhouette">👥</span> Think-pair-share
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use HackMD to write 1-2 examples of the type of sampling method assigned to you.</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>copy here</p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

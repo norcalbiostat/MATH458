@@ -1,0 +1,12 @@
+---
+title: "Complete Notes"
+listing:
+  contents:
+    - complete
+  type: table
+  fields: [title]
+  sort-ui: false
+  filter-ui: false
+  table-hover: false
+---
+

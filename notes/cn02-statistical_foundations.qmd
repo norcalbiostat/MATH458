@@ -21,7 +21,7 @@ In this section we review the basic concepts underlying the selection of an esti
 ::: {.callout-note appearance="minimal"}
 *Reminder: Most people come into this class with different pre-requisite classes and instructors. This recap helps ensure that we are all on the same page with concepts and notation that may be new for some.*
 
-These notes require the [StatisticsPhD.csv]("../data/StatisticsPhD.csv") data file.
+These notes require the [StatisticsPhD.csv](`r here::here("data", "StatisticsPhD.csv")`) data file.
 
 ```{r}
 stat.phd <- readr::read_csv(here::here("data", "StatisticsPhD.csv"))

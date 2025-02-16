@@ -27,13 +27,14 @@ The theory and application of survey sampling techniques. Topics include simple 
 
 ::: {.g-col-4}
 #### Pre-reqs
-MATH 314, MATH 315, or MATH 351 (may be taken concurrently)
+MATH 314, MATH 315, or  
+MATH 351(may be taken concurrently)
 
 #### Student Drop in Hours
 
-Monday 12:30-1:30 Holt 202
-Tuesday 2-3pm Zoom (starts 2/4)
-Wednesday 10-12, Community Coding at the Innovation Lab MLIB 2nd floor
+Monday 12:30-1:30 Holt 202  
+Tuesday 2-3pm Zoom  
+Wednesday 10-12 Innovation Lab MLIB 2nd floor
 :::
 
 

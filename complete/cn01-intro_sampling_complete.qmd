@@ -1,0 +1,242 @@
+---
+title: "The Sampling Framework"
+description: "The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population."
+author: COMPLETE
+date: 1/22/25
+---
+
+# Introduction
+
+The objective of sample surveys is to make inference about a population from information contained in a sample selected from that population. We are usually interested in estimating some population parameter such as the population mean, proportion or total.
+
+# (1.2) Populations and Representative Samples
+
+A sample is representative if it can be used to "reconstruct" what the population looks like and if we can provide an accurate assessment of how good that reconstruction is.
+
+## Key Terms
+
+Some definitions are needed to make the notions of a "population" and a "representative sample" more precise.
+
+![Textbook Figure 1.1. Target population and sampled population in a telephone survey of registered voters.](../figs/fig1_1.png)
+
+-   **Observational Unit**: The singular object that is being measured. A :cat2:. 
+-   **Target Population**: The complete collection of all observational units that we want to study. All :cat2: in Chico.
+-   **Sample**: A subset of the population. The :cat2: at Butte Humane Society
+-   **Sampled population**: The collection of all possible observational units that _might_ have been chosen in a sample. Adoptable :cat2::cat2: in Chico. 
+-   **Sampling unit**: A observational unit that can be selected for study. A :cat2: available for adoption at BHS.
+-   **Sampling frame**: A list, map, or other specification that describes how sampling units from the sample may be selected. The roster of :cat2::cat2: listed for adoption at BHS. 
+
+In an *ideal* survey, the sampled population will be identical to the target population. 🦄
+
+
+
+::: {.callout-note appearance="minimal"}
+### :question: :busts_in_silhouette: Key Terms
+:::
+
+[names] **American Community Survey**
+[names] **Agricultural survey**
+[names] **Literary Digest Election survey**
+
+
+
+----
+
+# (1.3) Selection Bias
+
+**Selection bias** occurs when the target population does not coincide with the sampled population because some population units are sampled at a different rate than intended by the investigator. 
+
+:question: If a survey designed to study household income has fewer poor households than would be obtained in a representative sample, would the survey estimates of the average or median household income be too high? or to low? 
+
+> Too high. 
+
+::: {.callout-note appearance="minimal"}
+### :question: :busts_in_silhouette: Some types of selection bias
+
+Summarize briefly and provide a unique example (that is, not the one in the text) for the type of selection bias that you are assigned to review. Be prepared to share this out with the class. 
+:::
+
+* **Convenience Sample**: 
+* **Purposive or Judgement Sample**: 
+* **Self-Selected Sample**: 
+* **Undercoverage Bias**: 
+* **Overcoverage**: 
+* **Nonresponse**: 
+
+
+### What Good Are Samples with Selection Bias?
+
+Can Bias ever be good? Yes! It may provide valuable information, especially in early stages of investigation. 
+
+
+:::{.callout-tip icon=true}
+### Example: Early indicators of lung injury associated with vaping (2019)
+
+By Oct '19, over 1,600 cases of lung injuries and 34 deaths were found to be associated with vaping, but the actual cause of injuries were not known. In 2019 a group of researchers (see text for citation) conducted a study that ultimately led to the recommendation that the public stop using these products until more research on the causal association could be conducted. 
+
+This impact survey had the following types of selection bias: 
+
+* Researchers attempted to interview 83 patients who were reported to have lung injuries but only 53 responded (non-response bias). 
+* The sampling frame of 83 only came from physician-reported cases, which means there may be bias if the physicians only reported the more serious cases (undercoverage)
+* THC is illegal in that state, so patients may have under-reported their use (undercoverage)
+* Individuals who vape, incurred a lung injury but didn't seek care were excluded from the study (undercoverage)
+:::
+
+Just because your sample may likely contain bias, being up front about it in your reporting (this is what the limitations section is all about) is a very important aspect of open science. 
+
+----
+
+# (1.4) Measurement Error
+
+* **Measurement error**: When the response differs from the true value
+* **Measurement bias**: When the error tends to only occur in one direction
+
+:::{.callout-tip icon=true}
+### Example: Ecology surveys
+
+Often in ecological surveys, areas are divided into plots or grids of smaller size. A sample of plots/grids are selected and the number of plants in those selected grids are counted. 
+
+Field researchers have to make a decision about whether or not to count plants directly on the border. If one researcher always counts plants on the boarder as being inside the grid, and another one does not, their estimate will always be higher than the other person. 
+:::
+
+
+## Surveying people 
+
+Obtaining accurate responses is challenging in all types of surveys. Especially when dealing with humans. 
+
+[Bonus credz to anyone who can name this bat. Double credz if you can quote a line from his intro rap.]{.aside}
+![Sourced from Tenor.com](../figs/batty.gif)
+
+:::{.callout-note appearance=minimal}
+### :question: :busts_in_silhouette: Think-pair-share
+Write down _all_ reasons you can think of for measurement error in self-report surveys on people. Write down everything that comes to mind, no judgement on if you think its a "good" response or not.  
+:::
+
+> copy here
+
+* People may choose not to respond or lie if they're embarrassed about the response (like income level)
+* 
+
+Clear sampling protocols and thoughtful & validated survey design can minimize measurement error. 
+
+----
+
+
+# (1.5) Questionnaire Design
+
+This is a short, short version of how to design a questionnaire. If you are considering writing one for a project or thesis, please consult one of the references at the end of the chapter in the textbook. 
+
+:::{.callout-important}
+#### The most important step
+
+Is deciding what you want to learn. What are the goals of your survey? 
+
+:::
+
+Be as precise as possible
+
+> "I want to learn something about persons experiencing homelessness"
+
+Is not good enough. Let's revise this to
+
+> "What percentage of persons using homeless shelters in Chicago between January and March 2021 are under 16 years old?"
+
+
+Now you can write questions that will be able to actually answer this research question. 
+
+## Guidance
+
+:::{.callout-note appearance=minimal}
+### :question: :busts_in_silhouette: Think-pair-share
+Use HackMD to summarize the guidance item assigned to you. Be prepared to share out verbally in class.  
+:::
+
+
+* Test the questions before administering the survey
+* Keep it simple and clear
+* Define your terms
+* Relate your questions to the concept of interest
+* Decide whether to use open or closed questions
+* Pay attention to response option scales
+* Avoid questions that prompt or motivate the respondent to answer in a particular way
+* Consider the social desirability of responses to questions, and write questions and use modes that elicit accurate responses
+* Avoid double negatives
+* Use forced-choice rather than agree/disagree questions
+* Ask only one concept per question
+* Pay attention to question order effects. 
+
+
+----
+
+# (1.6) Sampling and Nonsampling errors
+
+* Most surveys report a "margin of error", often something like "3 percentage points"
+* The **margin of error** describes the **sampling error** - that is the error that occurs from taking one random sample instead of measuring the entire population. 
+* **Nonsampling errors** cannot be attributed to the sampling variability, but due to selection bias and measurement error. 
+
+
+:::{.callout-warning icon=false}
+### :star: You try it
+Go find a poll on a subject that interests you. Share the following information in the `#458-class-chat` discord channel, and include this info in your notes. 
+
+* **Name of poll**:
+* **URL**:
+* **Stated Population**:
+* **Statistic being estimated**
+* **Margin of Error**: 
+:::
+
+
+----
+
+# (1.7) Why use sampling? 
+
+> "After all, my opinion has never been asked, so how can the survey results claim to represent me?"
+> "Extrapolating what tens of millions are thinking from a tiny sample of opinions affronts human intelligence and negates true freedom of thought."
+
+Public distrust of surveys intensify when high stakes elections (1936, 2016) are predicted incorrectly. 
+
+Initial recommendations to use a sample to understand a characteristic about a population developed in Norway in 1895, but it wasn't until 1920-1960 that statisticians were able to create mathematical proofs to support that a `probability sample` - a sample chosen using random selection methods - produces reliable results that can be used to make inference on a population. 
+
+## Advantages of a sample instead of a census
+
+* 
+* 
+
+
+> “Sampling is not mere substitution of a partial coverage for a total coverage. Sampling is the science and art of controlling and measuring the reliability of useful statistical information through the theory of probability” (Deming, 1950, p. 2)
+
+----
+
+# (2.1) Types of Probability Sampling
+
+:::{.callout-important}
+### Definition: Probability Sample
+Each unit in the population has a known probability of selection, and a random number table or other randomization mechanism is used to choose the specific units to be included in the sample.
+
+> Need a recap on probability? See book Appendix A.1 and A.2
+:::
+
+In this class we assume: 
+
+* sampled population is the target population
+* the sampling frame is complete
+* that there is no nonresponse or missing data
+* there is no measurement error
+
+
+* **Simple Random Sample (SRS)**: Mix up the population before grabbing $n$ units
+* **Stratified Random Sample**: Divide population into strata, then take an SRS from each strata independently. Elements of the same strata are more similar, strata differ from each other on an important characteristic.
+* **Cluster sample**: Divide population into clusters where clusters are similar to each other. Then measure _all_ units in the cluster. 
+* **Systematic sample**: Start in a random position in list of population members. Then select that unit, and every $k$th unit thereafter. 
+
+:::{.callout-note appearance=minimal}
+### :question: :busts_in_silhouette: Think-pair-share
+Use HackMD to write 1-2 examples of the type of sampling method assigned to you.
+:::
+
+> copy here
+
+
+
+
