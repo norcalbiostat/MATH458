@@ -8,157 +8,166 @@ format:
     slide-number: true
 ---
 
-# Creating teaching materials
+# Creating teaching materials (The "what")
 
 ## Approach to learning content {.smaller}
-::: {.incremental}
-1. Dr. D will create an outline of topics/sections to cover (Hack MD).
-2. Students will learn and teach the material to the whole class.  
-    a. **Starter Notes**: Every student will do a pre-read of each section, and write starter notes using a set of guidelines (Canvas Discussion Board - individual grade)
-    b. **Jigsaw Lecture**: Using a randomized speaking rotation, students will share out verbally their notes for a section. 
-        - Subsequent students will have a chance to add to, question, or modify those presented notes. 
+
+::: incremental
+1.  Dr. D will create an outline of topics/sections to cover (Hack MD).
+2.  Students will learn and teach the material to the whole class.
+    a.  **Starter Notes**: Every student will do a pre-read of each section, and write starter notes using a set of guidelines (Canvas Discussion Board - individual grade)
+    b.  **Jigsaw Lecture**: Using a randomized speaking rotation, students will share out verbally their notes for a section.
+        -   Subsequently called on students will then add to, question, or modify those presented notes.
+    c.  **Written Notes**: Students will work in (random-ishly assigned) subgroups of 3-4 people to generate written notes for to be posted on class website.
+        - Individual students responsible for generating and submitting individual notes as in prior chapters. 
 :::
 
-## Approach to creating content {.smaller}
-::: {.incremental}
-Students will work in subgroups of 3-4 people to generate written notes for to be posted on class website. Final grade is a group grade, based on completeness, correctness and how much "fixing" I had to do to make it compile. 
+## Working subgroups {.smaller}
 
-- _Notes subgroup_: Compile the info from all starter notes into functional quarto format with callout boxes and clean formatting(Hack MD)
-- _Examples and YTI_: Convert book examples, figures and tables (as appropriate) to R/Quarto code and create "you try it" questions (with solutions)
-- _Revision subgroup_: Reviews entire set of notes, including examples and YTI for completeness and correctness. 
-- _Exercises subgroup_: Review end of chapter exercises, choose (with approval by Dr. D) and write a solution for: 
-    - 2 memorization questions
-    - 2 discussion / concept questions
-    - 1-2 application questions
-- These practice problems will be used to generate the practice worksheet, homework assignment, and final exam questions. 
+[Working Subgroup assignment - Google sheet](https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY)
 
-:::
+-   *Notes subgroup*: Compile the info from all starter notes into functional quarto format with callout boxes and clean formatting(Hack MD)
+-   *Examples and YTI*: Convert book examples, figures and tables (as appropriate) to R/Quarto code and create "you try it" questions (with solutions)
+-   *Revision subgroup*: Reviews entire set of notes, including examples and YTI for completeness and correctness.
+-   *Exercises subgroup*: Review end of chapter exercises, choose (with approval by Dr. D) and write a solution for the listed sections below. These practice problems will be used to generate the homework assignment, and final exam questions.
+    -   2 memorization questions
+    -   2 discussion / concept questions
+    -   1-2 application questions
 
 ## Dr. D will be responsible for... {.smaller}
 
-* Document, monitor, and enforce agreed upon ground rules
-* Set reasonable timelines for completion of work
-* Facilitate logistics of collaborative work activities (assign sections, rotate speaking order)
-* Setup and maintain collaborative documents, compile and post lecture notes to the class webpage, create worksheets and assignments based on submitted questions. 
-* Cross-checking materials for accuracy and correctness
-* Setup Canvas module with items for: course notes (creating, presenting, submitting), practice worksheet, homework assignment. 
+-   Document, monitor, and enforce agreed upon ground rules
+-   Set reasonable timelines for completion of work
+-   Facilitate logistics of collaborative work activities (assign sections, rotate speaking order)
+-   Setup and maintain collaborative documents, compile and post lecture notes to the class webpage, create worksheets and assignments based on submitted questions.
+-   Cross-checking materials for accuracy and correctness
+-   Setup Canvas module with items for: course notes (creating, presenting, submitting), practice worksheet, homework assignment.
 
-# Inside-Outside (I-O) learning strategy
+# Inside-Outside (I-O) learning strategy (The "why")
 
 ::: {.callout-note appearance="minimal"}
-The Inside-Outside learning strategy intends to emphasize the transformations: from inside to outside and from learning to teaching.
-[(Ref: Education 2.0: Student Generated Learning Materials through Collaborative Work)](data/Education 2_0.pdf)
+The Inside-Outside learning strategy intends to emphasize the transformations: from inside to outside and from learning to teaching. [(Ref: Education 2.0: Student Generated Learning Materials through Collaborative Work)](data/Education%202_0.pdf)
 :::
 
 ## I-O Strategy
 
-In this learning strategy students do the following: 
+In this learning strategy students do the following:
 
-* collaborate to create your own learning materials
-* develop memorization questionnaires, discussion topics and questions, summary tables, relation trees and other visualization aids.
-* develop specific problems and exercises that may be included in assessments such as homework or exams 
+-   collaborate to create your own learning materials
+-   develop memorization questionnaires, discussion topics and questions, summary tables, relation trees and other visualization aids.
+-   develop specific problems and exercises that may be included in assessments such as homework or exams
 
 Each learning item developed by students is peer-reviewed before being approved as a learning material.
 
 ## Everyone hates group work. - Or do they? {.smaller}
 
-* In college this often typically the case
-* Feelings of workload imbalance, lack of investment from partners, one person "having to do all the work". 
-* Instructors will say "for your own good" because the workplace is collaborative
-    - True! But often you don't deal with free loaders
-* Small group think & collaborative effort always is better than individual efforts
-* Group success is achieved with mutual respect and agreed upon common ground rules. 
-    - AKA social norms for the group
+-   In college this often typically the case
+-   Feelings of workload imbalance, lack of investment from partners, one person "having to do all the work".
+-   Instructors will say "for your own good" because the workplace is collaborative
+    -   True! But often you don't deal with free loaders
+-   Small group think & collaborative effort always is better than individual efforts
+-   Group success is achieved with mutual respect and agreed upon common ground rules.
+    -   AKA social norms for the group
 
 ## Elements of Collaborative Learning
 
-1. Clearly Perceived Positive Interdependence
-2. Interaction
-3. Individual Accountability and Personal Responsibility
-4. Small Group Skills 
-5. Group Processing
+1.  Clearly Perceived Positive Interdependence
+2.  Interaction
+3.  Individual Accountability and Personal Responsibility
+4.  Small Group Skills
+5.  Group Processing
 
+## Establishing Ground Rules
 
-## Establishing Ground Rules and a "code of conduct"
-
-* We will review each of the 5 aspects listed
-* For each one you are asked to state your personal opinion and suggestions [in this google form](https://forms.gle/5dbgp86EBXhNbFas8). 
-* Sign in required (for participation credit), but response display is anonymous. 
-* Dr. D will compile responses, share with the class, and draft a code of conduct for the class to review & revise.
-* As a class we will review responses and revise/sign the code of conduct. 
-
+-   We will review each of the 5 aspects listed
+-   For each aspect you are asked to state your personal opinion and suggestions [in this google form](https://forms.gle/5dbgp86EBXhNbFas8).
+-   Sign in required (for participation credit), but response display is anonymous.
+-   Dr. D will compile responses, share with the class, and draft a code of conduct for the class to review & revise.
+-   As a class we will review responses and revise/sign the code of conduct.
 
 ## 1. Clearly Perceived Positive Interdependence {.smaller}
-In collaborative learning the success of one person is bound up with the success of others. There are a few suggested ways to facilitate this dependency: 
 
-* **Goal sharing**: shared subject matter, assessment, joint problem solving, creating or discovering something of value
-* **Role sharing**: Each member has specific roles & responsibilities that contribute to overall task
-* **Task interdependence**: Division of labor so one member has to complete their task before next member can start
+In collaborative learning the success of one person is bound up with the success of others. There are a few suggested ways to facilitate this dependency:
 
-> Which of these methods would you like to see implemented? AND WHY? 
+-   **Goal sharing**: shared subject matter, assessment, joint problem solving, creating or discovering something of value
+-   **Role sharing**: Each member has specific roles & responsibilities that contribute to overall task
+-   **Task interdependence**: Division of labor so one member has to complete their task before next member can start
+
+::: callout-note
+### I want to know...
+
+Which of these methods would you like to see implemented? AND WHY?
+:::
 
 ## 2. Interaction
 
-There is an expectation that students will help each other so that common goals can be achieved. Help may be resources, advice, provision of feedback and challenging conclusions. 
+There is an expectation that students will help each other so that common goals can be achieved. Help may be resources, advice, provision of feedback and challenging conclusions.
 
+::: callout-note
+### I want to know...
 
-> 1. Give an example of a positive/helpful interaction that will contribute to group learning. 
-> 2. Give an example of a negative/unhelpful interaction that will hinder group learning
-> 3. What ground rules regarding person-to-person interaction that you would like the class to follow?
+1.  What is an example of a positive/helpful interaction that will contribute to group learning.
+2.  What is an example of a negative/unhelpful interaction that will hinder group learning
+3.  What ground rules regarding person-to-person interaction that you would like the class to follow?
+:::
 
 ## 3. Individual Accountability and Personal Responsibility
 
-Everyone is expected to do their fair share of work and it is important for all group members to know that they cannot 'free ride.' 
+Everyone is expected to do their fair share of work and it is important for all group members to know that they cannot 'free ride.'
 
-To ensure fairness in effort and responsibility, all graded work will be weighted according to your level of participation and engagement with the material as assessed by the instructor, and your peers. 
+To ensure fairness in effort and responsibility, all graded work will be weighted according to your level of participation and engagement with the material as assessed by the instructor, and your peers.
 
-> How would you like to ensure accountability from yourself, and your peers? 
+::: callout-note
+### I want to know...
 
+How would you like to ensure accountability from yourself, and your peers?
+:::
 
-## 4. Small Group Skills 
+## 4. Small Group Skills {.smaller}
 
 Interpersonal skills such as making decisions and solving conflicts are important. In order to achieve these goals students must:
 
-* Get to know and trust each other
-* Communicate clearly
-* Provide and accept support
-* Resolve conflict constructively
+-   Get to know and trust each other
+-   Communicate clearly
+-   Provide and accept support
+-   Resolve conflict constructively
 
-> What do we mean by each of these? What do positive interpersonal skills look like to you? Provide an example of each listed above. 
+::: callout-note
+### I want to know...
 
+What do we mean by each of these? What do positive interpersonal skills look like to you? Provide an example of each listed above.
+:::
 
-## 5. Group Processing
+## 5. Group Processing {.smaller}
 
 Group work is effective when group participants reflect on how well they function as a group. This reflection assists members to maintain good working relationships.
 
-Shared reflection can be used as a carrot - sharing positive feedback lets us know what we're doing that strengthen relationships. What should we keep doing. 
+Shared reflection can be used as a carrot 🥕 - sharing positive feedback lets us know what we're doing that strengthen relationships. What should we keep doing.
 
-And a stick - sharing critical feedback lets us know what we're doing that can harm relationships. Something we should work on changing or doing less of.   
+And a stick 🌴- sharing critical feedback lets us know what we're doing that can harm relationships. Something we should work on changing or doing less of.
 
-> How would you suggest we collect and share personal reflections on the group as a whole, and specific individuals? What tools or techniques would you suggest? 
+::: callout-note
+### I want to know...
+
+How would you suggest we collect and share personal reflections on the group as a whole, and specific individuals? What tools or techniques would you suggest?
+:::
 
 ## Other concerns
 
-You will also have the opportunity to share any additional concerns about this approach. 
-
-## Collaboration assessment
-
-* Evaluating group work
-    - [rubric 1](https://www.cmu.edu/teaching/assessment/assesslearning/groupWorkGradingMethods.html)
-    - [rubic 2](https://teaching.cornell.edu/resource/how-evaluate-group-work)
-    - [rubric 3](https://www.cmu.edu/teaching/assessment/assesslearning/groupWork.html)
-    
-    https://www.uno.edu/general-education/evaluation-rubrics/collaboration-rubric
-    https://www.readwritethink.org/sites/default/files/resources/lesson_images/lesson95/coop_rubric.pdf
-    
-    
-
+You will also have the opportunity to share any additional concerns about this approach in the google survey form.
 
 ## References & Additional reading {.smaller}
 
-* [Jigsaw teaching](https://en.wikipedia.org/wiki/Jigsaw_(teaching_technique))
-* [Learning by teaching](https://en.wikipedia.org/wiki/Learning_by_teaching)
-* [Rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
-* [I-O strategy manuscript](data/Education 2_0.pdf)
+-   [Jigsaw teaching](https://en.wikipedia.org/wiki/Jigsaw_(teaching_technique))
+-   [Learning by teaching](https://en.wikipedia.org/wiki/Learning_by_teaching)
+-   [Rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging)
+-   [I-O strategy manuscript](data/Education%202_0.pdf)
 
-    
+## How to get started
+
+1. While this is fresh in your mind, head over to the [Google form](https://forms.gle/TBRthT2XXF7obqH29) and start adding your thoughts
+2. Then review the current status of the project by reviewing the 
+    - Docs in [google drive](https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA): Development notes & my attempt at a time and effort tracker to track participation and involvement in this class-wide effort. (improvements welcome)
+    - the milestone modules in Canvas
+     
+

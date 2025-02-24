@@ -1,0 +1,309 @@
+---
+title: "Stratified Sampling"
+description: "A method to use additional information about the population in the survey design"
+author: DRAFT - Sp '25 458 class
+date: 3/5/25
+execute: 
+  error: true
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse);library(knitr)
+library(sampling); library(survey)
+# Load data
+agpop <- read_csv(here::here("data", "agpop.csv"))
+agstrat <- read_csv(here::here("data", "agstrat.csv"))
+```
+
+# What is Stratified Sampling
+
+## Overview
+
+### Why Use A Stratified Sample?
+
+
+::: {.callout-tip icon="true"}
+### Motivating Example - Estimating the average number of farm acres.
+
+:::
+
+
+::: {.callout-tip icon="true"}
+### Exploring the distribution of farm acreage in 1992 by region.
+
+
+:::
+
+::: {.callout-warning icon="false"}
+### You try it.
+
+Explore the distribution of farm acreage in 1987 by region. Create a table of summary statistics and a boxplot. Discuss your findings.
+:::
+
+::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
+### Solution
+
+:::
+
+## Gain from stratification
+
+::: callout-important
+### Definition: Relative gain from stratification
+
+:::
+
+### Clean up
+
+```{r}
+rm()
+```
+
+
+# Theory of Stratified Sampling (Lohr 3.2)
+
+## Notation and Formulas used in Stratified Random Sampling
+
+
+## Confidence Interval for Stratified Random Sample
+
+::: {.callout-tip icon="true"}
+### Example: Estimate the total number of farm acres in 1992 (Table 3.2)
+
+
+:::
+
+
+::: {.callout-warning icon="false"}
+### You try it
+
+Siniff and Skoog (1964) ...
+:::
+
+::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
+### Solution
+:::
+
+
+
+
+::: {.callout-warning icon="false"}
+### You try it
+
+The ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas.
+
+Use the summary table below to estimate the the percentage and number of respondents that are female in those seven disciplines.
+
+:::
+
+::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
+### Solution
+
+:::
+
+::: {.callout-note icon="false" collapse="true" appearance="minimal"}
+### Clean up
+
+:::
+
+# Sampling Weights
+
+## How are weights calculated?
+
+## How are weights used?
+
+::: {.callout-tip icon="true"}
+### Example: Re-Estimate the total number of farm acres in 1992 using sample weights
+
+:::
+
+::: {.callout-warning icon="true"}
+### You try it Caribou weights
+
+:::
+
+::: {.callout-note icon="false" collapse="true" appearance="minimal"}
+### Clean up
+
+
+:::
+
+------------------------------------------------------------------------
+
+# Allocation Methods
+
+:::{.callout-important}
+### Method 1: Proportional Allocation
+
+:::
+
+
+
+:::{.callout-important}
+### Method 2: Optimal Allocation
+
+:::
+
+  
+:::{.callout-important}
+### Method 3: Allocation for Specified Precision within Strata
+
+:::
+
+
+## Which allocation to use?
+
+
+# Selecting Strata
+
+
+### Defining Strata
+
+
+### How Many Strata?
+
+
+:::{.callout-tip icon=true}
+### Example: Estimating homeless population from NYC
+
+:::
+
+
+
+
+------------------------------------------------------------------------
+
+# Summary
+
+    
+------------------------------------------------------------------------
+
+# Using R
+
+## Selecting a Stratified Random Sample
+
+### Using the `strata` function from the `sampling` package
+
+1.  Sort the data by the stratification variable
+
+```{r}
+agpop.sorted <- agpop %>% arrange(region)
+```
+
+2.  Specify the desired within-strata sample sizes $n_{k}$.
+
+```{r}
+n.k <- c(103, 21, 135, 41)
+```
+
+3.  Create the sampling index of records to select using the `strata` function with arguments specifying the strata names, strata size, and sampling method within strata.
+
+```{r}
+strat.idx <- sampling::strata(data = agpop.sorted, stratanames = "region", 
+                    size = n.k, method = "srswor")
+```
+
+:warning: Package conflicts can occur with the `strata` function. If it is not working for you, use the `sampling::strata` method of calling the function to ensure you are using the correct version of the `strata` function from the `sampling` package.
+
+4.  Extract the data records that correspond to the sampling index.
+
+```{r}
+ag.str <- getdata(agpop.sorted, strat.idx)
+head(ag.str)
+```
+
+5.  Calculate the sampling weights using the inclusion probabilities (these were created as the variable `Prob` when you used the `strata` function)
+
+```{r}
+ag.str$wt <- 1/ag.str$Prob
+head(ag.str)
+```
+
+5b. Check that the sampling weights sum to the stratum population sizes.
+
+```{r}
+ag.str %>% group_by(region) %>% summarize(sum.wts = sum(wt))
+table(agpop.sorted$region)
+```
+
+::: callout-important
+### Warning
+
+If the weights do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes.
+:::
+
+
+------------------------------------------------------------------------
+
+## Computing Statistics from a Stratified Random Sample
+
+### 1. Setup the information for the survey design.
+
+#### a. Specify weights
+
+We created the weights in the dataset in the the last step.
+
+#### b. Specify fpc
+
+We need to create a vector of fpc's that are equal to the strata population size. In a SRS, we used `fpc = rep(N,n)`. This create a vector that contains the value `N`, repeated `n` times. In this case, we need to match the strata population size to each record from that strata.
+
+Option 1: Create a vector that repeats the values in the vector `N.k`, each `n.k` times.
+
+```{r, eval=FALSE}
+option1.fpc <- rep(N.k, n.k)
+```
+
+::: {.callout-tip icon="false" collapse="true" appearance="minimal"}
+**Example on how to use the `rep` function**
+
+```{r}
+ex.N.k <- c(10,25,50) # example population sizes
+ex.n.k <- c(2,5,10)   # example strata sizes
+rep(ex.N.k, ex.n.k)   
+```
+
+The pop size for stratum 1 is repeated twice (the size of the sample from that stratum), the pop size for stratum 2 is repeated 5 times (the sample size for stat stratum) etc.
+:::
+
+Option 2: Merge the pop sizes onto the sample data using `region` as a joining key
+
+```{r}
+(pop.strata.sizes <- table(agpop.sorted$region) %>% data.frame())
+pop.strata.sizes <- rename(pop.strata.sizes, region = Var1, popsize = Freq)
+ag.str.opt2 <- ag.str %>% left_join(pop.strata.sizes)
+```
+
+### 2. Call `svydesign`
+
+```{r}
+agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt, 
+                            fpc = ~popsize, 
+                            # fpc = option1.fpc # This would be Option 1
+                            data= ag.str.opt2)
+```
+
+### 3. Calculate total, SE and CI
+
+Note the degrees of freedom for a CI under a stratified sample is $n-H$, which can be extracted from the `svydesign` object using the `degf` function.
+
+```{r}
+(str.total <- svytotal(~acres92, agpop.str.dsgn))
+confint(str.total, level = .95, df = degf(agpop.str.dsgn))
+```
+
+::: {.callout-tip icon="true"}
+### Example: Farmland in 1992
+
+:::
+
+:::{.callout-warning icon=false}
+### Estimating vehicle information for the entire USA. 
+
+:::
+
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+
+
+:::

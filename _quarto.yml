@@ -24,7 +24,6 @@ website:
         file: notes.qmd
       - text: "Assignments"
         file: assignments.qmd
-
       - text: "Project"
         menu: 
           - text: Overview
@@ -33,16 +32,14 @@ website:
             url: https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA
       - text: "HackMD Notes"
         menu: 
-          # - text: "R resources"
-          #   url: https://hackmd.io/@norcalbiostat/sampling_r_resources
           - text: "What is HackMD"
             url: https://hackmd.io/@norcalbiostat/458_intro_hackmd
           - text: "Ch 1. Sampling Framework"
             url: https://hackmd.io/@norcalbiostat/cn01-intro_sampling
           - text: "Ch 2. Foundations of Estimation"
             url: https://hackmd.io/@norcalbiostat/cn02-statistical_foundations
-          # - text: "Stratified Sampling"
-          #   url: https://hackmd.io/@norcalbiostat/cn06_stratified
+          - text: "Ch 3. Stratified Sampling"
+            url: https://hackmd.io/@norcalbiostat/cn04_stratified
           # - text: "Cluster Sampling"
           #   url: https://hackmd.io/@norcalbiostat/cn07_cluster
           # - text: "Ratio & Regression Estimation"
@@ -50,6 +47,14 @@ website:
       
 
     right: 
+      - icon: google
+        menu: 
+          - text: Content creation group
+            url: https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY
+          - text: Sechedule
+            url: https://docs.google.com/spreadsheets/d/1f4ze0905zE4HbtEyqVrJv1ncMB4EdNZDd4QJH5wewS0
+          - text: Project folder
+            url: https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA
       - file: formulas.qmd
       - text: "Syllabus"
         file: syllabus.qmd

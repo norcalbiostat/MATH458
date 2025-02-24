@@ -10,13 +10,24 @@ This semester, you will go on a real-world project that will directly impact the
 
 This project isn't just about crunching numbers; it's about teamwork, communication, and project management. As a class you will be responsible for:
 
-* Defining Roles & Responsibilities: Assign yourselves specific roles within the project (e.g., survey design team, data analysis team, communication lead).
-* Task Management & Timelines: Establish clear timelines and track progress to ensure successful completion of each project phase.
-* Stakeholder Communication: Get stakeholder (Math Department faculty, Career center) input in the questions being asked.
-* Design & Implementing Multiple Sampling Frameworks: Implement multiple sampling methods (e.g., simple random, stratified, cluster) to select representative samples of alumni.
-* Data Collection & Analysis: Collect survey responses, clean the data, and perform appropriate statistical analyses to answer key research questions. You will also need to compare estimates obtained across the different sampling frameworks to assess their impact on the results.
-* Final Presentation: Present your findings and recommendations and insights to the Math Department or the assessment committee.
+-   Defining Roles & Responsibilities: Assign yourselves specific roles within the project (e.g., survey design team, data analysis team, communication lead).
+-   Task Management & Timelines: Establish clear timelines and track progress to ensure successful completion of each project phase.
+-   Stakeholder Communication: Get stakeholder (Math Department faculty, Career center) input in the questions being asked.
+-   Design & Implementing Multiple Sampling Frameworks: Implement multiple sampling methods (e.g., simple random, stratified, cluster) to select representative samples of alumni.
+-   Data Collection & Analysis: Collect survey responses, clean the data, and perform appropriate statistical analyses to answer key research questions. You will also need to compare estimates obtained across the different sampling frameworks to assess their impact on the results.
+-   Final Presentation: Present your findings and recommendations and insights to the Math Department or the assessment committee.
 
 This is a full class collaborative effort, requiring everyone's active participation and contribution. Every student should take lead on at least one aspect or activity. Your collective efforts will provide valuable data to inform curriculum development, program improvements, and future initiatives within the Mathematics & Statistics departments. Embrace this opportunity to make a real difference!
 
-    
+# Milestones
+
+1.  **Define Project Goals and Stakeholder Input:** Documented agreement on the survey's objectives and how the results will be used, based on input from stakeholders.
+2.  **Literature Review and Best Practices Research:** Review of existing alumni surveys and research on best practices in survey design and implementation.
+3.  **Create Sampling Frame:** A list of the target population from which the sample will be drawn.
+4.  **Develop & Test Questionnaire:** Draft questionnaire, pilot testing, and revisions based on feedback.
+5.  **Design Sampling Strategy:** Detailed plan for selecting the sample, including justification for the chosen method and sample size calculations.
+6.  **Collect Data:** Completed survey responses. Include metrics on response rate and efforts to address non-response bias.
+7.  **Data Cleaning:** Prepare the data for analysis. Screen for outliers, missing or invalid responses. Create necessary metrics. Create basic tables and summaries for each measures.
+8.  **Data Analysis:** Create analysis plan, conduct analysis and compile results, create visualizations.
+9.  **Final Presentation:** Presentation to stakeholders
+10. **Final Report:** Comprehensive written report documenting all aspects of the project.
