@@ -26,6 +26,15 @@ $$E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta
 -   $p(\hat{\theta})$ is the probability of $\hat{\theta}$ occurring.
 
 
+## Definition: Bias, Variance, Accuracy
+
+$$\mbox{Bias}(\hat{\theta}) = E(\hat{\theta}) - \theta$$
+
+$$V(\hat{\theta})  = E \Big[(\hat{\theta} - E[\hat{\theta}])^2\Big]$$
+
+$$\mbox{MSE}(\hat{\theta}) = V(\hat{\theta}) + [Bias(\hat{\theta})]^2$$
+
+
 ## Weighting estimates
 
 |         Population size         |                   Total                    |                   Mean                    |
@@ -70,7 +79,10 @@ The argument details can be found on the specified pages in the R companion for 
 * **CI for the mean or total**: Use `confint()` after calculating the point estimate
 * **CI for proportion**: `svyciprop(~x, design)` Will also print out $\hat{p}$
 
-
+::: callout-important
+### A note on missing data
+If the result of any of the above functions is `NA`, this may indicate that your variable has missing values. Add the `na.rm=TRUE` argument to the `svymean` or `svytotal` functions and that will calculate a complete-case mean/total.
+:::
 
 ----
 
