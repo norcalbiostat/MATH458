@@ -2,12 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.319">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="DRAFT">
-<meta name="dcterms.date" content="2025-02-17">
+<meta name="dcterms.date" content="2025-02-24">
 <meta name="description" content="SRS is the basic form of probability sampling, and serves as the basis for more complicated forms.">
 
 <title>Sampling Methods - Simple Random Sampling</title>
@@ -25,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,13 +97,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -106,9 +140,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
@@ -120,36 +154,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html" rel="" target="">
- <span class="menu-text">Notes</span></a>
+    <a class="nav-link" href="../notes.html"> 
+<span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html" rel="" target="">
- <span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../assignments.html"> 
+<span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../project.html" rel="" target="">
- <span class="menu-text">Project</span></a>
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">HackMD Notes</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling">
  <span class="dropdown-text">Ch 1. Sampling Framework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations">
  <span class="dropdown-text">Ch 2. Foundations of Estimation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn04_stratified" rel="" target="">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn04_stratified">
  <span class="dropdown-text">Ch 3. Stratified Sampling</span></a>
   </li>  
     </ul>
@@ -157,39 +191,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-google" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-google">    
         <li>
-    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY" rel="" target="">
+    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY">
  <span class="dropdown-text">Content creation group</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1f4ze0905zE4HbtEyqVrJv1ncMB4EdNZDd4QJH5wewS0" rel="" target="">
+    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1f4ze0905zE4HbtEyqVrJv1ncMB4EdNZDd4QJH5wewS0">
  <span class="dropdown-text">Sechedule</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA" rel="" target="">
+    <a class="dropdown-item" href="https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA">
  <span class="dropdown-text">Project folder</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../formulas.html" rel="" target="">
- <span class="menu-text">Formulas and Definitions</span></a>
+    <a class="nav-link" href="../formulas.html"> 
+<span class="menu-text">Formulas and Definitions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html" rel="" target="">
- <span class="menu-text">Syllabus</span></a>
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -218,12 +252,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#point-and-interval-estimates" id="toc-point-and-interval-estimates" class="nav-link" data-scroll-target="#point-and-interval-estimates">Point and interval estimates</a></li>
   </ul></li>
-  <li><a href="#topic-summary" id="toc-topic-summary" class="nav-link" data-scroll-target="#topic-summary">Topic Summary</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -239,17 +272,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>DRAFT </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 17, 2025</p>
+      <p class="date">February 24, 2025</p>
     </div>
   </div>
   
@@ -257,7 +284,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -265,12 +294,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>These notes use functions from the <code>sampling</code>, <code>survey</code> and <code>knitr</code> packages. See the <a href="https://sampling-458.netlify.app/notes/formulas.html">formulas</a> page for links to vignettes and handbooks. </p>
+<p>These notes use functions from the <code>sampling</code>, <code>survey</code> and <code>knitr</code> packages. See the <a href="https://sampling-458.netlify.app/notes/formulas.html">formulas</a> page for links to vignettes and handbooks. <span class="margin-aside">The best way to learn a new package is to reference the help file and vignette often for examples. The R Companion for the book (free pdf from book website) is also very helpful.</span></p>
 </div>
 </div>
-</div>
-<div class="no-row-height column-margin column-container"><span class="callout-margin-content callout-margin-content-simple">The best way to learn a new package is to reference the help file and vignette often for examples. The R Companion for the book (free pdf from book website) is also very helpful.</span></div><div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampling);<span class="fu">library</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
@@ -295,7 +321,8 @@ Definition: Simple random sample (SRSWR) with replacement:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>A SRSWR of size <span class="math inline">\(n\)</span> from a population of size <span class="math inline">\(N\)</span> can be thought of as drawing <span class="math inline">\(n\)</span> independent samples of size 1. Each unit has the same probability of selection: <span class="math inline">\(\delta_{i} = \frac{1}{N}\)</span></p>
+<p>The procedure is repeated until the sample has <span class="math inline">\(n\)</span> units, which may include duplicates.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -308,13 +335,13 @@ Definition: Simple random sample (SRS) without replacement:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>A SRS of size <span class="math inline">\(n\)</span> is selected so that every possible subset of <span class="math inline">\(n\)</span> distinct units in the population has the same probability of being selected as the sample. There are <span class="math inline">\(\binom{N}{n}\)</span> possible samples, resulting in a selection probability for an individual unit <span class="math inline">\(\delta_{i} = \frac{n}{N}\)</span>. (See Lohr 2.10 and Appendix A for derivation)</p>
 </div>
 </div>
 <section id="intentionality-in-sampling" class="level2">
 <h2 class="anchored" data-anchor-id="intentionality-in-sampling">Intentionality in sampling</h2>
-<p>Random does not mean haphazard, contrary it’s actually quite intentional. Avoid selecting a sample that you “feel” is random or representative of the population. These practices can lead to….</p>
-<p>To avoid the haphazard nature of “blindly choosing”, or worse looking at what was sampled and changing it because “it doesn’t look random enough”, we use ….</p>
+<p>Random does not mean haphazard, contrary it’s actually quite intentional. Avoid selecting a sample that you “feel” is random or representative of the population. These practices can lead to bias and lack of generalizability.</p>
+<p>To avoid the haphazard nature of “blindly choosing”, or worse looking at what was sampled and changing it because “it doesn’t look random enough”, we use techniques that leverage pseudo-random number generating algorithms.</p>
 </section>
 <section id="drawing-a-srs-using-a-computer" class="level2">
 <h2 class="anchored" data-anchor-id="drawing-a-srs-using-a-computer">Drawing a SRS using a computer</h2>
@@ -329,10 +356,10 @@ Process
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li>Generate a list of all observational units in the population (sampling frame).</li>
+<li>Assign each observational unit a unique number, from 1 to the size of the sampling frame <span class="math inline">\(N\)</span>.</li>
+<li>Use a computer to draw <span class="math inline">\(n\)</span> numbers from 1 to <span class="math inline">\(N\)</span> without replacement.</li>
+<li>Subset the data to keep only the selected rows.</li>
 </ol>
 </div>
 </div>
@@ -348,8 +375,23 @@ Example: Sampling Statistics PhD programs.
 <div class="callout-body-container callout-body">
 <p>To <em>demonstrate</em> this example, lets only grab the first 10 programs in the StatisticsPhD data set. From that we’ll draw a sample of <span class="math inline">\(n=4\)</span> programs out of these 10.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"StatisticsPhD.csv"</span>))</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(stats10 <span class="ot">&lt;-</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"StatisticsPhD.csv"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(stats10 <span class="ot">&lt;-</span> stats[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   University                      Department    FTGradEnrollment
+   &lt;chr&gt;                           &lt;chr&gt;                    &lt;dbl&gt;
+ 1 Baylor University               Statistics                  26
+ 2 Boston University               Biostatistics               39
+ 3 Brown University                Biostatistics               21
+ 4 Carnegie Mellon University      Statistics                  39
+ 5 Case Western Reserve University Statistics                  11
+ 6 Colorado State University       Statistics                  14
+ 7 Columbia University             Biostatistics               64
+ 8 Columbia University             Statistics                 196
+ 9 Cornell University              Statistics                  78
+10 Duke University                 Statistics                  31</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -357,21 +399,45 @@ Example: Sampling Statistics PhD programs.
 <h3 class="anchored" data-anchor-id="using-the-sample-function">Using the <code>sample()</code> function</h3>
 <p><strong>without replacement</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop.idx <span class="ot">&lt;-</span>   <span class="co"># Steps 1, 2</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> ) <span class="co"># Step 3 </span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>stats10[idx,]               <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop.idx <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stats10)  <span class="co"># Steps 1, 2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop.idx, <span class="dv">4</span>)) <span class="co"># Step 3 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4 5 9 8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stats10[idx,]               <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  University                      Department FTGradEnrollment
+  &lt;chr&gt;                           &lt;chr&gt;                 &lt;dbl&gt;
+1 Carnegie Mellon University      Statistics               39
+2 Case Western Reserve University Statistics               11
+3 Cornell University              Statistics               78
+4 Columbia University             Statistics              196</code></pre>
+</div>
 </div>
 <ul>
-<li>Rows …… were chosen.</li>
+<li>Rows 4, 5, 9, 8 were chosen.</li>
 </ul>
 <p><strong>with replacement</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4134</span>) <span class="co"># set seed for demonstration of duplicate records</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(idx.with.dups <span class="ot">&lt;-</span> <span class="co">#3 </span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>stats10[idx.with.dups,] <span class="co">#4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4134</span>) <span class="co"># again, for demonstration of duplicate records</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>(idx.with.dups <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop.idx, <span class="dv">4</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)) <span class="co">#3 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  8 10  4  4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>stats10[idx.with.dups,] <span class="co">#4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  University                 Department FTGradEnrollment
+  &lt;chr&gt;                      &lt;chr&gt;                 &lt;dbl&gt;
+1 Columbia University        Statistics              196
+2 Duke University            Statistics               31
+3 Carnegie Mellon University Statistics               39
+4 Carnegie Mellon University Statistics               39</code></pre>
+</div>
 </div>
 <ul>
-<li>Rows ….. were chosen.</li>
+<li>Rows 8, 10, 4, 4 were chosen.</li>
 <li>Carnegie (row 4) was sampled twice.</li>
 </ul>
 </section>
@@ -388,12 +454,36 @@ Then the <code>getdata()</code> function is used to extract the values from the 
 </ul>
 <p><strong>without replacement</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(choose.these.wor <span class="ot">&lt;-</span> ) <span class="co"># Steps 1,2,3</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(stats10, )     <span class="co"># Steps 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(choose.these.wor <span class="ot">&lt;-</span> <span class="fu">srswor</span>(<span class="dv">4</span>, <span class="dv">10</span>)) <span class="co"># Steps 1,2,3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 0 0 1 0 0 0 0 1 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(stats10, choose.these.wor)  <span class="co"># Steps 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID_unit                 University Department FTGradEnrollment
+1       1          Baylor University Statistics               26
+2       4 Carnegie Mellon University Statistics               39
+3       9         Cornell University Statistics               78
+4      10            Duke University Statistics               31</code></pre>
+</div>
 </div>
 <p><strong>with replacement</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4134</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4134</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>(choose.these.wr <span class="ot">&lt;-</span> <span class="fu">srswr</span>(<span class="dv">4</span>,<span class="dv">10</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0 1 0 1 0 0 0 2 0 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getdata</span>(stats10, choose.these.wr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  University                 Department    FTGradEnrollment
+  &lt;chr&gt;                      &lt;chr&gt;                    &lt;dbl&gt;
+1 Boston University          Biostatistics               39
+2 Carnegie Mellon University Statistics                  39
+3 Columbia University        Statistics                 196
+4 Columbia University        Statistics                 196</code></pre>
+</div>
 </div>
 <ul>
 <li>Again, notice Columbia was chosen twice when sampling with replacement.</li>
@@ -413,12 +503,65 @@ You try it
 <p>Draw a sample of 300 farms without replacement using both <code>sample</code> and <code>srswor</code>. Save one of these data frames with the name <code>ag.srs</code> for later use.</p>
 </div>
 </div>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Import the data and define our sample and population sizes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ag <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agpop.csv"</span>)) </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">NROW</span>(ag)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">300</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Using the <code>sample()</code> function</strong></p>
+<p><span class="margin-aside">Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.</span> Generate list of numbers for each observational unit, then draw 5 numbers without replacement.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sampling.frame <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>N <span class="co">#1, 2</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sample.idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(sampling.frame, n, <span class="at">replace=</span><span class="cn">FALSE</span>) <span class="co">#3</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample.idx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1788   38  450 1019 2976 1031</code></pre>
+</div>
+</div>
+<p>Create a subset data frame with only the rows that were chosen and stored in the vector <code>get.these</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sample.ag <span class="ot">&lt;-</span> ag[sample.idx, ]  <span class="co">#4</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample.ag[,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="co"># only showing first 5 columns as an example</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  county         state acres92 acres87 acres82
+  &lt;chr&gt;          &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 BUFFALO COUNTY NE     587595  581861  567657
+2 HALE COUNTY    AL     167583  154581  179618
+3 LIBERTY COUNTY GA      15583   18248   19965
+4 HICKMAN COUNTY KY      99066   95560  105051
+5 PIERCE COUNTY  WI     272876  269644  298538
+6 LEE COUNTY     KY      20803   23097   22866</code></pre>
+</div>
+</div>
+<p><strong>Using the <code>srswor()</code> function</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1067</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>srswor.idx <span class="ot">&lt;-</span> <span class="fu">srswor</span>(n, N)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ag.srs <span class="ot">&lt;-</span> <span class="fu">getdata</span>(ag, srswor.idx) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
-<section id="formulas-for-estimation" class="level1 page-columns page-full">
+<section id="formulas-for-estimation" class="level1">
 <h1>Formulas for Estimation</h1>
 <p>Below is a table of common statistics and how they are estimated under the SRS framework. This table can also be found on the <a href="https://sampling-458.netlify.app/notes/formulas.html">formulas</a> page.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 34%">
@@ -463,12 +606,13 @@ Finite Population Correction
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p><span class="math display">\[\Big(1-\frac{n}{N}\Big)\]</span></p>
 <p>The larger % of the population that you include in your sample (sampling fraction = <span class="math inline">\(\frac{n}{N}\)</span>), the closer you are to a census, the smaller the variability your estimate will have.</p>
 </div>
 </div>
 <ul>
-<li>Most samples that are taken from a very large population, the fpc is close to ____.</li>
-<li>So the variance is more determined by ___________, not the % of the ___________.</li>
+<li>Most samples that are taken from a very large population, the fpc is close to 1.</li>
+<li>So the variance is more determined by the size of the sample, not the % of the population sampled.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -480,10 +624,18 @@ Example
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Using the formulas provided, calculate the estimated standard deviation of the sample mean <span class="math inline">\(\sqrt{\hat{V}(\bar{y})}\)</span> of the the number of acres devoted to farms in 1992 (variable <code>acres92</code>). Interpret this number in an english sentence.</p>
+<p>Calculate the estimated standard deviation of the sample mean <span class="math inline">\(\sqrt{\hat{V}(\bar{y})}\)</span> of the the number of acres devoted to farms in 1992 (variable <code>acres92</code>). Interpret this number.</p>
 </div>
 </div>
-<div class="page-columns page-full"><p> Sample means generated from samples of size ________ will vary from sample to sample by _______________ acres.</p><div class="no-row-height column-margin column-container"><span class="">Inline R code: <code>prettyNum(sd.ybar, big.mark=',')</code></span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>y.bar <span class="ot">&lt;-</span> <span class="fu">mean</span>(ag.srs<span class="sc">$</span>acres92)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">sum</span>((ag.srs<span class="sc">$</span>acres92<span class="sc">-</span>y.bar)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n<span class="dv">-1</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>(sd.ybar <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">-</span>n<span class="sc">/</span>N)<span class="sc">*</span>(s2<span class="sc">/</span>n)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24924.16</code></pre>
+</div>
+</div>
+<p><span class="margin-aside">Inline R code: <code>prettyNum(sd.ybar, big.mark=',')</code></span> Sample means generated from samples of size 300 will vary from sample to sample by 24,924.16 acres.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -504,8 +656,35 @@ You try it
 </ul>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>srswor.idx2 <span class="ot">&lt;-</span> <span class="fu">srswor</span>(n2, <span class="fu">NROW</span>(ag))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>sample.ag<span class="fl">.500</span> <span class="ot">&lt;-</span> <span class="fu">getdata</span>(ag, srswor.idx2)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>p.hat <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample.ag<span class="fl">.500</span><span class="sc">$</span>acres92<span class="sc">&lt;</span><span class="dv">200000</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>(s.phat <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">-</span>n2<span class="sc">/</span>N)<span class="sc">*</span>(p.hat <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>p.hat))<span class="sc">/</span>(n2<span class="dv">-1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02046818</code></pre>
+</div>
+</div>
+<p>The estimated proportion of number of farms with less than 200k acres varies by 2.04% from sample to sample.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -514,19 +693,26 @@ Clean up
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>As we go through these notes, we create a lot of the same named objects, like <code>n</code> and <code>N</code>, or <code>idx</code> and <code>idx2</code>. Every once in a while its a good idea to clean out your global environment to not get confused. Use the <code>rm()</code> function to remove everything except the population <code>ag</code>, our sample of 300 <code>ag.srs</code>, and their respective sample sizes: <code>n</code> and <code>N</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()[<span class="sc">!</span><span class="fu">ls</span>() <span class="sc">%in%</span> <span class="fu">c</span>()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()[<span class="sc">!</span><span class="fu">ls</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ag"</span>, <span class="st">"ag.srs"</span>, <span class="st">"n"</span>, <span class="st">"N"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "choose.these.wor" "choose.these.wr"  "idx"              "idx.with.dups"   
+ [5] "n2"               "p.hat"            "pop.idx"          "s.phat"          
+ [9] "s2"               "sample.ag"        "sample.ag.500"    "sample.idx"      
+[13] "sampling.frame"   "sd.ybar"          "srswor.idx"       "srswor.idx2"     
+[17] "stats"            "stats10"          "y.bar"           </code></pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="sampling-weights-lohr-ch-2.4" class="level1 page-columns page-full">
+<section id="sampling-weights-lohr-ch-2.4" class="level1">
 <h1>Sampling Weights (Lohr Ch 2.4)</h1>
-<p>Recall that a goal of sampling is to obtain a representative sample, one that is similar to the true unknown population. Thus, conceptually if we duplicate certain units from our sample a certain amount of times, we could “reconstruct” what the population looks like. That is, we could create ……. copies of unit ……. for each unit in the sample.</p>
+<p>Recall that a goal of sampling is to obtain a representative sample, one that is similar to the true unknown population. Thus, conceptually if we duplicate certain units from our sample a certain amount of times, we could “reconstruct” what the population looks like. That is, we could create <span class="math inline">\(w_{i}\)</span> copies of unit <span class="math inline">\(i\)</span> for each unit in the sample.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -537,12 +723,14 @@ Definition: Sampling Weight (Design weight)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Inverse of the inclusion/selection probability for unit <span class="math inline">\(i\)</span>.</p>
+<p><span class="math display">\[w_{i} = \frac{1}{\delta_i}\]</span></p>
+<p>Also interpreted as the number of population units represented by unit <span class="math inline">\(i\)</span>.</p>
 </div>
 </div>
-<p>In an SRS, each unit has an inclusion probability of <span class="math inline">\(\delta_{i} = \frac{?}{?}\)</span>, so the sampling weights are all <span class="math inline">\(w_{i} =\frac{?}{?}\)</span>.</p>
+<p>In an SRS, each unit has an inclusion probability of <span class="math inline">\(\delta_{i} = \frac{n}{N}\)</span>, so the sampling weights are all <span class="math inline">\(w_{i} =\frac{N}{n}\)</span>.</p>
 <p>We don’t <em>actually</em> make <span class="math inline">\(w_{i}\)</span> copies of record <span class="math inline">\(i\)</span>, but use these weights as a multiplier in our estimation calculations.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 34%">
 <col style="width: 28%">
@@ -577,27 +765,61 @@ Example: Calculating weighted estimates
 <p>Estimate the total and average number of acres devoted to farms in 1992 using both weighted and unweighted estimates. Then compare these values to the parameter.</p>
 </div>
 </div>
-<div class="page-columns page-full"><p>The sampling weights are <span class="math inline">\(w_{i} = \frac{?}{?}\)</span> for each unit <span class="math inline">\(i\)</span> in the sample, so we’ll add that on as a new column before calculating the weighted estimates. </p><div class="no-row-height column-margin column-container"><span class="">See Lohr Table 2.1 for a nicer visual of the data frame with weights.</span></div></div>
+<p>The sampling weights are <span class="math inline">\(w_{i} = \frac{3078}{300}\)</span> for each unit <span class="math inline">\(i\)</span> in the sample, so we’ll add that on as a new column before calculating the weighted estimates. <span class="margin-aside">See Lohr Table 2.1 for a nicer visual of the data frame with weights.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ag.srs<span class="sc">$</span>wt <span class="ot">&lt;-</span> N<span class="sc">/</span>n</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>(N.hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(ag.srs<span class="sc">$</span>wt)) <span class="co"># just to confirm to myself</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3078</code></pre>
+</div>
+</div>
 <p>Calculate weighted and unweighted estimates, then the pop parameters.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tau.hat.wt <span class="ot">&lt;-</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y.bar.wt   <span class="ot">&lt;-</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>tau.hat.nowt <span class="ot">&lt;-</span> </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>y.bar.nowt   <span class="ot">&lt;-</span> </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>mu  <span class="ot">&lt;-</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>tau.hat.wt <span class="ot">&lt;-</span> <span class="fu">sum</span>(ag.srs<span class="sc">$</span>acres92<span class="sc">*</span>ag.srs<span class="sc">$</span>wt)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>y.bar.wt   <span class="ot">&lt;-</span> tau.hat.wt<span class="sc">/</span>N.hat</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>tau.hat.nowt <span class="ot">&lt;-</span> <span class="fu">sum</span>(ag.srs<span class="sc">$</span>acres92)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>y.bar.nowt   <span class="ot">&lt;-</span> <span class="fu">mean</span>(ag.srs<span class="sc">$</span>acres92)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>mu  <span class="ot">&lt;-</span> <span class="fu">mean</span>(ag<span class="sc">$</span>acres92)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> <span class="fu">sum</span>(ag<span class="sc">$</span>acres92)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Package it in a data frame for easier viewing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Total"</span>, <span class="st">"Mean"</span>), </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Parameter =</span> <span class="fu">c</span>(tau,mu),</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Unweighted =</span> <span class="fu">c</span>(tau.hat.nowt, y.bar.nowt), </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weighted =</span> <span class="fu">c</span>(tau.hat.wt, y.bar.wt)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'lccc'</span>, </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Comparing weighted and unweighted estimates"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Total"</span>, <span class="st">"Mean"</span>), </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Parameter =</span> <span class="fu">c</span>(tau,mu),</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Unweighted =</span> <span class="fu">c</span>(tau.hat.nowt, y.bar.nowt), </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weighted =</span> <span class="fu">c</span>(tau.hat.wt, y.bar.wt)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'lccc'</span>, </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Comparing weighted and unweighted estimates"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Comparing weighted and unweighted estimates</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Measure</th>
+<th style="text-align: center;">Parameter</th>
+<th style="text-align: center;">Unweighted</th>
+<th style="text-align: center;">Weighted</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: center;">943951718</td>
+<td style="text-align: center;">90345498.0</td>
+<td style="text-align: center;">926944809.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mean</td>
+<td style="text-align: center;">306677</td>
+<td style="text-align: center;">301151.7</td>
+<td style="text-align: center;">301151.7</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Note that when we have an SRS with equal sampling weights <span class="math inline">\(w_{i} = \frac{N}{n}\)</span>, the weighted mean is equal to the weighted mean.</p>
+</div>
+<p>Note that when we have an SRS with equal sampling weights <span class="math inline">\(w_{i} = \frac{N}{n}\)</span>, the weighted mean is equal to the unweighted mean.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -611,19 +833,84 @@ You try it
 <p>Calculate the proportion of farms with less than 200k acres, with, and without weights. Compare to the population proportion.</p>
 </div>
 </div>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>ag.srs<span class="sc">$</span>lt200k <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(ag.srs<span class="sc">$</span>acres92<span class="sc">&lt;</span><span class="dv">200000</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>(p.hat.nowt <span class="ot">&lt;-</span> <span class="fu">mean</span>(ag.srs<span class="sc">$</span>lt200k))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5533333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(p.hat.wt   <span class="ot">&lt;-</span> <span class="fu">sum</span>(ag.srs<span class="sc">$</span>lt200k <span class="sc">*</span> ag.srs<span class="sc">$</span>wt)<span class="sc">/</span>N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5533333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(p          <span class="ot">&lt;-</span> <span class="fu">mean</span>(ag<span class="sc">$</span>acres92<span class="sc">&lt;</span><span class="dv">200000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5175439</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="analysis-using-the-survey-package-lohr-ch-2.6" class="level1 page-columns page-full">
+<section id="analysis-using-the-survey-package-lohr-ch-2.6" class="level1">
 <h1>Analysis using the <code>survey</code> package (Lohr Ch 2.6)</h1>
-<div class="page-columns page-full"><p>Survey designs are specified using the <code>________</code> function. The main arguments to the the function are id to specify sampling units, weights to specify sampling weights, and fpc to specify finite population size corrections. These arguments should be given as formulas, referring to columns in a data frame given as the data argument. </p><div class="no-row-height column-margin column-container"><span class="">Similar to using <code>group_by</code> in dplyr, that adds a “flag” to the data set indicting that all subsequent actions are to be done to each group separately, the <code>svydesign</code> function adds information to the data set so subsequent actions know how to incorporate measures like weights and strata</span></div></div>
+<p>Survey designs are specified using the <code>svydesign</code> function. The main arguments to the the function are id to specify sampling units, weights to specify sampling weights, and fpc to specify finite population size corrections. These arguments should be given as formulas, referring to columns in a data frame given as the data argument. <span class="margin-aside">Similar to using <code>group_by</code> in dplyr, that adds a “flag” to the data set indicting that all subsequent actions are to be done to each group separately, the <code>svydesign</code> function adds information to the data set so subsequent actions know how to incorporate measures like weights and strata</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>ag.srs.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">weights =</span> <span class="sc">~</span>wt, <span class="at">fpc =</span> <span class="fu">rep</span>(N,n), <span class="at">data =</span> ag.srs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>The <code>id</code> argument specifies the clusters. We are not using any clustering, so each unit has it’s own id.</p>
 <section id="point-and-interval-estimates" class="level2">
 <h2 class="anchored" data-anchor-id="point-and-interval-estimates">Point and interval estimates</h2>
 <p>Survey design adjusted estimates can be obtained using <code>svymean</code> and <code>svytotal</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>acres92, ag.srs.dsgn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          mean    SE
+acres92 301152 24924</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svytotal</span>(<span class="sc">~</span>acres92, ag.srs.dsgn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            total       SE
+acres92 926944810 76716552</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>lt200k, ag.srs.dsgn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          mean     SE
+lt200k 0.55333 0.0273</code></pre>
+</div>
+</div>
 <p>Estimates for multiple variables can be obtained at the same time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>acres92<span class="sc">+</span>farms92, ag.srs.dsgn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             mean        SE
+acres92 301151.66 24924.156
+farms92    582.28    24.156</code></pre>
+</div>
+</div>
 <p>You can pass the results to construct confidence intervals.</p>
-<blockquote class="blockquote">
-<p>interpretation here</p>
-</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svytotal</span>(<span class="sc">~</span>acres92<span class="sc">+</span>farms92, ag.srs.dsgn) <span class="sc">|&gt;</span> <span class="fu">confint</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            2.5 %     97.5 %
+acres92 776583131 1077306488
+farms92   1646531    1937985</code></pre>
+</div>
+</div>
+<p>We can be 95% confident that the interval (1,646,531, 1,937,985) covers the true number of farms in the united states in 1992.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -637,25 +924,9 @@ You try it
 <p>Using your sample of 300 farms, estimate the total number of farms in the United States in 1987 and the average farm size in acres for the same year. Report both point and interval estimates.</p>
 </div>
 </div>
-</section>
-</section>
-<section id="topic-summary" class="level1">
-<h1>Topic Summary</h1>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Summarize your understanding
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Using the notes in this document, and Lohr Ch 2.11, summarize your understanding of this section. See Canvas for details.</p>
-</div>
-</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -700,6 +971,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -768,13 +1066,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -853,10 +1153,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -866,8 +1183,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -879,7 +1205,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -923,6 +1372,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -948,6 +1398,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1010,7 +1486,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></div>   
+    <div class="nav-footer-left">
+<p>This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1019,6 +1497,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
