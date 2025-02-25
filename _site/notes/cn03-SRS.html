@@ -402,21 +402,21 @@ Example: Sampling Statistics PhD programs.
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop.idx <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stats10)  <span class="co"># Steps 1, 2</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop.idx, <span class="dv">4</span>)) <span class="co"># Step 3 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4 5 9 8</code></pre>
+<pre><code>[1] 4 3 9 5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stats10[idx,]               <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  University                      Department FTGradEnrollment
-  &lt;chr&gt;                           &lt;chr&gt;                 &lt;dbl&gt;
-1 Carnegie Mellon University      Statistics               39
-2 Case Western Reserve University Statistics               11
-3 Cornell University              Statistics               78
-4 Columbia University             Statistics              196</code></pre>
+  University                      Department    FTGradEnrollment
+  &lt;chr&gt;                           &lt;chr&gt;                    &lt;dbl&gt;
+1 Carnegie Mellon University      Statistics                  39
+2 Brown University                Biostatistics               21
+3 Cornell University              Statistics                  78
+4 Case Western Reserve University Statistics                  11</code></pre>
 </div>
 </div>
 <ul>
-<li>Rows 4, 5, 9, 8 were chosen.</li>
+<li>Rows 4, 3, 9, 5 were chosen.</li>
 </ul>
 <p><strong>with replacement</strong></p>
 <div class="cell">
