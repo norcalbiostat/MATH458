@@ -365,21 +365,21 @@ Example: Sampling Statistics PhD programs.
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop.idx <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stats10)  <span class="co"># Steps 1, 2</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop.idx, <span class="dv">4</span>)) <span class="co"># Step 3 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 2 4 3</code></pre>
+<pre><code>[1] 8 4 6 2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stats10[idx,]               <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  University                      Department    FTGradEnrollment
-  &lt;chr&gt;                           &lt;chr&gt;                    &lt;dbl&gt;
-1 Case Western Reserve University Statistics                  11
-2 Boston University               Biostatistics               39
-3 Carnegie Mellon University      Statistics                  39
-4 Brown University                Biostatistics               21</code></pre>
+  University                 Department    FTGradEnrollment
+  &lt;chr&gt;                      &lt;chr&gt;                    &lt;dbl&gt;
+1 Columbia University        Statistics                 196
+2 Carnegie Mellon University Statistics                  39
+3 Colorado State University  Statistics                  14
+4 Boston University          Biostatistics               39</code></pre>
 </div>
 </div>
 <ul>
-<li>Rows 5, 2, 4, 3 were chosen.</li>
+<li>Rows 8, 4, 6, 2 were chosen.</li>
 </ul>
 <p><strong>with replacement</strong></p>
 <div class="cell">
@@ -885,6 +885,67 @@ You try it
 </div>
 <div class="callout-body-container callout-body">
 <p>Using your sample of 300 farms, estimate the total number of farms in the United States in 1987 and the average farm size in acres for the same year. Report both point and interval estimates.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>pt.est <span class="ot">&lt;-</span> <span class="fu">svytotal</span>(<span class="sc">~</span>farms87 <span class="sc">+</span> acres87, ag.srs.dsgn)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> pt.est <span class="sc">|&gt;</span> <span class="fu">confint</span>() <span class="sc">|&gt;</span> <span class="fu">prettyNum</span>(<span class="at">big.mark =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Basic info:</p>
+<ul>
+<li>Based on this sample of 300 farms, the total number of farms in the US in 1987 is 1,957,310, with 95% CI (1,800,099,795,734,668 )</li>
+<li>and the average acres for those farms is 947,715,205, with 95% CI (2,114,521,1,099,695,742)</li>
+</ul>
+<p>Fancy table</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Measure =</span> <span class="fu">c</span>(<span class="st">"Total number of farms"</span>, <span class="st">"Average farm size"</span>), </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Estimate =</span> <span class="fu">prettyNum</span>(<span class="fu">c</span>(pt.est[<span class="dv">1</span>], pt.est[<span class="dv">2</span>]), <span class="at">big.mark =</span> <span class="st">','</span>),</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">LCL =</span> <span class="fu">c</span>(ci[<span class="dv">1</span>], ci[<span class="dv">3</span>]), </span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">UCL =</span> <span class="fu">c</span>(ci[<span class="dv">2</span>], ci[<span class="dv">4</span>])</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'lccc'</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Point estimates and confidence intervals for the total number of farms in the US in 1987 and the average farm size in that same year."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Point estimates and confidence intervals for the total number of farms in the US in 1987 and the average farm size in that same year.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Measure</th>
+<th style="text-align: center;">Estimate</th>
+<th style="text-align: center;">LCL</th>
+<th style="text-align: center;">UCL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Total number of farms</td>
+<td style="text-align: center;">1,957,310</td>
+<td style="text-align: center;">1,800,099</td>
+<td style="text-align: center;">795,734,668</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Average farm size</td>
+<td style="text-align: center;">947,715,205</td>
+<td style="text-align: center;">2,114,521</td>
+<td style="text-align: center;">1,099,695,742</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 

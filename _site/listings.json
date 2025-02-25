@@ -1,12 +1,5 @@
 [
   {
-    "listing": "/complete.html",
-    "items": [
-      "/complete/cn02-statistical_foundations_complete.html",
-      "/complete/cn01-intro_sampling_complete.html"
-    ]
-  },
-  {
     "listing": "/assignments.html",
     "items": [
       "/assignments/hw00-setup.html",
@@ -14,6 +7,13 @@
       "/assignments/hw02-estimation.html",
       "/assignments/hw03-SRS.html",
       "/worksheets/ws01-SRS.html"
+    ]
+  },
+  {
+    "listing": "/complete.html",
+    "items": [
+      "/complete/cn02-statistical_foundations_complete.html",
+      "/complete/cn01-intro_sampling_complete.html"
     ]
   },
   {

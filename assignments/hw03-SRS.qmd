@@ -22,7 +22,7 @@ Be sure to read the codebook to make sure you understand what data was collected
 2. Choose a numeric variable. For both samples estimate the total, mean, and proportions of variables of your choice with 95% confidence intervals. Be sure to adjust for your sample weights and fpc. Use the functions from the `survey` package to do these calculations. Interpret each estimate and interval in context of the problem. 
 
 
-3. Using a summary table similar to the one from the notes, calculate and report the error of estimation for each sample. What effect did the sample size have on your estimates or the variability of the estimates? 
+3. Using a summary table similar to the one from the notes, calculate and report the bias for each sample. What effect did the sample size have on your estimates or the variability of the estimates? 
 
 
 

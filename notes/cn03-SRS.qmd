@@ -351,5 +351,27 @@ We can be 95% confident that the interval (1,646,531, 1,937,985) covers the true
 Using your sample of 300 farms, estimate the total number of farms in the United States in 1987 and the average farm size in acres for the same year. Report both point and interval estimates. 
 :::
 
+:::{.callout-warning icon=false collapse="true" appearance=minimal}
+### Solution
+```{r}
+pt.est <- svytotal(~farms87 + acres87, ag.srs.dsgn)
+ci <- pt.est |> confint() |> prettyNum(big.mark = ",")
+```
+Basic info:
+
+* Based on this sample of 300 farms, the total number of farms in the US in 1987 is `r prettyNum(pt.est[1], big.mark = ",")`, with 95% CI (`r ci[1]`,`r ci[2]` )
+* and the average acres for those farms is `r prettyNum(pt.est[2], big.mark = ",")`, with 95% CI (`r ci[3]`,`r ci[4]`)
+
+Fancy table
+```{r}
+data.frame(
+  Measure = c("Total number of farms", "Average farm size"), 
+  Estimate = prettyNum(c(pt.est[1], pt.est[2]), big.mark = ','),
+  LCL = c(ci[1], ci[3]), 
+  UCL = c(ci[2], ci[4])
+  ) |> knitr::kable(align = 'lccc', row.names = FALSE,
+             caption = "Point estimates and confidence intervals for the total number of farms in the US in 1987 and the average farm size in that same year.")
+```
+:::
 
 
