@@ -40,10 +40,11 @@ $$\mbox{MSE}(\hat{\theta}) = V(\hat{\theta}) + [Bias(\hat{\theta})]^2$$
 
 The **sampling weights** $w_ {i}$are the reciprocal of the inclusion probability $\pi_{i}$
 
-| Design     | Weights $w_{i}$ |
-|------------|:---------------:|
-| SRS        |  $\frac{N}{n}$  |
-| Stratified |                 |
+| Design              | Weights $w_{i}$ |
+|---------------------|:---------------:|
+| SRS w/replacement   |  $\frac{1}{N}$  |
+| SRS w/o replacement |  $\frac{N}{n}$  |
+| Stratified          |                 |
 
 # Simple Random Sample
 
