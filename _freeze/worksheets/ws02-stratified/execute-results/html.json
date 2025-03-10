@@ -1,0 +1,14 @@
+{
+  "hash": "e97fb6460ce6f53454ae2161e4f5542b",
+  "result": {
+    "markdown": "---\nformat: html\ntitle: \"Worksheet 02: Stratified Random Sampling\"\nsubtitle: \"\"\ndate: 03/13/25\ncategories: Worksheet\n---\n\n\nThe ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas. Summary values for the size of the membership, number of returned surveys, and the proportion of surveys returned by female members are packed into a data frame for you below. Using equations 3.7 and 3.8, estimate the total number of female members in the society. \n\n\n::: {.cell}\n\n```{.r .cell-code}\nacls <- data.frame(\n  discipline = c(\"Lit\", \"Classics\", \"Phil\", \"Hist\", \"Ling\", \"Pols\", \"Soci\"),\n  membership = c(9100,1950,5500,10850,2100,5500,9000), \n  valid.return = c(636,451,481,611,493,575,588), \n  prop.female = c(.38,.27,.18,.19,.36,.13,.26))\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

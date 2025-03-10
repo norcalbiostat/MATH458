@@ -32,7 +32,7 @@
     "href": "assignments.html",
     "title": "Assignments",
     "section": "",
-    "text": "See Canvas for due dates.\n\n\n\n\n\n\n\n\n\n\nItem\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nHomework 01: Sampling Framework\n\n\n\n\nHomework 02: Comparing sampling plans\n\n\n\n\nHomework 03: Simple Random Sampling\n\n\n\n\nWorksheet 01: Estimating Crime rates\n\n\n\n\n\n\nNo matching items"
+    "text": "See Canvas for due dates.\n\n\n\n\n\n\n\n\n\n\nItem\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nHomework 01: Sampling Framework\n\n\n\n\nHomework 02: Comparing sampling plans\n\n\n\n\nHomework 03: Simple Random Sampling\n\n\n\n\nWorksheet 01: Estimating Crime rates\n\n\n\n\nWorksheet 02: Stratified Random Sampling\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "complete/cn01-intro_sampling_complete.html",
@@ -621,5 +621,12 @@
     "title": "Worksheet 01: Estimating Crime rates",
     "section": "",
     "text": "The Chicago database of crimes known to police between 2001 and 2019 at https://data.cityofchicago.org/ contained 7,048,107 records. To reduce the size of the data for performing analyses, an SRS of 5,000 records was drawn from the database and saved in file crimes.csv.\n\nWhat is the sampling weight for each record in the sample?\nWhat is the estimated percentage of crimes in which an arrest was made? Give a 95% CI.\nEstimate the total number of burglaries known to police between 2001 and 2019 (use variable crimetype to identify the burglaries), along with a 95% CI"
+  },
+  {
+    "objectID": "worksheets/ws02-stratified.html",
+    "href": "worksheets/ws02-stratified.html",
+    "title": "Worksheet 02: Stratified Random Sampling",
+    "section": "",
+    "text": "The ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas. Summary values for the size of the membership, number of returned surveys, and the proportion of surveys returned by female members are packed into a data frame for you below. Using equations 3.7 and 3.8, estimate the total number of female members in the society.\n\nacls &lt;- data.frame(\n  discipline = c(\"Lit\", \"Classics\", \"Phil\", \"Hist\", \"Ling\", \"Pols\", \"Soci\"),\n  membership = c(9100,1950,5500,10850,2100,5500,9000), \n  valid.return = c(636,451,481,611,493,575,588), \n  prop.female = c(.38,.27,.18,.19,.36,.13,.26))"
   }
 ]

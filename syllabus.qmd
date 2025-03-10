@@ -62,7 +62,19 @@ Below is a summary of the graded items for the class and their weights towards t
 **Exams (20%)**
 
 * 2 Exams (midterm/final, not cumulative). 
-* Error Assessment available for the midterm. (Details TBD)
+* Error Assessment available for the midterm. 
+
+:::{.callout-tip}
+#### Error Assessment
+For the midterm you will have an opportunity assess your errors on the midterm, make corrections, review the corrections with me, for a partial return of the credit lost. You must do the following steps to receive this credit - 
+
+-   Download the [Error Assessment Form](notes/Analyzing%20exam%20errors.pdf)
+-   Review the six types of test taking errors.
+-   Fill out page 2 by using the commenting/editing tool in Adobe to add text.
+-   Redo the problems you got wrong on a separate form.
+-   Make an appt with me to go over your corrected answers. **You must have your error assessment form filled out before you meet with me.**
+
+:::
 
 **Homework Assignments (20%)**
 

@@ -1,0 +1,18 @@
+---
+format: html
+title: "Worksheet 02: Stratified Random Sampling"
+subtitle: ""
+date: 03/13/25
+categories: Worksheet
+---
+
+The ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas. Summary values for the size of the membership, number of returned surveys, and the proportion of surveys returned by female members are packed into a data frame for you below. Using equations 3.7 and 3.8, estimate the total number of female members in the society. 
+
+```{r}
+acls <- data.frame(
+  discipline = c("Lit", "Classics", "Phil", "Hist", "Ling", "Pols", "Soci"),
+  membership = c(9100,1950,5500,10850,2100,5500,9000), 
+  valid.return = c(636,451,481,611,493,575,588), 
+  prop.female = c(.38,.27,.18,.19,.36,.13,.26))
+```
+

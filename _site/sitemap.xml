@@ -2,90 +2,94 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw00-setup.html</loc>
-    <lastmod>2025-03-10T06:19:53.250Z</lastmod>
+    <lastmod>2025-03-10T06:54:14.166Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw01-framework.html</loc>
-    <lastmod>2025-03-10T06:19:54.284Z</lastmod>
+    <lastmod>2025-03-10T06:54:15.298Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw02-estimation.html</loc>
-    <lastmod>2025-03-10T06:19:55.381Z</lastmod>
+    <lastmod>2025-03-10T06:54:16.314Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments/hw03-SRS.html</loc>
-    <lastmod>2025-03-10T06:20:00.192Z</lastmod>
+    <lastmod>2025-03-10T06:54:17.675Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/assignments.html</loc>
-    <lastmod>2025-03-10T06:20:01.263Z</lastmod>
+    <lastmod>2025-03-10T06:54:18.762Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/complete/cn01-intro_sampling_complete.html</loc>
-    <lastmod>2025-03-10T06:20:02.887Z</lastmod>
+    <lastmod>2025-03-10T06:54:20.325Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/complete/cn02-statistical_foundations_complete.html</loc>
-    <lastmod>2025-03-10T06:20:06.371Z</lastmod>
+    <lastmod>2025-03-10T06:54:22.737Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/complete.html</loc>
-    <lastmod>2025-03-10T06:20:07.388Z</lastmod>
+    <lastmod>2025-03-10T06:54:23.591Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/formulas.html</loc>
-    <lastmod>2025-03-10T06:20:08.406Z</lastmod>
+    <lastmod>2025-03-10T06:54:24.659Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/ideas.html</loc>
-    <lastmod>2025-03-10T06:20:09.214Z</lastmod>
+    <lastmod>2025-03-10T06:54:25.526Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/index.html</loc>
-    <lastmod>2025-03-10T06:20:10.116Z</lastmod>
+    <lastmod>2025-03-10T06:54:26.502Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn00-welcome.html</loc>
-    <lastmod>2025-03-10T06:20:11.361Z</lastmod>
+    <lastmod>2025-03-10T06:54:27.448Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn00b-teaching-and-learning.html</loc>
-    <lastmod>2025-03-10T06:20:12.322Z</lastmod>
+    <lastmod>2025-03-10T06:54:28.369Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn01-intro_sampling.html</loc>
-    <lastmod>2025-03-10T06:20:14.379Z</lastmod>
+    <lastmod>2025-03-10T06:54:30.377Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn02-statistical_foundations.html</loc>
-    <lastmod>2025-03-10T06:20:17.204Z</lastmod>
+    <lastmod>2025-03-10T06:54:32.840Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn03-SRS.html</loc>
-    <lastmod>2025-03-10T06:20:23.829Z</lastmod>
+    <lastmod>2025-03-10T06:54:35.279Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/cn04-stratified_sampling.html</loc>
-    <lastmod>2025-03-10T06:20:25.844Z</lastmod>
+    <lastmod>2025-03-10T06:54:37.232Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes/supp.html</loc>
-    <lastmod>2025-03-10T06:20:26.620Z</lastmod>
+    <lastmod>2025-03-10T06:54:38.088Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/notes.html</loc>
-    <lastmod>2025-03-10T06:20:27.702Z</lastmod>
+    <lastmod>2025-03-10T06:54:39.244Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/project.html</loc>
-    <lastmod>2025-03-10T06:20:28.724Z</lastmod>
+    <lastmod>2025-03-10T06:54:40.203Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/syllabus.html</loc>
-    <lastmod>2025-03-10T06:20:39.316Z</lastmod>
+    <lastmod>2025-03-10T06:54:50.307Z</lastmod>
   </url>
   <url>
     <loc>https://sampling-458.netlify.app/worksheets/ws01-SRS.html</loc>
-    <lastmod>2025-03-10T06:20:40.269Z</lastmod>
+    <lastmod>2025-03-10T06:54:51.170Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sampling-458.netlify.app/worksheets/ws02-stratified.html</loc>
+    <lastmod>2025-03-10T06:54:52.306Z</lastmod>
   </url>
 </urlset>
