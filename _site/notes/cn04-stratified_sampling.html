@@ -202,16 +202,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-stratified-sampling" id="toc-what-is-stratified-sampling" class="nav-link active" data-scroll-target="#what-is-stratified-sampling">What is Stratified Sampling</a>
-  <ul class="collapse">
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
+  <li><a href="#what-is-stratified-sampling-lohr-3.1" id="toc-what-is-stratified-sampling-lohr-3.1" class="nav-link active" data-scroll-target="#what-is-stratified-sampling-lohr-3.1">What is Stratified Sampling (Lohr 3.1)</a>
   <ul class="collapse">
   <li><a href="#why-use-a-stratified-sample" id="toc-why-use-a-stratified-sample" class="nav-link" data-scroll-target="#why-use-a-stratified-sample">Why Use A Stratified Sample?</a></li>
-  </ul></li>
-  <li><a href="#gain-from-stratification" id="toc-gain-from-stratification" class="nav-link" data-scroll-target="#gain-from-stratification">Gain from stratification</a>
-  <ul class="collapse">
-  <li><a href="#clean-up" id="toc-clean-up" class="nav-link" data-scroll-target="#clean-up">Clean up</a></li>
-  </ul></li>
+  <li><a href="#gain-from-stratification" id="toc-gain-from-stratification" class="nav-link" data-scroll-target="#gain-from-stratification">Gain from stratification</a></li>
   </ul></li>
   <li><a href="#theory-of-stratified-sampling-lohr-3.2" id="toc-theory-of-stratified-sampling-lohr-3.2" class="nav-link" data-scroll-target="#theory-of-stratified-sampling-lohr-3.2">Theory of Stratified Sampling (Lohr 3.2)</a>
   <ul class="collapse">
@@ -293,12 +287,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>agpop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agpop.csv"</span>))</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>agstrat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"agstrat.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="what-is-stratified-sampling" class="level1">
-<h1>What is Stratified Sampling</h1>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<section id="why-use-a-stratified-sample" class="level3">
-<h3 class="anchored" data-anchor-id="why-use-a-stratified-sample">Why Use A Stratified Sample?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.scribbr.com/wp-content/uploads/2020/09/stratified-sample-7-2048x863.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Source: https://www.scribbr.com/methodology/stratified-sampling/</figcaption><p></p>
+</figure>
+</div>
+<section id="what-is-stratified-sampling-lohr-3.1" class="level1">
+<h1>What is Stratified Sampling (Lohr 3.1)</h1>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Terms
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Stratified sampling</strong> is the method by which a population is broken into <span class="math inline">\(H\)</span> subgroups(strata). Independent SRS’s are taken on each subgroup. Our samples are then polled to generate overall population estimates.</p>
+<p><strong>Strata</strong> are subgroups of a population that do not intersect and add up to the whole population.</p>
+</div>
+</div>
+<section id="why-use-a-stratified-sample" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-a-stratified-sample">Why Use A Stratified Sample?</h2>
+<ol type="1">
+<li><strong>You can protect against the possibility of a really bad sample with overrepresentation of a subpopulation.</strong> Stratified Sampling guarantees set proportions of subpopulations in your sample. Example: You can ensure 50% male and 50% female in a sample.</li>
+<li><strong>Stratified sampling means you can know the precision of the data collected for subgroups of the population.</strong> Example: comparing experiences of male and female graduates when males vastly outnumber female graduates.</li>
+<li><strong>Stratified sampling can be less costly or more convenient.</strong> You can use different sampling frames, designs, or field procedures for different strata. Example: You could use mail, email, telephone, or internet surveys based on what works best for each subpopulation</li>
+<li><strong>This method has lower variance estimates for population means and totals making it more precise than an SRS.</strong> This is demonstrated using a motivating example next.</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -309,22 +327,94 @@ Motivating Example - Estimating the average number of farm acres.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<blockquote class="blockquote">
+<p>This needs to be written up. Why are we looking at farm acreage by region?</p>
+</blockquote>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutate data to create names for levels and labels in boxplot</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>agstrat.plot <span class="ot">&lt;-</span> agstrat <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">region_factor =</span> <span class="fu">factor</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      region,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"NE"</span>, <span class="st">"S"</span>, <span class="st">"NC"</span>, <span class="st">"W"</span>),  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Northeast"</span>, <span class="st">"South"</span>, <span class="st">"North Central"</span>, <span class="st">"West"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">acres_million =</span> acres92<span class="sc">/</span><span class="fl">1e6</span> <span class="co"># convert acres to millions</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(agstrat.plot, <span class="fu">aes</span>(<span class="at">x =</span> region_factor, <span class="at">y =</span> acres_million)) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_boxplot</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="dv">1</span>, <span class="at">outlier.size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">2.5</span>)) <span class="sc">+</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Region"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Millions of Acres"</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="cn04-stratified_sampling_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption class="figure-caption">Figure 3.1: Distribution of farm acreage in 1992 by region</figcaption><p></p>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Exploring the distribution of farm acreage in 1992 by region.
 </div>
 </div>
-<div class="callout-body-container callout-body">
-
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>agstrat <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sample.average =</span> <span class="fu">mean</span>(acres92), </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sample.variance =</span> <span class="fu">var</span>(acres92)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">region</th>
+<th style="text-align: right;">sample.average</th>
+<th style="text-align: right;">sample.variance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">NC</td>
+<td style="text-align: right;">300504.16</td>
+<td style="text-align: right;">29618183543</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NE</td>
+<td style="text-align: right;">97629.81</td>
+<td style="text-align: right;">7647472708</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S</td>
+<td style="text-align: right;">211315.04</td>
+<td style="text-align: right;">53587487856</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">W</td>
+<td style="text-align: right;">662295.51</td>
+<td style="text-align: right;">396185950266</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Need discussion/interpretation here</p>
+</blockquote>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -354,7 +444,39 @@ Solution
 </div>
 </div>
 </div>
-</section>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Using the four census regions of the United States
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The data contained in <code>agstrat.csv</code> comes from a is stratified sample across four regions of the United States: Northeast, North Central, South, and West.</p>
+<p>Using this stratified sample, estimate the total number of acres of farmland in the United States in 1992 by calculating the within strata totals, and then combining across strata.</p>
+</div>
+</div>
+<p>Since we took an SRS in each stratum, we estimate the population total within each stratum using</p>
+<p><span class="math inline">\(\hat{t} = N\bar{y}\)</span> and <span class="math inline">\(\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})\)</span> within each strata.</p>
+<p>For example to estimate the total number of acres devoted to farms in the Northeast,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">220</span><span class="sc">*</span><span class="fl">97629.81</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21478558</code></pre>
+</div>
+</div>
+<p>with estimated variance</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">220</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1-21</span><span class="sc">/</span><span class="dv">220</span>)<span class="sc">*</span>(<span class="dv">7647472708</span>)<span class="sc">/</span><span class="dv">21</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.594316e+13</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>need summary/conclusion of motivating example. Tie it into the next setion</p>
+</blockquote>
 </section>
 <section id="gain-from-stratification" class="level2">
 <h2 class="anchored" data-anchor-id="gain-from-stratification">Gain from stratification</h2>
@@ -371,12 +493,6 @@ Definition: Relative gain from stratification
 
 </div>
 </div>
-<section id="clean-up" class="level3">
-<h3 class="anchored" data-anchor-id="clean-up">Clean up</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 </section>
 </section>
 <section id="theory-of-stratified-sampling-lohr-3.2" class="level1">
@@ -396,35 +512,93 @@ Example: Estimate the total number of farm acres in 1992 (Table 3.2)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<blockquote class="blockquote">
+<p>demonstrate using equations to recreate table 3.2. here is starter code</p>
+</blockquote>
 </div>
 </div>
+<ol type="1">
+<li>Calculate summary statistics for each region.</li>
+</ol>
+<pre><code>strata.summary.stats &lt;- agstrat %&gt;% 
+   group_by(region) %&gt;% 
+   summarize(y.bar.h = mean(acres92),
+             s2.h    = var(acres92),
+             n.h     = n()) </code></pre>
+<ol start="2" type="1">
+<li>Calculate Population region sizes, add this vector to the data frame created above.</li>
+<li>Calculate the within strata sample total</li>
+<li>Calculate the within-strata variance of this total</li>
+<li>Calculate the overall total and variance by summing these values across the strata.</li>
+</ol>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-You try it
+You try it Estimate the total number of caribou…
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Siniff and Skoog (1964) …</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stratum</th>
+<th style="text-align: right;">N.h</th>
+<th style="text-align: right;">n.h</th>
+<th style="text-align: right;">y.bar.h</th>
+<th style="text-align: right;">s2.h</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">24.1</td>
+<td style="text-align: right;">5575</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">25.6</td>
+<td style="text-align: right;">4064</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">267.6</td>
+<td style="text-align: right;">347556</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">179.0</td>
+<td style="text-align: right;">22798</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">E</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">293.7</td>
+<td style="text-align: right;">123578</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">33.2</td>
+<td style="text-align: right;">9795</td>
+</tr>
+</tbody>
+</table>
 </div>
-</div>
-<div class="callout callout-style-simple callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-
 </div>
 </div>
 </div>
@@ -610,85 +784,85 @@ Example: Estimating homeless population from NYC
 <li>Sort the data by the stratification variable</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>agpop.sorted <span class="ot">&lt;-</span> agpop <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>agpop.sorted <span class="ot">&lt;-</span> agpop <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li>Specify the desired within-strata sample sizes <span class="math inline">\(n_{k}\)</span>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">103</span>, <span class="dv">21</span>, <span class="dv">135</span>, <span class="dv">41</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>n.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">103</span>, <span class="dv">21</span>, <span class="dv">135</span>, <span class="dv">41</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
 <li>Create the sampling index of records to select using the <code>strata</code> function with arguments specifying the strata names, strata size, and sampling method within strata.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>strat.idx <span class="ot">&lt;-</span> sampling<span class="sc">::</span><span class="fu">strata</span>(<span class="at">data =</span> agpop.sorted, <span class="at">stratanames =</span> <span class="st">"region"</span>, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> n.k, <span class="at">method =</span> <span class="st">"srswor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>strat.idx <span class="ot">&lt;-</span> sampling<span class="sc">::</span><span class="fu">strata</span>(<span class="at">data =</span> agpop.sorted, <span class="at">stratanames =</span> <span class="st">"region"</span>, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> n.k, <span class="at">method =</span> <span class="st">"srswor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="emoji" data-emoji="warning">⚠️</span> Package conflicts can occur with the <code>strata</code> function. If it is not working for you, use the <code>sampling::strata</code> method of calling the function to ensure you are using the correct version of the <code>strata</code> function from the <code>sampling</code> package.</p>
 <ol start="4" type="1">
 <li>Extract the data records that correspond to the sampling index.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="ot">&lt;-</span> <span class="fu">getdata</span>(agpop.sorted, strat.idx)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="ot">&lt;-</span> <span class="fu">getdata</span>(agpop.sorted, strat.idx)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>               county state acres92 acres87 acres82 farms92 farms87 farms82
-5      AUDUBON COUNTY    IA  268506  268437  283782     740     851     905
-12      BUTLER COUNTY    IA  315448  328114  336000    1146    1294    1467
-17 CERRO GORDO COUNTY    IA  308497  317974  327445     821     929    1045
-30   DICKINSON COUNTY    IA  202249  211002  227557     554     593     652
-31     DUBUQUE COUNTY    IA  343870  334112  338912    1653    1689    1708
-48        IOWA COUNTY    IA  321285  329705  361465     977    1057    1150
+<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
+4  APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
+8      BOONE COUNTY    IA  330080  336666  333139     923    1029    1153
+43  HARRISON COUNTY    IA  399155  387190  408601     919    1024    1192
+54    KEOKUK COUNTY    IA  322401  343164  350693     952    1036    1193
+75  PLYMOUTH COUNTY    IA  518247  521469  518018    1615    1740    1874
+80  RINGGOLD COUNTY    IA  293266  285258  313971     676     701     776
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-5        45       30       25       60       79       39     NC       5
-12       32       23       21      116      129      139     NC      12
-17       53       44       50       54       61       80     NC      17
-30       30       34       31       38       47       43     NC      30
-31       13       10        8      107      128       88     NC      31
-48       43       32       36       58       64       62     NC      48
+4        28       33       23       25       39       36     NC       4
+8        69       49       35       80       71       87     NC       8
+43       88       62       51       60       60       66     NC      43
+54       55       52       35       47       80       73     NC      54
+75       72       50       34      151      133      127     NC      75
+80       67       56       43       17       34       33     NC      80
          Prob Stratum
-5  0.09772296       1
-12 0.09772296       1
-17 0.09772296       1
-30 0.09772296       1
-31 0.09772296       1
-48 0.09772296       1</code></pre>
+4  0.09772296       1
+8  0.09772296       1
+43 0.09772296       1
+54 0.09772296       1
+75 0.09772296       1
+80 0.09772296       1</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
 <li>Calculate the sampling weights using the inclusion probabilities (these were created as the variable <code>Prob</code> when you used the <code>strata</code> function)</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ag.str<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>ag.str<span class="sc">$</span>Prob</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ag.str<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>ag.str<span class="sc">$</span>Prob</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>               county state acres92 acres87 acres82 farms92 farms87 farms82
-5      AUDUBON COUNTY    IA  268506  268437  283782     740     851     905
-12      BUTLER COUNTY    IA  315448  328114  336000    1146    1294    1467
-17 CERRO GORDO COUNTY    IA  308497  317974  327445     821     929    1045
-30   DICKINSON COUNTY    IA  202249  211002  227557     554     593     652
-31     DUBUQUE COUNTY    IA  343870  334112  338912    1653    1689    1708
-48        IOWA COUNTY    IA  321285  329705  361465     977    1057    1150
+<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
+4  APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
+8      BOONE COUNTY    IA  330080  336666  333139     923    1029    1153
+43  HARRISON COUNTY    IA  399155  387190  408601     919    1024    1192
+54    KEOKUK COUNTY    IA  322401  343164  350693     952    1036    1193
+75  PLYMOUTH COUNTY    IA  518247  521469  518018    1615    1740    1874
+80  RINGGOLD COUNTY    IA  293266  285258  313971     676     701     776
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-5        45       30       25       60       79       39     NC       5
-12       32       23       21      116      129      139     NC      12
-17       53       44       50       54       61       80     NC      17
-30       30       34       31       38       47       43     NC      30
-31       13       10        8      107      128       88     NC      31
-48       43       32       36       58       64       62     NC      48
+4        28       33       23       25       39       36     NC       4
+8        69       49       35       80       71       87     NC       8
+43       88       62       51       60       60       66     NC      43
+54       55       52       35       47       80       73     NC      54
+75       72       50       34      151      133      127     NC      75
+80       67       56       43       17       34       33     NC      80
          Prob Stratum       wt
-5  0.09772296       1 10.23301
-12 0.09772296       1 10.23301
-17 0.09772296       1 10.23301
-30 0.09772296       1 10.23301
-31 0.09772296       1 10.23301
-48 0.09772296       1 10.23301</code></pre>
+4  0.09772296       1 10.23301
+8  0.09772296       1 10.23301
+43 0.09772296       1 10.23301
+54 0.09772296       1 10.23301
+75 0.09772296       1 10.23301
+80 0.09772296       1 10.23301</code></pre>
 </div>
 </div>
 <p>5b. Check that the sampling weights sum to the stratum population sizes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">sum.wts =</span> <span class="fu">sum</span>(wt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">sum.wts =</span> <span class="fu">sum</span>(wt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
   region sum.wts
@@ -698,7 +872,7 @@ Example: Estimating homeless population from NYC
 3 S         1382
 4 W          422</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(agpop.sorted<span class="sc">$</span>region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(agpop.sorted<span class="sc">$</span>region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   NC   NE    S    W 
@@ -734,7 +908,7 @@ Warning
 <p>We need to create a vector of fpc’s that are equal to the strata population size. In a SRS, we used <code>fpc = rep(N,n)</code>. This create a vector that contains the value <code>N</code>, repeated <code>n</code> times. In this case, we need to match the strata population size to each record from that strata.</p>
 <p>Option 1: Create a vector that repeats the values in the vector <code>N.k</code>, each <code>n.k</code> times.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>option1.fpc <span class="ot">&lt;-</span> <span class="fu">rep</span>(N.k, n.k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>option1.fpc <span class="ot">&lt;-</span> <span class="fu">rep</span>(N.k, n.k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon">
 <div class="callout-body d-flex">
@@ -744,9 +918,9 @@ Warning
 <div class="callout-body-container">
 <p><strong>Example on how to use the <code>rep</code> function</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ex.N.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>) <span class="co"># example population sizes</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ex.n.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>)   <span class="co"># example strata sizes</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(ex.N.k, ex.n.k)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ex.N.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>) <span class="co"># example population sizes</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>ex.n.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>)   <span class="co"># example strata sizes</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(ex.N.k, ex.n.k)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 10 10 25 25 25 25 25 50 50 50 50 50 50 50 50 50 50</code></pre>
 </div>
@@ -757,7 +931,7 @@ Warning
 </div>
 <p>Option 2: Merge the pop sizes onto the sample data using <code>region</code> as a joining key</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(pop.strata.sizes <span class="ot">&lt;-</span> <span class="fu">table</span>(agpop.sorted<span class="sc">$</span>region) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(pop.strata.sizes <span class="ot">&lt;-</span> <span class="fu">table</span>(agpop.sorted<span class="sc">$</span>region) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Var1 Freq
 1   NC 1054
@@ -765,33 +939,33 @@ Warning
 3    S 1382
 4    W  422</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pop.strata.sizes <span class="ot">&lt;-</span> <span class="fu">rename</span>(pop.strata.sizes, <span class="at">region =</span> Var1, <span class="at">popsize =</span> Freq)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ag.str.opt2 <span class="ot">&lt;-</span> ag.str <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(pop.strata.sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pop.strata.sizes <span class="ot">&lt;-</span> <span class="fu">rename</span>(pop.strata.sizes, <span class="at">region =</span> Var1, <span class="at">popsize =</span> Freq)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ag.str.opt2 <span class="ot">&lt;-</span> ag.str <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(pop.strata.sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="call-svydesign" class="level3">
 <h3 class="anchored" data-anchor-id="call-svydesign">2. Call <code>svydesign</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>agpop.str.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">strata =</span> <span class="sc">~</span>region, <span class="at">weights =</span> <span class="sc">~</span>wt, </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fpc =</span> <span class="sc">~</span>popsize, </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># fpc = option1.fpc # This would be Option 1</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data=</span> ag.str.opt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>agpop.str.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">strata =</span> <span class="sc">~</span>region, <span class="at">weights =</span> <span class="sc">~</span>wt, </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fpc =</span> <span class="sc">~</span>popsize, </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># fpc = option1.fpc # This would be Option 1</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data=</span> ag.str.opt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="calculate-total-se-and-ci" class="level3">
 <h3 class="anchored" data-anchor-id="calculate-total-se-and-ci">3. Calculate total, SE and CI</h3>
 <p>Note the degrees of freedom for a CI under a stratified sample is <span class="math inline">\(n-H\)</span>, which can be extracted from the <code>svydesign</code> object using the <code>degf</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(str.total <span class="ot">&lt;-</span> <span class="fu">svytotal</span>(<span class="sc">~</span>acres92, agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(str.total <span class="ot">&lt;-</span> <span class="fu">svytotal</span>(<span class="sc">~</span>acres92, agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            total       SE
-acres92 943570979 50311761</code></pre>
+<pre><code>             total       SE
+acres92 1057743345 65105302</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(str.total, <span class="at">level =</span> .<span class="dv">95</span>, <span class="at">df =</span> <span class="fu">degf</span>(agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(str.total, <span class="at">level =</span> .<span class="dv">95</span>, <span class="at">df =</span> <span class="fu">degf</span>(agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            2.5 %     97.5 %
-acres92 844556893 1042585066</code></pre>
+acres92 929615413 1185871277</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">

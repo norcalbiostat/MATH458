@@ -17,24 +17,78 @@ agpop <- read_csv(here::here("data", "agpop.csv"))
 agstrat <- read_csv(here::here("data", "agstrat.csv"))
 ```
 
-# What is Stratified Sampling
+![Source: https://www.scribbr.com/methodology/stratified-sampling/](https://www.scribbr.com/wp-content/uploads/2020/09/stratified-sample-7-2048x863.png) 
 
-## Overview
+# What is Stratified Sampling (Lohr 3.1)
 
-### Why Use A Stratified Sample?
+::: callout-important
+#### Key Terms
 
+**Stratified sampling** is the method by which a population is broken into $H$ subgroups(strata). Independent SRS's are taken on each subgroup. Our samples are then polled to generate overall population estimates.
+
+**Strata** are subgroups of a population that do not intersect and add up to the whole population.
+:::
+
+## Why Use A Stratified Sample?
+
+1.  **You can protect against the possibility of a really bad sample with overrepresentation of a subpopulation.** Stratified Sampling guarantees set proportions of subpopulations in your sample. Example: You can ensure 50% male and 50% female in a sample.
+2.  **Stratified sampling means you can know the precision of the data collected for subgroups of the population.** Example: comparing experiences of male and female graduates when males vastly outnumber female graduates.
+3.  **Stratified sampling can be less costly or more convenient.** You can use different sampling frames, designs, or field procedures for different strata. Example: You could use mail, email, telephone, or internet surveys based on what works best for each subpopulation
+4.  **This method has lower variance estimates for population means and totals making it more precise than an SRS.** This is demonstrated using a motivating example next. 
 
 ::: {.callout-tip icon="true"}
 ### Motivating Example - Estimating the average number of farm acres.
 
-:::
-
-
-::: {.callout-tip icon="true"}
-### Exploring the distribution of farm acreage in 1992 by region.
-
+> This needs to be written up. Why are we looking at farm acreage by region? 
 
 :::
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r}
+#| fig-cap: "Figure 3.1: Distribution of farm acreage in 1992 by region"
+#| fig-height: 4
+#| fig-width: 6
+#| code-fold: true
+# Mutate data to create names for levels and labels in boxplot
+agstrat.plot <- agstrat %>%
+  mutate(
+    region_factor = factor(
+      region,
+      levels = c("NE", "S", "NC", "W"),  
+      labels = c("Northeast", "South", "North Central", "West")
+    ),
+    acres_million = acres92/1e6 # convert acres to millions
+  )
+  
+ggplot(agstrat.plot, aes(x = region_factor, y = acres_million)) +
+  stat_boxplot(geom = "errorbar", linetype = "solid", width = 0.5) +
+  geom_boxplot(outlier.shape = 1, outlier.size = 3) +
+  coord_cartesian(ylim = c(0, 2.5)) +
+  labs(
+    x = "Region",
+    y = "Millions of Acres"
+  ) +
+  theme_minimal()
+```
+:::
+
+::: {.column width="40%"}
+```{r}
+#| code-fold: true
+agstrat %>% group_by(region) %>%
+  summarise(sample.average = mean(acres92), 
+            sample.variance = var(acres92)) %>%
+  kable()
+```
+:::
+
+::::
+
+
+> Need discussion/interpretation here
 
 ::: {.callout-warning icon="false"}
 ### You try it.
@@ -44,45 +98,79 @@ Explore the distribution of farm acreage in 1987 by region. Create a table of su
 
 ::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
 ### Solution
-
 :::
+
+::: {.callout-tip icon="true"}
+## Example: Using the four census regions of the United States
+
+The data contained in `agstrat.csv` comes from a is stratified sample across four regions of the United States: Northeast, North Central, South, and West.
+
+Using this stratified sample, estimate the total number of acres of farmland in the United States in 1992 by calculating the within strata totals, and then combining across strata. 
+:::
+
+Since we took an SRS in each stratum, we estimate the population total within each stratum using 
+
+$\hat{t} = N\bar{y}$ and $\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})$ within each strata.
+
+For example to estimate the total number of acres devoted to farms in the Northeast, 
+
+
+```{r}
+220*97629.81
+```
+
+with estimated variance
+```{r}
+220^2*(1-21/220)*(7647472708)/21
+```
+
+> need summary/conclusion of motivating example. Tie it into the next setion
 
 ## Gain from stratification
 
 ::: callout-important
 ### Definition: Relative gain from stratification
-
 :::
-
-### Clean up
-
-```{r}
-rm()
-```
-
 
 # Theory of Stratified Sampling (Lohr 3.2)
 
 ## Notation and Formulas used in Stratified Random Sampling
 
-
 ## Confidence Interval for Stratified Random Sample
 
 ::: {.callout-tip icon="true"}
 ### Example: Estimate the total number of farm acres in 1992 (Table 3.2)
-
+> demonstrate using equations to recreate table 3.2. here is starter code
 
 :::
+1. Calculate summary statistics for each region.
+```
+strata.summary.stats <- agstrat %>% 
+   group_by(region) %>% 
+   summarize(y.bar.h = mean(acres92),
+             s2.h    = var(acres92),
+             n.h     = n()) 
+```
+2. Calculate Population region sizes, add this vector to the data frame created above.
+3. Calculate the within strata sample total 
+4. Calculate the within-strata variance of this total
+5. Calculate the overall total and variance by summing these values across the strata.
 
 
 ::: {.callout-warning icon="false"}
-### You try it
+### You try it Estimate the total number of caribou... 
 
-Siniff and Skoog (1964) ...
-:::
 
-::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
-### Solution
+```{r}
+#| echo: false
+caribou <- data.frame(
+  Stratum = c("A", "B", "C", "D", "E", "F"), 
+  N.h = c(400, 30, 61, 18, 70, 120), 
+  n.h = c(8, 10, 37, 6, 39, 21), 
+  y.bar.h = c(24.1, 25.6, 267.6, 179, 293.7, 33.2), 
+  s2.h = c(5575, 4064, 347556, 22798, 123578, 9795))
+kable(caribou)
+```
 :::
 
 
@@ -94,17 +182,14 @@ Siniff and Skoog (1964) ...
 The ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas.
 
 Use the summary table below to estimate the the percentage and number of respondents that are female in those seven disciplines.
-
 :::
 
 ::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
 ### Solution
-
 :::
 
 ::: {.callout-note icon="false" collapse="true" appearance="minimal"}
 ### Clean up
-
 :::
 
 # Sampling Weights
@@ -115,68 +200,48 @@ Use the summary table below to estimate the the percentage and number of respond
 
 ::: {.callout-tip icon="true"}
 ### Example: Re-Estimate the total number of farm acres in 1992 using sample weights
-
 :::
 
 ::: {.callout-warning icon="true"}
 ### You try it Caribou weights
-
 :::
 
 ::: {.callout-note icon="false" collapse="true" appearance="minimal"}
 ### Clean up
-
-
 :::
 
 ------------------------------------------------------------------------
 
 # Allocation Methods
 
-:::{.callout-important}
+::: callout-important
 ### Method 1: Proportional Allocation
-
 :::
 
-
-
-:::{.callout-important}
+::: callout-important
 ### Method 2: Optimal Allocation
-
 :::
 
-  
-:::{.callout-important}
+::: callout-important
 ### Method 3: Allocation for Specified Precision within Strata
-
 :::
-
 
 ## Which allocation to use?
 
-
 # Selecting Strata
-
 
 ### Defining Strata
 
-
 ### How Many Strata?
 
-
-:::{.callout-tip icon=true}
+::: {.callout-tip icon="true"}
 ### Example: Estimating homeless population from NYC
-
 :::
-
-
-
 
 ------------------------------------------------------------------------
 
 # Summary
 
-    
 ------------------------------------------------------------------------
 
 # Using R
@@ -232,7 +297,6 @@ table(agpop.sorted$region)
 
 If the weights do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes.
 :::
-
 
 ------------------------------------------------------------------------
 
@@ -294,16 +358,12 @@ confint(str.total, level = .95, df = degf(agpop.str.dsgn))
 
 ::: {.callout-tip icon="true"}
 ### Example: Farmland in 1992
-
 :::
 
-:::{.callout-warning icon=false}
-### Estimating vehicle information for the entire USA. 
-
+::: {.callout-warning icon="false"}
+### Estimating vehicle information for the entire USA.
 :::
 
-:::{.callout-warning icon=false collapse="true" appearance=minimal}
+::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
 ### Solution
-
-
 :::
