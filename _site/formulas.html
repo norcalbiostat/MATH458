@@ -168,10 +168,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link active" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a>
   <ul class="collapse">
-  <li><a href="#expected-value-and-variance-of-estimates" id="toc-expected-value-and-variance-of-estimates" class="nav-link" data-scroll-target="#expected-value-and-variance-of-estimates">Expected Value and Variance of estimates</a></li>
+  <li><a href="#expected-value-and-variance" id="toc-expected-value-and-variance" class="nav-link" data-scroll-target="#expected-value-and-variance">Expected Value and Variance</a></li>
   <li><a href="#definition-bias-variance-accuracy" id="toc-definition-bias-variance-accuracy" class="nav-link" data-scroll-target="#definition-bias-variance-accuracy">Definition: Bias, Variance, Accuracy</a></li>
-  <li><a href="#weighting-estimates" id="toc-weighting-estimates" class="nav-link" data-scroll-target="#weighting-estimates">Weighting estimates</a></li>
   </ul></li>
+  <li><a href="#sample-weights" id="toc-sample-weights" class="nav-link" data-scroll-target="#sample-weights">Sample Weights</a></li>
   <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple Random Sample</a></li>
   <li><a href="#survey-package-r-commands" id="toc-survey-package-r-commands" class="nav-link" data-scroll-target="#survey-package-r-commands"><code>survey</code> package R commands</a>
   <ul class="collapse">
@@ -211,9 +211,9 @@ ul.task-list li input[type="checkbox"] {
 <h1>Parameters and Statistics</h1>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
+<col style="width: 26%">
 <col style="width: 36%">
-<col style="width: 38%">
+<col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -250,9 +250,12 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="math inline">\(y_{i}\)</span> = Value of measurement <span class="math inline">\(y\)</span> on unit <span class="math inline">\(i\)</span></p></li>
 <li><p><span class="math inline">\(^*\)</span>For proportions <span class="math inline">\(y_{i}\)</span> is a binary indicator of success. <span class="math inline">\(y \in {[0,1]}\)</span>. I.e. <span class="math inline">\(I(y_{i}=1)\)</span>.</p></li>
 </ul>
-<section id="expected-value-and-variance-of-estimates" class="level2">
-<h2 class="anchored" data-anchor-id="expected-value-and-variance-of-estimates">Expected Value and Variance of estimates</h2>
-<p><span class="math display">\[E(\hat{\theta}) = \sum\hat{\theta}*p(\hat{\theta}) \qquad \qquad V(\hat{\theta}) = \sum [\hat{\theta} - E(\hat{\theta})]^2*p(\hat{\theta})\]</span></p>
+<section id="expected-value-and-variance" class="level2">
+<h2 class="anchored" data-anchor-id="expected-value-and-variance">Expected Value and Variance</h2>
+<p><span class="math display">\[E(\hat{\theta}) = \sum \hat{\theta}*p(\hat{\theta})\]</span> <span class="math display">\[
+V(\hat{\theta}) = \sum [\hat{\theta} - E(\hat{\theta})]^2*p(\hat{\theta}) \qquad \mbox{ -or- }\qquad
+V(\hat{\theta}) = E(\hat{\theta}^2) - E(\hat{\theta})^2
+\]</span></p>
 <ul>
 <li>Sums are over all possible values of <span class="math inline">\(\hat{\theta}\)</span>.</li>
 <li><span class="math inline">\(p(\hat{\theta})\)</span> is the probability of <span class="math inline">\(\hat{\theta}\)</span> occurring.</li>
@@ -264,59 +267,61 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[V(\hat{\theta})  = E \Big[(\hat{\theta} - E[\hat{\theta}])^2\Big]\]</span></p>
 <p><span class="math display">\[\mbox{MSE}(\hat{\theta}) = V(\hat{\theta}) + [Bias(\hat{\theta})]^2\]</span></p>
 </section>
-<section id="weighting-estimates" class="level2">
-<h2 class="anchored" data-anchor-id="weighting-estimates">Weighting estimates</h2>
+</section>
+<section id="sample-weights" class="level1">
+<h1>Sample Weights</h1>
+<p>The <strong>sampling weights</strong> <span class="math inline">\(w_ {i}\)</span>are the reciprocal of the inclusion probability <span class="math inline">\(\pi_{i}\)</span></p>
 <table class="table">
-<colgroup>
-<col style="width: 34%">
-<col style="width: 28%">
-<col style="width: 37%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Population size</th>
-<th style="text-align: center;">Total</th>
-<th style="text-align: center;">Mean</th>
+<th>Design</th>
+<th style="text-align: center;">Weights <span class="math inline">\(w_{i}\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(\hat{N} = \sum_{i \in S}w_{i}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\hat{\tau} = \sum_{i \in S}w_{i}y_{i}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\bar{y} = \frac{\hat{\tau}}{\hat{N}}\)</span></td>
+<td>SRS w/replacement</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{N}\)</span></td>
+</tr>
+<tr class="even">
+<td>SRS w/o replacement</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{N}{n}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Stratified</td>
+<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
-</section>
 </section>
 <section id="simple-random-sample" class="level1">
 <h1>Simple Random Sample</h1>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 34%">
+<col style="width: 29%">
+<col style="width: 30%">
 <col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Measure</th>
-<th>Unbiased Estimate <span class="math inline">\((\hat{\theta})\)</span></th>
+<th>Population Quantity</th>
+<th>Estimator <span class="math inline">\((\hat{\theta})\)</span></th>
 <th>Estimated variance of <span class="math inline">\((\hat{\theta})\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Mean</td>
-<td><span class="math inline">\(\bar{y} = \frac{1}{n}\sum_{i\in S} y_{i}\)</span></td>
+<td>Mean: <span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
+<td><span class="math inline">\(\frac{\hat{t}}{N} = \frac{\sum_{i\in S} w_{i}y_{i}}{\sum_{i\in S}w_{i}} = \bar{y}\)</span></td>
 <td><span class="math inline">\(\hat{V}(\bar{y}) = (1-\frac{n}{N})\frac{s^{2}}{n}\)</span></td>
 </tr>
 <tr class="even">
-<td>Total</td>
-<td><span class="math inline">\(\hat{\tau} = N\bar{y}\)</span></td>
+<td>Total: <span class="math inline">\(\tau = \sum_{i=1}^{N} y_{i}\)</span></td>
+<td><span class="math inline">\(\hat{\tau} = \frac{1}{n}\sum_{i\in S} w_{i}y_{i} = N\bar{y}\)</span></td>
 <td><span class="math inline">\(\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})\)</span></td>
 </tr>
 <tr class="odd">
-<td>Proportion</td>
+<td>Proportion: <span class="math inline">\(p\)</span></td>
 <td><span class="math inline">\(\hat{p} = \bar{y}\)</span></td>
 <td><span class="math inline">\(\hat{V}(\hat{p}) = (1-\frac{n}{N})\frac{\hat{p}(1-\hat{p})}{n-1}\)</span></td>
 </tr>
@@ -324,6 +329,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <ul>
 <li><span class="math inline">\(i \in S\)</span> : Unit <span class="math inline">\(i\)</span> is an element in the sample <span class="math inline">\(S\)</span></li>
+<li>The <strong>standard error</strong> of the estimate is the square root of the estimated variance.</li>
 </ul>
 <hr>
 </section>
