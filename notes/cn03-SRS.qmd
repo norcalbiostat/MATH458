@@ -362,7 +362,7 @@ ci.m <- pt.est.m |> confint() |> prettyNum(big.mark = ",")
 Basic info:
 
 * Based on this sample of 300 farms, the total number of farms in the US in 1987 is `r prettyNum(pt.est.t[1], big.mark = ",")`, with 95% CI (`r ci.t[1]`,`r ci.t[2]` )
-* and the average acres for those farms is `r prettyNum(pt.est.m[2], big.mark = ",")`, with 95% CI (`r ci.m[3]`,`r ci.m[4]`)
+* and the average acres for those farms is `r prettyNum(pt.est.m[1], big.mark = ",")`, with 95% CI (`r ci.m[1]`,`r ci.m[2]`)
 
 Fancy table
 ```{r}
