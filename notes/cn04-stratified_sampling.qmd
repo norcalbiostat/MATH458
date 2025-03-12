@@ -17,7 +17,7 @@ agpop <- read_csv(here::here("data", "agpop.csv"))
 agstrat <- read_csv(here::here("data", "agstrat.csv"))
 ```
 
-![Source: https://www.scribbr.com/methodology/stratified-sampling/](https://www.scribbr.com/wp-content/uploads/2020/09/stratified-sample-7-2048x863.png) 
+![Source: https://www.scribbr.com/methodology/stratified-sampling/](https://www.scribbr.com/wp-content/uploads/2020/09/stratified-sample-7-2048x863.png)
 
 # What is Stratified Sampling (Lohr 3.1)
 
@@ -34,19 +34,18 @@ agstrat <- read_csv(here::here("data", "agstrat.csv"))
 1.  **You can protect against the possibility of a really bad sample with overrepresentation of a subpopulation.** Stratified Sampling guarantees set proportions of subpopulations in your sample. Example: You can ensure 50% male and 50% female in a sample.
 2.  **Stratified sampling means you can know the precision of the data collected for subgroups of the population.** Example: comparing experiences of male and female graduates when males vastly outnumber female graduates.
 3.  **Stratified sampling can be less costly or more convenient.** You can use different sampling frames, designs, or field procedures for different strata. Example: You could use mail, email, telephone, or internet surveys based on what works best for each subpopulation
-4.  **This method has lower variance estimates for population means and totals making it more precise than an SRS.** This is demonstrated using a motivating example next. 
+4.  **This method has lower variance estimates for population means and totals making it more precise than an SRS.** This is demonstrated using a motivating example next.
 
 ::: {.callout-tip icon="true"}
-### Motivating Example - Estimating the average number of farm acres.
+### Motivating Example - Estimating farm details.
 
-> This needs to be written up. Why are we looking at farm acreage by region? 
+During the colonial period of the United States travel was limited and most of the population lived on the East coast. The states are small in size, the population denser, and thus the farmland is smaller. In the 1800's the US "acquired" the western half of the US in large patches. This led to much larger farmland, owned by fewer individuals.
 
+The distribution of farm acreage in 1992 for each region is summarized below.
 :::
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="60%"}
-
 ```{r}
 #| fig-cap: "Figure 3.1: Distribution of farm acreage in 1992 by region"
 #| fig-height: 4
@@ -84,16 +83,16 @@ agstrat %>% group_by(region) %>%
   kable()
 ```
 :::
+:::::
 
-::::
+Each region has its own box plot we can compare. Each with a marked median (the thick solid line), the 25th and 75th percentiles marked by the edges of the box and its outliers. Each of the regions (except the West) tend to have quite a few high-end outliers (aka positively skewed). The NE region has the smallest average farm size (9.7k acres) and the smallest variance (7.6B) whereas the west has quite a large variance (396B) and mean(622k)
 
-
-> Need discussion/interpretation here
+To properly estimate the average size of a farm, or the total number of farms, we want to ensure our sample is representative of the population. A SRS may end up oversampling small farms from the east and missing out on larger farms from the west. This is why we considered stratification for this example.
 
 ::: {.callout-warning icon="false"}
 ### You try it.
 
-Explore the distribution of farm acreage in 1987 by region. Create a table of summary statistics and a boxplot. Discuss your findings.
+Explore the distribution of farm acreage in 1982 by region. Create a table of summary statistics and a boxplot. Discuss your findings.
 :::
 
 ::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
@@ -101,65 +100,168 @@ Explore the distribution of farm acreage in 1987 by region. Create a table of su
 :::
 
 ::: {.callout-tip icon="true"}
-## Example: Using the four census regions of the United States
+## Example: Estimating the total acerage of farmland.
 
 The data contained in `agstrat.csv` comes from a is stratified sample across four regions of the United States: Northeast, North Central, South, and West.
 
-Using this stratified sample, estimate the total number of acres of farmland in the United States in 1992 by calculating the within strata totals, and then combining across strata. 
+Using this stratified sample, estimate the total number of acres of farmland in the United States in 1992 by calculating the within strata totals, and then combining across strata.
 :::
 
-Since we took an SRS in each stratum, we estimate the population total within each stratum using 
+Since we took an SRS in each stratum, we estimate the population total within each stratum using $\hat{t} = N\bar{y}$ and $\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})=N^{2}(1 - \frac{n}{N})\frac{s^{2}}{n}$ within each strata.
 
-$\hat{t} = N\bar{y}$ and $\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})$ within each strata.
-
-For example to estimate the total number of acres devoted to farms in the Northeast, 
-
+For example to estimate the total number of acres devoted to farms in the Northeast,
 
 ```{r}
 220*97629.81
 ```
 
 with estimated variance
+
 ```{r}
 220^2*(1-21/220)*(7647472708)/21
 ```
 
-> need summary/conclusion of motivating example. Tie it into the next setion
+Lohr table 3.2 gives *estimates* of the total number of farm acres ($\hat{t}_{h}$) and estimated variance of the total ($\hat{V}(\hat{t}_{h})$) for each of the $h=4$ strata. Knowing this is an important key detail that shows us that the overall variance of the estimate is reduced by having the regions broken up into strata. This table also shows that if used efficiently, less samples are needed with stratified sampling to achieve the same, it not better, precision. In regards to the farm acres, this table highlights the variability in sizes of farms and area used for farm land in each stratum.
 
 ## Gain from stratification
 
+Observations within strata are more similar to each other, than they are to the population as a whole. A reduction in variance in individual strata can lead to a reduced variance for the population estimate.
+
 ::: callout-important
 ### Definition: Relative gain from stratification
+
+The reduction in variance from using a stratified sample compared to a SRS.
 :::
+
+This is estimated by the ratio:
+
+$$
+\frac{\mbox{estimated variance from stratified sample}}{\mbox{estimated variance from SRS}}
+$$
+
+Using the farm example,
+
+$$\frac{2.5419 * 10^{15}}{3.3837 * 10^{15}} =0.75 $$
+
+The variance is reduced by 75% from the method of stratified sampling method compared to the SRS method.
 
 # Theory of Stratified Sampling (Lohr 3.2)
 
 ## Notation and Formulas used in Stratified Random Sampling
 
+### Notation
+
+* $n$ - total sample size, from all strata
+* $N$ - total population size, from all strata
+* $y_{hj}$ - value of the $j^{th}$ unit in stratum $h$
+
+| Measure on stratum $h$       | Population | Statistic   |
+|------------------------------|------------|-------------|
+| number of units              | $N_{H}$    | $n_h$       |
+| total (sum of $y_{hj}$)      | $t_h$      | $\hat{t}_h$ |
+| mean of $y_{hj}$             | $\mu_{h}$  | $\bar{y}_h$ |
+| variance of $y_{hj}$         | $S^2_h$    | $s^2_h$     |
+| proportion of event          | $p_h$      | $\hat{p}_h$ |
+
+
+### Estimators for Population Parameters
+
+* $\hat{t}_{str}$ - the estimate for $t$, the total for the entire population
+* $\bar{y}_{str}$ - the estimate for $\mu$,  the overall population mean. This is the weighted average of the sample stratum means.
+* $\hat{p}_{str}$ - the estimated overall population proportion
+
+### Variance of estimators
+
+* $\hat{V}(\hat{t}_{str})$ - the estimate for the variance of the estimate of the population total found by substituting the sample variances for the population variances. 
+* $\hat{V}(\bar{y}_{str})$ - the estimate for the variance of the estimate of the population mean found by substituting the sample variances for the population variances. 
+* $SE(\bar{y}_{str})$ - the standard error of the estimator for population mean. Square root of the estimated variance
+* $\hat{V}(\hat{p}_{str})$ - the estimated variance of the estimated overall population proportion
+
+### Properties of estimators
+
+
+
 ## Confidence Interval for Stratified Random Sample
+
+**Confidence intervals for stratified samples** Conditions for formula: either (1) the sample sizes within EACH stratum are large, or (2) there is a large number of strata
+
+100(1- $\alpha$)% confidence interval is given by:
+$$\bar{y}_{str} \pm z_{\alpha/2} * SE(\bar{y}_{str})$$
+
+However, most survey packages use a $t_{n-H}$ distribution instead of using the normal assumption.
 
 ::: {.callout-tip icon="true"}
 ### Example: Estimate the total number of farm acres in 1992 (Table 3.2)
-> demonstrate using equations to recreate table 3.2. here is starter code
 
+Estimate the total number of acres of farmland in the United States in 1992 by calculating the within strata totals, and then combining across strata.
 :::
-1. Calculate summary statistics for each region.
-```
+
+1.  Calculate summary statistics for each region.
+
+```{r}   
 strata.summary.stats <- agstrat %>% 
    group_by(region) %>% 
    summarize(y.bar.h = mean(acres92),
              s2.h    = var(acres92),
              n.h     = n()) 
+strata.summary.stats
 ```
-2. Calculate Population region sizes, add this vector to the data frame created above.
-3. Calculate the within strata sample total 
-4. Calculate the within-strata variance of this total
-5. Calculate the overall total and variance by summing these values across the strata.
+
+2.  Calculate Population region sizes, add this vector to the data frame created above.
+```{r}
+table(agpop$region) ## number of farms by region 
+
+strata.summary.stats$N.h = c(1054,220,1382,422) 
+strata.summary.stats ##added as column 
+```
+
+3.  Calculate the within strata sample total
+
+$$\hat{V}(\hat{t}_{str}) = \sum_{h=1}^{H} V(\hat{t}_h)$$
+
+```{r}
+strata.summary.stats$t.h <- strata.summary.stats$y.bar.h*strata.summary.stats$N.h 
+
+strata.summary.stats
+```
+
+4.  Calculate the within-strata variance of this total
+$$\sum_{h=1}^{H} V(\hat{t}_h) = \sum_{h=1}^{H} \left( 1 - \frac{n_h}{N_h} \right)N_{h}^2 \frac{S_h^2}{n_h}$$
+
+```{r}
+strata.summary.stats$V.t <- ((1 - (strata.summary.stats$n.h/strata.summary.stats$N.h))*(strata.summary.stats$N.h^2)*
+(strata.summary.stats$s2.h)/strata.summary.stats$n.h)
+
+strata.summary.stats
+```
+
+5.  Calculate the overall total and variance by summing these values across the strata.
+
+```{r}
+(total.sum <- sum(strata.summary.stats$t.h)) 
+(total.var <- sum(strata.summary.stats$V.t))
+```
+
+```{r, echo=FALSE, eval=FALSE}
+# decided to not show, but want to keep code
+agstrat %>% 
+   group_by(region) %>% 
+   summarize(y.bar.h = mean(acres92),
+             s2.h    = var(acres92),
+             n.h     = n()) %>%
+  mutate(N.h = as.vector(table(agpop$region)),
+    t.h = y.bar.h*N.h, 
+    var.tau.hat.h = (1 - n.h/N.h)*(N.h^2)*(s2.h/n.h)
+  ) %>% 
+  summarize(tau.str = sum(t.h), 
+            var.tau.str = sum(var.tau.hat.h))
+```
 
 
 ::: {.callout-warning icon="false"}
-### You try it Estimate the total number of caribou... 
+### You try it 
 
+Estimate the total number of caribou...
 
 ```{r}
 #| echo: false
@@ -173,20 +275,6 @@ kable(caribou)
 ```
 :::
 
-
-
-
-::: {.callout-warning icon="false"}
-### You try it
-
-The ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas.
-
-Use the summary table below to estimate the the percentage and number of respondents that are female in those seven disciplines.
-:::
-
-::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
-### Solution
-:::
 
 ::: {.callout-note icon="false" collapse="true" appearance="minimal"}
 ### Clean up

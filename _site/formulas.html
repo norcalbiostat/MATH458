@@ -173,6 +173,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#sample-weights" id="toc-sample-weights" class="nav-link" data-scroll-target="#sample-weights">Sample Weights</a></li>
   <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link" data-scroll-target="#simple-random-sample">Simple Random Sample</a></li>
+  <li><a href="#stratified-random-sample" id="toc-stratified-random-sample" class="nav-link" data-scroll-target="#stratified-random-sample">Stratified Random Sample</a></li>
   <li><a href="#survey-package-r-commands" id="toc-survey-package-r-commands" class="nav-link" data-scroll-target="#survey-package-r-commands"><code>survey</code> package R commands</a>
   <ul class="collapse">
   <li><a href="#specify-survey-design-svydesign" id="toc-specify-survey-design-svydesign" class="nav-link" data-scroll-target="#specify-survey-design-svydesign">Specify survey design <code>svydesign</code></a></li>
@@ -270,29 +271,12 @@ V(\hat{\theta}) = E(\hat{\theta}^2) - E(\hat{\theta})^2
 </section>
 <section id="sample-weights" class="level1">
 <h1>Sample Weights</h1>
-<p>The <strong>sampling weights</strong> <span class="math inline">\(w_ {i}\)</span>are the reciprocal of the inclusion probability <span class="math inline">\(\pi_{i}\)</span></p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Design</th>
-<th style="text-align: center;">Weights <span class="math inline">\(w_{i}\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>SRS w/replacement</td>
-<td style="text-align: center;"><span class="math inline">\(\frac{1}{N}\)</span></td>
-</tr>
-<tr class="even">
-<td>SRS w/o replacement</td>
-<td style="text-align: center;"><span class="math inline">\(\frac{N}{n}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Stratified</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
+<p>The <strong>sampling weights</strong> <span class="math inline">\(w_{i}\)</span>are the reciprocal of the inclusion probability <span class="math inline">\(\pi_{i}\)</span></p>
+<ul>
+<li><strong>SRS</strong>: <span class="math inline">\(w_{i} =\frac{1}{n}\)</span></li>
+<li><strong>SRSWOR</strong>: <span class="math inline">\(w_{i} =\frac{N}{n}\)</span></li>
+<li><strong>Stratified</strong>: <span class="math inline">\(w_{hj}=\frac{N_h}{n_h}\)</span></li>
+</ul>
 </section>
 <section id="simple-random-sample" class="level1">
 <h1>Simple Random Sample</h1>
@@ -330,6 +314,59 @@ V(\hat{\theta}) = E(\hat{\theta}^2) - E(\hat{\theta})^2
 <ul>
 <li><span class="math inline">\(i \in S\)</span> : Unit <span class="math inline">\(i\)</span> is an element in the sample <span class="math inline">\(S\)</span></li>
 <li>The <strong>standard error</strong> of the estimate is the square root of the estimated variance.</li>
+</ul>
+</section>
+<section id="stratified-random-sample" class="level1">
+<h1>Stratified Random Sample</h1>
+<p>See section **** for notation.</p>
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 30%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Population Quantity</th>
+<th>Estimator <span class="math inline">\((\hat{\theta})\)</span></th>
+<th>Estimated variance of <span class="math inline">\((\hat{\theta})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Within strata total: <span class="math inline">\(\tau_{h} = \sum_{j} y_{hj}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{h} = N_{h}\bar{y_h}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\hat{\tau}_{h}) = (1-\frac{n_h}{N_h})N_{h}^2 \frac{s^2_h}{n_h}\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall total: <span class="math inline">\(\tau = \sum_{h} \tau_{h}\)</span></td>
+<td><span class="math inline">\(\hat{\tau}_{str} = \sum_{h}\hat{\tau}_{h}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\hat{\tau}_{str}) = \sum_{h} \hat{V}(\hat{\tau}_{h})\)</span></td>
+</tr>
+<tr class="odd">
+<td>Within strata mean: <span class="math inline">\(\mu_{h} = \frac{\tau_{h}}{N_{h}}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\bar{y}_{h}) = \frac{1}{N^2}V(\hat{\tau}_{h})\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall mean:<span class="math inline">\(\mu = \frac{\tau}{N}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{str} = \sum_{h} \frac{N_{h}}{N}\bar{y}_{h}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\bar{y}_{str}) = \frac{1}{N^2}\hat{V}(\hat{\tau}_{str})\)</span></td>
+</tr>
+<tr class="odd">
+<td>Within strata proportion: <span class="math inline">\(p_{h} = \mu_{h}\)</span></td>
+<td><span class="math inline">\(\hat{p}_{h} = \bar{y}_{h}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\hat{p}_{h}) = (\frac{n_h}{n_h-1})\hat{p}_h(1-\hat{p}_h)\)</span></td>
+</tr>
+<tr class="even">
+<td>Overall proportion: <span class="math inline">\(p = \mu\)</span></td>
+<td><span class="math inline">\(\hat{p}_{str} = \sum_{h}\frac{N_{h}}{N}\hat{p}_{h}\)</span></td>
+<td><span class="math inline">\(\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})\big(\frac{N_{h}}{N}\big)^2\Big(\frac{\hat{p}_h(1-\hat{p}_h)}{n_h-1}\Big)\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">\(\sum_{h}\)</span> is a simplified version of <span class="math inline">\(\sum_{h=1}^{H}\)</span> and <span class="math inline">\(\sum_{j}\)</span> is a simplified version of <span class="math inline">\(\sum_{j=1}^{N_{h}}\)</span></li>
 </ul>
 <hr>
 </section>

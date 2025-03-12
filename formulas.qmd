@@ -5,12 +5,12 @@ description: "Equations and R code"
 
 # Parameters and Statistics
 
-| Measure        | Population $(\theta)$                             | Sample $(\hat{\theta})$                            |
+| Measure | Population $(\theta)$ | Sample $(\hat{\theta})$ |
 |-------------------|--------------------------|---------------------------|
-| Total          | $\tau = \sum_{i=1}^N y_{i}$                       | $\hat{\tau} = \sum_{i=1}^n y_{i}$                  |
-| Mean           | $\mu = \frac{1}{N}\sum_{i=1}^N y_{i}$             | $\bar{y} = \frac{1}{n}\sum_{i=1}^n y_{i}$          |
-| Variance       | $\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(y_i-\mu)^2$ | $s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(y_i-\bar{y})^2$ |
-| Proportion$^*$ | $p = \mu$                                         | $\hat{p} = \bar{y}$                                |
+| Total | $\tau = \sum_{i=1}^N y_{i}$ | $\hat{\tau} = \sum_{i=1}^n y_{i}$ |
+| Mean | $\mu = \frac{1}{N}\sum_{i=1}^N y_{i}$ | $\bar{y} = \frac{1}{n}\sum_{i=1}^n y_{i}$ |
+| Variance | $\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(y_i-\mu)^2$ | $s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(y_i-\bar{y})^2$ |
+| Proportion$^*$ | $p = \mu$ | $\hat{p} = \bar{y}$ |
 
 -   $N$ = total population size
 
@@ -38,24 +38,38 @@ $$\mbox{MSE}(\hat{\theta}) = V(\hat{\theta}) + [Bias(\hat{\theta})]^2$$
 
 # Sample Weights
 
-The **sampling weights** $w_ {i}$are the reciprocal of the inclusion probability $\pi_{i}$
+The **sampling weights** $w_{i}$are the reciprocal of the inclusion probability $\pi_{i}$
 
-| Design              | Weights $w_{i}$ |
-|---------------------|:---------------:|
-| SRS w/replacement   |  $\frac{1}{N}$  |
-| SRS w/o replacement |  $\frac{N}{n}$  |
-| Stratified          |                 |
+-   **SRS**: $w_{i} =\frac{1}{n}$
+-   **SRSWOR**: $w_{i} =\frac{N}{n}$
+-   **Stratified**: $w_{hj}=\frac{N_h}{n_h}$
 
 # Simple Random Sample
 
-| Population Quantity                  | Estimator $(\hat{\theta})$                                                          | Estimated variance of $(\hat{\theta})$                             |
+| Population Quantity | Estimator $(\hat{\theta})$ | Estimated variance of $(\hat{\theta})$ |
 |---------------------|----------------------|-----------------------------|
-| Mean: $\mu = \frac{\tau}{N}$         | $\frac{\hat{t}}{N} = \frac{\sum_{i\in S} w_{i}y_{i}}{\sum_{i\in S}w_{i}} = \bar{y}$ | $\hat{V}(\bar{y}) = (1-\frac{n}{N})\frac{s^{2}}{n}$                |
-| Total: $\tau = \sum_{i=1}^{N} y_{i}$ | $\hat{\tau} = \frac{1}{n}\sum_{i\in S}  w_{i}y_{i} = N\bar{y}$                      | $\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})$                      |
-| Proportion: $p$                      | $\hat{p} = \bar{y}$                                                                 | $\hat{V}(\hat{p}) = (1-\frac{n}{N})\frac{\hat{p}(1-\hat{p})}{n-1}$ |
+| Mean: $\mu = \frac{\tau}{N}$ | $\frac{\hat{t}}{N} = \frac{\sum_{i\in S} w_{i}y_{i}}{\sum_{i\in S}w_{i}} = \bar{y}$ | $\hat{V}(\bar{y}) = (1-\frac{n}{N})\frac{s^{2}}{n}$ |
+| Total: $\tau = \sum_{i=1}^{N} y_{i}$ | $\hat{\tau} = \frac{1}{n}\sum_{i\in S}  w_{i}y_{i} = N\bar{y}$ | $\hat{V}(\hat{\tau}) = N^{2}\hat{V}(\bar{y})$ |
+| Proportion: $p$ | $\hat{p} = \bar{y}$ | $\hat{V}(\hat{p}) = (1-\frac{n}{N})\frac{\hat{p}(1-\hat{p})}{n-1}$ |
 
 -   $i \in S$ : Unit $i$ is an element in the sample $S$
 -   The **standard error** of the estimate is the square root of the estimated variance.
+
+# Stratified Random Sample
+
+See section **** for notation. 
+
+| Population Quantity | Estimator $(\hat{\theta})$ | Estimated variance of $(\hat{\theta})$ |
+|---------------------|----------------------|-----------------------------|
+| Within strata total: $\tau_{h} = \sum_{j} y_{hj}$ | $\hat{\tau}_{h} = N_{h}\bar{y_h}$ | $\hat{V}(\hat{\tau}_{h}) = (1-\frac{n_h}{N_h})N_{h}^2 \frac{s^2_h}{n_h}$ |
+| Overall total: $\tau = \sum_{h} \tau_{h}$ | $\hat{\tau}_{str} = \sum_{h}\hat{\tau}_{h}$  | $\hat{V}(\hat{\tau}_{str}) = \sum_{h} \hat{V}(\hat{\tau}_{h})$ |
+| Within strata mean: $\mu_{h} = \frac{\tau_{h}}{N_{h}}$ | $\bar{y}_{h} = \frac{1}{n_{h}}\sum_{j} y_{hj}$ |  $\hat{V}(\bar{y}_{h}) = \frac{1}{N^2}V(\hat{\tau}_{h})$ |
+| Overall mean:$\mu = \frac{\tau}{N}$  | $\bar{y}_{str} = \sum_{h} \frac{N_{h}}{N}\bar{y}_{h}$ | $\hat{V}(\bar{y}_{str}) = \frac{1}{N^2}\hat{V}(\hat{\tau}_{str})$ |
+| Within strata proportion: $p_{h} = \mu_{h}$ | $\hat{p}_{h} = \bar{y}_{h}$  |$\hat{V}(\hat{p}_{h}) = (\frac{n_h}{n_h-1})\hat{p}_h(1-\hat{p}_h)$   |
+| Overall proportion: $p = \mu$  |$\hat{p}_{str} = \sum_{h}\frac{N_{h}}{N}\hat{p}_{h}$  | $\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})\big(\frac{N_{h}}{N}\big)^2\Big(\frac{\hat{p}_h(1-\hat{p}_h)}{n_h-1}\Big)$  |
+
+* $\sum_{h}$ is a simplified version of $\sum_{h=1}^{H}$ and $\sum_{j}$ is a simplified version of $\sum_{j=1}^{N_{h}}$
+
 
 ------------------------------------------------------------------------
 
