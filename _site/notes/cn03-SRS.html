@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2025-02-24">
 <meta name="description" content="SRS is the basic form of probability sampling, and serves as the basis for more complicated forms.">
 
-<title>Simple Random Sampling – Sampling Methods</title>
+<title>Sampling Methods - Simple Random Sampling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -104,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -148,7 +148,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -166,7 +166,7 @@ window.Quarto = {
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">HackMD Notes</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
@@ -191,7 +191,7 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-google" role="img">
 </i> 
  <span class="menu-text"></span>
@@ -221,7 +221,7 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -256,7 +256,7 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -294,11 +294,11 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>These notes use functions from the <code>sampling</code>, <code>survey</code> and <code>knitr</code> packages. See the <a href="https://sampling-458.netlify.app/notes/formulas.html">formulas</a> page for links to vignettes and handbooks. </p>
+<p>These notes use functions from the <code>sampling</code>, <code>survey</code> and <code>knitr</code> packages. See the <a href="https://sampling-458.netlify.app/notes/formulas.html">formulas</a> page for links to vignettes and handbooks. <span class="margin-aside">The best way to learn a new package is to reference the help file and vignette often for examples. The R Companion for the book (free pdf from book website) is also very helpful.</span></p>
 </div>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><span class="margin-aside callout-margin-content callout-margin-content-simple">The best way to learn a new package is to reference the help file and vignette often for examples. The R Companion for the book (free pdf from book website) is also very helpful.</span></div><section id="introduction" class="level1">
+<section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>This section will aim to answer the following questions:</p>
 <ul>
@@ -308,7 +308,7 @@ window.Quarto = {
 <li>How do we calculate parameter estimates from an SRS that account for both the fpc and sampling weights?</li>
 </ul>
 </section>
-<section id="drawing-a-simple-random-sample-lohr-ch-2.3" class="level1 page-columns page-full">
+<section id="drawing-a-simple-random-sample-lohr-ch-2.3" class="level1">
 <h1>Drawing a Simple Random Sample (Lohr Ch 2.3)</h1>
 <p>Recall there are two ways to draw simple random samples, with and without replacement.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -442,7 +442,7 @@ Example: Sampling Statistics PhD programs.
 </ul>
 </section>
 </section>
-<section id="using-the-sampling-package" class="level2 page-columns page-full">
+<section id="using-the-sampling-package" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-sampling-package">Using the <code>sampling</code> package</h2>
 <ul>
 <li>The functions <code>srswr(n,N)</code> and <code>srswor(n,N)</code> draw SRS with, and without replacement respectively.</li>
@@ -522,7 +522,7 @@ Solution
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">300</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Using the <code>sample()</code> function</strong></p>
-<p> Generate list of numbers for each observational unit, then draw 5 numbers without replacement.</p>
+<p><span class="margin-aside">Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.</span> Generate list of numbers for each observational unit, then draw 5 numbers without replacement.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sampling.frame <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>N <span class="co">#1, 2</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sample.idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(sampling.frame, n, <span class="at">replace=</span><span class="cn">FALSE</span>) <span class="co">#3</span></span>
@@ -556,9 +556,9 @@ Solution
 </div>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><span class="margin-aside callout-6-contents callout-collapse collapse callout-margin-content callout-margin-content-simple">Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.</span></div></section>
 </section>
-<section id="formulas-for-estimation" class="level1 page-columns page-full">
+</section>
+<section id="formulas-for-estimation" class="level1">
 <h1>Formulas for Estimation</h1>
 <p>Below is a table of common statistics and how they are estimated under the SRS framework. This table can also be found on the <a href="https://sampling-458.netlify.app/notes/formulas.html">formulas</a> page.</p>
 <table class="caption-top table">
@@ -635,7 +635,7 @@ Example
 <pre><code>[1] 24924.16</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p> Sample means generated from samples of size 300 will vary from sample to sample by 24,924.16 acres.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Inline R code: <code>prettyNum(sd.ybar, big.mark=',')</code></span></div></div>
+<p><span class="margin-aside">Inline R code: <code>prettyNum(sd.ybar, big.mark=',')</code></span> Sample means generated from samples of size 300 will vary from sample to sample by 24,924.16 acres.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -710,7 +710,7 @@ Clean up
 </div>
 </div>
 </section>
-<section id="sampling-weights-lohr-ch-2.4" class="level1 page-columns page-full">
+<section id="sampling-weights-lohr-ch-2.4" class="level1">
 <h1>Sampling Weights (Lohr Ch 2.4)</h1>
 <p>Recall that a goal of sampling is to obtain a representative sample, one that is similar to the true unknown population. Thus, conceptually if we duplicate certain units from our sample a certain amount of times, we could “reconstruct” what the population looks like. That is, we could create <span class="math inline">\(w_{i}\)</span> copies of unit <span class="math inline">\(i\)</span> for each unit in the sample.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -765,7 +765,7 @@ Example: Calculating weighted estimates
 <p>Estimate the total and average number of acres devoted to farms in 1992 using both weighted and unweighted estimates. Then compare these values to the parameter.</p>
 </div>
 </div>
-<div class="page-columns page-full"><p>The sampling weights are <span class="math inline">\(w_{i} = \frac{3078}{300}\)</span> for each unit <span class="math inline">\(i\)</span> in the sample, so we’ll add that on as a new column before calculating the weighted estimates. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">See Lohr Table 2.1 for a nicer visual of the data frame with weights.</span></div></div>
+<p>The sampling weights are <span class="math inline">\(w_{i} = \frac{3078}{300}\)</span> for each unit <span class="math inline">\(i\)</span> in the sample, so we’ll add that on as a new column before calculating the weighted estimates. <span class="margin-aside">See Lohr Table 2.1 for a nicer visual of the data frame with weights.</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ag.srs<span class="sc">$</span>wt <span class="ot">&lt;-</span> N<span class="sc">/</span>n</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>(N.hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(ag.srs<span class="sc">$</span>wt)) <span class="co"># just to confirm to myself</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -864,9 +864,9 @@ Solution
 </div>
 </div>
 </section>
-<section id="analysis-using-the-survey-package-lohr-ch-2.6" class="level1 page-columns page-full">
+<section id="analysis-using-the-survey-package-lohr-ch-2.6" class="level1">
 <h1>Analysis using the <code>survey</code> package (Lohr Ch 2.6)</h1>
-<div class="page-columns page-full"><p>Survey designs are specified using the <code>svydesign</code> function. The main arguments to the the function are id to specify sampling units, weights to specify sampling weights, and fpc to specify finite population size corrections. These arguments should be given as formulas, referring to columns in a data frame given as the data argument. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Similar to using <code>group_by</code> in dplyr, that adds a “flag” to the data set indicting that all subsequent actions are to be done to each group separately, the <code>svydesign</code> function adds information to the data set so subsequent actions know how to incorporate measures like weights and strata</span></div></div>
+<p>Survey designs are specified using the <code>svydesign</code> function. The main arguments to the the function are id to specify sampling units, weights to specify sampling weights, and fpc to specify finite population size corrections. These arguments should be given as formulas, referring to columns in a data frame given as the data argument. <span class="margin-aside">Similar to using <code>group_by</code> in dplyr, that adds a “flag” to the data set indicting that all subsequent actions are to be done to each group separately, the <code>svydesign</code> function adds information to the data set so subsequent actions know how to incorporate measures like weights and strata</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>ag.srs.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">weights =</span> <span class="sc">~</span>wt, <span class="at">fpc =</span> <span class="fu">rep</span>(N,n), <span class="at">data =</span> ag.srs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1172,7 +1172,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1204,29 +1215,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
@@ -1234,7 +1223,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

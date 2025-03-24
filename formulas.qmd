@@ -57,7 +57,7 @@ The **sampling weights** $w_{i}$are the reciprocal of the inclusion probability 
 
 # Stratified Random Sample
 
-See section **** for notation. 
+See [section-04](https://sampling-458.netlify.app/notes/cn04-stratified_sampling#theory-of-stratified-sampling-lohr-3.2) for notation. 
 
 | Population Quantity | Estimator $(\hat{\theta})$ | Estimated variance of $(\hat{\theta})$ |
 |---------------------|----------------------|-----------------------------|
