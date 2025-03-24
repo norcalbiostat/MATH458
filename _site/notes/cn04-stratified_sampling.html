@@ -983,10 +983,23 @@ Example: Estimating homeless population from NYC
 <li>Create the sampling index of records to select using the <code>strata</code> function with arguments specifying the strata names, strata size, and sampling method within strata.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>strat.idx <span class="ot">&lt;-</span> sampling<span class="sc">::</span><span class="fu">strata</span>(<span class="at">data =</span> agpop.sorted, <span class="at">stratanames =</span> <span class="st">"region"</span>, </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> n.k, <span class="at">method =</span> <span class="st">"srswor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>strat.idx <span class="ot">&lt;-</span> sampling<span class="sc">::</span><span class="fu">strata</span>(<span class="at">data =</span> agpop.sorted, </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">stratanames =</span> <span class="st">"region"</span>, </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">size =</span> n.k, <span class="at">method =</span> <span class="st">"srswor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><span class="emoji" data-emoji="warning">⚠️</span> Package conflicts can occur with the <code>strata</code> function. If it is not working for you, use the <code>sampling::strata</code> method of calling the function to ensure you are using the correct version of the <code>strata</code> function from the <code>sampling</code> package.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning: Package conflicts
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Package conflicts can occur with the <code>strata</code> function. If it is not working for you, use the <code>sampling::strata</code> method of calling the function to ensure you are using the correct version of the <code>strata</code> function from the <code>sampling</code> package.</p>
+</div>
+</div>
 <ol start="4" type="1">
 <li>Extract the data records that correspond to the sampling index.</li>
 </ol>
@@ -994,27 +1007,27 @@ Example: Estimating homeless population from NYC
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="ot">&lt;-</span> <span class="fu">getdata</span>(agpop.sorted, strat.idx)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            county state acres92 acres87 acres82 farms92 farms87 farms82
-41  HANCOCK COUNTY    IA  329151  347774  351156     939    1052    1176
-43 HARRISON COUNTY    IA  399155  387190  408601     919    1024    1192
-46 HUMBOLDT COUNTY    IA  280797  275393  275422     677     754     848
-48     IOWA COUNTY    IA  321285  329705  361465     977    1057    1150
-59    LUCAS COUNTY    IA  219370  206519  219497     630     690     769
-66 MITCHELL COUNTY    IA  263047  270582  273000     825     939    1011
+<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
+4  APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
+25    DALLAS COUNTY    IA  312173  328319  346023     944    1081    1208
+44     HENRY COUNTY    IA  225835  231617  239403     795     893     963
+56       LEE COUNTY    IA  266083  266090  266741     872     989    1060
+73      PAGE COUNTY    IA  318778  337772  333108     916    1015    1057
+94   WEBSTER COUNTY    IA  408462  416623  419632    1059    1235    1357
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-41       44       26       25       67       64       70     NC      41
-43       88       62       51       60       60       66     NC      43
-46       44       28       24       50       46       51     NC      46
-48       43       32       36       58       64       62     NC      48
-59       35       31       28       16       30       34     NC      59
-66       36       25       19       79       97       72     NC      66
+4        28       33       23       25       39       36     NC       4
+25       67       59       48       82       85       81     NC      25
+44       31       20       18       57       69       63     NC      44
+56       42       37       32       44       47       54     NC      56
+73       46       35       30       55       58       60     NC      73
+94       76       60       47       85       75      105     NC      94
          Prob Stratum
-41 0.09772296       1
-43 0.09772296       1
-46 0.09772296       1
-48 0.09772296       1
-59 0.09772296       1
-66 0.09772296       1</code></pre>
+4  0.09772296       1
+25 0.09772296       1
+44 0.09772296       1
+56 0.09772296       1
+73 0.09772296       1
+94 0.09772296       1</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
@@ -1024,27 +1037,27 @@ Example: Estimating homeless population from NYC
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ag.str<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>ag.str<span class="sc">$</span>Prob</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            county state acres92 acres87 acres82 farms92 farms87 farms82
-41  HANCOCK COUNTY    IA  329151  347774  351156     939    1052    1176
-43 HARRISON COUNTY    IA  399155  387190  408601     919    1024    1192
-46 HUMBOLDT COUNTY    IA  280797  275393  275422     677     754     848
-48     IOWA COUNTY    IA  321285  329705  361465     977    1057    1150
-59    LUCAS COUNTY    IA  219370  206519  219497     630     690     769
-66 MITCHELL COUNTY    IA  263047  270582  273000     825     939    1011
+<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
+4  APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
+25    DALLAS COUNTY    IA  312173  328319  346023     944    1081    1208
+44     HENRY COUNTY    IA  225835  231617  239403     795     893     963
+56       LEE COUNTY    IA  266083  266090  266741     872     989    1060
+73      PAGE COUNTY    IA  318778  337772  333108     916    1015    1057
+94   WEBSTER COUNTY    IA  408462  416623  419632    1059    1235    1357
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-41       44       26       25       67       64       70     NC      41
-43       88       62       51       60       60       66     NC      43
-46       44       28       24       50       46       51     NC      46
-48       43       32       36       58       64       62     NC      48
-59       35       31       28       16       30       34     NC      59
-66       36       25       19       79       97       72     NC      66
+4        28       33       23       25       39       36     NC       4
+25       67       59       48       82       85       81     NC      25
+44       31       20       18       57       69       63     NC      44
+56       42       37       32       44       47       54     NC      56
+73       46       35       30       55       58       60     NC      73
+94       76       60       47       85       75      105     NC      94
          Prob Stratum       wt
-41 0.09772296       1 10.23301
-43 0.09772296       1 10.23301
-46 0.09772296       1 10.23301
-48 0.09772296       1 10.23301
-59 0.09772296       1 10.23301
-66 0.09772296       1 10.23301</code></pre>
+4  0.09772296       1 10.23301
+25 0.09772296       1 10.23301
+44 0.09772296       1 10.23301
+56 0.09772296       1 10.23301
+73 0.09772296       1 10.23301
+94 0.09772296       1 10.23301</code></pre>
 </div>
 </div>
 <p>5b. Check that the sampling weights sum to the stratum population sizes.</p>
@@ -1072,7 +1085,7 @@ Example: Estimating homeless population from NYC
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+Trust but verify
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1093,66 +1106,61 @@ Warning
 <section id="b.-specify-fpc" class="level4">
 <h4 class="anchored" data-anchor-id="b.-specify-fpc">b. Specify fpc</h4>
 <p>We need to create a vector of fpc’s that are equal to the strata population size. In a SRS, we used <code>fpc = rep(N,n)</code>. This create a vector that contains the value <code>N</code>, repeated <code>n</code> times. In this case, we need to match the strata population size to each record from that strata.</p>
-<p>Option 1: Create a vector that repeats the values in the vector <code>N.k</code>, each <code>n.k</code> times.</p>
+<p><strong>Option 1</strong> Create a vector that repeats the population sample sizes (<code>N.k</code>), each (<code>n.k</code> times - for each strata k. Recall that in this example we can calculate the stratum population sizes from the <code>agpop</code> data. However in real life, you likely will have to get these numbers in another manner.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>option1.fpc <span class="ot">&lt;-</span> <span class="fu">rep</span>(N.k, n.k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Example on how to use the <code>rep</code> function</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ex.N.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>) <span class="co"># example population sizes</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>ex.n.k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>)   <span class="co"># example strata sizes</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(ex.N.k, ex.n.k)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>N.k <span class="ot">&lt;-</span> agpop.sorted <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> <span class="fu">tally</span>() </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>ag.str<span class="sc">$</span>popsize_option1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(N.k<span class="sc">$</span>n, n.k)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># trust but verify </span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ag.str<span class="sc">$</span>popsize_option1, ag.str<span class="sc">$</span>region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 10 10 25 25 25 25 25 50 50 50 50 50 50 50 50 50 50</code></pre>
+<pre><code>      
+        NC  NE   S   W
+  220    0  21   0   0
+  422    0   0   0  41
+  1054 103   0   0   0
+  1382   0   0 135   0</code></pre>
 </div>
 </div>
-<p>The pop size for stratum 1 is repeated twice (the size of the sample from that stratum), the pop size for stratum 2 is repeated 5 times (the sample size for stat stratum) etc.</p>
-</div>
-</div>
-</div>
-<p>Option 2: Merge the pop sizes onto the sample data using <code>region</code> as a joining key</p>
+<p><strong>Option 2</strong> Create a data frame with the population sizes and merge it onto the data frame using the strata variable as the joining key</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(pop.strata.sizes <span class="ot">&lt;-</span> <span class="fu">table</span>(agpop.sorted<span class="sc">$</span>region) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>popsize.dta <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">region =</span> <span class="fu">c</span>(<span class="st">"NC"</span>, <span class="st">"NE"</span>, <span class="st">"S"</span>, <span class="st">"W"</span>),</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">popsize =</span> <span class="fu">c</span>(<span class="dv">1054</span>, <span class="dv">220</span>, <span class="dv">1382</span>, <span class="dv">422</span>))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>agpop.str <span class="ot">&lt;-</span> ag.str <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(popsize.dta)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(agpop.str<span class="sc">$</span>popsize, agpop.str<span class="sc">$</span>region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Var1 Freq
-1   NC 1054
-2   NE  220
-3    S 1382
-4    W  422</code></pre>
+<pre><code>      
+        NC  NE   S   W
+  220    0  21   0   0
+  422    0   0   0  41
+  1054 103   0   0   0
+  1382   0   0 135   0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pop.strata.sizes <span class="ot">&lt;-</span> <span class="fu">rename</span>(pop.strata.sizes, <span class="at">region =</span> Var1, <span class="at">popsize =</span> Freq)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>ag.str.opt2 <span class="ot">&lt;-</span> ag.str <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(pop.strata.sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="call-svydesign" class="level3">
 <h3 class="anchored" data-anchor-id="call-svydesign">2. Call <code>svydesign</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>agpop.str.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">strata =</span> <span class="sc">~</span>region, <span class="at">weights =</span> <span class="sc">~</span>wt, </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fpc =</span> <span class="sc">~</span>popsize, </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># fpc = option1.fpc # This would be Option 1</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data=</span> ag.str.opt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>agpop.str.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">strata =</span> <span class="sc">~</span>region, </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">weights =</span> <span class="sc">~</span>wt, </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fpc =</span> <span class="sc">~</span>popsize, <span class="co"># this uses option 2</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data=</span> agpop.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="calculate-total-se-and-ci" class="level3">
 <h3 class="anchored" data-anchor-id="calculate-total-se-and-ci">3. Calculate total, SE and CI</h3>
 <p>Note the degrees of freedom for a CI under a stratified sample is <span class="math inline">\(n-H\)</span>, which can be extracted from the <code>svydesign</code> object using the <code>degf</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(str.total <span class="ot">&lt;-</span> <span class="fu">svytotal</span>(<span class="sc">~</span>acres92, agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>(str.total <span class="ot">&lt;-</span> <span class="fu">svytotal</span>(<span class="sc">~</span>acres92, agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            total       SE
-acres92 894151478 53251536</code></pre>
+acres92 999954753 66271953</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(str.total, <span class="at">level =</span> .<span class="dv">95</span>, <span class="at">df =</span> <span class="fu">degf</span>(agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(str.total, <span class="at">level =</span> .<span class="dv">95</span>, <span class="at">df =</span> <span class="fu">degf</span>(agpop.str.dsgn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            2.5 %    97.5 %
-acres92 789351883 998951072</code></pre>
+<pre><code>            2.5 %     97.5 %
+acres92 869530840 1130378667</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1182,7 +1190,7 @@ Estimating vehicle information for the entire USA.
 </div>
 </div>
 <div class="callout callout-style-simple callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1191,7 +1199,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 
 </div>

@@ -73,22 +73,34 @@ See [section-04](https://sampling-458.netlify.app/notes/cn04-stratified_sampling
 
 ------------------------------------------------------------------------
 
-# `survey` package R commands
+# R commands
 
-This is a quick reference list. See the R companion for the textbook, the `survey` package help file or vignette for more information.
+This is a quick reference list. See the R companion for the textbook, the package help files,  vignettes or other tutorials listed at the bottom of this page for more information.
 
-## Specify survey design `svydesign`
+::: callout-important
+### A note on missing data
+
+If the result of any of the below functions is `NA`, this may indicate that your variable has missing values. Add the `na.rm=TRUE` argument to the `svymean` or `svytotal` functions and that will calculate a complete-case mean/total.
+:::
+
+
+## Analysis
+
+The `survey` package supports the analysis of data collected using complex survey designs. 
+
+### Specify survey design `svydesign`
 
 -   Function call: `svydesign(id = , weights=,  fpc= , data = )`
 -   `id` = variable that identifies clusters
 -   `weights` = variable that holds the sampling weights
 -   `fpc` = finite population correction. Typically defined in the function call.
 
-The argument details can be found on the specified pages in the R companion for the book.
+The argument details can be found on the specified pages in the R companion for the book, and in the respective sections of these notes. 
 
--   SRS: pg 21
+- SRS: pg 21
+- Stratified Random Sample: pg 34
 
-## Estimators
+### Estimators
 
 -   **mean**: `svymean(~x, design)`
 -   **total**: `svytotal(~x, design)`
@@ -96,11 +108,81 @@ The argument details can be found on the specified pages in the R companion for 
 -   **CI for the mean or total**: Use `confint()` after calculating the point estimate
 -   **CI for proportion**: `svyciprop(~x, design)` Will also print out $\hat{p}$
 
-::: callout-important
-### A note on missing data
+### Calculating stratum means and variances
 
-If the result of any of the above functions is `NA`, this may indicate that your variable has missing values. Add the `na.rm=TRUE` argument to the `svymean` or `svytotal` functions and that will calculate a complete-case mean/total.
-:::
+* The first argument of `svyby` is the formula for the variable(s) for which
+statistics are desired
+* `(by=)` is the variable that defines the groups.
+* Then list the `design` object
+* and the name of the function that calculates the statistics. 
+* Set `keep.var=TRUE` to display the standard errors for the statistics.
+
+```{r}
+#| eval: false
+svyby(~acres92, by=~region, agstrat.dsgn, svytotal, keep.var = TRUE)
+```
+
+------------------------------------------------------------------------
+
+# Sampling
+
+The `sampling` package allows you to take random samples from a sampling frame using different sampling frameworks in a reproducible manner. 
+
+
+1. Setup your sampling frame in a spreadsheet. [This example uses google sheets](https://docs.google.com/spreadsheets/d/13t_2a1nymS-RfAdDN1lq_WrpLD2xjy2rNsol95rD9VA) and the [googlesheets4](https://googlesheets4.tidyverse.org/articles/googlesheets4.html) package. 
+
+2. Import your sampling frame into R. 
+```{r}
+library(googlesheets4)
+frame <- read_sheet("https://docs.google.com/spreadsheets/d/13t_2a1nymS-RfAdDN1lq_WrpLD2xjy2rNsol95rD9VA")
+```
+
+3. Use functions from the `sampling` package to draw random samples according to your design. See the links for more details on what the arguments mean. 
+
+* [SRSWOR](https://sampling-458.netlify.app/notes/cn03-srs#using-the-sampling-package).
+
+```{r}
+library(sampling)
+set.seed(12345)
+srs.idx <- srswor(4, length(frame$unit_id)) 
+getdata(frame, srs.idx)
+```
+
+* [Stratified](https://sampling-458.netlify.app/notes/cn04-stratified_sampling#using-r)
+```{r}
+library(dplyr)
+frame <- frame %>% arrange(group) # sort first
+strata.idx <- sampling::strata(data = frame,      # data set
+                 stratanames = "group", # variable name
+                 size = c(2,3,2,1,2),      # stratum sample sizes     
+                 method = "srswor")     # method for selecting within strata
+getdata(frame, strata.idx)
+```
+
+* [Cluster]()
+
+**One stage cluster**
+```{r}
+onestage.idx <- sampling::cluster(data=frame,         # Data set
+                  clustername = "group",  # variable name containing clusters 
+                  size = 3,               # number of clusters
+                  method = "srswor",      # how to draw clusters 
+                  description = TRUE)     # show descriptive output
+getdata(frame, onestage.idx)
+```
+
+
+**Two stage cluster**
+```{r}
+mstage.idx <- sampling::mstage(data=frame, 
+                 stage = c("cluster", ""),  # sampling method for each stage, blank means SRS
+                 varnames = list("group", "unit_id"),  # variable names for each stage
+                 size = list(3, c(5,5,5)), # 3 psus, 5 ssus from each psu
+                 method = c("srswor", "srswor"))
+
+getdata(frame, mstage.idx)
+```
+
 
 ------------------------------------------------------------------------
 
@@ -108,3 +190,4 @@ If the result of any of the above functions is `NA`, this may indicate that your
 
 -   [`survey` package vignette](http://r-survey.r-forge.r-project.org/survey/)
 -   [The Epidemiologist R handbook](https://epirhandbook.com/en/survey-analysis.html)
+-   [Blog post by Zachary Hertz from 2021](https://zacharylhertz.github.io/posts/2021/06/survey-package)

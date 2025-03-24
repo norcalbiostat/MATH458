@@ -375,14 +375,18 @@ n.k <- c(103, 21, 135, 41)
 3.  Create the sampling index of records to select using the `strata` function with arguments specifying the strata names, strata size, and sampling method within strata.
 
 ```{r}
-strat.idx <- sampling::strata(data = agpop.sorted, stratanames = "region", 
-                    size = n.k, method = "srswor")
+strat.idx <- sampling::strata(data = agpop.sorted, 
+                              stratanames = "region", 
+                              size = n.k, method = "srswor")
 ```
 
-:warning: Package conflicts can occur with the `strata` function. If it is not working for you, use the `sampling::strata` method of calling the function to ensure you are using the correct version of the `strata` function from the `sampling` package.
+:::{.callout-important}
+#### Warning: Package conflicts
+
+Package conflicts can occur with the `strata` function. If it is not working for you, use the `sampling::strata` method of calling the function to ensure you are using the correct version of the `strata` function from the `sampling` package.
+:::
 
 4.  Extract the data records that correspond to the sampling index.
-
 ```{r}
 ag.str <- getdata(agpop.sorted, strat.idx)
 head(ag.str)
@@ -402,11 +406,12 @@ ag.str %>% group_by(region) %>% summarize(sum.wts = sum(wt))
 table(agpop.sorted$region)
 ```
 
-::: callout-important
-### Warning
+:::{.callout-important}
+#### Trust but verify
 
 If the weights do not sum to the stratum population sizes, you have made a mistake somewhere in the calculations for the weights or strata sizes.
 :::
+
 
 ------------------------------------------------------------------------
 
@@ -422,39 +427,34 @@ We created the weights in the dataset in the the last step.
 
 We need to create a vector of fpc's that are equal to the strata population size. In a SRS, we used `fpc = rep(N,n)`. This create a vector that contains the value `N`, repeated `n` times. In this case, we need to match the strata population size to each record from that strata.
 
-Option 1: Create a vector that repeats the values in the vector `N.k`, each `n.k` times.
-
-```{r, eval=FALSE}
-option1.fpc <- rep(N.k, n.k)
-```
-
-::: {.callout-tip icon="false" collapse="true" appearance="minimal"}
-**Example on how to use the `rep` function**
+**Option 1**
+Create a vector that repeats the population sample sizes (`N.k`), each (`n.k` times - for each strata k. Recall that in this example we can calculate the stratum population sizes from the `agpop` data. However in real life, you likely will have to get these numbers in another manner. 
 
 ```{r}
-ex.N.k <- c(10,25,50) # example population sizes
-ex.n.k <- c(2,5,10)   # example strata sizes
-rep(ex.N.k, ex.n.k)   
+N.k <- agpop.sorted %>% group_by(region) %>% tally() 
+ag.str$popsize_option1 <- rep(N.k$n, n.k)
+# trust but verify 
+table(ag.str$popsize_option1, ag.str$region)
 ```
 
-The pop size for stratum 1 is repeated twice (the size of the sample from that stratum), the pop size for stratum 2 is repeated 5 times (the sample size for stat stratum) etc.
-:::
-
-Option 2: Merge the pop sizes onto the sample data using `region` as a joining key
+**Option 2** 
+Create a data frame with the population sizes and merge it onto the data frame using the strata variable as the joining key
 
 ```{r}
-(pop.strata.sizes <- table(agpop.sorted$region) %>% data.frame())
-pop.strata.sizes <- rename(pop.strata.sizes, region = Var1, popsize = Freq)
-ag.str.opt2 <- ag.str %>% left_join(pop.strata.sizes)
+popsize.dta <- data.frame(region = c("NC", "NE", "S", "W"),
+                          popsize = c(1054, 220, 1382, 422))
+agpop.str <- ag.str %>% left_join(popsize.dta)
+table(agpop.str$popsize, agpop.str$region)
 ```
 
 ### 2. Call `svydesign`
 
 ```{r}
-agpop.str.dsgn <- svydesign(id = ~1, strata = ~region, weights = ~wt, 
-                            fpc = ~popsize, 
-                            # fpc = option1.fpc # This would be Option 1
-                            data= ag.str.opt2)
+agpop.str.dsgn <- svydesign(id = ~1, 
+                            strata = ~region, 
+                            weights = ~wt, 
+                            fpc = ~popsize, # this uses option 2
+                            data= agpop.str)
 ```
 
 ### 3. Calculate total, SE and CI
