@@ -314,6 +314,13 @@ $$\bar{y}_{str}=\frac{\sum_h\sum_jw_{hj}y_{hj}}{\sum_h\sum_jw_{hj}}$$
 
 ::: {.callout-tip icon="true"}
 ### Example: Re-Estimate the total number of farm acres in 1992 using sample weights
+
+We
+```{r}
+agstrat$acreswt <- agstrat$acres92 * agstrat$strwt
+sum(agstrat$acreswt)
+```
+
 :::
 
 ::: {.callout-warning icon="true"}
@@ -417,11 +424,19 @@ If the weights do not sum to the stratum population sizes, you have made a mista
 
 ## Computing Statistics from a Stratified Random Sample
 
+
+::: {.callout-tip icon="true"}
+### Example: Farmland in 1992
+
+The book's provided `agstrat` data set is a stratified random sample with proportional allocation. Let's re-estimate the total amount of farmland in 1992 using the `survey` package.
+:::
+
 ### 1. Setup the information for the survey design.
 
 #### a. Specify weights
 
-We created the weights in the dataset in the the last step.
+The weights are contained in a variable called `strwt`. By comparing our generated weights from the last step to these, we can confirm that desired within-strata sample sizes $n_{k}= (103, 21, 135, 41)$ were based on a proporional allocation method. 
+
 
 #### b. Specify fpc
 
@@ -432,9 +447,9 @@ Create a vector that repeats the population sample sizes (`N.k`), each (`n.k` ti
 
 ```{r}
 N.k <- agpop.sorted %>% group_by(region) %>% tally() 
-ag.str$popsize_option1 <- rep(N.k$n, n.k)
+agstrat$popsize_option1 <- rep(N.k$n, n.k)
 # trust but verify 
-table(ag.str$popsize_option1, ag.str$region)
+table(agstrat$popsize_option1, agstrat$region)
 ```
 
 **Option 2** 
@@ -443,7 +458,7 @@ Create a data frame with the population sizes and merge it onto the data frame u
 ```{r}
 popsize.dta <- data.frame(region = c("NC", "NE", "S", "W"),
                           popsize = c(1054, 220, 1382, 422))
-agpop.str <- ag.str %>% left_join(popsize.dta)
+agpop.str <- agstrat %>% left_join(popsize.dta)
 table(agpop.str$popsize, agpop.str$region)
 ```
 
@@ -452,7 +467,7 @@ table(agpop.str$popsize, agpop.str$region)
 ```{r}
 agpop.str.dsgn <- svydesign(id = ~1, 
                             strata = ~region, 
-                            weights = ~wt, 
+                            weights = ~strwt, 
                             fpc = ~popsize, # this uses option 2
                             data= agpop.str)
 ```
@@ -466,12 +481,46 @@ Note the degrees of freedom for a CI under a stratified sample is $n-H$, which c
 confint(str.total, level = .95, df = degf(agpop.str.dsgn))
 ```
 
+
 ::: {.callout-tip icon="true"}
-### Example: Farmland in 1992
+## Calculating stratum means and variances
+
+Instead of using the formulas as shown in Ch 3.3, we can use the `svyby` function.
 :::
+
+```{r}
+regional.totals <- svyby(~acres92, by=~region, agpop.str.dsgn, 
+                         svytotal, keep.var = TRUE)
+kable(regional.totals)
+```
+
+Confirm the overall total $\hat{\tau}_{str}$ by summing these values across the strata.
+
+```{r}
+sum(regional.totals$acres92)
+```
+
 
 ::: {.callout-warning icon="false"}
 ### Estimating vehicle information for the entire USA.
+
+The Vehicle Inventory and Use Survey (VIUS) used is the result of a a stratified random sampling design that collects information on the number of private and commercial trucks in each state.
+
+In the 2002 survey, 255 strata (51 \* 5) were created from truck registrations among the 51 states and 5 truck types. Within each state (+DC),the truck registrations were partitioned into one of five classes:
+
+1.  Pickups
+2.  Minivans, other light vans, and sport utility vehicles
+3.  Light single-unit trucks with gross vehicle weight less than 26,000 pounds
+4.  Heavy single-unit trucks with gross vehicle weight greater than or equal to 26,000 pounds
+5.  Truck-tractors
+
+Use the `vius.csv` textbook data to answer the following questions. The stratification variable is named `stratum` and the weights are contained in the variable `tabtrucks`.
+
+a)  Estimate the total number of trucks in the US
+b)  Estimate the total number of truck miles driven in 2002 (variable `miles_annl`)
+c)  Estimate the total number of truck miles driven in 2002 for each of the five trucktypes classes.
+d)  Estimate the total number of vehicles that have gross vehicle weight exceeding 10,000 lbs (variable `vius_gvw`)
+
 :::
 
 ::: {.callout-warning icon="false" collapse="true" appearance="minimal"}
