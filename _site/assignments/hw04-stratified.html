@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-03-28">
 
-<title>Sampling Methods - Assignments</title>
+<title>Sampling Methods - Homework 04: Stratified Random Sampling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,63 +60,6 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-hw .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-hw'] = new List('listing-hw', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-ws .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-ws'] = new List('listing-ws', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -131,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
@@ -142,15 +84,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html" rel="" target="">
+    <a class="nav-link" href="../notes.html" rel="" target="">
  <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./assignments.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../assignments.html" rel="" target="">
  <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./project.html" rel="" target="">
+    <a class="nav-link" href="../project.html" rel="" target="">
  <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -200,11 +142,11 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./formulas.html" rel="" target="">
+    <a class="nav-link" href="../formulas.html" rel="" target="">
  <span class="menu-text">Formulas and Definitions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html" rel="" target="">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
@@ -220,21 +162,38 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#part-1-conceptual-and-calculation-exercises" id="toc-part-1-conceptual-and-calculation-exercises" class="nav-link active" data-scroll-target="#part-1-conceptual-and-calculation-exercises">Part 1: Conceptual and calculation exercises</a></li>
+  <li><a href="#part-2-analyzing-data" id="toc-part-2-analyzing-data" class="nav-link" data-scroll-target="#part-2-analyzing-data">Part 2: Analyzing data</a></li>
+  <li><a href="#part-3-conduct-your-own-stratified-survey." id="toc-part-3-conduct-your-own-stratified-survey." class="nav-link" data-scroll-target="#part-3-conduct-your-own-stratified-survey.">Part 3: Conduct your own stratified <strong>survey</strong>.</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignments</h1>
-</div>
+<h1 class="title">Homework 04: Stratified Random Sampling</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Homework</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 28, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -242,94 +201,152 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>See Canvas for due dates.</p>
-<div class="columns">
-<div class="column" style="width:45%;">
-<section id="homework" class="level2">
-<h2 class="anchored" data-anchor-id="homework">Homework</h2>
-<div id="listing-hw" class="quarto-listing quarto-listing-container-table">
-
-<table class="quarto-listing-table table">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Use me!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="assignments/hw04-stratified.qmd">Download the qmd file</a> for this assignment and use it as a template for your work.</p>
+</div>
+</div>
+<section id="part-1-conceptual-and-calculation-exercises" class="level1">
+<h1>Part 1: Conceptual and calculation exercises</h1>
+<p><strong>1. What stratification variable(s) would you use for each of the following situations. Pick 3 to answer. </strong></p>
+<ol type="a">
+<li><p>A political poll to estimate the percentage of registered voters in Arizona who approve of the governor’s performance.</p></li>
+<li><p>An e-mail survey of students at your university, to estimate the total amount of money students spend on textbooks in a term.</p></li>
+<li><p>A sample of high schools in New York City to estimate the number of schools that offer one or more classes in computer programming.</p></li>
+<li><p>A sample of public libraries in California to study the availability and usage of computer resources.</p></li>
+<li><p>A survey of fishers visiting a freshwater lake, to learn about which species of fish are preferred.</p></li>
+<li><p>An aerial survey to estimate the number of walrus in the pack ice near Alaska between 173◦ East and 154◦ West longitude.</p></li>
+<li><p>A survey of businesses to learn about policies for paid leave.</p></li>
+</ol>
+<p><strong>2. Lohr Ch 3, question 2. Consider the hypothetical population and stratification presented in the textbook. Let N1 = N2 = 4, and consider the stratified sampling design in which n1 = n2 = 2. Find the Expected Value and Variance of <span class="math inline">\(t_{str}\)</span>.</strong></p>
+<p>Here is some guidance on an approach:</p>
+<ul>
+<li>Write out all possible SRSs of size 2 from stratum 1, and find the probability of each sample. Do the same for stratum 2.</li>
+<li>Calculate <span class="math inline">\(t_j\)</span> from all possible samples by finding the mean of each combination in the stratum * 4(the amount of values the combination is made from)</li>
+<li>Then assign the probability of observing that each unique <span class="math inline">\(t_{j}\)</span> within each stratum.</li>
+<li>Put these together as a sampling distribution (table or data frame that combines t with p(t)) within each strata</li>
+<li>Based on how <span class="math inline">\(t_{str}\)</span> is calculated, identify all possible values of <span class="math inline">\(t_{str}\)</span>, and then the probability of observing those values.</li>
+<li>Now calculate <span class="math inline">\(E(t_{str})\)</span> and <span class="math inline">\(V(t_{str})2\)</span></li>
+</ul>
+<p><strong>3. Proportional allocation was used in the stratified sample in Example 3.2. It was noted, however, that variability was much higher in the West than in the other regions. Using the estimated variances displayed below, and assuming that the sampling costs are the same in each stratum, find an optimal allocation for a stratified sample of size 300.</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
 <thead>
-<tr>
-<th>
-Item
-</th>
+<tr class="header">
+<th>region</th>
+<th>Number of Counties in population</th>
+<th>Number of Counties in sample</th>
+<th>Sample average in region</th>
+<th>Sample variance in region</th>
 </tr>
 </thead>
-<tbody class="list">
-<tr data-index="0" data-categories="Homework" data-listing-date-sort="1737360000000" data-listing-file-modified-sort="1737048166555" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Homework 00: Getting setup" data-listing-filename-sort="hw00-setup.qmd">
-<td>
-<a href="./assignments/hw00-setup.html" class="title listing-title">Homework 00: Getting setup</a>
-</td>
+<tbody>
+<tr class="odd">
+<td>Northeast</td>
+<td>220</td>
+<td>21</td>
+<td>97,629.8</td>
+<td>7,647,472,708</td>
 </tr>
-<tr data-index="1" data-categories="Homework" data-listing-date-sort="1737964800000" data-listing-file-modified-sort="1737060042102" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Homework 01: Sampling Framework" data-listing-filename-sort="hw01-framework.qmd">
-<td>
-<a href="./assignments/hw01-framework.html" class="title listing-title">Homework 01: Sampling Framework</a>
-</td>
+<tr class="even">
+<td>North Central</td>
+<td>1054</td>
+<td>103</td>
+<td>300,504.2</td>
+<td>29,618,183,543</td>
 </tr>
-<tr data-index="2" data-categories="Homework" data-listing-date-sort="1739347200000" data-listing-file-modified-sort="1738559636312" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Homework 02: Comparing sampling plans" data-listing-filename-sort="hw02-estimation.qmd">
-<td>
-<a href="./assignments/hw02-estimation.html" class="title listing-title">Homework 02: Comparing sampling plans</a>
-</td>
+<tr class="odd">
+<td>South</td>
+<td>1382</td>
+<td>135</td>
+<td>211,315.0</td>
+<td>53,587,487,856</td>
 </tr>
-<tr data-index="3" data-categories="Homework" data-listing-date-sort="1740384000000" data-listing-file-modified-sort="1740457498007" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Homework 03: Simple Random Sampling" data-listing-filename-sort="hw03-SRS.qmd">
-<td>
-<a href="./assignments/hw03-SRS.html" class="title listing-title">Homework 03: Simple Random Sampling</a>
-</td>
+<tr class="even">
+<td>West</td>
+<td>422</td>
+<td>41</td>
+<td>662,295.5</td>
+<td>396,185,950,266</td>
 </tr>
-<tr data-index="4" data-categories="Homework" data-listing-date-sort="1743145200000" data-listing-file-modified-sort="1743266271694" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Homework 04: Stratified Random Sampling" data-listing-filename-sort="hw04-stratified.qmd">
-<td>
-<a href="./assignments/hw04-stratified.html" class="title listing-title">Homework 04: Stratified Random Sampling</a>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-</section>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column" style="width:45%;">
-<section id="worksheets" class="level2">
-<h2 class="anchored" data-anchor-id="worksheets">Worksheets</h2>
-<div id="listing-ws" class="quarto-listing quarto-listing-container-table">
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Item
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="Worksheet" data-listing-date-sort="1739952000000" data-listing-file-modified-sort="1739736062265" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Worksheet 01: Estimating Crime rates" data-listing-filename-sort="ws01-SRS.qmd">
-<td>
-<a href="./worksheets/ws01-SRS.html" class="title listing-title">Worksheet 01: Estimating Crime rates</a>
-</td>
-</tr>
-<tr data-index="1" data-categories="Worksheet" data-listing-date-sort="1741849200000" data-listing-file-modified-sort="1741761446951" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Worksheet 02: Stratified Random Sampling" data-listing-filename-sort="ws02-stratified.qmd">
-<td>
-<a href="./worksheets/ws02-stratified.html" class="title listing-title">Worksheet 02: Stratified Random Sampling</a>
-</td>
+<tr class="odd">
+<td>Total</td>
+<td>3078</td>
+<td>300</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
-
 </table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
+<hr>
 </section>
+<section id="part-2-analyzing-data" class="level1">
+<h1>Part 2: Analyzing data</h1>
+<p>The U.S. government conducts a Census of Agriculture every five years, collecting data on all farms (defined as any place from which $1000 or more of agricultural products were produced and sold). We previously used the <code>agpop.csv</code> data for <strong>cn03</strong> while studying Simple Random Samples. Now, we’re going to do a similar analysis using stratification. The data file <code>agstrat.csv</code> contains a sample of 300 total farms, stratified by <code>region</code>. It also contains information on different variables.</p>
+<p><strong>1. Assume that the data in <code>agpop.csv</code> is representative of the population. Are the strata in <code>agstrat.csv</code> proportionally allocated? Justify your answer using numbers.</strong></p>
+<p><strong>2. Is stratification doing what it’s supposed to? That is, which allocation provides a more precise estimate?</strong></p>
+<p><strong>3. Draw another stratified sample of 300 total farms from the <code>agpop.csv</code> data. We’ll use the <code>sampling</code> package to do this. Choose an appropriate allocation and justify its use. For each of the following quantities, report an estimate along with its standard error, using the appropriate <code>svy</code> functions.</strong></p>
+<ol type="a">
+<li>Average size of a farm in acres in 1992</li>
+<li>Total number of acres devoted to farming in 1992</li>
+</ol>
+<p><strong>4. Compare your answers with those we found in <code>cn03-srs</code> (don’t worry, they’re listed below) - which sampling plan was better? <em>(Hint: there is code on the course website that can help you out with this)</em></strong></p>
+<p>In <strong>cn03-srs</strong>, we calculated (using a Simple Random Sample):</p>
+<ul>
+<li>Average size of a farm in acres in 1992: 326,732 acres with SE of 21,908 acres.</li>
+<li>Total number of acres devoted to farming in 1992: 1,005,681,527 acres with SE of 6,743,308 acres.</li>
+</ul>
+<hr>
+</section>
+<section id="part-3-conduct-your-own-stratified-survey." class="level1">
+<h1>Part 3: Conduct your own stratified <strong>survey</strong>.</h1>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Don’t take a census!
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>Remember to <em>sample</em> from your sampling frame first then only measure the selected items. Use feedback (if present) from the last homework as a guide.</p>
+</div>
+</div>
+<p>Take a small stratified random sample of something you are interested in. The data collection for this exercise should not take a great deal of effort, as you are surrounded by things waiting to be sampled. Some examples: average weights of 1-pound bags of beans or rice from different brands at the supermarket, proportion of unpopped kernels after cooking popcorn from different brands, total number of multi-family housing in different neighborhoods of Chico.</p>
+<ol type="a">
+<li>Explain what it is you decide to measure. Be explicit about what parameter you are trying to estimate.</li>
+<li>Define the following terms for your sample:
+<ul>
+<li>Target population: The broader group you want to make inferences about.</li>
+<li>Sampled population: The group you actually have access to.</li>
+<li>Strata: The subgroups within your population that you stratify by.</li>
+<li>Observational unit: The unit on which measurements are taken.</li>
+</ul></li>
+<li>Create your sampling frame in some type of spreadsheet (google sheets, excel, csv). Describe how you set up this sampling frame, read it into R and show the top few rows using <code>head()</code></li>
+<li>Set a seed and then use the <code>strata</code> function from the <code>sampling</code> package to generate your sample to be measured. Save this resulting data frame as <code>my_sample</code> and print out the results.</li>
+<li>Collect your data, do your measurements, and record the data in a new variable/vector in the <code>my_sample</code> data set you just generated.</li>
+<li>Calculate the stratum means and variances.</li>
+<li>Using the <code>svydesign</code> and appropriate <code>svy*</code> functions, calculate BOTH a point estimate and confidence interval for the parameter of interest.</li>
+<li>Interpret your results in a full complete english sentence with point estimate and CI.</li>
+</ol>
 
 
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

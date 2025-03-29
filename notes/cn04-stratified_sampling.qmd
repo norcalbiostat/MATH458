@@ -19,7 +19,7 @@ agstrat <- read_csv(here::here("data", "agstrat.csv"))
 
 ![Source: https://www.scribbr.com/methodology/stratified-sampling/](https://www.scribbr.com/wp-content/uploads/2020/09/stratified-sample-7-2048x863.png)
 
-# What is Stratified Sampling (Lohr 3.1)
+# What is Stratified Sampling 
 
 ::: callout-important
 #### Key Terms
@@ -145,7 +145,7 @@ $$\frac{2.5419 * 10^{15}}{3.3837 * 10^{15}} =0.75 $$
 
 The variance is reduced by 75% from the method of stratified sampling method compared to the SRS method.
 
-# Theory of Stratified Sampling (Lohr 3.2)
+# Theory of Stratified Sampling 
 
 The formulas presented in this section are summarized in a table on the [formulas page](https://sampling-458.netlify.app/formulas#stratified-random-sample).
 
@@ -269,22 +269,16 @@ agstrat %>%
 Estimate the total number of caribou...
 
 ```{r}
-#| echo: false
 caribou <- data.frame(
   Stratum = c("A", "B", "C", "D", "E", "F"), 
   N.h = c(400, 30, 61, 18, 70, 120), 
   n.h = c(8, 10, 37, 6, 39, 21), 
   y.bar.h = c(24.1, 25.6, 267.6, 179, 293.7, 33.2), 
   s2.h = c(5575, 4064, 347556, 22798, 123578, 9795))
-kable(caribou)
 ```
 :::
 
-::: {.callout-note icon="false" collapse="true" appearance="minimal"}
-### Clean up
-:::
-
-# Sampling Weights
+# Sampling Weights 
 
 ## How are weights calculated?
 
@@ -325,6 +319,8 @@ sum(agstrat$acreswt)
 
 ::: {.callout-warning icon="true"}
 ### You try it Caribou weights
+
+
 :::
 
 ------------------------------------------------------------------------
@@ -333,31 +329,183 @@ sum(agstrat$acreswt)
 
 ::: callout-important
 ### Method 1: Proportional Allocation
+
+In proportional allocation, the number of units sampled in each stratum is proportional to the size of each stratum. The inclusion probability of each unit $j$ in each stratum $h$ is equal.
+
+$$\pi_{hj} = \frac{n_{h}}{N_{h}} = \frac{n}{N}$$
 :::
+
 
 ::: callout-important
 ### Method 2: Optimal Allocation
+
+In optimal allocation, the number of sampled units in each stratum is based on minimizing variance for the cost.
+
+The sampled units in each stratum can be determined using the equation
+
+$$n_{h} = (\frac{\frac{N_{h}s_{h}}{\sqrt{c_{h}}}}{\sum\limits_{l = 1}^{H}\frac{N_{l}s_{l}}{\sqrt{c_{l}}}})n$$
+
+where $c_{h}$ is the cost of stratum h and $c_{l}$ is the cost of stratum l.
+
+Neyman Allocation is a case of Optimal Allocation where all costs are approximately equal, represented by 
+
+$$n_{h} = (\frac{N_{h}s_{h}}{\sum\limits_{l = 1}^{H}N_{l}s_{l}})n$$
+
 :::
+
 
 ::: callout-important
 ### Method 3: Allocation for Specified Precision within Strata
+
+**What is it?** When allocating with a specific precision in mind the idea is that you want to compare the means and totals within different strata. 
+
+**How is this method different?** This is different from proportional allocation in the sense that you do not take population size into account when giving each strata the same sample size.  This is also different from optimal allocation since it does not minimize variance for the total estimate. 
 :::
+
+
+
+::: {.callout-tip icon="true"}
+### Example: Calculating Allocations for a Survey of Colleges
+Suppose we are interested in taking a survey of US colleges and universities.
+
+We can make the assumption that the primary variables we are interested in studying in this survey, such as total instructional budget, or number of students employed full time five years after graduation, are related to the size of the institution.
+
+The `college.csv` dataset contains 1,372 US colleges and universities. One such variable categorizes institutions by size and residential status. We can stratify by this variable, combining all "Very small" institutions into one strata.
+:::
+
+```{r}
+frame <- readr::read_csv(here::here("data", "college.csv"))
+frame <- frame %>% arrange(ccsizset)
+# create a strata column that labels all very small institutions by the same label
+frame$strata<- frame$ccsizset
+idx <- frame$ccsizset < 8
+frame$strata[idx] <- 8
+```
+
+Find the size of each stratum
+
+```{r}
+strata.info<-as.data.frame(table(frame$strata))
+colnames(strata.info)<- c("Stratum", "N_h")
+
+strata.info
+```
+
+We do not know the variances of the variables to be studied, but we can assume that they will be roughly proportional to the variances of `ugds`, the number of undergraduate students at the institution. We can calculate the variances of each strata and use them to calculate the Neyman allocations of each strata.
+
+Find the sample strata means $\bar{y}$ and standard deviations $s$. 
+
+* Code method 1
+```{r}
+strata.means<- rep(0,10)
+for (i in 1:10) {
+  strata.means[i]<-mean(frame$ugds[frame$strata == strata.info$Stratum[i]])
+}
+strata.means
+
+# Calculating S_h (within stratum standard deviation)
+for (i in 1:10) {
+  ssq <- sum((frame$ugds[frame$strata == strata.info$Stratum[i]]-strata.means[i])^2)
+  strata.info$S_h[i] <- round(sqrt(ssq*(1/(strata.info$N_h[i]-1))))
+}
+strata.info$S_h
+```
+
+* Code method 2
+```{r}
+frame %>% group_by(strata) %>% summarize(mean_ugd = mean(ugds), 
+                                         s_ugd = sd(ugds))
+```
+
+We want to take a sample size of 200. For finding the Neyman allocations, we will use the formula $n*\frac{N_hS_h}{\sum_{l} N_lS_l }$ and round to whole numbers
+
+```{r}
+Sample_size <- 200
+d <- sum(strata.info$N_h*strata.info$S_h)
+strata.info$Neyman<- round(Sample_size*(strata.info$N_h*strata.info$S_h/d))
+strata.info$Neyman
+```
+
+For finding the Proportional allocations we will use the formula $n*\frac{N_h}{N}$
+and round to the nearest whole number
+
+```{r}
+N<- sum(strata.info$N_h)
+strata.info$Proportional<- round(Sample_size*(strata.info$N_h/N))
+strata.info$Proportional
+```
+
+Comparing them all: 
+```{r}
+# We can edit the stratum names to be more readable
+strata.info$Stratum <- c("Very small", "Small, primarily nonresidential", "Small, primarily residential", "Small, highly residential",  "Medium, primarily nonresidential", "Medium, primarily residential", "Medium, highly residential", "Large, primarily nonresidential", "Large, primarily residential", "Large, highly residential")
+
+
+strata.info %>% janitor::adorn_totals() %>% kable()
+```
+
+We can see that both allocations take a sample of 200 out of 1372 schools
+
 
 ## Which allocation to use?
 
-# Selecting Strata
+* **Proportional Allocation:** The best choice if you intend to have a "miniature version" of your population. The weight is the same for every unit of *N/n*, hence the stratum sample size is proportional to its population size. They typically have smaller variances than those similar estimates of an SRS. 
+
+* **Disproportional Allocation:**  The best choice if you want your strata to be oversampled to achieve specific goals within sampling. This may be to ensure certain things like a specific precision or increase representation of different variance groups. 
+
+* **Neyman Allocation:** The best choice when you have certain strata with higher variances and want to oversample those to reduce the overall variance. Can (but not always) improve precision for specifically chosen variables. 
+
+There is no one specific method that is always the best. What you want from and how you intend to analyze your samples will help you to determine what method works best for you, or which combination/hybrid of methods. 
+
+
+::: {.callout-warning icon="false"}
+## You try it: Explore Neyman Allocation in the Caribou Survey.
+
+The investigators used their findings to create a stratification that has a relatively homogeneous population density with the total sample size of *225 caribou*. These investigators used the Neyman allocation to calculate the stratum as an approximate of the standard deviation, and to have the sampling fraction be $\frac{1}{3}$ smaller in strata.
+
+Calculate the $n_h$ using Neyman allocation and compare to their chosen strata sample sizes.
+:::
+
+
+
+
+# Selecting Strata 
 
 ### Defining Strata
+
+Stratified sampling, as we've learned, improves the precision for every variable measured in a survey, and is almost always better from a variance standpoint than an SRS. 
+
+Ideally for a stratified sample, we would stratify by the values of y, but we don't exactly know what the exact values of y are, so we use variables that are closely related to it. For example, if we're trying to determine farm income, we may use the size of said farm as a stratifying variable.
+
+Using Example 3.13, in order to estimate the number of homeless people in certain regions, surveyors choose one night to conduct a count of people staying on streets, in bus-stops, subway stations, etc. And also survey people in emergency shelter or transition housing. Getting further into the example- we're assuming that the survey is done in New York City. The area of the city is much too large to survey in one night, so the city is split up into "high-density" and "low-density" areas. This results in 12 strata by having one high-density and one low-density stratum for each borough, and also for the subway system. This sampling design allows New York City to obtain the necessary data in just one night with roughly 2,000-2,500 volunteer surveyors, and allows for a statistically valid estimate.
 
 ### How Many Strata?
 
 ::: {.callout-tip icon="true"}
 ### Example: Estimating homeless population from NYC
+
+Background: In the United States, state and local agencies are responsible for coordinating homeless services annually estimate the number and characteristics of individuals experiencing homelessness within their regions. Each agency selects one of the last ten nights in January to conduct the counts of both sheltered and unsheltered populations at that specific point in time. These surveys (refered to as "Picture in Time") are typically conducted on single nights to minimize the risk of double-counting and reduce the effort required for the teams of volunteers who canvass to survey the unsheltered population. 
 :::
 
-------------------------------------------------------------------------
+It is imperative to develop sampling plans that provide the most accurate estimates of the unsheltered population’s size possible and those enabling us to have contact with as many unsheltered individuals in the region as feasible.
 
-# Summary
+Due to reasons such as the impossible task of visiting every location in a large city neighborhoods during a single night, cost of performing such task, and also the difference in population levels, designing a survey which fits our goals will be seen to influence how we defined our strata by using separation of these area. 
+
+
+Below is a summary table for a stratified sample from the `pitcount.csv` file, which mimics the NYC homelessness sample design in example 3.13 of the book. This however is not the data for NYC homelessness, rather that of a fictional city.
+
+
+```{r}
+pitdta <- readr::read_csv(here::here("data/pitcount.csv"))
+
+pitdta %>% select(strat, division, density, popsize, sampsize) %>%
+  unique() %>% kable()
+```
+
+Here we see a total of 8 strata defined by both area (Divisions) and density levels inside of the areas. The first was done as various Divisions have different homelessness totals as per differences in social-economic factors within these areas also impact the homelessness in these divisions. In this study, we see the simultaneous stratification of areas based on density levels along this. This probably was done to make sure that we would be able to account for potential higher homelessness rates in densely populated areas as opposed to low density areas.
+
+Another choice to notice is that high density areas were seen as a priority to gather information on in sample, therefore for our strata, we used the full populations in these areas(high density by divisions). Low density areas were proportionally allocated.
+
 
 ------------------------------------------------------------------------
 

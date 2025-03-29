@@ -1,9 +1,16 @@
 ---
 title: "Assignments"
 listing:
-  - contents: 
-      - assignments
-      - worksheets
+  - id: hw
+    contents: assignments
+    type: table
+    fields: [title]
+    field-display-names:
+      title: "Item"
+    sort-ui: false
+    filter-ui: false
+  - id: ws
+    contents: worksheets
     type: table
     fields: [title]
     field-display-names:
@@ -14,4 +21,23 @@ listing:
 
 See Canvas for due dates. 
 
+::::: {.columns}
 
+:::: {.column width="45%"}
+## Homework
+
+:::{#hw}
+:::
+::::
+
+:::: {.column width="5%"}
+::::
+
+:::: {.column width="45%"}
+## Worksheets
+
+:::{#ws}
+:::
+::::
+
+:::::
