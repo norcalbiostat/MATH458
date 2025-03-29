@@ -1,8 +1,7 @@
 ---
 format: html
-title: "Homework 04: Stratified Random Sampling"
-subtitle: ""
-date: 03/28/25
+title: "Homework 04: Stratified Sampling"
+date: 03/29/25
 categories: Homework
 execute: 
   warning: false

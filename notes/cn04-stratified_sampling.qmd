@@ -1,8 +1,8 @@
 ---
 title: "Stratified Sampling"
 description: "A method to use additional information about the population in the survey design"
-author: DRAFT - Sp '25 458 class
-date: 3/5/25
+author: Sp'25 458 class
+date: 3/29/25
 execute: 
   error: true
   warning: false
