@@ -42,6 +42,20 @@
     "text": "See Canvas for due dates."
   },
   {
+    "objectID": "assignments.html#homework",
+    "href": "assignments.html#homework",
+    "title": "Assignments",
+    "section": "Homework",
+    "text": "Homework\n\n\n\n\n\n\nItem\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nHomework 01: Sampling Framework\n\n\n\n\nHomework 02: Comparing sampling plans\n\n\n\n\nHomework 03: Simple Random Sampling\n\n\n\n\nHomework 04: Stratified Sampling\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "assignments.html#worksheets",
+    "href": "assignments.html#worksheets",
+    "title": "Assignments",
+    "section": "Worksheets",
+    "text": "Worksheets\n\n\n\n\n\n\nItem\n\n\n\n\n\n\nWorksheet 01: Estimating Crime rates\n\n\n\n\nWorksheet 02: Stratified Random Sampling\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "complete/cn01-intro_sampling_complete.html",
     "href": "complete/cn01-intro_sampling_complete.html",
     "title": "The Sampling Framework",
@@ -543,7 +557,7 @@
     "href": "notes.html",
     "title": "Course Notes",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan-20\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan-22\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb-03\n\n\nFoundations of Statistical Estimation\n\n\nWe cover the theoretical concepts of statistical estimation.\n\n\n\n\nFeb-24\n\n\nTeaching and Learning\n\n\nThe best way to learn something is to teach it to others\n\n\n\n\nFeb-24\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\nMar-29\n\n\nStratified Sampling\n\n\nA method to use additional information about the population in the survey design\n\n\n\n\nundefined\n\n\nundefined\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTopic\n\n\nDescription\n\n\n\n\n\n\nJan-20\n\n\nWelcome to MATH 458\n\n\nCourse Overview slides\n\n\n\n\nJan-22\n\n\nThe Sampling Framework\n\n\nThe objective of sample surveys is to make inference about a population from information contained in a sample selected from that population.\n\n\n\n\nFeb-03\n\n\nFoundations of Statistical Estimation\n\n\nWe cover the theoretical concepts of statistical estimation.\n\n\n\n\nFeb-24\n\n\nTeaching and Learning\n\n\nThe best way to learn something is to teach it to others\n\n\n\n\nFeb-24\n\n\nSimple Random Sampling\n\n\nSRS is the basic form of probability sampling, and serves as the basis for more complicated forms.\n\n\n\n\nMar-29\n\n\nStratified Sampling\n\n\nA method to use additional information about the population in the survey design\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "project.html",
@@ -649,26 +663,5 @@
     "title": "Worksheet 02: Stratified Random Sampling",
     "section": "",
     "text": "The ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas. Summary values for the size of the membership, number of returned surveys, and the proportion of surveys returned by female members are packed into a data frame for you below.\n1. Using equations 3.7 and 3.8, estimate the proportion (and SE) of the major societies in those seven disciplines that are female.\n\nacls &lt;- data.frame(\n  discipline = c(\"Lit\", \"Classics\", \"Phil\", \"Hist\", \"Ling\", \"Pols\", \"Soci\"),\n  membership = c(9100,1950,5500,10850,2100,5500,9000), \n  valid.return = c(636,451,481,611,493,575,588), \n  prop.female = c(.38,.27,.18,.19,.36,.13,.26))\n\n2. Using the equations above Table 3.5 in the text applied to your answers to part 1, estimate total (and SE) number of female members in the society."
-  },
-  {
-    "objectID": "assignments.html#homework-assignments",
-    "href": "assignments.html#homework-assignments",
-    "title": "Assignments",
-    "section": "Homework Assignments",
-    "text": "Homework Assignments\n\n\n\n\n\n\nItem\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nHomework 01: Sampling Framework\n\n\n\n\nHomework 02: Comparing sampling plans\n\n\n\n\nHomework 03: Simple Random Sampling\n\n\n\n\nHomework 04: Stratified Random Sampling\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "assignments.html#worksheets",
-    "href": "assignments.html#worksheets",
-    "title": "Assignments",
-    "section": "Worksheets",
-    "text": "Worksheets\n\n\n\n\n\n\nItem\n\n\n\n\n\n\nWorksheet 01: Estimating Crime rates\n\n\n\n\nWorksheet 02: Stratified Random Sampling\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "assignments.html#homework",
-    "href": "assignments.html#homework",
-    "title": "Assignments",
-    "section": "Homework",
-    "text": "Homework\n\n\n\n\n\n\nItem\n\n\n\n\n\n\nHomework 00: Getting setup\n\n\n\n\nHomework 01: Sampling Framework\n\n\n\n\nHomework 02: Comparing sampling plans\n\n\n\n\nHomework 03: Simple Random Sampling\n\n\n\n\nHomework 04: Stratified Sampling\n\n\n\n\n\n\nNo matching items"
   }
 ]
