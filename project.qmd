@@ -31,3 +31,41 @@ This is a full class collaborative effort, requiring everyone's active participa
 8.  **Data Analysis:** Create analysis plan, conduct analysis and compile results, create visualizations.
 9.  **Final Presentation:** Presentation to stakeholders
 10. **Final Report:** Comprehensive written report documenting all aspects of the project.
+
+# Parameters to be Estimated
+
+* Average salary expectations for 1, 2, and 5 years.
+* Average time taken by alumni to secure their first job
+* Proportion of alumni who found their degree valuable
+* Proportion of alumni working in different career sectors
+* Proportion of alumni who were accepted to or attended graduate school (mathematics oriented) or with a terminal degree
+* Proportion of alumni who felt they were prepared
+
+
+# Sample Size Determinations
+
+Since most of the parameters to estimate are proportions we will determine the sample size under that framework. Our sampling frame (population size) is $N=300$. 
+
+* We have no prior knowledge of the estimated proportions, so $\hat{p} = \hat{q} = .5$. We will use this for our estimate of $S$. 
+* We will set our confidence to be 95%, thus $\alpha = .05$
+* We will allow our margin of error to vary between 1% and 25%
+
+I created a graph to plot the sample size under an SRS framework using equation 2.30, 2.31 as a function of the margin of error `e`. We can use this to make a determination of a general total sample size that we will aim for in each of the sampling designs. 
+
+```{r}
+srs.n <- function(e){
+  n0 <- 1.96^2 / (4*e^2)
+  n <- n0 / (1+n0/300)
+  return(n)
+}
+e <- seq(.01, .25, by = .01)
+plot(e, srs.n(e), type = "l")
+
+srs.n(seq(.05, .25, by = .05))
+
+```
+
+
+
+
+
