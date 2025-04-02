@@ -1,0 +1,204 @@
+---
+title: "Cluster Sampling"
+description: "When units are not necessarily nicely defined, even when the population is. "
+author: DRAFT
+date: 4/01/25
+execute: 
+  error: true
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse);library(knitr)
+library(sampling); library(survey)
+```
+
+# Introduction
+
+![Textbook Figure 5.1. Contrasting stratified sampling with one-stage cluster sampling.](../figs/fig5_1.jpg)
+
+
+
+## Why use Cluster Sampling?
+
+## When clusters are Ignored
+
+
+:::{.callout-tip}
+#### Example: Studies in education
+text
+
+:::
+
+
+
+# Notation & Formulas
+
+::: panel-tabset
+## Pop psu level
+
+| Symbol      | Formula                                                          | Description                                    |
+|------------|--------------------------|----------------------------------------|
+| $y_{ij}$    |                                                                  | measurement for the $j$th element in $i$th psu |
+| $N$         |                                                                  | number of clusters (psus) in the population    |
+| $M_{i}$     |                                                                  | number of ssus in psu $i$                      |
+| $M_{0}$     | $\sum_{i=1}^{N} M_{i}$                                           | total number of ssus in the population         |
+| $t_{i}$     | $\sum_{j=1}^{M_{i}} y_{ij}$                                      | total in psu $i$                               |
+| $t$         | $\sum_{i=1}^{N} t_{i}= \sum_{i=1}^{N} \sum_{j=1}^{M_{i}} y_{ij}$ | population total                               |
+| $S_{t}^{2}$ | $\frac{1}{N-1} \sum_{i=1}^{N} (t_{i} - \frac{t}{N})^2$           | population variance of the psu totals          |
+
+## Pop ssu level
+
+| Symbol           | Formula                                                                  | Description                        |
+|-------------------|-----------------------------------|-------------------|
+| $\bar{y}_{\mu}$  | $\frac{1}{M_0} \sum_{i=1}^N \sum_{j=1}^{M_i} y_{ij}$                     | population mean                    |
+| $\bar{y}_{i\mu}$ | $\frac{1}{M_i} \sum_{j=1}^{M_i} y_{ij} = \frac{t_i}{M_i}$                | population mean in psu $i$         |
+| $S^2$            | $\frac{1}{M_0-1} \sum_{i=1}^N \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2$ | population variance (per ssu)      |
+| $S_{i}^{2}$      | $\frac{1}{M_i-1} \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2$              | population variance within psu $i$ |
+
+## Sample
+| Symbol                   | Formula                                                  | Description                                     |
+|------------------|-----------------------------|-----------------------------|
+| $y_{ij}$ |                                                                |Measurement for$j$th element in $i$ht psu                                             |
+|$N$||Number of clusters (psus) in the population|
+|$M_i$||Number of ssus in psu $i$|
+|$M_{o}$|$\sum_{i=1}^NM_i$|Total number of psus in the population|
+|$t_i$|$\sum_{j=1}^{M_i}y_{ij}$|Total in psu $i$|
+|$t$|$\sum_{i=1}^Nt_i = \sum_{i=1}^N\sum_{j=i}^{M_i}y_{ij}$|Population Total|
+|$S_i^2$|$\frac{1}{N-1} \sum_{i=1}^N(t_i-\frac{t}{N})^2$|Population variance of the psu totals|
+
+:::
+
+
+
+------------------------------------------------------------------------
+
+# One-Stage Clustering Sampling
+
+## Equal size clusters: Estimation
+
+:::{.callout-tip icon=true}
+### Example: Average GPA in a dorm
+
+:::
+
+```{r}
+gpa <- readr::read_csv(here::here("data", "gpa.csv"))
+```
+
+### Sampling Weights
+
+----
+
+## Equal size clusters: Theory
+
+### Comparing a cluster sample with an SRS of the same size
+
+
+
+:::{.callout-important}
+### ANalysis Of VAriance
+Don't recall how ANOVA works to break up the variance into components? See [this great video](https://www.youtube.com/watch?v=W36DMVJ4Ibo&list=PLkIselvEzpM5G3IO1tzQ-DUThsJKQzQCD) from the Open Intro Statistics author, Mine Cetinkaya-Rundel
+:::
+
+:::{.callout-important}
+### MSB (Mean Squared Between psus)
+text
+
+:::
+
+:::{.callout-important}
+### MSW (Mean Squared Within psus)
+text
+
+:::
+
+:::{.callout-important}
+#### ICC (Intraclass Correlation Coefficient)
+text
+
+:::
+
+:::{.callout-important}
+#### R Squared
+text
+
+:::
+
+
+
+:::{.callout-tip}
+#### Example 5.3. Consider two artificial populations
+text
+
+:::
+
+
+:::{.callout-tip}
+#### Example 5.5. When is a cluster not a cluster? 
+text
+
+:::
+
+
+## Unequal size clusters
+
+> advice: summarize motivating example. Explain unbiasedness and show formulas. 
+> Then bullet point rest of section
+
+### Ratio Estimation
+
+
+### Estimation using weights
+
+
+
+:::{.callout-tip icon=false}
+### Example. High school Algebra
+Consider a population of 187 high school algebra classes in a city. An investigator takes an SRS of classes, and gives each student in the sampled classes a test about function knowledge. The (hypothetical) data are given in the file `algebra.csv`. 
+
+a. Load in the data and look at the first few rows. Explain what the values in each column mean.
+b. Plot the distribution of test score by class. Interpret your graph by comparing the medians, ranges, and variances across classes. What do you notice?
+c. How many _psus_ are there? What is the _psu_ with the highest number of _ssus_? Which one has the least? You must answer this question using R functions such as`unique` or `table`. Don't count this by hand (practice for when you have a billion rows)
+d. Add variables containing the weights and the `fpc` to this data set. 
+e. Using the proper functions from the `survey` package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the `degf` function to get the proper degrees of freedom out of the survey design object and pass it to the `confint` function. 
+:::
+
+------------------------------------------------------------------------
+
+# Two-Stage Clustering Sampling
+
+![Textbook Figure 5.2. Differences between one-stage and two-stage cluster sampling.](../figs/fig5_2.jpg)
+
+## Unbiased estimator of population total.
+
+## Survey weights
+
+## Variance estimation for two-stage cluster samples.
+
+### Simplified version
+
+
+
+:::{.callout-tip icon=true}
+### Example 5.7: More estimation of math scores. 
+
+The file `schools.csv` contains data from a two-stage sample of students from hypothetical classes. The final weights are provided in the variable `finalwt`. 
+
+a) Create side by side boxplots for the math score for sampled schools. Which do you think is larger, the within or between cluster variance? 
+b) Create an ANOVA table for this example. Is your interpretation from the graph upheld by this analysis? 
+c) Estimate with proper 95% CI the average math score for the population of students under consideration. _Do not include a value for the `fpc` in this example_. 
+:::
+
+:::{.callout-warning icon=false}
+### You Try It: The case of the six-legged puppy.
+
+
+:::
+
+# Chapter Summary
+
+
+
+
