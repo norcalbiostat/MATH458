@@ -242,6 +242,18 @@ window.Quarto = {
   <li><a href="#milestones" id="toc-milestones" class="nav-link" data-scroll-target="#milestones">Milestones</a></li>
   <li><a href="#parameters-to-be-estimated" id="toc-parameters-to-be-estimated" class="nav-link" data-scroll-target="#parameters-to-be-estimated">Parameters to be Estimated</a></li>
   <li><a href="#sample-size-determinations" id="toc-sample-size-determinations" class="nav-link" data-scroll-target="#sample-size-determinations">Sample Size Determinations</a></li>
+  <li><a href="#sampling-design" id="toc-sampling-design" class="nav-link" data-scroll-target="#sampling-design">Sampling Design</a>
+  <ul class="collapse">
+  <li><a href="#srs" id="toc-srs" class="nav-link" data-scroll-target="#srs">SRS</a></li>
+  <li><a href="#stratified-on-year" id="toc-stratified-on-year" class="nav-link" data-scroll-target="#stratified-on-year">Stratified on Year</a></li>
+  <li><a href="#stratified-on-major" id="toc-stratified-on-major" class="nav-link" data-scroll-target="#stratified-on-major">Stratified on Major</a></li>
+  <li><a href="#cluster-same-year-same-major" id="toc-cluster-same-year-same-major" class="nav-link" data-scroll-target="#cluster-same-year-same-major">Cluster: Same year same major</a>
+  <ul class="collapse">
+  <li><a href="#one-stage-cluster" id="toc-one-stage-cluster" class="nav-link" data-scroll-target="#one-stage-cluster">One Stage Cluster:</a></li>
+  <li><a href="#two-stage-cluster" id="toc-two-stage-cluster" class="nav-link" data-scroll-target="#two-stage-cluster">Two Stage Cluster:</a></li>
+  </ul></li>
+  <li><a href="#create-sampling-indicators-and-write-back-to-google-sheets." id="toc-create-sampling-indicators-and-write-back-to-google-sheets." class="nav-link" data-scroll-target="#create-sampling-indicators-and-write-back-to-google-sheets.">Create sampling indicators and write back to Google sheets.</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -336,8 +348,87 @@ window.Quarto = {
 <pre><code>[1] 168.45182  72.75023  37.36771  22.23080  14.61766</code></pre>
 </div>
 </div>
+</section>
+<section id="sampling-design" class="level1">
+<h1>Sampling Design</h1>
+<p>Multiple sampling designs were developed as described below.</p>
+<p>Read in Sampling frame</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampling)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sampling.frame <span class="ot">&lt;-</span> googlesheets4<span class="sc">::</span><span class="fu">read_sheet</span>(frame.url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The population size is determined by the size of our sampling frame, and the sample size was determined using the graph above and a class discussion.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">NROW</span>(sampling.frame)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">150</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="srs" class="level2">
+<h2 class="anchored" data-anchor-id="srs">SRS</h2>
+</section>
+<section id="stratified-on-year" class="level2">
+<h2 class="anchored" data-anchor-id="stratified-on-year">Stratified on Year</h2>
+</section>
+<section id="stratified-on-major" class="level2">
+<h2 class="anchored" data-anchor-id="stratified-on-major">Stratified on Major</h2>
+<p>We hypothesize that students who studied different focuses will be pursuing different types of careers and making different kinds of salaries. Students who double or triple majored will also not have the same experiences as those who share one of their majors. We expect that by stratifying by major, with those with more than one major in a separate stratum, we should be able to expect widely different stratum means for variables like annual income. Since different majors have different course requirements, their feedback on the university will also be different by major. Since we are interested in multiple variables and the observation cost in each stratum will be the same, in this case zero, proportional allocation makes sense as a choice.</p>
+<p>First we create a new variable with either a student’s major or if they had multiple majors stored. <strong>Will Stratify by this variable</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sampling.frame<span class="sc">$</span>stratamajor <span class="ot">&lt;-</span> sampling.frame<span class="sc">$</span><span class="st">`</span><span class="at">Major 1</span><span class="st">`</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sampling.frame<span class="sc">$</span>stratamajor[<span class="sc">!</span><span class="fu">is.na</span>(sampling.frame<span class="sc">$</span><span class="st">`</span><span class="at">Major 2</span><span class="st">`</span>)] <span class="ot">=</span> <span class="st">"Multiple Majors"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sampling.frame.sort.major <span class="ot">&lt;-</span> sampling.frame <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(stratamajor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let <code>p</code> be the proportion of total population sampled. We will calculate size of samples drawn from each strata as …. <em>need equations/info here</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> n<span class="sc">/</span>N</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>strata.size <span class="ot">&lt;-</span> <span class="fu">table</span>(sampling.frame.sort.major<span class="sc">$</span>stratamajor) <span class="sc">|&gt;</span> <span class="fu">data.frame</span>()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>strata.size<span class="sc">$</span>n_h <span class="ot">&lt;-</span> <span class="fu">round</span>(strata.size<span class="sc">$</span>Freq <span class="sc">*</span> p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>strata.major.idx <span class="ot">&lt;-</span> sampling<span class="sc">::</span><span class="fu">strata</span>(<span class="at">data =</span> sampling.frame.sort.major, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">stratanames =</span> <span class="st">"stratamajor"</span>, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">size =</span> strata.size<span class="sc">$</span>n_h, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">method =</span> <span class="st">"srswor"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>strata.major.chosen <span class="ot">&lt;-</span> <span class="fu">getdata</span>(sampling.frame.sort.major, strata.major.idx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cluster-same-year-same-major" class="level2">
+<h2 class="anchored" data-anchor-id="cluster-same-year-same-major">Cluster: Same year same major</h2>
+<p>There is no ideal way to cluster with the information we have in our sampling frame. Clustering by any one demographic variable such as major, or year makes it likely that we will miss a section of the population that will differ from the ones selected significantly. To minimize that, we will have smaller clusters by grouping together students of the same major and the same graduation year. Students with multiple majors will be treated as all having the same “major” like in our ST1 plan above.</p>
+<section id="one-stage-cluster" class="level3">
+<h3 class="anchored" data-anchor-id="one-stage-cluster">One Stage Cluster:</h3>
+</section>
+<section id="two-stage-cluster" class="level3">
+<h3 class="anchored" data-anchor-id="two-stage-cluster">Two Stage Cluster:</h3>
+</section>
+</section>
+<section id="create-sampling-indicators-and-write-back-to-google-sheets." class="level2">
+<h2 class="anchored" data-anchor-id="create-sampling-indicators-and-write-back-to-google-sheets.">Create sampling indicators and write back to Google sheets.</h2>
+<p>Each method will randomly sample a different group of records There undoubtedly will be substantial overlap. To keep track of which records were chosen in each design, we create binary indicators for each design and add those back to the sampling frame in Google Sheets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sampling.frame<span class="sc">$</span>SRS <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sampling.frame<span class="sc">$</span>Strata_major <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(sampling.frame<span class="sc">$</span>FIXED_ID <span class="sc">%in%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                        strata.major.chosen<span class="sc">$</span>FIXED_ID, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>sampling.frame<span class="sc">$</span>Strata_year <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>sampling.frame<span class="sc">$</span>Cluster1 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>sampling.frame<span class="sc">$</span>Cluster2 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>sample.these <span class="ot">&lt;-</span> sampling.frame <span class="sc">%&gt;%</span> </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(SRS<span class="sc">:</span>Cluster2)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample.these)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>googlesheets4<span class="sc">::</span><span class="fu">range_write</span>(frame.url, <span class="at">data =</span> sample.these, </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                           <span class="at">range =</span> <span class="st">"P1:T299"</span>, </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                           <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
