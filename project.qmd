@@ -135,6 +135,41 @@ There is no ideal way to cluster with the information we have in our sampling fr
 
 ### One Stage Cluster:
 
+Basic organizing
+```{r}
+# renaming to cluster for simplicity
+sampling.frame$cluster <- sampling.frame$"Expected \nGrad Year" 
+
+# getting unique cluster ids based on year
+(all_clusters <- unique(sampling.frame$cluster))
+
+# viewing frequencies of years
+(table <- table(sampling.frame$cluster) )
+
+# picking my sample size, will round to the nearest whole number
+weighted.mean(table)
+```
+
+NOTE: the number of sampled clusters is based on the average of 30 grads per year to get roughly 150 individuals in the final total sample.
+
+```{r}
+M <- length(unique(sampling.frame$cluster)) # total number of clusters (PSUs, aka GROUPS) in population
+m  <- 5 # the number of sampled clusters
+```
+
+Sampling from clusters:
+```{r}
+set.seed(2025)
+
+# sampling the clusters
+(sampled_clusters <- sample(all_clusters, size = m, replace = FALSE))
+
+# new dataframe of just sampled clusters
+cluster_sample <- sampling.frame[sampling.frame$cluster %in% sampled_clusters, ]
+
+```
+
+> Need to confirm/add weights using `sampling` package. 
 
 ### Two Stage Cluster: 
 
@@ -148,7 +183,8 @@ sampling.frame$SRS <- 0
 sampling.frame$Strata_major <- ifelse(sampling.frame$FIXED_ID %in%
                                         strata.major.chosen$FIXED_ID, 1, 0)
 sampling.frame$Strata_year <- 0
-sampling.frame$Cluster1 <- 0
+sampling.frame$Cluster1 <- ifelse(sampling.frame$FIXED_ID %in%
+                                        cluster_sample$FIXED_ID, 1, 0)
 sampling.frame$Cluster2 <- 0
 
 sample.these <- sampling.frame %>% 
