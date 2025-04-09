@@ -71,14 +71,12 @@ srs.n(seq(.05, .25, by = .05))
 Multiple sampling designs were developed as described below. 
 
 Read in Sampling frame
-```{r}
+```{r, echo=-1}
+frame.url <- "https://docs.google.com/spreadsheets/d/1Mvs2EjZ_eqki9Nv9PlOyl1iGEEEAq5knXh4cz_y3FIc"
 library(sampling)
 library(tidyverse)
-```
 
-```{r, echo = -1}
-frame.url <- "https://docs.google.com/spreadsheets/d/1Mvs2EjZ_eqki9Nv9PlOyl1iGEEEAq5knXh4cz_y3FIc"
-sampling.frame <- googlesheets4::read_sheet(frame.url)
+sampling.frame <- googlesheets4::read_sheet(frame.url) |> janitor::clean_names()
 ```
 
 The population size is determined by the size of our sampling frame, and the sample size was determined using the graph above and a class discussion. 
@@ -90,9 +88,49 @@ n <- 150
 
 ## SRS
 
+We draw a simple random sample from the entire alumni population without stratifying by any specific variable. Each alumni has an equal probability of being selected, regardless of graduation year, major, or number of majors. This method is easy to implement and ensures that the sample is unbiased with respect to all known and unknown variables. While this approach may not capture differences in key subgroups (e.g., income variation by major or graduation year), it provides a fair and representative overview of the overall alumni population. Since the cost of observation is the same for each unit (zero), SRS is a reasonable choice, particularly when subgroup-specific insights are not the primary goal of the study.
+
+```{r}
+set.seed(12345)
+srs.idx <- sampling::srswor(150, NROW(sampling.frame))
+alumni.srs <- getdata(sampling.frame, srs.idx)
+```
+
 
 ## Stratified on Year
 
+In our study we chose to stratify the data to make sure that an alumnus graduation year was accurately represented in the sample. Satisfying typically improves the accuracy and representation of a sample and thus we can accurately account for differences in years. We chose to stratify by year specifically because alumni experiences, job placements, and pay may all depend on how long it has been since they graduated. This is especially important in the past 5-10 years because it would not be surprising if alumni who graduated in or around covid had a much different experience overall than those prior. 
+
+We chose to use proportional allocation for our results to more accurately represent the population as a whole. We made the stratum sample sizes proportional to the stratum population sizes. The formula for sample size being $n_{h}=\frac{N_{h}}{N}n$ where $N_{h}$ is the population size of the stratum we are concerned with.
+
+
+```{r}
+set.seed(12345)
+
+strata2.frame <- sampling.frame %>% arrange(expected_grad_year) # sort first
+
+p.1 <- sum(strata2.frame$expected_grad_year==2015)/299*(150)
+p.2 <- sum(strata2.frame$expected_grad_year==2016)/299*(150)
+p.3 <- sum(strata2.frame$expected_grad_year==2017)/299*(150)
+p.4 <- sum(strata2.frame$expected_grad_year==2018)/299*(150)
+p.5 <- sum(strata2.frame$expected_grad_year==2019)/299*(150)
+p.6 <- sum(strata2.frame$expected_grad_year==2020)/299*(150)
+p.7 <- sum(strata2.frame$expected_grad_year==2021)/299*(150)
+p.8 <- sum(strata2.frame$expected_grad_year==2022)/299*(150)
+p.9 <- sum(strata2.frame$expected_grad_year==2023)/299*(150)
+p.10 <- (sum(strata2.frame$expected_grad_year==2024)/299)*(150)
+
+alloc<- c(p.1, p.2,p.3,p.4,p.5,p.6,p.7,p.8,p.9,p.10)
+
+
+strata.idx <- sampling::strata(data = strata2.frame,      # data set
+                 stratanames = "expected_grad_year", 
+                 size = alloc,      # stratum sample sizes 
+                 method = "srswor")     # method for selecting within strata
+
+
+
+```
 
 
 
@@ -104,8 +142,8 @@ We hypothesize that students who studied different focuses will be pursuing diff
 
 First we create a new variable with either a student’s major or if they had multiple majors stored. **Will Stratify by this variable**
 ```{r}
-sampling.frame$stratamajor <- sampling.frame$`Major 1`
-sampling.frame$stratamajor[!is.na(sampling.frame$`Major 2`)] = "Multiple Majors"
+sampling.frame$stratamajor <- sampling.frame$major_1
+sampling.frame$stratamajor[!is.na(sampling.frame$major_2)] = "Multiple Majors"
 
 sampling.frame.sort.major <- sampling.frame %>% arrange(stratamajor)
 ```
@@ -138,7 +176,7 @@ There is no ideal way to cluster with the information we have in our sampling fr
 Basic organizing
 ```{r}
 # renaming to cluster for simplicity
-sampling.frame$cluster <- sampling.frame$"Expected \nGrad Year" 
+sampling.frame$cluster <- sampling.frame$expected_grad_year
 
 # getting unique cluster ids based on year
 (all_clusters <- unique(sampling.frame$cluster))
@@ -171,6 +209,7 @@ cluster_sample <- sampling.frame[sampling.frame$cluster %in% sampled_clusters, ]
 
 > Need to confirm/add weights using `sampling` package. 
 
+
 ### Two Stage Cluster: 
 
 
@@ -179,7 +218,8 @@ cluster_sample <- sampling.frame[sampling.frame$cluster %in% sampled_clusters, ]
 Each method will randomly sample a different group of records There undoubtedly will be substantial overlap. To keep track of which records were chosen in each design, we create binary indicators for each design and add those back to the sampling frame in Google Sheets.  
 
 ```{r, eval=FALSE}
-sampling.frame$SRS <- 0
+sampling.frame$SRS <- ifelse(sampling.frame$FIXED_ID %in%
+                                        alumni.srs$FIXED_ID, 1, 0)
 sampling.frame$Strata_major <- ifelse(sampling.frame$FIXED_ID %in%
                                         strata.major.chosen$FIXED_ID, 1, 0)
 sampling.frame$Strata_year <- 0
