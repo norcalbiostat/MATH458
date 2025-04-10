@@ -91,7 +91,8 @@ n <- 150
 We draw a simple random sample from the entire alumni population without stratifying by any specific variable. Each alumni has an equal probability of being selected, regardless of graduation year, major, or number of majors. This method is easy to implement and ensures that the sample is unbiased with respect to all known and unknown variables. While this approach may not capture differences in key subgroups (e.g., income variation by major or graduation year), it provides a fair and representative overview of the overall alumni population. Since the cost of observation is the same for each unit (zero), SRS is a reasonable choice, particularly when subgroup-specific insights are not the primary goal of the study.
 
 ```{r}
-set.seed(12345)
+class.seed <- 7+3+5+27+4+510+24+37+42+6+11+64
+set.seed(class.seed)
 srs.idx <- sampling::srswor(150, NROW(sampling.frame))
 alumni.srs <- getdata(sampling.frame, srs.idx)
 ```
@@ -105,42 +106,34 @@ We chose to use proportional allocation for our results to more accurately repre
 
 
 ```{r}
-set.seed(12345)
-
+set.seed(class.seed)
 strata2.frame <- sampling.frame %>% arrange(expected_grad_year) # sort first
 
-p.1 <- sum(strata2.frame$expected_grad_year==2015)/299*(150)
-p.2 <- sum(strata2.frame$expected_grad_year==2016)/299*(150)
-p.3 <- sum(strata2.frame$expected_grad_year==2017)/299*(150)
-p.4 <- sum(strata2.frame$expected_grad_year==2018)/299*(150)
-p.5 <- sum(strata2.frame$expected_grad_year==2019)/299*(150)
-p.6 <- sum(strata2.frame$expected_grad_year==2020)/299*(150)
-p.7 <- sum(strata2.frame$expected_grad_year==2021)/299*(150)
-p.8 <- sum(strata2.frame$expected_grad_year==2022)/299*(150)
-p.9 <- sum(strata2.frame$expected_grad_year==2023)/299*(150)
-p.10 <- (sum(strata2.frame$expected_grad_year==2024)/299)*(150)
+p.1 <- sum(strata2.frame$expected_grad_year==2015)*.5
+p.2 <- sum(strata2.frame$expected_grad_year==2016)*.5
+p.3 <- sum(strata2.frame$expected_grad_year==2017)*.5
+p.4 <- sum(strata2.frame$expected_grad_year==2018)*.5
+p.5 <- sum(strata2.frame$expected_grad_year==2019)*.5
+p.6 <- sum(strata2.frame$expected_grad_year==2020)*.5
+p.7 <- sum(strata2.frame$expected_grad_year==2021)*.5
+p.8 <- sum(strata2.frame$expected_grad_year==2022)*.5
+p.9 <- sum(strata2.frame$expected_grad_year==2023)*.5
+p.10 <-sum(strata2.frame$expected_grad_year==2024)*.5
 
-alloc<- c(p.1, p.2,p.3,p.4,p.5,p.6,p.7,p.8,p.9,p.10)
-
+alloc <- ceiling(c(p.1, p.2,p.3,p.4,p.5,p.6,p.7,p.8,p.9,p.10))
 
 strata.idx <- sampling::strata(data = strata2.frame,      # data set
                  stratanames = "expected_grad_year", 
                  size = alloc,      # stratum sample sizes 
                  method = "srswor")     # method for selecting within strata
-
-
-
 ```
-
-
-
 
 ## Stratified on Major
 
 We hypothesize that students who studied different focuses will be pursuing different types of careers and making different kinds of salaries. Students who double or triple majored will also not have the same experiences as those who share one of their majors. We expect that by stratifying by major, with those with more than one major in a separate stratum, we should be able to expect widely different stratum means for variables like annual income. Since different majors have different course requirements, their feedback on the university will also be different by major. Since we are interested in multiple variables and the observation cost in each stratum will be the same, in this case zero, proportional allocation makes sense as a choice.
 
-
 First we create a new variable with either a student’s major or if they had multiple majors stored. **Will Stratify by this variable**
+
 ```{r}
 sampling.frame$stratamajor <- sampling.frame$major_1
 sampling.frame$stratamajor[!is.na(sampling.frame$major_2)] = "Multiple Majors"
@@ -159,7 +152,7 @@ strata.size$n_h <- round(strata.size$Freq * p)
 ```
 
 ```{r}
-set.seed(12345)
+set.seed(class.seed)
 strata.major.idx <- sampling::strata(data = sampling.frame.sort.major, 
                               stratanames = "stratamajor", 
                               size = strata.size$n_h, 
@@ -197,20 +190,15 @@ m  <- 5 # the number of sampled clusters
 
 Sampling from clusters:
 ```{r}
-set.seed(2025)
-
+set.seed(class.seed)
 # sampling the clusters
 (sampled_clusters <- sample(all_clusters, size = m, replace = FALSE))
 
 # new dataframe of just sampled clusters
 cluster_sample <- sampling.frame[sampling.frame$cluster %in% sampled_clusters, ]
-
 ```
 
 > Need to confirm/add weights using `sampling` package. 
-
-
-### Two Stage Cluster: 
 
 
 ## Create sampling indicators and write back to Google sheets. 
@@ -218,21 +206,20 @@ cluster_sample <- sampling.frame[sampling.frame$cluster %in% sampled_clusters, ]
 Each method will randomly sample a different group of records There undoubtedly will be substantial overlap. To keep track of which records were chosen in each design, we create binary indicators for each design and add those back to the sampling frame in Google Sheets.  
 
 ```{r, eval=FALSE}
-sampling.frame$SRS <- ifelse(sampling.frame$FIXED_ID %in%
-                                        alumni.srs$FIXED_ID, 1, 0)
-sampling.frame$Strata_major <- ifelse(sampling.frame$FIXED_ID %in%
-                                        strata.major.chosen$FIXED_ID, 1, 0)
+sampling.frame$SRS <- ifelse(sampling.frame$fixed_id %in%
+                                        alumni.srs$fixed_id, 1, 0)
+sampling.frame$Strata_major <- ifelse(sampling.frame$fixed_id %in%
+                                        strata.major.chosen$fixed_id, 1, 0)
 sampling.frame$Strata_year <- 0
-sampling.frame$Cluster1 <- ifelse(sampling.frame$FIXED_ID %in%
-                                        cluster_sample$FIXED_ID, 1, 0)
-sampling.frame$Cluster2 <- 0
+sampling.frame$Cluster <- ifelse(sampling.frame$fixed_id %in%
+                                        cluster_sample$fixed_id, 1, 0)
 
 sample.these <- sampling.frame %>% 
-  select(SRS:Cluster2)
+  select(SRS:Cluster)
 head(sample.these)
 
 googlesheets4::range_write(frame.url, data = sample.these, 
-                           range = "P1:T299", 
+                           range = "P1:S299", 
                            col_names = TRUE)
 ```
 
