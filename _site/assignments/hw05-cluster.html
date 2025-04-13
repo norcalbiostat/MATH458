@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-03-13">
+<meta name="dcterms.date" content="2025-04-13">
 
-<title>Sampling Methods - Worksheet 02: Stratified Random Sampling</title>
+<title>Sampling Methods - Homework 05: Cluster Sampling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -103,6 +69,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -206,16 +201,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introductory-exercise" id="toc-introductory-exercise" class="nav-link active" data-scroll-target="#introductory-exercise">Introductory Exercise</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Worksheet 02: Stratified Random Sampling</h1>
+<h1 class="title">Homework 05: Cluster Sampling</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Worksheet</div>
+    <div class="quarto-category">Homework</div>
   </div>
   </div>
 
@@ -227,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 13, 2025</p>
+      <p class="date">April 13, 2025</p>
     </div>
   </div>
   
@@ -239,18 +240,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas. Summary values for the size of the membership, number of returned surveys, and the proportion of surveys returned by female members are packed into a data frame for you below.</p>
-<p><strong>1. Using equations 3.7 and 3.8, estimate the proportion (and SE) of the major societies in those seven disciplines that are female.</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>acls <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">discipline =</span> <span class="fu">c</span>(<span class="st">"Lit"</span>, <span class="st">"Classics"</span>, <span class="st">"Phil"</span>, <span class="st">"Hist"</span>, <span class="st">"Ling"</span>, <span class="st">"Pols"</span>, <span class="st">"Soci"</span>),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">membership =</span> <span class="fu">c</span>(<span class="dv">9100</span>,<span class="dv">1950</span>,<span class="dv">5500</span>,<span class="dv">10850</span>,<span class="dv">2100</span>,<span class="dv">5500</span>,<span class="dv">9000</span>), </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">valid.return =</span> <span class="fu">c</span>(<span class="dv">636</span>,<span class="dv">451</span>,<span class="dv">481</span>,<span class="dv">611</span>,<span class="dv">493</span>,<span class="dv">575</span>,<span class="dv">588</span>), </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop.female =</span> <span class="fu">c</span>(.<span class="dv">38</span>,.<span class="dv">27</span>,.<span class="dv">18</span>,.<span class="dv">19</span>,.<span class="dv">36</span>,.<span class="dv">13</span>,.<span class="dv">26</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<p><strong>2. Using the equations above Table 3.5 in the text applied to your answers to part 1, estimate total (and SE) number of female members in the society.</strong></p>
+<div class="callout-title-container flex-fill">
+Template
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use this <a href="https://hackmd.io/@norcalbiostat/hw05_template/edit">HackMD</a> file as a template for this assignment.</p>
+</div>
+</div>
+<section id="introductory-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="introductory-exercise">Introductory Exercise</h2>
+<p><strong>1. City enagagement</strong></p>
+<p>A city council of a small city wants to know the proportion of eligible voters that oppose having an incinerator of Phoenix garbage opened just outside of the city limits. They randomly select 100 residential numbers from the city’s telephone book that contains 3,000 such numbers. Each selected residence is then called and asked for (a) the total number of eligible voters and (b) the number of voters opposed to the incinerator. A total of 157 voters were surveyed; of these, 23 refused to answer the question. Of the remaining 134 voters, 112 opposed the incinerator, so the council estimates the proportion by</p>
+<p><span class="math display">\[\hat{p} = \frac{112}{134} = 0.83482\]</span></p>
+<p>with</p>
+<p><span class="math display">\[\hat{V}(\hat{p})= 0.83582(1-0.83582)/134 = 0.00102\]</span> Are these estimates valid? Why, or why not</p>
+<p><strong>2. Childrens’ access to firearms</strong></p>
+<p>Senturia et al.&nbsp;(1994) described a survey taken to study how many children have access to guns in their households. Questionnaires were distributed to all parents who attended selected clinics in the Chicago area during a one-week period for well or sick child visits.</p>
+<ol type="a">
+<li><p>Suppose that the quantity of interest is the percentage of households containing children that own at least one gun. Describe why this is a cluster sample. What is the psu? The ssu? Is it a one-stage or two-stage cluster sample?</p></li>
+<li><p>What is the sampled population for this study? Do you think this sampling procedure results in a representative sample of households with children? Why, or why not?</p></li>
+</ol>
+<p><strong>3. Wetland management</strong></p>
+<p>Kleppel et al.&nbsp;(2004) reported on a study of wetlands in upstate New York. Four wetlands were selected for the study: Two of the wetlands drain watersheds from small towns and the other two drain suburban watersheds. Quantities such as pH were measured at two to four randomly selected sites within each of the four wetlands.</p>
+<ol type="a">
+<li><p>Describe why this is a cluster sample. What are the psus? The ssus? How would you estimate the average pH in the suburban wetlands?</p></li>
+<li><p>The authors used Student’s two-sample t test to compare the average pH from the sites in the suburban wetlands with the average pH from the sites in the small town wetlands, treating all sites as independent. Is this analysis appropriate? Why, or why not?</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

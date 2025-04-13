@@ -1,0 +1,51 @@
+---
+format: html
+title: "Homework 05: Cluster Sampling"
+date: 04/13/25
+categories: Homework
+execute: 
+  warning: false
+  message: false
+---
+
+:::{.callout-tip }
+## Template
+
+Use this [HackMD](https://hackmd.io/@norcalbiostat/hw05_template/edit) file as a template for this assignment.
+:::
+
+
+## Introductory Exercise
+
+**1. City enagagement**
+
+A city council of a small city wants to know the proportion of eligible voters that oppose having an incinerator of Phoenix garbage opened just outside of the city limits. They randomly select 100 residential numbers from the city's telephone book that contains 3,000 such numbers. Each selected residence is then called and asked for (a) the total number of eligible voters and (b) the number of voters opposed to the incinerator. A total of 157 voters were surveyed; of these, 23 refused to answer the question. Of the remaining 134 voters, 112 opposed the incinerator, so the council estimates the proportion by
+
+$$\hat{p} = \frac{112}{134} = 0.83482$$
+
+with
+
+$$\hat{V}(\hat{p})= 0.83582(1-0.83582)/134 = 0.00102$$
+Are these estimates valid? Why, or why not
+
+
+**2. Childrens' access to firearms**
+
+Senturia et al. (1994) described a survey taken to study how many children have access to guns in their households. Questionnaires were distributed to all parents who attended selected clinics in the Chicago area during a one-week period for well or sick child visits.
+
+(a) Suppose that the quantity of interest is the percentage of households containing children that own at least one gun. Describe why this is a cluster sample. What is the psu? The ssu? Is it a one-stage or two-stage cluster sample?
+
+(b) What is the sampled population for this study? Do you think this sampling procedure results in a representative sample of households with children? Why, or why not?
+
+
+**3. Wetland management**
+
+Kleppel et al. (2004) reported on a study of wetlands in upstate New York. Four wetlands were selected for the study: Two of the wetlands drain watersheds from small towns and the other two drain suburban watersheds. Quantities such as pH were measured at two to four randomly selected sites within each of the four wetlands.
+
+(a) Describe why this is a cluster sample. What are the psus? The ssus? How would you estimate the average pH in the suburban wetlands?
+
+(b) The authors used Student's two-sample t test to compare the average pH from the sites in the suburban wetlands with the average pH from the sites in the small town wetlands, treating all sites as independent. Is this analysis appropriate? Why, or why not?
+
+ 
+
+

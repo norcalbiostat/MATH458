@@ -8,13 +8,6 @@ execute:
   message: false
 ---
 
-:::{.callout-tip }
-## Use me!
-
-[Download the qmd file](hw04-stratified.qmd) for this assignment and use it as a template for your work.
-:::
- 
-
 
 # Part 1: Conceptual and calculation exercises
 

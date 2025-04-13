@@ -36,7 +36,7 @@ website:
             url: https://hackmd.io/@norcalbiostat/cn02-statistical_foundations
           - text: "Ch 3. Stratified Sampling"
             url: https://hackmd.io/@norcalbiostat/cn04_stratified
-          - text: "Cluster Sampling"
+          - text: "Ch 5. Cluster Sampling"
             url: https://hackmd.io/@norcalbiostat/cn05_cluster
           # - text: "Ratio & Regression Estimation"
           #   url: https://hackmd.io/@norcalbiostat/cn08_ratio

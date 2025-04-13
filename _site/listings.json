@@ -1,5 +1,18 @@
 [
   {
+    "listing": "/assignments.html",
+    "items": [
+      "/assignments/hw00-setup.html",
+      "/assignments/hw01-framework.html",
+      "/assignments/hw02-estimation.html",
+      "/assignments/hw03-SRS.html",
+      "/assignments/hw04-stratified.html",
+      "/assignments/hw05-cluster.html",
+      "/worksheets/ws01-SRS.html",
+      "/worksheets/ws02-stratified.html"
+    ]
+  },
+  {
     "listing": "/notes.html",
     "items": [
       "/notes/cn00-welcome.html",
@@ -9,18 +22,6 @@
       "/notes/cn00b-teaching-and-learning.html",
       "/notes/cn04-stratified_sampling.html",
       "/notes/cn05-cluster.html"
-    ]
-  },
-  {
-    "listing": "/assignments.html",
-    "items": [
-      "/assignments/hw00-setup.html",
-      "/assignments/hw01-framework.html",
-      "/assignments/hw02-estimation.html",
-      "/assignments/hw03-SRS.html",
-      "/assignments/hw04-stratified.html",
-      "/worksheets/ws01-SRS.html",
-      "/worksheets/ws02-stratified.html"
     ]
   },
   {
