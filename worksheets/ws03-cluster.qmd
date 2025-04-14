@@ -1,0 +1,50 @@
+---
+format: html
+title: "Worksheet 03: Exploring the partitoning of variance in cluster sampling"
+subtitle: ""
+date: 4/14/25
+categories: Worksheet
+execute: 
+  warning: false
+  message: false
+---
+
+[Starter codein HackMD](https://hackmd.io/@norcalbiostat/ws03_starter)
+
+```{r}
+library(tidyverse);library(knitr)
+library(sampling); library(survey)
+```
+
+A student wants to estimate the average GPA in their dorm. Obtaining a listing of all students in the hall and conducting an SRS would take a lot of time. Instead, since each of the 100 suites in the hall have 4 students, the student randomly samples 5 suites and collects GPA data for each student in the suite. This data is part of Example 5.2 and 5.4. Lets explore that data. 
+
+1. What is contained in each row? 
+```{r}
+gpa.data <- readr::read_csv(here::here("data", "gpa.csv"))
+head(gpa.data)
+```
+
+
+2. What is the explanatory variable? What is the response variable? 
+
+
+Recreate the ANOVA table in 5.4. 
+
+```{r}
+aov(gpa ~ suite, data=gpa.data) |> summary()
+```
+
+What went wrong? Explain how you detected this, how you fixed it, and rerun the ANOVA with the correct data. 
+
+
+3. From the ANOVA table calculate the unbiased estimate of the population _standard deviation_ $S$. Interpret this number
+$$
+\hat{S}^2 = \frac{(N-1)\hat{MSB}+N(M-1)\hat{MSW}}{NM-1}
+$$
+
+
+4. Calculate the ICC and R2. 
+
+
+5. How much is the increase in variance for using clustering sampling compared to an SRS?
+

@@ -9,7 +9,8 @@
       "/assignments/hw04-stratified.html",
       "/assignments/hw05-cluster.html",
       "/worksheets/ws01-SRS.html",
-      "/worksheets/ws02-stratified.html"
+      "/worksheets/ws02-stratified.html",
+      "/worksheets/ws03-cluster.html"
     ]
   },
   {
@@ -18,8 +19,8 @@
       "/notes/cn00-welcome.html",
       "/notes/cn01-intro_sampling.html",
       "/notes/cn02-statistical_foundations.html",
-      "/notes/cn03-SRS.html",
       "/notes/cn00b-teaching-and-learning.html",
+      "/notes/cn03-SRS.html",
       "/notes/cn04-stratified_sampling.html",
       "/notes/cn05-cluster.html"
     ]
