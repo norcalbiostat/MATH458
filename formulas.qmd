@@ -12,10 +12,9 @@ description: "Equations and R code"
 | Variance | $\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(y_i-\mu)^2$ | $s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(y_i-\bar{y})^2$ |
 | Proportion$^*$ | $p = \mu$ | $\hat{p} = \bar{y}$ |
 
--   $N$ = total population size
-
--   $y_{i}$ = Value of measurement $y$ on unit $i$
-
+-   $N$: total population size
+-   $n$: total sample size
+-   $y_{i}$: value of measurement $y$ on unit $i$
 -   $^*$For proportions $y_{i}$ is a binary indicator of success. $y \in {[0,1]}$. I.e. $I(y_{i}=1)$.
 
 ## Expected Value and Variance
@@ -43,6 +42,7 @@ The **sampling weights** $w_{i}$are the reciprocal of the inclusion probability 
 -   **SRS**: $w_{i} =\frac{1}{n}$
 -   **SRSWOR**: $w_{i} =\frac{N}{n}$
 -   **Stratified**: $w_{hj}=\frac{N_h}{n_h}$
+-   **One stage cluster**: $w_{ij}=\frac{N}{n}$
 
 # Simple Random Sample
 
@@ -69,6 +69,25 @@ See [section-04](https://sampling-458.netlify.app/notes/cn04-stratified_sampling
 | Overall proportion: $p = \mu$  |$\hat{p}_{str} = \sum_{h}\frac{N_{h}}{N}\hat{p}_{h}$  | $\hat{V}(\hat{p}_{str}) = \sum_{h} (1-\frac{n_h}{N_h})\big(\frac{N_{h}}{N}\big)^2\Big(\frac{\hat{p}_h(1-\hat{p}_h)}{n_h-1}\Big)$  |
 
 * $\sum_{h}$ is a simplified version of $\sum_{h=1}^{H}$ and $\sum_{j}$ is a simplified version of $\sum_{j=1}^{N_{h}}$
+
+# Cluster Random Sample
+
+⚠️ Note notation change!
+
+* $y_{ij}$: measurement for the $j$th element in $i$th psu
+* $N$: the number of clusters (psus) in the population
+    * $n$: the number of psus from the sample
+* $M_{i}$: number of ssus in psu $i$ in the population
+    * $m_i$: the number of ssu's in psu $i$ from the sample
+* $M_{0}$: total number of ssus in the population  
+
+| Population Quantity | Estimator $(\hat{\theta})$ | Estimated variance of $(\hat{\theta})$ |
+|---------------------|----------------------|-----------------------------|
+| Total in psu $i$: $t_{i}=\sum_{j} y_{ij}$ | $\hat{t}_{i} = \frac{M_{i}}{m_i}\sum_{j} y_{ij}$ | - |
+| Variance of psu totals : $S_t^2 = \frac{1}{N-1} \sum_{i} \left( t_i - \frac{t}{N} \right)^2$ | $s_t^2 = \frac{1}{n-1} \sum_{i} \left( t_i - \frac{\hat{t}}{N} \right)^2$ | _AKA variance between psu_|
+| Overall Total: $t = \sum_{i} t_i$ | $\hat{t} = \frac{N}{n}\sum_{i} \hat{t}_i$ | $N^2 \left(1 - \frac{n}{N}\right) \frac{s_t^2}{n}$  |
+| mean in psu $i$: $\mu_{i} = \frac{1}{M_i} \sum_{j} y_{ij}$  | $\bar{y}_{i} = \frac{1}{m_i} \sum_{j} y_{ij}$  | $s_{i}^{2} = \frac{1}{m_i-1} \sum_{j} (y_{ij}-\bar{y}_{i})^2$ (_AKA variance within psu_)|
+| Overall mean: $\mu = \frac{1}{M_0} \sum_{i} \sum_{j} y_{ij}$  | $\bar{y} = \frac{\hat{t}}{NM}$  | $\left( 1 - \frac{n}{N} \right) \frac{s_t^2}{nM^2}$ |
 
 
 ------------------------------------------------------------------------
@@ -99,6 +118,7 @@ The argument details can be found on the specified pages in the R companion for 
 
 - SRS: pg 21
 - Stratified Random Sample: pg 34
+- Cluster sampling: p57
 
 ### Estimators
 

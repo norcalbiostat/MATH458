@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.3.319">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-04-01">
 <meta name="description" content="When units are not necessarily nicely defined, even when the population is.">
 
-<title>Cluster Sampling – Sampling Methods</title>
+<title>Sampling Methods - Cluster Sampling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -83,13 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -98,42 +92,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -141,54 +106,54 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html"> 
-<span class="menu-text">Notes</span></a>
+    <a class="nav-link" href="../notes.html" rel="" target="">
+ <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../assignments.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../project.html"> 
-<span class="menu-text">Project</span></a>
+    <a class="nav-link" href="../project.html" rel="" target="">
+ <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">HackMD Notes</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling" rel="" target="">
  <span class="dropdown-text">Ch 1. Sampling Framework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations" rel="" target="">
  <span class="dropdown-text">Ch 2. Foundations of Estimation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn04_stratified">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn04_stratified" rel="" target="">
  <span class="dropdown-text">Ch 3. Stratified Sampling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn05_cluster">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn05_cluster" rel="" target="">
  <span class="dropdown-text">Ch 5. Cluster Sampling</span></a>
   </li>  
     </ul>
@@ -196,39 +161,39 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
       <i class="bi bi-google" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-google">    
         <li>
-    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY">
+    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY" rel="" target="">
  <span class="dropdown-text">Content creation group</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1f4ze0905zE4HbtEyqVrJv1ncMB4EdNZDd4QJH5wewS0">
+    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1f4ze0905zE4HbtEyqVrJv1ncMB4EdNZDd4QJH5wewS0" rel="" target="">
  <span class="dropdown-text">Sechedule</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA">
+    <a class="dropdown-item" href="https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA" rel="" target="">
  <span class="dropdown-text">Project folder</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../formulas.html"> 
-<span class="menu-text">Formulas and Definitions</span></a>
+    <a class="nav-link" href="../formulas.html" rel="" target="">
+ <span class="menu-text">Formulas and Definitions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Syllabus</span></a>
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -312,9 +277,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse);<span class="fu">library</span>(knitr)</span>
@@ -347,7 +310,7 @@ Sampling Units
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../figs/fig5_1.jpg" class="img-fluid figure-img"></p>
-<figcaption>Textbook Figure 5.1. Contrasting stratified sampling with one-stage cluster sampling.</figcaption>
+<p></p><figcaption class="figure-caption">Textbook Figure 5.1. Contrasting stratified sampling with one-stage cluster sampling.</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -369,172 +332,82 @@ Example: Studies in education
 </div>
 </div>
 <ul>
-<li>In this study they took 16 female and 16 male professors and matched them by their subjects, experence, and tenure status.</li>
+<li>In this study they took 16 female and 16 male professors and matched them by their subjects, experience, and tenure status.</li>
 <li>They then sampled each of their classrooms full of students for data collection.</li>
-<li>They, in total, collected 1029 individual student responses but since we are using cluster sampling the sample size will be n = 32 as there are 32 total clusters. The analysis would be wrong if we ignored that it was a clusted sample and treated it as an SRS of size 1029.</li>
+<li>They, in total, collected 1029 individual student responses but since we are using cluster sampling the sample size will be n = 32 as there are 32 total clusters. The analysis would be wrong if we ignored that it was a cluster sample and treated it as an SRS of size 1029.</li>
 </ul>
 <p>This is a great real world example of how cluster sampling can streamline collecting important data while still gaining valuable insight.</p>
 </section>
 </section>
 <section id="notation-formulas" class="level1">
 <h1>Notation &amp; Formulas</h1>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Pop psu level</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Pop ssu level</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Sample</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 33%">
-<col style="width: 51%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th>Formula</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(y_{ij}\)</span></td>
-<td></td>
-<td>measurement for the <span class="math inline">\(j\)</span>th element in <span class="math inline">\(i\)</span>th psu</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(N\)</span></td>
-<td></td>
-<td>number of clusters (psus) in the population</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(M_{i}\)</span></td>
-<td></td>
-<td>number of ssus in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(M_{0}\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^{N} M_{i}\)</span></td>
-<td>total number of ssus in the population</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(t_{i}\)</span></td>
-<td><span class="math inline">\(\sum_{j=1}^{M_{i}} y_{ij}\)</span></td>
-<td>total in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(t\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^{N} t_{i}= \sum_{i=1}^{N} \sum_{j=1}^{M_{i}} y_{ij}\)</span></td>
-<td>population total</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(S_{t}^{2}\)</span></td>
-<td><span class="math inline">\(\frac{1}{N-1} \sum_{i=1}^{N} (t_{i} - \frac{t}{N})^2\)</span></td>
-<td>population variance of the psu totals</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 47%">
-<col style="width: 26%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th>Formula</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\bar{y}_{\mu}\)</span></td>
-<td><span class="math inline">\(\frac{1}{M_0} \sum_{i=1}^N \sum_{j=1}^{M_i} y_{ij}\)</span></td>
-<td>population mean</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\bar{y}_{i\mu}\)</span></td>
-<td><span class="math inline">\(\frac{1}{M_i} \sum_{j=1}^{M_i} y_{ij} = \frac{t_i}{M_i}\)</span></td>
-<td>population mean in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(S^2\)</span></td>
-<td><span class="math inline">\(\frac{1}{M_0-1} \sum_{i=1}^N \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2\)</span></td>
-<td>population variance (per ssu)</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(S_{i}^{2}\)</span></td>
-<td><span class="math inline">\(\frac{1}{M_i-1} \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2\)</span></td>
-<td>population variance within psu <span class="math inline">\(i\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 38%">
-<col style="width: 38%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th>Formula</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(y_{ij}\)</span></td>
-<td></td>
-<td>Measurement for<span class="math inline">\(j\)</span>th element in <span class="math inline">\(i\)</span>ht psu</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(N\)</span></td>
-<td></td>
-<td>Number of clusters (psus) in the population</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(M_i\)</span></td>
-<td></td>
-<td>Number of ssus in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(M_{o}\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^NM_i\)</span></td>
-<td>Total number of psus in the population</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(t_i\)</span></td>
-<td><span class="math inline">\(\sum_{j=1}^{M_i}y_{ij}\)</span></td>
-<td>Total in psu <span class="math inline">\(i\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(t\)</span></td>
-<td><span class="math inline">\(\sum_{i=1}^Nt_i = \sum_{i=1}^N\sum_{j=i}^{M_i}y_{ij}\)</span></td>
-<td>Population Total</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(S_i^2\)</span></td>
-<td><span class="math inline">\(\frac{1}{N-1} \sum_{i=1}^N(t_i-\frac{t}{N})^2\)</span></td>
-<td>Population variance of the psu totals</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>Overall there are many differences between clustering, stratification, and SRS, that are important to note. In SRS, each individual element is the sampling unit, and has an equal chance to be sampled. In stratified sampling, the population is divided into <span class="math inline">\(H\)</span> known strata, and a sample is taken from each. Our sampling unit in the cluster design is the entire cluster, or primary sampling unit <span class="math inline">\(psus\)</span>, and not the individual elements.</p>
+<p>In SRS, each individual element is the sampling unit, and has an equal chance to be sampled. In stratified sampling, the population is divided into <span class="math inline">\(H\)</span> known strata, and a sample is taken from each. Our sampling unit in the cluster design is the entire cluster, or primary sampling unit <span class="math inline">\(psus\)</span>, and not the individual elements.</p>
 <p>In stratified sampling we have our entire population being <span class="math inline">\(N\)</span> total population of each individual element, whereas our entire universe in cluster sampling is the number of clusters, that is <span class="math inline">\(N\)</span> is the number of <span class="math inline">\(psus\)</span>.</p>
+<p>⚠️ Note notation change!</p>
+<ul>
+<li><span class="math inline">\(y_{ij}\)</span>: measurement for the <span class="math inline">\(j\)</span>th element in <span class="math inline">\(i\)</span>th psu</li>
+<li><span class="math inline">\(N\)</span>: the number of clusters (psus) in the population
+<ul>
+<li><span class="math inline">\(n\)</span>: the number of psus from the sample</li>
+</ul></li>
+<li><span class="math inline">\(M_{i}\)</span>: number of ssus in psu <span class="math inline">\(i\)</span> in the population
+<ul>
+<li><span class="math inline">\(m_i\)</span>: the number of ssu’s in psu <span class="math inline">\(i\)</span> from the sample</li>
+</ul></li>
+<li><span class="math inline">\(M_{0}\)</span>: total number of ssus in the population</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 30%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Population Quantity</th>
+<th>Estimator <span class="math inline">\((\hat{\theta})\)</span></th>
+<th>Estimated variance of <span class="math inline">\((\hat{\theta})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Total in psu <span class="math inline">\(i\)</span>: <span class="math inline">\(t_{i}=\sum_{j} y_{ij}\)</span></td>
+<td><span class="math inline">\(\hat{t}_{i} = \frac{M_{i}}{m_i}\sum_{j} y_{ij}\)</span></td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>Variance of psu totals : <span class="math inline">\(S_t^2 = \frac{1}{N-1} \sum_{i} \left( t_i - \frac{t}{N} \right)^2\)</span></td>
+<td><span class="math inline">\(s_t^2 = \frac{1}{n-1} \sum_{i} \left( t_i - \frac{\hat{t}}{N} \right)^2\)</span></td>
+<td><em>AKA variance between psu</em></td>
+</tr>
+<tr class="odd">
+<td>Overall Total: <span class="math inline">\(t = \sum_{i} t_i\)</span></td>
+<td><span class="math inline">\(\hat{t} = \frac{N}{n}\sum_{i} \hat{t}_i\)</span></td>
+<td><span class="math inline">\(N^2 \left(1 - \frac{n}{N}\right) \frac{s_t^2}{n}\)</span></td>
+</tr>
+<tr class="even">
+<td>mean in psu <span class="math inline">\(i\)</span>: <span class="math inline">\(\mu_{i} = \frac{1}{M_i} \sum_{j} y_{ij}\)</span></td>
+<td><span class="math inline">\(\bar{y}_{i} = \frac{1}{m_i} \sum_{j} y_{ij}\)</span></td>
+<td><span class="math inline">\(s_{i}^{2} = \frac{1}{m_i-1} \sum_{j} (y_{ij}-\bar{y}_{i})^2\)</span> (<em>AKA variance within psu</em>)</td>
+</tr>
+<tr class="odd">
+<td>Overall mean: <span class="math inline">\(\mu = \frac{1}{M_0} \sum_{i} \sum_{j} y_{ij}\)</span></td>
+<td><span class="math inline">\(\bar{y} = \frac{\hat{t}}{NM}\)</span></td>
+<td><span class="math inline">\(\left( 1 - \frac{n}{N} \right) \frac{s_t^2}{nM^2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Overall there are many differences between clustering, stratification, and SRS, that are important to note.</p>
 <hr>
 </section>
 <section id="one-stage-clustering-sampling" class="level1">
 <h1>One-Stage Clustering Sampling</h1>
 <section id="equal-size-clusters-estimation" class="level2">
 <h2 class="anchored" data-anchor-id="equal-size-clusters-estimation">Equal size clusters: Estimation</h2>
+<p>One-stage clustering is the type of clustering you’re probably already familiar with - either all (or none) of the observations inside of a cluster (psu) are sampled.</p>
+<p>While this is an unrealistic scenario for most statistical work in the social sciences, agricultural or industrial surveys may be able to take advantage of the much simpler process that equal size clustering brings.</p>
+<p>Because the psus are selected through an SRS, we can use the per-cluster estimates as single observations in an SRS. There’s no need to consider the individual ssus within each cluster. <strong>Important distinction: we treat this as an SRS of <span class="math inline">\(n\)</span> psus, not an SRS of <span class="math inline">\(nM\)</span> observational units.</strong></p>
+<p>In this setup, we typically aim to estimate the population total or mean of a variable of interest based on the totals from each sampled cluster.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -545,14 +418,57 @@ Example: Average GPA in a dorm
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Perhaps we want to estimate the average GPA in a college dormitory with a one-stage cluster design. The dorm consists of 100 units, each with 4 students. Here’s the process:</p>
+<ol type="1">
+<li>An SRS is conducted to select 5 clusters.<br>
+</li>
+<li>All 4 students (ssus) per dormitory unit (psus) have their GPAs measured</li>
+<li>Calculate your estimates based on your <em>psu</em> statistics, not your ssu measurements.</li>
+</ol>
+<p><em>(Slightly modified version of Example 5.2 from Lohr’s R Companion to Sampling 3rd ed.&nbsp;Page 57. DOI: 10.1201/9781003228196-5)</em></p>
 </div>
 </div>
+<section id="using-the-survey-package" class="level4">
+<h4 class="anchored" data-anchor-id="using-the-survey-package">Using the <code>survey</code> package</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gpa <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"gpa.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gpa <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"gpa.csv"</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># total dorm population (this won't be NROW(gpa)!)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span>   <span class="co"># total number of clusters/psus selected</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="dv">4</span>   <span class="co"># observational units/ssus selected per psu</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Create a survey design for one-stage clustering</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>OSC_gpa <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span>suite,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">weights =</span> <span class="sc">~</span>wt,<span class="co">#already on the data set</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fpc =</span> <span class="sc">~</span><span class="fu">rep</span>(<span class="dv">100</span>,<span class="dv">20</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> gpa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>calculate the mean GPA and 95% confidence interval using survey package</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(mean_gpa <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>gpa, OSC_gpa))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     mean     SE
+gpa 2.826 0.1637</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(mean_gpa_confint <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>gpa, OSC_gpa) <span class="sc">|&gt;</span> <span class="fu">confint</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       2.5 %   97.5 %
+gpa 2.505223 3.146777</code></pre>
+</div>
+</div>
+<p>The point estimate for GPA is 2.83, with a 95% confidence interval of 2.51 to 3.15.</p>
+</section>
+<section id="section" class="level4">
+<h4 class="anchored" data-anchor-id="section"></h4>
+</section>
 <section id="sampling-weights" class="level3">
 <h3 class="anchored" data-anchor-id="sampling-weights">Sampling Weights</h3>
+<p>In one-stage cluster sampling with equal-sized clusters, each cluster is treated as a single observation. The sampling weight for each observation unit <span class="math inline">\(j\)</span> in PSU <span class="math inline">\(i\)</span> is based on the inverse probability of that PSU being selected. This results in a <strong>self-weighting sample</strong>, meaning every sampled element gets the same weight.</p>
+<p><span class="math display">\[
+w_{ij} = \frac{N}{n}
+\]</span></p>
+<p>The total sampling weight across all sampled units equals the total number of units in the population (<span class="math inline">\(NM\)</span>). Make sure to always verify that the sum of your weights matches the population size. Population total and mean can also be estimated using these weights by summing the weighted values or averaging them appropriately.</p>
+<p>This weighting approach allows you to use one-stage cluster sampling estimates similarly to how you’d handle stratified or SRS data, despite the cluster structure.</p>
 <hr>
 </section>
 </section>
@@ -692,7 +608,7 @@ Example. High school Algebra
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../figs/fig5_2.jpg" class="img-fluid figure-img"></p>
-<figcaption>Textbook Figure 5.2. Differences between one-stage and two-stage cluster sampling.</figcaption>
+<p></p><figcaption class="figure-caption">Textbook Figure 5.2. Differences between one-stage and two-stage cluster sampling.</figcaption><p></p>
 </figure>
 </div>
 <section id="unbiased-estimator-of-population-total." class="level2">
@@ -789,33 +705,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -882,15 +771,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -925,7 +812,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -957,50 +855,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1010,17 +869,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1032,130 +882,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1199,7 +926,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1225,32 +951,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1313,9 +1013,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></p>
-</div>   
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1324,7 +1022,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 
 
 

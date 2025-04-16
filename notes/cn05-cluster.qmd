@@ -50,55 +50,40 @@ One known example [conducted by Basow and Silberg (1987) and Basow and Martin (2
 
 :::
 
-* In this study they took 16 female and 16 male professors and matched them by their subjects, experence, and tenure status. 
+* In this study they took 16 female and 16 male professors and matched them by their subjects, experience, and tenure status. 
 * They then sampled each of their classrooms full of students for data collection.
-* They, in total, collected 1029 individual student responses but since we are using cluster sampling the sample size will be n = 32 as there are 32 total clusters. The analysis would be wrong if we ignored that it was a clusted sample and treated it as an SRS of size 1029.
+* They, in total, collected 1029 individual student responses but since we are using cluster sampling the sample size will be n = 32 as there are 32 total clusters. The analysis would be wrong if we ignored that it was a cluster sample and treated it as an SRS of size 1029.
 
 This is a great real world example of how cluster sampling can streamline collecting important data while still gaining valuable insight.
 
 
 # Notation & Formulas
 
-::: panel-tabset
-## Pop psu level
-
-| Symbol      | Formula                                                          | Description                                    |
-|------------|--------------------------|----------------------------------------|
-| $y_{ij}$    |                                                                  | measurement for the $j$th element in $i$th psu |
-| $N$         |                                                                  | number of clusters (psus) in the population    |
-| $M_{i}$     |                                                                  | number of ssus in psu $i$                      |
-| $M_{0}$     | $\sum_{i=1}^{N} M_{i}$                                           | total number of ssus in the population         |
-| $t_{i}$     | $\sum_{j=1}^{M_{i}} y_{ij}$                                      | total in psu $i$                               |
-| $t$         | $\sum_{i=1}^{N} t_{i}= \sum_{i=1}^{N} \sum_{j=1}^{M_{i}} y_{ij}$ | population total                               |
-| $S_{t}^{2}$ | $\frac{1}{N-1} \sum_{i=1}^{N} (t_{i} - \frac{t}{N})^2$           | population variance of the psu totals          |
-
-## Pop ssu level
-
-| Symbol           | Formula                                                                  | Description                        |
-|-------------------|-----------------------------------|-------------------|
-| $\bar{y}_{\mu}$  | $\frac{1}{M_0} \sum_{i=1}^N \sum_{j=1}^{M_i} y_{ij}$                     | population mean                    |
-| $\bar{y}_{i\mu}$ | $\frac{1}{M_i} \sum_{j=1}^{M_i} y_{ij} = \frac{t_i}{M_i}$                | population mean in psu $i$         |
-| $S^2$            | $\frac{1}{M_0-1} \sum_{i=1}^N \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2$ | population variance (per ssu)      |
-| $S_{i}^{2}$      | $\frac{1}{M_i-1} \sum_{j=1}^{M_i} (y_{ij}-\bar{y}_{\mu})^2$              | population variance within psu $i$ |
-
-## Sample
-| Symbol                   | Formula                                                  | Description                                     |
-|------------------|-----------------------------|-----------------------------|
-| $y_{ij}$ |                                                                |Measurement for$j$th element in $i$ht psu                                             |
-|$N$||Number of clusters (psus) in the population|
-|$M_i$||Number of ssus in psu $i$|
-|$M_{o}$|$\sum_{i=1}^NM_i$|Total number of psus in the population|
-|$t_i$|$\sum_{j=1}^{M_i}y_{ij}$|Total in psu $i$|
-|$t$|$\sum_{i=1}^Nt_i = \sum_{i=1}^N\sum_{j=i}^{M_i}y_{ij}$|Population Total|
-|$S_i^2$|$\frac{1}{N-1} \sum_{i=1}^N(t_i-\frac{t}{N})^2$|Population variance of the psu totals|
-
-:::
-
-
-Overall there are many differences between clustering, stratification, and SRS, that are important to note.
 In SRS, each individual element is the sampling unit, and has an equal chance to be sampled.  In stratified sampling, the population is divided into  $H$ known strata, and a sample is taken from each. Our sampling unit in the cluster design is the entire cluster, or primary sampling unit $psus$, and not the individual elements.
 
 In stratified sampling we have our entire population being $N$ total population of each individual element, whereas our entire universe in cluster sampling is the number of clusters, that is $N$ is the number of $psus$.
+
+⚠️ Note notation change!
+
+* $y_{ij}$: measurement for the $j$th element in $i$th psu
+* $N$: the number of clusters (psus) in the population
+    * $n$: the number of psus from the sample
+* $M_{i}$: number of ssus in psu $i$ in the population
+    * $m_i$: the number of ssu's in psu $i$ from the sample
+* $M_{0}$: total number of ssus in the population  
+
+| Population Quantity | Estimator $(\hat{\theta})$ | Estimated variance of $(\hat{\theta})$ |
+|---------------------|----------------------|-----------------------------|
+| Total in psu $i$: $t_{i}=\sum_{j} y_{ij}$ | $\hat{t}_{i} = \frac{M_{i}}{m_i}\sum_{j} y_{ij}$ | - |
+| Variance of psu totals : $S_t^2 = \frac{1}{N-1} \sum_{i} \left( t_i - \frac{t}{N} \right)^2$ | $s_t^2 = \frac{1}{n-1} \sum_{i} \left( t_i - \frac{\hat{t}}{N} \right)^2$ | _AKA variance between psu_|
+| Overall Total: $t = \sum_{i} t_i$ | $\hat{t} = \frac{N}{n}\sum_{i} \hat{t}_i$ | $N^2 \left(1 - \frac{n}{N}\right) \frac{s_t^2}{n}$  |
+| mean in psu $i$: $\mu_{i} = \frac{1}{M_i} \sum_{j} y_{ij}$  | $\bar{y}_{i} = \frac{1}{m_i} \sum_{j} y_{ij}$  | $s_{i}^{2} = \frac{1}{m_i-1} \sum_{j} (y_{ij}-\bar{y}_{i})^2$ (_AKA variance within psu_)|
+| Overall mean: $\mu = \frac{1}{M_0} \sum_{i} \sum_{j} y_{ij}$  | $\bar{y} = \frac{\hat{t}}{NM}$  | $\left( 1 - \frac{n}{N} \right) \frac{s_t^2}{nM^2}$ |
+
+
+Overall there are many differences between clustering, stratification, and SRS, that are important to note.
+
+
 
 
 ------------------------------------------------------------------------
@@ -107,16 +92,65 @@ In stratified sampling we have our entire population being $N$ total population 
 
 ## Equal size clusters: Estimation
 
+One-stage clustering is the type of clustering you're probably already familiar with - either all (or none) of the observations inside of a cluster (psu) are sampled.
+
+While this is an unrealistic scenario for most statistical work in the social sciences, agricultural or industrial surveys may be able to take advantage of the much simpler process that equal size clustering brings. 
+
+Because the psus are selected through an SRS, we can use the per-cluster estimates as single observations in an SRS. There's no need to consider the individual ssus within each cluster. **Important distinction: we treat this as an SRS of $n$ psus, not an SRS of $nM$ observational units.** 
+
+In this setup, we typically aim to estimate the population total or mean of a variable of interest based on the totals from each sampled cluster.
+
 :::{.callout-tip icon=true}
 ### Example: Average GPA in a dorm
 
+Perhaps we want to estimate the average GPA in a college dormitory with a one-stage cluster design. The dorm consists of 100 units, each with 4 students. Here's the process: 
+
+1. An SRS is conducted to select 5 clusters.  
+2. All 4 students (ssus) per dormitory unit (psus) have their GPAs measured
+3. Calculate your estimates based on your *psu* statistics, not your ssu measurements.
+
+_(Slightly modified version of Example 5.2 from Lohr's R Companion to Sampling 3rd ed. Page 57. DOI: 10.1201/9781003228196-5)_
+
 :::
+
+#### Using the `survey` package 
 
 ```{r}
 gpa <- readr::read_csv(here::here("data", "gpa.csv"))
+N <- 100 # total dorm population (this won't be NROW(gpa)!)
+n <- 5   # total number of clusters/psus selected
+M <- 4   # observational units/ssus selected per psu
 ```
 
+Create a survey design for one-stage clustering
+```{r}
+OSC_gpa <- svydesign(id = ~suite,
+                     weights = ~wt,#already on the data set
+                     fpc = ~rep(100,20),
+                     data = gpa)
+```
+
+calculate the mean GPA and 95% confidence interval using survey package
+```{r}
+(mean_gpa <- svymean(~gpa, OSC_gpa))
+(mean_gpa_confint <- svymean(~gpa, OSC_gpa) |> confint())
+```
+
+The point estimate for GPA is `r round(mean_gpa[1], 2)`, with a 95% confidence interval of `r round(mean_gpa_confint[1, 1], 2)` to `r round(mean_gpa_confint[1, 2], 2)`.
+
+#### 
+
 ### Sampling Weights
+
+In one-stage cluster sampling with equal-sized clusters, each cluster is treated as a single observation. The sampling weight for each observation unit $j$ in PSU $i$ is based on the inverse probability of that PSU being selected. This results in a **self-weighting sample**, meaning every sampled element gets the same weight.
+
+$$
+w_{ij} = \frac{N}{n}
+$$
+
+The total sampling weight across all sampled units equals the total number of units in the population ($NM$). Make sure to always verify that the sum of your weights matches the population size. Population total and mean can also be estimated using these weights by summing the weighted values or averaging them appropriately. 
+
+This weighting approach allows you to use one-stage cluster sampling estimates similarly to how you'd handle stratified or SRS data, despite the cluster structure.
 
 ----
 
