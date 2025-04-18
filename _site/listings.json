@@ -14,6 +14,13 @@
     ]
   },
   {
+    "listing": "/complete.html",
+    "items": [
+      "/complete/cn02-statistical_foundations_complete.html",
+      "/complete/cn01-intro_sampling_complete.html"
+    ]
+  },
+  {
     "listing": "/notes.html",
     "items": [
       "/notes/cn00-welcome.html",
@@ -23,13 +30,6 @@
       "/notes/cn03-SRS.html",
       "/notes/cn04-stratified_sampling.html",
       "/notes/cn05-cluster.html"
-    ]
-  },
-  {
-    "listing": "/complete.html",
-    "items": [
-      "/complete/cn02-statistical_foundations_complete.html",
-      "/complete/cn01-intro_sampling_complete.html"
     ]
   }
 ]

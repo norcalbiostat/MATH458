@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -170,7 +204,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introductory-exercise" id="toc-introductory-exercise" class="nav-link active" data-scroll-target="#introductory-exercise">Introductory Exercise</a></li>
+  <li><a href="#a.-introductory-exercise" id="toc-a.-introductory-exercise" class="nav-link active" data-scroll-target="#a.-introductory-exercise">A. Introductory Exercise</a></li>
+  <li><a href="#b.-working-with-survey-data" id="toc-b.-working-with-survey-data" class="nav-link" data-scroll-target="#b.-working-with-survey-data">B. Working with Survey Data</a></li>
+  <li><a href="#d.-projects-and-activities---baseball-data" id="toc-d.-projects-and-activities---baseball-data" class="nav-link" data-scroll-target="#d.-projects-and-activities---baseball-data">D. Projects and Activities - Baseball Data</a></li>
   </ul>
 </nav>
     </div>
@@ -216,8 +252,8 @@ Template
 <p>Use this <a href="https://hackmd.io/@norcalbiostat/hw05_template/edit">HackMD</a> file as a template for this assignment.</p>
 </div>
 </div>
-<section id="introductory-exercise" class="level2">
-<h2 class="anchored" data-anchor-id="introductory-exercise">Introductory Exercise</h2>
+<section id="a.-introductory-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="a.-introductory-exercise">A. Introductory Exercise</h2>
 <p><strong>1. City enagagement</strong></p>
 <p>A city council of a small city wants to know the proportion of eligible voters that oppose having an incinerator of Phoenix garbage opened just outside of the city limits. They randomly select 100 residential numbers from the city’s telephone book that contains 3,000 such numbers. Each selected residence is then called and asked for (a) the total number of eligible voters and (b) the number of voters opposed to the incinerator. A total of 157 voters were surveyed; of these, 23 refused to answer the question. Of the remaining 134 voters, 112 opposed the incinerator, so the council estimates the proportion by</p>
 <p><span class="math display">\[\hat{p} = \frac{112}{134} = 0.83482\]</span></p>
@@ -234,6 +270,56 @@ Template
 <ol type="a">
 <li><p>Describe why this is a cluster sample. What are the psus? The ssus? How would you estimate the average pH in the suburban wetlands?</p></li>
 <li><p>The authors used Student’s two-sample t test to compare the average pH from the sites in the suburban wetlands with the average pH from the sites in the small town wetlands, treating all sites as independent. Is this analysis appropriate? Why, or why not?</p></li>
+</ol>
+</section>
+<section id="b.-working-with-survey-data" class="level2">
+<h2 class="anchored" data-anchor-id="b.-working-with-survey-data">B. Working with Survey Data</h2>
+<p><strong>1. Error rate in accounting</strong> An accounting firm is interested in estimating the error rate in a compliance audit it is conducting. The population contains 828 claims, and the firm audits an SRS of 85 of those claims. In each of the 85 sampled claims, 215 fields are checked for errors. One claim has errors in 4 of the 215 fields, 1 claim has 3 errors, 4 claims have 2 errors, 22 claims have 1 error, and the remaining 57 claims have no errors. (Data courtesy of Fritz Scheuren.)</p>
+<ol type="a">
+<li><p>Treating the claims as psus and the observations for each field as ssus, estimate the error rate, defined to be the average number of errors per field, along with the standard error for your estimate.</p></li>
+<li><p>Estimate (with standard error) the total number of errors in the 828 claims.</p></li>
+</ol>
+<p><strong>2. Measles should be eradicated</strong></p>
+<p>The file <code>measles.csv</code> contains data consistent with that obtained in a survey of parents whose children had not been immunized for measles during a recent campaign to immunize all children between the ages of 11 and 15. During the campaign, 7,633 children from the 46 schools in the area were immunized; 9,962 children whose records showed no previous immunization were not immunized. In a follow-up survey to explore why the children had not been immunized during the campaign, Roberts et al.&nbsp;(1995) sent questionnaires to the parents of a cluster sample of the 9,962 children. Ten schools were randomly selected, then a sample of the <span class="math inline">\(M_i\)</span> nonimmunized children from each school was selected, and the parents of those children were sent a questionnaire.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>measles <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"measles.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li>Estimate, separately for each school, the percentage of parents who returned a consent form (variable <code>returnf</code>). For this exercise, treat the “no answer” responses (value 9) as not returned.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Helper code: We separated the returned consent forms from the forms with no reply by setting our returned set as <code>as.numeric(returnf==1)</code>.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>measles<span class="sc">$</span>returned <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(measles<span class="sc">$</span>returnf<span class="sc">==</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="a">
+<li><p>Using the number of respondents in school <span class="math inline">\(i\)</span> as <span class="math inline">\(m_i\)</span>, construct the sampling weight for each observation. <em>(Hint: Use the variables listed as <code>measles$mi</code> and <code>measles$Mitotal</code> in our data set for this question)</em></p></li>
+<li><p>Estimate the overall percentage of parents who received a consent form along with a 95% CI.</p></li>
+<li><p>How do your estimate and interval in part (c.) compare with the results you would have obtained if you had ignored the clustering and analyzed the data as an SRS? Find the ratio: <span class="math display">\[\frac{\text{estimated variance from (c)}}{\text{estimated variance if the data were analyzed as an SRS}}\]</span> What is the effect of clustering?</p></li>
+</ol>
+</section>
+<section id="d.-projects-and-activities---baseball-data" class="level1">
+<h1>D. Projects and Activities - Baseball Data</h1>
+<ol type="a">
+<li>Use the population in the file <code>baseball.csv</code> to take a one-stage cluster sample with the teams as the psus. Your sample should have approximatley 150 players altogether, as in the SRS from Exercise 37 of Chapter 2. Describe how you selected your sample. Don’t forget to set a seed.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>baseball <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"baseball.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math inline">\(\textbf{Definition}\)</span>: The logarithmic function<code>log()</code> can be used to express a percent of change in salary.</p>
+<ol start="2" type="a">
+<li>Using the <code>log()</code> function, create the variable <code>logsal</code>. Draw side-by-side boxplots for <code>logsal</code> for the teams in your sample. Note, <code>log(0)</code> is an undefined value, so records with missing or 0 salary must be dropped from the data set prior to creating the <code>logsal</code> variable.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>your.data.set.name <span class="ot">&lt;-</span> your.data.set.name <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(salary) <span class="sc">&amp;</span> salary <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co">#Removes zeros in salaries column </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">logsal =</span> <span class="fu">log</span>(salary)) <span class="co"># creates logsal </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="a">
+<li><p>Using your sample, estimate the mean of <code>logsal</code> with a 95% CI.</p></li>
+<li><p>Using your sample, estimate the proportion of players in the data set who are pitchers with a 95% CI.</p></li>
+<li><p>Compare the estimates you calculated to the ones provided below from an SRS. Which one has smaller confidence intervals? Why do you think that is?</p></li>
 </ol>
 
 
@@ -591,7 +677,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></div>   
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a> and the Spring 2025 Math 458 class</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>

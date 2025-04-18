@@ -6,6 +6,7 @@ categories: Homework
 execute: 
   warning: false
   message: false
+  eval: false
 ---
 
 :::{.callout-tip }
@@ -15,7 +16,7 @@ Use this [HackMD](https://hackmd.io/@norcalbiostat/hw05_template/edit) file as a
 :::
 
 
-## Introductory Exercise
+## A. Introductory Exercise
 
 **1. City enagagement**
 
@@ -47,5 +48,60 @@ Kleppel et al. (2004) reported on a study of wetlands in upstate New York. Four 
 (b) The authors used Student's two-sample t test to compare the average pH from the sites in the suburban wetlands with the average pH from the sites in the small town wetlands, treating all sites as independent. Is this analysis appropriate? Why, or why not?
 
  
+## B. Working with Survey Data
 
+**1. Error rate in accounting**
+An accounting firm is interested in estimating the error rate in a compliance audit it is conducting. The population contains 828 claims, and the firm audits an SRS of 85 of those claims. In each of the 85 sampled claims, 215 fields are checked for errors. One claim has errors in 4 of the 215 fields, 1 claim has 3 errors, 4 claims have 2 errors, 22 claims have 1 error, and the remaining 57 claims have no errors. (Data courtesy of Fritz Scheuren.)
+
+a) Treating the claims as psus and the observations for each field as ssus, estimate the error rate, defined to be the average number of errors per field, along with the standard error for your estimate.
+
+b) Estimate (with standard error) the total number of errors in the 828 claims. 
+
+**2. Measles should be eradicated**
+
+The file `measles.csv` contains data consistent with that obtained in a survey of parents whose children had not been immunized for measles during a recent campaign to immunize all children between the ages of 11 and 15. During the campaign, 7,633 children from the 46 schools in the area were immunized; 9,962 children whose records showed no previous immunization were not immunized. In a follow-up survey to explore why the children had not been immunized during the campaign, Roberts et al. (1995) sent questionnaires to the parents of a cluster sample of the 9,962 children. Ten schools were randomly selected, then a sample of the $M_i$ nonimmunized children from each school was selected, and the parents of those children were sent a questionnaire.
+
+```{r}
+measles <- readr::read_csv(here::here("data","measles.csv"))
+```
+
+a.  Estimate, separately for each school, the percentage of parents who returned a consent form (variable `returnf`). For this exercise, treat the “no answer” responses (value 9) as not returned.
+
+> Helper code: We separated the returned consent forms from the forms with no reply by setting our returned set as `as.numeric(returnf==1)`.
+
+```{r}
+measles$returned <- as.numeric(measles$returnf==1)
+```
+
+b.  Using the number of respondents in school $i$ as $m_i$, construct the sampling weight for each observation. *(Hint: Use the variables  listed as `measles$mi` and `measles$Mitotal` in our data set for this question)*
+
+c.  Estimate the overall percentage of parents who received a consent form along with a 95% CI.
+
+d.  How do your estimate and interval in part (c.) compare with the results you would have obtained if you had ignored the clustering and analyzed the data as an SRS? Find the ratio: $$\frac{\text{estimated variance from (c)}}{\text{estimated variance if the data were analyzed as an SRS}}$$ What is the effect of clustering?
+
+# D. Projects and Activities - Baseball Data 
+
+a. Use the population in the file `baseball.csv` to take a one-stage cluster sample with the teams as the psus. Your sample should have approximatley 150 players altogether, as in the SRS from Exercise 37 of Chapter 2. Describe how you selected your sample. Don't forget to set a seed. 
+
+```{r}
+baseball <- read_csv(here::here("data", "baseball.csv"))
+```
+
+
+$\textbf{Definition}$: The logarithmic function`log()` can be used to express a percent of change in salary. 
+
+
+b. Using the `log()` function, create the variable `logsal`. Draw side-by-side boxplots for `logsal` for the teams in your sample. Note, `log(0)` is an undefined value, so records with missing or 0 salary must be dropped from the data set prior to creating the `logsal` variable. 
+
+```{r, eval=FALSE}
+your.data.set.name <- your.data.set.name %>%
+  filter(!is.na(salary) & salary > 0) %>% #Removes zeros in salaries column 
+  mutate(logsal = log(salary)) # creates logsal 
+```
+
+c) Using your sample, estimate the mean of `logsal` with a 95% CI.
+
+d) Using your sample, estimate the proportion of players in the data set who are pitchers with a 95% CI.
+
+e) Compare the estimates you calculated to the ones provided below from an SRS. Which one has smaller confidence intervals? Why do you think that is?
 

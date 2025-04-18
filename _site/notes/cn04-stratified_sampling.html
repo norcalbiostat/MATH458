@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.319">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,13 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -98,42 +92,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -141,9 +106,9 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
@@ -155,40 +120,40 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html"> 
-<span class="menu-text">Notes</span></a>
+    <a class="nav-link" href="../notes.html" rel="" target="">
+ <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../assignments.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../project.html"> 
-<span class="menu-text">Project</span></a>
+    <a class="nav-link" href="../project.html" rel="" target="">
+ <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">HackMD Notes</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling" rel="" target="">
  <span class="dropdown-text">Ch 1. Sampling Framework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations" rel="" target="">
  <span class="dropdown-text">Ch 2. Foundations of Estimation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn04_stratified">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn04_stratified" rel="" target="">
  <span class="dropdown-text">Ch 3. Stratified Sampling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn05_cluster">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn05_cluster" rel="" target="">
  <span class="dropdown-text">Ch 5. Cluster Sampling</span></a>
   </li>  
     </ul>
@@ -196,39 +161,39 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
       <i class="bi bi-google" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-google">    
         <li>
-    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY">
+    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY" rel="" target="">
  <span class="dropdown-text">Content creation group</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1f4ze0905zE4HbtEyqVrJv1ncMB4EdNZDd4QJH5wewS0">
+    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1f4ze0905zE4HbtEyqVrJv1ncMB4EdNZDd4QJH5wewS0" rel="" target="">
  <span class="dropdown-text">Sechedule</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA">
+    <a class="dropdown-item" href="https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA" rel="" target="">
  <span class="dropdown-text">Project folder</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../formulas.html"> 
-<span class="menu-text">Formulas and Definitions</span></a>
+    <a class="nav-link" href="../formulas.html" rel="" target="">
+ <span class="menu-text">Formulas and Definitions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Syllabus</span></a>
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -319,9 +284,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse);<span class="fu">library</span>(knitr)</span>
@@ -333,7 +296,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://www.scribbr.com/wp-content/uploads/2020/09/stratified-sample-7-2048x863.png" class="img-fluid figure-img"></p>
-<figcaption>Source: https://www.scribbr.com/methodology/stratified-sampling/</figcaption>
+<p></p><figcaption class="figure-caption">Source: https://www.scribbr.com/methodology/stratified-sampling/</figcaption><p></p>
 </figure>
 </div>
 <section id="what-is-stratified-sampling" class="level1">
@@ -377,7 +340,7 @@ Motivating Example - Estimating farm details.
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell">
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutate data to create names for levels and labels in boxplot</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>agstrat.plot <span class="ot">&lt;-</span> agstrat <span class="sc">%&gt;%</span></span>
@@ -404,14 +367,14 @@ Motivating Example - Estimating farm details.
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="cn04-stratified_sampling_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption>Figure 3.1: Distribution of farm acreage in 1992 by region</figcaption>
+<p></p><figcaption class="figure-caption">Figure 3.1: Distribution of farm acreage in 1992 by region</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
 <div class="cell">
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>agstrat <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sample.average =</span> <span class="fu">mean</span>(acres92), </span>
@@ -419,7 +382,7 @@ Motivating Example - Estimating farm details.
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">region</th>
@@ -552,7 +515,7 @@ Definition: Relative gain from stratification
 <li><span class="math inline">\(y_{hj}\)</span> - value of the <span class="math inline">\(j^{th}\)</span> unit in stratum <span class="math inline">\(h\)</span></li>
 <li><span class="math inline">\(H\)</span> - total number of strata</li>
 </ul>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th>Measure on stratum <span class="math inline">\(h\)</span></th>
@@ -615,7 +578,7 @@ Definition: Relative gain from stratification
 </section>
 <section id="strata-level-estimates" class="level2">
 <h2 class="anchored" data-anchor-id="strata-level-estimates">Strata level estimates</h2>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 34%">
 <col style="width: 27%">
@@ -997,7 +960,7 @@ Example: Calculating Allocations for a Survey of Colleges
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>strata.info <span class="sc">%&gt;%</span> janitor<span class="sc">::</span><span class="fu">adorn_totals</span>() <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Stratum</th>
@@ -1146,7 +1109,7 @@ Example: Estimating homeless population from NYC
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>pitdta <span class="sc">%&gt;%</span> <span class="fu">select</span>(strat, division, density, popsize, sampsize) <span class="sc">%&gt;%</span></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">strat</th>
@@ -1268,26 +1231,26 @@ Warning: Package conflicts
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>ag.str <span class="ot">&lt;-</span> <span class="fu">getdata</span>(agpop.sorted, strat.idx)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
-4  APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
-9     BREMER COUNTY    IA  236668  235086  250402    1058    1140    1287
-18  CHEROKEE COUNTY    IA  336254  338708  340594     979    1091    1214
-25    DALLAS COUNTY    IA  312173  328319  346023     944    1081    1208
-30 DICKINSON COUNTY    IA  202249  211002  227557     554     593     652
-47       IDA COUNTY    IA  272831  260103  259676     729     787     874
+<pre><code>            county state acres92 acres87 acres82 farms92 farms87 farms82
+21     CLAY COUNTY    IA  314812  315558  347722     770     877    1045
+39  GUTHRIE COUNTY    IA  328885  316631  326495     946     960    1105
+42   HARDIN COUNTY    IA  332358  337990  355823     986    1065    1208
+43 HARRISON COUNTY    IA  399155  387190  408601     919    1024    1192
+46 HUMBOLDT COUNTY    IA  280797  275393  275422     677     754     848
+47      IDA COUNTY    IA  272831  260103  259676     729     787     874
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-4        28       33       23       25       39       36     NC       4
-9        25       18       11       96      116      109     NC       9
-18       41       31       18       64       86       94     NC      18
-25       67       59       48       82       85       81     NC      25
-30       30       34       31       38       47       43     NC      30
+21       58       35       37       52       78       58     NC      21
+39       60       42       33       74       58       67     NC      39
+42       56       36       42       90      115      132     NC      42
+43       88       62       51       60       60       66     NC      43
+46       44       28       24       50       46       51     NC      46
 47       48       30       10       54       58       59     NC      47
          Prob Stratum
-4  0.09772296       1
-9  0.09772296       1
-18 0.09772296       1
-25 0.09772296       1
-30 0.09772296       1
+21 0.09772296       1
+39 0.09772296       1
+42 0.09772296       1
+43 0.09772296       1
+46 0.09772296       1
 47 0.09772296       1</code></pre>
 </div>
 </div>
@@ -1298,26 +1261,26 @@ Warning: Package conflicts
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>ag.str<span class="sc">$</span>wt <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>ag.str<span class="sc">$</span>Prob</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ag.str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             county state acres92 acres87 acres82 farms92 farms87 farms82
-4  APPANOOSE COUNTY    IA  238609  244661  236501     827     891     900
-9     BREMER COUNTY    IA  236668  235086  250402    1058    1140    1287
-18  CHEROKEE COUNTY    IA  336254  338708  340594     979    1091    1214
-25    DALLAS COUNTY    IA  312173  328319  346023     944    1081    1208
-30 DICKINSON COUNTY    IA  202249  211002  227557     554     593     652
-47       IDA COUNTY    IA  272831  260103  259676     729     787     874
+<pre><code>            county state acres92 acres87 acres82 farms92 farms87 farms82
+21     CLAY COUNTY    IA  314812  315558  347722     770     877    1045
+39  GUTHRIE COUNTY    IA  328885  316631  326495     946     960    1105
+42   HARDIN COUNTY    IA  332358  337990  355823     986    1065    1208
+43 HARRISON COUNTY    IA  399155  387190  408601     919    1024    1192
+46 HUMBOLDT COUNTY    IA  280797  275393  275422     677     754     848
+47      IDA COUNTY    IA  272831  260103  259676     729     787     874
    largef92 largef87 largef82 smallf92 smallf87 smallf82 region ID_unit
-4        28       33       23       25       39       36     NC       4
-9        25       18       11       96      116      109     NC       9
-18       41       31       18       64       86       94     NC      18
-25       67       59       48       82       85       81     NC      25
-30       30       34       31       38       47       43     NC      30
+21       58       35       37       52       78       58     NC      21
+39       60       42       33       74       58       67     NC      39
+42       56       36       42       90      115      132     NC      42
+43       88       62       51       60       60       66     NC      43
+46       44       28       24       50       46       51     NC      46
 47       48       30       10       54       58       59     NC      47
          Prob Stratum       wt
-4  0.09772296       1 10.23301
-9  0.09772296       1 10.23301
-18 0.09772296       1 10.23301
-25 0.09772296       1 10.23301
-30 0.09772296       1 10.23301
+21 0.09772296       1 10.23301
+39 0.09772296       1 10.23301
+42 0.09772296       1 10.23301
+43 0.09772296       1 10.23301
+46 0.09772296       1 10.23301
 47 0.09772296       1 10.23301</code></pre>
 </div>
 </div>
@@ -1328,10 +1291,10 @@ Warning: Package conflicts
 <pre><code># A tibble: 4 × 2
   region sum.wts
   &lt;chr&gt;    &lt;dbl&gt;
-1 NC       1054.
-2 NE        220 
-3 S        1382.
-4 W         422 </code></pre>
+1 NC        1054
+2 NE         220
+3 S         1382
+4 W          422</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(agpop.sorted<span class="sc">$</span>region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1455,7 +1418,7 @@ Calculating stratum means and variances
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>                         svytotal, <span class="at">keep.var =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(regional.totals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -1594,33 +1557,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1687,15 +1623,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1774,27 +1708,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1804,17 +1721,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1826,130 +1734,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1993,7 +1778,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2019,32 +1803,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2107,9 +1865,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a></p>
-</div>   
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a> and the Spring 2025 Math 458 class</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -2118,7 +1874,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 
 
 
