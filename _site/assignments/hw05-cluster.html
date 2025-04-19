@@ -252,6 +252,10 @@ Template
 <p>Use this <a href="https://hackmd.io/@norcalbiostat/hw05_template/edit">HackMD</a> file as a template for this assignment.</p>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse);<span class="fu">library</span>(sampling)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="a.-introductory-exercise" class="level2">
 <h2 class="anchored" data-anchor-id="a.-introductory-exercise">A. Introductory Exercise</h2>
 <p><strong>1. City enagagement</strong></p>
@@ -282,7 +286,7 @@ Template
 <p><strong>2. Measles should be eradicated</strong></p>
 <p>The file <code>measles.csv</code> contains data consistent with that obtained in a survey of parents whose children had not been immunized for measles during a recent campaign to immunize all children between the ages of 11 and 15. During the campaign, 7,633 children from the 46 schools in the area were immunized; 9,962 children whose records showed no previous immunization were not immunized. In a follow-up survey to explore why the children had not been immunized during the campaign, Roberts et al.&nbsp;(1995) sent questionnaires to the parents of a cluster sample of the 9,962 children. Ten schools were randomly selected, then a sample of the <span class="math inline">\(M_i\)</span> nonimmunized children from each school was selected, and the parents of those children were sent a questionnaire.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>measles <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"measles.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>measles <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"measles.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="a">
 <li>Estimate, separately for each school, the percentage of parents who returned a consent form (variable <code>returnf</code>). For this exercise, treat the “no answer” responses (value 9) as not returned.</li>
@@ -291,7 +295,7 @@ Template
 <p>Helper code: We separated the returned consent forms from the forms with no reply by setting our returned set as <code>as.numeric(returnf==1)</code>.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>measles<span class="sc">$</span>returned <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(measles<span class="sc">$</span>returnf<span class="sc">==</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>measles<span class="sc">$</span>returned <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(measles<span class="sc">$</span>returnf<span class="sc">==</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="a">
 <li><p>Using the number of respondents in school <span class="math inline">\(i\)</span> as <span class="math inline">\(m_i\)</span>, construct the sampling weight for each observation. <em>(Hint: Use the variables listed as <code>measles$mi</code> and <code>measles$Mitotal</code> in our data set for this question)</em></p></li>
@@ -305,22 +309,56 @@ Template
 <li>Use the population in the file <code>baseball.csv</code> to take a one-stage cluster sample with the teams as the psus. Your sample should have approximatley 150 players altogether, as in the SRS from Exercise 37 of Chapter 2. Describe how you selected your sample. Don’t forget to set a seed.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>baseball <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"baseball.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>baseball <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"baseball.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(\textbf{Definition}\)</span>: The logarithmic function<code>log()</code> can be used to express a percent of change in salary.</p>
 <ol start="2" type="a">
 <li>Using the <code>log()</code> function, create the variable <code>logsal</code>. Draw side-by-side boxplots for <code>logsal</code> for the teams in your sample. Note, <code>log(0)</code> is an undefined value, so records with missing or 0 salary must be dropped from the data set prior to creating the <code>logsal</code> variable.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>your.data.set.name <span class="ot">&lt;-</span> your.data.set.name <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(salary) <span class="sc">&amp;</span> salary <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co">#Removes zeros in salaries column </span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">logsal =</span> <span class="fu">log</span>(salary)) <span class="co"># creates logsal </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>baseball <span class="ot">&lt;-</span> baseball <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(salary) <span class="sc">&amp;</span> salary <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co">#Removes zeros in salaries column </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">logsal =</span> <span class="fu">log</span>(salary), <span class="co"># creates logsal </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">is.pitcher =</span> <span class="fu">ifelse</span>(pos<span class="sc">==</span><span class="st">"P"</span>,<span class="dv">1</span>, <span class="dv">0</span>)) <span class="co"># indicator of being a pitcher</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">NROW</span>(baseball)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">150</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="a">
 <li><p>Using your sample, estimate the mean of <code>logsal</code> with a 95% CI.</p></li>
 <li><p>Using your sample, estimate the proportion of players in the data set who are pitchers with a 95% CI.</p></li>
 <li><p>Compare the estimates you calculated to the ones provided below from an SRS. Which one has smaller confidence intervals? Why do you think that is?</p></li>
 </ol>
+<p><em>Code provided below for reference</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># For reproducibility</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Take an SRS of 150 players</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>srs.idx <span class="ot">&lt;-</span> <span class="fu">srswor</span>(n, N)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>bbl <span class="ot">&lt;-</span> <span class="fu">getdata</span>(baseball, srs.idx)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>bbl<span class="sc">$</span>wt <span class="ot">&lt;-</span> N<span class="sc">/</span>n</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>bbl.srs.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">weights =</span> <span class="sc">~</span>wt, <span class="at">fpc =</span> <span class="fu">rep</span>(N,n), <span class="at">data =</span> bbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>logsal, bbl.srs.dsgn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         mean     SE
+logsal 13.904 0.0935</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>logsal, bbl.srs.dsgn) <span class="sc">|&gt;</span> <span class="fu">confint</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          2.5 %   97.5 %
+logsal 13.72093 14.08733</code></pre>
+</div>
+</div>
+<p><strong>Mean of logsal:</strong> 13.9 <strong>95% CI:</strong> (13.7, 14.1)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svyciprop</span>(<span class="sc">~</span>is.pitcher, bbl.srs.dsgn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  2.5% 97.5%
+is.pitcher 0.480 0.408 0.553</code></pre>
+</div>
+</div>
+<p><strong>Proportion of pitchers:</strong> 0.48 <strong>95% CI:</strong> (0.41, 0.56)</p>
 
 
 </section>

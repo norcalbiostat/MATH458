@@ -39,7 +39,7 @@
     "href": "assignments/hw05-cluster.html",
     "title": "Homework 05: Cluster Sampling",
     "section": "",
-    "text": "Template\n\n\n\nUse this HackMD file as a template for this assignment."
+    "text": "Template\n\n\n\nUse this HackMD file as a template for this assignment.\nlibrary(tidyverse);library(sampling)\nlibrary(survey)"
   },
   {
     "objectID": "assignments/hw05-cluster.html#a.-introductory-exercise",
