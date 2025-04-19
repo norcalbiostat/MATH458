@@ -6,7 +6,6 @@ categories: Homework
 execute: 
   warning: false
   message: false
-  eval: false
 ---
 
 :::{.callout-tip }
@@ -62,6 +61,7 @@ b) Estimate (with standard error) the total number of errors in the 828 claims.
 The file `measles.csv` contains data consistent with that obtained in a survey of parents whose children had not been immunized for measles during a recent campaign to immunize all children between the ages of 11 and 15. During the campaign, 7,633 children from the 46 schools in the area were immunized; 9,962 children whose records showed no previous immunization were not immunized. In a follow-up survey to explore why the children had not been immunized during the campaign, Roberts et al. (1995) sent questionnaires to the parents of a cluster sample of the 9,962 children. Ten schools were randomly selected, then a sample of the $M_i$ nonimmunized children from each school was selected, and the parents of those children were sent a questionnaire.
 
 ```{r}
+#| eval: false
 measles <- readr::read_csv(here::here("data","measles.csv"))
 ```
 
@@ -70,6 +70,7 @@ a.  Estimate, separately for each school, the percentage of parents who returned
 > Helper code: We separated the returned consent forms from the forms with no reply by setting our returned set as `as.numeric(returnf==1)`.
 
 ```{r}
+#| eval: false
 measles$returned <- as.numeric(measles$returnf==1)
 ```
 
@@ -93,8 +94,8 @@ $\textbf{Definition}$: The logarithmic function`log()` can be used to express a 
 
 b. Using the `log()` function, create the variable `logsal`. Draw side-by-side boxplots for `logsal` for the teams in your sample. Note, `log(0)` is an undefined value, so records with missing or 0 salary must be dropped from the data set prior to creating the `logsal` variable. 
 
-```{r, eval=FALSE}
-your.data.set.name <- your.data.set.name %>%
+```{r}
+baseball <- baseball %>%
   filter(!is.na(salary) & salary > 0) %>% #Removes zeros in salaries column 
   mutate(logsal = log(salary)) # creates logsal 
 ```
@@ -104,4 +105,32 @@ c) Using your sample, estimate the mean of `logsal` with a 95% CI.
 d) Using your sample, estimate the proportion of players in the data set who are pitchers with a 95% CI.
 
 e) Compare the estimates you calculated to the ones provided below from an SRS. Which one has smaller confidence intervals? Why do you think that is?
+
+
+**Mean of logsal:** 13.904
+**95% CI:** (13.701, 14.107)
+
+**Proportion of pitchers:** 0.48
+**95% CI:** (0.4, 0.56)
+
+*Code provided below for reference*
+
+```{r}
+# Take an SRS of 150 players
+set.seed(123)  # For reproducibility
+srs_sample <- baseball[sample(nrow(baseball), 150), ]
+
+mean_logsal <- mean(srs_sample$logsal, na.rm = TRUE)
+se_logsal <- sd(srs_sample$logsal, na.rm = TRUE) / sqrt(sum(!is.na(srs_sample$logsal)))
+ci_logsal <- c(mean_logsal - 1.96 * se_logsal, mean_logsal + 1.96 * se_logsal)
+
+is_pitcher <- grepl("P", srs_sample$pos, ignore.case = TRUE)
+p_hat <- mean(is_pitcher, na.rm = TRUE)
+se_p <- sqrt(p_hat * (1 - p_hat) / sum(!is.na(is_pitcher)))
+ci_pitchers <- c(p_hat - 1.96 * se_p, p_hat + 1.96 * se_p)
+```
+
+
+
+
 
