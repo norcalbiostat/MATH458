@@ -101,7 +101,7 @@ Because the psus are selected through an SRS, we can use the per-cluster estimat
 In this setup, we typically aim to estimate the population total or mean of a variable of interest based on the totals from each sampled cluster.
 
 :::{.callout-tip icon=true}
-### Example: Average GPA in a dorm
+### Example 5.2: Average GPA in a dorm
 
 Perhaps we want to estimate the average GPA in a college dormitory with a one-stage cluster design. The dorm consists of 100 units, each with 4 students. Here's the process: 
 
@@ -111,16 +111,55 @@ Perhaps we want to estimate the average GPA in a college dormitory with a one-st
 
 _(Slightly modified version of Example 5.2 from Lohr's R Companion to Sampling 3rd ed. Page 57. DOI: 10.1201/9781003228196-5)_
 
-:::
-
-#### Using the `survey` package 
-
 ```{r}
 gpa <- readr::read_csv(here::here("data", "gpa.csv"))
 N <- 100 # total dorm population (this won't be NROW(gpa)!)
 n <- 5   # total number of clusters/psus selected
 M <- 4   # observational units/ssus selected per psu
 ```
+
+:::
+
+#### Using equations
+
+To estimate the mean, we first estimate the total (because it's easier math). 
+
+The estimated total is calculated by a weighted sum of the cluster totals. 
+$$
+\hat{t} = \frac{N}{n} \sum_{i \in S} t_i
+$$
+
+We can use the `tapply` function to calculate the sum of `gpa` across each `suite`.
+```{r}
+(suitesum <- tapply(gpa$gpa, gpa$suite, sum))
+# gpa %>% group_by(suite) %>% summarize(t_i = sum(gpa)) # alternative method
+```
+
+The variance across these totals can be found using the standard variance formula:
+$$
+s_t^2 = \frac{1}{n-1} \sum_{i \in S} \left( t_i - \frac{\hat{t}}{N} \right)^2
+$$
+
+```{r}
+(st2 <- round(var(suitesum), digits = 3)) 
+```
+
+Now we can convert these estimates of the total to estimates of the mean using:
+
+$$
+\hat{y} = \frac{\hat{t}}{NM} \qquad \mbox{ and } \qquad \text{SE}(\hat{y}) = \frac{1}{M} \sqrt{\left(1 - \frac{n}{N}\right) \frac{s_t^2}{n}}
+$$
+
+```{r}
+t.hat <- sum(suitesum)*(N/n)
+(y.bar.hat <- t.hat/(M*N))
+
+(se.ybar.yat <- (1/M)*sqrt((1-n/N)*(st2/n)))
+```
+
+
+#### Using the `survey` package 
+
 
 Create a survey design for one-stage clustering
 ```{r}
@@ -130,13 +169,11 @@ OSC_gpa <- svydesign(id = ~suite,
                      data = gpa)
 ```
 
-calculate the mean GPA and 95% confidence interval using survey package
+calculate the mean GPA with SE 
 ```{r}
-(mean_gpa <- svymean(~gpa, OSC_gpa))
-(mean_gpa_confint <- svymean(~gpa, OSC_gpa) |> confint())
+svymean(~gpa, OSC_gpa)
 ```
 
-The point estimate for GPA is `r round(mean_gpa[1], 2)`, with a 95% confidence interval of `r round(mean_gpa_confint[1, 1], 2)` to `r round(mean_gpa_confint[1, 2], 2)`.
 
 #### 
 
@@ -167,25 +204,58 @@ Don't recall how ANOVA works to break up the variance into components? See [this
 
 :::{.callout-important}
 ### MSB (Mean Squared Between psus)
-text
 
+The sum of squares between psus (SSB) measures the variability across the psu means. The mean squared between psus (MSB) is the SSB divided by the number of psus -1. 
+
+$$
+SSB =  \sum_{i} \left( \bar{y}_i - \bar{y} \right)^2  \qquad  MSB = \frac{SSB}{N - 1} 
+$$
+
+If MSB is relatively large, it means that there is more of a difference between data points in different clusters than within the same clusters
 :::
+
+For cluster sampling, the variability of the unbiased estimator of $t$ depends entirely on between the psus rather than within psus.
+
+$$V(\hat t_{cluster}) = N^2 (1 - \frac{n}{N}) \Big( \frac{M(MSB)}{n}\Big)$$
+
 
 :::{.callout-important}
 ### MSW (Mean Squared Within psus)
-text
+
+The sum of squares within psus (SSB) measures the variability within the psus. The MSW is the SSW divided by the total number of ssus minus the number of psus.
+
+$$
+SSW = \sum_{i} \sum_{j} \left( y_{ij} - \bar{y}_i \right)^2 \qquad 
+MSW = \frac{SSW}{N(M-1)}
+$$
 
 :::
+
+The MSW is not used for calculating the variance in cluster sampling like it is in stratified sampling. While stratified sampling is best when there is a lot of variance within strata, cluster sampling is less effective if there's a lot of variance within psus.
+
+If the ratio of MSB/MSW is large, it means that stratified sampling will be more precise and cluster sampling will be less precise.
+
 
 :::{.callout-important}
 #### ICC (Intraclass Correlation Coefficient)
-text
-
+The ICC measures how similar items are within the same group or cluster. It helps determine the usefulness of cluster sampling for a specific sample.
 :::
 
+A high ICC means that items in the same cluster are very similar, indicating a high level of homogeneity. A low ICC means that items within the cluster are more different from each other.
+
+The higher the ICC, the less efficient the sample is compared to simple random sampling (SRS). This is because high ICC indicates redundancy within clusters. The loss in precision due to clustering can be estimated by comparing the variance of cluster sampling over the variance of the SRS.
+
+ICC is typically positive in naturally occurring clusters. For example, wealthy families living in the same neighborhood, or crops in a field exposed to the same pesticide levels, are likely to show positive ICC due to environmental or social factors.
+
+In contrast, ICC can be negative in artificially constructed or systematic clusters. A negative ICC indicates that items within a cluster are more dispersed than in a randomly selected group. This often results in cluster means being roughly equal, and in such cases, cluster sampling can actually be more efficient than SRS.
+
+
 :::{.callout-important}
-#### R Squared
-text
+#### Adjusted R Squared
+
+Adjusted R^2 can be used as an alternative measure of homogeneity due to it being very close to the ICC in many populations.  The adj R^2 can only be used as a replacement in cases where all primary sampling units (psus) are the same size. 
+
+$$ 1 - \frac{MSW}{S^2} $$
 
 :::
 
@@ -193,40 +263,193 @@ text
 
 :::{.callout-tip}
 #### Example 5.3. Consider two artificial populations
-text
+Refer to the textbook for numeric specifics
 
+* A & B both come from the same population, and when sampled each has 3 clusters and 3 elements (ssus) inside each cluster. 
+* Even though they share the same $S^2$ and $\bar{y}$ there variances differ in a real specific way. 
+    * Population A has a large variance within each cluster which is reflected in the negative ICC and $R^2$. 
+    * Whereas, in Population B the variance occurs mostly between clusters. 
 :::
 
 
 :::{.callout-tip}
 #### Example 5.5. When is a cluster not a cluster? 
-text
+**When it's the whole population!**
+
+In Example 4.5 (in Chapter 4), we look at data from a study evaluating the effects of feral pig activity and drought on the native vegetation in Santa Cruz Island in California. 
 
 :::
 
+In that example, the _sampling unit_ was a single tree, the _observational unit_ was a single seedling by the tree, and the _population of interest_ was all the trees on Santa Cruz Island. Then, an SRS was conducted! 
+
+But we're doing cluster sampling right now. So, suppose that the researcher was instead intersted in seedling survival across all of California. The researcher would have divided the regions into equal-sized areas, randomly-selected some of those areas to study, and recorded the measurements. 
+
+**The sampling unit is no longer a tree, it's an area!**
+
+So, if Santa Cruz Island was selected as one of those _areas_ in our study about all of California, then we could no longer treat the trees from Santa Cruz Island as though they were part of an SRS from all trees in California. They're all similar trees, from the same island, that experience identical climates, in almost the same soil. We would expect all ten trees on Santa Cruz Island to experience, as a group, different environmental factors (such as weather conditions and numbers of seedling eaters) than the ten trees selected in the Santa Ynez Valley on the mainland. Thus the ICC within each cluster (area) would likely be positive.
+
+**But...**
+
+What if we were only interested in the seedlings _from_ the 10th tree on Santa Cruz Island? Then, the population is _all seedlings from the 10th tree_ and the psu is the _seedling_. At this point, we're not doing cluster sampling, we're doing a census of the population!
 
 ## Unequal size clusters
 
-> advice: summarize motivating example. Explain unbiasedness and show formulas. 
-> Then bullet point rest of section
+:::{.callout-tip}
+#### Motivating Example: Census of 1937
+
+In the Enumerative Check Census of 1937, they took a 2% sample of postal routes (psus), and questionnaires were give to every household(ssus) on each chosen postal routes. Since not all postal routes had the same number of households, this survey was a clustered sample with clusters of unequal sizes. The variable they were investigating, the total number of unemployed people, was impacted within each cluster by the size of the cluster. The more people on a route, the more unemployed people on the postal route. This means that the between variance of the cluster totals would be higher. Something else to note about this survey is that they only knew the number of houses in each of the *selected* groups.
+
+:::
+
+The **unbiased estimator(s)** for the total are:
+$$\hat t_{unb} = \frac{N}{n}\sum_{i \in S}t_i \qquad \mbox{ with } \qquad SE(\hat t_{unb}) = N \sqrt{(1-\frac{n}{N})(\frac{s_t^2}{n})}$$
+
+* Note that the error of the estimator is dependent on the variance of the cluster totals ($s_t^2$) 
+* The variation among the individual cluster totals $t_i$ is likely to be large when clusters have different sizes.
+
+$$M_0 = \sum_{i}^N M_i$$
+
+$$\hat{\bar{y}}_{unb} = \hat t_{unb}/M_0$$
+
+$$SE(\hat{\bar{y}}_{unb}) = SE(\hat t_{unb})/M_0$$
+
+* The size of every psu is needed to be known for this formula.
+* The unbiased estimator for the mean can be inefficient when values of  M_i's are unequal for the same reasons the unbiased estimate of the total can be inefficient
+* A ratio estimator of the mean often has smaller variance.
+
+
 
 ### Ratio Estimation
+We usually expect $t_i$ to be positively correlated with $M_i$. 
 
+* Example: If the primary sampling units (PSUs) are counties, we would expect the total number of households living in poverty in county $i(t_i)$ to be roughly proportional to the total number of households in the country $i(M_i)$
+
+Therefore our population mean is a ratio where $t_i$ and $m_i$ are positively correlated. 
+We define that now as: 
+
+$$
+\widehat{\bar{y_r}} = \frac{\hat{t}_{umb}}{\widehat{M_0}} = \frac{\frac{N}{n} \sum_{i \in S} t_i}{\frac{N}{n} \sum_{i \in S} M_i} = \frac{\sum_{i \in S} M_i \bar{y_i} }{\sum_{i \in S} M_i}
+$$
+
+* The estimator $\widehat{\bar{y_r}}$ is the quantity $B$ in 4.1. (Our sample's ratio mean.)
+
+
+The denominator is a random quantity that depends on which particular clusters are included in the sample. If the $M_i$ are unequal and a different cluster sample of size $n$ is taken, the denominator will likely be different. From taking $e_i = t_i - M_i \widehat{ \bar{y_r}} = M_i (\bar{y}_i - \widehat{\bar{y_i}})$ we have:
+
+$$\text{SE}(\widehat{\bar{y_r}}) = \sqrt{\left(1 - \frac{n}{N}\right) \frac{s_r^2}{nM^2}}$$
+
+and, 
+
+$$
+s_r^2 = \frac{1}{n-1} \sum_{i \in S} M_i^2 \left( \bar{y}_i - \widehat{\bar{y_i}}\right)^2
+$$
+
+
+* $\bar{M}  = \frac{\widehat{M_0}}{N}$ represents the average size of the PSUs in the sample.
+* The variance of the ratio estimator depends on the variability of the means per element in the PSUs and can be much smaller than that of the unbiased estimator $\hat{\bar{y}}_{unb}$. 
+* This can also be done when we know our cluster sizes.
 
 ### Estimation using weights
 
+$$
+w_{ij} = \frac{1}{\mbox{probability of w_{ij} being in the sample}} = \frac{N}{n}
+$$
 
+* One stage clustering has self-weighting samples no matter whether the clusters are equal sizes or not 
+* In clusters of equal sizes, the weights sum to the population size but in clusters of unequal sizes the sum of the weights *estimates* the population size.
+
+$$\hat M_0=\sum_{i\in S}\sum_{j \in S_i}w_{ij} = \frac{N}{n}\sum_{i \in S}$$
+
+* $\hat M_0$ is a random variable, different for every sample.
+
+Using weights:
+
+$$\hat t_{unb} = \sum_{i\in S}\sum_{j \in S_i}w_{ij}y_{ij}$$
+
+$$\hat{\bar{y_r}}= \frac{\sum_{i\in S}\sum_{j \in S_i}w_{ij}y_{ij}}{\sum_{i\in S}\sum_{j \in S_i}w_{ij}}$$
 
 :::{.callout-tip icon=false}
 ### Example. High school Algebra
+
 Consider a population of 187 high school algebra classes in a city. An investigator takes an SRS of classes, and gives each student in the sampled classes a test about function knowledge. The (hypothetical) data are given in the file `algebra.csv`. 
+:::
 
 a. Load in the data and look at the first few rows. Explain what the values in each column mean.
+
+```{r}
+algebra <- readr::read_csv(here::here("data", "algebra.csv"))
+head(algebra)
+```
+
+* Each row is a student, with three columns: `class`, `Mi`, and `score`.
+* `class` is a number representing which class the student is in. These are the psus.
+* `Mi` is the number of students in that specific class. For class 23, there are 20 students.
+* `score` is the score the student earned on the given test.
+
+
 b. Plot the distribution of test score by class. Interpret your graph by comparing the medians, ranges, and variances across classes. What do you notice?
+
+```{r}
+algebra$class <- as.factor(algebra$class)
+ggplot(algebra, aes(x = class, y = score)) + geom_boxplot()
+algebra %>% group_by(class) %>% summarise(median = median(score),
+                                          min = min(score),
+                                          max = max(score),
+                                          var = var(score))
+```
+
+There is a large range between the minimum and the maximum score in each class, with all of the minimums being between 14 and 34 and all of the maximums being between 87 and 100. We can also see some pretty large differences in median between classes, for example Class 46 has a median score of 49.0 and Class 51 has a median score of 71.5. For variance, the lowest class is Class 41 with about 188, and the largest class is Class 58 with about 546.
+
 c. How many _psus_ are there? What is the _psu_ with the highest number of _ssus_? Which one has the least? You must answer this question using R functions such as`unique` or `table`. Don't count this by hand (practice for when you have a billion rows)
+
+```{r}
+(n <- length(unique(algebra$class))) # Total number of psu
+
+psu <- table(algebra$class)
+
+(psu.max.ssu<- names(which.max(psu))) # PSU with most SSUs
+(max.ssu<- max(algebra$Mi)) #This shows the max SSU
+
+
+(psu.min.ssu<- names(which.min(psu))) # PSU with fewest SSUs
+(min.ssu<-min(algebra$Mi)) #This shows the minimum SSU
+
+```
+
+There are 12 psus which are the classes. The psu with the highest number of ssus is class 39 with 34 ssus, and the smallest ssus is class 58 with 17 ssus.
+
 d. Add variables containing the weights and the `fpc` to this data set. 
-e. Using the proper functions from the `survey` package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the `degf` function to get the proper degrees of freedom out of the survey design object and pass it to the `confint` function. 
-:::
+
+```{r}
+N <- 187
+algebra <- algebra %>%
+  mutate(wt = N/n, fpc=rep(187,299))
+```
+
+e. Using the proper functions from the `survey` package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the `degf` function to get the proper degrees of freedom out of the survey design object and pass it to the `confint` function.
+
+```{r}
+# This is without weights, do we want them?
+
+design <- svydesign(
+  id = ~class,
+  fpc = ~Mi,
+  data = algebra
+)
+
+# the mean
+mean_estimate <- svymean(~score, design)
+
+# degrees of freedom function
+df <- degf(design)
+
+#conf. interval, t distribution
+ci <- confint(mean_estimate, df = df)
+
+(mean_estimate)
+(ci)
+```
+
 
 ------------------------------------------------------------------------
 

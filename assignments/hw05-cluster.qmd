@@ -86,7 +86,7 @@ d.  How do your estimate and interval in part (c.) compare with the results you 
 
 # D. Projects and Activities - Baseball Data 
 
-a. Use the population in the file `baseball.csv` to take a one-stage cluster sample with the teams as the psus. Your sample should have approximatley 150 players altogether, as in the SRS from Exercise 37 of Chapter 2. Describe how you selected your sample. Don't forget to set a seed. 
+a. Use the population in the file `baseball.csv` to take a one-stage cluster sample with the teams as the psus. Your sample should have approximately 150 players altogether, as in the SRS from Exercise 37 of Chapter 2. Describe how you selected your sample. Don't forget to set a seed. 
 
 ```{r}
 baseball <- read_csv(here::here("data", "baseball.csv"))
@@ -103,6 +103,7 @@ baseball <- baseball %>%
   filter(!is.na(salary) & salary > 0) %>% #Removes zeros in salaries column 
   mutate(logsal = log(salary), # creates logsal 
          is.pitcher = ifelse(pos=="P",1, 0)) # indicator of being a pitcher
+
 
 N <- NROW(baseball)
 n <- 150
