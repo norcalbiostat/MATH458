@@ -62,27 +62,23 @@ b) Estimate (with standard error) the total number of errors in the 828 claims.
 
 **2. Measles should be eradicated**
 
-The file `measles.csv` contains data consistent with that obtained in a survey of parents whose children had not been immunized for measles during a recent campaign to immunize all children between the ages of 11 and 15. During the campaign, 7,633 children from the 46 schools in the area were immunized; 9,962 children whose records showed no previous immunization were not immunized. In a follow-up survey to explore why the children had not been immunized during the campaign, Roberts et al. (1995) sent questionnaires to the parents of a cluster sample of the 9,962 children. Ten schools were randomly selected, then a sample of the $M_i$ nonimmunized children from each school was selected, and the parents of those children were sent a questionnaire.
+The file `measles.csv` contains data consistent with that obtained in a survey of parents whose children had not been immunized for measles during a recent campaign to immunize all children between the ages of 11 and 15. During the campaign, 7,633 children from the 46 schools in the area were immunized; 9,962 children whose records showed no previous immunization were not immunized. In a follow-up survey to explore why the children had not been immunized during the campaign, Roberts et al. (1995) sent questionnaires to the parents of a cluster sample of the 9,962 children. Ten schools were randomly selected, then a sample of the $M_i$ nonimmunized children from each school was selected, and the parents of those children were sent a questionnaire. Not all parents replied to the survey. 
 
-```{r}
-#| eval: false
-measles <- readr::read_csv(here::here("data","measles.csv"))
-```
 
-a.  Estimate, separately for each school, the percentage of parents who returned a consent form (variable `returnf`). For this exercise, treat the “no answer” responses (value 9) as not returned.
+a.  One measure of interest is whether or not the parent returned an immunization consent form to the school (variable `returnf`). Separately for each school estimate the percentage of parents who returned a consent form. For this exercise, treat the “no answer” responses (value 9) as not returned. 
 
-> Helper code: We separated the returned consent forms from the forms with no reply by setting our returned set as `as.numeric(returnf==1)`.
+> R advice: Create a new binary indicator for a returned consent form where it has a value of 0 when `returnf` is 9 or 0.
 
-```{r}
-#| eval: false
-measles$returned <- as.numeric(measles$returnf==1)
-```
+b.  Using the number of respondents in school $i$ as $m_i$, construct the sampling weight for each observation. *(Hint: Use the existing variables `mi` and `Mitotal`)*
 
-b.  Using the number of respondents in school $i$ as $m_i$, construct the sampling weight for each observation. *(Hint: Use the variables  listed as `measles$mi` and `measles$Mitotal` in our data set for this question)*
+c.  Estimate the overall percentage of parents who received a consent form along with a 95% CI. 
 
-c.  Estimate the overall percentage of parents who received a consent form along with a 95% CI.
+> R advice: You can extract just the CI from a `svyciprop` object by calling `confint()` on the result. E.g. `a <- svyciprop(~x, dsgn); confint(a)`
 
-d.  How do your estimate and interval in part (c.) compare with the results you would have obtained if you had ignored the clustering and analyzed the data as an SRS? Find the ratio: $$\frac{\text{estimated variance from (c)}}{\text{estimated variance if the data were analyzed as an SRS}}$$ What is the effect of clustering?
+d.  How does your estimate and interval in part (c.) compare with the results you would have obtained if you had ignored the clustering and analyzed the data as an SRS? Find the ratio: $$\frac{\text{estimated variance from (c)}}{\text{estimated variance if the data were analyzed as an SRS}}$$ What is the effect of clustering?
+
+> R advice: You can extract the variance from a `svyciprop` object by extracting it's attributes. E.g. `a <- svyciprop(~x, dsgn); confint(a)`
+
 
 # D. Projects and Activities - Baseball Data 
 
