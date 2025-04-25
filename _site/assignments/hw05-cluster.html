@@ -302,7 +302,7 @@ Template
 <li>How does your estimate and interval in part (c.) compare with the results you would have obtained if you had ignored the clustering and analyzed the data as an SRS? Find the ratio: <span class="math display">\[\frac{\text{estimated variance from (c)}}{\text{estimated variance if the data were analyzed as an SRS}}\]</span> What is the effect of clustering?</li>
 </ol>
 <blockquote class="blockquote">
-<p>R advice: You can extract the variance from a <code>svyciprop</code> object by extracting it’s attributes. E.g. <code>a &lt;- svyciprop(~x, dsgn); confint(a)</code></p>
+<p>R advice: You can extract the variance from a <code>svyciprop</code> object by extracting it’s attributes. E.g. <code>a &lt;- svyciprop(~x, dsgn); attr(a, "var")</code></p>
 </blockquote>
 </section>
 <section id="d.-projects-and-activities---baseball-data" class="level1">

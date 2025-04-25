@@ -77,7 +77,7 @@ c.  Estimate the overall percentage of parents who received a consent form along
 
 d.  How does your estimate and interval in part (c.) compare with the results you would have obtained if you had ignored the clustering and analyzed the data as an SRS? Find the ratio: $$\frac{\text{estimated variance from (c)}}{\text{estimated variance if the data were analyzed as an SRS}}$$ What is the effect of clustering?
 
-> R advice: You can extract the variance from a `svyciprop` object by extracting it's attributes. E.g. `a <- svyciprop(~x, dsgn); confint(a)`
+> R advice: You can extract the variance from a `svyciprop` object by extracting it's attributes. E.g. `a <- svyciprop(~x, dsgn); attr(a, "var")`
 
 
 # D. Projects and Activities - Baseball Data 
