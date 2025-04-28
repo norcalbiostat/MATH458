@@ -154,7 +154,7 @@ The `sampling` package allows you to take random samples from a sampling frame u
 2. Import your sampling frame into R. 
 ```{r}
 library(googlesheets4)
-frame <- read_sheet("https://docs.google.com/spreadsheets/d/13t_2a1nymS-RfAdDN1lq_WrpLD2xjy2rNsol95rD9VA")
+frame <- read_sheet("https://docs.google.com/spreadsheets/d/17bg__F6Cq0zBnbPtMBsNCKNM-pyybVnhujvI2J66n_4")
 ```
 
 3. Use functions from the `sampling` package to draw random samples according to your design. See the links for more details on what the arguments mean. 

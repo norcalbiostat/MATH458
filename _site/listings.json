@@ -1,5 +1,17 @@
 [
   {
+    "listing": "/notes.html",
+    "items": [
+      "/notes/cn00-welcome.html",
+      "/notes/cn01-intro_sampling.html",
+      "/notes/cn02-statistical_foundations.html",
+      "/notes/cn03-SRS.html",
+      "/notes/cn00b-teaching-and-learning.html",
+      "/notes/cn04-stratified_sampling.html",
+      "/notes/cn05-cluster.html"
+    ]
+  },
+  {
     "listing": "/assignments.html",
     "items": [
       "/assignments/hw00-setup.html",
@@ -18,18 +30,6 @@
     "items": [
       "/complete/cn02-statistical_foundations_complete.html",
       "/complete/cn01-intro_sampling_complete.html"
-    ]
-  },
-  {
-    "listing": "/notes.html",
-    "items": [
-      "/notes/cn00-welcome.html",
-      "/notes/cn01-intro_sampling.html",
-      "/notes/cn02-statistical_foundations.html",
-      "/notes/cn00b-teaching-and-learning.html",
-      "/notes/cn03-SRS.html",
-      "/notes/cn04-stratified_sampling.html",
-      "/notes/cn05-cluster.html"
     ]
   }
 ]

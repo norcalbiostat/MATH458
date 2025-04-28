@@ -160,7 +160,6 @@ t.hat <- sum(suitesum)*(N/n)
 
 #### Using the `survey` package 
 
-
 Create a survey design for one-stage clustering
 ```{r}
 OSC_gpa <- svydesign(id = ~suite,
@@ -282,7 +281,7 @@ In Example 4.5 (in Chapter 4), we look at data from a study evaluating the effec
 
 In that example, the _sampling unit_ was a single tree, the _observational unit_ was a single seedling by the tree, and the _population of interest_ was all the trees on Santa Cruz Island. Then, an SRS was conducted! 
 
-But we're doing cluster sampling right now. So, suppose that the researcher was instead intersted in seedling survival across all of California. The researcher would have divided the regions into equal-sized areas, randomly-selected some of those areas to study, and recorded the measurements. 
+But we're doing cluster sampling right now. So, suppose that the researcher was instead interested in seedling survival across all of California. The researcher would have divided the regions into equal-sized areas, randomly-selected some of those areas to study, and recorded the measurements. 
 
 **The sampling unit is no longer a tree, it's an area!**
 
@@ -410,7 +409,6 @@ psu <- table(algebra$class)
 (psu.max.ssu<- names(which.max(psu))) # PSU with most SSUs
 (max.ssu<- max(algebra$Mi)) #This shows the max SSU
 
-
 (psu.min.ssu<- names(which.min(psu))) # PSU with fewest SSUs
 (min.ssu<-min(algebra$Mi)) #This shows the minimum SSU
 
@@ -429,11 +427,10 @@ algebra <- algebra %>%
 e. Using the proper functions from the `survey` package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the `degf` function to get the proper degrees of freedom out of the survey design object and pass it to the `confint` function.
 
 ```{r}
-# This is without weights, do we want them?
-
 design <- svydesign(
   id = ~class,
   fpc = ~Mi,
+  weights = wt, 
   data = algebra
 )
 
@@ -459,12 +456,30 @@ ci <- confint(mean_estimate, df = df)
 
 ## Unbiased estimator of population total.
 
+To estimate the total for each PSU ($\hat{t_i}$) we multiply the total number of SSUs in a PSU ($i$) *by* the average of the sampled SSUs in a PSU ($i$). This is then used in equation (5.21) to get the unbiased estimate of the total population. This is essentially scaling up the estimates using the known sizes:
+
+* $N$ (total number of PSUs in the population)
+* $n$ (Number of PSUs sampled)
+* $M_i$ (total number of SSUs in PSU_i)
+* $m_i$ (number of SSUs actually sampled in PSU_i). 
+
 ## Survey weights
+The chance of selecting any SSU depends on:
+
+1. The chance that its PSU was selected in the first stage.
+2. The chance that the SSU was selected in the second stage within that PSU.
+    
+The sampling weight for each SSU is the reciprocal of its selection probability. It tells you how many units in the population that one SSU is meant to represent.
+
+If all PSUs sample SSUs in proportion to their size, the design is self-weighting.
+
+$$w_i = NM_i / nm_i$$ 
 
 ## Variance estimation for two-stage cluster samples.
 
-### Simplified version
+Variance $\hat{t}$ has 2 components: the variability between psu's and the variability of of ssus within psu's.( We don't have to worry about this with one stage clustering.) 
 
+Essentially what the equation is doing is proving that the second term in the 5.24 equation goes to zero so you don't need to account for this. The equation below calculates the variance for the sample variance among psu totals and then calcs the sample variance within the psu i.
 
 
 :::{.callout-tip icon=true}
@@ -472,18 +487,61 @@ ci <- confint(mean_estimate, df = df)
 
 The file `schools.csv` contains data from a two-stage sample of students from hypothetical classes. The final weights are provided in the variable `finalwt`. 
 
-a) Create side by side boxplots for the math score for sampled schools. Which do you think is larger, the within or between cluster variance? 
-b) Create an ANOVA table for this example. Is your interpretation from the graph upheld by this analysis? 
-c) Estimate with proper 95% CI the average math score for the population of students under consideration. _Do not include a value for the `fpc` in this example_. 
+- During the first stage of sampling, an SRS of size n = 10 schools was selected from a population of N = 75 schools overall. 
+- During the second stage of sampling, an SRS of size $m_i$ = 20 students was selected from each sampled school.
+- Tests for reading and math scores were administered for individuals. 
 :::
 
-:::{.callout-warning icon=false}
-### You Try It: The case of the six-legged puppy.
+```{r}
+schools <- readr::read_csv(here::here("data", "schools.csv"))
+#factorizing our school ids
+schools$schoolid <- as.factor(schools$schoolid)
+```
+
+**a) Create side by side boxplots for the math score for sampled schools. Which do you think is larger, the within or between cluster variance?**
+
+```{r}
+ggplot(schools, aes(x = reorder(schoolid, math, FUN = median), 
+                    y = math, fill = schoolid)) +
+  geom_boxplot() +
+  labs(x = "School ID", y = "Math Score") 
+```
+From the way the medians of each of the schools differ from each other greatly, it seems that the between cluster variance is greater than the within cluster variance.
+
+**b) Create an ANOVA table for this example. Is your interpretation from the graph upheld by this analysis?**
+
+```{r}
+aov(math ~ schoolid, data=schools) |> summary()
+```
+
+Yes. The Mean Sq for the first row of the Anova table is the between clusters mean squares(MSB), while the second row's Mean Sq is the within clusters mean squared (MSW). Since the MSB is seven times the MSW, the Anova table supports our hypothesis that the variance between clusters(schools in this example) is greater than the variance within clusters.
 
 
-:::
+**c) Estimate with proper 95% CI the average math score for the population of students under consideration.**
 
-# Chapter Summary
+Since we don't have the knowledge about the population to calculate the fpc, we will treat this sample as if it were taken with replacement and not use the finite population corrector in the survey design for using the survey package.
+
+```{r}
+dschools <- svydesign(id=~schoolid,
+                      weights=~finalwt,
+                      data=schools)
+```
+
+We will save the `mathmean` information to use to calculate our confidence interval
+```{r}
+mathmean <- svymean(~math,dschools)
+mathmean
+```
+
+This is the confidence interval using the t-distribution with 9 degrees of freedom since we have 10 schools, or clusters, within our sample. Note that our degrees of freedom is the number of psus - 1, not the number of ssus - 1. This is a cluster sample, not an SRS.
+
+```{r}
+confint(mathmean,df=degf(dschools))
+```
+
+Our sample mean math score is 33. We are 95% confident that the true average math score for the population we are considering is between 29 and 37.
+
+
 
 
 
