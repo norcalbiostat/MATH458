@@ -421,7 +421,8 @@ d. Add variables containing the weights and the `fpc` to this data set.
 ```{r}
 N <- 187
 algebra <- algebra %>%
-  mutate(wt = N/n, fpc=rep(187,299))
+  mutate(wt = N/n, 
+         fpc=rep(187,299))
 ```
 
 e. Using the proper functions from the `survey` package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the `degf` function to get the proper degrees of freedom out of the survey design object and pass it to the `confint` function.
@@ -430,7 +431,7 @@ e. Using the proper functions from the `survey` package, estimate the population
 design <- svydesign(
   id = ~class,
   fpc = ~Mi,
-  weights = wt, 
+  weights = ~wt, 
   data = algebra
 )
 
