@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.319">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,42 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -140,9 +105,9 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sampling Methods</span>
     </a>
@@ -154,40 +119,40 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html"> 
-<span class="menu-text">Notes</span></a>
+    <a class="nav-link" href="../notes.html" rel="" target="">
+ <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../assignments.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../project.html"> 
-<span class="menu-text">Project</span></a>
+    <a class="nav-link" href="../project.html" rel="" target="">
+ <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hackmd-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">HackMD Notes</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hackmd-notes">    
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/458_intro_hackmd" rel="" target="">
  <span class="dropdown-text">What is HackMD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn01-intro_sampling" rel="" target="">
  <span class="dropdown-text">Ch 1. Sampling Framework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn02-statistical_foundations" rel="" target="">
  <span class="dropdown-text">Ch 2. Foundations of Estimation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn04_stratified">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn04_stratified" rel="" target="">
  <span class="dropdown-text">Ch 3. Stratified Sampling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn05_cluster">
+    <a class="dropdown-item" href="https://hackmd.io/@norcalbiostat/cn05_cluster" rel="" target="">
  <span class="dropdown-text">Ch 5. Cluster Sampling</span></a>
   </li>  
     </ul>
@@ -195,39 +160,39 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-google" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
       <i class="bi bi-google" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-google">    
         <li>
-    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY">
+    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1Inj6xmMsoRcIHR5mpVShQisg5llXwesoDRuVRbvI5mY" rel="" target="">
  <span class="dropdown-text">Content creation group</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1f4ze0905zE4HbtEyqVrJv1ncMB4EdNZDd4QJH5wewS0">
+    <a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1f4ze0905zE4HbtEyqVrJv1ncMB4EdNZDd4QJH5wewS0" rel="" target="">
  <span class="dropdown-text">Sechedule</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA">
+    <a class="dropdown-item" href="https://drive.google.com/drive/folders/13YG6_6exekRfJr2NngUCO465UosodQGA" rel="" target="">
  <span class="dropdown-text">Project folder</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../formulas.html"> 
-<span class="menu-text">Formulas and Definitions</span></a>
+    <a class="nav-link" href="../formulas.html" rel="" target="">
+ <span class="menu-text">Formulas and Definitions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Syllabus</span></a>
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -260,7 +225,7 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -288,9 +253,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -298,11 +261,11 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>These notes use functions from the <code>sampling</code>, <code>survey</code> and <code>knitr</code> packages. See the <a href="https://sampling-458.netlify.app/notes/formulas.html">formulas</a> page for links to vignettes and handbooks. <span class="margin-aside">The best way to learn a new package is to reference the help file and vignette often for examples. The R Companion for the book (free pdf from book website) is also very helpful.</span></p>
+<p>These notes use functions from the <code>sampling</code>, <code>survey</code> and <code>knitr</code> packages. See the <a href="https://sampling-458.netlify.app/notes/formulas.html">formulas</a> page for links to vignettes and handbooks. </p>
 </div>
 </div>
 </div>
-<section id="introduction" class="level1">
+<div class="no-row-height column-margin column-container"><span class="callout-margin-content callout-margin-content-simple">The best way to learn a new package is to reference the help file and vignette often for examples. The R Companion for the book (free pdf from book website) is also very helpful.</span></div><section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>This section will aim to answer the following questions:</p>
 <ul>
@@ -312,7 +275,7 @@ window.Quarto = {
 <li>How do we calculate parameter estimates from an SRS that account for both the fpc and sampling weights?</li>
 </ul>
 </section>
-<section id="drawing-a-simple-random-sample-lohr-ch-2.3" class="level1">
+<section id="drawing-a-simple-random-sample-lohr-ch-2.3" class="level1 page-columns page-full">
 <h1>Drawing a Simple Random Sample (Lohr Ch 2.3)</h1>
 <p>Recall there are two ways to draw simple random samples, with and without replacement.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -406,21 +369,21 @@ Example: Sampling Statistics PhD programs.
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop.idx <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">NROW</span>(stats10)  <span class="co"># Steps 1, 2</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop.idx, <span class="dv">4</span>)) <span class="co"># Step 3 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 2 3 8</code></pre>
+<pre><code>[1] 10  4  1  5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stats10[idx,]               <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  University                      Department    FTGradEnrollment
-  &lt;chr&gt;                           &lt;chr&gt;                    &lt;dbl&gt;
-1 Case Western Reserve University Statistics                  11
-2 Boston University               Biostatistics               39
-3 Brown University                Biostatistics               21
-4 Columbia University             Statistics                 196</code></pre>
+  University                      Department FTGradEnrollment
+  &lt;chr&gt;                           &lt;chr&gt;                 &lt;dbl&gt;
+1 Duke University                 Statistics               31
+2 Carnegie Mellon University      Statistics               39
+3 Baylor University               Statistics               26
+4 Case Western Reserve University Statistics               11</code></pre>
 </div>
 </div>
 <ul>
-<li>Rows 5, 2, 3, 8 were chosen.</li>
+<li>Rows 10, 4, 1, 5 were chosen.</li>
 </ul>
 <p><strong>with replacement</strong></p>
 <div class="cell">
@@ -446,7 +409,7 @@ Example: Sampling Statistics PhD programs.
 </ul>
 </section>
 </section>
-<section id="using-the-sampling-package" class="level2">
+<section id="using-the-sampling-package" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="using-the-sampling-package">Using the <code>sampling</code> package</h2>
 <ul>
 <li>The functions <code>srswr(n,N)</code> and <code>srswor(n,N)</code> draw SRS with, and without replacement respectively.</li>
@@ -526,7 +489,7 @@ Solution
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">300</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Using the <code>sample()</code> function</strong></p>
-<p><span class="margin-aside">Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.</span> Generate list of numbers for each observational unit, then draw 5 numbers without replacement.</p>
+<p> Generate list of numbers for each observational unit, then draw 5 numbers without replacement.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sampling.frame <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>N <span class="co">#1, 2</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sample.idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(sampling.frame, n, <span class="at">replace=</span><span class="cn">FALSE</span>) <span class="co">#3</span></span>
@@ -560,12 +523,12 @@ Solution
 </div>
 </div>
 </div>
+<div class="no-row-height column-margin column-container"><span class="callout-6-contents callout-collapse collapse callout-margin-content callout-margin-content-simple">Get in the habit of opening the data set and visually looking at your process at each step. The best way to learn is to check that you know exactly what was done at each step.</span></div></section>
 </section>
-</section>
-<section id="formulas-for-estimation" class="level1">
+<section id="formulas-for-estimation" class="level1 page-columns page-full">
 <h1>Formulas for Estimation</h1>
 <p>Below is a table of common statistics and how they are estimated under the SRS framework. This table can also be found on the <a href="https://sampling-458.netlify.app/notes/formulas.html">formulas</a> page.</p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 34%">
@@ -639,7 +602,7 @@ Example
 <pre><code>[1] 24924.16</code></pre>
 </div>
 </div>
-<p><span class="margin-aside">Inline R code: <code>prettyNum(sd.ybar, big.mark=',')</code></span> Sample means generated from samples of size 300 will vary from sample to sample by 24,924.16 acres.</p>
+<div class="page-columns page-full"><p> Sample means generated from samples of size 300 will vary from sample to sample by 24,924.16 acres.</p><div class="no-row-height column-margin column-container"><span class="">Inline R code: <code>prettyNum(sd.ybar, big.mark=',')</code></span></div></div>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -703,18 +666,18 @@ Clean up
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()[<span class="sc">!</span><span class="fu">ls</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ag"</span>, <span class="st">"ag.srs"</span>, <span class="st">"n"</span>, <span class="st">"N"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "choose.these.wor" "choose.these.wr"  "idx"              "idx.with.dups"   
- [5] "n2"               "p.hat"            "pop.idx"          "s.phat"          
- [9] "s2"               "sample.ag"        "sample.ag.500"    "sample.idx"      
-[13] "sampling.frame"   "sd.ybar"          "srswor.idx"       "srswor.idx2"     
-[17] "stats"            "stats10"          "y.bar"           </code></pre>
+<pre><code> [1] "choose.these.wor" "choose.these.wr"  "has_annotations"  "idx"             
+ [5] "idx.with.dups"    "n2"               "p.hat"            "pop.idx"         
+ [9] "s.phat"           "s2"               "sample.ag"        "sample.ag.500"   
+[13] "sample.idx"       "sampling.frame"   "sd.ybar"          "srswor.idx"      
+[17] "srswor.idx2"      "stats"            "stats10"          "y.bar"           </code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="sampling-weights-lohr-ch-2.4" class="level1">
+<section id="sampling-weights-lohr-ch-2.4" class="level1 page-columns page-full">
 <h1>Sampling Weights (Lohr Ch 2.4)</h1>
 <p>Recall that a goal of sampling is to obtain a representative sample, one that is similar to the true unknown population. Thus, conceptually if we duplicate certain units from our sample a certain amount of times, we could “reconstruct” what the population looks like. That is, we could create <span class="math inline">\(w_{i}\)</span> copies of unit <span class="math inline">\(i\)</span> for each unit in the sample.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -734,7 +697,7 @@ Definition: Sampling Weight (Design weight)
 </div>
 <p>In an SRS, each unit has an inclusion probability of <span class="math inline">\(\delta_{i} = \frac{n}{N}\)</span>, so the sampling weights are all <span class="math inline">\(w_{i} =\frac{N}{n}\)</span>.</p>
 <p>We don’t <em>actually</em> make <span class="math inline">\(w_{i}\)</span> copies of record <span class="math inline">\(i\)</span>, but use these weights as a multiplier in our estimation calculations.</p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 34%">
 <col style="width: 28%">
@@ -769,7 +732,7 @@ Example: Calculating weighted estimates
 <p>Estimate the total and average number of acres devoted to farms in 1992 using both weighted and unweighted estimates. Then compare these values to the parameter.</p>
 </div>
 </div>
-<p>The sampling weights are <span class="math inline">\(w_{i} = \frac{3078}{300}\)</span> for each unit <span class="math inline">\(i\)</span> in the sample, so we’ll add that on as a new column before calculating the weighted estimates. <span class="margin-aside">See Lohr Table 2.1 for a nicer visual of the data frame with weights.</span></p>
+<div class="page-columns page-full"><p>The sampling weights are <span class="math inline">\(w_{i} = \frac{3078}{300}\)</span> for each unit <span class="math inline">\(i\)</span> in the sample, so we’ll add that on as a new column before calculating the weighted estimates. </p><div class="no-row-height column-margin column-container"><span class="">See Lohr Table 2.1 for a nicer visual of the data frame with weights.</span></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ag.srs<span class="sc">$</span>wt <span class="ot">&lt;-</span> N<span class="sc">/</span>n</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>(N.hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(ag.srs<span class="sc">$</span>wt)) <span class="co"># just to confirm to myself</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -796,7 +759,7 @@ Example: Calculating weighted estimates
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'lccc'</span>, </span>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Comparing weighted and unweighted estimates"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <caption>Comparing weighted and unweighted estimates</caption>
 <thead>
 <tr class="header">
@@ -868,9 +831,9 @@ Solution
 </div>
 </div>
 </section>
-<section id="analysis-using-the-survey-package-lohr-ch-2.6" class="level1">
+<section id="analysis-using-the-survey-package-lohr-ch-2.6" class="level1 page-columns page-full">
 <h1>Analysis using the <code>survey</code> package (Lohr Ch 2.6)</h1>
-<p>Survey designs are specified using the <code>svydesign</code> function. The main arguments to the the function are id to specify sampling units, weights to specify sampling weights, and fpc to specify finite population size corrections. These arguments should be given as formulas, referring to columns in a data frame given as the data argument. <span class="margin-aside">Similar to using <code>group_by</code> in dplyr, that adds a “flag” to the data set indicting that all subsequent actions are to be done to each group separately, the <code>svydesign</code> function adds information to the data set so subsequent actions know how to incorporate measures like weights and strata</span></p>
+<div class="page-columns page-full"><p>Survey designs are specified using the <code>svydesign</code> function. The main arguments to the the function are id to specify sampling units, weights to specify sampling weights, and fpc to specify finite population size corrections. These arguments should be given as formulas, referring to columns in a data frame given as the data argument. </p><div class="no-row-height column-margin column-container"><span class="">Similar to using <code>group_by</code> in dplyr, that adds a “flag” to the data set indicting that all subsequent actions are to be done to each group separately, the <code>svydesign</code> function adds information to the data set so subsequent actions know how to incorporate measures like weights and strata</span></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>ag.srs.dsgn <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">weights =</span> <span class="sc">~</span>wt, <span class="at">fpc =</span> <span class="fu">rep</span>(N,n), <span class="at">data =</span> ag.srs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -961,7 +924,7 @@ Solution
 <span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'lccc'</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Point estimates and confidence intervals for the total number of farms in the US in 1987 and the average farm size in that same year."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <caption>Point estimates and confidence intervals for the total number of farms in the US in 1987 and the average farm size in that same year.</caption>
 <thead>
 <tr class="header">
@@ -1040,33 +1003,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1133,15 +1069,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1220,27 +1154,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/sampling-458\.netlify\.app\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1250,17 +1167,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1272,130 +1180,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1439,7 +1224,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1465,32 +1249,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1553,9 +1311,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a> and the Spring 2025 Math 458 class</p>
-</div>   
+    <div class="nav-footer-left">This site is built with <span class="emoji" data-emoji="heart">❤️</span>, <a href="https://posit.co/">R</a> and <a href="https://quarto.org/">Quarto</a> by <a href="www.norcalbiostat.com">Robin Donatello</a> and the Spring 2025 Math 458 class</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1564,7 +1320,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 
 
 

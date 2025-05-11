@@ -488,9 +488,6 @@ gpa 2.826 0.1637</code></pre>
 </div>
 </div>
 </section>
-<section id="section" class="level4">
-<h4 class="anchored" data-anchor-id="section"></h4>
-</section>
 <section id="sampling-weights" class="level3">
 <h3 class="anchored" data-anchor-id="sampling-weights">Sampling Weights</h3>
 <p>In one-stage cluster sampling with equal-sized clusters, each cluster is treated as a single observation. The sampling weight for each observation unit <span class="math inline">\(j\)</span> in PSU <span class="math inline">\(i\)</span> is based on the inverse probability of that PSU being selected. This results in a <strong>self-weighting sample</strong>, meaning every sampled element gets the same weight.</p>
@@ -586,8 +583,57 @@ Adjusted R Squared
 <div class="callout-body-container callout-body">
 <p>Adjusted R^2 can be used as an alternative measure of homogeneity due to it being very close to the ICC in many populations. The adj R^2 can only be used as a replacement in cases where all primary sampling units (psus) are the same size.</p>
 <p><span class="math display">\[ 1 - \frac{MSW}{S^2} \]</span></p>
+<p>where <span class="math inline">\(S^2\)</span> is the variance calculated as the Total sum of squares (SST = SSB + SSW) divided by the total degrees of freedom.</p>
 </div>
 </div>
+<p>You can extract the values for the degrees of freedom (<code>Df</code>), sum of squares (<code>Sum Sq</code>), and mean squares (<code>Mean Sq</code>) out of the ANOVA table using the following codes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>gpa<span class="sc">$</span>suite <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(gpa<span class="sc">$</span>suite)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>(anova.table <span class="ot">&lt;-</span> <span class="fu">aov</span>(gpa <span class="sc">~</span> suite, <span class="at">data =</span> gpa) <span class="sc">|&gt;</span> <span class="fu">summary</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+suite        4  2.256  0.5639   3.048 0.0504 .
+Residuals   15  2.776  0.1850                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Get total degrees of freedom</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(df.t <span class="ot">&lt;-</span> <span class="fu">sum</span>(anova.table[[<span class="dv">1</span>]][<span class="st">'Df'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19</code></pre>
+</div>
+</div>
+<p>Get SST</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(SST <span class="ot">&lt;-</span> <span class="fu">sum</span>(anova.table[[<span class="dv">1</span>]][<span class="st">'Sum Sq'</span>]) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.03128</code></pre>
+</div>
+</div>
+<p>Calculate <span class="math inline">\(S^2\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(s2 <span class="ot">&lt;-</span> SST<span class="sc">/</span>df.t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2648042</code></pre>
+</div>
+</div>
+<p>Get MSW by pulling out the 2nd element in the <code>Mean Sq</code> column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(MSW <span class="ot">&lt;-</span> anova.table[[<span class="dv">1</span>]][<span class="dv">2</span>, <span class="st">'Mean Sq'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.18504</code></pre>
+</div>
+</div>
+<p>Now calculate adjusted <span class="math inline">\(R^2\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span> (MSW <span class="sc">/</span> s2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3012196</code></pre>
+</div>
+</div>
+<p>So 30% of the variability in GPA is due to the suite the student lives in.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -717,8 +763,8 @@ Example. High school Algebra
 <li>Load in the data and look at the first few rows. Explain what the values in each column mean.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>algebra <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"algebra.csv"</span>))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(algebra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>algebra <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"algebra.csv"</span>))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(algebra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   class    Mi score
@@ -741,15 +787,15 @@ Example. High school Algebra
 <li>Plot the distribution of test score by class. Interpret your graph by comparing the medians, ranges, and variances across classes. What do you notice?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>algebra<span class="sc">$</span>class <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(algebra<span class="sc">$</span>class)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(algebra, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> score)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>algebra<span class="sc">$</span>class <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(algebra<span class="sc">$</span>class)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(algebra, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> score)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cn05-cluster_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="cn05-cluster_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>algebra <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">median =</span> <span class="fu">median</span>(score),</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">min =</span> <span class="fu">min</span>(score),</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">max =</span> <span class="fu">max</span>(score),</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">var =</span> <span class="fu">var</span>(score))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>algebra <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">median =</span> <span class="fu">median</span>(score),</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">min =</span> <span class="fu">min</span>(score),</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">max =</span> <span class="fu">max</span>(score),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">var =</span> <span class="fu">var</span>(score))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 5
    class median   min   max   var
@@ -773,25 +819,25 @@ Example. High school Algebra
 <li>How many <em>psus</em> are there? What is the <em>psu</em> with the highest number of <em>ssus</em>? Which one has the least? You must answer this question using R functions such as<code>unique</code> or <code>table</code>. Don’t count this by hand (practice for when you have a billion rows)</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(n <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(algebra<span class="sc">$</span>class))) <span class="co"># Total number of psu</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(n <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(algebra<span class="sc">$</span>class))) <span class="co"># Total number of psu</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>psu <span class="ot">&lt;-</span> <span class="fu">table</span>(algebra<span class="sc">$</span>class)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>(psu.max.ssu<span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">which.max</span>(psu))) <span class="co"># PSU with most SSUs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>psu <span class="ot">&lt;-</span> <span class="fu">table</span>(algebra<span class="sc">$</span>class)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>(psu.max.ssu<span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">which.max</span>(psu))) <span class="co"># PSU with most SSUs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "39"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(max.ssu<span class="ot">&lt;-</span> <span class="fu">max</span>(algebra<span class="sc">$</span>Mi)) <span class="co">#This shows the max SSU</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(max.ssu<span class="ot">&lt;-</span> <span class="fu">max</span>(algebra<span class="sc">$</span>Mi)) <span class="co">#This shows the max SSU</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 34</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(psu.min.ssu<span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">which.min</span>(psu))) <span class="co"># PSU with fewest SSUs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>(psu.min.ssu<span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">which.min</span>(psu))) <span class="co"># PSU with fewest SSUs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "58"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(min.ssu<span class="ot">&lt;-</span><span class="fu">min</span>(algebra<span class="sc">$</span>Mi)) <span class="co">#This shows the minimum SSU</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(min.ssu<span class="ot">&lt;-</span><span class="fu">min</span>(algebra<span class="sc">$</span>Mi)) <span class="co">#This shows the minimum SSU</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 17</code></pre>
 </div>
@@ -801,37 +847,37 @@ Example. High school Algebra
 <li>Add variables containing the weights and the <code>fpc</code> to this data set.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">187</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>algebra <span class="ot">&lt;-</span> algebra <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wt =</span> N<span class="sc">/</span>n, </span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">fpc=</span><span class="fu">rep</span>(<span class="dv">187</span>,<span class="dv">299</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">187</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>algebra <span class="ot">&lt;-</span> algebra <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wt =</span> N<span class="sc">/</span>n, </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">fpc=</span><span class="fu">rep</span>(<span class="dv">187</span>,<span class="dv">299</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="5" type="a">
 <li>Using the proper functions from the <code>survey</code> package, estimate the population average algebra score, with a 95% interval and interpret your interval. Be sure to NOT assume a Z-distribution for this confidence interval but use the <code>degf</code> function to get the proper degrees of freedom out of the survey design object and pass it to the <code>confint</code> function.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="sc">~</span>class,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fpc =</span> <span class="sc">~</span>Mi,</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> <span class="sc">~</span>wt, </span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> algebra</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># the mean</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>mean_estimate <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>score, design)</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co"># degrees of freedom function</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">degf</span>(design)</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co">#conf. interval, t distribution</span></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">confint</span>(mean_estimate, <span class="at">df =</span> df)</span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>(mean_estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="sc">~</span>class,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fpc =</span> <span class="sc">~</span>Mi,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> <span class="sc">~</span>wt, </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> algebra</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># the mean</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>mean_estimate <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>score, design)</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co"># degrees of freedom function</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">degf</span>(design)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co">#conf. interval, t distribution</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">confint</span>(mean_estimate, <span class="at">df =</span> df)</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>(mean_estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        mean     SE
 score 62.569 0.9752</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(ci)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(ci)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         2.5 %   97.5 %
 score 60.42224 64.71488</code></pre>
@@ -893,24 +939,24 @@ Example 5.7: More estimation of math scores.
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>schools <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"schools.csv"</span>))</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#factorizing our school ids</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>schools<span class="sc">$</span>schoolid <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(schools<span class="sc">$</span>schoolid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>schools <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"schools.csv"</span>))</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#factorizing our school ids</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>schools<span class="sc">$</span>schoolid <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(schools<span class="sc">$</span>schoolid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>a) Create side by side boxplots for the math score for sampled schools. Which do you think is larger, the within or between cluster variance?</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(schools, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(schoolid, math, <span class="at">FUN =</span> median), </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">y =</span> math, <span class="at">fill =</span> schoolid)) <span class="sc">+</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"School ID"</span>, <span class="at">y =</span> <span class="st">"Math Score"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(schools, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(schoolid, math, <span class="at">FUN =</span> median), </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">y =</span> math, <span class="at">fill =</span> schoolid)) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"School ID"</span>, <span class="at">y =</span> <span class="st">"Math Score"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cn05-cluster_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="cn05-cluster_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>From the way the medians of each of the schools differ from each other greatly, it seems that the between cluster variance is greater than the within cluster variance.</p>
 <p><strong>b) Create an ANOVA table for this example. Is your interpretation from the graph upheld by this analysis?</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(math <span class="sc">~</span> schoolid, <span class="at">data=</span>schools) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(math <span class="sc">~</span> schoolid, <span class="at">data=</span>schools) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 schoolid      9   7018   779.8   7.583 1.79e-09 ***
@@ -923,14 +969,14 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><strong>c) Estimate with proper 95% CI the average math score for the population of students under consideration.</strong></p>
 <p>Since we don’t have the knowledge about the population to calculate the fpc, we will treat this sample as if it were taken with replacement and not use the finite population corrector in the survey design for using the survey package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dschools <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id=</span><span class="sc">~</span>schoolid,</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">weights=</span><span class="sc">~</span>finalwt,</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data=</span>schools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>dschools <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id=</span><span class="sc">~</span>schoolid,</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">weights=</span><span class="sc">~</span>finalwt,</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data=</span>schools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will save the <code>mathmean</code> information to use to calculate our confidence interval</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mathmean <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>math,dschools)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>mathmean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>mathmean <span class="ot">&lt;-</span> <span class="fu">svymean</span>(<span class="sc">~</span>math,dschools)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>mathmean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       mean     SE
 math 33.123 1.7599</code></pre>
@@ -938,7 +984,7 @@ math 33.123 1.7599</code></pre>
 </div>
 <p>This is the confidence interval using the t-distribution with 9 degrees of freedom since we have 10 schools, or clusters, within our sample. Note that our degrees of freedom is the number of psus - 1, not the number of ssus - 1. This is a cluster sample, not an SRS.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mathmean,<span class="at">df=</span><span class="fu">degf</span>(dschools))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mathmean,<span class="at">df=</span><span class="fu">degf</span>(dschools))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        2.5 %  97.5 %
 math 29.14179 37.1041</code></pre>

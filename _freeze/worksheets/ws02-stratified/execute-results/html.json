@@ -1,7 +1,6 @@
 {
-  "hash": "3a05faf00116283505526302aad42388",
+  "hash": "aa3e6a94eba20ca08f0cb748322becc0",
   "result": {
-    "engine": "knitr",
     "markdown": "---\nformat: html\ntitle: \"Worksheet 02: Stratified Random Sampling\"\nsubtitle: \"\"\ndate: 03/13/25\ncategories: Worksheet\n---\n\n\nThe ACLS intends to use a stratified random sample to study publications and library use among members. They divide their data into discipline, making 7 stratas. Summary values for the size of the membership, number of returned surveys, and the proportion of surveys returned by female members are packed into a data frame for you below. \n\n**1. Using equations 3.7 and 3.8, estimate the proportion (and SE) of the major societies in those seven disciplines that are female.**\n\n\n::: {.cell}\n\n```{.r .cell-code}\nacls <- data.frame(\n  discipline = c(\"Lit\", \"Classics\", \"Phil\", \"Hist\", \"Ling\", \"Pols\", \"Soci\"),\n  membership = c(9100,1950,5500,10850,2100,5500,9000), \n  valid.return = c(636,451,481,611,493,575,588), \n  prop.female = c(.38,.27,.18,.19,.36,.13,.26))\n```\n:::\n\n\n**2. Using the equations above Table 3.5 in the text applied to your answers to part 1, estimate total (and SE) number of female members in the society.**\n\n",
     "supporting": [
       "ws02-stratified_files"

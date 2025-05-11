@@ -174,8 +174,6 @@ svymean(~gpa, OSC_gpa)
 ```
 
 
-#### 
-
 ### Sampling Weights
 
 In one-stage cluster sampling with equal-sized clusters, each cluster is treated as a single observation. The sampling weight for each observation unit $j$ in PSU $i$ is based on the inverse probability of that PSU being selected. This results in a **self-weighting sample**, meaning every sampled element gets the same weight.
@@ -256,8 +254,42 @@ Adjusted R^2 can be used as an alternative measure of homogeneity due to it bein
 
 $$ 1 - \frac{MSW}{S^2} $$
 
+where $S^2$ is the variance calculated as the Total sum of squares (SST = SSB + SSW) divided by the total degrees of freedom. 
 :::
 
+You can extract the values for the degrees of freedom (`Df`), sum of squares (`Sum Sq`), and mean squares (`Mean Sq`) out of the ANOVA table using the following codes. 
+
+```{r}
+gpa$suite <- as.factor(gpa$suite)
+(anova.table <- aov(gpa ~ suite, data = gpa) |> summary())
+```
+
+Get total degrees of freedom
+```{r}
+(df.t <- sum(anova.table[[1]]['Df']))
+```
+
+Get SST
+```{r}
+(SST <- sum(anova.table[[1]]['Sum Sq']) )
+```
+
+Calculate $S^2$
+```{r}
+(s2 <- SST/df.t)
+```
+
+Get MSW by pulling out the 2nd element in the `Mean Sq` column
+```{r}
+(MSW <- anova.table[[1]][2, 'Mean Sq'])
+```
+
+Now calculate adjusted $R^2$
+```{r}
+1- (MSW / s2)
+```
+
+So 30% of the variability in GPA is due to the suite the student lives in. 
 
 
 :::{.callout-tip}
